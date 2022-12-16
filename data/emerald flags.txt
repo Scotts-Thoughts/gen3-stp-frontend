@@ -1,0 +1,1712 @@
+flags begin at dma2 offset 8732
+
+0x0
+0x1 : gabby & ty, oldale pokemart worker, move rememberer
+0x2 : weather man, game designer, contest interviewer, cozmo, checked scott battle frontier
+0x3 : checked scott battle frontier
+0x4 : Has spoken to Granma Winstrate, checked scott battle frontier
+0x5 : 
+0x6 : 
+0x7 : 
+
+0x8 : 
+0x9 : 
+0xA : 
+0xB : 
+0xC : 
+0xD : 
+0xE : 
+0xF : 
+
+)x10 : 
+0x11 - 0x1F : Respawning Rock Smash Cut and Strength OWs (all set when Mirage Island appears?)
+
+0x20 : 
+0x21 : 
+0x22 : 
+0x23 : 
+0x24 : 
+0x25 : 
+0x26 : 
+0x27 : 
+
+0x28 : 
+0x29 : 
+0x2A : 
+0x2B : 
+0x2C : 
+0x2D : 
+0x2E : 
+0x2F : 
+
+0x30 : 
+0x31 : 
+0x32 : 
+0x33 : 
+0x34 : 
+0x35 : 
+0x36 : 
+0x37 : 
+
+0x38 : 
+0x39 : 
+0x3A : 
+0x3B : 
+0x3C : 
+0x3D : 
+0x3E : 
+0x3F : 
+
+0x40 : 
+0x41 : 
+0x42 : 
+0x43 : 
+0x44 : 
+0x45 : 
+0x46 : 
+0x47 : 
+
+0x48 : 
+0x49 : 
+0x4A : 
+0x4B : 
+0x4C : 
+0x4D : 
+0x4E : 
+0x4F : 
+
+8742 (offset 10 from flags)
+-0x50 : Rayquaza Awake OW
+-0x51 : Player has set the time
+-0x52 : saved birch
+-0x53 : Set after Kyogre Event
+-0x54 : 
+-0x55 : 
+-0x56 : Pokeball Contest Room OW
+-0x57 : 
+
+8743
+0x58 : Player has spoken to lab assistant before Littleroot
+0x59 : 
+0x5A : 
+0x5B : set after new mauville reward
+0x5C : Set speaking to Scott Battle Frontier
+0x5D : cleared safari zone entrance, set in safari zone speaking to worker
+0x5E : Has been given Wailmer Pail Flower Shop
+0x5F : pokeblock case?
+
+8744
+0x60 : Player has been given TM Secret Power, player has made secret base
+0x61 : 
+0x62 : Player has spoken to TV person Mauville
+0x63 : cleared mauville
+0x64 : cleared mossdeep, checked mossdeep gym
+0x65 : cleared mossdeep, checked mossdeep gym
+0x66 : cleared mossdeep, checked mossdeep gym
+0x67 : cleared mossdeep, checked mossdeep gym
+
+8745 
+0x68 : 
+0x69 : Player has spoken to Slateport interviewer before
+0x6A : Player has received Strength Rusturf Tunnel
+0x6B : Player has received Rock Smash Mauville
+0x6C : checked lavaridge, set after beating flannery
+0x6D : Player has received Flash from Granite Cave hiker
+0x6E : Player has received Fly Route 119
+0x6F : Set after Groundon is awakened
+
+8746
+0x70 : Player has cleared Aqua Hideout
+0x71 : checked in cave of origin
+0x72 : 
+0x73 : Player has taken Meteorite Mt. Chimney
+0x74 : Intro Sequence Over
+0x75 : Player has beaten Magma in Steven Double Battle
+0x76 : Player has spoken to Hidden Power lady Fortree
+0x77 : cleared Battle Frontier Tower, set in fight area
+
+8747
+0x78 : Set in Mirage Tower entrance, cleared when collected fossil
+0x79 : Player has received TM Brick Break
+0x7A : Wally's Dad has given Surf
+0x7B : Player has received Dive from Steven Mossdeep
+0x7C : Has spoken to Rival the first time Route 104
+0x7D : Has battled Rival Route 104
+0x7E : Player has battled Wally Victory Road
+0x7F : Has spoken to Flower Shop salesgirl the first time
+    
+8748    
+0x80 :   
+0x81 : set after kyogre event
+0x82 : Set after first Rival Trainer battle
+0x83 : Player has been given doll Lanette's House
+0x84 : Pokemart Oldale promo worker has given potion
+0x85 : Player has received Amulet Coin Littleroot
+0x86 : Daycare Centre has egg
+0x87 : Player has spoken to Wally's Dad before
+
+8749
+0x88 : set after wally battle mauville
+0x89 : Player has received HM Cut Rustboro
+0x8A : set after beating fortree gym
+0x8B : Player has defeated Maxie Mt. Chimney
+0x8C : Player has been given Soda in Shore House
+0x8D : Player has beaten all trainers in Shore House
+0x8E : Set while goods are stolen from Devon in Rustboro
+0x8F : Player has beaten Aqua Thug retrieved goods Rusturf Tunnel
+
+0x90 : checked 1st floor devon recoverd goods?
+0x91 : Player has battled Lugia Navel Rock
+0x92 : Player has battled Ho-oh Navel Rock
+0x93 : Has spoken to Briney in his house for the first time
+0x94 : Has spoken to man in Slateport factory the first time
+0x95 : Goods have been delivered to Stern in Slateport
+0x96 : 
+0x97 : Player has received Castform Weather Centre
+
+0x98 : Player has received Super Rod
+0x99 : Player has traded Pokemon Rustboro
+0x9A : Player has traded Pokemon Pacifidlog
+0x9B : Player has traded Pokemon Fortree
+0x9C : Player has traded Pokemon Battle Frontier
+0x9D : set in mirage tower entrance, cleared entering 112, cleared entering 113, cleared mauville
+0x9E : Sootopolis Crisis is over, set after speaking to both Maxie and Archie
+0x9F : set after talking to devon worker rustboro theft
+
+0xA0 : Lilycove Museum Art
+0xA1 : Lilycove Museum Art
+0xA2 : Lilycove Museum Art
+0xA3 : Lilycove Museum Art
+0xA4 : Lilycove Museum Art
+0xA5 : Rustboro Gym TM reward has been given
+0xA6 : Dewford Gym TM reward has been given
+0xA7 : Mauvile Gym TM reward has been given
+
+0xA8 : Lavaridge Gym TM reward has been given
+0xA9 : Petalburg Gym TM reward has been given
+0xAA : Fortree Gym TM reward has been given
+0xAB : Mossdeep Gym TM reward has been given
+0xAC : Sootopolis Gym TM reward has been given
+0xAD : Secret base, Owner
+0xAE - 0xBB : Secret base, Item, OWs in Player's Room?
+
+
+
+
+
+0xBC : Rustboro President has given Letter and Pokenav
+0xBD : Letter has been delivered to Steven
+0xBE : set after wally battle mauville, checked tunnelers gf
+0xBF : Set After Beating Door Blocking Thug Space Centre
+
+0xC0 : Player has been given Sun Stone Space Centre
+0xC1 : Player has spoken to Wally Verdanturf
+0xC2 : 
+0xC3 : 
+0xC4 : 
+0xC5 : 
+0xC6 : 
+0xC7 : Rusturf Tunnel has been cleared
+
+0xC8 : Player has been given Red Scarf Slateport Club
+0xC9 : Player has been given Blue Scarf Slateport Club
+0xCA : Player has been given Pink Scarf Slateport Club
+0xCB : Player has been given Green Scarf Slateport Club
+0xCC : Player has been given Yellow Scarf Slateport Club
+0xCD : Player has spoken to Steven Space Centre F2 Magma event
+0xCE : 
+0xCF : 
+
+0xD0 : Player has received New Mauville quest from Wattson
+0xD1 : Player has received New Mauville reward from Wattson
+0xD2 : cleared Lilycove club, checked club buffer asker
+0xD3 : Player has battled Rival Rustboro
+0xD4 : Set after Mt. Pyre orbs taken / Magma emblem received, checked aqua hideout
+0xD5 : Player has received Premier Ball from Devon kid
+0xD6 : 
+0xD7 : Scott Pokenav registration
+
+0xD8 : Mom Pokenav registration
+0xD9 : Player has spoken to Shard trader before
+0xDA : Player has spoken to Wailmer trainer Aqua Grunt Lilycove
+0xDB : Player has spoken to Archie before Mt. Chimney
+0xDC : 
+0xDD : Player has received Go Goggles from rival
+0xDE : Fortree Wingull has been sent to Mossdeep
+0xDF : Player has received Herb from Wingull Fortree
+
+0xE0 : Mossdeep Wingull has been sent to Fortree
+0xE1 : Player has been given coins Mauville casino
+0xE2 : Player has been given doll Mauville Casino
+0xE3 : Player has been given Good Rod Route 118
+0xE4 : Player has read Regi Braille
+0xE5 : Player has received TM Return Lavaridge
+0xE6 : Player has received TM Sludge Bomb Dewford
+0xE7 : Player has been given TM Roar Route 114
+
+0xE8 : Player has been given TM Giga Drain Route 123
+0xE9 : 
+0xEA : Player has received TM rest Lilycove, checked 120?
+0xEB : Plaer has received TM Attract Verdanturf Battle Tent
+0xEC : Player has completed museum side quest, received reward
+0xED : Set speaking to Scott Battle Frontier
+0xEE : Set speaking to Scott Battle Frontier
+0xEF : Storage door has been opened Abandoned Ship
+
+0xF0 : Rm Key has been used Abandoned Ship
+0xF1 : Rm Key has been used Abandoned Ship
+0xF2 : Rm Key has been used Abandoned Ship
+0xF3 : Rm Key has been used Abandoned Ship
+0xF4 : Player has spoken to Prof. Cozmo Meteor Falls
+0xF5 : Player has received doll Sootopolis
+0xF6 : Player has been given Berry Route 104
+0xF7 : All trainers on SS Tidal Defeated?
+
+0xF8 : Berry Master's Wife has given Spelon Berry 0xA3
+0xF9 : Berry Master's Wife has given Pamtre Berry 0xA4
+0xFA : Berry Master's Wife has given Watmel Berry 0xA5
+0xFB : Berry Master's Wife has given Durin Berry 0xA6
+0xFC : Berry Master's Wife has given Belue Berry 0xA7
+0xFD : Rival Pokedex Registration
+0xFE : Player has received Charcoal Lavaridge
+0xFF : 
+
+0x100 : Player has received Pokeball Route 116
+0x101 : Player has received Old Rod
+0x102 : Coincase has been traded Mauville
+0x103 : checked by mt. pyre lady
+0x104 : Player has received TM Snatch SS Tidal
+0x105 : Player has been given TM Dig in Fossil house
+0x106 : Player has been given TM Bullet Seed Route 104
+0x107 : Player has spoken to elite four entrance keepers before
+
+0x108 : Player has received TM Hidden Power
+0x109 : TM41 Torment has been given Slateport Battle Tent
+0x10A : Player has received Wynaut egg Lavaridge
+0x10B : Player has regenerated fossil in Devon
+0x10C : 
+0x10D : Player has been given TM Thief
+0x10E : cleared entering fallarbor
+0x10F : Player has spoken to Stern after submarine theft
+
+0x110 : Player has received Exp. Share Devon Corp.
+0x111 : Pokemon Centre message about Pokerus has been spoken
+0x112 : Player has been given running shoes
+0x113 : Player has been given Quick Claw Trainer School
+0x114 : Player has been given King's Rock Mossdeep
+0x115 : Player has been given Macho Brace Winstrate house
+0x116 : Player has been given Soothe Bell Slateport Club
+0x117 : Player has been given flower item Route 104
+
+0x118 : Player has been given Soft Sand Route 109
+0x119 : Prof. Birch Pokedex registration
+0x11A : Player has been given Cleanse Tag Mt. Pyre 1F
+0x11B : Player has been given Focus Band Shoal Cave
+0x11C : Player turned down Wally's battle request Mauville
+0x11D : checked 120
+0x11E : Player has declined battle with Rival Lilycove
+0x11F : Player has spoken to Devon worker outside Rusturf Tunnel
+
+0x120 : Player has spoken to Rival Rustboro
+0x121 : Player has received Silk Scarf
+0x122 : 
+0x123 : player has spoken to dad after becoming champ? received ss ticket?
+0x124 : Player has defeated Rival Lilycove, Rival goes back home
+0x125 : Player has spoken to Rival since Rival went back home
+0x126 : Stern has given player reward for scanner
+0x127 : Player has removed the Kecleon blocking Fortree Gym
+
+0x128 : Petalburg Pokemart Change, set mauville gym if, set Rustboro gym, set lavaridge gym
+0x129 : Player has been given Miracle Seed Petalburg Woods
+0x12A : Player has received Beldum from Steven Mossdeep
+0x12B : Player has receic=ved Return / Frustration TM Pacidlog, dailyflag
+0x12C : Player has spoken to Chairman's brother before Pacifidlog
+0x12D : set littleroot
+0x12E : set after receiving dive from Steven
+0x12F : Player has upgraded Pokenav
+
+0x130 : Activates Match Call + Devon Pres Number
+0x131 : Steven Pokenav registration
+0x132 : Dad Pokenav Registration
+0x133 : Steven has taken Player to the Cave of Origin
+0x134 : Set after speaking to Archie at end of Sootopolis crisis
+0x135 : Set after speaking to Maxie at end of Sootopolis crisis
+0x136 : Has spoken to Scott Rustboro Trainer School
+0x137 : Player has told Wallace about Sky Pillar
+
+0x138 : Player has received HM Waterfall Sootopolis
+0x139 : Player has battled Magma Grunt Jagged Pass
+0x13A : 
+0x13B : 
+0x13C : 
+0x13D : 
+0x13E : 
+0x13F : 
+
+0x140 : 
+0x141 : 
+0x142 : 
+0x143 : 
+0x144 : 
+0x145 : 
+0x146 : 
+0x147 : 
+
+0x148 : 
+0x149 : 
+0x14A : 
+0x14B : 
+0x14C : 
+0x14D : 
+0x14E : Sand tower
+0x14F : Player has taken Root Fossil
+
+0x150 : Player has taken Claw Fossil
+0x151 : Player has been given Powder Jar
+0x152 : cleared Battle Frontier Tower, checked elevator, set tag room
+0x153 : Player has spoken to Top Pokemon Breeder Battle Frontier
+0x154 : Player has spoken to Gossip person Battle Frontier
+0x155 : Player has taken part in a contest
+0x156 : Player has spoken to Slateport Club chairman before
+0x157 : Player has spoken to gambler before Battle Frontier
+
+0x158 : 
+0x159 : Pokemart Nurse addresses player by name if Gold Card
+0x15A : Player has spoken to Move Tutor #1 Battle Frontier
+0x15B : Player has spoken to Move Tutor #2 Battle Frontier
+0x15C : 
+0x15D : 
+0x15E : 
+0x15F : 
+
+0x160 : 
+0x161 : 
+0x162 : 
+0x163 : 
+0x164 : 
+0x165 : 
+0x166 : 
+0x167 : 
+
+0x168 : 
+0x169 : 
+0x16A : 
+0x16B : 
+0x16C : 
+0x16D : 
+0x16E : 
+0x16F : 
+
+0x170 : 
+0x171 : 
+0x172 : 
+0x173 : 
+0x174 : 
+0x175 : 
+0x176 : 
+0x177 : 
+
+0x178 : 
+0x179 : 
+0x17A : 
+0x17B : 
+0x17C : 
+0x17D : 
+0x17E : 
+0x17F : 
+
+0x180 : 
+0x181 : 
+0x182 : 
+0x183 : 
+0x184 : 
+0x185 : 
+0x186 : 
+0x187 : 
+0x188 : 
+0x189 : 
+0x18A : 
+0x18B : 
+0x18C : 
+0x18D : 
+0x18E : 
+0x18F : 
+0x190 : 
+0x191 : 
+0x192 : 
+0x193 : 
+0x194 : 
+0x195 : 
+0x196 : 
+0x197 : 
+0x198 : 
+0x199 : 
+0x19A : 
+0x19B : 
+0x19C : 
+0x19D : 
+0x19E : 
+0x19F : 
+
+0x1A1 : 
+0x1A2 : 
+0x1A3 : Player has used Eon Ticket before
+0x1A4 : 
+0x1A5 : 
+0x1A6 : 
+0x1A7 : 
+
+0x1A8 : 
+0x1A9 : 
+0x1AA : 
+0x1AB : 
+0x1AC : cleared champion record room, set birth island
+0x1AD : Player has battled Deoxys
+0x1AE : 
+0x1AF : Player has used Aurora Ticket before
+
+0x1B0 : Player has used Old Sea Map before
+0x1B1 : Slateport Move Tutor has been used
+0x1B2 : Mauville Move Tutor has been used
+0x1B3 : Verdanturf Move Tutor has been used
+0x1B4 : Lavaridge Move Tutor has been used
+0x1B5 : Fallarbor Move Tutor has been used
+0x1B6 : Fortree Move Tutor has been used
+0x1B7 : Lilycove Move Tutor has been used
+
+0x1B8 : Mossdeep Move Tutor has been used
+0x1B9 : Sootopolis Move Tutor has been used
+0x1BA : Pacifidlog Move Tutor has been used
+0x1BB : Player has encountered Regirock
+0x1BC : Player has encountered Regice
+0x1BD : Player has encountered Registeel
+0x1BE : Player has battled Kyogre
+0x1BF : Player has battled Groundon
+
+0x1C0 : Player has battled Rayquaza
+0x1C1 : set after voltorb pokeball new mauville
+0x1C2 : set after voltorb pokeball new mauville
+0x1C3 : set after voltorb pokeball new mauville
+0x1C4 : set after electrode pokeball new mauville
+0x1C5 : set after electrode pokeball new mauville
+0x1C6 : Player has battled Sudowoodo Battle Frontier
+0x1C7 : cleared champion record room, set faraway island
+
+0x1C8 : cleared champion record room, set southern island encounter
+0x1C9 : Player has encountered Lati Southern Island
+0x1CA : Player has battled Mew
+0x1CB : Has spoken to Scott Rustboro Trainer School after winning first gym badge
+0x1CC : Has spoken to Scott Verdanturf Battle Tent
+0x1CD : Player has spoken to Scott Fallarbor Battle Tent
+0x1CE : Player has spoken to Scott Lilycove Hotel
+0x1CF : Player has spoken to Scott Ever Grande PC, set entering Elite Four first room
+
+0x1D0 : Player has spoken to Scott SS Tidal
+0x1D1 : Set speaking to Scott Battle Frontier
+0x1D2 : Set speaking to Scott Battle Frontier
+0x1D3 : 
+0x1D4 : Dewford Gym Leader Brawley Pokenav registration
+0x1D5 : Mauville Gym Leader Wattson Pokenav registration
+0x1D6 : Lavaridge Gym Leader Flannery Pokenav registration
+0x1D7 : Fortree Gym Leader Winona Pokenav registration
+
+0x1D8 : Mossdeep Gym Leader Tate and Liza Pokenav registration
+0x1D9 : Sootopolis Gym Leader Juan Pokenav registration
+0x1DA : 
+0x1DB : Player has used Mystic Ticket before
+0x1DC : cleared champion record room, set navel rock ho-oh
+0x1DD : cleared champion record room, set navel rock lugia
+0x1DE : 
+0x1DF : 
+
+0x1E0 : 
+0x1E1 : 
+0x1E2 : 
+0x1E3 : 
+0x1E4 : 
+0x1E5 : 
+0x1E6 : 
+0x1E7 : 
+0x1E8 : 
+0x1E9 : 
+0x1EA : 
+0x1EB : 
+0x1EC : 
+0x1ED : 
+0x1EE : 
+0x1EF : 
+0x1F1 : 
+0x1F2 : 
+0x1F3 : 
+0x1F4 : 
+0x1F5 : 
+0x1F6 : 
+0x1F7 : 
+0x1F8 : 
+0x1F9 : 
+0x1FA : 
+0x1FB : 
+0x1FC : 
+0x1FD : 
+0x1FE : 
+0x1FF : 
+0x200 : 
+0x201 : 
+0x202 : 
+0x203 : 
+0x204 : 
+0x205 : 
+0x206 : 
+0x207 : 
+0x208 : 
+0x209 : 
+0x20A : 
+0x20B : 
+0x20C : 
+0x20D : 
+0x20E : 
+0x20F : 
+0x210 : 
+0x211 : 
+0x212 : 
+0x213 : 
+0x214 : 
+0x215 : 
+0x216 : 
+0x217 : 
+0x218 : 
+0x219 : 
+0x21A : 
+0x21B : 
+0x21C : 
+0x21D : 
+0x21E : 
+0x21F : 
+0x220 : 
+0x221 : 
+0x222 : 
+0x223 : 
+0x224 : 
+0x225 : 
+0x226 : 
+0x227 : 
+0x228 : 
+0x229 : 
+0x22A : 
+0x22B : 
+0x22C : 
+0x22D : 
+0x22E : 
+0x22F : 
+0x230 : 
+0x231 : 
+0x232 : 
+0x233 : 
+0x234 : 
+0x235 : 
+0x236 : 
+0x237 : 
+0x238 : 
+0x239 : 
+0x23A : 
+0x23B : 
+0x23C : 
+0x23D : 
+0x23E : 
+0x23F : 
+0x240 : 
+0x241 : 
+0x242 : 
+0x243 : 
+0x244 : 
+0x245 : 
+0x246 : 
+0x247 : 
+0x248 : 
+0x249 : 
+0x24A : 
+0x24B : 
+0x24C : 
+0x24D : 
+0x24E : 
+0x24F : 
+0x250 : 
+0x251 : 
+0x252 : 
+0x253 : 
+0x254 : 
+0x255 : 
+0x256 : 
+0x257 : 
+0x258 : 
+0x259 : 
+0x25A : 
+0x25B : 
+0x25C : 
+0x25D : 
+0x25E : 
+0x25F : 
+0x260 : 
+0x261 : 
+0x262 : 
+0x263 : 
+0x264 : 
+0x265 : 
+0x266 : 
+0x267 : 
+0x268 : 
+0x269 : 
+0x26A : 
+0x26B : 
+0x26C : 
+0x26D : 
+0x26E : 
+0x26F : 
+0x270 : 
+0x271 : 
+0x272 : 
+0x273 : 
+0x274 : 
+0x275 : 
+0x276 : 
+0x277 : 
+0x278 : 
+0x279 : 
+0x27A : 
+0x27B : 
+0x27C : 
+0x27D : 
+0x27E : 
+0x27F : 
+0x280 : 
+0x281 : 
+0x282 : 
+0x283 : 
+0x284 : 
+0x285 : 
+0x286 : 
+0x287 : 
+0x288 : 
+0x289 : 
+0x28A : 
+0x28B : 
+0x28C : 
+0x28D : 
+0x28E : 
+0x28F : 
+0x290 : 
+0x291 : 
+0x292 : 
+0x293 : 
+0x294 : 
+0x295 : 
+0x296 : 
+0x297 : 
+0x298 : 
+0x299 : 
+0x29A : 
+0x29B : 
+0x29C : 
+0x29D : 
+0x29E : 
+0x29F : 
+0x2A0 : 
+0x2A1 : 
+0x2A2 : 
+0x2A3 : 
+0x2A4 : 
+0x2A5 : 
+0x2A6 : 
+0x2A7 : 
+0x2A8 : 
+0x2A9 : 
+0x2AA : 
+0x2AB : 
+0x2AC : 
+0x2AD : 
+0x2AE : 
+0x2AF : 
+0x2B0 : 
+0x2B1 : 
+0x2B2 : 
+0x2B3 : 
+0x2B4 : 
+0x2B5 : 
+0x2B6 : 
+0x2B7 : 
+
+0x2B8 : 
+0x2B9 : 
+0x2BA : 
+0x2BB : 
+0x2BC : Prof. Birch's Bag Route 101 OW
+0x2BD : 
+0x2BE : Mystery Event man OW
+0x2BF : Union Room person OW
+
+0x2C0 : Union Room person OW
+0x2C1 : Union Room person OW
+0x2C2 : Union Room person OW
+0x2C3 : Union Room person OW
+0x2C4 : Union Room person OW
+0x2C5 : Union Room person OW
+0x2C6 : Union Room person OW
+0x2C7 : Battle Frontier Tag Room person OW
+
+0x2C8 : Battle Frontier Tag Room person OW
+0x2C9 : Battle Frontier Tag Room person OW
+0x2CA : Battle Frontier Tag Room person OW
+0x2CB : Battle Frontier Tag Room person OW
+0x2CC : Battle Frontier Tag Room person OW
+0x2CD : Safari Zone Workers OW
+0x2CE : Mew Faraway Island OW
+0x2CF : Rival Route 104 OW
+
+0x2D0 : Prof Birch Zigzagoon intro Route 101 OW
+0x2D1 : Birch Littleroot Lab OW
+0x2D2 : May House on right top room OW
+0x2D3 : Rival Route 103 OW
+0x2D4 : Devon Corp man Petalburg Woods OW
+0x2D5 : Aqua Grunt Petalburg Woods OW
+0x2D6 : Wally's Dad OW for surf in Petalburg
+0x2D7 : Little person Steven's House Mossdeep OW
+
+0x2D8 : Wally's Mother OW in Petalburg
+0x2D9 : 
+0x2DA : Lilycove Club fan OW
+0x2DB : Aqua Thug Rustboro OW
+0x2DC : Devon Worker Rustboro OW
+0x2DD : 
+0x2DE : Dad Littleroot house OW
+0x2DF : Little Neighbour left house Littleroot OW
+
+0x2E0 : Little Neighbour right house Littleroot OW
+0x2E1 : Intent To Steal Notice Space Centre OW
+0x2E2 : Briney Route 104 OW
+0x2E3 : Briney in his house OW
+0x2E4 : Brinet Dewford Town OW
+0x2E5 : Briney Route 109 OW
+0x2E6 : Briney's Boat Route 104 OW
+0x2E7 : Briney's Boat Dewford Town OW
+
+0x2E8 : Briney's Boat Route 109 OW
+0x2E9 : Brendan house on the left OW
+0x2EA : May house on the left OW
+0x2EB : Safari Zone Extended Worker OW
+0x2EC : Briney Lilycove Harbour OW
+0x2ED : Scott Slateport OW
+0x2EE : Zigzagoon Route 101 OW
+0x2EF : Wally Victory Road #2 OW
+
+0x2F0 : Mom Littleroot OW
+0x2F1 : Steven Space Centre OW
+0x2F2 : Mover Pokemon Littleroot OW
+0x2F3 : Mover Pokemon Littleroot OW
+0x2F4 : Team Magma Space Centre OW
+0x2F5 : Mom Player's Room Littleroot OW
+0x2F6 : Mom house on the left Littleroot OW
+0x2F7 : Mom house on the right Littleroot OW
+
+0x2F8 : Brendan house on left, Player's room OW
+0x2F9 : Littleroot Moving Truck on left OW
+0x2FA : Littleroot Moving Truck on right OW
+0x2FB : Deoxys Birth Island OW
+0x2FC : Triangle Birth Island OW
+0x2FD : Scott Mauville OW
+0x2FE : Scott Verdanturf Battle Tent OW
+0x2FF : Scott Fallarbor Battle Tent OW
+
+0x300 : Father Winstrate Route 111 OW
+0x301 : Mother Winstrate Route 111 OW
+0x302 : Sister Winstrate Route 111 OW
+0x303 : Grandma Winstrate Route 111 OW
+0x304 : Dad in Petalburg Gym OW
+0x305 : Rayquaza Sky Pillar OW
+0x306 : Artist Lilycove Contest Hall OW
+0x307 : Lilycove Museum curator OW
+
+0x308 : Lilycove Museum customer OW
+0x309 : Lilycove Museum customer OW
+0x30A : Lilycove Museum customer OW
+0x30B : Lilycove Museum artist OW
+0x30C : Lilycove Museum customer OW
+0x30D : Petalburg Gym man OW, set after becoming champ
+0x30E : Kyogre Marine Cave OW
+0x30F : Groundon Terra Cave OW
+
+0x310 : Rival's Mother house on left Littleroot OW
+0x311 : Rival's Mother house on right OW
+0x312 : Scott Route 119 OW
+0x313 : Scott Lilycove Hotel OW
+0x314 : Scott Mossdeep OW
+0x315 : Lilycove Club fan OW
+0x316 : Lilycove Club fan OW
+0x317 : Lilycove Club fan OW
+
+0x318 : Lilycove Club fan OW
+0x319 : Scott Ever Grande Pokemon Centre OW
+0x31A : Rival Littleroot OW
+0x31B : Birch Littleroot OW
+0x31C : Gabby and Ty Route 111 OW
+0x31D : Gabby and Ty Route 118 OW
+0x31E : Gabby and Ty Route 120 OW
+0x31F : cleared and set 111, 118
+0x320 : Lugia Navel Rock OW
+0x321 : Ho-oh Navel Rock OW
+0x322 : Contest Interviewer Lilycove OW
+0x323 : set Slateport
+0x324 : Wally Mauville OW
+0x325 : Wally's Uncle Mauville OW
+0x326 : Wally Verdanturf OW
+0x327 : Tunneler Rusturf Tunnel OW
+0x328 : Rusturf Tunneler Verdanturf OW
+0x329 : Wally's Uncle Verdanturf OW
+0x32A : Scott SS Tidal OW
+0x32B : Cyndaquil Pokeball Littleroot Lab OW
+0x32C : Totodile Pokeball Littleroot Lab OW
+0x32D : 
+0x32E : Rival Rustboro OW
+0x32F : Pokedoll house on left Littleroot OW
+0x330 : Wallis Sootopolis OW
+0x331 : Pokeball house on left Littleroot OW
+0x332 : Pokeball house on right Littleroot OW
+0x333 : Magma thugs Route 112 OW
+0x334 : Wallace Cave of Origin OW
+0x335 : Aqua Grunt Aqua Hideout Entrance OW
+0x336 : Aqua Grunt Aqua Hideout Entrance OW
+0x337 : Team Magma Mossdeep OW
+0x338 : 
+0x339 : 
+0x33A : Archie Sootopolis OW
+0x33B : Maxie Sootopolis OW
+0x33C : Archie Seafloor Cavern OW
+0x33D : Maxie Seafloor Cavern OW
+0x33E : cleared in petalburg gym
+0x33F : Magma Grunts Seafloor Cavern OW
+0x340 : Blend Master Fans Lilycove Contest Hall OW
+0x341 : 
+0x342 : Steven Route 128 OW
+0x343 : Gabby and Ty Slateport OW
+0x344 : Scott Battle Frontier Entrance OW
+0x345 : Birch Route 110 OW
+0x346 : Chikorita Pokeball Littleroot Lab OW
+0x347 : Random Sootopolis Person OW
+0x348 : Stern Slateport OW
+0x349 : Stern Slateport Harbour OW
+0x34A : Sudowoodu Battle Frontier OW
+0x34B : Person hanging around Rocks Route 111 OW
+0x34C : Devon scientist Rustboro OW
+0x34D : Aqua Thug Slateport Harbour OW
+0x34E : Archie Slateport Harbour OW
+0x34F : Magma Grunt Jagged Pass OW
+0x350 : Ship Slateport Harbour OW
+0x351 : Pokedoll house on right Littleroot OW
+0x352 : 
+0x353 : Rival Route 119 #2 OW
+0x354 : Aqua Grunts Lilycove OW
+0x355 : Groundon Magma Hideout OW
+0x356 : Sootopolis people Legendary event OW
+0x357 : Wallace Sky Pillar OW
+0x358 : 
+0x359 : Team Magma, Magma Hideout OW
+0x35A : Wally Victory Road #1 OW
+0x35B : Kyogre Seafloor Cavern OW
+0x35C : cleared slateport harbour
+0x35D : Ship Lilycove Harbour
+0x35E : Team Magma Space Centre F2 OW
+0x35F : 
+0x360 : 
+0x361 : 
+0x362 : Wally in Petalburg Gym OW
+0x362 : 
+0x363 : 
+0x364 : Littleroot power of science is staggering person OW
+0x365 : Briney Slateport factory OW
+0x366 : cleared meeting lanette in fallarbor
+0x367 : Lanette Fallarbor Pokemon Centre OW
+0x368 : Trick House Man First room OW
+0x369 : Blend Master Lilycove Contest Hall OW
+0x36A : Fossil Desert Underpass OW
+0x36B : Rival Route 111 OW
+0x36C : Fossil Route 111 OW
+0x36D : Mt. Chimney people OW
+0x36E : Aqua Thug Rusturf Tunnel OW
+0x36F : Briney Rusturf Tunnel OW
+0x370 : Peecko Rusturf Tunnel OW
+0x371 : Peecko in Briney's house OW
+0x372 : Aqua Thugs Slateport OWs
+0x373 : set in Stern convo museum
+0x374 : Aqua Thug Slateport Museum F2 OW
+0x375 : Aqua Thug Slateport Museum F2 OW
+0x376 : Archie Slaeport Museum F2 OW
+0x377 : Stern Slateport Museum OW
+0x378 : Opponent Battle Tower OW
+0x379 : Rival Littleroot Lab OW
+0x37A : Aqua Thugs Route 119, Weather Centre OW
+0x37B : Briney Route 116 OW
+0x37C : Weather Centre People 1F OW
+0x37D : Weather Centre People 2F OW
+0x37E : Rusturf Tunneler Route 116 OW
+0x37F : Artist Lilcove Contest Hall OW
+0x380 : cleared and set
+0x381 : Prof Birch Route 101 OW
+0x382 : Prof Birch Route 103 OW
+0x383 : Trick Master End Room OW
+0x384 : Aqua thugs Route 110 OW
+0x385 : cleared and set 111, 118
+0x386 : cleared and set 111, 118
+0x387 : cleared and set 111, 118
+0x388 : cleared and set 111, 118
+0x389 : Slateport Harbour people OW
+0x38A : Girl outside Flower Shop Route 104 OW
+0x38B : Azurill Fallarbor OW
+0x38C : Lilycove Harbour girl OW
+0x38D : Lilycove Harbour sailor OW
+0x38E : Lati #1 Southern Island OW
+0x38F : Lati #2 Southern Island OW
+0x390 : Wattson Mauville OW
+0x391 : set after beating dad, cleared after new mauville reward
+0x392 : Aqua Thugs Route 121 OW
+0x393 : 
+0x394 : Maxie Mt. Pyre summit OW
+0x395 : Aqua Thugs Mt. Pyre summit OW
+0x396 : Battle Frontier Tower Interviewer OW
+0x397 : Rival Route 110 OW
+0x398 : Rival Champion Arena OW
+0x399 : Birch Champion Arena OW
+0x39A : 
+0x39B : Rival Route 119 #1 OW
+0x39C : Aqua Grunt Aqua Hideout OW
+0x39D : New guests Lilycove Hotel OW
+0x39E : Team Aqua Mt. Chimney OW
+0x39F : Team Magma Mt. Chimney OW
+0x3A0 : Cozmo Fallarbor OW
+0x3A1 : Rival Lavaridge #1 OW
+0x3A2 : Rival Lavaridge #2 OW
+0x3A3 : Rusturf Tunnel Rock Smash Rock OW
+0x3A4 : Rusturf Tunnel Rock Smash Rock OW
+0x3A5 : Wingull Fortree OW
+0x3A6 : Wingull Mossdeep OW
+0x3A7 : Regirock Desert Ruins OW
+0x3A8 : Regice Island Cave OW
+0x3A9 : Registeel Ancient Tomb OW
+0x3AA : Aqua Grunt Meteor Falls OW
+0x3AB : Magma Grunt Meteor Falls OW
+0x3AC : TM Sludge Bomb giver Dewford OW
+0x3AD : Aqua Grunt Seafloor Cavern Entrance OW
+0x3AE : Prof. Cozmo Meteor Falls OW
+0x3AF : 
+0x3B0 : Archie Route 128 OW
+0x3B1 : Maxie Route 128 OW
+0x3B2 : Aqua Grunt Seafloor Cavern OW
+0x3B3 : Devon worker Route 116 OW
+0x3B4 : Slateport Secret Power Salesman OW
+0x3B5 : Devon Worker Devon Pres Office OW
+0x3B6 : Briney and Peecko SS Tidal OW
+0x3B7 : Snatch Giver SS Tidal OW
+0x3B8 : Shoal Shell Collected
+0x3B9 : Shoal Salt Collected
+0x3BA : Shoal Salt Collected
+0x3BB : Shoal Salt Collected
+0x3BC : Shoal Shell Collected
+0x3BD : Shoal Shell Collected
+0x3BE : Shoal Salt Collected
+0x3BF : Shoal Shell Collected
+0x3C0 : Secret Power giver Route 111 OW
+0x3C1 : Slateport Museum people OW
+0x3C2 : Lilycove Sale salesperson OW
+0x3C3 : Root Fossil Mirage Tower OW
+0x3C4 : Claw Fossil Mirage Tower OW
+0x3C5 : Aqua Forest thug Slateport Museum OW
+0x3C6 : Steven Route 118 OW
+0x3C7 : Steven Mossdeep OW
+0x3C8 : Beldum pokeball Mossdeep OW
+0x3C9 : Kecleon Fortree City OW
+0x3CA : Kecleon Steven Route 120 OW
+0x3CB : Rival Lilycove OW
+0x3CC : Steven Route 120 OW
+0x3CD : Steven Sootopolis OW
+0x3CE : Voltorb New Mauville Pokeball OW
+0x3CF : Voltorb New Mauville Pokeball OW
+0x3D0 : Voltorb New Mauville Pokeball OW
+0x3D1 : Electrode Pokeball Aqua Hideout
+0x3D2 : Electrode Pokeball Aqua Hideout
+0x3D3 : Rival Oldale Town OW
+0x3D4 : Submarine Under Seafloor Cavern Brendan Sprites OW
+0x3D5 : 
+0x3D6 : Kecleon Route 120 OW
+0x3D7 : Tunnelers girlfriend Rusturf Tunnel OW
+0x3D8 : Tunneler's Girlfriend Verdanturf OW
+0x3D9 : Kecleon Route 120 OW
+0x3DA : Kecleon Route 120 OW
+0x3DB : Kecleon Route 120 OW
+0x3DC : Kecleon Route 120 OW
+0x3DD : Kecleon Route 119 OW
+0x3DE : Kecleon Route 119 OW
+0x3DF : Boy in Route 101 OW
+0x3E0 : Aqua Thug Weather Centre OW
+0x3E1 : 
+0x3E2 : Mt. Chimney Lava Cookie Seller OW
+0x3E3 : Scott Petalburg OW
+0x3E4 : Rayquaza Sootopolis OW
+0x3E5 : Kyogre Sootopolis OW
+0x3E6 : Groundon Sootopolis OW
+0x3E7 : Scott Rustboro Trainer School OW
+0x3E8 : POTION r102
+0x3E9 : XSPECIAL r116
+0x3EA : PP UP r104
+0x3EB : IRON r105
+0x3EC : PROTIEN r106
+0x3ED : PP UP r109
+0x3EE : RARE CANDY r110
+0x3EF : DIRE HIT r110
+0x3F0 : TM 37 r111
+0x3F1 : STARDUST r111
+0x3F2 : HP UP r111
+0x3F3 : NUGGET r112
+0x3F4 : MAX ETHER r113
+0x3F5 : SUPER REPELL r113
+0x3F6 : RARE CANDY r114
+0x3F7 : PROTEIN r114
+0x3F8 : SUPERPOTION r115
+0x3F9 : TM 1 r115
+0x3FA : IRON r115
+0x3FB : ETHER r116
+0x3FC : REPEL r116
+0x3FD : HP UP r116
+0x3FE : GREAT BALL r117
+0x3FF : REVIVE r117
+0x400 : SUPER REPEL r119
+0x401 : ZINC r119
+0x402 : ELIXIR r119
+0x403 : LEAFSTONE r119
+0x404 : RARECANDY r119
+0x405 : HYPER POTION r119
+0x406 : NUGGET r120
+0x407 : FULL HEAL r120
+0x408 : CALCIUM r123
+0x409 : 
+0x40A : ZINC r127
+0x40B : CARBOS r127
+0x40C : RARECANDY r132
+0x40D : BIG PEARL r133
+0x40E : STAR PIECE r133
+0x40F : MAX REVIVE PETALBURG TOWN
+0x410 : ETHER PETALBURG TOWN
+0x411 : XDEFEND RUSTBORO CITY
+0x412 : Max Repel Lilycove
+0x413 : Net Ball Mossdeep
+0x414 : TM 23 METEOR FALLS
+0x415 : FULL HEAL METEOR FALLS
+0x416 : MOON STONE METEOR FALLS
+0x417 : PP UP METEOR FALLS
+0x418 : POKE BALL RUSTURF TUNNEL
+0x419 : MAX ETHER RUSTURF TUNNEL
+0x41A : ESCAPEROPE GRANITE CAVE
+0x41B : POKEBALL GRANITE CAVE
+0x41C : LAX INCENSE MT. PYRE
+0x41D : REPEL GRANITE CAVE
+0x41E : RARE CANDY GRANITE CAVE
+0x41F : XATTACK PETALBURG WOODS
+0x420 : GREATBALL PETALBURG WOODS
+0x421 : POKE BALL r104
+0x422 : ETHER PETALBURG WOODS
+0x423 : ESCAPE ROPE MAGMA HIDEOUT
+0x424 : ORANGE MAIL r110 TRICK MASTER'S HOUSE
+0x425 : HARBOR MAIL r110 TRICK MASTER'S HOUSE
+0x426 : WAVE MAIL r110 TRICK MASTER'S HOUSE
+0x427 : SHADOW MAIL r110 TRICK MASTER'S HOUSE
+0x428 : WOOD MAIL r110 TRICK MASTER'S HOUSE
+0x429 : MECH MAIL r110 TRICK MASTER'S HOUSE
+0x42A : YELLOWSHARD r124
+0x42B : GLITTER MAIL r110 TRICK MASTER'S HOUSE
+0x42C : TROPIC MAIL r110 TRICK MASTER'S HOUSE
+0x42D : BEAD MAIL r110 TRICK MASTER'S HOUSE
+0x42E : BURN HEAL JAGGED PASS
+0x42F : MAX ELIXIR AQUA HIDEOUT
+0x430 : NEST BALL AQUA HIDEOUT
+0x431 : MAX POTION MT. PYRE
+0x432 : TM 48 MT. PYRE
+0x433 : ULTRA BALL NEW MAUVILLE
+0x434 : ESCAPE ROPE NEW MAUVILLE
+0x435 : LUXURY BALL ABANDONED SHIP
+0x436 : SCANNER ABANDONED SHIP
+0x437 : TM 11 SCORCHED SLAB
+0x438 : TM 02 METEOR FALLS
+0x439 : BIG PEARL SHOAL CAVE
+0x43A : RARE CANDY SHOAL CAVE
+0x43B : ICE HEAL SHOAL CAVE
+0x43C : MAX ELIXIR VICTORY ROAD
+0x43D : PP UP VICTORY ROAD
+0x43E : TM 29 VICTORY ROAD
+0x43F : FULL RESTORE VICTORY ROAD
+0x440 : FULL HEAL VICTORY ROAD
+0x441 : TM 30 MT. PYRE
+0x442 : TM 26 SEAFLOOR CAVERN
+0x443 : TM 6 FIERY PATH
+0x444 : REDSHARD r124
+0x445 : BLUESHARD 124
+0x446 : TM 22 SAFARI ZONE
+0x447 : HARBOR MAIL ABANDONED SHIP
+0x448 : ESCAPE ROPE ABANDONED SHIP
+0x449 : DIVE BALL ABANDONED SHIP
+0x44A : TM 13 ABANDONED SHIP
+0x44B : REVIVE ABANDONED SHIP
+0x44C : STORAGE KEY ABANDONED SHIP
+0x44D : WATER STONE ABANDONED SHIP
+0x44E : TM 18 ABANDONED SHIP
+0x44F : CARBOS r121
+0x450 : ULTRA BALL r123
+0x451 : GREENSHARD r126
+0x452 : HYPER POTION r119
+0x453 : HYPER POTION r120
+0x454 : NESTBALL r120
+0x455 : ELIXIR r123
+0x456 : THUNDER STONE NEW MAUVILLE
+0x457 : FIRE STONE FIERY PATH
+0x458 : TM 07 SHOAL CAVE
+0x459 : NEVERMELT ICE SHOAL CAVE
+0x45A : GUARD SPEC r103
+0x45B : XACCURACY r104
+0x45C : XSPEED MAUVILLE
+0x45D : PARLYZHEAL PETALBURG WOODS
+0x45E : GREATBALL r115
+0x45F : CALCIUM SAFARI ZONE
+0x460 : SUPER REPEL MT. PYRE
+0x461 : HYPER POTION r118
+0x462 : FULL HEAL NEW MAUVILLE
+0x463 : PARALYZ HEAL NEW MAUVILLE
+0x464 : MASTER BALL AQUA HIDEOUT
+0x465 : 
+0x466 : 
+0x467 : 
+0x468 : 
+0x469 : ULTRA BALL MT. PYRE
+0x46A : SEA INCENSE MT. PYRE
+0x46B : MAXREVIVE SAFARI ZONE
+0x46C : Nugget Aqua Hideout
+0x46D : 
+0x46E : NUGGET r119
+0x46F : POTION r104
+0x470 : 
+0x471 : PP UP r103
+0x472 : 
+0x473 : STAR PIECE r108
+0x474 : POTION r109
+0x475 : ELIXIER r110
+0x476 : ELIXER r111
+0x477 : Hyper Potion Route 113
+0x478 : HEALPOWDER r115
+0x479 : 
+0x47A : POTION r116
+0x47B : ELIXIR r119
+0x47C : REVIVE r120
+0x47D : REVIVE r121
+0x47E : ZINC r121
+0x47F : RARE CANDY MAGMA HIDEOUT
+0x480 : PPUP r123
+0x481 : Revival Herb Route 123
+0x482 : BIG PEARL r125
+0x483 : RARECANDY r127
+0x484 : PROTEIN r132
+0x485 : MAX REVIVE r133
+0x486 : Carbos Route 134
+0x487 : STAR PIECE r134
+0x488 : ENERGY POWDER r114
+0x489 : PP UP r115
+0x48A : HP UP ARTISAN CAVE
+0x48B : CARBOS ARTISAN CAVE
+0x48C : Max Elixir Magma Hideout
+0x48D : FULL RESTORE MAGMA HIDEOUT
+0x48E : NUGGET MAGMA HIDEOUT
+0x48F : PP MAX MAGMA HIDEOUT
+0x490 : MAX REVIVE MAGMA HIDEOUT
+0x491 : NUGGET SAFARI ZONE
+0x492 : BIG PEARL SAFARI ZONE
+0x493 : 
+0x494 : 
+0x495 : 
+0x496 : 
+0x497 : 
+0x498 : 
+0x499 : 
+0x49A : 
+0x49B : 
+0x49C : 
+0x49D : 
+0x49E : 
+0x49F : 
+0x4A0 : 
+0x4A1 : 
+0x4A2 : 
+0x4A3 : 
+0x4A4 : 
+0x4A5 : 
+0x4A6 : 
+0x4A7 : 
+0x4A8 : 
+0x4A9 : 
+0x4AA : 
+0x4AB : 
+0x4AC : 
+0x4AD : 
+0x4AE : 
+0x4AF : 
+0x4B0 : 
+0x4B1 : 
+0x4B2 : 
+0x4B3 : 
+0x4B4 : 
+0x4B5 : 
+0x4B6 : 
+0x4B7 : 
+0x4B8 : 
+0x4B9 : 
+0x4BA : 
+0x4BB : 
+0x4BC : 
+0x4BD : 
+0x4BE : 
+0x4BF : 
+0x4C0 : 
+0x4C1 : 
+0x4C2 : 
+0x4C3 : 
+0x4C4 : 
+0x4C5 : 
+0x4C6 : 
+0x4C7 : 
+0x4C8 : 
+0x4C9 : 
+0x4CA : 
+0x4CB : 
+0x4CC : 
+0x4CD : 
+0x4CE : 
+0x4CF : 
+0x4D0 : 
+0x4D1 : 
+0x4D2 : 
+0x4D3 : 
+0x4D4 : 
+0x4D5 : 
+0x4D6 : 
+0x4D7 : 
+0x4D8 : 
+0x4D9 : 
+0x4DA : 
+0x4DB : 
+0x4DC : 
+0x4DD : 
+0x4DE : 
+0x4DF : 
+0x4E0 : 
+0x4E1 : 
+0x4E2 : 
+0x4E3 : 
+0x4E4 : 
+0x4E5 : 
+0x4E6 : 
+0x4E7 : 
+0x4E8 : 
+0x4E9 : 
+0x4EA : 
+0x4EB : 
+0x4EC : 
+0x4ED : 
+0x4EE : 
+0x4EF : 
+0x4F0 : Gym Description Man Rustboro beat
+0x4F1 : Gym Description Man Dewford beat
+0x4F2 : Gym Description Man Mauville beat, used by switches in gym
+0x4F3 : Gym Description Man Dewford beat, wally has left home
+0x4F4 : Gym Description Man Petalburg beat, checked pokemon centres
+0x4F5 : Gym Description Man Fortree beat
+0x4F6 : Gym Description Man Mossdeep beat
+0x4F7 : Gym Description Man Sootopolis beat
+0x4F8 : Player has battled Steven Meteor Falls
+0x4F9 : 
+0x4FA : 
+0x4FB : Player has defeated Elite Four Sydney, cleared after becoming champ
+0x4FC : Player has defeated Elite Four Phoebe, cleared after becoming champ
+0x4FD : Player has defeated Elite Four Glacia, cleared after becoming champ
+0x4FE : Player has defeated Elite Four Drake, cleared after becoming champ
+0x4FF : 
+0x500 - 0x7E6 : Trainerflags
+
+0x822 - 0x823 : Trainerflags
+
+0x860 : Activates Pokemon Menu
+0x861 : Activates Pokedex Menu
+0x862 : Activates Pokenav Menu
+0x863 : 
+0x864 : Player has beaten Elite Four, checked in secret bases
+0x865 : Player has set profile before
+0x866 : Set speaking to Hipster
+0x867 : Activates First Badge
+0x868 : Activates Second Badge
+0x869 : Activates Third Badge
+0x86A : Activates Fourth Badge
+0x86B : Activates Fifth Badge
+0x86C : Activates Sixth Badge
+0x86D : Activates Seventh Badge
+0x86E : Activates Eighth Badge
+0x86F : Set entering Littleroot
+0x870 : Set entering Oldale
+0x871 : Set entering Lavaridge
+0x872 : 
+0x873 : set entering Fallarbor
+0x874 : set entering Verdanturf
+0x875 : set entering Pacifidlog
+0x876 : set Petalburg
+0x877 : set Slateport
+0x878 : set mauville
+0x879 : set Rustboro
+0x87A : set Fortree
+0x87B : set Lilycove
+0x87C : 
+0x87D : 
+0x87E : 
+0x87F : Set after recording champion win
+0x880 : Trainer Hill network event?
+0x881 : 
+0x882 : 
+0x883 : 
+0x884 : 
+0x885 : 
+0x886 : 
+0x887 : 
+0x888 : 
+0x889 : 
+0x88A : set after kyogre event, sky pillar wallace speak
+0x88B : Checks if player is on bike?
+0x88C : 
+0x88D : 
+0x88E : 
+0x88F : 
+0x890 : 
+0x891 : 
+0x892 : set entering mauville
+0x893 : 
+0x894 : 
+0x895 : 
+0x896 : 
+0x897 : 
+0x898 : 
+0x899 : 
+0x89A : High or low tide?
+0x89B : Has Contest Pass
+0x89C : Set in Flower Shop
+0x89D : Set in Briney's house
+0x89E : Set in abandoned ship
+0x89F : Set in Soda shore house
+0x8A0 : Set in New Mauville entrance
+0x8A1 : Set in old lady heal house rote 111
+0x8A2 : set in trick house
+0x8A3 : set speaking to Winstate Route 111
+0x8A4 : set entering Soot house
+0x8A5 : set entering Lanettes house
+0x8A6 : set entering Daycare Centre
+0x8A7 : 
+0x8A8 : Set entering Battle Frontier entrance
+0x8A9 : set entering southern island
+0x8AA : Set entering fiery path
+0x8AB : 'Someone's PC' changed to 'Lanette's PC'
+0x8AC : 
+0x8AD : 
+0x8AE : 
+0x8AF : checked sealed chamber
+0x8B0 : checked desert ruins
+0x8B1 : checked island cave
+0x8B2 : checked ancient tomb
+0x8B3 : Activates Eon Ticket
+0x8B4 : set entering ever grande top pokemon centre
+0x8B5 : set entering Island Cave
+0x8B6 : checked desert ruins
+0x8B7 : set entering fossil house
+0x8B8 : set entering scorched slab
+0x8B9 : set ancient tomb
+0x8BA : set entering Tunneler's Rest
+0x8BB : set entering shard trader's house
+0x8BC : set entering sealed chamber
+0x8BD : 
+0x8BE : set antering Sky pillar
+0x8BF : Shoal shell shell bell
+0x8C0 : Activates Running Shoes
+0x8C1 : Something to do with wildbattles
+0x8C2 : 
+0x8C3 : set entering Berry Master's House
+0x8C4 : checked gamblers Battle Frontier, checked scott Battle Frontier
+0x8C5 : checked scott Battle Frontier
+0x8C6 : checked gamblers Battle Frontier, checked scott Battle Frontier
+0x8C7 : checked scott Battle Frontier
+0x8C8 : checked gamblers Battle Frontier, checked scott Battle Frontier
+0x8C9 : checked scott Battle Frontier
+0x8CA : checked gamblers Battle Frontier, checked scott Battle Frontier
+0x8CB : checked scott Battle Frontier
+0x8CC : checked gamblers Battle Frontier, checked scott Battle Frontier
+0x8CD : checked scott Battle Frontier
+0x8CE : checked gamblers Battle Frontier, checked scott Battle Frontier
+0x8CF : checked scott Battle Frontier
+0x8D0 :
+0x8D1 : checked scott Battle Frontier
+0x8D2 : Activates Frontier Trainer Card
+0x8D3 : 
+0x8D4 : cleared birth island
+0x8D5 : Activates Aurora Ticket
+0x8D6 : Activates Old Sea Map
+0x8D7 : 
+0x8D8 : set entering faraway island
+0x8D9 : set entering underwater under sootopolis
+0x8DA : set entering terra cave
+0x8DB : 
+0x8DC : set in mirage tower
+0x8DD : set entering altering cave
+0x8DE : set in Desert Underpass
+0x8DF : set entering artisan cave
+0x8E0 : Activates Mystic Ticket, checked gamblers Battle Frontier, checked scott Battle Frontier
+0x8E1 : set entering naval rock
+0x8E2 : Set in Trainer Hill
+0x8E3 : 
+0x8E4 : 
+0x8E5 : 
+0x8E6 : 
+0x8E7 : 
+0x8E8 : 
+0x8E9 : 
+0x8EA : 
+0x8EB : 
+0x8EC : 
+0x8ED : 
+0x8EE : 
+0x8EF : 
+0x8F0 : 
+0x8F1 : 
+0x8F2 : 
+0x8F3 : 
+0x8F4 : 
+0x8F5 : 
+0x8F6 : 
+0x8F7 : 
+0x8F8 : 
+0x8F9 : 
+0x8FA : 
+0x8FB : 
+0x8FC : 
+0x8FD : 
+0x8FE : 
+0x8FF : 
+0x900 : 
+0x901 : 
+0x902 : 
+0x903 : 
+0x904 : 
+0x905 : 
+0x906 : 
+0x907 : 
+0x908 : 
+0x909 : 
+0x90A : 
+0x90B : 
+0x90C : 
+0x90D : 
+0x90E : 
+0x90F : 
+0x910 : 
+0x911 : 
+0x912 : 
+0x913 : 
+0x914 : 
+0x915 : 
+0x916 : 
+0x917 : 
+0x918 : 
+0x919 : 
+0x91A : 
+0x91B : 
+0x91C : 
+0x91D : 
+0x91E : 
+0x91F : 
+0x920 : 
+0x921 : Blend Master dailyflag
+0x922 : 
+0x923 : 
+0x924 : 
+0x925 : 
+0x926 : 
+0x927 : 
+0x928 : 
+0x929 : 
+0x92A : Lotto Daily flag
+0x92B : Berry Giver Route 114 dailyflag
+0x92C : 
+0x92D : Berry Master dailyflag
+0x92E : Berry giver Route 120 OW
+0x92F : Berry giver Lilycove dailyflag
+0x930 : Flower Shop little sister berry dailyflag
+0x931 : Berry Master's Wife dailyflag
+0x932 : Kiri Sootopolis dailyflag
+0x933 : 
+0x934 : Battle Frontier Tower Advice Person
+0x935 : 
+0x936 : 
+0x937 : 
+0x938 : 
+0x939 : 
+0x93A : 
+0x93B : 
+0x93C : 
+0x93D : 
+0x93E : 
+0x93F : 
+0x930 : 
+0x931 : 
+0x932 : 
+0x933 : 
+0x934 : 
+0x935 : 
+0x936 : 
+0x937 : 
+0x938 : 
+0x939 : 
+0x93A : 
+0x93B : 
+0x93C : 
+0x93D : 
+0x93E : 
+0x93F : 
+0x940 : 
+0x941 : 
+0x942 : 
+0x943 : 
+0x944 : 
+0x945 : 
+0x946 : 
+0x947 : 
+0x948 : 
+0x949 : 
+0x94A : 
+0x94B : 
+0x94C : 
+0x94D : 
+0x94E : 
+0x94F : 
+0x950 : 
+0x951 : 
+0x952 : 
+0x953 : 
+0x954 : 
+0x955 : 
+0x956 : 
+0x957 : 
+0x958 : 
+0x959 : 
+0x95A : 
+0x95B : 
+0x95C : 
+0x95D : 
+0x95E : 
+0x95F : 
+0x960 : 
+0x961 : 
+0x962 : 
+0x963 : 
+0x964 : 
+0x965 : 
+0x966 : 
+0x967 : 
+0x968 : 
+0x969 : 
+0x96A : 
+0x96B : 
+0x96C : 
+0x96D : 
+0x96E : 
+0x96F : 
+0x970 : 
+0x971 : 
+0x972 : 
+0x973 : 
+0x974 : 
+0x975 : 
+0x976 : 
+0x977 : 
+0x978 : 
+0x979 : 
+0x97A : 
+0x97B : 
+0x97C : 
+0x97D : 
+0x97E : 
+0x97F : 
+0x980 : 
+0x981 : 
+0x982 : 
+0x983 : 
+0x984 : 
+0x985 : 
+0x986 : 
+0x987 : 
+0x988 : 
+0x989 : 
+0x98A : 
+0x98B : 
+0x98C : 
+0x98D : 
+0x98E : 
+0x98F : 
+0x990 : 
+0x991 : 
+0x992 : 
+0x993 : 
+0x994 : 
+0x995 : 
+0x996 : 
+0x997 : 
+0x998 : 
+0x999 : 
+0x99A : 
+0x99B : 
+0x99C : 
+0x99D : 
+0x99E : 
+0x99F : 
+0x9A0 : 
+0x9A1 : 
+0x9A2 : 
+0x9A3 : 
+0x9A4 : 
+0x9A5 : 
+0x9A6 : 
+0x9A7 : 
+0x9A8 : 
+0x9A9 : 
+0x9AA : 
+0x9AB : 
+0x9AC : 
+0x9AD : 
+0x9AE : 
+0x9AF : 
+0x9B0 : 
+0x9B1 : 
+0x9B2 : 
+0x9B3 : 
+0x9B4 : 
+0x9B5 : 
+0x9B6 : 
+0x9B7 : 
+0x9B8 : 
+0x9B9 : 
+0x9BA : 
+0x9BB : 
+0x9BC : 
+0x9BD : 
+0x9BE : 
+0x9BF : 
+0x9C0 : 
+0x9C1 : 
+0x9C2 : Berry giver Route 111 dailyflag
+
+0x4000 : ??
+0x4001 : ??

@@ -1,0 +1,342 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Scott's Thoughts Frontend v2.00.dev.01</title>
+    <link rel="stylesheet" href="style.css" id="cssStylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,700;1,400&display=swap" rel="stylesheet"> -->
+</head>
+
+<!---------------------------------------------------------------------------------------------------------------------------------------------->
+<!----------------------------------------------------------------- HTML BODY ------------------------------------------------------------------>
+<!---------------------------------------------------------------------------------------------------------------------------------------------->
+
+<body>
+    <div id="app">
+        <div v-if="ready == false">
+            Loading...
+        </div>
+<!------ MAIN HTML DIV ------------------------------------------------------------------------------------------------------------------------->
+        <div v-else>
+<!------ GRAPHIC OVERLAY ----------------------------------------------------------------------------------------------------------------------->
+            <div>
+                <img v-show="graphicOverlay == true" class="frame" src="images/overlay/overlay.png" />
+                <div v-show="labels == true" class="labelAbility">Ability:</div>
+                <div v-show="labels == true" class="labelHeldItem">Held Item:</div>
+                <div v-show="labels == true" class="labelNature">Nature:</div>
+                <div v-show="labels == true" class="labelGametime">Game-time:</div>
+            </div>
+
+<!------ TYPE ICONS --------------------------------------------------------------------------------------------------------------------------->
+            <!-- TYPE ICONS -->
+            <div class="typeIconContainer">
+                <img v-show="typeIcons == true && getStarterType1() == getStarterType2()" id="monoType" class="type1" :src="getStarterType1()" />
+                <img v-show="typeIcons == true && getStarterType1() != getStarterType2()" id="type1" class="type1" :src="getStarterType1()" />
+                <img v-show="typeIcons == true && getStarterType1() != getStarterType2()" id="type2" class="type1" :src="getStarterType2()" />
+            </div>
+
+<!--------- BADGE ICONS ---------------------------------------------------------------------------------------------------------------------->
+            <!-- <div v-if="badgeBar == true">
+                <div v-if="mapper.properties.player.badges.badge1.value == true">
+                    <img style="position: absolute;" :src="`images/badges/${versionCheck()}/badge1.png`"/>
+                </div>
+                <div v-if="mapper.properties.player.badges.badge2.value == true">
+                    <img style="position: absolute;" :src="`images/badges/${versionCheck()}/badge2.png`"/>
+                </div>
+                <div v-if="mapper.properties.player.badges.badge3.value == true">
+                    <img style="position: absolute;" :src="`images/badges/${versionCheck()}/badge3.png`"/>
+                </div>
+                <div v-if="mapper.properties.player.badges.badge4.value == true">
+                    <img style="position: absolute;" :src="`images/badges/${versionCheck()}/badge4.png`"/>
+                </div>
+                <div v-if="mapper.properties.player.badges.badge5.value == true">
+                    <img style="position: absolute;" :src="`images/badges/${versionCheck()}/badge5.png`"/>
+                </div>
+                <div v-if="mapper.properties.player.badges.badge6.value == true">
+                    <img style="position: absolute;" :src="`images/badges/${versionCheck()}/badge6.png`"/>
+                </div>
+                <div v-if="mapper.properties.player.badges.badge7.value == true">
+                    <img style="position: absolute;" :src="`images/badges/${versionCheck()}/badge7.png`"/>
+                </div>
+                <div v-if="mapper.properties.player.badges.badge8.value == true">
+                    <img style="position: absolute;" :src="`images/badges/${versionCheck()}/badge8.png`"/>
+                </div>
+            </div> -->
+            <div v-if="badgeBar == true">
+                <div v-if="mapper.properties.player.badges.badge1.value == true">
+                    <img class="badge1" :src="`images/badges/${versionCheck()}/badge1.png`"/>
+                </div>
+                <div v-if="mapper.properties.player.badges.badge2.value == true">
+                    <img class="badge2" :src="`images/badges/${versionCheck()}/badge2.png`"/>
+                </div>
+                <div v-if="mapper.properties.player.badges.badge3.value == true">
+                    <img class="badge3" :src="`images/badges/${versionCheck()}/badge3.png`"/>
+                </div>
+                <div v-if="mapper.properties.player.badges.badge4.value == true">
+                    <img class="badge4" :src="`images/badges/${versionCheck()}/badge4.png`"/>
+                </div>
+                <div v-if="mapper.properties.player.badges.badge5.value == true">
+                    <img class="badge5" :src="`images/badges/${versionCheck()}/badge5.png`"/>
+                </div>
+                <div v-if="mapper.properties.player.badges.badge6.value == true">
+                    <img class="badge6" :src="`images/badges/${versionCheck()}/badge6.png`"/>
+                </div>
+                <div v-if="mapper.properties.player.badges.badge7.value == true">
+                    <img class="badge7" :src="`images/badges/${versionCheck()}/badge7.png`"/>
+                </div>
+                <div v-if="mapper.properties.player.badges.badge8.value == true">
+                    <img class="badge8" :src="`images/badges/${versionCheck()}/badge8.png`"/>
+                </div>
+            </div>
+            <!-- <div v-if="badgeBar == true">
+                <div v-if="mapper.properties.player.badges.badge1.value == true">
+                    <img :src="`images/badges/remakes-scaled/badge1.png`"/>
+                </div>
+                <div v-if="mapper.properties.player.badges.badge2.value == true">
+                    <img :src="`images/badges/remakes-scaled/badge2.png`"/>
+                </div>
+                <div v-if="mapper.properties.player.badges.badge3.value == true">
+                    <img :src="`images/badges/remakes-scaled/badge3.png`"/>
+                </div>
+                <div v-if="mapper.properties.player.badges.badge4.value == true">
+                    <img :src="`images/badges/remakes-scaled/badge4.png`"/>
+                </div>
+                <div v-if="mapper.properties.player.badges.badge5.value == true">
+                    <img :src="`images/badges/remakes-scaled/badge5.png`"/>
+                </div>
+                <div v-if="mapper.properties.player.badges.badge6.value == true">
+                    <img :src="`images/badges/remakes-scaled/badge6.png`"/>
+                </div>
+                <div v-if="mapper.properties.player.badges.badge7.value == true">
+                    <img :src="`images/badges/remakes-scaled/badge7.png`"/>
+                </div>
+                <div v-if="mapper.properties.player.badges.badge8.value == true">
+                    <img :src="`images/badges/remakes-scaled/badge8.png`"/>
+                </div>
+            </div> -->
+            <!-- <div v-if="badgeBar == true">
+                <div v-if="badge1set == true">
+                    <img class="badge1" src="images/badges/emerald/badge1.png"/>
+                </div>
+                <div v-if="badge2set == true">
+                    <img class="badge2" src="images/badges/emerald/badge2.png"/>
+                </div>
+                <div v-if="badge3set == true">
+                    <img class="badge3" src="images/badges/emerald/badge3.png"/>
+                </div>
+                <div v-if="badge4set == true">
+                    <img class="badge4" src="images/badges/emerald/badge4.png"/>
+                </div>
+                <div v-if="badge5set == true">
+                    <img class="badge5" src="images/badges/emerald/badge5.png"/>
+                </div>
+                <div v-if="badge6set == true">
+                    <img class="badge6" src="images/badges/emerald/badge6.png"/>
+                </div>
+                <div v-if="badge7set == true">
+                    <img class="badge7" src="images/badges/emerald/badge7.png"/>
+                </div>
+                <div v-if="badge8set == true">
+                    <img class="badge8" src="images/badges/emerald/badge8.png"/>
+                </div>
+            </div> -->
+            <!-- <div v-else-if="badgeBar == false && useBadgeOverride == true">
+                <div v-if="badge1set == true">
+                    <img class="badge1" src="images/badges/emerald/badge1.png"/>
+                </div>
+                <div v-if="badge2set == true">
+                    <img class="badge2" src="images/badges/emerald/badge2.png"/>
+                </div>
+                <div v-if="badge3set == true">
+                    <img class="badge3" src="images/badges/emerald/badge3.png"/>
+                </div>
+                <div v-if="badge4set == true">
+                    <img class="badge4" src="images/badges/emerald/badge4.png"/>
+                </div>
+                <div v-if="badge5set == true">
+                    <img class="badge5" src="images/badges/emerald/badge5.png"/>
+                </div>
+                <div v-if="badge6set == true">
+                    <img class="badge6" src="images/badges/emerald/badge6.png"/>
+                </div>
+                <div v-if="badge7set == true">
+                    <img class="badge7" src="images/badges/emerald/badge7.png"/>
+                </div>
+                <div v-if="badge8set == true">
+                    <img class="badge8" src="images/badges/emerald/badge8.png"/>
+                </div>
+            </div> -->
+<!--------- STATE MANAGEMENT ----------------------------------------------------------------------------------------------------------------->
+            <div v-if="gamestate == true">
+                <div class="gamestate">Gamestate: {{ g3state() }}<br><br>
+                    Type: {{ hiddenPowerTypeCalc(mapper.properties.player.team[0]) }}<br>
+                    Power: {{ hiddenPowerPowerCalc(mapper.properties.player.team[0]) }}<br><br>
+                    DetermineSTAB: {{ determineSTAB(this.mapper.properties.player.team[0].move1.value) }}<br>
+                    Item: {{ this.mapper.properties.player.team[0].itemHeld.value }}<br>
+                    Item Boost: {{ determineItemBoost(this.mapper.properties.player.team[0].move4.value) }}<br><br>
+                    GS-new: {{ g3state() }}<br>
+                    started: {{ gameStarted }}
+                </div>
+            </div>
+            
+
+<!--------- STATUS CONDITION -----------------------------------------------------------------------------------------------------------------> 
+            <!-- <Transition name="status">           
+                <div v-show="mapper.properties.player.team[0].statusCondition.bytes > 0" class="statusCondition">
+                    <img class="frame" src="images/elements/status.png" />
+                </div>
+            </Transition> 
+            <Transition name="status">           
+                <div v-show="mapper.properties.player.team[0].statusCondition.bytes > 0" class="statusCondition"> 
+                    <div>{{ statusHealedFix(mapper.properties.player.team[0].statusCondition.value) }}</div>
+                </div>
+            </Transition> -->
+            <!-- <div v-show="mapper.properties.player.team[0].statusCondition.bytes > 0" class="statusCondition">
+                <img class="statusCond" :src="`images/elements/statuses/${mapper.properties.player.team[0].statusCondition.value}.svg`" />
+            </div>           -->
+            <!-- <div v-show="mapper.properties.player.team[0].statusCondition.bytes > 0" class="statusCondition"> 
+                <div>{{ statusHealedFix(mapper.properties.player.team[0].statusCondition.value) }}</div>
+            </div> -->
+
+
+
+<!--------- STATS ---------------------------------------------------------------------------------------------------------------------------->
+            <!-- STATS OVERLAY GRAPHIC  -->
+            <div class="statsContainer" v-show="stats == true" id="stats">
+                <!-- STATS LABELS ------------------------------------------------------------------------------>
+                <div class="labelHp">HP</div>
+                <div v-bind:style="{opacity: statLabelOpacity(mapper.properties.battle.yourPokemon.modStageAttack)}" class="labelAtk">Atk.</div>
+                <div v-bind:style="{opacity: statLabelOpacity(mapper.properties.battle.yourPokemon.modStageDefense)}" class="labelDef">Def.</div>
+                <div v-bind:style="{opacity: statLabelOpacity(mapper.properties.battle.yourPokemon.modStageSpeed)}" class="labelSpd">Spd.</div>
+                <div v-bind:style="{opacity: statLabelOpacity(mapper.properties.battle.yourPokemon.modStageSpecialAttack)}" class="labelSpcAtk">Spc.<br>Atk.</div>
+                <div v-bind:style="{opacity: statLabelOpacity(mapper.properties.battle.yourPokemon.modStageSpecialDefense)}" class="labelSpcDef">Spc.<br>Def.</div>
+
+                <!-- BASE STATS -------------------------------------------------------------------------------->  
+                <div v-if="mapper.properties.player.team[0].personalityValue.value > 0">
+                    <div class="gameTime">{{ mapper.properties.gameTime.hours }}:{{ gameTimeM(mapper.properties.gameTime.minutes) }}</div>
+                    <!-- <div class="statsheader">Level {{ bufferLevel }}</div>
+                    <div class="nature">{{ natureCalculation(mapper.properties.player.team[0].personalityValue.value) }}</div>
+                    <div class="heldItem">{{ nullToNone(camelCase(mapper.properties.player.team[0].itemHeld.value)) }}</div>
+                    <div class="ability">{{ camelCase(mapper.properties.battle.yourPokemon.ability.value) }}</div> -->
+
+                    <div v-if="g3state() == `New Game` || g3state() == `No Pokemon` || g3state() == `Reset` || g3state() == `Error`">
+                        <div class="statsheader">Level {{ bufferLevel }}</div>
+                        <div class="nature">{{ natureCalculation(bufferNature) }}</div>
+                        <div class="heldItem">{{ nullToNone(camelCase(bufferHeldItem)) }}</div>
+                        <div class="ability">{{ camelCase(bufferAbility) }}</div>
+                    </div>
+                    <div v-else-if="g3state() != `New Game` || g3state() != `No Pokemon` || g3state() != `Reset` || g3state() != `Error`">
+                        <div class="statsheader">Level {{ mapper.properties.player.team[0].level.value }}</div>
+                        <div class="nature">{{ natureCalculation(mapper.properties.player.team[0].personalityValue.value) }}</div>
+                        <div class="heldItem">{{ nullToNone(camelCase(mapper.properties.player.team[0].itemHeld.value)) }}</div>
+                        <div class="ability">{{ camelCase(mapper.properties.battle.yourPokemon.ability.value) }}</div>
+                    </div>
+
+                    <div class="statsColumn1">
+                        {{ mapper.properties.player.team[0].maxHp }}<br>
+                        {{ bbAttack(stageMultiplier(mapper.properties.battle.yourPokemon.modStageAttack.value, mapper.properties.player.team[0].attack)) }}<br>
+                        {{ bbDefense(stageMultiplier(mapper.properties.battle.yourPokemon.modStageDefense.value, mapper.properties.player.team[0].defense)) }}<br>
+                    </div>
+                    
+                    <div class="statsColumn2">
+                        {{ bbSpeed(stageMultiplier(mapper.properties.battle.yourPokemon.modStageSpeed.value, mapper.properties.player.team[0].speed)) }}<br>
+                        {{ bbSpecialAttack(stageMultiplier(mapper.properties.battle.yourPokemon.modStageSpecialAttack.value, mapper.properties.player.team[0].specialAttack)) }}<br>
+                        {{ bbSpecialDefense(stageMultiplier(mapper.properties.battle.yourPokemon.modStageSpecialDefense.value, mapper.properties.player.team[0].specialDefense)) }}<br>
+                    </div>
+                    
+                    <div v-show="g3state() == `Battle`" class="aDMods">
+                        {{ stageModifiers(mapper.properties.battle.yourPokemon.modStageAttack.value) }}<br>
+                        {{ stageModifiers(mapper.properties.battle.yourPokemon.modStageDefense.value) }}<br>
+                    </div>
+                    
+                    <div v-show="g3state() == `Battle`" class="sSASDMods">
+                        {{ stageModifiers(mapper.properties.battle.yourPokemon.modStageSpeed.value) }}<br>
+                        {{ stageModifiers(mapper.properties.battle.yourPokemon.modStageSpecialAttack.value) }}<br>
+                        {{ stageModifiers(mapper.properties.battle.yourPokemon.modStageSpecialDefense.value) }}
+                    </div>
+                </div>
+                <div v-else-if="g3state() == `New Game` || g3state() == `No Pokemon` || g3state() == `Reset` || g3state() == `Error`">             
+                    <div class="statsheader">Base Stats</div>
+                    <div class="statsColumn1">
+                        {{ pokemon(starter,`baseHp`) }}<br>
+                        {{ pokemon(starter,`baseAtk`) }}<br>
+                        {{ pokemon(starter,`baseDef`) }}<br>
+                    </div>
+                    <div class="statsColumn2">
+                        {{ pokemon(starter,`baseSpd`) }}<br>
+                        {{ pokemon(starter,`baseSpcA`) }}<br>
+                        {{ pokemon(starter,`baseSpcD`) }}<br>
+                    </div>
+                </div>
+                <div v-else>
+                    <div class="statsheader">Base Stats</div>
+                    <div class="statsColumn1">
+                        {{ pokemon(starter,`baseHp`) }}<br>
+                        {{ pokemon(starter,`baseAtk`) }}<br>
+                        {{ pokemon(starter,`baseDef`) }}<br>
+                    </div>
+                    <div class="statsColumn2">
+                        {{ pokemon(starter,`baseSpd`) }}<br>
+                        {{ pokemon(starter,`baseSpcA`) }}<br>
+                        {{ pokemon(starter,`baseSpcD`) }}<br>
+                    </div>
+                </div>
+            </div>
+
+<!--------- MOVESET (MOVES, POWER, PP) -------------------------------------------------------------------------------------------------------------->
+            <div v-show="moveset == true" id="moveset">
+                <div v-if="mapper.properties.player.team[0].level.value > 0 && mapper.properties.player.team[0].move1.value != null">
+                    <div class="move1">{{ camelCase(mapper.properties.player.team[0].move1.value) }}</div>
+                    <div class="move1pp">{{ mapper.properties.player.team[0].move1pp }}</div>
+                    <div class="move1power">{{ typeEffectiveness(mapper.properties.player.team[0].move1.value) }}</div>
+                    <img class="move1icon" :src="moveTypeIcon(mapper.properties.player.team[0].move1.value)" />
+                </div>
+                <div v-if="mapper.properties.player.team[0].level.value > 0 && mapper.properties.player.team[0].move2.value != null">
+                    <div class="move2">{{ camelCase(mapper.properties.player.team[0].move2.value) }}</div>
+                    <div class="move2pp">{{ mapper.properties.player.team[0].move2pp }}</div>
+                    <div class="move2power">{{ typeEffectiveness(mapper.properties.player.team[0].move2.value) }}</div>
+                    <img class="move2icon" :src="moveTypeIcon(mapper.properties.player.team[0].move2.value)" />
+                </div>
+                <div v-if="mapper.properties.player.team[0].level.value > 0 && mapper.properties.player.team[0].move3.value != null">
+                    <div class="move3">{{ camelCase(mapper.properties.player.team[0].move3.value) }}</div>
+                    <div class="move3pp">{{ mapper.properties.player.team[0].move3pp }}</div>
+                    <div class="move3power">{{ typeEffectiveness(mapper.properties.player.team[0].move3.value) }}</div>
+                    <img class="move3icon" :src="moveTypeIcon(mapper.properties.player.team[0].move3.value)" />
+                </div>
+                <div v-if="mapper.properties.player.team[0].level.value > 0 && mapper.properties.player.team[0].move4.value != null">
+                    <div class="move4">{{ camelCase(mapper.properties.player.team[0].move4.value) }}</div>
+                    <div class="move4pp">{{ mapper.properties.player.team[0].move4pp }}</div>
+                    <div class="move4power">{{ typeEffectiveness(mapper.properties.player.team[0].move4.value) }}</div>
+                    <img class="move4icon" :src="moveTypeIcon(mapper.properties.player.team[0].move4.value)" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--------------------------------------- JAVASCRIPT ------------------------------------------------->
+    <!-- IMPORTS -->
+    <!-- SIGNAL R -->
+    <script src="https://unpkg.com/@microsoft/signalr@latest/dist/browser/signalr.min.js"></script> 
+    <script src="https://unpkg.com/vue@latest/dist/vue.global.js"></script>
+    <script src="http://localhost:8085/dist/gameHookMapperClient.js"></script>
+    
+    <!-- GEN1 DATA -->
+    <script src="data/gen1data.js"></script>
+    <script src="data/gen1dataGrowthMovepool.js"></script>
+    <script src="data/gen1moves.js"></script>
+
+    <!-- GEN3 DATA -->
+    <script src="data/gen3data.js"></script>
+    <script src="data/stageModifiers.js"></script>
+    <script src="data/natures.js"></script>
+    <script src="data/gen3abilities.js"></script>
+    <script src="data/dexDataRubySapphireEmerald.js"></script>
+
+    <script src="data/gen3moves.js"></script>
+    <script src="data/type-effectiveness.js"></script>
+    <script src="data/typeBoostingItems.js"></script>
+
+    <!-- VUE APP -->
+    <script type="text/javascript" src="scripts/vue.js"></script>
+    <!-- <script type="text/javascript" src="scripts/methods.js"></script> -->
+</body>

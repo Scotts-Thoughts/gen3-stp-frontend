@@ -1,0 +1,1854 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    height: 1920px; /* Fixed canvas size */
+    width: 1080px;
+}
+
+html {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden; /* Hide scrollbars */
+    background-color: #ffffff;
+}
+
+canvas {  /* or some other selector */
+    width: 1920px;
+    height: 1080px;
+}
+
+
+
+/*  ------------------------------------  */
+/*  ------------- FONTS ----------------  */
+/*  replace font to change - leave label  */
+/*  ------------------------------------  */
+
+/* TIMER/RESETS */
+@font-face {
+    src: url(fonts/OpenSans-ExtraBold.ttf);
+    font-family: oseb;
+}
+@font-face {
+    src: url(fonts/Play-Bold.ttf);
+    font-family: osb;
+}
+/* TITLES FONT */
+/* replace font to change - leave label */
+@font-face {
+    src: url(fonts/TitanOne-Regular.ttf);
+    font-family: titan;
+}
+@font-face { /* replace font to change - leave label */
+    src: url(fonts/Play-Bold.ttf);
+    font-family: play;
+}
+@font-face {
+    src: url(fonts/LeagueGothic.ttf);
+    font-family: lgothic;
+}
+
+
+
+/*  ------------------------------------  */
+/*  --------------- CSS ----------------  */
+/*  ------------------------------------  */
+
+.override {
+	display: block;
+    max-width:1920px;
+    max-height:1080px;
+    position: fixed;
+    top: 0px;
+    left: 2000px;
+    z-index: -100;
+}
+
+/* CSS BOTTOM LAYERS - OVERLAY ELEMENTS (-100 to -50) */
+.overlay {
+	display: block;
+    max-width:1920px;
+    max-height:1080px;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: -100;
+}
+.defaultTexture {
+	display: block;
+    width:1920px;
+    position: fixed;
+    /* filter: blur(4px); */
+    top: 0px;
+    left: 0px;
+    z-index: -95;
+}
+.frame {
+	display: block;
+    max-width:1920px;
+    max-height:1080px;
+    position: fixed;
+    opacity: 1;
+    filter: blur(0px);
+    top: 0px;
+    left: 0px;
+    z-index: -90;
+}
+.pokeball {
+	display: block;
+    position: fixed;
+    top: 605px;
+    left: -32px;
+    z-index: -85;
+}
+.gameArea {
+	display: block;
+    max-width:1920px;
+    max-height:1080px;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: -80;
+}
+.pokemon {
+	display: block;
+    position: fixed;
+    top: 460px;
+    left: 60px;
+    z-index: -75;
+}
+.statsContainer {
+    display: block;
+    position: relative;
+    top: 460px;
+    left: 60px;
+    z-index: -75;
+}
+
+.typeMono {
+    position: absolute;
+    transform: scale(.10);
+    top: 320px;
+    left: -605px;
+    z-index: -70;
+}
+.type1 {
+    position: absolute;
+    transform: scale(.10);
+    top: 0px;
+    left: 0px;
+    z-index: 200;
+}
+.type2 {
+    position: absolute;
+    transform: scale(.10);
+    top: 320px;
+    left: -525px;
+    z-index: -70;
+}
+
+.labelAbility {
+    font-size: 44px;
+    position: fixed;
+    line-height: 37.3px;
+    top: 835px;
+    left: 385px;
+    opacity: .6;
+    z-index: 30000;
+    text-align: left;
+    font-family: osb;
+    font-weight: 500
+}
+.labelHeldItem {
+    font-size: 44px;
+    position: fixed;
+    line-height: 37.3px;
+    top: 835px;
+    left: 950px;
+    opacity: .6;
+    z-index: 30000;
+    text-align: left;
+    font-family: osb;
+    font-weight: 500
+}
+.labelNature {
+    font-size: 30px;
+    position: fixed;
+    line-height: 37.3px;
+    top: 842px;
+    left: 24px;
+    opacity: .6;
+    z-index: 30001;
+    text-align: left;
+    font-family: osb;
+    font-weight: 500
+}
+.labelGametime {
+    font-size: 19px;
+    position: fixed;
+    line-height: 37.3px;
+    top: 15px;
+    left: 133px;
+    opacity: .7;
+    z-index: 30002;
+    text-align: left;
+    font-family: osb;
+    font-weight: 500
+}
+
+
+/* STATS (INDEX 0 to 10) */
+.statsGraphic {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 0;
+}
+.statsheader {
+    font-size: 38px;
+    line-height: 60px;
+    font-family: play;
+    font-weight: 700;
+    position: absolute;
+    text-align: center;
+    width: 400px;
+    left: -80px;
+    top: 333px;
+    z-index: 1;
+    /* filter: drop-shadow(1px 1px 0px rgb(0, 0, 0)); */
+}
+.expMeterOuter {
+    position: absolute;
+    border-radius: 18px;
+    background: linear-gradient(rgb(239, 239, 239), rgb(157, 157, 157));
+    width: 355px;
+    height: 7px;
+    top: 852px;
+    left: 21px;
+    z-index: 2;
+}
+
+.expMeterInner {
+    position: relative;
+    border-radius: 18px;
+    background: linear-gradient(hsl(191, 100%, 25%), rgb(0, 183, 255)5%);
+    width: 355px;
+    height: 7px;
+    /* background:rgb(0, 217, 255); */
+}
+.statsLabelsColumn1 {
+    font-size: 30px;
+    position: absolute;
+    line-height: 58px;
+    top: 891px;
+    left: -25px;
+    z-index: 3;
+    text-align: left;
+    font-family: osb;
+    font-weight: 500
+}
+.nature {
+    font-size: 28px;
+    text-align: center;
+    position: absolute;
+    left: 260px;
+    top: 1200px;
+    line-height: 34px;
+    letter-spacing: -1.5px;
+    text-transform: lowercase;
+    font-family: osb;
+    font-weight: 700;
+    display:block;
+    z-index: 4;
+}
+.statsLabelsColumn2 {
+    font-size: 30px;
+    position: absolute;
+    line-height: 59px;
+    top: 891px;
+    left: 184px;
+    z-index: 3;
+    text-align: left;
+    font-family: osb;
+    font-weight: 500
+}
+.statsColumn1 {
+    display: block;
+    font-size: 56px;
+    position: absolute;
+    line-height: 60px;
+    top: 421px;
+    right: 964px;
+    z-index: 4;
+    text-align: right;
+    font-family: osb;
+    font-weight: 500
+}
+.statsColumn2 {
+    display: block;
+    font-size: 56px;
+    position: absolute;
+    line-height: 60px;
+    top: 421px;
+    right: 796px;
+    z-index: 4;
+    text-align: right;
+    font-family: osb;
+    font-weight: 500
+}
+/* BACKUP STATS POSITIONS */
+/* .statsColumn1 {
+    font-size: 56px;
+    position: absolute;
+    line-height: 60px;
+    top: 881px;
+    right: 1743px;
+    z-index: 4;
+    text-align: right;
+    font-family: osb;
+    font-weight: 500
+}
+.statsColumn2 {
+    font-size: 56px;
+    position: absolute;
+    line-height: 60px;
+    top: 881px;
+    right: 1576px;
+    z-index: 4;
+    text-align: right;
+    font-family: osb;
+    font-weight: 500
+} */
+
+/* BADGES (AS A PART OF THE STATS BAR*/
+.badge1 {
+    display: block;
+    max-width:100px;
+    max-height:100px;
+    position: absolute;
+    top: 129px;
+    left: 135px;
+    z-index: 12000;
+}
+.badge2 {
+    display: block;
+    max-width:100px;
+    max-height:100px;
+    position: absolute;
+    top: 133px;
+    left: 188px;
+    z-index: 12000;
+}
+.badge3 {
+    display: block;
+    max-width:100px;
+    max-height:100px;
+    position: absolute;
+    top: 129px;
+    left: 239px;
+    z-index: 12000;
+}
+.badge4 {
+    display: block;
+    max-width:100px;
+    max-height:100px;
+    position: absolute;
+    top: 129px;
+    left: 284px;
+    z-index: 12000;
+}
+.badge5 {
+    display: block;
+    max-width:100px;
+    max-height:100px;
+    position: absolute;
+    top: 176px;
+    left: 135px;
+    z-index: 12000;
+}
+.badge6 {
+    display: block;
+    max-width:100px;
+    max-height:100px;
+    position: absolute;
+    top: 179px;
+    left: 190px;
+    z-index: 12000;
+}
+.badge7 {
+    display: block;
+    max-width:100px;
+    max-height:100px;
+    position: absolute;
+    top: 179px;
+    left: 235px;
+    z-index: 12000;
+}
+.badge8 {
+    display: block;
+    max-width:100px;
+    max-height:100px;
+    position: absolute;
+    top: 179px;
+    left: 287px;
+    z-index: 12000;
+}
+.badges {
+    display: block;
+    max-width:192px;
+    max-height:94px;
+    position: absolute;
+    top: 993px;
+    left: 329px;
+    z-index: 2000;
+}
+
+
+/* PACKAGE CONTENTS */
+.overlayStarter {
+	display: block;
+    max-width:1920px;
+    max-height:1080px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: -50;
+}
+
+
+.titles {
+    font-size: 35px;
+    position: absolute;
+    top: 1080px;
+    line-height: 60px;
+    font-family: oseb;
+    font-weight: 700;
+}
+
+.resets {
+    display: block;
+    max-width: 250;
+    position: fixed;
+    max-height: 250;
+    font-size: 78px;
+    z-index: 5;
+    /* top: 195px;
+    left: 295px; old coordinates*/
+    top: 379px;
+    left: 31px;
+    line-height: 60px;
+    text-align: center;
+    font-family: oseb;
+    font-weight: 700;
+}
+
+
+
+.popup {
+    position: absolute;
+    top: 250px;
+    left: 20px;
+    z-index: 900;
+    scale: 15;
+}
+
+
+
+/* ENEMY STATS */
+.enemyPokemonName {
+    display: block;
+    font-size: 32px;
+    width: 400px;
+    text-align: center; /* need a fix */
+    position: fixed;
+    top: 40px;
+    left: 1518px;
+    font-family: titan;
+    z-index: 600;
+}
+.enemyMoves {
+    display: block;
+    width: 400px;
+    font-size: 42px;
+    position: fixed;
+    text-align: center;
+    top: 80px;
+    left: 1518px;
+    line-height: 60px;
+    font-family: osb;
+    font-weight: 700;
+    z-index: 720;
+}
+.enemyHpLabel {
+    font-size: 30px;
+    position: fixed;
+    text-align: left;
+    top: 320px;
+    left: 1558px;
+    line-height: 50px;
+    font-family: osb;
+    font-weight: 700;
+    z-index: 720;
+}
+.enemyHp {
+    font-size: 40px;
+    position: fixed;
+    text-align: right;
+    top: 320px;
+    left: 1664px;
+    line-height: 50px;
+    font-family: osb;
+    font-weight: 700;
+    z-index: 722;
+}
+.enemyPhysicalLabel {
+    font-size: 30px;
+    position: fixed;
+    text-align: left;
+    top: 368px;
+    left: 1558px;
+    line-height: 50px;
+    font-family: osb;
+    font-weight: 700;
+    z-index: 722;
+}
+.enemySpdSpcLabel {
+    font-size: 30px;
+    position: fixed;
+    text-align: left;
+    top: 368px;
+    left: 1734px;
+    line-height: 50px;
+    font-family: osb;
+    font-weight: 700;
+    z-index: 722;
+}
+.enemyPhysical {
+    font-size: 40px;
+    position: fixed;
+    text-align: right;
+    top: 368px;
+    left: 1664px;
+    line-height: 50px;
+    font-family: osb;
+    font-weight: 700;
+    z-index: 722;
+}
+.enemySpdSpc {
+    font-size: 40px;
+    position: fixed;
+    text-align: right;
+    top: 368px;
+    left: 1834px;
+    line-height: 50px;
+    font-family: osb;
+    font-weight: 700;
+    z-index: 722;
+}
+
+.slideR-enter-active {
+    transition: all 1s ease-out;
+}
+.slideR-leave-active {
+    transition: all .7s cubic-bezier(1, 0.5, 0.8, 1);
+}
+.slideR-enter-from {
+    transform: translateX(2300px);
+}
+.slideR-leave-to {
+    opacity: 0;
+}
+
+.slideL-enter-active {
+    transition: all 1s ease-out;
+}
+.slideL-leave-active {
+    transition: all .7s cubic-bezier(1, 0.5, 0.8, 1);
+}
+.slideL-enter-from {
+    transform: translateX(-400px);
+}
+.slideL-leave-to {
+    opacity: 0;
+}
+
+
+
+
+/* .encounterInfo {
+    font-size: 25px;
+    position: absolute;
+    top: 96px;
+    left: 1566px;
+    line-height: 26px;
+    font-family: play;
+    font-weight: 700;
+}
+
+.encounterData {
+    font-size: 25px;
+    position: absolute;
+    top: 96px;
+    left: 1668px;
+    line-height: 26px;
+    font-family: play;
+    font-weight: 700;
+} */
+
+.encounterInfo {
+    font-size: 20px;
+    position: absolute;
+    top: 44px;
+    left: 414px;
+    line-height: 22px;
+    font-family: play;
+    font-weight: 700;
+}
+
+.encounterData {
+    font-size: 20px;
+    position: absolute;
+    top: 44px;
+    left: 504px;
+    line-height: 22px;
+    font-family: play;
+    font-weight: 700;
+}
+
+/* MOVEPOOL */
+.movepoolWay {
+    font-size: 15px;
+    position: absolute;
+    top: 740px;
+    left: 1934px;
+    line-height: 16px;
+    font-family: play;
+    font-weight: 700;
+}
+.movepoolMove {
+    font-size: 15px;
+    position: absolute;
+    top: 740px;
+    left: 2004px;
+    line-height: 16px;
+    font-family: play;
+    font-weight: 700;
+}
+.movepoolType {
+    font-size: 15px;
+    position: absolute;
+    top: 740px;
+    left: 2114px;
+    line-height: 16px;
+    font-family: play;
+    font-weight: 700;
+}
+.movepoolPower {
+    font-size: 15px;
+    position: absolute;
+    top: 740px;
+    left: 2114px;
+    line-height: 16px;
+    font-family: play;
+    font-weight: 700;
+}
+.movepoolAccuracy {
+    font-size: 15px;
+    position: absolute;
+    top: 740px;
+    left: 2114px;
+    line-height: 16px;
+    font-family: play;
+    font-weight: 700;
+}
+.movepoolPP {
+    font-size: 15px;
+    position: absolute;
+    top: 740px;
+    left: 2114px;
+    line-height: 16px;
+    font-family: play;
+    font-weight: 700;
+}
+
+
+/* BAG INFO BLOCK (BEHIND THE SCENES) */
+.bagLineLabelInfo {
+    font-size: 24px;
+    position: absolute;
+    top: 440px;
+    left: 1134px;
+    line-height: 26px;
+    font-family: play;
+    font-weight: 700;
+}
+.bagItemInfo {
+    font-size: 24px;
+    position: absolute;
+    top: 440px;
+    left: 1230px;
+    line-height: 26px;
+    font-family: play;
+    font-weight: 700;
+}
+.bagQuantityInfo {
+    font-size: 24px;
+    position: absolute;
+    top: 440px;
+    left: 1470px;
+    line-height: 26px;
+    font-family: play;
+    font-weight: 700;
+}
+
+/* BAG OVERLAY */
+.movepoolTitle {
+    display: block;
+    font-size: 32px;
+    max-width:1920px;
+    max-height:1080px;
+    text-align: right; /* need a fix */
+    position: absolute;
+    top: 36px;
+    left: 1628px;
+    font-family: titan;
+    z-index: 600;
+}
+.bagLineLabel {
+    font-size: 38px;
+    position: absolute;
+    top: 112px;
+    left: 1556px;
+    line-height: 42px;
+    font-family: osb;
+    font-weight: 700;
+    z-index: 500;
+}
+.bagItem {
+    font-size: 38px;
+    position: absolute;
+    top: 112px;
+    left: 1556px;
+    line-height: 42px;
+    font-family: osb;
+    font-weight: 700;
+    z-index: 500;
+}
+.bagQuantity {
+    font-size: 38px;
+    position: absolute;
+    top: 112px;
+    left: 1856px;
+    line-height: 42px;
+    font-family: osb;
+    font-weight: 700;
+    z-index: 500;
+}
+
+.parent {
+    text-align: right;
+    position: relative;
+}
+
+
+.gametimeClock {
+    font-size: 65px;
+    display:block;
+    position: absolute;
+    top: 64px;
+    left: 77px;
+    line-height: 60px;
+    font-family: oseb;
+    font-weight: 700;
+}
+
+.gametimeFrames {
+    font-size: 35px;
+    position: absolute;
+    top: 78px;
+    left: 304px;
+    line-height: 60px;
+    font-family: oseb;
+    font-weight: 700;
+}
+
+
+/* UI ELEMENTS */
+.timerUI {
+	display: block;
+    max-width:1920px;
+    max-height:1080px;
+    position: fixed;
+    transform: scale(.2);
+    opacity: .8;
+    top: -160px;
+    left: -760px;
+    z-index: 3;
+}
+.movesetUI {
+	display: block;
+    max-width:1920px;
+    max-height:1080px;
+    position: fixed;
+    transform: scale(.2);
+    opacity: .8;
+    top: -230px;
+    left: -760px;
+    z-index: 3;
+}
+.resetsUI {
+	display: block;
+    max-width:1920px;
+    max-height:1080px;
+    position: fixed;
+    opacity: .8;
+    top: 333px;
+    left: 7px;
+    z-index: 3;
+}
+.barRight {
+	display: flex;
+    position: fixed;
+    opacity: .8;
+    top: 35px;
+    right: 14px;
+    z-index: 3;
+}
+
+.barLeft {
+	display: flex;
+    position: fixed;
+    left: 14px;
+    top: 35px;
+    z-index: 3;
+}
+
+.battleOverlay {
+	display: block;
+    position: fixed;
+    opacity: .8;
+    top: 0px;
+    right: 0px;
+    z-index: 100;
+}
+
+@keyframes blur-out {
+    0% {
+         transform: scale(1);
+         animation-timing-function: ease;
+    }
+    50% {
+        transform: scale(1.015);
+        opacity: 1;
+        animation-timing-function: ease;
+    }
+    100% {
+        transform: scale(1.05);
+        opacity: 0;
+        animation-timing-function: ease;
+    }
+} 
+
+
+
+.fade1-enter-from {
+	opacity: 0;
+}
+.fade1-enter-to {
+	opacity: 1;
+}
+.fade1-enter-active {
+	transition: opacity .5s ease;
+}
+.fade1-leave-from {
+	opacity: 1;
+}
+.fade1-leave-to {
+	opacity: 0;
+}
+.fade1-leave-active {
+	transition: opacity .2s ease;
+}
+
+.fade1x-enter-from {
+	opacity: 0;
+}
+.fade1x-enter-to {
+	opacity: 1;
+}
+.fade1x-enter-active {
+	transition: opacity 2s ease;
+}
+.fade1x-leave-from {
+	opacity: 1;
+}
+.fade1x-leave-to {
+	opacity: 0;
+}
+.fade1x-leave-active {
+	transition: opacity .2s ease;
+}
+
+.fade2-enter-from {
+	opacity: 0;
+}
+.fade2-enter-to {
+	opacity: 1;
+}
+.fade2-enter-active {
+	transition: opacity 1s ease;
+}
+.fade2-leave-from {
+	opacity: 1;
+}
+.fade2-leave-to {
+	opacity: 0;
+}
+.fade2-leave-active {
+	transition: opacity .3s ease;
+}
+
+.fade3-enter-from {
+	opacity: 0;
+}
+.fade3-enter-to {
+	opacity: 1;
+}
+.fade3-enter-active {
+	transition: opacity .3s ease;
+}
+.fade3-leave-from {
+	opacity: 1;
+}
+.fade3-leave-to {
+	opacity: 0;
+}
+.fade3-leave-active {
+	transition: opacity 1.5s ease;
+}
+
+.righttitles {
+    font-size: 35px;
+    position: relative;
+    top: 1080px;
+    right: 0px;
+    text-align: right;
+    line-height: 60px;
+    font-family: oseb;
+    font-weight: 700;
+}
+
+.badges {
+    display: block;
+    max-width:1920px;
+    max-height:1080px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+
+.status {
+    display: block;
+    font-size: 100px;
+    position: fixed;
+    z-index: 9000;
+    top: 846px;
+    text-align: center;
+    font-family: osb;
+    font-weight: 500
+}
+
+
+
+.hp {
+    font-size: 60px;
+    position: absolute;
+    line-height: 37.3px;
+    top: 845px;
+    right: 1743px;
+    text-align: right;
+    font-family: osb;
+    font-weight: 500
+}
+
+.atk {
+    font-size: 60px;
+    position: absolute;
+    line-height: 37.3px;
+    top: 882px;
+    right: 1743px;
+    text-align: right;
+    font-family: osb;
+    font-weight: 500
+}
+
+.def {
+    font-size: 60px;
+    position: absolute;
+    line-height: 37.3px;
+    top: 919px;
+    right: 1743px;
+    text-align: right;
+    font-family: osb;
+    font-weight: 500
+}
+
+.spc {
+    font-size: 60px;
+    position: absolute;
+    line-height: 37.3px;
+    top: 956px;
+    right: 1743px;
+    text-align: right;
+    font-family: osb;
+    font-weight: 500
+}
+
+.spd {
+    font-size: 60px;
+    position: absolute;
+    line-height: 37.3px;
+    top: 993px;
+    right: 1743px;
+    text-align: right;
+    font-family: osb;
+    font-weight: 500
+}
+
+.labelHp {
+    font-size: 30px;
+    position: fixed;
+    line-height: 37.3px;
+    top: 895px;
+    left: 18px;
+    opacity: .6;
+    text-align: left;
+    font-family: osb;
+    font-weight: 500
+}
+
+.labelAtk {
+    font-size: 32px;
+    position: fixed;
+    line-height: 37.3px;
+    top: 953px;
+    left: 18px;
+    opacity: .6;
+    text-align: left;
+    font-family: osb;
+    font-weight: 500
+}
+
+.labelDef {
+    font-size: 32px;
+    position: fixed;
+    line-height: 37.3px;
+    top: 1012px;
+    left: 18px;
+    opacity: .6;
+    text-align: left;
+    font-family: osb;
+    font-weight: 500
+}
+
+.labelSpcAtk {
+    font-size: 28px;
+    position: fixed;
+    line-height: 27px;
+    top: 945px;
+    left: 185px;
+    opacity: .6;
+    text-align: left;
+    font-family: osb;
+    font-weight: 500
+}
+
+.labelSpcDef {
+    font-size: 28px;
+    position: fixed;
+    line-height: 27px;
+    top: 1004px;
+    left: 185px;
+    opacity: .6;
+    text-align: left;
+    font-family: osb;
+    font-weight: 500
+}
+
+.labelSpd {
+    font-size: 30px;
+    position: fixed;
+    line-height: 37.3px;
+    z-index: 1000;
+    top: 894px;
+    left: 185px;
+    opacity: .6;
+    text-align: left;
+    font-family: osb;
+    font-weight: 500
+}
+
+.atkMod {
+    font-size: 28px;
+    color: rgb(0, 0, 0);
+    position: absolute;
+    line-height: 37.3px;
+    z-index: 1000;
+    top: 946px;
+    left: 48px;
+    right: 1920px;
+    text-align: right;
+    font-family: play;
+    font-weight: 500
+}
+
+.defMod {
+    font-size: 28px;
+    color: rgb(0, 0, 0);
+    position: absolute;
+    line-height: 37.3px;
+    z-index: 1000;
+    top: 1002px;
+    left: 58px;
+    right: 1920px;
+    text-align: right;
+    font-family: osb;
+    font-weight: 500
+    
+}
+
+.spcAMod {
+    font-size: 28px;
+    color: rgb(0, 0, 0);
+    position: absolute;
+    line-height: 37.3px;
+    z-index: 1000;
+    top: 946px;
+    left: 218px;
+    right: 1920px;
+    text-align: right;
+    font-family: osb;
+    font-weight: 500
+}
+
+.spcDMod {
+    font-size: 28px;
+    color: rgb(0, 0, 0);
+    position: absolute;
+    line-height: 37.3px;
+    z-index: 1000;
+    top: 1002px;
+    left: 218px;
+    right: 1920px;
+    text-align: right;
+    font-family: osb;
+    font-weight: 500
+}
+
+.spdMod {
+    font-size: 28px;
+    color: rgb(0, 0, 0);
+    position: fixed;
+    line-height: 37.3px;
+    z-index: 1000;
+    top: 886px;
+    left: 218px;
+    right: 1920px;
+    text-align: right;
+    font-family: osb;
+    font-weight: 500
+}
+.aDMods {
+    font-size: 44px;
+    color: rgb(0, 0, 0);
+    position: absolute;
+    line-height: 59px;
+    z-index: 1000;
+    top: 482px;
+    left: -114px;
+    width: 200px;
+    text-align: center;
+    font-family: play;
+    font-weight: 500
+}
+.sSASDMods {
+    font-size: 44px;
+    color: rgb(0, 0, 0);
+    position: fixed;
+    line-height: 59px;
+    z-index: 1000;
+    top: 883px;
+    left: 108px;
+    width: 200px;
+    text-align: center;
+    font-family: osb;
+    font-weight: 500
+}
+
+.statusCond {
+    display: block;
+    position: fixed;
+    top: 250px;
+    left: 6px;
+    width: 150px;
+    filter: drop-shadow(3px 3px 7px #000)
+}
+
+
+.playerMoves {
+    font-size: 26px;
+    position: fixed;
+    left: 35px;
+    top: 188px;
+    bottom: 0px;
+    right: 0px;
+    z-index: 5;
+    line-height: 34px;
+    text-transform: capitalize;
+    text-align: left;
+    font-family: osb;
+    font-weight: 700
+}
+
+/* INFO AREA */
+
+
+.gamestate {
+    font-size: 66px;
+    position: fixed;
+    left: 600px;
+    top: 50px;
+    z-index: 5;
+    line-height: 66px;
+    text-transform: capitalize;
+    text-align: left;
+    font-family: osb;
+    font-weight: 700;
+    z-index: 20000;
+}
+.gametime {
+    font-size: 24px;
+    position: absolute;
+    left: -1369px;
+    top: 18px;
+    bottom: 0px;
+    right: 0px;
+    z-index: 5;
+    line-height: 34px;
+    text-transform: capitalize;
+    text-align: center;
+    font-family: osb;
+    font-weight: 700
+}
+.nature {
+    font-size: 38px;
+    position: fixed;
+    left: -1448px;
+    top: 843px;
+    bottom: 0px;
+    right: 0px;
+    z-index: 5;
+    line-height: 34px;
+    text-transform: capitalize;
+    text-align: center;
+    font-family: osb;
+    font-weight: 700
+}
+.ability {
+    font-size: 46px;
+    position: fixed;
+    left: -460px;
+    top: 836px;
+    bottom: 0px;
+    right: 0px;
+    z-index: 5;
+    line-height: 34px;
+    text-transform: capitalize;
+    text-align: center;
+    font-family: osb;
+    /* filter: drop-shadow(1px 1px 1px #000); */
+    font-weight: 700
+}
+
+.gameTime {
+    font-size: 27px;
+    position: fixed;
+    left: -1330px;
+    top: 16px;
+    bottom: 0px;
+    right: 0px;
+    z-index: 5;
+    line-height: 34px;
+    text-transform: capitalize;
+    text-align: center;
+    font-family: osb;
+    font-weight: 700
+}
+
+/* STATS AREA */
+.heldItem {
+    font-size: 50px;
+    position: fixed;
+    left: 790px;
+    top: 836px;
+    bottom: 0px;
+    right: 0px;
+    z-index: 5;
+    line-height: 34px;
+    text-transform: capitalize;
+    text-align: center;
+    font-family: osb;
+    font-weight: 700
+}
+
+/* STATUS CONDITION */
+.statusCondition {
+    font-size: 26px;
+    position: fixed;
+    left: -1525px;
+    top: 664px;
+    bottom: 0px;
+    right: 0px;
+    z-index: 5;
+    line-height: 34px;
+    text-transform: capitalize;
+    text-align: center;
+    font-family: osb;
+    font-weight: 700
+}
+/* Unused currently */
+.abilityDescription { 
+    font-size: 24px;
+    position: fixed;
+    left: 579px;
+    top: 927px;
+    bottom: 0px;
+    right: 0px;
+    z-index: 5;
+    line-height: 34px;
+    text-transform: capitalize;
+    text-align: center;
+    font-family: osb;
+    font-weight: 700
+}
+
+/* MOVESET */
+.move1 {
+    font-size: 50px;
+    position: fixed;
+    left: 436px;
+    top: 940px;
+    bottom: 0px;
+    right: 0px;
+    z-index: 5;
+    line-height: 34px;
+    text-transform: capitalize;
+    text-align: left;
+    font-family: play;
+    font-weight: 700
+}
+
+.move2 {
+    font-size: 50px;
+    position: fixed;
+    left: 1030px;
+    top: 940px;
+    bottom: 0px;
+    right: 0px;
+    z-index: 5;
+    line-height: 34px;
+    text-transform: capitalize;
+    text-align: left;
+    font-family: osb;
+    font-weight: 700
+}
+
+.move3 {
+    font-size: 50px;
+    position: fixed;
+    left: 436px;
+    top: 1012px;
+    bottom: 0px;
+    right: 0px;
+    z-index: 5;
+    line-height: 34px;
+    text-transform: capitalize;
+    text-align: left;
+    font-family: osb;
+    font-weight: 700
+}
+
+.move4 {
+    font-size: 50px;
+    position: fixed;
+    left: 1030px;
+    top: 1012px;
+    bottom: 0px;
+    right: 0px;
+    z-index: 5;
+    line-height: 34px;
+    text-transform: capitalize;
+    text-align: left;
+    font-family: osb;
+    font-weight: 700
+}
+
+.move1pp {
+    display: block;
+    font-size: 44px;
+    position: fixed;
+    left: 890px;
+    width: 52px;
+    top: 935px;
+    z-index: 5;
+    text-align: right;
+    font-family: osb;
+    font-weight: 700
+}
+
+.move2pp {
+    display: block;
+    font-size: 44px;
+    position: fixed;
+    left: 1480px;
+    width: 52px;
+    top: 935px;
+    z-index: 5;
+    text-align: right;
+    font-family: osb;
+    font-weight: 700
+}
+
+.move3pp {
+    display: block;
+    font-size: 44px;
+    position: fixed;
+    top: 1007px;
+    left: 890px;
+    width: 52px;
+    z-index: 10;
+    text-align: right;
+    font-family: osb;
+    font-weight: 700
+}
+
+.move4pp {
+    display: block;
+    font-size: 44px;
+    position: fixed;
+    top: 1007px;
+    left: 1480px;
+    width: 52px;
+    z-index: 10;
+    text-align: right;
+    font-family: osb;
+    font-weight: 700
+}
+
+.move1power {
+    display: block;
+    font-size: 44px;
+    position: fixed;
+    left: 770px;
+    width: 100px;
+    top: 935px;
+    z-index: 5;
+    text-align: right;
+    font-family: osb;
+    font-weight: 700
+}
+
+.move2power {
+    display: block;
+    font-size: 44px;
+    position: fixed;
+    left: 1355px;
+    width: 100px;
+    top: 935px;
+    z-index: 5;
+    text-align: right;
+    font-family: osb;
+    font-weight: 700
+}
+
+.move3power {
+    display: block;
+    font-size: 44px;
+    position: fixed;
+    left: 770px;
+    width: 100px;
+    top: 1007px;
+    z-index: 5;
+    text-align: right;
+    font-family: osb;
+    font-weight: 700
+}
+
+.move4power {
+    display: block;
+    font-size: 44px;
+    position: fixed;
+    left: 1355px;
+    width: 100px;
+    top: 1007px;
+    z-index: 5;
+    text-align: right;
+    font-family: osb;
+    font-weight: 700
+}
+
+.move1icon {
+    display: block;
+    position: fixed;
+    left: 350px;
+    width: 100px;
+    top: 906px;
+    z-index: 5;
+    transform: scale(.61);
+    filter: drop-shadow(0px 0px 3px #000)
+}
+.move2icon {
+    display: block;
+    position: fixed;
+    left: 944px;
+    width: 100px;
+    top: 906px;
+    z-index: 5;
+    transform: scale(.61);
+    filter: drop-shadow(0px 0px 3px #000)
+
+}
+.move3icon {
+    display: block;
+    position: fixed;
+    left: 350px;
+    width: 100px;
+    top: 977px;
+    z-index: 5;
+    transform: scale(.61);
+    filter: drop-shadow(0px 0px 3px #000)
+
+}
+.move4icon {
+    display: block;
+    position: fixed;
+    left: 944px;
+    width: 100px;
+    top: 977px;
+    z-index: 5;
+    transform: scale(.61);
+    filter: drop-shadow(0px 0px 3px #000)
+
+}
+
+/* currently unused */
+.movesetBackground {
+    display: block;
+    max-width:1920px;
+    max-height:1080px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: -100;
+}
+
+
+.leftBarFixed {
+    display: block;
+    position: fixed;
+    left: 12px;
+    top: 24px;
+    z-index: 10000;
+}
+.rightBarFixed {
+    display: block;
+    position: fixed;
+    right: 12px;
+    top: 24px;
+    z-index: 10000;
+}
+
+.slideInTop-enter-from {
+    transform: translateY(-100%);
+    opacity: 0;
+}
+.slideInTop-enter-active {
+    transition: transform .5s ease, opacity .3s ease;
+}
+.slideInTop-enter-to {
+    transform: translateY(0%);
+    opacity: 1;
+}
+.slideInTop-leave-active {
+    animation: blur-out 0.4s;
+}  
+
+
+.slideInBottom-enter-from {
+    transform: translateY(+100%);
+    opacity: 0;
+}
+.slideInBottom-enter-active {
+    transition: transform .5s ease, opacity .3s ease;
+}
+.slideInBottom-enter-to {
+    transform: translateY(0%);
+    opacity: 1;
+}
+.slideInBottom-leave-active {
+    animation: blur-out 0.4s;
+} 
+
+
+.slideInLeft-enter-from, .slideInLeft-leave-to {
+    transform: translateX(-100%);
+    opacity: 0;
+}
+.slideInLeft-enter-active, .slideInLeft-leave-active {
+    transition: transform .5s ease, opacity .3s ease;
+}
+.slideInLeft-enter-to {
+    transform: translateX(0%);
+    opacity: 1;
+}
+
+.slideInRight-enter-from, .slideInRight-leave-to {
+    transform: translateX(100%);
+    opacity: 0;
+}
+.slideInRight-enter-active, .slideInRight-leave-active {
+    transition: transform .5s ease, opacity .3s ease;
+}
+.slideInRight-enter-to {
+    transform: translateX(0%);
+    opacity: 1;
+}
+
+.scaleResets-enter-from, .scaleResets-leave-to {
+    transform: scale(115%);
+}
+.scaleResets-enter-active {
+    transition: transform 1s ease;
+}
+.scaleResets-leave-active {
+    transition: transform 1s ease;
+}
+.scaleResets-enter-to {
+    transform: scale(115%);
+}
+
+@keyframes blur-out {
+    0% {
+         transform: scale(1);
+         animation-timing-function: ease;
+    }
+    50% {
+        transform: scale(1.015);
+        opacity: 1;
+        animation-timing-function: ease;
+    }
+    100% {
+        transform: scale(1.05);
+        opacity: 0;
+        animation-timing-function: ease;
+    }
+} 
+
+.fadeScale-enter-from {
+    transform: scale(100%,100%);
+    opacity: 0;
+}
+.fadeScale-enter-active {
+    transition: transform 2s ease, opacity 1s ease;
+}
+.fadeScale-enter-to {
+    transform: scale(50%,50%);
+    opacity: 1;
+}
+.fadeScale-leave-active {
+    animation: blur-out 0.4s;
+} 
+
+.status-enter-from {
+    filter: blur(25px);
+    opacity: 0;
+}
+.status-enter-active, .status-leave-active {
+    transition: all 1s ease;
+}
+.status-enter-to {
+    filter: blur(0px);
+    opacity: 1;
+}
+.status-leave-to {
+    filter: blur(25px);
+    opacity: 0;
+}
+
+/* TEXT UPDATES (MOVE, MOVE POWER, PP) */
+/* .fadeText-enter-from, .fadeText-leave-to {
+    opacity: 0;
+}
+.fadeText-enter-active {
+    transition: opacity .6s ease-in;
+}
+.fadeText-enter-to, .fadeText-leave-from {
+    opacity: 1;
+}
+.fadeText-leave-active {
+    transition: opacity .1s ease-in;
+}  */
+
+@keyframes blur-out {
+    0% {
+         transform: scale(1);
+         animation-timing-function: ease;
+    }
+    50% {
+        transform: scale(1.015);
+        opacity: 1;
+        animation-timing-function: ease;
+    }
+    100% {
+        transform: scale(1.05);
+        opacity: 0;
+        animation-timing-function: ease;
+    }
+} 
+
+/* BATTLE GRAPHIC APPEARS */
+.battleGraphic-enter-active {
+    animation: battleIntroAnimationFull 2.7s;
+}
+.battleGraphic-leave-active {
+    transition: all .8s;
+}
+.battleGraphic-enter-from {
+    transform: translateX(100%);
+}
+.battleGraphic-leave-to {
+    opacity: 0;
+}
+
+/* There are roughly 2.65s from the black screen to when the player gains control of the Pokemon (637 frames @ 240fps) */
+/* DURATION: 2.65s */
+@keyframes battleIntroAnimationFull {
+    /* Black (from the first black frane to when the screen turns white) */
+    0% {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    /* Grayscale Trainer Scroll (from the white frame until the first colour frame) */
+    13% {
+        opacity: 0;
+        transform: translateX(100%);
+        animation-timing-function: ease;
+    }
+    /* Trainers Send Their Pokemon In (starts with "TRAINER wants to fight!") */
+    36% {
+        opacity: 1;
+        transform: translateX(25%);
+        animation-timing-function: ease;
+    }
+    /* Opponent's Pokemon Fully Rendered (health bar appears) */
+    65% {
+        opacity: 1;
+        transform: translateX(0%);
+        animation-timing-function: ease;
+        }
+    /* Player Pokemon Text (player off screen, text scroll) */
+    73% {
+        opacity: 1;
+        transform: translateX(0%);
+    }
+    /* Player Pokemon Text (player off screen, text scroll) */
+    86% {
+        opacity: 1;
+        transform: translateX(0%);
+    }
+    /* Player Gains Control (fight, item, pkmn, run) */
+    100% {
+        opacity: 1;
+        transform: translateX(0%);
+    }
+}
+
+.battleEnemyText-enter-from, .battleEnemyText-leave-to {
+    opacity: 0;
+}
+.battleEnemyText-enter-active {
+    animation: battleTextIntroAnimationFull 3.7s;
+}
+.battleEnemyText-leave-active {
+    animation: blur-out 0.2s;
+} 
+.battleEnemyText-enter-to {
+    opacity: 1;
+}
+
+/* There are roughly 2.65s from the black screen to when the player gains control of the Pokemon (637 frames @ 240fps) */
+/* DURATION: 2.65s */
+@keyframes battleTextIntroAnimationFull {
+    0% {
+        opacity: 0;
+        transform: translateX(25%);
+    }
+    /* Starts animating when the battle is starting */
+    72% {
+        opacity: 0;
+        transform: translateX(25%);
+        animation-timing-function: ease;
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0%);
+        animation-timing-function: ease;
+    }
+}
+
+.movepool-enter-from {
+    transform: translateY(+100%);
+    opacity: 0;
+}
+.movepool-enter-active {
+    transition: transform 2s ease, opacity .3s ease;
+}
+.movepool-enter-to {
+    transform: translateY(0%);
+    opacity: 1;
+}
+.movepool-leave-active {
+    animation: blur-out-movepool 0.42s;
+} 
+
+@keyframes blur-out-movepool {
+    0% {
+         transform: scale(1);
+         animation-timing-function: ease;
+    }
+    24% {
+        transform: scale(1);
+        opacity: 1;
+        animation-timing-function: ease;
+    }
+    50% {
+        transform: scale(1.015);
+        opacity: 1;
+        animation-timing-function: ease;
+    }
+    100% {
+        transform: scale(1.05);
+        opacity: 0;
+        animation-timing-function: ease;
+    }
+} 

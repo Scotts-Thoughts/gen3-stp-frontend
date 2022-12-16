@@ -1,0 +1,960 @@
+LIST OF IDENTIFIED IN-GAME FLAGS (FIRERED)
+
+002        Apparent temporary flag.
+003        Apparent temporary flag.
+004        Apparent temporary flag.
+005        Apparent temporary flag.
+006        Apparent temporary flag.
+011        Used for a CUT tree in VIRIDIAN CITY.
+        Used for ROCK SMASH boulders in KINDLE ROAD and ROCK TUNNEL (1.82).
+012        Used for CUT trees in
+            VIRIDIAN,PEWTER,VERMILION,FUCHSIA;
+            2+3 ISLES;
+            RTS 8,9,10,12,13,14,16,25;
+            BOND BRIDGE, FIVE ISLE MEADOW;
+            BERRY FOREST;
+            ERIKA's Gym
+        Used for ROCK SMASH boulders in
+            FOUR ISLAND;
+            SEVAULT CANYON;
+            CERULEAN CAVE (1.72, 1.73, 1.74), ROCK TUNNEL (1.82), MT. EMBER (1.97,99,103,104,105,106,107,108)
+013        Used for CUT trees in
+            CERULEAN CITY, CELADON CITY, FUCHSIA CITY;
+            RTS 1, 8, 10, 14;
+            BOND BRIDGE, FIVE ISLE MEADOW;
+            BERRY FOREST;
+            ERIKA's Gym
+        Used for ROCK SMASH boulders in
+            KINDLE ROAD, SEVAULT CANYON;
+            CERULEAN CAVE (1.72, 1.73, 1.74), ROCK TUNNEL (1.82), MT. EMBER (1.97,99,103,104,105,106,108)
+014        Used for CUT trees in
+            CELADON CITY, FUCHSIA CITY;
+            ROUTE 1, ROUTE 10, ROUTE 14;
+            BERRY FOREST;
+            ERIKA's Gym
+        Used for ROCK SMASH boulders in
+            CERULEAN CAVE (1.72, 1.73, 1.74), ROCK TUNNEL (1.82), MT. EMBER (1.97, 1.99, 1.103, 1.104, 1.105, 1.106)
+015        Used for CUT trees in FUCHSIA CITY, ROUTE 1, ROUTE 10, and BERRY FOREST.
+        Used for ROCK SMASH boulders in
+            KINDLE ROAD, SEVAULT CANYON;
+            CERULEAN CAVE (1.72, 1.73, 1.74), ROCK TUNNEL (1.82), MT. EMBER (1.97, 1.99, 1.103, 1.104, 1.105, 1.106)
+016        Used for CUT trees in ROUTE 1 and BERRY FOREST.
+        Used for ROCK SMASH boulders in
+            KINDLE ROAD, SEVAULT CANYON;
+            CERULEAN CAVE (1.72, 1.73, 1.74), ROCK TUNNEL (1.82), MT. EMBER (1.97, 1.99, 1.103, 1.106)
+017        Used for a CUT tree in BERRY FOREST.
+        Used for ROCK SMASH boulders in
+            KINDLE ROAD, SEVAULT CANYON;
+            CERULEAN CAVE (1.72, 1.73, 1.74), ROCK TUNNEL (1.82), MT. EMBER (1.97, 1.99, 1.106)
+018        Used for a CUT tree in BERRY FOREST.
+        Used for ROCK SMASH boulders in
+            KINDLE ROAD, CERULEAN CAVE (1.73, 1.74), ROCK TUNNEL (1.82), MT. EMBER (1.99)
+019        Used for a CUT tree in BERRY FOREST.
+        Used for ROCK SMASH boulders in
+            KINDLE ROAD, CERULEAN CAVE (1.73, 1.74), ROCK TUNNEL (1.82), MT. EMBER (1.99)
+01A        Used for a CUT tree in BERRY FOREST.
+        Used for ROCK SMASH boulders in
+            KINDLE ROAD, CERULEAN CAVE (1.73, 1.74), ROCK TUNNEL (1.82), MT. EMBER (1.99)
+01B        Used for a CUT tree in BERRY FOREST.
+        Used for ROCK SMASH boulders in
+            KINDLE ROAD, SEVAULT CANYON;
+            CERULEAN CAVE (1.73), ROCK TUNNEL (1.82)
+01C        Used for ROCK SMASH boulders in KINDLE ROAD and ROCK TUNNEL (1.82).
+01D        Used for ROCK SMASH boulders in KINDLE ROAD and ROCK TUNNEL (1.82).
+01E        Used for ROCK SMASH boulders in KINDLE ROAD and ROCK TUNNEL (1.82).
+01F        Used for ROCK SMASH boulders in KINDLE ROAD and ROCK TUNNEL (1.82).
+028        Controls visibility of the BULBASAUR BALL OW in OAK's Lab.
+029        Controls visibility of the CHARMANDER BALL OW in OAK's Lab.
+02A        Controls visibility of the SQUIRTLE BALL OW in OAK's Lab.
+02B        Controls visibility of the OAK OW in OAK's Lab (PALLET TOWN (4.3)).
+            Set by GAME START SCRIPT.
+            Cleared after the "Don't go out yet!" OAK Script event.
+02C        Controls visibility of the OAK OW in PALLET TOWN (3.0).
+            Set by GAME START SCRIPT.
+            Set after the wild-battle-with-OAK Script event.
+            Set after OAK welcomes the player back to PALLET TOWN (level script).
+02D        Controls visibility of GARY's OW in OAK's Lab (PALLET TOWN (4.3)).
+02E        Controls visibility of the "You Must Battle Brock" guy in PEWTER CITY.
+            Cleared after he escorts you to the Gym.
+02F        Controls visibility of DOME FOSSIL OW in MT. MOON (1.3).
+            Cleared if you enter MT. MOON (1.3) while 232 is cleared.
+030        Controls visibility of HELIX FOSSIL OW in MT. MOON (1.3).
+            Cleared if you enter MT. MOON (1.3) while 232 is cleared.
+031        Controls visibility of the NUGGET BRIDGE prize-giver OW in ROUTE 24.
+            Set after BILL gives the player the S.S. ANNE TICKET.
+032        Controls visibility of BILL's mutant OW in his cottage (ROUTE 25 (30.0)).
+033        Controls visibility of BILL's OW in his cottage (ROUTE 25 (30.0)).
+            Set by GAME START SCRIPT.
+            Cleared when the player helps BILL turn back into a human being.
+034        Controls visibility of MR. FUJI's OW in POKeMON TOWER (1.94).
+035        Controls visibility of MR. FUJI's OW in LAVENDER TOWN (8.2).
+            Set by GAME START SCRIPT.
+            Cleared after talking to MR. FUJI in POKeMON TOWER.
+036        Controls visibility of an item OW in ROCKET HIDEOUT (1.45).
+            Set by GAME START SCRIPT.
+037        Controls visibility of the item OW (SILPH SCOPE) in ROCKET HIDEOUT (1.45).
+            Set by GAME START SCRIPT.
+            Cleared after beating GIOVANNI for the first time.
+038        Controls visibility of GIOVANNI's OW in ROCKET HIDEOUT (1.45).
+039        Controls visibility of the TOWN MAP OW in Daisy's house (PALLET TOWN (4.2)).
+03A        Controls visibility of the POKEDEX OWs in OAK's Lab (PALLET TOWN (4.3)).
+03B        Controls visibility of the TEAM ROCKET GRUNT OW in CERULEAN CITY.
+03C        Controls visibility of the Rival OW in CERULEAN CITY.
+            Set by GAME START SCRIPT.
+03D        Controls visibility of the Rival OW in S.S. ANNE (1.6).
+            Set by GAME START SCRIPT.
+            Set every time you enter LAVENDER TOWN.
+03E        Controls visibility of the TEAM ROCKET GRUNT OWs in SAFFRON CITY.
+            Set after beating TEAM ROCKET at SILPH CO.
+03F        Controls visibility of the civilian OWs in SAFFRON CITY and the receptionist OW in SILPH CO. (1.47).
+            Set by GAME START SCRIPT.
+            Cleared after beating TEAM ROCKET at SILPH CO.
+040        Controls visibility of a STRENGTH boulder in SEAFOAM ISLANDS (1.83).
+041        Controls visibility of a STRENGTH boulder in SEAFOAM ISLANDS (1.83).
+042        Controls visibility of a STRENGTH boulder in SEAFOAM ISLANDS (1.84).
+043        Controls visibility of a STRENGTH boulder in SEAFOAM ISLANDS (1.84).
+044        Controls visibility of a STRENGTH boulder in SEAFOAM ISLANDS (1.85).
+045        Controls visibility of a STRENGTH boulder in SEAFOAM ISLANDS (1.85).
+046        Controls visibility of a current-blocking STRENGTH boulder in SEAFOAM ISLANDS (1.86).
+047        Controls visibility of a current-blocking STRENGTH boulder in SEAFOAM ISLANDS (1.86).
+048        Controls visibility of a STRENGTH boulder in SEAFOAM ISLANDS (1.86).
+049        Controls visibility of a STRENGTH boulder in SEAFOAM ISLANDS (1.86).
+04A        Controls visibility of a STRENGTH boulder in SEAFOAM ISLANDS (1.86).
+04B        Controls visibility of a STRENGTH boulder in SEAFOAM ISLANDS (1.86).
+04C        Controls visibility of a current-blocking STRENGTH boulder in SEAFOAM ISLANDS (1.87).
+04D        Controls visibility of a current-blocking STRENGTH boulder in SEAFOAM ISLANDS (1.87).
+04E        Controls visibility of Gary's OW in SILPH CO. (1.53).
+04F        Controls visibility of Gary's OW in ROUTE 22.
+            Set by GAME START SCRIPT.
+050        Unknown. Cleared after an NPC escorts you to the MUSEUM in PEWTER CITY.
+051        Controls visibility of Gary's OW in POKeMON TOWER (1.89).
+052        Controls visibility of the MOLTRES OW in MT. EMBER (1.101).
+            Cleared if the player enters the map while 2BD is unset (MOLTRES not fainted/0x5'd).
+053        Controls visibility of TEAM ROCKET GRUNT OWs in SILPH CO., and of GIOVANNI's OW in SILPH CO..
+054        Controls visibility of the SNORLAX OW on ROUTE 12.
+            Set immediately before the battle with the SNORLAX on ROUTE 12.
+055        Controls visibility of GIOVANNI's OW in VIRIDIAN CITY's Gym.
+057        Controls visibility of the EEVEE BALL OW in CELADON CITY (10.11).
+058        Controls visibility of a STRENGTH boulder in VICTORY ROAD (1.40).
+059        Controls visibility of a STRENGTH boulder in VICTORY ROAD (1.41).
+05A        Controls visibility of OAK's OW in POKeMON LEAGUE (1.79).
+            Set by GAME START SCRIPT.
+05B        Controls visibility of a TEAM ROCKET GRUNT OW in the GAME CORNER.
+05C        Controls visibility of the OW that blocks access to CERULEAN CAVE.
+            Set after finishing the CELIO/RUBY/SAPPHIRE subplot.
+05D        Controls visibility of the ZAPDOS OW in POWER PLANT (1.95).
+05E        Controls visibility of a TEAM ROCKET GRUNT in POKeMON TOWER (1.94).
+05F        Controls visibility of the TEAM ROCKET GRUNT OWs in CELADON CITY.
+        Controls visibility of the SILPH CO. employee OW in CELADON CITY.
+            Set after beating GIOVANNI for the first time, in the hideout beneath the GAME CORNER.
+060        Controls visibility of the HITMONLEE BALL OW in the FIGHTING DOJO (SAFFRON CITY (14.2)).
+061        Controls visibility of the HITMONCHAN BALL OW in the FIGHTING DOJO (SAFFRON CITY (14.2)).
+062        Controls visibility of BILL's OW in CINNABAR ISLAND.
+            Set by GAME START SCRIPT.
+            Cleared after beating CINNABAR ISLAND Gym Leader BLAINE, and after encountering BILL in the CINNABAR 
+            ISLAND PokeCenter.
+063        Controls visibility of a Player OW in the Union Room (0.4).
+064        Controls visibility of a Player OW in the Union Room (0.4).
+065        Controls visibility of a Player OW in the Union Room (0.4).
+066        Controls visibility of a Player OW in the Union Room (0.4).
+067        Controls visibility of a Player OW in the Union Room (0.4).
+068        Controls visibility of a Player OW in the Union Room (0.4).
+069        Controls visibility of a Player OW in the Union Room (0.4).
+06A        Controls visibility of a Player OW in the Union Room (0.4).
+06B        Controls visibility of the SEAGALLOP Ferry OW in CINNABAR ISLAND.
+            Set by GAME START SCRIPT.
+06C        Controls visibility of an OW in SAFFRON's fan club. He responds to your TRAINER CARD stickers.
+            Set by GAME START SCRIPT.
+06D        Controls visibility of an OW in SAFFRON's fan club. He responds to your TRAINER CARD stickers.
+            Set by GAME START SCRIPT.
+06E        Controls visibility of an OW in SAFFRON's fan club. She responds to your TRAINER CARD stickers.
+            Set by GAME START SCRIPT.
+06F        Controls visibility of an OW in SAFFRON's fan club. She responds to your TRAINER CARD stickers.
+            Set by GAME START SCRIPT.
+070        Controls visibility of green-suit OW in the second floor of all PokeCenters.
+            Altered by the Pokemon Center 2F level scripts.
+071        Controls visibility of BILL's OW in ONE ISLAND.
+072        Controls visibility of BILL's OW in ONE ISLAND's PokeCenter.
+073        Controls visibility of CELIO's OW in ONE ISLAND's PokeCenter.
+074        Controls visibility of a Biker OW in TWO ISLAND's GAME CORNER.
+            Set by GAME START SCRIPT.
+075        Controls visibility of LOSTELLE's OW in TWO ISLAND's GAME CORNER.
+            Set by GAME START SCRIPT.
+076        Controls visibility of LOSTELLE's OW in her home in THREE ISLAND (THREE ISLAND (34.0)).
+            Set by GAME START SCRIPT.
+079        Controls visibility of Biker OWs in THREE ISLAND and THREE ISLE PORT.
+07A        Controls visibility of LOSTELLE's OW in BERRY FOREST.
+07B        Controls visibility of a shopper OW in TWO ISLAND.
+            Set by GAME START SCRIPT.
+            Cleared when the TWO ISLAND shopkeeper hears about Lostelle. (TWO ISLAND level script.)
+07C        Controls visibility of a BRUNO-rumor-telling OW in TWO ISLAND.
+            Set by GAME START SCRIPT.
+            Cleared when the TWO ISLAND shopkeeper hears about Gym progress. (TWO ISLAND level script.)
+07D        Controls visibility of a shopper OW in TWO ISLAND.
+            Set by GAME START SCRIPT.
+            Cleared when the TWO ISLAND shopkeeper hears about E4 progress. (TWO ISLAND level script.)
+07E        Controls visibility of anti-Biker OWs in THREE ISLAND.
+            Set when entering THREE ISLAND after you've rescued LOSTELLE (2A3 is set).
+080        Controls visibility of the SNORLAX OW in ROUTE 16.
+            Set immediately before the battle with the SNORLAX on ROUTE 16.
+081        Controls visibility of the MEWTWO OW in CERULEAN CAVE (1.74).
+082        Controls visibility of the ARTICUNO OW in SEAFOAM ISLANDS (1.87).
+083        Controls visibility of a TEAM ROCKET GRUNT in POKeMON TOWER (1.94).
+084        Controls visibility of a TEAM ROCKET GRUNT in POKeMON TOWER (1.94).
+085        Controls visibility of a VOLTORB in POWER PLANT (1.95).
+086        Controls visibility of a VOLTORB in POWER PLANT (1.95).
+087        Controls visibility of S.S. ANNE OW in S.S. ANNE (1.4).
+088        Controls visibility of TEAM ROCKET GRUNT OWs in FIVE ISLE MEADOW, OUTCAST ISLAND, and ROCKET WAREHOUSE.
+            Set if the player has defeated TEAM ROCKET at ROCKET WAREHOUSE.
+089        Controls visibility of TEAM ROCKET GRUNT OWs in MT. EMBER (1.97).
+08A        Controls visibility of the RUBY OW in MT. EMBER (1.102).
+08B        Controls visibility of LORELEI's OW in ICEFALL CAVE (1.113).
+08C        Controls visibility of LORELEI's OW in her home on FOUR ISLAND.
+            Set by GAME START SCRIPT.
+            Set after finishing the CELIO/RUBY/SAPPHIRE subplot.
+            Cleared after assisting LORELEI in ICEFALL CAVE.
+08D        Controls visibility of TEAM ROCKET GRUNT OWs in ICEFALL CAVE (1.113).
+08E        Controls visibility of the scientist OW in RUIN VALLEY.
+            Set after assisting LORELEI in ICEFALL CAVE.
+08F        Controls visibility of the SAPPHIRE OW in DOTTED HOLE (1.120).
+090        Controls visibility of the thief OW in DOTTED HOLE (1.120).
+            Set by GAME START SCRIPT.
+091        Controls visibility of one single Biker OW in THREE ISLAND.
+            Set by GAME START SCRIPT.
+            Cleared after a brief confrontation with a biker at the TWO ISLAND GAME CORNER.
+092        Controls visibility of the Running Shoes guy in PEWTER CITY.
+            Set by GAME START SCRIPT.
+            Cleared after beating PEWTER CITY Gym Leader BROCK.
+093        Controls visibility of SELPHY's OW in LOST CAVE (2.22).
+094        Controls visibility of SELPHY's OW in RESORT GORGEOUS.
+            Set by GAME START SCRIPT.
+            Cleared after rescuing SELPHY from LOST CAVE, before warping to RESORT GORGEOUS.
+095        Controls visibility of SELPHY's OW in her home at RESORT GORGEOUS (RESORT GORGEOUS (39.0)).
+            Set by GAME START SCRIPT.
+            Cleared after rescuing SELPHY from LOST CAVE, after she dismisses you from her front door.
+096        Controls visibility of SELPHY's Butler's OW in her home at RESORT GORGEOUS.
+            Set by GAME START SCRIPT.
+097        Controls visibility of GARY's OW in FOUR ISLAND.
+            Set by GAME START SCRIPT.
+            Cleared by one FOUR ISLAND level script if another (Gary encounter) is able to run.
+098        Controls visibility of GARY's OW in SIX ISLAND's PokeCenter.
+099        Controls visibility of the DEOXYS OW in BIRTH ISLAND (2.56).
+            Set by GAME START SCRIPT.
+            Set when entering the map after 2E4 is set.
+09A        Controls visibility of the Triangle OW in BIRTH ISLAND (2.56).
+            Set when entering the map after 2E4 is set. Cleared when wnetering when 2E4 is cleared 
+            and 2F7 (DEOXYS fainted) is unset.
+09B        Controls visibility of the LUGIA OW in NAVEL ROCK (2.38).
+            Set when entering the map after 2F2 is set. Cleared when entering when 2F2 is cleared 
+            and 2F5 (fainted) is unset.
+09C        Controls visibility of the HO-OH OW in NAVEL ROCK (2.37).
+            Set when entering the map after 2F3 is set. Cleared when entering when 2F3 is cleared 
+            and 2F6 (fainted) is unset.
+09D        Controls visibility of certain FAME CHECKER NPCs that spawn in after you beat the Elite Four. It is cleared 
+        during a Hall of Rame room level script.
+            Set by GAME START SCRIPT.
+            Controls visibility of the FUJI fan OW in LAVENDER CITY's PokeCenter.
+            Controls visibility of the LANCE fan OW in SAFFRON CITY (near the Trainer Fan Club).
+            Controls visibility of the BRUNO fan OW in EMBER SPA.
+09E        Controls visibility of two invisible Person events on a bookcase in CELADON CITY (10.8). They contain FAME 
+        CHECKER data on ERIKA.
+            Set by GAME START SCRIPT.
+09F        Unknown.
+            Set by GAME START SCRIPT.
+0A0        Unknown.
+            Set by GAME START SCRIPT.
+0A1        Controls visibility of the OAK Assistant OW in VERMILION CITY.
+            Set by GAME START SCRIPT.
+            Set when entering VERMILION CITY while 2F9 is set.
+0A2        Controls visibility of BILL's OW in the CINNABAR ISLAND PokeCenter.
+            Set by GAME START SCRIPT.
+0A3        Controls visibility of OAK's OW at the INDIGO PLATEAU (3.9).
+            Set by GAME START SCRIPT.
+0A4        Unknown.
+            Set by GAME START SCRIPT.
+            Conditionally cleared by special 1B9.
+0A5        Controls visibility of a MEOWTH Doll OW in LORELEI's home on FOUR ISLAND.
+            Set by GAME START SCRIPT.
+            Conditionally cleared by special 1B9.
+0A6        Controls visibility of a CHANSEY Doll OW in LORELEI's home on FOUR ISLAND.
+            Set by GAME START SCRIPT.
+            Conditionally cleared by special 1B9.
+0A7        Controls visibility of a NIDORANF Doll OW in LORELEI's home on FOUR ISLAND.
+            Set by GAME START SCRIPT.
+            Conditionally cleared by special 1B9.
+0A8        Controls visibility of a JIGGLYPUFF Doll OW in LORELEI's home on FOUR ISLAND.
+            Set by GAME START SCRIPT.
+            Conditionally cleared by special 1B9.
+0A9        Controls visibility of a NIDORANM Doll OW in LORELEI's home on FOUR ISLAND.
+            Set by GAME START SCRIPT.
+            Conditionally cleared by special 1B9.
+0AA        Controls visibility of a FEAROW Doll OW in LORELEI's home on FOUR ISLAND.
+            Set by GAME START SCRIPT.
+            Conditionally cleared by special 1B9.
+0AB        Controls visibility of a PIDGEOT Doll OW in LORELEI's home on FOUR ISLAND.
+            Set by GAME START SCRIPT.
+            Conditionally cleared by special 1B9.
+0AC        Controls visibility of a LAPRAS Doll OW in LORELEI's home on FOUR ISLAND.
+            Set by GAME START SCRIPT.
+            Conditionally cleared by special 1B9.
+0AD        Controls visibility of TEAM ROCKET GRUNT OWs in MT. MOON (1.3) and ROCKET HIDEOUT (all).
+            Set after beating VIRIDIAN CITY Gym Leader GIOVANNI.
+0AE        Unknown.
+            Set by GAME START SCRIPT.
+154        Controls visibility of an item OW in ROUTE 1.
+155        Controls visibility of an item OW in ROUTE 1.
+156        Controls visibility of an item OW in VIRIDIAN FOREST.
+157        Controls visibility of an item OW in VIRIDIAN FOREST.
+158        Controls visibility of an item OW in VIRIDIAN FOREST.
+159        Controls visibility of an item OW in MT. MOON (1.1).
+15A        Controls visibility of an item OW in MT. MOON (1.1).
+15B        Controls visibility of an item OW in MT. MOON (1.1).
+15C        Controls visibility of an item OW in MT. MOON (1.1).
+15D        Controls visibility of an item OW in MT. MOON (1.1).
+15E        Controls visibility of an item OW in MT. MOON (1.1).
+15F        Controls visibility of an item OW in MT. MOON (1.3).
+160        Controls visibility of an item OW in MT. MOON (1.3).
+161        Controls visibility of an item OW in ROUTE 4.
+162        Controls visibility of an item OW in ROUTE 24.
+163        Controls visibility of an item OW in ROUTE 25.
+164        Controls visibility of an item OW in S.S. ANNE (1.13).
+165        Controls visibility of an item OW in S.S. ANNE (1.19).
+166        Controls visibility of an item OW in S.S. ANNE (1.21).
+167        Controls visibility of an item OW in S.S. ANNE (1.25).
+168        Controls visibility of an item OW in S.S. ANNE (1.26).
+169        Controls visibility of an item OW in S.S. ANNE (1.28).
+16A        Controls visibility of an item OW in S.S. ANNE (1.10).
+16B        Controls visibility of an item OW in ROUTE 9.
+16C        Controls visibility of an item OW in ROCKET HIDEOUT (1.42).
+16D        Controls visibility of an item OW in ROCKET HIDEOUT (1.42).
+16E        Controls visibility of an item OW in ROCKET HIDEOUT (1.43).
+16F        Controls visibility of an item OW in ROCKET HIDEOUT (1.43).
+170        Controls visibility of an item OW in ROCKET HIDEOUT (1.43).
+171        Controls visibility of an item OW in ROCKET HIDEOUT (1.43).
+172        Controls visibility of an item OW in ROCKET HIDEOUT (1.44).
+173        Controls visibility of an item OW in ROCKET HIDEOUT (1.44).
+174        Controls visibility of an item OW in ROCKET HIDEOUT (1.45).
+175        Controls visibility of an item OW in ROCKET HIDEOUT (1.45).
+176        Controls visibility of an item OW in ROCKET HIDEOUT (1.45).
+177        Controls visibility of an item OW in POKeMON TOWER (1.90).
+178        Controls visibility of an item OW in POKeMON TOWER (1.91).
+179        Controls visibility of an item OW in POKeMON TOWER (1.91).
+17A        Controls visibility of an item OW in POKeMON TOWER (1.91).
+17B        Controls visibility of an item OW in POKeMON TOWER (1.92).
+17C        Controls visibility of an item OW in POKeMON TOWER (1.93).
+17D        Controls visibility of an item OW in POKeMON TOWER (1.93).
+17E        Controls visibility of an item OW in ROUTE 12.
+17F        Controls visibility of an item OW in ROUTE 12.
+180        Controls visibility of an item OW in ROUTE 15.
+181        Controls visibility of an item OW in SAFARI ZONE (1.63).
+182        Controls visibility of an item OW in SAFARI ZONE (1.64).
+183        Controls visibility of an item OW in SAFARI ZONE (1.64).
+184        Controls visibility of an item OW in SAFARI ZONE (1.64).
+185        Controls visibility of an item OW in SAFARI ZONE (1.64).
+186        Controls visibility of an item OW in SAFARI ZONE (1.65).
+187        Controls visibility of an item OW in SAFARI ZONE (1.65).
+188        Controls visibility of an item OW in SAFARI ZONE (1.66).
+189        Controls visibility of the item OW (GOLD TEETH) in SAFARI ZONE (1.66).
+18A        Controls visibility of an item OW in SAFARI ZONE (1.66).
+18B        Controls visibility of an item OW in SAFARI ZONE (1.66).
+18C        Controls visibility of an item OW in SILPH CO. (1.49).
+18D        Controls visibility of an item OW in SILPH CO. (1.50).
+18E        Controls visibility of an item OW in SILPH CO. (1.50).
+18F        Controls visibility of an item OW in SILPH CO. (1.50).
+190        Controls visibility of an item OW in SILPH CO. (1.51).
+191        Controls visibility of an item OW in SILPH CO. (1.51).
+192        Controls visibility of the item OW (CARD KEY) in SILPH CO. (1.52). Set if the player has the CARD KEY.
+193        Controls visibility of an item OW in SILPH CO. (1.52).
+194        Controls visibility of an item OW in SILPH CO. (1.52).
+195        Controls visibility of an item OW in SILPH CO. (1.53).
+196        Controls visibility of an item OW in SILPH CO. (1.53).
+197        Controls visibility of an item OW in SILPH CO. (1.56).
+198        Controls visibility of an item OW in SILPH CO. (1.56).
+199        Controls visibility of an item OW in SILPH CO. (1.56).
+19A        Controls visibility of an item OW in POWER PLANT (1.95).
+19B        Controls visibility of an item OW in POWER PLANT (1.95).
+19C        Controls visibility of an item OW in POWER PLANT (1.95).
+19D        Controls visibility of an item OW in POWER PLANT (1.95).
+19E        Controls visibility of an item OW in POWER PLANT (1.95).
+19F        Controls visibility of an item OW in POKeMON MANSION (1.59).
+1A1        Controls visibility of an item OW in POKeMON MANSION (1.60).
+1A2        Controls visibility of an item OW in POKeMON MANSION (1.61).
+1A3        Controls visibility of an item OW in POKeMON MANSION (1.61).
+1A4        Controls visibility of an item OW in POKeMON MANSION (1.62).
+1A5        Controls visibility of an item OW in POKeMON MANSION (1.62).
+1A7        Controls visibility of an item OW in POKeMON MANSION (1.62).
+1A8        Controls visibility of the item OW (SECRET KEY) in POKeMON MANSION (1.62).
+            Set if the player has the key for CINNABAR ISLAND's Gym.
+1A9        Controls visibility of an item OW in VICTORY ROAD (1.39).
+1AA        Controls visibility of an item OW in VICTORY ROAD (1.39).
+1AB        Controls visibility of an item OW in VICTORY ROAD (1.40).
+1AC        Controls visibility of an item OW in VICTORY ROAD (1.40).
+1AD        Controls visibility of an item OW in VICTORY ROAD (1.40).
+1AE        Controls visibility of an item OW in VICTORY ROAD (1.40).
+1AF        Controls visibility of an item OW in VICTORY ROAD (1.41).
+1B0        Controls visibility of an item OW in VICTORY ROAD (1.41).
+1B1        Controls visibility of an item OW in CERULEAN CAVE (1.72).
+1B2        Controls visibility of an item OW in CERULEAN CAVE (1.72).
+1B3        Controls visibility of an item OW in CERULEAN CAVE (1.72).
+1B4        Controls visibility of an item OW in CERULEAN CAVE (1.73).
+1B5        Controls visibility of an item OW in CERULEAN CAVE (1.73).
+1B6        Controls visibility of an item OW in CERULEAN CAVE (1.73).
+1B7        Controls visibility of an item OW in CERULEAN CAVE (1.74).
+1B8        Controls visibility of an item OW in CERULEAN CAVE (1.74).
+1B9        Controls visibility of an item OW in FUCHSIA CITY (11.7).
+1BA        Controls visibility of an item OW in TWO ISLAND.
+1BB        Controls visibility of an item OW in THREE ISLAND.
+1BE        Controls visibility of an item OW in VIRIDIAN FOREST.
+1BF        Controls visibility of an item OW in MT. MOON (1.3).
+1C0        Controls visibility of an item OW in MT. MOON (1.3).
+1C1        Controls visibility of an item OW in ROUTE 11.
+1C2        Controls visibility of an item OW in ROUTE 9.
+1C3        Controls visibility of an item OW in ROCK TUNNEL (1.81).
+1C4        Controls visibility of an item OW in ROCK TUNNEL (1.81).
+1C5        Controls visibility of an item OW in ROCK TUNNEL (1.81).
+1C6        Controls visibility of an item OW in ROCK TUNNEL (1.82).
+1C7        Controls visibility of an item OW in ROCK TUNNEL (1.82).
+1C8        Controls visibility of an item OW in SILPH CO. (1.54).
+1C9        Controls visibility of an item OW in SILPH CO. (1.57).
+1CA        Controls visibility of an item OW in POKeMON MANSION (1.59).
+1CB        Controls visibility of an item OW in POKeMON MANSION (1.60).
+1CC        Controls visibility of an item OW in POKeMON MANSION (1.60).
+1CD        Controls visibility of an item OW in VIRIDIAN CITY.
+1CE        Controls visibility of an item OW in ROUTE 11.
+1CF        Controls visibility of an item OW in ROUTE 11.
+1D0        Controls visibility of an item OW in POKeMON TOWER (1.92).
+1D1        Controls visibility of an item OW in CELADON CITY.
+1D2        Controls visibility of an item OW in ROCKET HIDEOUT (1.44).
+1D3        Controls visibility of an item OW in SAFARI ZONE (1.65).
+1D4        Controls visibility of an item OW in SEAFOAM ISLANDS (1.83).
+1D5        Controls visibility of an item OW in SEAFOAM ISLANDS (1.84).
+1D6        Controls visibility of an item OW in SEAFOAM ISLANDS (1.84).
+1D7        Controls visibility of an item OW in SEAFOAM ISLANDS (1.85).
+1D8        Controls visibility of an item OW in SEAFOAM ISLANDS (1.87).
+1D9        Controls visibility of an item OW in FOUR ISLAND.
+1DA        Controls visibility of an item OW in FOUR ISLAND.
+1DB        Controls visibility of an item OW in KINDLE ROAD.
+1DC        Controls visibility of an item OW in KINDLE ROAD.
+1DD        Controls visibility of an item OW in KINDLE ROAD.
+1DE        Controls visibility of an item OW in FIVE ISLE MEADOW.
+1DF        Controls visibility of an item OW in FIVE ISLE MEADOW.
+1E0        Controls visibility of an item OW in MEMORIAL PILLAR.
+1E1        Controls visibility of an item OW in OUTCAST ISLAND.
+1E2        Controls visibility of an item OW in WATER PATH.
+1E3        Controls visibility of an item OW in WATER PATH.
+1E4        Controls visibility of an item OW in RUIN VALLEY.
+1E5        Controls visibility of an item OW in RUIN VALLEY.
+1E6        Controls visibility of an item OW in RUIN VALLEY.
+1E7        Controls visibility of an item OW in SEVAULT CANYON.
+1E8        Controls visibility of an item OW in SEVAULT CANYON.
+1E9        Controls visibility of an item OW in SEVAULT CANYON.
+1EA        Controls visibility of an item OW in BERRY FOREST.
+1EB        Controls visibility of an item OW in BERRY FOREST.
+1EC        Controls visibility of an item OW in BERRY FOREST.
+1ED        Controls visibility of an item OW in MT. EMBER (1.97).
+1EE        Controls visibility of an item OW in MT. EMBER (1.97).
+1EF        Controls visibility of an item OW in MT. EMBER (1.97).
+1F0        Controls visibility of an item OW in ICEFALL CAVE (1.111).
+1F1        Controls visibility of an item OW in ICEFALL CAVE (1.111).
+1F2        Controls visibility of an item OW in ICEFALL CAVE (1.112).
+1F3        Controls visibility of an item OW in ICEFALL CAVE (1.112).
+1F4        Controls visibility of an item OW in ROCKET WAREHOUSE.
+1F5        Controls visibility of an item OW in ROCKET WAREHOUSE.
+1F6        Controls visibility of an item OW in ROCKET WAREHOUSE.
+1F7        Controls visibility of an item OW in ROCKET WAREHOUSE.
+1F8        Controls visibility of an item OW in LOST CAVE (2.22).
+1F9        Controls visibility of an item OW in LOST CAVE (2.23).
+1FA        Controls visibility of an item OW in LOST CAVE (2.24).
+1FB        Controls visibility of an item OW in LOST CAVE (2.25).
+1FC        Controls visibility of an item OW in LOST CAVE (2.26).
+1FD        Controls visibility of an item OW in SEVAULT CANYON (42.0).
+1FE        Controls visibility of an item OW in SILPH CO. (1.50).
+230        Set if the player received a POTION from the salesman on ROUTE 1.
+231        Set if the player has received TM34 SHOCK WAVE from VERMILION CITY Gym Leader LT. SURGE.
+232        Set if the player has taken either of the two fossils from MT. MOON.
+233        Set if the player helped BILL turn back into a human being.
+234        Set if the player received the S.S. ANNE TICKET from BILL.
+235        Unknown. Set after BILL gives the player the S.S. ANNE TICKET.
+236        Set if the player received TM42 from the bereaved man at MEMORIAL PILLAR.
+237        Set if the player received HM01 CUT from the captain of the S.S. ANNE.
+238        Set if the player received HM02 FLY from the woman on ROUTE 16 (map 25.0).
+239        Set if the player received HM03 SURF from the man in the SAFARI ZONE.
+23A        Set if the player received HM04 STRENGTH from the SAFARI ZONE Warden.
+23B        Set if the player received HM05 FLASH from one of OAK's assistants on ROUTE 2 (map 15.2).
+23C        Set after talking to MR. FUJI in POKeMON TOWER. Allows the player to sneak past a TEAM 
+        ROCKET guard in SAFFRON CITY and enter the besieged SILPH CO. skyscraper.
+23D        Set if the player received the POKe FLUTE from MR. FUJI at his home in LAVENDER TOWN.
+23F        Unknown. If set, the hiker in the burglarized CERULEAN house calms down.
+240        Set if the player received the OLD ROD from the fisherman in VERMILION CITY.
+241        Set if the player obtained a BIKE VOUCHER from the man in the POKeMON Fan Club.
+243        Set if the player received the COIN CASE from a man in CELADON CITY.
+            Checked by the internal script that handles hidden item Signposts. (Item ID 0 is 
+            treated as a COINS pickup, you see.)
+244        Set if the player received the GOOD ROD from the fisherman in FUCHSIA CITY.
+245        Set if the player received TM29 PSYCHIC from MR. PSYCHIC in SAFFRON CITY.
+246        Set if the player received LAPRAS from the man in SILPH CO.
+247        Unknown. Checked when the player enters PROF. OAK's lab.
+248        Set if the player traded with a boy on ROUTE 2 (map 15.1).
+249        Set if the player purchased a MAGIKARP from the conman on ROUTE 4 (map 16.0).
+24A        Set if the player traded with an old man in CERULEAN CITY (map 7.2).
+24B        Set if the player traded with a young girl at the UNDERGROUND PATH entrance (map 1.30).
+24D        Set if the player traded with a young girl in VERMILION CITY (map 9.4).
+24E        Set if the player received TM38 FIRE BLAST from CINNABAR ISLAND Gym Leader BLAINE.
+24F        Unknown. Set if the player enters PROF. OAK's lab while 247 is set.
+250        Set if the player received the MASTER BALL from the SILPH CO. PRESIDENT.
+251        Set if the player traded with a boy on ROUTE 11 (map 22.1).
+252        Set if the player received the ITEMFINDER from one of OAK's aides on ROUTE 11 (map 22.1).
+253        Set if the player has battled the SNORLAX on ROUTE 12.
+254        Set if the player has received TM39 ROCK TOMB from PEWTER CITY Gym Leader BROCK.
+255        Set if the player has received the SUPER ROD from the fisherman on ROUTE 12 (map 23.2).
+256        Set if the player has received the EXP. SHARE from one of OAK's aides on ROUTE 15 (map 24.1).
+257        Set if the player traded with a boy on ROUTE 18 (map 26.1).
+258        Set after the first Rival battle. Allows the player to heal at their house in PALLET TOWN.
+259        Set if the player has received TM06 TOXIC from FUCHSIA CITY Gym Leader KOGA.
+25B        Set if the player has received TM27 RETURN from the bereaved woman on ROUTE 12 (map 23.1).
+25E        Set if the player has received OLD AMBER from a man in PEWTER CITY's Museum.
+263        Set if the player has received EEVEE from the Poke Ball OW in CELADON CITY (10.11).
+264        Unknown. Used as part of the trashcan puzzle in VERMILION CITY's Gym.
+265        Unknown. Used as part of the quiz puzzles in CINNABAR ISLAND's Gym.
+266        Set if the FOUR ISLAND Daycare has an EGG waiting for the player. Is directly manipulated by 
+        the game engine.
+26C        Toggles which set of POKeMON MANSION blocked doorways is open.
+26D        Set if the player hit the switch behind the poster in the GAME CORNER.
+26E        Set if the player received 10 COINS from the fisherman in the GAME CORNER.
+26F        Set if the player received 20 COINS from the scientist in the GAME CORNER.
+270        Set if the player received 20 COINS from the gentleman in the GAME CORNER.
+271        Set if the player received a BICYCLE from CERULEAN CITY's bike salesman.
+272        Set if the player chose the DOME FOSSIL (KABUTO) in MT. MOON.
+273        Set if the player chose the HELIX FOSSIL (OMANYTE) in MT. MOON.
+274        Set if the player traded with an old man in CINNABAR ISLAND (map 12.2).
+275        Set if the player traded with a woman in CINNABAR ISLAND (map 12.2).
+276        Set if the player traded with a man in CINNABAR ISLAND (map 12.4).
+278        Set if the player has taken one of the two prize Pokemon from the SAFFRON CITY FIGHTING DOJO.
+27A        SILPH CO. blocked doorway. If set, the door is open.
+27B        SILPH CO. blocked doorway.
+27C        SILPH CO. blocked doorway.
+27D        SILPH CO. blocked doorway.
+27E        SILPH CO. blocked doorway.
+27F        SILPH CO. blocked doorway.
+280        SILPH CO. blocked doorway.
+281        SILPH CO. blocked doorway.
+282        SILPH CO. blocked doorway.
+283        SILPH CO. blocked doorway.
+284        SILPH CO. blocked doorway.
+285        SILPH CO. blocked doorway.
+286        SILPH CO. blocked doorway.
+287        SILPH CO. blocked doorway.
+288        SILPH CO. blocked doorway.
+289        SILPH CO. blocked doorway.
+28A        SILPH CO. blocked doorway.
+28B        SILPH CO. blocked doorway.
+28C        SILPH CO. blocked doorway.
+28D        SILPH CO. blocked doorway.
+290        Set if the player has spoken to the sticker kid on FOUR ISLAND at least once?
+291        Unknown. Checked in a PALLET TOWN level script. Set when the player has chosen a starter.
+293        Set if the player has received TM19 GIGA DRAIN from CELADON CITY Gym Leader ERIKA.
+294        Set if the player has given LEMONADE to the girl on the CELADON Department Store roof.
+            ...in exchange for TM33 REFLECT.
+295        Set if the player has given SODA POP to the girl on the CELADON Department Store roof.
+            ...in exchange for TM20 SAFEGUARD.
+296        Set if the player has given FRESH WATER to the girl on the CELADON Department Store roof.
+            ...in exchange for TM16 LIGHT SCREEN.
+297        Set if the player has received TM03 WATER PULSE from CERULEAN CITY Gym Leader MISTY.
+298        Set if the player has received TM26 EARTHQUAKE from VIRIDIAN CITY Gym Leader GIOVANNI.
+29A        Set if the player has received TM04 CALM MIND from SAFFRON CITY Gym Leader SABRINA.
+29B        Set after beating Gary at CERULEAN CITY.
+29C        Set if the player has shown a MAGIKARP to the fisherman on Route 12 (map 23.2) and had its 
+        size recorded.
+29D        Set if the TWO ISLAND shopkeeper has told you that his shop is new.
+29E        Set if the TWO ISLAND shopkeeper has told you that he now stocks items with help from the 
+        islanders now that you've rescued Lostelle.
+29F        Set if the TWO ISLAND shopkeeper has told you that he "gives it his best".
+2A0        Set if the TWO ISLAND shopkeeper has told you that he now stocks items from distant lands.
+2A1        Unknown. If set, the SEVII ISLAND PokeCenters will "now have PC linkage with people in 
+        KANTO".
+            Set by a level script every time the player enters THREE ISLE PORT (3.49).
+2A2        Set when the player enters TWO ISLAND for the first time.
+2A3        Set after rescuing LOSTELLE in BERRY FOREST, before warping to her home.
+2A5        Set if the palyer picked up the LIFT KEY from the OW (ROCKET HIDEOUT (1.45)).
+            If unset, the ROCKET HIDEOUT elevator does not work. ("It appears to need a key.")
+2A6        Set if the player has received TEA from the old woman in CELADON CITY.
+2AC        If unset, the ROCKET HIDEOUT elevator does not work. ("It appears to need a key.")
+2BB        Set if the player has received a POWDER JAR from a man in CERULEAN CITY.
+2BC        Set if the MEWTWO battle does not end in an 0x4 (escaped) or 0x5 (?) outcome (special B4).
+2BD        Set if the MOLTRES battle does not end in an 0x4 (escaped) or 0x5 (?) outcome (special B4).
+2BE        Set if the ARTICUNO battle does not end in an 0x4 (escaped) or 0x5 (?) outcome (special B4).
+2BF        Set if the ZAPDOS battle does not end in an 0x4 (escaped) or 0x5 (?) outcome (special B4).
+2C0        Set if the ROCK SLIDE Move Tutor has already been used.
+2C1        Set if the THUNDER WAVE Move Tutor has already been used.
+2C2        Set if the ROCK SLIDE Move Tutor has already been used.
+2C3        Set if the EXPLOSION Move Tutor has already been used.
+2C4        Set if the MEGA PUNCH Move Tutor has already been used.
+2C5        Set if the MEGA KICK Move Tutor has already been used.
+2C6        Set if the DREAM EATER Move Tutor has already been used.
+2C7        Set if the SOFTBOILED Move Tutor has already been used.
+2C8        Set if the SUBSTITUTE Move Tutor has already been used.
+2C9        Set if the SWORDS DANCE Move Tutor has already been used.
+2CA        Set if the SEISMIC TOSS Move Tutor has already been used.
+2CB        Set if the COUNTER Move Tutor has already been used.
+2CC        Set if the METRONOME Move Tutor has already been used.
+2CD        Set if the player has given a POKe DOLL to the COPYCAT in SAFFRON CITY.
+2CE        Set if the BODY SLAM Move Tutor has already been used.
+2CF        Unknown. Set when entering PROF. OAK's lab.
+2D0        Set if a POWER PLANT ELECTRODE battle doesn't end in an 0x4 or 0x5 outcome (special B4).
+2D1        Set if a POWER PLANT ELECTRODE battle doesn't end in an 0x4 or 0x5 outcome (special B4).
+2D2        Unknown. Part of the SEAFOAM ISLANDS level scripts that determine whether the fast current is blocked.
+            If not set, a Route 20 level script clears 40 and 41, and sets 42 through 47.
+2D3        Unknown. Part of the SEAFOAM ISLANDS level scripts that determine whether the fast current is blocked.
+            If not set, a Route 20 level script clears 48 through 4B, and sets 4C and 4D.
+2D4        Unknown. Affects LORELEI's dialogue at her home on FOUR ISLAND.
+2D5        Set if the player has defeated TEAM ROCKET at ROCKET WAREHOUSE.
+2D6        If set, the player will be able to enter the ROCKET WAREHOUSE. (The tile will change to one 
+        that enables warps.)
+2D7        Set if the player earned TM42 from the bereaved man at MEMORIAL PILLAR, but had no room for 
+        it. Talking to the man with this flag set will make him remember the player and give the 
+        item if there is now room for it.
+2D8        Set when the SAPPHIRE is stolen from DOTTED HOLE by TEAM ROCKET. Allows the player to enter 
+        both of the necessary passwords to open the door to ROCKET WAREHOUSE.
+2D9        Set if the player has shown a HERACROSS to the woman on WATER PATH (map 41.0) and had its 
+        size recorded.
+2DA        Set if the player received the EGG from the man in the WATER LABYRINTH.
+2DB        Set if the player "earned" the EGG from WATER LABYRINTH, but had no room for it at the time. 
+        Upon talking to the man again, he'll give them the EGG immediately if this flag is set.
+2DC        Set when the player finds the SAPPHIRE at ROCKET WAREHOUSE.
+2DD        Set when the player finds the RUBY in MT. EMBER.
+2E1        Set if the player has learned a starter-only power move from the woman on CAPE BRINK (40.0).
+2E2        Set if the player received a NUGGET from the man in THREE ISLE PATH.
+2E3        Set if the door to the ruins in RUIN VALLEY is open. A level script enables the door warp.
+2E4        Set if the DEOXYS battle doesn't end in a 1, 4 (escaped), or 5 (?) (special B4).
+2EC        Set if the DOME FOSSIL (KABUTO) has been revived.
+2ED        Set if the HELIX FOSSIL (OMANYTE) has been revived.
+2EE        Set if the OLD AMBER (AERODACTYL) has been revived.
+2EF        Set if the player received HM06 ROCK SMASH from the man in EMBER SPA.
+2F0        Set if the VERMILION sailor already knows you have the MYSTICTICKET.
+2F1        Set if the VERMILION sailor already knows you have the AURORATICKET.
+2F2        Set if the LUGIA battle doesn't end in a 1, 4 (escaped), or 5 (?) (special B4).
+2F3        Set if the HO-OH battle doesn't end in a 1 (faint), 4 (escaped), or 5 (?) (special B4).
+2F5        Unknown. Allows you to rebattle a fainted LUGIA if you beat the ELITE FOUR again?
+            Cleared during the Hall of Fame room level script, if the National Dex is already unlocked.
+            Set if the LUGIA battle ends with the Pokemon fainting.
+2F6        Unknown. Allows you to rebattle a fainted HO-OH if you beat the ELITE FOUR again?
+            Cleared during the Hall of Fame room level script, if the National Dex is already unlocked.
+            Set if the HO-OH battle ends with the Pokemon fainting.
+2F7        Unknown. Allows you to rebattle a fainted DEOXYS if you beat the ELITE FOUR again?
+            Cleared during the Hall of Fame room level script, if the National Dex is already unlocked.
+            Set if the DEOXYS battle ends with the Pokemon fainting.
+2F8        Unknown. Affects the dialogue of the TEA-giving woman in CELADON CITY.
+2F9        Set if the player spoke to the OAK assistant in VERMILION CITY. When the player re-enters the map, this flag 
+        will be used by a level script to hide the assistant's OW.
+2FA        Set if the player received an EVERSTONE from one of OAK's assistants on ROUTE 10 (map 21.0).
+2FB        Set if the player received a MOON STONE from the man in the TWO ISLAND GAME CORNER.
+2FC        Set if the player received a FULL RESTORE from a thankful THREE ISLAND civilian.
+2FD        Set if the player received an AMULET COIN from one of OAK's aides on ROUTE 16 (map 25.2).
+2FE        Set if the player earned the MOON STONE from the man in the TWO ISLAND GAME CORNER, but did 
+        not have room for it. The player will receive it if they talk to the man again later.
+2FF        Used by the game's internal PC script. It is set immediately before the plaer is asked if they want their 
+        Pokedex rated, and cleared immediately after (regardless of their selection).
+4B0        Champ-in-making guy flag. Set if the player has defeated PEWTER's Gym Leader, BROCK.
+            Also affects PokeCenter nurse dialog when she heals your Pokemon after a whiteout. If this flag is not 
+            set, she'll offer some advice.
+4B1        Champ-in-making guy flag. Set if the player has defeated CERULEAN's Gym Leader, MISTY.
+4B2        Champ-in-making guy flag. Set if the player has defeated VERMILION's Gym Leader, LT. SURGE.
+4B3        Champ-in-making guy flag. Set if the player has defeated CELADON's Gym Leader, ERIKA.
+4B4        Champ-in-making guy flag. Set if the player has defeated FUCHSIA's Gym Leader, KOGA.
+4B5        Champ-in-making guy flag. Set if the player has defeated SAFFRON's Gym Leader, SABRINA.
+4B6        Champ-in-making guy flag. Set if the player has defeated CINNABAR's Gym Leader, BLAINE.
+4B7        Champ-in-making guy flag. Set if the player has defeated VIRIDIAN's Gym Leader, GIOVANNI.
+4B8        Set if the player has defeated Lorelei during the current attempt at the E4. Cleared in the Hall of Fame room.
+4B9        Set if the player has defeated Bruno during the current attempt at the E4. Cleared in the Hall of Fame room.
+4BA        Set if the player has defeated Agatha during the current attempt at the E4. Cleared in the Hall of Fame room.
+4BB        Set if the player has defeated Lance during the current attempt at the E4. Cleared in the Hall of Fame room.
+4BC        Set if the player has defeated Gary during the current attempt at the E4. Cleared in the Hall of Fame room.
+
+// Flags 500 - 700 are trainer flags. Subtract 0x500 from a normal flag 
+// for the equivalent used in trainer flag script commands.
+
+805        Strength has already been used on this map.
+807        Set just prior to a wild battle triggered by talking to an OW, and cleared just after. Possibly used as a 
+        failsafe for if a player faints during a legendary battle, as that would (I think) terminate script execution.
+820        Unknown. Appears to be set if the player has the TEACHY TV when talking to VIRIDIAN Old Man.
+820        If set, the player has the BOULDERBADGE.
+821        If set, the player has the CASCADEBADGE.
+822        If set, the player has the THUNDERBADGE.
+823        If set, the player has the RAINBOWBADGE.
+824        If set, the player has the SOULBADGE.
+825        If set, the player has the MARSHBADGE.
+826        If set, the player has the VOLCANOBADGE.
+827        If set, the player has the EARTHBADGE.
+828        If set, the POKeMON menu is accessible.
+829        If set, the POKeDEX menu is accessible.
+            Checked by the game's internal PC script.
+            Checked by the game's internal linking functions. ("It appears to be undergoing adjustments...")
+            If not set, the WIRELESS COMMUNICATION CLUB on PokeCenters 2F is disabled.
+            If not set, the MYSTERY GIFT questionnaire in PokeMarts is disabled.
+82C        If set, the player has beaten the Elite Four at least once.
+            Checked during Bruno's, Agatha's, Lance's, and Gary's Elite Four scripts.
+            Checked by the game's internal PC script. 
+            If set, DAISY will groom Pokemon.
+            Does this get set when you obtain the VS SEEKER?
+82D        Set if the player has customized their profile. (Apparently set by the game engine itself?)
+82F        Running Shoes
+830        Unknown. Set if variable 0x405E == 0x1 when entering ROUTE 16 and ROUTE 18.
+834        If set, the player knows the name of BILL's PC. (Unset = "Someone's".)
+            This is used both in normal scripts and in the internal script for the PC.
+839        UNCONFIRMED: Mystery Gift enabled.
+83B        Unknown.
+            Set by special 125.
+83E        Set when talking to some chick in PALLET TOWN that mimics a sign or whatever.
+841        Unknown. Cleared by a level script every time the player enters THREE ISLE PORT (3.49).
+            If set, the PC will be unusable ("The usual PC services aren't available...").
+842        Unknown. Checked after healing at a PokeCenter.
+843        Unknown.
+            Read and written to by special 165.
+844        Set when CELIO successfully connects to LANETTE -- in other words, when you're allowed to 
+        trade to R/S/E.
+846        Set when obtaining the RAINBOW PASS.
+847        Unknown... Set if the player has no berries, or no BERRY POUCH? (Set by the game engine?)
+848        Cleared when entering BIRTH ISLAND when 2E4 is unset and 2F7 (DEOXYS fainted?) is unset.
+849        Set if the player has solved TANOBY KEY.
+84A        If not set, the VERMILION sailor won't check if you have the MYSTICTICKET. You can't use it.
+84B        If not set, the VERMILION sailor won't check if you have the AURORATICKET. You can't use it.
+890        World Map Flag (PALLET TOWN).
+891        World Map Flag (VIRIDIAN CITY).
+892        World Map Flag (PEWTER CITY).
+893        World Map Flag (CERULEAN CITY).
+894        World Map Flag (LAVENDER TOWN).
+895        World Map Flag (VERMILION CITY).
+896        World Map Flag (CELADON CITY).
+897        World Map Flag (FUCHSIA CITY).
+898        World Map Flag (CINNABAR ISLAND).
+899        World Map Flag (INDIGO PLATEAU).
+89A        World Map Flag (SAFFRON CITY).
+89B        World Map Flag (ONE ISLAND).
+            If set, OAK welcomes the player back to PALLET TOWN when they enter the town.
+89C        World Map Flag (TWO ISLAND).
+89D        World Map Flag (THREE ISLAND).
+89E        World Map Flag (FOUR ISLAND).
+89F        World Map Flag (FIVE ISLAND).
+8A0        World Map Flag (SEVEN ISLAND).
+8A1        World Map Flag (SIX ISLAND).
+8A4        World Map Flag (VIRIDIAN FOREST).
+8A5        World Map Flag (MT. MOON (1.1)).
+8A6        World Map Flag (S.S. ANNE (1.4)).
+8A7        World Map Flag (UNDERGROUND PATH (1.31)).
+8A8        World Map Flag (UNDERGROUND PATH (1.34)).
+8A9        World Map Flag (DIGLETT'S CAVE (1.37)).
+8AA        World Map Flag (VICTORY ROAD (1.39)).
+8AB        World Map Flag (ROCKET HIDEOUT (1.42)).
+8AC        World Map Flag (SILPH CO. (1.47)).
+8AD        World Map Flag (POKeMON MANSION (1.59)).
+8AE        World Map Flag (SAFARI ZONE (1.63)).
+8AF        World Map Flag (POKeMON LEAGUE (1.75)).
+8B0        World Map Flag (ROCK TUNNEL (1.81)).
+8B1        World Map Flag (SEAFOAM ISLANDS (1.83)).
+8B2        World Map Flag (POKeMON TOWER (1.88)).
+8B3        World Map Flag (CERULEAN CAVE (1.72)).
+8B4        World Map Flag (POWER PLANT).
+8B5        World Map Flag (NAVEL ROCK (2.0)).
+8B6        World Map Flag (MT. EMBER (1.97)).
+8B7        World Map Flag (BERRY FOREST).
+8B8        World Map Flag (ICEFALL CAVE (1.110)).
+8B9        World Map Flag (ROCKET WAREHOUSE).
+8BA        World Map Flag (TRAINER TOWER (2.10)).
+8BB        World Map Flag (DOTTED HOLE (1.115)).
+8BC        World Map Flag (LOST CAVE (2.12)).
+8BD        World Map Flag (PATTERN BUSH).
+8BE        World Map Flag (ALTERING CAVE).
+8BF        World Map Flag (MONEAN CHAMBER).
+8C0        World Map Flag (THREE ISLE PATH).
+8C1        World Map Flag (TANOBY KEY).
+8C2        World Map Flag (BIRTH ISLAND (2.56)).
+// I have reason to believe that flags 0x890 - 0x8FD 
+// are reserved for World Map Flags, even though you 
+// can't fly to most of them.
+
+
+LIST OF IDENTIFIED ITEM HIDDEN IDS (FIRERED)
+
+UNUSED: 07, 10, 18, 28, 2B, 2C, 2D, 2E, 7C, BC, BF, all above.
+
+00        POTION            VIRIDIAN FOREST (1.0)
+01        ANTIDOTE        VIRIDIAN FOREST (1.0)
+02        MOON STONE        MT. MOON (1.3)
+03        ETHER            MT. MOON (1.3)
+04        ELIXIR            ROUTE 25 (3.44)
+05        ETHER            ROUTE 25 (3.44)
+06        ETHER            ROUTE 9 (3.27)
+08        HYPER POTION        S.S. ANNE (1.8)
+09        SUPER POTION        ROUTE 10 (3.28)
+0A        MAX ETHER        ROUTE 10 (3.28)
+0B        PP UP            ROCKET HIDEOUT (1.42)
+0C        NUGGET            ROCKET HIDEOUT (1.44)
+0D        NEST BALL        ROCKET HIDEOUT (1.45)
+0E        BIG MUSHROOM        POKeMON TOWER (1.92)
+0F        PP UP            ROUTE 13 (3.31)
+11        RARE CANDY        ROUTE 17 (3.35)
+12        FULL RESTORE        ROUTE 17 (3.35)
+13        PP UP            ROUTE 17 (3.35)
+14        MAX REVIVE        ROUTE 17 (3.35)
+15        MAX ELIXIR        ROUTE 17 (3.35)
+16        LEAF STONE        SAFARI ZONE (1.63)
+17        REVIVE            SAFARI ZONE (1.66)
+19        MAX POTION        SILPH CO. (1.55)
+1A        NUGGET            SAFFRON CITY (14.1)
+1B        MAX ELIXIR        POWER PLANT (1.95)
+1C        THUNDERSTONE        POWER PLANT (1.95)
+1D        NUGGET            SEAFOAM ISLANDS (1.86)
+1E        WATER STONE        SEAFOAM ISLANDS (1.87)
+1F        MOON STONE        POKeMON MANSION (1.59)
+20        RARE CANDY        POKeMON MANSION (1.61)
+21        ELIXIR            POKeMON MANSION (1.62)
+22        FULL RESTORE        ROUTE 23 (3.42)
+23        ULTRA BALL        ROUTE 23 (3.42)
+24        MAX ETHER        ROUTE 23 (3.42)
+25        ULTRA BALL        VICTORY ROAD (1.39)
+26        FULL RESTORE        VICTORY ROAD (1.39)
+27        ULTRA BALL        CERULEAN CAVE (1.72)
+29        ESCAPE ROPE        ROUTE 11 (3.29)
+2A        HYPER POTION        ROUTE 12 (3.30)
+2F        PP UP            CELADON CITY (3.6)
+30        MAX ETHER        VERMILION CITY (3.5)
+31        RARE CANDY        CERULEAN CITY (3.3)
+32        GREAT BALL        ROUTE 4 (3.22)
+33        ???????? [0000]        CELADON CITY (10.14) // Amount: $0A -- COINS pickup?!
+34        ???????? [0000]        CELADON CITY (10.14) // Amount: $0A -- COINS pickup?!
+35        ???????? [0000]        CELADON CITY (10.14) // Amount: $14 -- COINS pickup?!
+36        ???????? [0000]        CELADON CITY (10.14) // Amount: $0A -- COINS pickup?!
+37        ???????? [0000]        CELADON CITY (10.14) // Amount: $0A -- COINS pickup?!
+38        ???????? [0000]        CELADON CITY (10.14) // Amount: $14 -- COINS pickup?!
+39        ???????? [0000]        CELADON CITY (10.14) // Amount: $0A -- COINS pickup?!
+3A        ???????? [0000]        CELADON CITY (10.14) // Amount: $0A -- COINS pickup?!
+3B        ???????? [0000]        CELADON CITY (10.14) // Amount: $0A -- COINS pickup?!
+3C        ???????? [0000]        CELADON CITY (10.14) // Amount: $28 -- COINS pickup?!
+3D        ???????? [0000]        CELADON CITY (10.14) // Amount: $64 -- COINS pickup?!
+3E        ???????? [0000]        CELADON CITY (10.14) // Amount: $0A -- COINS pickup?!
+3F        CHERI BERRY        SEVAULT CANYON (3.64)
+40        HEART SCALE        TANOBY RUINS (3.65)
+41        HEART SCALE        TANOBY RUINS (3.65)
+42        HEART SCALE        TANOBY RUINS (3.65)
+43        HEART SCALE        TANOBY RUINS (3.65)
+44        NEST BALL        ROCKET WAREHOUSE (1.114)
+45        NET BALL        ROCKET WAREHOUSE (1.114)
+46        POTION            UNDERGROUND PATH (1.31)
+47        ANTIDOTE        UNDERGROUND PATH (1.31)
+48        PARLYZ HEAL        UNDERGROUND PATH (1.31)
+49        AWAKENING        UNDERGROUND PATH (1.31)
+4A        BURN HEAL        UNDERGROUND PATH (1.31)
+4B        ICE HEAL        UNDERGROUND PATH (1.31)
+4C        ETHER            UNDERGROUND PATH (1.31)
+4D        POTION            UNDERGROUND PATH (1.34)
+4E        ANTIDOTE        UNDERGROUND PATH (1.34)
+4F        PARLYZ HEAL        UNDERGROUND PATH (1.34)
+50        AWAKENING        UNDERGROUND PATH (1.34)
+51        BURN HEAL        UNDERGROUND PATH (1.34)
+52        ICE HEAL        UNDERGROUND PATH (1.34)
+53        ETHER            UNDERGROUND PATH (1.34)
+54        TINYMUSHROOM        MT. MOON (1.2)
+55        TINYMUSHROOM        MT. MOON (1.2)
+56        TINYMUSHROOM        MT. MOON (1.2)
+57        BIG MUSHROOM        MT. MOON (1.2)
+58        BIG MUSHROOM        MT. MOON (1.2)
+59        BIG MUSHROOM        MT. MOON (1.2)
+5A        RAZZ BERRY        BERRY FOREST (1.109)
+5B        BLUK BERRY        BERRY FOREST (1.109)
+5C        NANAB BERRY        BERRY FOREST (1.109)
+5D        WEPEAR BERRY        BERRY FOREST (1.109)
+5E        ORAN BERRY        BERRY FOREST (1.109)
+5F        CHERI BERRY        BERRY FOREST (1.109)
+60        CHESTO BERRY        BERRY FOREST (1.109)
+61        PECHA BERRY        BERRY FOREST (1.109)
+62        RAWST BERRY        BERRY FOREST (1.109)
+63        ASPEAR BERRY        BERRY FOREST (1.109)
+64        PERSIM BERRY        BERRY FOREST (1.109)
+65        PINAP BERRY        BERRY FOREST (1.109)
+66        LUM BERRY        BERRY FOREST (1.109)
+67        STARDUST        TREASURE BEACH (3.46)
+68        STARDUST        TREASURE BEACH (3.46)
+69        PEARL            TREASURE BEACH (3.46)
+6A        PEARL            TREASURE BEACH (3.46)
+6B        ULTRA BALL        TREASURE BEACH (3.46)
+6C        ULTRA BALL        TREASURE BEACH (3.46)
+6D        STAR PIECE        TREASURE BEACH (3.46)
+6E        BIG PEARL        TREASURE BEACH (3.46)
+6F        RARE CANDY        CAPE BRINK (3.47)
+70        POKe BALL        PEWTER CITY (3.2)
+71        ORAN BERRY        ROUTE 3 (3.21)
+72        PERSIM BERRY        ROUTE 4 (3.22)
+73        PECHA BERRY        ROUTE 24 (3.43)
+74        ORAN BERRY        ROUTE 25 (3.44)
+75        BLUK BERRY        ROUTE 25 (3.44)
+76        SITRUS BERRY        ROUTE 6 (3.24)
+77        RARE CANDY        ROUTE 6 (3.24)
+78        PECHA BERRY        S.S. ANNE (1.10)
+79        CHERI BERRY        S.S. ANNE (1.10)
+7A        CHESTO BERRY        S.S. ANNE (1.10)
+7B        RARE CANDY        ROUTE 9 (3.27)
+7D        PERSIM BERRY        ROUTE 10 (3.28)
+7E        CHERI BERRY        ROUTE 10 (3.28)
+7F        RAWST BERRY        ROUTE 8 (3.26)
+80        LUM BERRY        ROUTE 8 (3.26)
+81        LEPPA BERRY        ROUTE 8 (3.26)
+82        RARE CANDY        ROUTE 12 (3.30)
+83        LEFTOVERS        ROUTE 12 (3.30)
+84        LEFTOVERS        ROUTE 16 (3.34)
+85        MAX REVIVE        FUCHSIA CITY (3.7)
+86        NET BALL        ROCKET HIDEOUT (1.45)
+87        ULTRA BALL        SILPH CO. (1.48)
+88        PROTEIN            SILPH CO. (1.49)
+89        IRON            SILPH CO. (1.50)
+8A        PP UP            SILPH CO. (1.51)
+8B        CARBOS            SILPH CO. (1.52)
+8C        ZINC            SILPH CO. (1.53)
+8D        NUGGET            SILPH CO. (1.54)
+8E        CALCIUM            SILPH CO. (1.55)
+8F        HP UP            SILPH CO. (1.56)
+90        REVIVE            SILPH CO. (1.57)
+91        LUM BERRY        ROUTE 23 (3.42)
+92        SITRUS BERRY        ROUTE 23 (3.42)
+93        ASPEAR BERRY        ROUTE 23 (3.42)
+94        LEPPA BERRY        ROUTE 23 (3.42)
+95        ZINC            ROUTE 14 (3.32)
+96        CHESTO BERRY        ROUTE 9 (3.27)
+97        NANAB BERRY        ROUTE 10 (3.28)
+98        WEPEAR BERRY        ROUTE 7 (3.25)
+99        STARDUST        ROUTE 20 (3.38)
+9A        PEARL            ROUTE 21 (3.39)
+9B        MAX ELIXIR        ROUTE 23 (3.42)
+9C        RAZZ BERRY        ROUTE 4 (3.22)
+9D        PINAP BERRY        ROUTE 14 (3.32)
+9E        FIRE STONE        MT. EMBER (1.97)
+9F        SOOTHE BELL        POKeMON TOWER (1.94) // Amount: $81 ?!?
+A0        SACRED ASH        NAVEL ROCK (2.37)
+A1        PP MAX            CAPE BRINK (3.47)
+A2        ULTRA BALL        MT. EMBER (1.97)
+A3        NUGGET            THREE ISLE PATH (2.34)
+A4        PP UP            THREE ISLAND (3.14)
+A5        MAX REPEL        BOND BRIDGE (3.48)
+A6        PEARL            BOND BRIDGE (3.48)
+A7        STARDUST        BOND BRIDGE (3.48)
+A8        PEARL            FOUR ISLAND (3.15)
+A9        ULTRA BALL        FOUR ISLAND (3.15)
+AA        BIG PEARL        MEMORIAL PILLAR (3.57)
+AB        RAZZ BERRY        MEMORIAL PILLAR (3.57)
+AC        SITRUS BERRY        MEMORIAL PILLAR (3.57)
+AD        BLUK BERRY        MEMORIAL PILLAR (3.57)
+AE        NEST BALL        RESORT GORGEOUS (3.54)
+AF        STARDUST        RESORT GORGEOUS (3.54)
+B0        STAR PIECE        RESORT GORGEOUS (3.54)
+B1        STARDUST        RESORT GORGEOUS (3.54)
+B2        STAR PIECE        OUTCAST ISLAND (3.58)
+B3        NET BALL        OUTCAST ISLAND (3.58)
+B4        ULTRA BALL        GREEN PATH (3.59)
+B5        ASPEAR BERRY        WATER PATH (3.60)
+B6        ORAN BERRY        WATER PATH (3.60)
+B7        PINAP BERRY        WATER PATH (3.60)
+B8        LEPPA BERRY        SIX ISLAND (3.18)
+B9        BIG PEARL        TRAINER TOWER (3.62)
+BA        PEARL            TRAINER TOWER (3.62)
+BB        NANAB BERRY        TRAINER TOWER (3.62)
+BD        MACHO BRACE        VIRIDIAN CITY (5.1) // Amount: $81 ?!?
+BE        LAVA COOKIE        S.S. ANNE (1.4)
