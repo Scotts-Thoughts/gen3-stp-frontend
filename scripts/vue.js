@@ -11,8 +11,11 @@ const app = Vue.createApp({
             mapper: null,
 
             // POKEMON CONFIG (components) ---------------------------------------------------------------------//
-            starter:        324, //select starter (1-386)
-            starterString: "Torkoal",
+            starter:        370, //select starter (1-386)
+            starterString: "Luvdisc",
+            pkmnNature: "Adamant",
+            pkmnAbility: "Synchronize",
+            pkmnGrowthRate: "Medium Slow",
             // hpTypeChoice:   "hpDark", //select hidden power type in hp + type. (ie. hpFire, hpDark, hpIce, hpDragon)
             // natureChoice:   "Rash", //select Pokemon nature
             
@@ -494,7 +497,31 @@ const app = Vue.createApp({
         //     }
         // },
 
-
+        growthRate() {
+            console.log(this.dexDataRubySapphireEmerald)
+            var growthRate = this.dexDataRubySapphireEmerald[this.starterString].growth_rate
+            if (growthRate == "GROWTH_MEDIUM_SLOW") {
+                return "Medium Slow"
+            }
+            else if (growthRate == "GROWTH_MEDIUM_FAST") {
+                return "Medium Fast"
+            }
+            else if (growthRate == "GROWTH_FAST") {
+                return "Fast"
+            }
+            else if (growthRate == "GROWTH_SLOW") {
+                return "Slow"
+            }
+            else if (growthRate == "GROWTH_FLUCTUATING") {
+                return "Fluctuating"
+            }
+            else if (growthRate == "GROWTH_ERRATIC") {
+                return "Erratic"
+            }
+            else {
+                return this.dexDataRubySapphireEmerald[starterString].growth_rate
+            }
+        },
 
 
         //BADGE BOOSTS

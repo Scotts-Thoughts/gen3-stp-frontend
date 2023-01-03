@@ -23,7 +23,7 @@
                 <img v-show="graphicOverlay == true" class="frame" src="images/overlay/overlay.png" />
                 <div v-show="labels == true" class="labelAbility">Ability:</div>
                 <div v-show="labels == true" class="labelHeldItem">Held Item:</div>
-                <div v-show="labels == true" class="labelNature">Nature:</div>
+                <div v-show="labels == true" class="labelNature"></div>
                 <div v-show="labels == true" class="labelGametime">Game-time:</div>
             </div>
 
@@ -36,136 +36,11 @@
             </div>
 
 <!--------- BADGE ICONS ---------------------------------------------------------------------------------------------------------------------->
-            <!-- <div v-if="badgeBar == true">
-                <div v-if="mapper.properties.player.badges.badge1.value == true">
-                    <img style="position: absolute;" :src="`images/badges/${versionCheck()}/badge1.png`"/>
-                </div>
-                <div v-if="mapper.properties.player.badges.badge2.value == true">
-                    <img style="position: absolute;" :src="`images/badges/${versionCheck()}/badge2.png`"/>
-                </div>
-                <div v-if="mapper.properties.player.badges.badge3.value == true">
-                    <img style="position: absolute;" :src="`images/badges/${versionCheck()}/badge3.png`"/>
-                </div>
-                <div v-if="mapper.properties.player.badges.badge4.value == true">
-                    <img style="position: absolute;" :src="`images/badges/${versionCheck()}/badge4.png`"/>
-                </div>
-                <div v-if="mapper.properties.player.badges.badge5.value == true">
-                    <img style="position: absolute;" :src="`images/badges/${versionCheck()}/badge5.png`"/>
-                </div>
-                <div v-if="mapper.properties.player.badges.badge6.value == true">
-                    <img style="position: absolute;" :src="`images/badges/${versionCheck()}/badge6.png`"/>
-                </div>
-                <div v-if="mapper.properties.player.badges.badge7.value == true">
-                    <img style="position: absolute;" :src="`images/badges/${versionCheck()}/badge7.png`"/>
-                </div>
-                <div v-if="mapper.properties.player.badges.badge8.value == true">
-                    <img style="position: absolute;" :src="`images/badges/${versionCheck()}/badge8.png`"/>
-                </div>
-            </div> -->
-            <div v-if="badgeBar == true">
-                <div v-if="mapper.properties.player.badges.badge1.value == true">
-                    <img class="badge1" :src="`images/badges/${versionCheck()}/badge1.png`"/>
-                </div>
-                <div v-if="mapper.properties.player.badges.badge2.value == true">
-                    <img class="badge2" :src="`images/badges/${versionCheck()}/badge2.png`"/>
-                </div>
-                <div v-if="mapper.properties.player.badges.badge3.value == true">
-                    <img class="badge3" :src="`images/badges/${versionCheck()}/badge3.png`"/>
-                </div>
-                <div v-if="mapper.properties.player.badges.badge4.value == true">
-                    <img class="badge4" :src="`images/badges/${versionCheck()}/badge4.png`"/>
-                </div>
-                <div v-if="mapper.properties.player.badges.badge5.value == true">
-                    <img class="badge5" :src="`images/badges/${versionCheck()}/badge5.png`"/>
-                </div>
-                <div v-if="mapper.properties.player.badges.badge6.value == true">
-                    <img class="badge6" :src="`images/badges/${versionCheck()}/badge6.png`"/>
-                </div>
-                <div v-if="mapper.properties.player.badges.badge7.value == true">
-                    <img class="badge7" :src="`images/badges/${versionCheck()}/badge7.png`"/>
-                </div>
-                <div v-if="mapper.properties.player.badges.badge8.value == true">
-                    <img class="badge8" :src="`images/badges/${versionCheck()}/badge8.png`"/>
+            <div v-for="x in badges">
+                <div v-if="badgeBar == true && mapper.properties.player.badges[x].value == true">
+                    <img style="position: absolute;" :src="`images/badges/${x}.png`"/>
                 </div>
             </div>
-            <!-- <div v-if="badgeBar == true">
-                <div v-if="mapper.properties.player.badges.badge1.value == true">
-                    <img :src="`images/badges/remakes-scaled/badge1.png`"/>
-                </div>
-                <div v-if="mapper.properties.player.badges.badge2.value == true">
-                    <img :src="`images/badges/remakes-scaled/badge2.png`"/>
-                </div>
-                <div v-if="mapper.properties.player.badges.badge3.value == true">
-                    <img :src="`images/badges/remakes-scaled/badge3.png`"/>
-                </div>
-                <div v-if="mapper.properties.player.badges.badge4.value == true">
-                    <img :src="`images/badges/remakes-scaled/badge4.png`"/>
-                </div>
-                <div v-if="mapper.properties.player.badges.badge5.value == true">
-                    <img :src="`images/badges/remakes-scaled/badge5.png`"/>
-                </div>
-                <div v-if="mapper.properties.player.badges.badge6.value == true">
-                    <img :src="`images/badges/remakes-scaled/badge6.png`"/>
-                </div>
-                <div v-if="mapper.properties.player.badges.badge7.value == true">
-                    <img :src="`images/badges/remakes-scaled/badge7.png`"/>
-                </div>
-                <div v-if="mapper.properties.player.badges.badge8.value == true">
-                    <img :src="`images/badges/remakes-scaled/badge8.png`"/>
-                </div>
-            </div> -->
-            <!-- <div v-if="badgeBar == true">
-                <div v-if="badge1set == true">
-                    <img class="badge1" src="images/badges/emerald/badge1.png"/>
-                </div>
-                <div v-if="badge2set == true">
-                    <img class="badge2" src="images/badges/emerald/badge2.png"/>
-                </div>
-                <div v-if="badge3set == true">
-                    <img class="badge3" src="images/badges/emerald/badge3.png"/>
-                </div>
-                <div v-if="badge4set == true">
-                    <img class="badge4" src="images/badges/emerald/badge4.png"/>
-                </div>
-                <div v-if="badge5set == true">
-                    <img class="badge5" src="images/badges/emerald/badge5.png"/>
-                </div>
-                <div v-if="badge6set == true">
-                    <img class="badge6" src="images/badges/emerald/badge6.png"/>
-                </div>
-                <div v-if="badge7set == true">
-                    <img class="badge7" src="images/badges/emerald/badge7.png"/>
-                </div>
-                <div v-if="badge8set == true">
-                    <img class="badge8" src="images/badges/emerald/badge8.png"/>
-                </div>
-            </div> -->
-            <!-- <div v-else-if="badgeBar == false && useBadgeOverride == true">
-                <div v-if="badge1set == true">
-                    <img class="badge1" src="images/badges/emerald/badge1.png"/>
-                </div>
-                <div v-if="badge2set == true">
-                    <img class="badge2" src="images/badges/emerald/badge2.png"/>
-                </div>
-                <div v-if="badge3set == true">
-                    <img class="badge3" src="images/badges/emerald/badge3.png"/>
-                </div>
-                <div v-if="badge4set == true">
-                    <img class="badge4" src="images/badges/emerald/badge4.png"/>
-                </div>
-                <div v-if="badge5set == true">
-                    <img class="badge5" src="images/badges/emerald/badge5.png"/>
-                </div>
-                <div v-if="badge6set == true">
-                    <img class="badge6" src="images/badges/emerald/badge6.png"/>
-                </div>
-                <div v-if="badge7set == true">
-                    <img class="badge7" src="images/badges/emerald/badge7.png"/>
-                </div>
-                <div v-if="badge8set == true">
-                    <img class="badge8" src="images/badges/emerald/badge8.png"/>
-                </div>
-            </div> -->
 <!--------- STATE MANAGEMENT ----------------------------------------------------------------------------------------------------------------->
             <div v-if="gamestate == true">
                 <div class="gamestate">Gamestate: {{ g3state() }}<br><br>
@@ -202,8 +77,11 @@
 
 <!--------- STATS ---------------------------------------------------------------------------------------------------------------------------->
             <!-- STATS OVERLAY GRAPHIC  -->
+            <div class="nature">{{ pkmnNature }}</div>
+            <div class="ability">{{ pkmnAbility }}</div>
             <div class="statsContainer" v-show="stats == true" id="stats">
                 <!-- STATS LABELS ------------------------------------------------------------------------------>
+                <div class="growthRate">{{ growthRate() }}</div>
                 <div class="labelHp">HP</div>
                 <div v-bind:style="{opacity: statLabelOpacity(mapper.properties.battle.yourPokemon.modStageAttack)}" class="labelAtk">Atk.</div>
                 <div v-bind:style="{opacity: statLabelOpacity(mapper.properties.battle.yourPokemon.modStageDefense)}" class="labelDef">Def.</div>
@@ -214,22 +92,19 @@
                 <!-- BASE STATS -------------------------------------------------------------------------------->  
                 <div v-if="mapper.properties.player.team[0].personalityValue.value > 0">
                     <div class="gameTime">{{ mapper.properties.gameTime.hours }}:{{ gameTimeM(mapper.properties.gameTime.minutes) }}</div>
-                    <!-- <div class="statsheader">Level {{ bufferLevel }}</div>
-                    <div class="nature">{{ natureCalculation(mapper.properties.player.team[0].personalityValue.value) }}</div>
-                    <div class="heldItem">{{ nullToNone(camelCase(mapper.properties.player.team[0].itemHeld.value)) }}</div>
-                    <div class="ability">{{ camelCase(mapper.properties.battle.yourPokemon.ability.value) }}</div> -->
+
 
                     <div v-if="g3state() == `New Game` || g3state() == `No Pokemon` || g3state() == `Reset` || g3state() == `Error`">
-                        <div class="statsheader">Level {{ bufferLevel }}</div>
-                        <div class="nature">{{ natureCalculation(bufferNature) }}</div>
+                        <div class="statsheader">Level {{ mapper.properties.player.team[0].level.value }}</div>
                         <div class="heldItem">{{ nullToNone(camelCase(bufferHeldItem)) }}</div>
-                        <div class="ability">{{ camelCase(bufferAbility) }}</div>
+                    </div>
+                    <div v-else-if="g3state() == `Overworld`">
+                        <div class="statsheader">Level {{ mapper.properties.player.team[0].level.value }}</div>
+                        <div class="heldItem">{{ nullToNone(camelCase(mapper.properties.player.team[0].itemHeld.value)) }}</div>
                     </div>
                     <div v-else-if="g3state() != `New Game` || g3state() != `No Pokemon` || g3state() != `Reset` || g3state() != `Error`">
                         <div class="statsheader">Level {{ mapper.properties.player.team[0].level.value }}</div>
-                        <div class="nature">{{ natureCalculation(mapper.properties.player.team[0].personalityValue.value) }}</div>
                         <div class="heldItem">{{ nullToNone(camelCase(mapper.properties.player.team[0].itemHeld.value)) }}</div>
-                        <div class="ability">{{ camelCase(mapper.properties.battle.yourPokemon.ability.value) }}</div>
                     </div>
 
                     <div class="statsColumn1">
@@ -309,6 +184,13 @@
                     <div class="move4power">{{ typeEffectiveness(mapper.properties.player.team[0].move4.value) }}</div>
                     <img class="move4icon" :src="moveTypeIcon(mapper.properties.player.team[0].move4.value)" />
                 </div>
+            </div>
+
+            <!--------- EXP BAR -------------------------------------------------------------------------------------------------------------->
+            <div>
+                <div class="expMeterOuter"><div class="expMeterInner" :style="{ width: expPercent(mapper.properties?.player.team[0]) + '%' }"></div></div>
+                <div v-show="labels == true" class="labelEXP">Exp:</div>
+                <img src="images/elements/ui/expLabel.png" style="top: 0px; position: absolute;">
             </div>
         </div>
     </div>

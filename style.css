@@ -136,23 +136,34 @@ canvas {  /* or some other selector */
 
 .typeMono {
     position: absolute;
-    transform: scale(.10);
-    top: 320px;
-    left: -605px;
+    transform: scale(.095);
+    top: 300px;
+    left: -625px;
     z-index: -70;
+}
+.typeIconContainer {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 20;
+    grid-row-end: 22;
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    align-content: center;
+    filter: drop-shadow(2px 1px 2px #000)
 }
 .type1 {
     position: absolute;
-    transform: scale(.10);
-    top: 0px;
-    left: 0px;
-    z-index: 200;
+    transform: scale(.095);
+    top: 300px;
+    left: -705px;
+    z-index: -70;
 }
 .type2 {
     position: absolute;
-    transform: scale(.10);
-    top: 320px;
-    left: -525px;
+    transform: scale(.095);
+    top: 300px;
+    left: -545px;
     z-index: -70;
 }
 
@@ -204,6 +215,18 @@ canvas {  /* or some other selector */
     font-family: osb;
     font-weight: 500
 }
+.labelEXP {
+    font-size: 24px;
+    position: fixed;
+    line-height: 37.3px;
+    top: 832px;
+    left: 20.5px;
+    opacity: .7;
+    z-index: 30002;
+    text-align: left;
+    font-family: osb;
+    font-weight: 500
+}
 
 
 /* STATS (INDEX 0 to 10) */
@@ -222,34 +245,36 @@ canvas {  /* or some other selector */
     text-align: center;
     width: 400px;
     left: -80px;
-    top: 333px;
+    top: 320px;
     z-index: 1;
     /* filter: drop-shadow(1px 1px 0px rgb(0, 0, 0)); */
 }
 .expMeterOuter {
     position: absolute;
-    border-radius: 18px;
+    border-radius: 4px;
     background: linear-gradient(rgb(239, 239, 239), rgb(157, 157, 157));
-    width: 355px;
-    height: 7px;
-    top: 852px;
-    left: 21px;
-    z-index: 2;
+    width: 277px;
+    height: 14px;
+    top: 856px;
+    left: 68px;
+    z-index: 0;
 }
 
 .expMeterInner {
     position: relative;
-    border-radius: 18px;
-    background: linear-gradient(hsl(191, 100%, 25%), rgb(0, 183, 255)5%);
-    width: 355px;
-    height: 7px;
+    border-radius: 4px;
+    background: linear-gradient(90deg,hsl(189, 92%, 45%), hsl(187, 100%, 69%));
+    width: 277px;
+    top: -1px;
+    height: 16px;
+    border: 1px solid #000;
     /* background:rgb(0, 217, 255); */
 }
 .statsLabelsColumn1 {
     font-size: 30px;
     position: absolute;
     line-height: 58px;
-    top: 891px;
+    top: 883px;
     left: -25px;
     z-index: 3;
     text-align: left;
@@ -274,7 +299,7 @@ canvas {  /* or some other selector */
     font-size: 30px;
     position: absolute;
     line-height: 59px;
-    top: 891px;
+    top: 883px;
     left: 184px;
     z-index: 3;
     text-align: left;
@@ -283,11 +308,11 @@ canvas {  /* or some other selector */
 }
 .statsColumn1 {
     display: block;
-    font-size: 56px;
+    font-size: 54px;
     position: absolute;
-    line-height: 60px;
-    top: 421px;
-    right: 964px;
+    line-height: 62px;
+    top: 413px;
+    right: 968px;
     z-index: 4;
     text-align: right;
     font-family: osb;
@@ -295,11 +320,11 @@ canvas {  /* or some other selector */
 }
 .statsColumn2 {
     display: block;
-    font-size: 56px;
+    font-size: 54px;
     position: absolute;
-    line-height: 60px;
-    top: 421px;
-    right: 796px;
+    line-height: 62px;
+    top: 413px;
+    right: 801px;
     z-index: 4;
     text-align: right;
     font-family: osb;
@@ -1026,11 +1051,11 @@ canvas {  /* or some other selector */
 }
 
 .labelHp {
-    font-size: 30px;
+    font-size: 28px;
     position: fixed;
     line-height: 37.3px;
-    top: 895px;
-    left: 18px;
+    top: 888px;
+    left: 20px;
     opacity: .6;
     text-align: left;
     font-family: osb;
@@ -1038,11 +1063,11 @@ canvas {  /* or some other selector */
 }
 
 .labelAtk {
-    font-size: 32px;
+    font-size: 28px;
     position: fixed;
     line-height: 37.3px;
-    top: 953px;
-    left: 18px;
+    top: 948px;
+    left: 20px;
     opacity: .6;
     text-align: left;
     font-family: osb;
@@ -1050,11 +1075,11 @@ canvas {  /* or some other selector */
 }
 
 .labelDef {
-    font-size: 32px;
+    font-size: 28px;
     position: fixed;
     line-height: 37.3px;
-    top: 1012px;
-    left: 18px;
+    top: 1011px;
+    left: 20px;
     opacity: .6;
     text-align: left;
     font-family: osb;
@@ -1065,8 +1090,8 @@ canvas {  /* or some other selector */
     font-size: 28px;
     position: fixed;
     line-height: 27px;
-    top: 945px;
-    left: 185px;
+    top: 877px;
+    left: 187px;
     opacity: .6;
     text-align: left;
     font-family: osb;
@@ -1077,8 +1102,8 @@ canvas {  /* or some other selector */
     font-size: 28px;
     position: fixed;
     line-height: 27px;
-    top: 1004px;
-    left: 185px;
+    top: 939px;
+    left: 187px;
     opacity: .6;
     text-align: left;
     font-family: osb;
@@ -1090,8 +1115,8 @@ canvas {  /* or some other selector */
     position: fixed;
     line-height: 37.3px;
     z-index: 1000;
-    top: 894px;
-    left: 185px;
+    top: 1011px;
+    left: 187px;
     opacity: .6;
     text-align: left;
     font-family: osb;
@@ -1169,12 +1194,12 @@ canvas {  /* or some other selector */
     font-weight: 500
 }
 .aDMods {
-    font-size: 44px;
-    color: rgb(0, 0, 0);
+    font-size: 40px;
+    color: rgb(54, 54, 54);
     position: absolute;
-    line-height: 59px;
+    line-height: 61.5px;
     z-index: 1000;
-    top: 482px;
+    top: 476px;
     left: -114px;
     width: 200px;
     text-align: center;
@@ -1182,12 +1207,12 @@ canvas {  /* or some other selector */
     font-weight: 500
 }
 .sSASDMods {
-    font-size: 44px;
-    color: rgb(0, 0, 0);
+    font-size: 40px;
+    color: rgb(54, 54, 54);
     position: fixed;
-    line-height: 59px;
+    line-height: 61.5px;
     z-index: 1000;
-    top: 883px;
+    top: 875px;
     left: 108px;
     width: 200px;
     text-align: center;
@@ -1237,7 +1262,7 @@ canvas {  /* or some other selector */
     z-index: 20000;
 }
 .gametime {
-    font-size: 24px;
+    font-size: 20px;
     position: absolute;
     left: -1369px;
     top: 18px;
@@ -1251,10 +1276,24 @@ canvas {  /* or some other selector */
     font-weight: 700
 }
 .nature {
-    font-size: 38px;
+    font-size: 20px;
     position: fixed;
-    left: -1448px;
-    top: 843px;
+    left: -1342px;
+    top: 827px;
+    bottom: 0px;
+    right: 0px;
+    z-index: 5;
+    line-height: 34px;
+    text-transform: capitalize;
+    text-align: center;
+    font-family: osb;
+    font-weight: 700
+}
+.growthRate {
+    font-size: 20px;
+    position: fixed;
+    left: -1618px;
+    top: 827px;
     bottom: 0px;
     right: 0px;
     z-index: 5;
@@ -1281,9 +1320,9 @@ canvas {  /* or some other selector */
 }
 
 .gameTime {
-    font-size: 27px;
+    font-size: 22px;
     position: fixed;
-    left: -1330px;
+    left: -1328px;
     top: 16px;
     bottom: 0px;
     right: 0px;
