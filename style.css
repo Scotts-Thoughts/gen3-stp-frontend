@@ -489,6 +489,24 @@ canvas {  /* or some other selector */
 
 
 /* ENEMY STATS */
+.enemyGraphic {
+    display: block;
+    position: absolute;
+    font-family: play;
+    /* top: 1082px; */
+    left: 1540px;
+    border: 1px solid rgba(255, 0, 0, 0);
+}
+.enemyPng {
+    display: block;
+    position: absolute;
+    top: 0px;
+    width: 1920px;
+    object-fit: cover;
+    object-position: top right;
+    height: 1080px;
+    z-index: -1;
+}
 .enemyPokemonName {
     display: block;
     font-size: 32px;
@@ -738,13 +756,13 @@ canvas {  /* or some other selector */
 /* BAG OVERLAY */
 .movepoolTitle {
     display: block;
-    font-size: 32px;
-    max-width:1920px;
-    max-height:1080px;
-    text-align: right; /* need a fix */
+    border: 1px solid rgba(255, 0, 0, 0);
+    font-size: 24px;
+    width: 340px;
+    text-align: center; /* need a fix */
     position: absolute;
-    top: 36px;
-    left: 1628px;
+    top: 27px;
+    left: 1570px;
     font-family: titan;
     z-index: 600;
 }
@@ -1051,10 +1069,10 @@ canvas {  /* or some other selector */
 }
 
 .labelHp {
-    font-size: 28px;
+    font-size: 24px;
     position: fixed;
     line-height: 37.3px;
-    top: 888px;
+    top: 886px;
     left: 20px;
     opacity: .6;
     text-align: left;
@@ -1063,7 +1081,7 @@ canvas {  /* or some other selector */
 }
 
 .labelAtk {
-    font-size: 28px;
+    font-size: 24px;
     position: fixed;
     line-height: 37.3px;
     top: 948px;
@@ -1075,10 +1093,10 @@ canvas {  /* or some other selector */
 }
 
 .labelDef {
-    font-size: 28px;
+    font-size: 24px;
     position: fixed;
     line-height: 37.3px;
-    top: 1011px;
+    top: 1009px;
     left: 20px;
     opacity: .6;
     text-align: left;
@@ -1087,7 +1105,7 @@ canvas {  /* or some other selector */
 }
 
 .labelSpcAtk {
-    font-size: 28px;
+    font-size: 24px;
     position: fixed;
     line-height: 27px;
     top: 877px;
@@ -1099,7 +1117,7 @@ canvas {  /* or some other selector */
 }
 
 .labelSpcDef {
-    font-size: 28px;
+    font-size: 24px;
     position: fixed;
     line-height: 27px;
     top: 939px;
@@ -1111,11 +1129,11 @@ canvas {  /* or some other selector */
 }
 
 .labelSpd {
-    font-size: 30px;
+    font-size: 24px;
     position: fixed;
     line-height: 37.3px;
     z-index: 1000;
-    top: 1011px;
+    top: 1009px;
     left: 187px;
     opacity: .6;
     text-align: left;
@@ -1891,3 +1909,273 @@ canvas {  /* or some other selector */
         animation-timing-function: ease;
     }
 } 
+
+.fadeBattle-enter-from {
+	opacity: 0;
+}
+.fadeBattle-enter-to {
+	opacity: 1;
+}
+.fadeBattle-enter-active {
+	transition: opacity .15s ease;
+}
+.fadeBattle-leave-from {
+	opacity: 1;
+}
+.fadeBattle-leave-to {
+	opacity: 0;
+}
+.fadeBattle-leave-active {
+	transition: opacity .15s ease;
+}
+
+.ePkmn1 {
+    border: 1px solid rgba(255, 102, 0, 0);
+    position: relative;
+    height: 160px;
+    width: 350px;
+    left: 24px;
+    top: 69px;
+}
+.ePkmn2 {
+    border: 1px solid rgba(255, 102, 0, 0);
+    position: relative;
+    height: 160px;
+    width: 350px;
+    left: 24px;
+    top: 235px;
+}
+.ePkmn3 {
+    border: 1px solid rgba(255, 102, 0, 0);
+    position: relative;
+    height: 160px;
+    width: 350px;
+    left: 24px;
+    top: 403px;
+}
+.ePkmn4 {
+    border: 1px solid rgba(255, 102, 0, 0);
+    position: relative;
+    height: 160px;
+    width: 350px;
+    left: 24px;
+    top: 570px;
+}
+.ePkmn5 {
+    border: 1px solid rgba(255, 102, 0, 0);
+    position: relative;
+    height: 160px;
+    width: 350px;
+    left: 24px;
+    top: 737px;
+}
+.ePkmn6 {
+    border: 1px solid rgba(255, 102, 0, 0);
+    position: relative;
+    height: 160px;
+    width: 350px;
+    left: 24px;
+    top: 905px;
+}
+
+.ePkmnSpecies {
+    position: absolute;
+    border: 1px solid rgba(0, 255, 149, 0);
+    font-size: 17px;
+    font-family: titan;
+    width: 120px;
+    opacity: .7;
+    text-align: center;
+    top: 2px;
+    left: 12px;
+}
+.ePkmnLevel {
+    position: absolute;
+    /* border: 1px solid rgb(0, 255, 149); */
+    font-size: 18px;
+    font-family: titan;
+    width: 68px;
+    opacity: .7;
+    text-align: center;
+    top: 128px;
+    left: 11px;
+    background:hwb(0 53% 47% / 0.9);
+    border: 1px solid #000;
+    border-radius: 5px;
+    filter: drop-shadow(0px 0px 5px)
+}
+.ePkmnSprite {
+    position: absolute;
+    border: 1px solid rgba(255, 0, 0, 0);
+    max-width: 118px;
+    max-height: 118px;
+    left: 8px;
+    top: 30px;
+    filter: drop-shadow(2px 2px 2px #000)
+}
+.ePkmnMove1 {
+    position: absolute;
+    border: 1px solid rgba(47, 0, 255, 0);
+    width: 158px;
+    font-size: 20px;
+    line-height: 33px;
+    text-align: center;
+    left: 183px;
+    top: 6px;
+    /* font-size: 22px; */
+}
+.ePkmnMove2 {
+    position: absolute;
+    border: 1px solid rgba(47, 0, 255, 0);
+    width: 158px;
+    font-size: 20px;
+    line-height: 33px;
+    text-align: center;
+    left: 183px;
+    top: 42px;
+}
+.ePkmnMove3 {
+    position: absolute;
+    border: 1px solid rgba(47, 0, 255, 0);
+    width: 158px;
+    font-size: 20px;
+    line-height: 33px;
+    text-align: center;
+    left: 183px;
+    top: 79px;
+}
+.ePkmnMove4 {
+    position: absolute;
+    border: 1px solid rgba(47, 0, 255, 0);
+    width: 158px;
+    font-size: 20px;
+    line-height: 33px;
+    text-align: center;
+    left: 183px;
+    top: 117px;
+}
+.ePkmnHp {
+    position: absolute;
+    border: 1px solid rgba(255, 0, 0, 0);
+    width: 46px;
+    font-size: 19px;
+    text-align: center;
+    line-height: 20px;
+    top: 8px;
+    left: 134px;
+}
+.ePkmnAtk {
+    position: absolute;
+    border: 1px solid rgba(255, 0, 0, 0);
+    width: 46px;
+    font-size: 19px;
+    text-align: center;
+    line-height: 20px;
+    top: 32px;
+    left: 134px;
+
+}
+.ePkmnDef {
+    position: absolute;
+    border: 1px solid rgba(255, 0, 0, 0);
+    text-align: center;
+    font-size: 19px;
+    line-height: 20px;
+    width: 46px;
+    top: 56px;
+    left: 134px;
+
+}
+.ePkmnSpa {
+    position: absolute;
+    border: 1px solid rgba(255, 0, 0, 0);
+    text-align: center;
+    font-size: 19px;
+    line-height: 20px;
+    width: 46px;
+    top: 80px;
+    left: 134px;
+}
+.ePkmnSpd {
+    position: absolute;
+    border: 1px solid rgba(255, 0, 0, 0);
+    text-align: center;
+    font-size: 19px;
+    line-height: 20px;
+    width: 46px;
+    top: 105px;
+    left: 134px;
+}
+.ePkmnSpe {
+    position: absolute;
+    border: 1px solid rgba(255, 0, 0, 0);
+    text-align: center;
+    font-size: 19px;
+    line-height: 20px;
+    width: 46px;
+    top: 128.5px;
+    left: 134px;
+}
+.seHp {
+    position: absolute;
+    /* border: 1px solid rgb(255, 0, 0); */
+    text-align: center;
+    font-size: 16px;
+    width: 100px;
+    left: 4px;
+    top: 858px;
+}
+.seAtk {
+    position: absolute;
+    /* border: 1px solid rgb(255, 0, 0); */
+    text-align: center;
+    font-size: 16px;
+    width: 100px;
+    left: 4px;
+    top: 920px;
+}
+.seDef {
+    position: absolute;
+    /* border: 1px solid rgb(255, 0, 0); */
+    text-align: center;
+    font-size: 16px;
+    width: 100px;
+    left: 3px;
+    top: 982px;
+}
+.seSpe {
+    position: absolute;
+    /* border: 1px solid rgb(255, 0, 0); */
+    text-align: center;
+    font-size: 16px;
+    width: 100px;
+    left: 186px;
+    top: 858px;
+}
+.seSpc1 {
+    position: absolute;
+    /* border: 1px solid rgb(255, 0, 0); */
+    text-align: center;
+    font-size: 16px;
+    width: 100px;
+    left: 187px;
+    top: 920px;
+}
+.seSpc2 {
+    position: absolute;
+    /* border: 1px solid rgb(255, 0, 0); */
+    text-align: center;
+    font-size: 16px;
+    width: 100px;
+    left: 187px;
+    top: 982px;
+}
+.seHpVitamin {
+    position: absolute;
+    /* border: 1px solid rgb(255, 0, 0); */
+    text-align: center;
+    font-size: 42px;
+    width: 100px;
+    left: 1px;
+    top: 865px;
+}

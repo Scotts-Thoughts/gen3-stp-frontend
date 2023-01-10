@@ -20,7 +20,7 @@
         <div v-else>
 <!------ GRAPHIC OVERLAY ----------------------------------------------------------------------------------------------------------------------->
             <div>
-                <img v-show="graphicOverlay == true" class="frame" src="images/overlay/overlay.png" />
+                <img v-show="graphicOverlay == true" class="frame" :src="`images/overlay/${starterString}.png`" />
                 <div v-show="labels == true" class="labelAbility">Ability:</div>
                 <div v-show="labels == true" class="labelHeldItem">Held Item:</div>
                 <div v-show="labels == true" class="labelNature"></div>
@@ -44,13 +44,13 @@
 <!--------- STATE MANAGEMENT ----------------------------------------------------------------------------------------------------------------->
             <div v-if="gamestate == true">
                 <div class="gamestate">Gamestate: {{ g3state() }}<br><br>
-                    Type: {{ hiddenPowerTypeCalc(mapper.properties.player.team[0]) }}<br>
+                    <!-- Type: {{ hiddenPowerTypeCalc(mapper.properties.player.team[0]) }}<br>
                     Power: {{ hiddenPowerPowerCalc(mapper.properties.player.team[0]) }}<br><br>
                     DetermineSTAB: {{ determineSTAB(this.mapper.properties.player.team[0].move1.value) }}<br>
                     Item: {{ this.mapper.properties.player.team[0].itemHeld.value }}<br>
                     Item Boost: {{ determineItemBoost(this.mapper.properties.player.team[0].move4.value) }}<br><br>
                     GS-new: {{ g3state() }}<br>
-                    started: {{ gameStarted }}
+                    started: {{ gameStarted }} -->
                 </div>
             </div>
             
@@ -192,6 +192,35 @@
                 <div v-show="labels == true" class="labelEXP">Exp:</div>
                 <img src="images/elements/ui/expLabel.png" style="top: 0px; position: absolute;">
             </div>
+
+<!--------- MOVEPOOL --------------------------------------------------------------------------------------------------------------------------------->
+            <transition name="fadeBattle" style="position: relative;">
+                <div v-if="g3state() == `Battle` && mapper.properties.battle.type.trainer.value == true">
+                    <div class="movepoolTitle">{{ enemyTrainer.trainer_name }}</div>
+                    <!-- <img :src="`images/enemy_area/${starterString.toLowerCase()}.png`"/> -->
+                    <!-- <img :src="`images/enemy_area/${starterString.toLowerCase()}.png`" :style="battlePokemonCrop()"/> -->
+                    <!-- <img class="enemyPng" :src="`images/enemy_area/${starterString.toLowerCase()}.png`" :style="battlePokemonCrop()"/> -->
+                    <img class="enemyPng" :src="`images/enemy_area/${starterString.toLowerCase()}.png`" :style="battlePokemonCrop()"/>
+                    <div v-for="x in pkmnSlots" class="enemyGraphic">
+                        <div v-show="enemyTrainer.pokemon[x] != undefined" :class="`ePkmn${x + 1}`">
+                            <img v-show="enemyTrainer.pokemon[x]?.species != undefined" class="ePkmnSprite" :src="`images/pokemon/${enemyTrainer.pokemon[x]?.species}.png`"/>
+                            <div class="ePkmnSpecies">{{ enemyTrainer.pokemon[x]?.species }}</div>
+                            <!-- <div class="ePkmnLevel">Lv: {{g2trainersOtto[mapper.properties.battle.trainer.class.value]?.pokemon[x]?.level}}</div> -->
+                            <div class="ePkmnMove1">{{ enemyTrainer.pokemon[x]?.moves[0] }}</div>
+                            <div class="ePkmnMove2">{{ enemyTrainer.pokemon[x]?.moves[1] }}</div>
+                            <div class="ePkmnMove3">{{ enemyTrainer.pokemon[x]?.moves[2] }}</div>
+                            <div class="ePkmnMove4">{{ enemyTrainer.pokemon[x]?.moves[3] }}</div>
+                            <div class="ePkmnHp">{{  enemyTrainer.pokemon[x]?.hp }}</div>
+                            <div class="ePkmnAtk">{{ enemyTrainer.pokemon[x]?.atk }}</div>
+                            <div class="ePkmnDef">{{ enemyTrainer.pokemon[x]?.def }}</div>
+                            <div class="ePkmnSpa">{{ enemyTrainer.pokemon[x]?.spa }}</div>
+                            <div class="ePkmnSpd">{{ enemyTrainer.pokemon[x]?.spd }}</div>
+                            <div class="ePkmnSpe">{{ enemyTrainer.pokemon[x]?.spe }}</div>
+                        </div>
+                    </div> 
+                </div>
+                <img v-else :src="`images/movepool/${starterString.toLowerCase()}.png`" >
+            </transition>
         </div>
     </div>
 
@@ -213,6 +242,7 @@
     <script src="data/natures.js"></script>
     <script src="data/gen3abilities.js"></script>
     <script src="data/dexDataRubySapphireEmerald.js"></script>
+    <script src="lib/emerald_trainers.js"></script>
 
     <script src="data/gen3moves.js"></script>
     <script src="data/type-effectiveness.js"></script>

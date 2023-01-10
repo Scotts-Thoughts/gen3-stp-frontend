@@ -11,8 +11,8 @@ const app = Vue.createApp({
             mapper: null,
 
             // POKEMON CONFIG (components) ---------------------------------------------------------------------//
-            starter:        370, //select starter (1-386)
-            starterString: "Luvdisc",
+            starter:        151, //select starter (1-386)
+            starterString: "Mew",
             pkmnNature: "Adamant",
             pkmnAbility: "Synchronize",
             pkmnGrowthRate: "Medium Slow",
@@ -73,6 +73,7 @@ const app = Vue.createApp({
             typeData: typeData,
             typeBoostingItems: typeBoostingItems,
             dexDataRubySapphireEmerald: dexDataRubySapphireEmerald,
+            emeraldTrainers: emeraldTrainers,
             hiddenPowerTypes : {
                 0 : "Fighting",
                 1 : "Flying",
@@ -104,6 +105,9 @@ const app = Vue.createApp({
             resets:   0,
             trainerBattles: 0,
             wildEncounters: 0,
+
+            //LOOPS
+            pkmnSlots: [0, 1, 2, 3, 4, 5],
             
             //DISPLAY BUFFER
             bufferNature: "",
@@ -147,7 +151,18 @@ const app = Vue.createApp({
             playerID: 999,
         }
     },
-    
+    computed: {
+        enemyTrainerName() {
+            return this.emeraldTrainers[this.mapper.properties.battle.trainer.opponentAId.value]?.trainer_name
+        },
+        enemyTrainerPokemon() {
+            return this.emeraldTrainers[this.mapper.properties.battle.trainer.opponentAId.value]?.pokemon
+        },
+        enemyTrainer() {
+            return this.emeraldTrainers[this.mapper.properties.battle.trainer.opponentAId.value]
+        },
+    },
+
     methods: { 
         writeBufferDisplay() {
             this.bufferAbility = this.mapper.properties.battle.yourPokemon.ability.value
@@ -1044,6 +1059,27 @@ const app = Vue.createApp({
                 return Math.floor(y * 1.1)
             else
                 return y
+        },
+
+        battlePokemonCrop() {
+            if (this.emeraldTrainers[this.mapper.properties.battle.trainer.opponentAId]["pokemon"].length == 1) {
+                return "height: 234px;"
+            }
+            else if (this.emeraldTrainers[this.mapper.properties.battle.trainer.opponentAId]["pokemon"].length == 2) {
+                return "height: 402px;"
+            }
+            else if (this.emeraldTrainers[this.mapper.properties.battle.trainer.opponentAId]["pokemon"].length == 3) {
+                return "height: 566px;"
+            }
+            else if (this.emeraldTrainers[this.mapper.properties.battle.trainer.opponentAId]["pokemon"].length == 4) {
+                return "height: 736px;"
+            }
+            else if (this.emeraldTrainers[this.mapper.properties.battle.trainer.opponentAId]["pokemon"].length == 5) {
+                return "height: 902px;"
+            }
+            else if (this.emeraldTrainers[this.mapper.properties.battle.trainer.opponentAId]["pokemon"].length == 6) {
+                return "height: 1080px;"
+            }
         },
     },
     
