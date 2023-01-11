@@ -1016,13 +1016,13 @@ const app = Vue.createApp({
                     //NO ENEMY DATA (HAVEN'T BATTLED SINCE RELOADING ROM OR SAVE)
                     else if (this.mapper.properties.battle.enemyPokemon.type1 == null) {
                         console.log("If no enemy")
-                        return Math.round(this.movePower(x) * stabModifier * itemBoost)
+                        return Math.floor(this.movePower(x) * stabModifier * itemBoost)
                     }
                     //ATTACKING A MONO-TYPE POKEMON
                     else if (this.mapper.properties.battle.enemyPokemon.type1.value === this.mapper.properties.battle.enemyPokemon.type2.value) {
                         console.log("If mono type Pokemon")
                         var multiplier1 = multipliers[defendingTypeMono]
-                        return Math.round(this.movePower(x) * multiplier1 * stabModifier * itemBoost)
+                        return Math.floor(this.movePower(x) * multiplier1 * stabModifier * itemBoost)
                     }
                     //ATTACKING A DUAL-TYPE POKEMON
                     else if (this.mapper.properties.battle.enemyPokemon.type1 != this.mapper.properties.battle.enemyPokemon.type2) {
@@ -1030,12 +1030,12 @@ const app = Vue.createApp({
                         var multipliers = this.typeData.find(x => x.moveType == attackingType)
                         var multiplier1 = multipliers[defendingType1]
                         var multiplier2 = multipliers[defendingType2]
-                        return Math.round(this.movePower(x) * multiplier1 * multiplier2 * stabModifier * itemBoost)
+                        return Math.floor(this.movePower(x) * multiplier1 * multiplier2 * stabModifier * itemBoost)
                     }
                     //RETURN THE MOVES POWER IF NOTHING ELSE WORKS
                     else {
                         console.log("Else value")
-                        return Math.round(this.movePower(x) * this.determineSTAB(x))
+                        return Math.floor(this.movePower(x) * this.determineSTAB(x))
                     }
             }
             //RETURN THE MOVES POWER IF NOT IN BATTLE
