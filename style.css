@@ -134,13 +134,7 @@ canvas {  /* or some other selector */
     z-index: -75;
 }
 
-.typeMono {
-    position: absolute;
-    transform: scale(.095);
-    top: 300px;
-    left: -625px;
-    z-index: -70;
-}
+
 .typeIconContainer {
     grid-column-start: 1;
     grid-column-end: 2;
@@ -151,6 +145,13 @@ canvas {  /* or some other selector */
     align-items: center;
     align-content: center;
     filter: drop-shadow(2px 1px 2px #000)
+}
+.monoType {
+    position: absolute;
+    transform: scale(.095);
+    top: 300px;
+    left: -625px;
+    z-index: -70;
 }
 .type1 {
     position: absolute;
@@ -354,7 +355,24 @@ canvas {  /* or some other selector */
     font-weight: 500
 } */
 
+.absolute {
+    position: absolute;
+}
+
 /* BADGES (AS A PART OF THE STATS BAR*/
+.badge {
+    position: absolute;
+    height: 1080px;
+    width: 1920px;
+}
+.badgeBoost {
+    position: absolute;
+    top: -460px;
+    left: -60px;
+    height: 1080px;
+    width: 1920px;
+    z-index: 15;
+}
 .badge1 {
     display: block;
     max-width:100px;
@@ -1072,9 +1090,10 @@ canvas {  /* or some other selector */
     font-size: 24px;
     position: fixed;
     line-height: 37.3px;
+    color:rgb(68, 68, 68);
     top: 886px;
     left: 20px;
-    opacity: .6;
+    opacity: 1;
     text-align: left;
     font-family: osb;
     font-weight: 500
@@ -1084,61 +1103,75 @@ canvas {  /* or some other selector */
     font-size: 24px;
     position: fixed;
     line-height: 37.3px;
+    color:rgb(68, 68, 68);
     top: 948px;
     left: 20px;
-    opacity: .6;
+    opacity: 1;
     text-align: left;
     font-family: osb;
-    font-weight: 500
+    font-weight: 500;
+    z-index: 10;
 }
 
 .labelDef {
     font-size: 24px;
     position: fixed;
     line-height: 37.3px;
+    color:rgb(68, 68, 68);
     top: 1009px;
     left: 20px;
-    opacity: .6;
+    opacity: 1;
     text-align: left;
     font-family: osb;
-    font-weight: 500
+    font-weight: 500;
+    z-index: 50;
+
 }
 
 .labelSpcAtk {
     font-size: 24px;
     position: fixed;
     line-height: 27px;
+    color:rgb(68, 68, 68);
     top: 877px;
     left: 187px;
-    opacity: .6;
+    opacity: 1;
     text-align: left;
     font-family: osb;
-    font-weight: 500
+    font-weight: 500;
+    z-index: 50;
+
 }
 
 .labelSpcDef {
     font-size: 24px;
     position: fixed;
     line-height: 27px;
+    color:rgb(68, 68, 68);
     top: 939px;
     left: 187px;
-    opacity: .6;
+    opacity: 1;
     text-align: left;
     font-family: osb;
-    font-weight: 500
+    font-weight: 500;
+    z-index: 50;
+
 }
 
 .labelSpd {
     font-size: 24px;
     position: fixed;
     line-height: 37.3px;
+    color:rgb(68, 68, 68);
     z-index: 1000;
     top: 1009px;
     left: 187px;
-    opacity: .6;
+    opacity: .75;
     text-align: left;
     font-family: osb;
-    font-weight: 500
+    font-weight: 500;
+    z-index: 50;
+
 }
 
 .atkMod {
@@ -1356,7 +1389,7 @@ canvas {  /* or some other selector */
 .heldItem {
     font-size: 50px;
     position: fixed;
-    left: 790px;
+    left: 804px;
     top: 836px;
     bottom: 0px;
     right: 0px;

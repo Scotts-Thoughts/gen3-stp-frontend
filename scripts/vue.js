@@ -11,11 +11,11 @@ const app = Vue.createApp({
             mapper: null,
 
             // POKEMON CONFIG (components) ---------------------------------------------------------------------//
-            starter:        151, //select starter (1-386)
-            starterString: "Mew",
-            pkmnNature: "Adamant",
-            pkmnAbility: "Synchronize",
-            pkmnGrowthRate: "Medium Slow",
+            starter:        370, //select starter (1-386)
+            starterString: "Luvdisc",
+            pkmnNature: "Modest",
+            pkmnAbility: "Swift Swim",
+            pkmnGrowthRate: "Fast",
             // hpTypeChoice:   "hpDark", //select hidden power type in hp + type. (ie. hpFire, hpDark, hpIce, hpDragon)
             // natureChoice:   "Rash", //select Pokemon nature
             
@@ -41,6 +41,7 @@ const app = Vue.createApp({
             dynamicOverlay: false, //dynamically picks overlay graphics based on team slot 1
             gametime:       false, //shows gametime
             typeIcons:      true, //includes dynamic type icons
+            pick:           true,
             typeCalcs:      true, //turns on type effectiveness calculations
             moveset:        true, //includes the moveset area and dynamic PP  //MVP
             dynamicPower:   false, //dynamically calculates power based on type effectiveness
@@ -61,8 +62,11 @@ const app = Vue.createApp({
             gamestate:      true, //shows the current gamestate in the place of the timer
             labels:         true, //shows the current gamestate in the place of the timer
 
+            badges: ["badge1", "badge2", "badge3", "badge4", "badge5", "badge6", "badge7", "badge8"],
+            badgeBoosts: ["badge1", "badge3", "badge5", "badge7"],
+
             //CSS styling values
-            statLabelOpacityValue: 0.1, //used when a stage modifier is applied
+            statLabelOpacityValue: 0, //used when a stage modifier is applied
 
             //DATA ---------------------------------------------------------------------------------------------//
             gen3data: gen3data,
@@ -812,7 +816,7 @@ const app = Vue.createApp({
         
         //EXPERIENCE FUNCTIONS
         expPercent(x) {
-            return this.expPercentMediumFast(x)
+            return this.expPercentFast(x)
         },
         expPercentFast(x) {
             expBar = ((x.expPoints.value) - ((4 * (Math.pow(x.level.value, 3))) / 5)) / (((4 * (Math.pow(x.level.value + 1, 3))) / 5) - ((4 * (Math.pow(x.level.value, 3))) / 5)) // errors could lurk here
@@ -864,6 +868,15 @@ const app = Vue.createApp({
                     // console.log("Return Power: "+specialMovePower)
                     return specialMovePower
                 }
+                else if (y == "FLAIL") {
+                    var hpPercentage = this.mapper.properties.player.team[0].hp.value / this.mapper.properties.player.team[0].maxHp.value
+                    if (hpPercentage >= .6875) { return 20 }
+                    else if (hpPercentage >= .3542 && hpPercentage < .6875) { return 40 }
+                    else if (hpPercentage >= .2083 && hpPercentage < .3542) { return 80 }
+                    else if (hpPercentage >= .1042 && hpPercentage < .2083) { return 100 }
+                    else if (hpPercentage >= .0417 && hpPercentage < .1042) { return 150 }
+                    else if (hpPercentage < .0417) { return 200 }
+                }
                 else if (y == "FRUSTRATION") {
                     if (this.mapper.properties.player.team[0].friendship.value > 252.5)
                         var friendshipValue = 252.5 
@@ -879,6 +892,29 @@ const app = Vue.createApp({
                     if (move) return move.Power
             }
             return null
+        },
+        weatherModifier(weather, move, moveType) {
+            if (weather == "Sunny" && moveType == "Water") {
+                return .5
+            }
+            else if (weather == "Sunny" && moveType == "Fire") {
+                return 1.5
+            }
+            else if (weather == "Rain" && moveType == "Water") {
+                return 1.5
+            }
+            else if (weather == "Rain" && moveType == "Fire") {
+                return .5
+            }
+            else if (weather == "Rain" && move == "SOLARBEAM") {
+                return .5
+            }
+            else if (weather == "Sandstorm") {
+                return 1
+            }
+            else {
+                return 1
+            }
         },
         moveType(y) { //y = move1.value
             if (y == "HIDDEN POWER") {
@@ -940,14 +976,14 @@ const app = Vue.createApp({
         //x = stat modifier property (not the value of the property. [ex. battle.modStageAttack])
         statLabelOpacity(x) {
             if (this.mapper.properties.battle.yourPokemon.species.value == null)
-                return .6
+                return 1
             else if (this.g3state() == "Battle")
                 if (x.bytes != 6)
                     return this.statLabelOpacityValue
                 else
-                    return .6
+                    return 1
             else
-                return .6
+                return 1
         },
         hiddenPowerTypeCalc(x) { //x = slot number
             ivHpBit = x.ivHp % 2
@@ -988,13 +1024,14 @@ const app = Vue.createApp({
         
         //STACK OVERFLOW ERROR CURRENTLY OCCURING WITH THIS FORMULA
         typeEffectiveness(x) { //x = move1.value
-            if (this.typeCalcs == true && this.g3state() == "Battle") { //calculates effective power when in battle
+            if (this.typeCalcs == true && this.g3state() == "Battle" && this.mapper.properties.battle.trainer.opponentA.value != "LEADER_TATE_AND_LIZA_1") { //calculates effective power when in battle
                 console.log("If statement for battle")
                 var attackingType = this.moveType(x)
                     var defendingTypeMono = this.mapper.properties.battle.enemyPokemon.type1.value
                     var defendingType1 = this.mapper.properties.battle.enemyPokemon.type1.value
                     var defendingType2 = this.mapper.properties.battle.enemyPokemon.type2.value
                     var multipliers = this.typeData.find(x => x.moveType === attackingType)
+                    var weatherBoost = this.weatherModifier(this.mapper.properties.battle.turnInfo.battleWeather.value, x, this.moveType(x))
                     var movePowerForCalculation = this.movePower(x)
 
                     //ADDITIONAL MODIFIERS
@@ -1022,7 +1059,7 @@ const app = Vue.createApp({
                     else if (this.mapper.properties.battle.enemyPokemon.type1.value === this.mapper.properties.battle.enemyPokemon.type2.value) {
                         console.log("If mono type Pokemon")
                         var multiplier1 = multipliers[defendingTypeMono]
-                        return Math.floor(this.movePower(x) * multiplier1 * stabModifier * itemBoost)
+                        return Math.floor(this.movePower(x) * multiplier1 * stabModifier * itemBoost * weatherBoost)
                     }
                     //ATTACKING A DUAL-TYPE POKEMON
                     else if (this.mapper.properties.battle.enemyPokemon.type1 != this.mapper.properties.battle.enemyPokemon.type2) {
@@ -1030,7 +1067,7 @@ const app = Vue.createApp({
                         var multipliers = this.typeData.find(x => x.moveType == attackingType)
                         var multiplier1 = multipliers[defendingType1]
                         var multiplier2 = multipliers[defendingType2]
-                        return Math.floor(this.movePower(x) * multiplier1 * multiplier2 * stabModifier * itemBoost)
+                        return Math.floor(this.movePower(x) * multiplier1 * multiplier2 * stabModifier * itemBoost * weatherBoost)
                     }
                     //RETURN THE MOVES POWER IF NOTHING ELSE WORKS
                     else {
@@ -1049,7 +1086,7 @@ const app = Vue.createApp({
                 if (this.movePower(x) == "-") {
                     return this.movePower(x)
                 }
-                return Math.round(this.movePower(x) * this.determineSTAB(x) * itemBoost) //returns the move's base power if not in battle
+                return Math.floor(this.movePower(x) * this.determineSTAB(x) * itemBoost) //returns the move's base power if not in battle
         }, 
         //BADGE BOOSTS
         //  x = badge required
