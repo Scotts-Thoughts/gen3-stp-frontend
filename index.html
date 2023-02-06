@@ -2,23 +2,16 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Scott's Thoughts Frontend v2.00.dev.01</title>
+    <title>Scott's Thoughts Frontend v2.10.dev.01</title>
     <link rel="stylesheet" href="style.css" id="cssStylesheet">
-    <!-- <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,700;1,400&display=swap" rel="stylesheet"> -->
 </head>
-
-<!---------------------------------------------------------------------------------------------------------------------------------------------->
-<!----------------------------------------------------------------- HTML BODY ------------------------------------------------------------------>
-<!---------------------------------------------------------------------------------------------------------------------------------------------->
 
 <body>
     <div id="app">
         <div v-if="ready == false">
             Loading...
         </div>
-<!------ MAIN HTML DIV ------------------------------------------------------------------------------------------------------------------------->
         <div v-else>
-<!------ GRAPHIC OVERLAY ----------------------------------------------------------------------------------------------------------------------->
             <div>
                 <img v-show="graphicOverlay == true" class="frame" :src="`images/overlay/${starterString}.png`" />
                 <div v-show="labels == true" class="labelAbility">Ability:</div>
@@ -28,11 +21,10 @@
             </div>
 
 <!------ TYPE ICONS --------------------------------------------------------------------------------------------------------------------------->
-            <!-- TYPE ICONS -->
             <div class="typeIconContainer">
                 <img v-show="typeIcons == true && getStarterType1() == getStarterType2()" id="monoType" class="monoType" :src="getStarterType1()"/>
                 <img v-show="typeIcons == true && getStarterType1() != getStarterType2()" id="type1" class="type1" :src="getStarterType1()" />
-                <img v-show="typeIcons == true && getStarterType1() != getStarterType2()" id="type2" class="type1" :src="getStarterType2()" />
+                <img v-show="typeIcons == true && getStarterType1() != getStarterType2()" id="type2" class="type2" :src="getStarterType2()" />
             </div>
 
 <!--------- BADGE ICONS ---------------------------------------------------------------------------------------------------------------------->
@@ -44,29 +36,8 @@
 
 <!--------- STATE MANAGEMENT ----------------------------------------------------------------------------------------------------------------->
             <div v-if="gamestate == true">
-                <div class="gamestate">Gamestate: {{ g3state() }}</div>
+                <div class="gamestate">New: {{ g3stateVariable }}</div>
             </div>
-            
-
-<!--------- STATUS CONDITION -----------------------------------------------------------------------------------------------------------------> 
-            <!-- <Transition name="status">           
-                <div v-show="mapper.properties.player.team[0].statusCondition.bytes > 0" class="statusCondition">
-                    <img class="frame" src="images/elements/status.png" />
-                </div>
-            </Transition> 
-            <Transition name="status">           
-                <div v-show="mapper.properties.player.team[0].statusCondition.bytes > 0" class="statusCondition"> 
-                    <div>{{ statusHealedFix(mapper.properties.player.team[0].statusCondition.value) }}</div>
-                </div>
-            </Transition> -->
-            <!-- <div v-show="mapper.properties.player.team[0].statusCondition.bytes > 0" class="statusCondition">
-                <img class="statusCond" :src="`images/elements/statuses/${mapper.properties.player.team[0].statusCondition.value}.svg`" />
-            </div>           -->
-            <!-- <div v-show="mapper.properties.player.team[0].statusCondition.bytes > 0" class="statusCondition"> 
-                <div>{{ statusHealedFix(mapper.properties.player.team[0].statusCondition.value) }}</div>
-            </div> -->
-
-
 
 <!--------- STATS ---------------------------------------------------------------------------------------------------------------------------->
             <!-- STATS OVERLAY GRAPHIC  -->
@@ -84,126 +55,85 @@
                     </div>
                 </div>
 
+                <div class="gameTime">{{ mapper.properties.gameTime.hours }}:{{ gameTimeM(mapper.properties.gameTime.minutes) }}</div>
+                    
+                <div v-show="g3stateVariable == `Battle`" class="aDMods">
+                    {{ stageModifiers(mapper.properties.battle.yourPokemon.modStageAttack.value) }}<br>
+                    {{ stageModifiers(mapper.properties.battle.yourPokemon.modStageDefense.value) }}<br>
+                </div>
+                
+                <div v-show="g3stateVariable == `Battle`" class="sSASDMods">
+                    {{ stageModifiers(mapper.properties.battle.yourPokemon.modStageSpecialAttack.value) }}<br>
+                    {{ stageModifiers(mapper.properties.battle.yourPokemon.modStageSpecialDefense.value) }}<br>
+                    {{ stageModifiers(mapper.properties.battle.yourPokemon.modStageSpeed.value) }}<br>
+                </div>
+
                 <div :style="{'z-index': 20, opacity: statLabelOpacity(mapper.properties.battle.yourPokemon.modStageAttack)}" class="labelAtk">Atk.</div>
                 <div :style="{'z-index': 20, opacity: statLabelOpacity(mapper.properties.battle.yourPokemon.modStageDefense)}" class="labelDef">Def.</div>
                 <div :style="{'z-index': 20, opacity: statLabelOpacity(mapper.properties.battle.yourPokemon.modStageSpeed)}" class="labelSpd">Spe.</div>
                 <div :style="{'z-index': 20, opacity: statLabelOpacity(mapper.properties.battle.yourPokemon.modStageSpecialAttack)}" class="labelSpcAtk">Spc.<br>Atk.</div>
                 <div :style="{'z-index': 20, opacity: statLabelOpacity(mapper.properties.battle.yourPokemon.modStageSpecialDefense)}" class="labelSpcDef">Spc.<br>Def.</div>
 
-
-
-                <!-- BASE STATS -------------------------------------------------------------------------------->  
-                <div v-if="mapper.properties.player.team[0].personalityValue.value > 0">
-                    <div class="gameTime">{{ mapper.properties.gameTime.hours }}:{{ gameTimeM(mapper.properties.gameTime.minutes) }}</div>
-
-
-                    <div v-if="g3state() == `New Game` || g3state() == `No Pokemon` || g3state() == `Reset` || g3state() == `Error`">
+                <!-- STATS -------------------------------------------------------------------------------->  
+                <div>
+                    <div v-if="g3stateVariable == `Overworld` || g3stateVariable == `Battle` || g3stateVariable == `To Battle` || g3stateVariable == `From Battle`">
                         <div class="statsheader">Level {{ mapper.properties.player.team[0].level.value }}</div>
-                        <div class="heldItem">{{ nullToNone(camelCase(bufferHeldItem)) }}</div>
-                    </div>
-                    <div v-else-if="g3state() == `Overworld`">
-                        <div class="statsheader">Level {{ mapper.properties.player.team[0].level.value }}</div>
-                        <div class="heldItem">{{ nullToNone(camelCase(mapper.properties.player.team[0].itemHeld.value)) }}</div>
-                    </div>
-                    <div v-else-if="g3state() != `New Game` || g3state() != `No Pokemon` || g3state() != `Reset` || g3state() != `Error`">
-                        <div class="statsheader">Level {{ mapper.properties.player.team[0].level.value }}</div>
-                        <div class="heldItem">{{ nullToNone(camelCase(mapper.properties.player.team[0].itemHeld.value)) }}</div>
-                    </div>
+                        <div class="heldItem">{{ nullToSpace(camelCase(mapper.properties.player.team[0].itemHeld.value)) }}</div>
 
-                    <div class="statsColumn1">
-                        {{ mapper.properties.player.team[0].maxHp }}<br>
-                        {{ bbAttack(stageMultiplier(mapper.properties.battle.yourPokemon.modStageAttack.value, mapper.properties.player.team[0].attack)) }}<br>
-                        {{ bbDefense(stageMultiplier(mapper.properties.battle.yourPokemon.modStageDefense.value, mapper.properties.player.team[0].defense)) }}<br>
+                        <div class="statsColumn1">
+                            {{ mapper.properties.player.team[0].maxHp }}<br>
+                            {{ bbAttack(stageMultiplier(mapper.properties.battle.yourPokemon.modStageAttack.value, mapper.properties.player.team[0].attack)) }}<br>
+                            {{ bbDefense(stageMultiplier(mapper.properties.battle.yourPokemon.modStageDefense.value, mapper.properties.player.team[0].defense)) }}<br>
+                        </div>
+                        
+                        <div class="statsColumn2">
+                            {{ bbSpecialAttack(stageMultiplier(mapper.properties.battle.yourPokemon.modStageSpecialAttack.value, mapper.properties.player.team[0].specialAttack)) }}<br>
+                            {{ bbSpecialDefense(stageMultiplier(mapper.properties.battle.yourPokemon.modStageSpecialDefense.value, mapper.properties.player.team[0].specialDefense)) }}<br>
+                            {{ bbSpeed(stageMultiplier(mapper.properties.battle.yourPokemon.modStageSpeed.value, mapper.properties.player.team[0].speed)) }}<br>
+                        </div>
                     </div>
                     
-                    <div class="statsColumn2">
-                        {{ bbSpecialAttack(stageMultiplier(mapper.properties.battle.yourPokemon.modStageSpecialAttack.value, mapper.properties.player.team[0].specialAttack)) }}<br>
-                        {{ bbSpecialDefense(stageMultiplier(mapper.properties.battle.yourPokemon.modStageSpecialDefense.value, mapper.properties.player.team[0].specialDefense)) }}<br>
-                        {{ bbSpeed(stageMultiplier(mapper.properties.battle.yourPokemon.modStageSpeed.value, mapper.properties.player.team[0].speed)) }}<br>
-                    </div>
-                    
-                    <div v-show="g3state() == `Battle`" class="aDMods">
-                        {{ stageModifiers(mapper.properties.battle.yourPokemon.modStageAttack.value) }}<br>
-                        {{ stageModifiers(mapper.properties.battle.yourPokemon.modStageDefense.value) }}<br>
-                    </div>
-                    
-                    <div v-show="g3state() == `Battle`" class="sSASDMods">
-                        {{ stageModifiers(mapper.properties.battle.yourPokemon.modStageSpecialAttack.value) }}<br>
-                        {{ stageModifiers(mapper.properties.battle.yourPokemon.modStageSpecialDefense.value) }}<br>
-                        {{ stageModifiers(mapper.properties.battle.yourPokemon.modStageSpeed.value) }}<br>
-                    </div>
-                </div>
-                <div v-else-if="g3state() == `New Game` || g3state() == `No Pokemon` || g3state() == `Reset` || g3state() == `Error`">             
-                    <div class="statsheader">Base Stats</div>
-                    <div class="statsColumn1">
-                        {{ pokemon(starter,`baseHp`) }}<br>
-                        {{ pokemon(starter,`baseAtk`) }}<br>
-                        {{ pokemon(starter,`baseDef`) }}<br>
-                    </div>
-                    <div class="statsColumn2">
-                        {{ pokemon(starter,`baseSpcA`) }}<br>
-                        {{ pokemon(starter,`baseSpcD`) }}<br>
-                        {{ pokemon(starter,`baseSpd`) }}<br>
-                    </div>
-                </div>
-                <div v-else>
-                    <div class="statsheader">Base Stats</div>
-                    <div class="statsColumn1">
-                        {{ pokemon(starter,`baseHp`) }}<br>
-                        {{ pokemon(starter,`baseAtk`) }}<br>
-                        {{ pokemon(starter,`baseDef`) }}<br>
-                    </div>
-                    <div class="statsColumn2">
-                        {{ pokemon(starter,`baseSpcA`) }}<br>
-                        {{ pokemon(starter,`baseSpcD`) }}<br>
-                        {{ pokemon(starter,`baseSpd`) }}<br>
+                    <div v-else>
+                        <div class="statsheader">Base Stats</div>
+                        <div class="statsColumn1">
+                            {{ pokemon(starter,`baseHp`) }}<br>
+                            {{ pokemon(starter,`baseAtk`) }}<br>
+                            {{ pokemon(starter,`baseDef`) }}<br>
+                        </div>
+                        <div class="statsColumn2">
+                            {{ pokemon(starter,`baseSpcA`) }}<br>
+                            {{ pokemon(starter,`baseSpcD`) }}<br>
+                            {{ pokemon(starter,`baseSpd`) }}<br>
+                        </div>
                     </div>
                 </div>
             </div>
 
-<!--------- MOVESET (MOVES, POWER, PP) -------------------------------------------------------------------------------------------------------------->
+<!--------- MOVESET (MOVES, POWER, PP) -------------------------------------------------------------------------------------------------------------------->
             <div v-show="moveset == true" id="moveset">
-                <div v-if="mapper.properties.player.team[0].level.value > 0 && mapper.properties.player.team[0].move1.value != null">
-                    <div class="move1">{{ camelCase(mapper.properties.player.team[0].move1.value) }}</div>
-                    <div class="move1pp">{{ mapper.properties.player.team[0].move1pp }}</div>
-                    <div class="move1power">{{ typeEffectiveness(mapper.properties.player.team[0].move1.value) }}</div>
-                    <img class="move1icon" :src="moveTypeIcon(mapper.properties.player.team[0].move1.value)" />
-                </div>
-                <div v-if="mapper.properties.player.team[0].level.value > 0 && mapper.properties.player.team[0].move2.value != null">
-                    <div class="move2">{{ camelCase(mapper.properties.player.team[0].move2.value) }}</div>
-                    <div class="move2pp">{{ mapper.properties.player.team[0].move2pp }}</div>
-                    <div class="move2power">{{ typeEffectiveness(mapper.properties.player.team[0].move2.value) }}</div>
-                    <img class="move2icon" :src="moveTypeIcon(mapper.properties.player.team[0].move2.value)" />
-                </div>
-                <div v-if="mapper.properties.player.team[0].level.value > 0 && mapper.properties.player.team[0].move3.value != null">
-                    <div class="move3">{{ camelCase(mapper.properties.player.team[0].move3.value) }}</div>
-                    <div class="move3pp">{{ mapper.properties.player.team[0].move3pp }}</div>
-                    <div class="move3power">{{ typeEffectiveness(mapper.properties.player.team[0].move3.value) }}</div>
-                    <img class="move3icon" :src="moveTypeIcon(mapper.properties.player.team[0].move3.value)" />
-                </div>
-                <div v-if="mapper.properties.player.team[0].level.value > 0 && mapper.properties.player.team[0].move4.value != null">
-                    <div class="move4">{{ camelCase(mapper.properties.player.team[0].move4.value) }}</div>
-                    <div class="move4pp">{{ mapper.properties.player.team[0].move4pp }}</div>
-                    <div class="move4power">{{ typeEffectiveness(mapper.properties.player.team[0].move4.value) }}</div>
-                    <img class="move4icon" :src="moveTypeIcon(mapper.properties.player.team[0].move4.value)" />
+                <div v-for="x in pkmnMoves">
+                    <div v-if="mapper.properties.player.team[0].level.value > 0 && mapper.properties.player.team[0][x].value != null">
+                        <div :class="`${x}`">{{ camelCase(mapper.properties.player.team[0][x].value) }}</div>
+                        <div :class="`${x}pp`">{{ mapper.properties.player.team[0][x + "pp"] }}</div>
+                        <div :class="`${x}power`">{{ typeEffectiveness(mapper.properties.player.team[0][x].value) }}</div>
+                        <img :class="`${x}icon`" :src="moveTypeIcon(mapper.properties.player.team[0][x].value)" />
+                    </div>
                 </div>
             </div>
 
-            <!--------- EXP BAR -------------------------------------------------------------------------------------------------------------->
+<!--------- EXP BAR -------------------------------------------------------------------------------------------------------------------------------------->
             <div>
                 <div class="expMeterOuter"><div class="expMeterInner" :style="{ width: expPercent(mapper.properties?.player.team[0]) + '%' }"></div></div>
                 <div v-show="labels == true" class="labelEXP">Exp:</div>
                 <img src="images/elements/ui/expLabel.png" style="top: 0px; position: absolute;">
             </div>
 
-<!--------- MOVEPOOL --------------------------------------------------------------------------------------------------------------------------------->
+<!--------- MOVEPOOL ------------------------------------------------------------------------------------------------------------------------------------->
             <transition name="fadeBattle" style="position: relative;">
-                <div v-if="g3state() == `Battle` && mapper.properties.battle.type.trainer.value == true">
+                <div v-if="g3stateVariable == `Battle` && mapper.properties.battle.type.trainer.value == true">
                     <div class="movepoolTitle">{{ enemyTrainer.trainer_name }}</div>
-                    <!-- <img :src="`images/enemy_area/${starterString.toLowerCase()}.png`"/> -->
-                    <!-- <img :src="`images/enemy_area/${starterString.toLowerCase()}.png`" :style="battlePokemonCrop()"/> -->
-                    <!-- <img class="enemyPng" :src="`images/enemy_area/${starterString.toLowerCase()}.png`" :style="battlePokemonCrop()"/> -->
                     <img class="enemyPng" :src="`images/enemy_area/${starterString.toLowerCase()}.png`" :style="battlePokemonCrop()"/>
+                    <img class="enemyPng" :src="`images/abilities/${starterString.toLowerCase()}.png`" :style="battlePokemonCrop()"/>
                     <div v-for="x in pkmnSlots" class="enemyGraphic">
                         <div v-show="enemyTrainer.pokemon[x] != undefined" :class="`ePkmn${x + 1}`">
                             <img v-show="enemyTrainer.pokemon[x]?.species != undefined" class="ePkmnSprite" :src="`images/pokemon/${enemyTrainer.pokemon[x]?.species}.png`"/>
@@ -219,6 +149,7 @@
                             <div class="ePkmnSpa">{{ enemyTrainer.pokemon[x]?.spa }}</div>
                             <div class="ePkmnSpd">{{ enemyTrainer.pokemon[x]?.spd }}</div>
                             <div class="ePkmnSpe">{{ enemyTrainer.pokemon[x]?.spe }}</div>
+                            <div class="ePkmnAbility">{{ enemyTrainer.pokemon[x]?.ability }}</div>
                         </div>
                     </div> 
                 </div>
@@ -228,7 +159,6 @@
     </div>
 
 <!--------------------------------------- JAVASCRIPT ------------------------------------------------->
-    <!-- IMPORTS -->
     <!-- SIGNAL R -->
     <script src="https://unpkg.com/@microsoft/signalr@latest/dist/browser/signalr.min.js"></script> 
     <script src="https://unpkg.com/vue@latest/dist/vue.global.js"></script>
@@ -246,12 +176,10 @@
     <script src="data/gen3abilities.js"></script>
     <script src="data/dexDataRubySapphireEmerald.js"></script>
     <script src="lib/emerald_trainers.js"></script>
-
     <script src="data/gen3moves.js"></script>
     <script src="data/type-effectiveness.js"></script>
     <script src="data/typeBoostingItems.js"></script>
 
     <!-- VUE APP -->
     <script type="text/javascript" src="scripts/vue.js"></script>
-    <!-- <script type="text/javascript" src="scripts/methods.js"></script> -->
 </body>

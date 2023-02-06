@@ -11,11 +11,11 @@ const app = Vue.createApp({
             mapper: null,
 
             // POKEMON CONFIG (components) ---------------------------------------------------------------------//
-            starter:        370, //select starter (1-386)
-            starterString: "Luvdisc",
-            pkmnNature: "Modest",
-            pkmnAbility: "Swift Swim",
-            pkmnGrowthRate: "Fast",
+            starter:        357, //select starter (1-386)
+            starterString: "Tropius",
+            pkmnNature: "Hardy",
+            pkmnAbility: "Chlorophyll",
+            pkmnGrowthRate: "Slow",
             // hpTypeChoice:   "hpDark", //select hidden power type in hp + type. (ie. hpFire, hpDark, hpIce, hpDragon)
             // natureChoice:   "Rash", //select Pokemon nature
             
@@ -64,6 +64,7 @@ const app = Vue.createApp({
 
             badges: ["badge1", "badge2", "badge3", "badge4", "badge5", "badge6", "badge7", "badge8"],
             badgeBoosts: ["badge1", "badge3", "badge5", "badge7"],
+            pkmnMoves: ["move1", "move2", "move3", "move4"],
 
             //CSS styling values
             statLabelOpacityValue: 0, //used when a stage modifier is applied
@@ -153,6 +154,7 @@ const app = Vue.createApp({
             simpleGameStateNew: "Out of Game",
             gameStarted:  true, //tracks if the player has a save game or not
             playerID: 999,
+            g3stateVariable: "Base Stats",
         }
     },
     computed: {
@@ -813,10 +815,15 @@ const app = Vue.createApp({
                 return "None"
             return y
         },
+        nullToSpace(y) {
+            if (y == 0) 
+                return " "
+            return y
+        },
         
         //EXPERIENCE FUNCTIONS
         expPercent(x) {
-            return this.expPercentFast(x)
+            return this.expPercentSlow(x)
         },
         expPercentFast(x) {
             expBar = ((x.expPoints.value) - ((4 * (Math.pow(x.level.value, 3))) / 5)) / (((4 * (Math.pow(x.level.value + 1, 3))) / 5) - ((4 * (Math.pow(x.level.value, 3))) / 5)) // errors could lurk here
@@ -1005,12 +1012,16 @@ const app = Vue.createApp({
             return Math.floor((((ivHpBit + (2 * ivAtkBit) + (4 * ivDefBit) + (8 * ivSpdBit) + (16 * ivSpcABit) + (32 * ivSpcDBit)) * 40)/63) + 30 )
         },
         determineSTAB(x) { //x = move1.value
-            var pkmnType1 = this.mapper.properties.battle.yourPokemon.type1.value
-            var pkmnType2 = this.mapper.properties.battle.yourPokemon.type2.value
-            if (pkmnType1 == this.moveType(x) || pkmnType2 == this.moveType(x))
+            // var pkmnType1 = this.mapper.properties.battle.yourPokemon.type1.value
+            // var pkmnType2 = this.mapper.properties.battle.yourPokemon.type2.value
+            var pkmnType1 = this.dexDataRubySapphireEmerald[this.starterString].type_1
+            var pkmnType2 = this.dexDataRubySapphireEmerald[this.starterString].type_2
+            if (pkmnType1 == this.moveType(x) || pkmnType2 == this.moveType(x)) {
                 return 1.5
-            else
-                return 1
+            }
+            else { 
+                return 1 
+            }
         }, 
         determineItemBoost(x) { //x - move1.value
             var heldItemValue = this.mapper.properties.player.team[0].itemHeld.value
@@ -1027,56 +1038,56 @@ const app = Vue.createApp({
             if (this.typeCalcs == true && this.g3state() == "Battle" && this.mapper.properties.battle.trainer.opponentA.value != "LEADER_TATE_AND_LIZA_1") { //calculates effective power when in battle
                 console.log("If statement for battle")
                 var attackingType = this.moveType(x)
-                    var defendingTypeMono = this.mapper.properties.battle.enemyPokemon.type1.value
-                    var defendingType1 = this.mapper.properties.battle.enemyPokemon.type1.value
-                    var defendingType2 = this.mapper.properties.battle.enemyPokemon.type2.value
-                    var multipliers = this.typeData.find(x => x.moveType === attackingType)
-                    var weatherBoost = this.weatherModifier(this.mapper.properties.battle.turnInfo.battleWeather.value, x, this.moveType(x))
-                    var movePowerForCalculation = this.movePower(x)
+                var defendingTypeMono = this.mapper.properties.battle.enemyPokemon.type1.value
+                var defendingType1 = this.mapper.properties.battle.enemyPokemon.type1.value
+                var defendingType2 = this.mapper.properties.battle.enemyPokemon.type2.value
+                var multipliers = this.typeData.find(x => x.moveType === attackingType)
+                var weatherBoost = this.weatherModifier(this.mapper.properties.battle.turnInfo.battleWeather.value, x, this.moveType(x))
+                var movePowerForCalculation = this.movePower(x)
 
-                    //ADDITIONAL MODIFIERS
-                    var stabModifier = this.determineSTAB(x) //on
-                    // var stabModifier = 1 //off
-                    var itemBoost = this.determineItemBoost(x) //on
-                    // var itemBoost = 1 //off
+                //ADDITIONAL MODIFIERS
+                var stabModifier = this.determineSTAB(x) //on
+                // var stabModifier = 1 //off
+                var itemBoost = this.determineItemBoost(x) //on
+                // var itemBoost = 1 //off
 
-                    //NO MOVE POWER (STATUS MOVE)
-                    if (this.movePower(x) == "-") {
-                        console.log("If no power")
-                        return this.movePower(x)
-                    }
-                    //LEVITATE INTERACTION
-                    else if (this.mapper.properties.battle.enemyPokemon.ability.value == "LEVITATE" && attackingType == "Ground") {
-                        console.log("If levitate")
-                        return 0
-                    }
-                    //NO ENEMY DATA (HAVEN'T BATTLED SINCE RELOADING ROM OR SAVE)
-                    else if (this.mapper.properties.battle.enemyPokemon.type1 == null) {
-                        console.log("If no enemy")
-                        return Math.floor(this.movePower(x) * stabModifier * itemBoost)
-                    }
-                    //ATTACKING A MONO-TYPE POKEMON
-                    else if (this.mapper.properties.battle.enemyPokemon.type1.value === this.mapper.properties.battle.enemyPokemon.type2.value) {
-                        console.log("If mono type Pokemon")
-                        var multiplier1 = multipliers[defendingTypeMono]
-                        return Math.floor(this.movePower(x) * multiplier1 * stabModifier * itemBoost * weatherBoost)
-                    }
-                    //ATTACKING A DUAL-TYPE POKEMON
-                    else if (this.mapper.properties.battle.enemyPokemon.type1 != this.mapper.properties.battle.enemyPokemon.type2) {
-                        console.log("If dual type Pokemon")
-                        var multipliers = this.typeData.find(x => x.moveType == attackingType)
-                        var multiplier1 = multipliers[defendingType1]
-                        var multiplier2 = multipliers[defendingType2]
-                        return Math.floor(this.movePower(x) * multiplier1 * multiplier2 * stabModifier * itemBoost * weatherBoost)
-                    }
-                    //RETURN THE MOVES POWER IF NOTHING ELSE WORKS
-                    else {
-                        console.log("Else value")
-                        return Math.floor(this.movePower(x) * this.determineSTAB(x))
-                    }
+                //NO MOVE POWER (STATUS MOVE)
+                if (this.movePower(x) == "-") {
+                    console.log("If no power")
+                    return this.movePower(x)
+                }
+                //LEVITATE INTERACTION
+                else if (this.mapper.properties.battle.enemyPokemon.ability.value == "LEVITATE" && attackingType == "Ground") {
+                    console.log("If levitate")
+                    return 0
+                }
+                //NO ENEMY DATA (HAVEN'T BATTLED SINCE RELOADING ROM OR SAVE)
+                else if (this.mapper.properties.battle.enemyPokemon.type1 == null) {
+                    console.log("If no enemy")
+                    return Math.floor(this.movePower(x) * stabModifier * itemBoost)
+                }
+                //ATTACKING A MONO-TYPE POKEMON
+                else if (this.mapper.properties.battle.enemyPokemon.type1.value === this.mapper.properties.battle.enemyPokemon.type2.value) {
+                    console.log("If mono type Pokemon")
+                    var multiplier1 = multipliers[defendingTypeMono]
+                    return Math.floor(this.movePower(x) * multiplier1 * stabModifier * itemBoost * weatherBoost)
+                }
+                //ATTACKING A DUAL-TYPE POKEMON
+                else if (this.mapper.properties.battle.enemyPokemon.type1 != this.mapper.properties.battle.enemyPokemon.type2) {
+                    console.log("If dual type Pokemon")
+                    var multipliers = this.typeData.find(x => x.moveType == attackingType)
+                    var multiplier1 = multipliers[defendingType1]
+                    var multiplier2 = multipliers[defendingType2]
+                    return Math.floor(this.movePower(x) * multiplier1 * multiplier2 * stabModifier * itemBoost * weatherBoost)
+                }
+                //RETURN THE MOVES POWER IF NOTHING ELSE WORKS
+                else {
+                    console.log("Else value")
+                    return Math.floor(this.movePower(x) * this.determineSTAB(x))
+                }
             }
             //RETURN THE MOVES POWER IF NOT IN BATTLE
-            else   
+            else {
                 //ADDITIONAL MODIFIERS
                 var stabModifier = this.determineSTAB(x) //on
                 // var stabModifier = 1 //off
@@ -1087,6 +1098,7 @@ const app = Vue.createApp({
                     return this.movePower(x)
                 }
                 return Math.floor(this.movePower(x) * this.determineSTAB(x) * itemBoost) //returns the move's base power if not in battle
+            }   
         }, 
         //BADGE BOOSTS
         //  x = badge required
@@ -1129,33 +1141,66 @@ const app = Vue.createApp({
         this.mapper.onDisconnected = (x) => this.ready = false
         await this.mapper.connect()
 
-        // const LiveSplitClient = require('livesplit-client');
+        //GAMESTATE MANAGEMENT
+        // set initial gamestate value when the layout is loaded
+        if (this.mapper.properties.player.team[0].level.value == 0) 
+            this.g3stateVariable = "Base Stats";
+        else if (this.mapper.properties.pointers.callback1.value == null)
+            this.g3stateVariable = "Base Stats";
+        else if (this.mapper.properties.pointers.callback1.value == "Overworld")
+            this.g3stateVariable = "Overworld";
+        else if (this.mapper.properties.pointers.callback1.value == "Battle") {
+            if (this.mapper.properties.pointers.callback1.value == "Battle Animation") {
+                this.g3stateVariable = "To Battle"
+            }
+            else if (this.mapper.properties.pointers.callback1.value == "Battle") {
+                this.g3stateVariable = "Battle"
+            }
+        }
+        else
+            this.g3stateVariable = "Battle";
 
-        // (async () => {
-        //     try {
-        //         // Initialize client with LiveSplit Server's IP:PORT
-        //         const client = new LiveSplitClient('127.0.0.1:16834');
-        
-        //         // Connect to the server, Promise will be resolved when the connection will be succesfully established
-        //         await client.connect();
-        
-        //         // Start timer. Don't forget to WAIT Promise resolve if answer is expected, library does not have any queue implementation!
-        //         client.startOrSplit();
-        
-        //         // Job done, now we can close this connection
-        //         client.disconnect();
-        //     } catch (err) {
-        //         console.error(err); // Something went wrong
-        //     }
-        // })();
+        // wait for events to change the state
+        this.mapper.properties.pointers.callback1.change((prop) => {
+            if (this.g3stateVariable == "Base Stats") return; // ignore everything if we still dont have a pokemon
+
+            if (prop.value == "Overworld") { this.g3stateVariable = "Overworld"; } 
+            else if (prop.value == "Battle") { this.g3stateVariable = "To Battle"; } 
+        });
+
+        this.mapper.properties.battle.turnInfo.battleDialogue.change((prop) => {
+            if (prop.value == "Player Control") { this.g3stateVariable = "Battle"}
+        })
+
+        this.mapper.properties.battle.turnInfo.battleOutcome.change((prop) => {
+            if (prop.value == "WON") { this.g3stateVariable = "From Battle"}
+            if (prop.value == "LOST") { this.g3stateVariable = "From Battle"}
+            if (prop.value == "DRAW") { this.g3stateVariable = "From Battle"}
+            if (prop.value == "RAN") { this.g3stateVariable = "From Battle"}
+            if (prop.value == "CAUGHT") { this.g3stateVariable = "From Battle"}
+            if (prop.value == "PLAYER_TELEPORTED") { this.g3stateVariable = "From Battle"}
+            if (prop.value == "POKEMON_FLED") { this.g3stateVariable = "From Battle"}
+            if (prop.value == "NO_SAFARI_BALLS") { this.g3stateVariable = "From Battle"}
+            if (prop.value == "FORFEITED") { this.g3stateVariable = "From Battle"}
+            if (prop.value == "POKEMON_TELEPORTED") { this.g3stateVariable = "From Battle"}
+            // if (prop.value == "WON") { this.g3stateVariable = "From Battle - Won"}
+            // if (prop.value == "LOST") { this.g3stateVariable = "From Battle - Lost"}
+            // if (prop.value == "DRAW") { this.g3stateVariable = "From Battle - Draw"}
+            // if (prop.value == "RAN") { this.g3stateVariable = "From Battle - Ran"}
+            // if (prop.value == "CAUGHT") { this.g3stateVariable = "From Battle - Caught"}
+            // if (prop.value == "PLAYER_TELEPORTED") { this.g3stateVariable = "From Battle - Player_Teleported"}
+            // if (prop.value == "POKEMON_FLED") { this.g3stateVariable = "From Battle - Fled"}
+            // if (prop.value == "NO_SAFARI_BALLS") { this.g3stateVariable = "From Battle - No_Safari_Balls"}
+            // if (prop.value == "FORFEITED") { this.g3stateVariable = "From Battle - Forfeited"}
+            // if (prop.value == "POKEMON_TELEPORTED") { this.g3stateVariable = "From Battle - Teleported"}
+        });9
+
+        this.mapper.properties.pointers.callback2.change((prop) => {
+            if (prop.value == "Owners") { this.g3stateVariable = "Reset"}
+        });
 
 
         // TRACK VARIABLES HERE ------------------------------------------------------------------------------------------------//
-        // this.mapper.properties.player.name.bytes.change(function (x) {
-        //     if (that.mapper.properties.player.name.bytes > 0) {
-        //         that.playerId = 10
-        //     }
-        // })
         this.mapper.properties.gameTime.seconds.change(async (x) => {
             if (this.mapper.properties.battle.yourPokemon.species.value != null) {
                 this.bufferNature = this.natureCalculation(this.mapper.properties.player.team[0].personalityValue.value)
@@ -1164,53 +1209,6 @@ const app = Vue.createApp({
                 this.bufferLevel = this.mapper.properties.player.team[0].level.value
             }
         })
-
-        //GAMESTATE VARIABLE MANAGEMENT (RESETS MEMORY AREAS ETC)
-        // const gamestateManagement = async (x) => {
-        //     const noMod = 0x06 //0x06 - no modifier
-        //     const zerod = 0x00 //clears memory location
-        //     const ranAway = 0x04 //sets battle outcome to ran away
-        
-        //     if (that.currentGameState == "Initialization") {
-        //         await Promise.all([
-        //             await this.mapper.properties.battle.yourPokemon.modStageAttack.setBytes([noMod], false), //resets ram to no mod
-        //             await this.mapper.properties.battle.yourPokemon.modStageDefense.setBytes([noMod], false), //resets ram to no mod
-        //             await this.mapper.properties.battle.yourPokemon.modStageSpeed.setBytes([noMod], false), //resets ram to no mod
-        //             await this.mapper.properties.battle.yourPokemon.modStageSpecialAttack.setBytes([noMod], false), //resets ram to no mod
-        //             await this.mapper.properties.battle.yourPokemon.modStageSpecialDefense.setBytes([noMod], false), //resets ram to no mod
-        //             console.log("Initializing Modifiers")
-        //         ])
-        //     }
-        //     else if (that.currentGameState == "To Battle") {
-        //         await Promise.all([
-        //             await this.mapper.properties.battle.yourPokemon.modStageAttack.setBytes([noMod], false), //resets ram to no mod
-        //             await this.mapper.properties.battle.yourPokemon.modStageDefense.setBytes([noMod], false), //resets ram to no mod
-        //             await this.mapper.properties.battle.yourPokemon.modStageSpeed.setBytes([noMod], false), //resets ram to no mod
-        //             await this.mapper.properties.battle.yourPokemon.modStageSpecialAttack.setBytes([noMod], false), //resets ram to no mod
-        //             await this.mapper.properties.battle.yourPokemon.modStageSpecialDefense.setBytes([noMod], false), //resets ram to no mod
-        //             console.log("Resetting Modifiers")
-        //         ])
-        //     }
-        //     else if (that.currentGameState == "Battle") {
-        //         console.log("Overworld")
-        //     }
-        //     else if (that.currentGameState == "From Battle") {
-        //         await Promise.all([
-        //             await this.mapper.properties.battle.yourPokemon.modStageAttack.setBytes([noMod], false), //resets ram to no mod
-        //             await this.mapper.properties.battle.yourPokemon.modStageDefense.setBytes([noMod], false), //resets ram to no mod
-        //             await this.mapper.properties.battle.yourPokemon.modStageSpeed.setBytes([noMod], false), //resets ram to no mod
-        //             await this.mapper.properties.battle.yourPokemon.modStageSpecialAttack.setBytes([noMod], false), //resets ram to no mod
-        //             await this.mapper.properties.battle.yourPokemon.modStageSpecialDefense.setBytes([noMod], false), //resets ram to no mod
-        //             console.log("Resetting Modifiers")
-        //         ])
-        //     }
-        //     else if (that.currentGameState == "Overworld") {
-        //         console.log("Overworld")
-        //     }
-        //     else {
-        //         console.log("Gamestate Error - cannot adjust properties")
-        //     }
-        // }
         
         // DEFINE FUNCTIONS FOR GAMEHOOK MODIFICATIONS HERE --------------------------------------------------------------------//
         const onLoad = async () => {
@@ -1250,62 +1248,6 @@ const app = Vue.createApp({
             if (this.mapper.properties.player.badges.badge6 == true) //check badges
                 this.boostSpecial = true //set badge boost
         }
-
-        // //OLD HIDDEN POWER / DVS FUNCTION
-        // const setPokemon = async () => {
-        //     //hidden power
-        //     const hpDark = [0xFF, 0xFF, 0xFF, 0xBF] //Dark
-        //     const hpBug = [0xFF, 0x7F, 0xFF, 0x3D] //Bug
-        //     const hpDragon = [0xDF, 0xFF, 0xFF, 0x3F] //Dragon
-        //     const hpElectric = [0xFF, 0xFF, 0xEF, 0x3F] //Electric
-        //     const hpFighting = [0xFF, 0x7B, 0xEF, 0x3D] //Fighting
-        //     const hpFire = [0xDF, 0x7F, 0xEF, 0x3F] //Fire
-        //     const hpFlying = [0x43, 0xAA, 0x28, 0x63] //Flying
-        //     const hpGhost = [0x63, 0x2A, 0x38, 0x63] //Ghost
-        //     const hpGrass = [0x42, 0x2A, 0x28, 0x61] //Grass
-        //     const hpGround = [0x43, 0x2A, 0x28, 0x63] //Ground
-        //     const hpIce = [0x43, 0xAA, 0x38, 0x61] //Ice
-        //     const hpPoison = [0x43, 0x2E, 0x28, 0x63] //Poison
-        //     const hpPsychic = [0x42, 0xAA, 0x38, 0x61] //Psychic
-        //     const hpSteel = [0x43, 0x2A, 0x38, 0x63] //Steel
-        //     const hpRock = [0x43, 0xAE, 0x38, 0x63] //Rock
-        //     const hpWater = [0x63, 0x2E, 0x38, 0x61] //Water
-
-        //     //hidden nature
-        //     const natureHardy = 0
-        //     const natureLonely = 1
-        //     const natureBrave = 2
-        //     const natureAdamant = 3
-        //     const natureNaughty = 4
-        //     const natureBold = 5
-        //     const natureDocile = 6
-        //     const natureRelaxed = 7
-        //     const natureImpish = 8
-        //     const natureLax = 9
-        //     const natureTimid = 10
-        //     const natureHasty = 11
-        //     const natureSerious = 12
-        //     const natureJolly = 13
-        //     const natureNaive = 14
-        //     const natureModest = 15
-        //     const natureMild = 16
-        //     const natureQuiet = 17
-        //     const natureBashful = 18
-        //     const natureRash = 19
-        //     const natureCalm = 20
-        //     const natureGentle = 21
-        //     const natureSassy = 22
-        //     const natureCareful = 23
-        //     const natureQuirky = 24
-
-        //     //define nature here
-        //     let natureSet = ((this.mapper.properties.player.team[0].personalityValue.value % 25) + natureLonely)
-
-        //     await Promise.all([
-        //         await this.mapper.properties.player.team[0].ivEggAbilityBlock.setBytes(hpDark, true),
-        //         await this.mapper.properties.player.team[0].nature.setBytes(931333000, true),
-        //     ])
-        // }
 
         // ---------------------------------------------------------------------------------------------------------------------//
         // MODIFY GAMEHOOK PROPERTIES ------------------------------------------------------------------------------------------//
