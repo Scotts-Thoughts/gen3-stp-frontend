@@ -1162,9 +1162,8 @@ const app = Vue.createApp({
 
         // wait for events to change the state
         this.mapper.properties.pointers.callback1.change((prop) => {
-            if (this.g3stateVariable == "Base Stats") return; // ignore everything if we still dont have a pokemon
-
             if (prop.value == "Overworld") { this.g3stateVariable = "Overworld"; } 
+            else if (prop.value == "Reset") { this.g3stateVariable = "Overworld"; } 
             else if (prop.value == "Battle") { this.g3stateVariable = "To Battle"; } 
         });
 

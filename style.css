@@ -1377,7 +1377,7 @@ canvas {  /* or some other selector */
     font-weight: 700
 }
 .ability {
-    font-size: 46px;
+    font-size: 44px;
     position: fixed;
     left: -460px;
     top: 836px;
@@ -1409,7 +1409,7 @@ canvas {  /* or some other selector */
 
 /* STATS AREA */
 .heldItem {
-    font-size: 46px;
+    font-size: 44px;
     position: fixed;
     left: 804px;
     top: 836px;
