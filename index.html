@@ -123,14 +123,15 @@
 
 <!--------- EXP BAR -------------------------------------------------------------------------------------------------------------------------------------->
             <div>
-                <div class="expMeterOuter"><div class="expMeterInner" :style="{ width: expPercent(mapper.properties?.player.team[0]) + '%' }"></div></div>
+                <div class="expMeterOuter"><div class="expMeterInner" ref="expBar" :style="{ width: expPercent(mapper.properties?.player.team[0]) + '%' }"></div></div>
                 <div v-show="labels == true" class="labelEXP">Exp:</div>
                 <img src="images/elements/ui/expLabel.png" style="top: 0px; position: absolute;">
             </div>
 
 <!--------- MOVEPOOL ------------------------------------------------------------------------------------------------------------------------------------->
             <transition name="fadeBattle" style="position: relative;">
-                <div v-if="g3stateVariable == `Battle` && mapper.properties.battle.type.trainer.value == true">
+                <!-- <div v-if="g3stateVariable == `Battle` && mapper.properties.battle.type.trainer.value == true"> -->
+                <div v-if="(g3stateVariable == `Battle` || g3stateVariable == `To Battle` || g3stateVariable == `From Battle`) && mapper.properties.battle.type.trainer.value == true">
                     <div class="movepoolTitle">{{ enemyTrainer.trainer_name }}</div>
                     <img class="enemyPng" :src="`images/enemy_area/${starterString.toLowerCase()}.png`" :style="battlePokemonCrop()"/>
                     <img class="enemyPng" :src="`images/abilities/${starterString.toLowerCase()}.png`" :style="battlePokemonCrop()"/>
@@ -159,17 +160,13 @@
     </div>
 
 <!--------------------------------------- JAVASCRIPT ------------------------------------------------->
-    <!-- SIGNAL R -->
     <script src="https://unpkg.com/@microsoft/signalr@latest/dist/browser/signalr.min.js"></script> 
     <script src="https://unpkg.com/vue@latest/dist/vue.global.js"></script>
     <script src="http://localhost:8085/dist/gameHookMapperClient.js"></script>
-    
-    <!-- GEN1 DATA -->
+    <!-- DATA -->
     <script src="data/gen1data.js"></script>
     <script src="data/gen1dataGrowthMovepool.js"></script>
     <script src="data/gen1moves.js"></script>
-
-    <!-- GEN3 DATA -->
     <script src="data/gen3data.js"></script>
     <script src="data/stageModifiers.js"></script>
     <script src="data/natures.js"></script>
@@ -179,7 +176,6 @@
     <script src="data/gen3moves.js"></script>
     <script src="data/type-effectiveness.js"></script>
     <script src="data/typeBoostingItems.js"></script>
-
     <!-- VUE APP -->
     <script type="text/javascript" src="scripts/vue.js"></script>
 </body>

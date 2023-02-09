@@ -1,10 +1,11 @@
-// import method1 from methods
-
-// TODO Add type icon selection based on starter
+// 2023-02-09
+// !BUG - EXP bar doesn't animate correctly when it maxes out and the Pkmn lvls up
+// !BUG - Beginning of battle pop in
+    // ! - currently affects exp bar, moveset, held item
+    // ! - lilely caused by the fact that Gamehook looses the properties (either DMA, or slow decryption)
+// TODO - 
 
 const app = Vue.createApp({
-            
-    //DATA & DEFINITIONS
     data() {
         return {
             ready: false,
@@ -155,6 +156,7 @@ const app = Vue.createApp({
             gameStarted:  true, //tracks if the player has a save game or not
             playerID: 999,
             g3stateVariable: "Base Stats",
+            prevSpecies: undefined,
         }
     },
     computed: {
@@ -254,24 +256,6 @@ const app = Vue.createApp({
             else return "Version Error"
         },
 
-        /// STATES TO TRACK ///
-        // TODO (1) "New Game"
-        // TODO (2) "No Pokemon"
-        // TODO (3) "Overworld"
-        // TODO (4) "To Battle"
-        // TODO (5) "Battle"
-        // TODO (6) "Double-Battle"
-        // TODO (7) "From Battle"
-        // TODO (8) "Reset"
-        // TODO (9) "Reset Overworld"
-        // TODO (10) "Error"
-        /// VARIABLES REQUIRED ///
-        // TODO currentGameState
-        // TODO playerID
-        // TODO gameStarted
-        // ! Currently not tracking resets well
-        // tracking battle well
-        // tracking reset well
         g3state() {
             // NEW GAME
             if (
@@ -397,126 +381,6 @@ const app = Vue.createApp({
                 return this.setGamestate(string, gamestate)
             }
         },
-
-        //GAMESTATE TRACKING 
-        //(GEN 3 GAMES; EMERALD TESTED; FIRERED&LEAFGREEN UNTESTED; RUBY&SAPPHIRE UNTESTED;)
-        // gen3Gamestate() {
-        //     if (this.mapper.properties.battle.turnInfo.battleDialogue.bytes == 18) {
-        //         this.currentGameState = "Battle"
-        //         this.gameStarted = true
-        //         this.bufferAbility = this.mapper.properties.battle.yourPokemon.ability.value
-        //         this.bufferNature = this.mapper.properties.player.team[0].personalityValue.value
-        //         this.bufferHeldItem = this.mapper.properties.player.team[0].itemHeld.value
-        //         this.bufferLevel = this.mapper.properties.player.team[0].level.value
-        //         console.log(this.bufferNature)
-        //         console.log(this.bufferAbility)
-        //         console.log(this.bufferHeldItem)
-        //         console.log(this.bufferLevel)
-        //         console.log(this.gameStarted)
-        //         return "Battle"
-        //     }
-            // else if (
-            //     this.gameStarted == false && 
-            //     this.mapper.properties?.player?.teamCount == 0 
-            //     ) 
-            //     {
-            //     this.currentGameState = "New Game"
-            //     console.log("Gamestate: (0) New Game")
-            //     console.log(this.bufferNature)
-            //     console.log(this.bufferAbility)
-            //     console.log(this.bufferHeldItem)
-            //     console.log(this.bufferLevel)
-            //     console.log(this.gameStarted)
-            //     return "New Game"
-            // }
-            // else if (
-            //     this.mapper.properties.battle.turnInfo.battleOutcome.bytes == 0 && 
-            //     this.mapper.properties.battle.turnInfo.battleBackgroundTiles.value == 0 &&
-            //     this.mapper.properties?.player?.teamCount == 0 &&
-            //     this.gameStarted == true
-            //     ) 
-            //     {
-            //     this.currentGameState = "Reset"
-            //     console.log("Gamestate: (1) Initialization")
-            //     console.log(this.bufferNature)
-            //     console.log(this.bufferAbility)
-            //     console.log(this.bufferHeldItem)
-            //     console.log(this.bufferLevel)
-            //     return "Reset"
-            // }
-            // else if (
-            //     this.mapper.properties.battle.turnInfo.battleOutcome.bytes == 0 && 
-            //     this.mapper.properties.battle.turnInfo.battleBackgroundTiles.value > 0 &&
-            //     this.currentGameState == "New Game"
-            //     )
-            //     {
-            //     console.log("Pokemon Obtained!")
-
-            //     return "To Battle"    
-            //     }
-            // else if (
-            //     this.mapper.properties.battle.turnInfo.battleOutcome.bytes == 0 && 
-            //     this.mapper.properties.battle.turnInfo.battleBackgroundTiles.value > 0 &&
-            //     this.currentGameState == "Initialization"
-            //     ||
-            //     this.mapper.properties.battle.turnInfo.battleOutcome.bytes > 0 && 
-            //     this.mapper.properties.battle.turnInfo.battleBackgroundTiles.value > 0 &&
-            //     this.currentGameState == "Overworld"
-            //     ||
-            //     this.mapper.properties.battle.turnInfo.battleOutcome.bytes == 0 && 
-            //     this.mapper.properties.battle.turnInfo.battleBackgroundTiles.value > 0 &&
-            //     this.currentGameState == "Overworld"
-            //     )
-            //     {
-            //     this.fixMove1 = this.camelCase(this.mapper.properties.player.team[0].move1.value)
-            //     this.fixMove1pp = this.mapper.properties.player.team[0].move1pp
-            //     this.fixMove1effectiveness = this.typeEffectiveness(this.mapper.properties.player.team[0].move1.value)
-            //     this.fixMove1icon = this.moveTypeIcon(this.mapper.properties.player.team[0].move1.value)
-
-            //     this.currentGameState == "To Battle"
-            //     console.log("Gamestate: (3) End of Battle")
-            //     return "To Battle"    
-            //     }
-            // else if (
-            //     this.mapper.properties.battle.turnInfo.battleOutcome.bytes > 0 && 
-            //     this.mapper.properties.battle.turnInfo.battleBackgroundTiles.value > 0 &&
-            //     this.currentGameState == "Battle"
-            //     )
-            //     {
-            //     console.log("Gamestate: (3) End of Battle")
-            //     return "From Battle"    
-            //     }
-            // else if (
-            //     this.mapper.properties.battle.turnInfo.battleOutcome.bytes == 0 && 
-            //     this.mapper.properties.battle.turnInfo.battleBackgroundTiles.value > 0 &&
-            //     this.currentGameState == "Battle"
-            //     ) 
-            //     {
-            //     console.log("Gamestate: (2) Battle")
-            //     return "Battle"
-            // }
-            // else if (
-            //     this.mapper.properties.battle.turnInfo.battleOutcome.bytes > 0 && 
-            //     this.mapper.properties.battle.turnInfo.battleBackgroundTiles.value == 0
-            //     ) 
-            //     {
-            //     this.currentGameState = "Overworld"
-            //     console.log("Gamestate: (3) Overworld")
-            //     return "Overworld"
-            // }
-            // else if (
-            //     this.mapper.properties?.player?.teamCount > 0
-            //     ) 
-            //     {
-            //     this.currentGameState = "Overworld"
-            //     console.log("Gamestate: (3) Overworld - Error")
-            //     return "Overworld"
-            // }
-        //     else {
-        //         console.log("Gamestate: (5) Unknown Gamestate (ERROR)")
-        //         return "ERROR"
-        //     }
-        // },
 
         growthRate() {
             console.log(this.dexDataRubySapphireEmerald)
@@ -820,11 +684,40 @@ const app = Vue.createApp({
                 return " "
             return y
         },
+        sleep(ms) {
+            return new Promise((res) => setTimeout(res, ms))
+        },
         
         //EXPERIENCE FUNCTIONS
         expPercent(x) {
             return this.expPercentSlow(x)
         },
+        calcExpStats(growthRate, exp) {
+            const expTable = {
+                "GROWTH_ERRATIC":     [0,15,52,122,237,406,637,942,1326,1800,2369,3041,3822,4719,5737,6881,8155,9564,11111,12800,14632,16610,18737,21012,23437,26012,28737,31610,34632,37800,41111,44564,48155,51881,55737,59719,63822,68041,72369,76800,81326,85942,90637,95406,100237,105122,110052,115015,120001,125000,131324,137795,144410,151165,158056,165079,172229,179503,186894,194400,202013,209728,217540,225443,233431,241496,249633,257834,267406,276458,286328,296358,305767,316074,326531,336255,346965,357812,367807,378880,390077,400293,411686,423190,433572,445239,457001,467489,479378,491346,501878,513934,526049,536557,548720,560922,571333,583539,591882,600000],
+                "GROWTH_FAST":        [0,6,21,51,100,172,274,409,583,800,1064,1382,1757,2195,2700,3276,3930,4665,5487,6400,7408,8518,9733,11059,12500,14060,15746,17561,19511,21600,23832,26214,28749,31443,34300,37324,40522,43897,47455,51200,55136,59270,63605,68147,72900,77868,83058,88473,94119,100000,106120,112486,119101,125971,133100,140492,148154,156089,164303,172800,181584,190662,200037,209715,219700,229996,240610,251545,262807,274400,286328,298598,311213,324179,337500,351180,365226,379641,394431,409600,425152,441094,457429,474163,491300,508844,526802,545177,563975,583200,602856,622950,643485,664467,685900,707788,730138,752953,776239,800000],
+                "GROWTH_MEDIUM_FAST": [0,8,27,64,125,216,343,512,729,1000,1331,1728,2197,2744,3375,4096,4913,5832,6859,8000,9261,10648,12167,13824,15625,17576,19683,21952,24389,27000,29791,32768,35937,39304,42875,46656,50653,54872,59319,64000,68921,74088,79507,85184,91125,97336,103823,110592,117649,125000,132651,140608,148877,157464,166375,175616,185193,195112,205379,216000,226981,238328,250047,262144,274625,287496,300763,314432,328509,343000,357911,373248,389017,405224,421875,438976,456533,474552,493039,512000,531441,551368,571787,592704,614125,636056,658503,681472,704969,729000,753571,778688,804357,830584,857375,884736,912673,941192,970299,1000000],
+                "GROWTH_MEDIUM_SLOW": [0,9,57,96,135,179,236,314,419,560,742,973,1261,1612,2035,2535,3120,3798,4575,5460,6458,7577,8825,10208,11735,13411,15244,17242,19411,21760,24294,27021,29949,33084,36435,40007,43808,47846,52127,56660,61450,66505,71833,77440,83335,89523,96012,102810,109923,117360,125126,133229,141677,150476,159635,169159,179056,189334,199999,211060,222522,234393,246681,259392,272535,286115,300140,314618,329555,344960,360838,377197,394045,411388,429235,447591,466464,485862,505791,526260,547274,568841,590969,613664,636935,660787,685228,710266,735907,762160,789030,816525,844653,873420,902835,932903,963632,995030,1027103,1059860],
+                "GROWTH_SLOW":        [0,10,33,80,156,270,428,640,911,1250,1663,2160,2746,3430,4218,5120,6141,7290,8573,10000,11576,13310,15208,17280,19531,21970,24603,27440,30486,33750,37238,40960,44921,49130,53593,58320,63316,68590,74148,80000,86151,92610,99383,106480,113906,121670,129778,138240,147061,156250,165813,175760,186096,196830,207968,219520,231491,243890,256723,270000,283726,297910,312558,327680,343281,359370,375953,393040,410636,428750,447388,466560,486271,506530,527343,548720,570666,593190,616298,640000,664301,689210,714733,740880,767656,795070,823128,851840,881211,911250,941963,973360,1005446,1038230,1071718,1105920,1140841,1176490,1212873,1250000],
+                "GROWTH_FLUCTUATING": [0,4,13,32,65,112,178,276,393,540,745,967,1230,1591,1957,2457,3046,3732,4526,5440,6482,7666,9003,10506,12187,14060,16140,18439,20974,23760,26811,30146,33780,37731,42017,46656,50653,55969,60505,66560,71677,78533,84277,91998,98415,107069,114205,123863,131766,142500,151222,163105,172697,185807,196322,210739,222231,238036,250562,267840,281456,300293,315059,335544,351520,373744,390991,415050,433631,459620,479600,507617,529063,559209,582187,614566,639146,673863,700115,737280,765275,804997,834809,877201,908905,954084,987754,1035837,1071552,1122660,1160499,1214753,1254796,1312322,1354652,1415577,1460276,1524731,1571884,1640000]
+            };
+
+            // makes searching a bit easiser
+            expTable["GROWTH_ERRATIC"][100]     = expTable["GROWTH_ERRATIC"][99] + 1;
+            expTable["GROWTH_FAST"][100]        = expTable["GROWTH_FAST"][99] + 1;
+            expTable["GROWTH_MEDIUM_FAST"][100] = expTable["GROWTH_MEDIUM_FAST"][99] + 1;
+            expTable["GROWTH_MEDIUM_SLOW"][100] = expTable["GROWTH_MEDIUM_SLOW"][99] + 1;
+            expTable["GROWTH_SLOW"][100]        = expTable["GROWTH_SLOW"][99] + 1;
+            expTable["GROWTH_FLUCTUATING"][100] = expTable["GROWTH_FLUCTUATING"][99] + 1;
+        
+            const index = expTable[growthRate].findIndex(x => x > exp);
+            const currLvlExp = expTable[growthRate][index - 1];
+            const nextLvlExp = expTable[growthRate][index];
+            return {
+                level: index,
+                percent: (exp - currLvlExp) / (nextLvlExp - currLvlExp),
+            };
+        }, 
         expPercentFast(x) {
             expBar = ((x.expPoints.value) - ((4 * (Math.pow(x.level.value, 3))) / 5)) / (((4 * (Math.pow(x.level.value + 1, 3))) / 5) - ((4 * (Math.pow(x.level.value, 3))) / 5)) // errors could lurk here
             if (expBar > 1)
@@ -1280,6 +1173,46 @@ const app = Vue.createApp({
                 return
             }
             that.move1 = x
+        })
+
+        //EXP BAR ANIMATION FUNCTION
+        this.mapper.properties.player.team[0].expPoints.change(async (newProp, oldProp) => {
+            const currSpecies = this.mapper.properties.player.team[0].species.value;
+            const growthRate = this.dexDataRubySapphireEmerald[currSpecies].growth_rate
+            const oldExpStats = this.calcExpStats(growthRate, oldProp.value);
+            const newExpStats = this.calcExpStats(growthRate, newProp.value);
+
+            // did we switch out?
+            // there is still a bug here. what if we changed to the same species?
+            if (this.prevSpecies != currSpecies) {
+                // update prevSpecies
+                this.prevSpecies = currSpecies; 
+                // dont animate, just set newExpStats.percent
+                this.$refs.expBar.style.width = (newExpStats.percent * 100) + "%";
+            } 
+            // same pokemon but exp changed
+            else {
+                if (oldExpStats.level == newExpStats.level) {
+                    // animate width to newExpStats.percent
+                    this.$refs.expBar.style.transition = 'width 200ms ease-in-out';
+                    this.$refs.expBar.style.width = (newExpStats.percent * 100) + "%";
+                    await this.sleep(550);
+                } else {
+                    // animate width to 100%
+                    this.$refs.expBar.style.transition = 'width 125ms ease-in';
+                    this.$refs.expBar.style.width = "100%";
+                    await this.sleep(300);
+                    // dont animate, set width to 0%
+                    this.$refs.expBar.style.transition = null;
+                    this.$refs.expBar.style.width = "0%";
+                    await this.sleep(50);
+                    // animate width from 0% to newExpStats.percent
+                    this.$refs.expBar.style.transition = 'width 125ms ease-out';
+                    this.$refs.expBar.style.width = (newExpStats.percent * 100) + "%";
+                    await this.sleep(300);
+                }
+            }
+            this.$refs.expBar.style.transition = null;
         })
     },
 }).mount('#app')
