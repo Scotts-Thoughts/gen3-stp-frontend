@@ -928,7 +928,7 @@ const gen3moves = [
     Description: "Scatters a powder that may cause the foe to sleep."
   },
   {
-    Move: "Solar Beam",
+    Move: "Solarbeam",
     Type: "Grass",
     PP: "10",
     Power: "120",

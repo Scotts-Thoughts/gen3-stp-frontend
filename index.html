@@ -36,7 +36,10 @@
 
 <!--------- STATE MANAGEMENT ----------------------------------------------------------------------------------------------------------------->
             <div v-if="gamestate == true">
-                <div class="gamestate">New: {{ g3stateVariable }}</div>
+                <div class="gamestate">G3StateVariable: {{ g3stateVariable }}<br><br>
+                    callback1: {{ mapper.properties.pointers.callback1.value }}<br>
+                    callback2: {{ mapper.properties.pointers.callback2.value }}<br>
+                </div>
             </div>
 
 <!--------- STATS ---------------------------------------------------------------------------------------------------------------------------->
@@ -120,10 +123,54 @@
                     </div>
                 </div>
             </div>
+            <!-- <div v-if="g3stateVariable != `To Battle`">
+                <div v-for="x in pkmnMoves">
+                    <div v-show="moveset == true" id="moveset">
+                        <div v-if="mapper.properties.player.team[0].level.value > 0 && mapper.properties.player.team[0][x].value != null && g3stateVariable != `Battle`">
+                            <div :class="`${x}`">{{ camelCase(mapper.properties.player.team[0][x].value) }}</div>
+                            <div :class="`${x}pp`">{{ mapper.properties.player.team[0][x + "pp"] }}</div>
+                            <div :class="`${x}power`">{{ typeEffectiveness(mapper.properties.player.team[0][x].value) }}</div>
+                            <img :class="`${x}icon`" :src="moveTypeIcon(mapper.properties.player.team[0][x].value)" />
+                        </div>
+                        <div v-else-if="mapper.properties.player.team[0].level.value > 0 && mapper.properties.player.team[0][x].value != null && g3stateVariable == `Battle`">
+                            <div :class="`${x}`">{{ camelCase(mapper.properties.battle.yourPokemon[x].value) }}</div>
+                            <div :class="`${x}pp`">{{ mapper.properties.battle.yourPokemon[x + "pp"] }}</div>
+                            <div :class="`${x}power`">{{ typeEffectiveness(mapper.properties.battle.yourPokemon[x].value) }}</div>
+                            <img :class="`${x}icon`" :src="moveTypeIcon(mapper.properties.battle.yourPokemon[x].value)" />
+                        </div>
+                    </div>    
+                </div>
+            </div>
+            <div v-if="g3stateVariable == `To Battle`">
+                <div v-show="moveset == true" id="moveset">
+                    <div class="move1">{{ buffer_move1 }}</div>
+                    <div class="move1pp">{{ buffer_move1pp }}</div>
+                    <div class="move1power">{{ buffer_power_move1 }}</div>
+                    <img class="move1icon" :src="moveTypeIcon(buffer_move1)" />
+                </div>    
+                <div v-show="moveset == true" id="moveset">
+                    <div class="move2">{{ buffer_move2 }}</div>
+                    <div class="move2pp">{{ buffer_move2pp }}</div>
+                    <div class="move2power">{{ buffer_power_move2 }}</div>
+                    <img class="move2icon" :src="moveTypeIcon(buffer_move2)" />
+                </div>    
+                <div v-show="moveset == true" id="moveset">
+                    <div class="move3">{{ buffer_move3 }}</div>
+                    <div class="move3pp">{{ buffer_move3pp }}</div>
+                    <div class="move3power">{{ buffer_power_move3 }}</div>
+                    <img class="move3icon" :src="moveTypeIcon(buffer_move3)" />
+                </div>    
+                <div v-show="moveset == true" id="moveset">
+                    <div class="move4">{{ buffer_move4 }}</div>
+                    <div class="move4pp">{{ buffer_move4pp }}</div>
+                    <div class="move4power">{{ buffer_power_move4 }}</div>
+                    <img class="move4icon" :src="moveTypeIcon(buffer_move4)" />
+                </div>    
+            </div> -->
 
 <!--------- EXP BAR -------------------------------------------------------------------------------------------------------------------------------------->
             <div>
-                <div class="expMeterOuter"><div class="expMeterInner" ref="expBar" :style="{ width: expPercent(mapper.properties?.player.team[0]) + '%' }"></div></div>
+                <div class="expMeterOuter"><div class="expMeterInner" ref="expBar"></div></div>
                 <div v-show="labels == true" class="labelEXP">Exp:</div>
                 <img src="images/elements/ui/expLabel.png" style="top: 0px; position: absolute;">
             </div>

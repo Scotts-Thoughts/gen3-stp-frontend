@@ -1322,9 +1322,9 @@ canvas {  /* or some other selector */
 
 
 .gamestate {
-    font-size: 66px;
+    font-size: 54px;
     position: fixed;
-    left: 600px;
+    left: 400px;
     top: 50px;
     z-index: 5;
     line-height: 66px;

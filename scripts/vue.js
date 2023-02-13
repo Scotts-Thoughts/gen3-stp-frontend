@@ -3,6 +3,7 @@
 // !BUG - Beginning of battle pop in
     // ! - currently affects exp bar, moveset, held item
     // ! - lilely caused by the fact that Gamehook looses the properties (either DMA, or slow decryption)
+// TODO - Time Experience Bar on the overlay with the experience bar in game
 // TODO - 
 
 const app = Vue.createApp({
@@ -135,6 +136,22 @@ const app = Vue.createApp({
             bufferBadge7: "",
             bufferBadge8: "",
 
+            //BUFFER
+            buffer_move1: undefined,
+            buffer_move2: undefined,
+            buffer_move3: undefined,
+            buffer_move4: undefined,
+            buffer_power_move1: undefined,
+            buffer_power_move2: undefined,
+            buffer_power_move3: undefined,
+            buffer_power_move4: undefined,
+            buffer_move1pp: undefined,
+            buffer_move2pp: undefined,
+            buffer_move3pp: undefined,
+            buffer_move4pp: undefined,
+            buffer_exp: undefined,
+            buffer_heldItem: undefined,
+
             //Reset buffer
             resetBufferNature: "",
             resetBufferAbility: "",
@@ -148,7 +165,7 @@ const app = Vue.createApp({
             resetBufferSpd: "",
 
             //STATE MANAGEMENT ---------------------------------------------------------------------------------//
-            gamestateLogging: true,
+            gamestateLogging: false,
             currentGameState: "Initialization",
             simpleGameState: "Out of Game",
             currentGameStateNew: "Initialization",
@@ -157,6 +174,9 @@ const app = Vue.createApp({
             playerID: 999,
             g3stateVariable: "Base Stats",
             prevSpecies: undefined,
+            prevExpPoints: 0,
+            expDebounceTimeoutId: -1,
+            expBarAnimation: false,
         }
     },
     computed: {
@@ -244,7 +264,6 @@ const app = Vue.createApp({
                 return "display-doublebattle"
             }
             else
-                console.log("Display State Error: there is not set display state for the current gamestate. Displaying the default display state as a result.")
                 return "display-default"
         },
 
@@ -383,7 +402,6 @@ const app = Vue.createApp({
         },
 
         growthRate() {
-            console.log(this.dexDataRubySapphireEmerald)
             var growthRate = this.dexDataRubySapphireEmerald[this.starterString].growth_rate
             if (growthRate == "GROWTH_MEDIUM_SLOW") {
                 return "Medium Slow"
@@ -794,10 +812,10 @@ const app = Vue.createApp({
             return null
         },
         weatherModifier(weather, move, moveType) {
-            if (weather == "Sunny" && moveType == "Water") {
+            if (weather == "Sun" && moveType == "Water") {
                 return .5
             }
-            else if (weather == "Sunny" && moveType == "Fire") {
+            else if (weather == "Sun" && moveType == "Fire") {
                 return 1.5
             }
             else if (weather == "Rain" && moveType == "Water") {
@@ -833,7 +851,7 @@ const app = Vue.createApp({
             }
             else if (y != null && y != undefined) {
                 var move = this.gen3moves.find(x => x.Move.toUpperCase() === y)
-                var moveType = move[`Type`].toLowerCase()
+                var moveType = move[`Type`]?.toLowerCase()
                 return `images/elements/type-icons/${moveType}.png`
             }
             else {
@@ -928,8 +946,8 @@ const app = Vue.createApp({
         
         //STACK OVERFLOW ERROR CURRENTLY OCCURING WITH THIS FORMULA
         typeEffectiveness(x) { //x = move1.value
-            if (this.typeCalcs == true && this.g3state() == "Battle" && this.mapper.properties.battle.trainer.opponentA.value != "LEADER_TATE_AND_LIZA_1") { //calculates effective power when in battle
-                console.log("If statement for battle")
+            if (this.typeCalcs == true && this.g3stateVariable == "Battle" && this.mapper.properties.battle.trainer.opponentA.value != "LEADER_TATE_AND_LIZA_1") { //calculates effective power when in battle
+                // console.log("If statement for battle")
                 var attackingType = this.moveType(x)
                 var defendingTypeMono = this.mapper.properties.battle.enemyPokemon.type1.value
                 var defendingType1 = this.mapper.properties.battle.enemyPokemon.type1.value
@@ -946,28 +964,28 @@ const app = Vue.createApp({
 
                 //NO MOVE POWER (STATUS MOVE)
                 if (this.movePower(x) == "-") {
-                    console.log("If no power")
+                    // console.log("If no power")
                     return this.movePower(x)
                 }
                 //LEVITATE INTERACTION
                 else if (this.mapper.properties.battle.enemyPokemon.ability.value == "LEVITATE" && attackingType == "Ground") {
-                    console.log("If levitate")
+                    // console.log("If levitate")
                     return 0
                 }
                 //NO ENEMY DATA (HAVEN'T BATTLED SINCE RELOADING ROM OR SAVE)
                 else if (this.mapper.properties.battle.enemyPokemon.type1 == null) {
-                    console.log("If no enemy")
+                    // console.log("If no enemy")
                     return Math.floor(this.movePower(x) * stabModifier * itemBoost)
                 }
                 //ATTACKING A MONO-TYPE POKEMON
                 else if (this.mapper.properties.battle.enemyPokemon.type1.value === this.mapper.properties.battle.enemyPokemon.type2.value) {
-                    console.log("If mono type Pokemon")
+                    // console.log("If mono type Pokemon")
                     var multiplier1 = multipliers[defendingTypeMono]
                     return Math.floor(this.movePower(x) * multiplier1 * stabModifier * itemBoost * weatherBoost)
                 }
                 //ATTACKING A DUAL-TYPE POKEMON
                 else if (this.mapper.properties.battle.enemyPokemon.type1 != this.mapper.properties.battle.enemyPokemon.type2) {
-                    console.log("If dual type Pokemon")
+                    // console.log("If dual type Pokemon")
                     var multipliers = this.typeData.find(x => x.moveType == attackingType)
                     var multiplier1 = multipliers[defendingType1]
                     var multiplier2 = multipliers[defendingType2]
@@ -975,7 +993,7 @@ const app = Vue.createApp({
                 }
                 //RETURN THE MOVES POWER IF NOTHING ELSE WORKS
                 else {
-                    console.log("Else value")
+                    // console.log("Else value")
                     return Math.floor(this.movePower(x) * this.determineSTAB(x))
                 }
             }
@@ -1034,14 +1052,34 @@ const app = Vue.createApp({
         this.mapper.onDisconnected = (x) => this.ready = false
         await this.mapper.connect()
 
+        //BUFFER ASSIGNMENT
+        // this.mapper.properties.pointers.callback1.change(async (x) => {
+        //     if (this.mapper.properties.pointers.callback1) {
+        //         this.buffer_move1 = this.pascalCaseSpace(this.camelCase(this.mapper.properties.player.team[0].move1.value))
+        //         this.buffer_move2 = this.pascalCaseSpace(this.camelCase(this.mapper.properties.player.team[0].move2.value))
+        //         this.buffer_move3 = this.pascalCaseSpace(this.camelCase(this.mapper.properties.player.team[0].move3.value))
+        //         this.buffer_move4 = this.pascalCaseSpace(this.camelCase(this.mapper.properties.player.team[0].move4.value))
+        //         this.buffer_power_move1 = this.typeEffectiveness(this.mapper.properties.player.team[0].move1.value)
+        //         this.buffer_power_move2 = this.typeEffectiveness(this.mapper.properties.player.team[0].move2.value)
+        //         this.buffer_power_move3 = this.typeEffectiveness(this.mapper.properties.player.team[0].move3.value)
+        //         this.buffer_power_move4 = this.typeEffectiveness(this.mapper.properties.player.team[0].move4.value)
+        //         this.buffer_move1pp = this.mapper.properties.player.team[0].move1pp.value
+        //         this.buffer_move2pp = this.mapper.properties.player.team[0].move2pp.value
+        //         this.buffer_move3pp = this.mapper.properties.player.team[0].move3pp.value
+        //         this.buffer_move4pp = this.mapper.properties.player.team[0].move4pp.value
+        //         this.buffer_exp = this.mapper.properties.player.team[0]?.expPoints.value
+        //         this.buffer_heldItem = this.mapper.properties.player.team[0].heldItem.value
+        //     }
+        // })
+
         //GAMESTATE MANAGEMENT
         // set initial gamestate value when the layout is loaded
         if (this.mapper.properties.player.team[0].level.value == 0) 
-            this.g3stateVariable = "Base Stats";
+            this.g3stateVariable = "Base Stats"
         else if (this.mapper.properties.pointers.callback1.value == null)
-            this.g3stateVariable = "Base Stats";
+            this.g3stateVariable = "Base Stats"
         else if (this.mapper.properties.pointers.callback1.value == "Overworld")
-            this.g3stateVariable = "Overworld";
+            this.g3stateVariable = "Overworld"
         else if (this.mapper.properties.pointers.callback1.value == "Battle") {
             if (this.mapper.properties.pointers.callback1.value == "Battle Animation") {
                 this.g3stateVariable = "To Battle"
@@ -1051,13 +1089,11 @@ const app = Vue.createApp({
             }
         }
         else
-            this.g3stateVariable = "Battle";
+            this.g3stateVariable = "Battle"
 
         // wait for events to change the state
         this.mapper.properties.pointers.callback1.change((prop) => {
-            if (prop.value == "Overworld") { this.g3stateVariable = "Overworld"; } 
-            else if (prop.value == "Reset") { this.g3stateVariable = "Overworld"; } 
-            else if (prop.value == "Battle") { this.g3stateVariable = "To Battle"; } 
+            if (prop.value == "Overworld") { this.g3stateVariable = "Overworld" } 
         });
 
         this.mapper.properties.battle.turnInfo.battleDialogue.change((prop) => {
@@ -1088,7 +1124,12 @@ const app = Vue.createApp({
         });9
 
         this.mapper.properties.pointers.callback2.change((prop) => {
-            if (prop.value == "Owners") { this.g3stateVariable = "Reset"}
+            if (prop.value == "Owners") { 
+                this.g3stateVariable = "Base Stats"
+            }
+            else if (prop.value == "Battle Animation") { 
+                this.g3stateVariable = "To Battle"
+            }
         });
 
 
@@ -1176,43 +1217,60 @@ const app = Vue.createApp({
         })
 
         //EXP BAR ANIMATION FUNCTION
-        this.mapper.properties.player.team[0].expPoints.change(async (newProp, oldProp) => {
-            const currSpecies = this.mapper.properties.player.team[0].species.value;
-            const growthRate = this.dexDataRubySapphireEmerald[currSpecies].growth_rate
-            const oldExpStats = this.calcExpStats(growthRate, oldProp.value);
-            const newExpStats = this.calcExpStats(growthRate, newProp.value);
+        var species = this.mapper.properties.player.team[0].species.value;
+        var growthRate = this.dexDataRubySapphireEmerald[species].growth_rate
+        var expStats = this.calcExpStats(growthRate, this.mapper.properties.player.team[0].expPoints.value);
+        this.$refs.expBar.style.width = (expStats.percent * 100) + "%";
+        this.prevSpecies = species
 
-            // did we switch out?
-            // there is still a bug here. what if we changed to the same species?
-            if (this.prevSpecies != currSpecies) {
-                // update prevSpecies
-                this.prevSpecies = currSpecies; 
-                // dont animate, just set newExpStats.percent
-                this.$refs.expBar.style.width = (newExpStats.percent * 100) + "%";
-            } 
-            // same pokemon but exp changed
-            else {
-                if (oldExpStats.level == newExpStats.level) {
-                    // animate width to newExpStats.percent
-                    this.$refs.expBar.style.transition = 'width 200ms ease-in-out';
+        this.mapper.properties.player.team[0].expPoints.change(async (newProp, oldProp) => {
+            if (this.expBarAnimation == true) {
+                const currSpecies = this.mapper.properties.player.team[0].species.value;
+                const growthRate = this.dexDataRubySapphireEmerald[currSpecies].growth_rate
+                const oldExpStats = this.calcExpStats(growthRate, oldProp.value);
+                const newExpStats = this.calcExpStats(growthRate, newProp.value);
+                console.log(oldExpStats, newExpStats, oldProp)
+    
+                if (oldProp.value == newProp.value) { return }
+                // did we switch out?
+                // there is still a bug here. what if we changed to the same species?
+                if (this.g1stateVariable == `Overworld`) {
                     this.$refs.expBar.style.width = (newExpStats.percent * 100) + "%";
-                    await this.sleep(550);
-                } else {
-                    // animate width to 100%
-                    this.$refs.expBar.style.transition = 'width 125ms ease-in';
-                    this.$refs.expBar.style.width = "100%";
-                    await this.sleep(300);
-                    // dont animate, set width to 0%
-                    this.$refs.expBar.style.transition = null;
-                    this.$refs.expBar.style.width = "0%";
-                    await this.sleep(50);
-                    // animate width from 0% to newExpStats.percent
-                    this.$refs.expBar.style.transition = 'width 125ms ease-out';
-                    this.$refs.expBar.style.width = (newExpStats.percent * 100) + "%";
-                    await this.sleep(300);
                 }
+                else if (this.prevSpecies != currSpecies) {
+                    // update prevSpecies
+                    console.log("prevSpecies != currSpecies")
+
+                    this.prevSpecies = currSpecies; 
+                    // dont animate, just set newExpStats.percent
+                    this.$refs.expBar.style.width = (newExpStats.percent * 100) + "%";
+                } 
+                // same pokemon but exp changed
+                else {
+                    if (oldExpStats.level == newExpStats.level) {
+                        console.log("If")
+                        // animate width to newExpStats.percent
+                        this.$refs.expBar.style.transition = 'width 200ms ease-in-out';
+                        this.$refs.expBar.style.width = (newExpStats.percent * 100) + "%";
+                        await this.sleep(250);
+                    } else {
+                        console.log("Else")
+                        // animate width to 100%
+                        this.$refs.expBar.style.transition = 'width 200ms ease-in';
+                        this.$refs.expBar.style.width = "100%";
+                        await this.sleep(250);
+                        // dont animate, set width to 0%
+                        this.$refs.expBar.style.transition = null;
+                        this.$refs.expBar.style.width = "0%";
+                        // await this.sleep(50);
+                        // // animate width from 0% to newExpStats.percent
+                        // this.$refs.expBar.style.transition = 'width 100ms ease-out';
+                        // this.$refs.expBar.style.width = (newExpStats.percent * 100) + "%";
+                        // await this.sleep(150);
+                    }
+                }
+                this.$refs.expBar.style.transition = null;
             }
-            this.$refs.expBar.style.transition = null;
         })
     },
 }).mount('#app')
