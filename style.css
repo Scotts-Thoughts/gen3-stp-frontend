@@ -1984,6 +1984,7 @@ canvas {  /* or some other selector */
 	transition: opacity .15s ease;
 }
 
+.opacityTransition { transition: opacity 500ms ease-in-out;}
 .ePkmn1 {
     border: 1px solid rgba(255, 102, 0, 0);
     position: relative;
@@ -2039,7 +2040,6 @@ canvas {  /* or some other selector */
     font-size: 17px;
     font-family: titan;
     width: 120px;
-    opacity: .7;
     text-align: center;
     top: 2px;
     left: 12px;
@@ -2066,7 +2066,7 @@ canvas {  /* or some other selector */
     max-height: 104px;
     left: 16px;
     top: 22px;
-    filter: drop-shadow(2px 2px 2px #000)
+    transition: opacity 500ms ease-in-out, filter 500ms ease-in-out;
 }
 .ePkmnMove1 {
     position: absolute;
@@ -2179,7 +2179,7 @@ canvas {  /* or some other selector */
     font-size: 15px;
     line-height: 20px;
     width: 121px;
-    top: 128.5px;
+    top: 129px;
     left: 8px;
 }
 .seHp {

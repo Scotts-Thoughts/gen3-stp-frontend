@@ -177,6 +177,7 @@ const app = Vue.createApp({
             prevExpPoints: 0,
             expDebounceTimeoutId: -1,
             expBarAnimation: false,
+            slotTimingFix: false,
         }
     },
     computed: {
@@ -189,9 +190,172 @@ const app = Vue.createApp({
         enemyTrainer() {
             return this.emeraldTrainers[this.mapper.properties.battle.trainer.opponentAId.value]
         },
+        s1() {
+            return this.mapper?.properties?.player?.team[0]
+        },
+        map() {
+            return this.mapper?.properties
+        },
+        batt() {
+            return this.mapper?.properties?.battle
+        },
+        battEn() {
+            return this.mapper?.properties?.battle?.enemyPokemon
+        },
+        s1dynamic() {
+            if (this.g1stateVariable == `Battle`) {
+                return this.mapper?.properties?.battle?.yourPokemon
+            }
+            else {
+                return this.mapper?.properties?.player?.team[0]
+            }
+        },
     },
 
     methods: { 
+        //DAMAGE CALCULATION
+        damageCalculation(userPkmnData, targetPkmnData, move) {
+            if (this.g3stateVariable != `Battle`) { return "" }
+            //Setup data for calculation
+            var lvl = userPkmnData.level.value
+            var userAttack = userPkmnData.attack.value
+            var userSpecial = userPkmnData.special.value
+            var userType1 = userPkmnData.type1.value
+            var userType2 = userPkmnData.type2.value
+            
+            var targetDefense = targetPkmnData.defense.value
+            var targetSpecial = targetPkmnData.special.value
+            var targetMaxHp = targetPkmnData.maxHp.value
+            var targetType1 = targetPkmnData.type1.value
+            var targetType2 = targetPkmnData.type2.value
+            var defenderScreen = undefined
+
+            var moveData = this.gen1moves.find(x => x.Move.toUpperCase() === move)
+            var moveType = moveData.Type
+            var movePower = moveData.Power
+            var moveCategory = moveData.Category
+            
+            var stab = 1
+            var AttackingTypeEffectiveness = this.typeData.find(x => x.moveType === moveType)
+            var critical = 1
+            var screens = 1
+
+            var userOffensiveStat = undefined
+            var targetDefensiveStat = undefined
+
+            var AttackingTypeEffectiveness = this.typeData.find(x => x.moveType === moveType)
+            var type1 = AttackingTypeEffectiveness[targetType1]
+            var type2 = AttackingTypeEffectiveness[targetType2]
+
+            //Check values & update modifiers
+            if (moveType == userType1 || moveType == userType2) {
+                stab = 1.5
+            }
+            if (moveCategory == "Physical") {
+                userOffensiveStat = userAttack
+                targetDefensiveStat = targetDefense
+                defenderScreen = targetPkmnData.effects.reflect.value
+            }
+            if (moveCategory == "Special") {
+                userOffensiveStat = userSpecial
+                targetDefensiveStat = targetSpecial
+                defenderScreen = targetPkmnData.effects.lightScreen.value
+            }
+            if (moveCategory == "Status") {
+                return ""
+            }
+            if (defenderScreen == true) {
+                screens = .5
+            }
+            //Run damage calculation
+            part1 = Math.floor(Math.floor((2 * lvl * critical)/5 + 2) * movePower * userOffensiveStat)
+            part2 = Math.floor(part1/targetDefensiveStat)
+            part3 = Math.floor(part2/50) + 2
+            part4 = undefined
+            if (targetType1 == targetType2) {
+                part4 = Math.floor(Math.floor(Math.floor(part3 * stab) * type1) * screens)
+            }
+            else {
+                part4 = Math.floor(Math.floor(Math.floor(Math.floor(part3 * stab) * type1) * type2) * screens)
+            }
+            //Results to return
+            damageMin = Math.floor(part4 * (217/255))
+            damageMax = part4
+            minPercentage = Math.round((damageMin/targetMaxHp) * 100)
+            maxPercentage = Math.round((damageMax/targetMaxHp) * 100)
+            var recoilMin = 0
+            var recoilMax = 0
+            if (move == "TAKE DOWN" || move == "SUBMISSION" || move == "DOUBLE-EDGE") {
+                recoilMin = Math.floor(damageMin * 0.25)
+                recoilMax = Math.floor(damageMax * 0.25)
+            }
+
+            return [damageMin, damageMax, minPercentage, maxPercentage, recoilMin, recoilMax,]
+        },
+        speedComparison(playerPkmnData, enemyPkmnData) {
+            var playerSpeed = playerPkmnData.speed.value
+            var enemySpeed = enemyPkmnData.speed.value
+            if (playerSpeed > enemySpeed) {
+                return "Outspeeds"
+            }
+            if (playerSpeed == enemySpeed) {
+                return "Speed-Tied"
+            }
+            if (playerSpeed < enemySpeed) {
+                return "Underspeeds"
+            }
+        },
+        enemyPkmnFaintCheck(pkmnData) {
+            if (pkmnData.hp == 0) {
+                return false
+            }
+            else {
+                return true
+            }
+        },
+        enemyPkmnFaint(pkmnData) {
+            if (this.g3stateVariable != `Battle`) { return "filter: drop-shadow(2px 2px 2px #000) saturate(1.3) grayscale(0%);" }
+            if (pkmnData.hp == 0) {
+                return "filter: drop-shadow(2px 2px 2px #000) saturate(1.3) grayscale(100%); opacity: .3;"
+            }
+            else {
+                return "filter: drop-shadow(2px 2px 2px #000) saturate(1.3) grayscale(0%);"
+            }
+        },
+        enemyPkmnText(pkmnData) {
+            if (this.g3stateVariable != `Battle`) { return "opacity: 1" }
+            if (pkmnData.hp == 0) {
+                return "opacity: .3"
+            }
+            else {
+                return "opacity: 1"
+            }
+        },
+        enemyPkmnSpecies(pkmnData) {
+            if (this.g3stateVariable != `Battle`) { return "opacity: .7" }
+            if (pkmnData.hp == 0) {
+                return "opacity: .3"
+            }
+            else {
+                return "opacity: .7"
+            }
+        },
+        // STAGE MULTIPLIERS
+        activeSlot(activePkmn, currentSlot, statLabel, stat, modifier) {
+            var modData = this.stageModifiersData.find(x => x.modType === "stat")
+            if (this.slotTimingFix == true) {
+                return stat 
+            }
+            else {
+                if (activePkmn == currentSlot && this.g3stateVariable == "Battle") {
+                    return Math.floor(stat * modData[modifier])
+                }
+                else { 
+                    return stat
+                }
+            }
+        },
+
         writeBufferDisplay() {
             this.bufferAbility = this.mapper.properties.battle.yourPokemon.ability.value
             this.bufferNature = this.mapper.properties.player.team[0].personalityValue.value
@@ -1271,6 +1435,14 @@ const app = Vue.createApp({
                 return
             }
             that.move1 = x
+        })
+
+        //FIX OF ENEMY BATTLE STATS
+        this.mapper.properties.battle.enemyPokemon.partyPos.change(async (newProp, oldProp) => {
+            if (newProp == 0 || newProp == 255) { return }
+            this.slotTimingFix = true    
+            await this.sleep(150)
+            this.slotTimingFix = false
         })
 
         //EXP BAR ANIMATION FUNCTION

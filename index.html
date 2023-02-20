@@ -184,20 +184,20 @@
                     <img class="enemyPng" :src="`images/abilities/${starterString.toLowerCase()}.png`" :style="battlePokemonCrop()"/>
                     <div v-for="x in pkmnSlots" class="enemyGraphic">
                         <div v-show="enemyTrainer.pokemon[x] != undefined" :class="`ePkmn${x + 1}`">
-                            <img v-show="enemyTrainer.pokemon[x]?.species != undefined" class="ePkmnSprite" :src="`images/pokemon/${enemyTrainer.pokemon[x]?.species}.png`"/>
-                            <div class="ePkmnSpecies">{{ enemyTrainer.pokemon[x]?.species }}</div>
+                            <img v-show="enemyTrainer.pokemon[x]?.species != undefined" class="ePkmnSprite" :style="enemyPkmnFaint(batt.trainer.team[x])" :src="`images/pokemon/${enemyTrainer.pokemon[x]?.species}.png`"/>
+                            <div class="ePkmnSpecies opacityTransition" :style="enemyPkmnSpecies(batt.trainer.team[x])">{{ enemyTrainer.pokemon[x]?.species }}</div>
                             <!-- <div class="ePkmnLevel">Lv: {{g2trainersOtto[mapper.properties.battle.trainer.class.value]?.pokemon[x]?.level}}</div> -->
-                            <div class="ePkmnMove1">{{ enemyTrainer.pokemon[x]?.moves[0] }}</div>
-                            <div class="ePkmnMove2">{{ enemyTrainer.pokemon[x]?.moves[1] }}</div>
-                            <div class="ePkmnMove3">{{ enemyTrainer.pokemon[x]?.moves[2] }}</div>
-                            <div class="ePkmnMove4">{{ enemyTrainer.pokemon[x]?.moves[3] }}</div>
-                            <div class="ePkmnHp">{{  enemyTrainer.pokemon[x]?.hp }}</div>
-                            <div class="ePkmnAtk">{{ enemyTrainer.pokemon[x]?.atk }}</div>
-                            <div class="ePkmnDef">{{ enemyTrainer.pokemon[x]?.def }}</div>
-                            <div class="ePkmnSpa">{{ enemyTrainer.pokemon[x]?.spa }}</div>
-                            <div class="ePkmnSpd">{{ enemyTrainer.pokemon[x]?.spd }}</div>
-                            <div class="ePkmnSpe">{{ enemyTrainer.pokemon[x]?.spe }}</div>
-                            <div class="ePkmnAbility">{{ enemyTrainer.pokemon[x]?.ability }}</div>
+                            <div class="ePkmnMove1 opacityTransition" :style="enemyPkmnText(batt.trainer.team[x])">{{ enemyTrainer.pokemon[x]?.moves[0] }}</div>
+                            <div class="ePkmnMove2 opacityTransition" :style="enemyPkmnText(batt.trainer.team[x])">{{ enemyTrainer.pokemon[x]?.moves[1] }}</div>
+                            <div class="ePkmnMove3 opacityTransition" :style="enemyPkmnText(batt.trainer.team[x])">{{ enemyTrainer.pokemon[x]?.moves[2] }}</div>
+                            <div class="ePkmnMove4 opacityTransition" :style="enemyPkmnText(batt.trainer.team[x])">{{ enemyTrainer.pokemon[x]?.moves[3] }}</div>
+                            <div class="ePkmnHp opacityTransition" :style="enemyPkmnText(batt.trainer.team[x])">{{  enemyTrainer.pokemon[x]?.hp }}</div>
+                            <div class="ePkmnAtk opacityTransition" :style="enemyPkmnText(batt.trainer.team[x])">{{ activeSlot(x, batt.enemyPokemon.partyPos.value, "attack", enemyTrainer.pokemon[x]?.atk, batt.enemyPokemon.modStageAttack.value) }}</div>
+                            <div class="ePkmnDef opacityTransition" :style="enemyPkmnText(batt.trainer.team[x])">{{ activeSlot(x, batt.enemyPokemon.partyPos.value, "defense", enemyTrainer.pokemon[x]?.def, batt.enemyPokemon.modStageDefense.value) }}</div>
+                            <div class="ePkmnSpa opacityTransition" :style="enemyPkmnText(batt.trainer.team[x])">{{ activeSlot(x, batt.enemyPokemon.partyPos.value, "specialAttack", enemyTrainer.pokemon[x]?.spa, batt.enemyPokemon.modStageSpecialAttack.value) }}</div>
+                            <div class="ePkmnSpd opacityTransition" :style="enemyPkmnText(batt.trainer.team[x])">{{ activeSlot(x, batt.enemyPokemon.partyPos.value, "specialDefense", enemyTrainer.pokemon[x]?.spd, batt.enemyPokemon.modStageSpecialDefense.value) }}</div>
+                            <div class="ePkmnSpe opacityTransition" :style="enemyPkmnText(batt.trainer.team[x])">{{ activeSlot(x, batt.enemyPokemon.partyPos.value, "speed", enemyTrainer.pokemon[x]?.spe, batt.enemyPokemon.modStageSpeed.value) }}</div>
+                            <div class="ePkmnAbility opacityTransition" :style="enemyPkmnText(batt.trainer.team[x])">{{ enemyTrainer.pokemon[x]?.ability }}</div>
                         </div>
                     </div> 
                 </div>
