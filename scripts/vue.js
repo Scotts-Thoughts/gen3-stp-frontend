@@ -705,6 +705,29 @@ const app = Vue.createApp({
         sleep(ms) {
             return new Promise((res) => setTimeout(res, ms))
         },
+        ability(ability, statname, statValue) {
+            if (ability == `Hustle` && statname == `attack`) {
+                return Math.floor(statValue * 1.5)
+            }
+            else if (ability == `Huge Power` && statname == `attack`) {
+                return Math.floor(statValue * 2)
+            }
+            else if (ability == `Marvel Scale` && this.s1.statusCondition.value != null && statname == `defense`) {
+                return Math.floor(statValue * 1.5)
+            }
+            else if (ability == `Chlorophyll` && this.batt.turnInfo.battleWeather.value == `Sun` && statname == `speed`) {
+                return Math.floor(statValue * 1.5)
+            }
+            else if (ability == `Swift Swin` && this.batt.turnInfo.battleWeather.value == `Rain` && statname == `speed`) {
+                return Math.floor(statValue * 1.5)
+            }
+            else if (ability == `Guts` && statname == `attack` && (this.s1.statusCondition.value == "Paralyzed" || this.s1.statusCondition.value == "Poisoned" || this.s1.statusCondition.value == "Burned")) {
+                return Math.floor(statValue * 1.5)
+            }
+            else { 
+                return statValue
+            }
+        },
         
         //EXPERIENCE FUNCTIONS
         expPercent(x) {
@@ -786,7 +809,7 @@ const app = Vue.createApp({
                     // console.log("Return Power: "+specialMovePower)
                     return specialMovePower
                 }
-                else if (y == "FLAIL") {
+                else if (y == "FLAIL" || y == "REVERSAL") {
                     var hpPercentage = this.mapper.properties.player.team[0].hp.value / this.mapper.properties.player.team[0].maxHp.value
                     if (hpPercentage >= .6875) { return 20 }
                     else if (hpPercentage >= .3542 && hpPercentage < .6875) { return 40 }
@@ -794,6 +817,13 @@ const app = Vue.createApp({
                     else if (hpPercentage >= .1042 && hpPercentage < .2083) { return 100 }
                     else if (hpPercentage >= .0417 && hpPercentage < .1042) { return 150 }
                     else if (hpPercentage < .0417) { return 200 }
+                }
+                else if (y == "WATER SPOUT" || y == "ERUPTION") {
+                    var power = (150 * this.mapper.properties.player.team[0].hp.value) / this.mapper.properties.player.team[0].maxHp.value
+                    if (power < 1) {
+                        return 1
+                    }
+                    return Math.floor(power)
                 }
                 else if (y == "FRUSTRATION") {
                     if (this.mapper.properties.player.team[0].friendship.value > 252.5)
@@ -805,6 +835,9 @@ const app = Vue.createApp({
                 }
                 else if (y == "HIDDEN POWER") {
                     return this.hiddenPowerPowerCalc(this.mapper.properties.player.team[0])
+                }
+                else if (y == "FACADE" && (this.s1.statusCondition.value == "Paralyzed" || this.s1.statusCondition.value == "Poisoned" || this.s1.statusCondition.value == "Burned")) {
+                    return move.Power * 2
                 }
                 else
                     if (move) return move.Power
@@ -943,74 +976,98 @@ const app = Vue.createApp({
             else   
                 return 1
         },
-        
-        //STACK OVERFLOW ERROR CURRENTLY OCCURING WITH THIS FORMULA
-        typeEffectiveness(x) { //x = move1.value
-            if (this.typeCalcs == true && this.g3stateVariable == "Battle" && this.mapper.properties.battle.trainer.opponentA.value != "LEADER_TATE_AND_LIZA_1") { //calculates effective power when in battle
-                // console.log("If statement for battle")
-                var attackingType = this.moveType(x)
-                var defendingTypeMono = this.mapper.properties.battle.enemyPokemon.type1.value
-                var defendingType1 = this.mapper.properties.battle.enemyPokemon.type1.value
-                var defendingType2 = this.mapper.properties.battle.enemyPokemon.type2.value
-                var multipliers = this.typeData.find(x => x.moveType === attackingType)
-                var weatherBoost = this.weatherModifier(this.mapper.properties.battle.turnInfo.battleWeather.value, x, this.moveType(x))
-                var movePowerForCalculation = this.movePower(x)
-
-                //ADDITIONAL MODIFIERS
-                var stabModifier = this.determineSTAB(x) //on
-                // var stabModifier = 1 //off
-                var itemBoost = this.determineItemBoost(x) //on
-                // var itemBoost = 1 //off
-
-                //NO MOVE POWER (STATUS MOVE)
-                if (this.movePower(x) == "-") {
-                    // console.log("If no power")
-                    return this.movePower(x)
+        abilityModifier(ability, attackingType) {
+            var healthPercentage = this.s1.hp.value / this.s1.maxHp.value
+            if (healthPercentage <= .3) {
+                if (ability == `Torrent` && attackingType == `Water`) {
+                    return 1.5
                 }
+                else if (ability == `Blaze` && attackingType == `Fire`) {
+                    return 1.5
+                }
+                else if (ability == `Overgrow` && attackingType == `Grass`) {
+                    return 1.5
+                }
+                else if (ability == `Swarm` && attackingType == `Bug`) {
+                    return 1.5
+                }
+                else {
+                    return 1
+                }
+            }
+            else {
+                return 1
+            }
+        },
+        burnModifier(x) {
+            var attackingType = this.moveType(x)
+            if (this.s1.statusCondition.value == `Burned` && this.pkmnAbility != `Guts`) {
+                if (attackingType == "Ground" || attackingType == "Rock" || attackingType == "Fighting" || attackingType == "Bug" || attackingType == "Ghost" ||
+                attackingType == "Normal" || attackingType == "Steel" || attackingType == "Flying" || attackingType == "Poison") {
+                    return 0.5
+                }
+                else {
+                    return 1
+                }
+            }
+            else {
+                return 1
+            }
+        },
+
+
+        typeEffectiveness(x) { //x = move1.value
+            var attackingType = this.moveType(x)
+            var power = this.movePower(x)
+            var defendingTypeMono = this.mapper.properties.battle.enemyPokemon.type1.value
+            var defendingType1 = this.mapper.properties.battle.enemyPokemon.type1.value
+            var defendingType2 = this.mapper.properties.battle.enemyPokemon.type2.value
+            var multipliers = this.typeData.find(x => x.moveType === attackingType)
+            var stabModifier = this.determineSTAB(x)
+            var ability = this.abilityModifier(this.pkmnAbility, attackingType)
+            var itemBoost = this.determineItemBoost(x)
+            var weatherBoost = this.weatherModifier(this.mapper.properties.battle.turnInfo.battleWeather.value, x, this.moveType(x))
+            var burnModifier = this.burnModifier(x)
+            //IN BATTLE
+            if (this.typeCalcs == true && this.g3stateVariable == "Battle") {
+                //STATUS MOVE
+                if (power == "-") { return power }
                 //LEVITATE INTERACTION
                 else if (this.mapper.properties.battle.enemyPokemon.ability.value == "LEVITATE" && attackingType == "Ground") {
-                    // console.log("If levitate")
                     return 0
                 }
                 //NO ENEMY DATA (HAVEN'T BATTLED SINCE RELOADING ROM OR SAVE)
                 else if (this.mapper.properties.battle.enemyPokemon.type1 == null) {
-                    // console.log("If no enemy")
-                    return Math.floor(this.movePower(x) * stabModifier * itemBoost)
+                    return Math.floor(power * stabModifier * itemBoost * ability * burnModifier)
                 }
                 //ATTACKING A MONO-TYPE POKEMON
                 else if (this.mapper.properties.battle.enemyPokemon.type1.value === this.mapper.properties.battle.enemyPokemon.type2.value) {
-                    // console.log("If mono type Pokemon")
                     var multiplier1 = multipliers[defendingTypeMono]
-                    return Math.floor(this.movePower(x) * multiplier1 * stabModifier * itemBoost * weatherBoost)
+                    var thickFat = 1
+                    if (this.mapper.properties.battle.enemyPokemon.ability.value == "THICK FAT" && attackingType == "Ice" || this.mapper.properties.battle.enemyPokemon.ability.value == "THICK FAT" && attackingType == "Fire") {
+                        thickFat = .5 
+                    }
+                    return Math.floor(power * multiplier1 * stabModifier * itemBoost * weatherBoost * ability * burnModifier * thickFat)
                 }
                 //ATTACKING A DUAL-TYPE POKEMON
                 else if (this.mapper.properties.battle.enemyPokemon.type1 != this.mapper.properties.battle.enemyPokemon.type2) {
-                    // console.log("If dual type Pokemon")
                     var multipliers = this.typeData.find(x => x.moveType == attackingType)
                     var multiplier1 = multipliers[defendingType1]
                     var multiplier2 = multipliers[defendingType2]
-                    return Math.floor(this.movePower(x) * multiplier1 * multiplier2 * stabModifier * itemBoost * weatherBoost)
+                    return Math.floor(power * multiplier1 * multiplier2 * stabModifier * itemBoost * weatherBoost * ability * burnModifier)
                 }
                 //RETURN THE MOVES POWER IF NOTHING ELSE WORKS
                 else {
-                    // console.log("Else value")
-                    return Math.floor(this.movePower(x) * this.determineSTAB(x))
+                    return Math.floor(power * stabModifier * burnModifier)
                 }
             }
-            //RETURN THE MOVES POWER IF NOT IN BATTLE
-            else {
-                //ADDITIONAL MODIFIERS
-                var stabModifier = this.determineSTAB(x) //on
-                // var stabModifier = 1 //off
-                var itemBoost = this.determineItemBoost(x) //on
-                // var itemBoost = 1 //off
-                
-                if (this.movePower(x) == "-") {
-                    return this.movePower(x)
-                }
-                return Math.floor(this.movePower(x) * this.determineSTAB(x) * itemBoost) //returns the move's base power if not in battle
-            }   
-        }, 
+            //NOT IN BATTLE
+            else   
+                if (power == "-") { return power }
+                else { return Math.floor(power * stabModifier * itemBoost * ability * burnModifier) }
+        },
+
+
         //BADGE BOOSTS
         //  x = badge required
         //  y = stat to be boosted
