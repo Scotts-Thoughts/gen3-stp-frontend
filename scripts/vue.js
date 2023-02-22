@@ -63,6 +63,7 @@ const app = Vue.createApp({
             returnPower:    true, //dynamically calculates the power of Return
             gamestate:      true, //shows the current gamestate in the place of the timer
             labels:         true, //shows the current gamestate in the place of the timer
+            showSpecialTrainerGraphics: true, 
 
             badges: ["badge1", "badge2", "badge3", "badge4", "badge5", "badge6", "badge7", "badge8"],
             badgeBoosts: ["badge1", "badge3", "badge5", "badge7"],
@@ -178,6 +179,7 @@ const app = Vue.createApp({
             expDebounceTimeoutId: -1,
             expBarAnimation: false,
             slotTimingFix: false,
+            showAllTrainers: true,
         }
     },
     computed: {
@@ -213,6 +215,37 @@ const app = Vue.createApp({
     },
 
     methods: { 
+        g3trainerEnemySelector(trainerClass) {
+            if (
+                trainerClass == "LEADER_ROXANNE_1" ||
+                trainerClass == "LEADER_BRAWLY_1" ||
+                trainerClass == "LEADER_WATTSON_1" ||
+                trainerClass == "LEADER_FLANNERY_1" ||
+                trainerClass == "LEADER_NORMAN_1" ||
+                trainerClass == "LEADER_WINONA_1" ||
+                trainerClass == "LEADER_TATE_AND_LIZA_1" ||
+                trainerClass == "LEADER_JUAN_1"
+                // trainerClass == "ELITE_FOUR_SIDNEY"
+                ) {
+                    return 1
+                }
+            else
+                return 0
+        },
+        specialTrainerGraphics() {
+            if (this.showSpecialTrainerGraphics == true) {
+                if (this.batt.trainer.opponentA.value == "LEADER_ROXANNE_1") return `images/trainers/${this.batt.trainer.opponentA.value}.png`
+                if (this.batt.trainer.opponentA.value == "LEADER_BRAWLY_1") return `images/trainers/${this.batt.trainer.opponentA.value}.png`
+                if (this.batt.trainer.opponentA.value == "LEADER_WATTSON_1") return `images/trainers/${this.batt.trainer.opponentA.value}.png`
+                if (this.batt.trainer.opponentA.value == "LEADER_FLANNERY_1") return `images/trainers/${this.batt.trainer.opponentA.value}.png`
+                if (this.batt.trainer.opponentA.value == "LEADER_NORMAN_1") return `images/trainers/${this.batt.trainer.opponentA.value}.png`
+                if (this.batt.trainer.opponentA.value == "LEADER_WINONA_1") return `images/trainers/${this.batt.trainer.opponentA.value}.png`
+                if (this.batt.trainer.opponentA.value == "LEADER_TATE_AND_LIZA_1") return `images/trainers/${this.batt.trainer.opponentA.value}.png`
+                if (this.batt.trainer.opponentA.value == "LEADER_JUAN_1") return `images/trainers/${this.batt.trainer.opponentA.value}.png`
+                else return null;
+            }
+        },
+
         //DAMAGE CALCULATION
         damageCalculation(userPkmnData, targetPkmnData, move) {
             if (this.g3stateVariable != `Battle`) { return "" }

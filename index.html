@@ -39,6 +39,10 @@
                 <div class="gamestate">G3StateVariable: {{ g3stateVariable }}<br><br>
                     callback1: {{ mapper.properties.pointers.callback1.value }}<br>
                     callback2: {{ mapper.properties.pointers.callback2.value }}<br>
+                    <br>
+                    {{ batt.trainer.opponentA.value }}<br>
+                    {{ g3trainerEnemySelector(batt.trainer.opponentA.value) }}<br>
+                    {{ specialTrainerGraphics() }}<br>
                 </div>
             </div>
 
@@ -176,7 +180,7 @@
             </div>
 
 <!--------- MOVEPOOL ------------------------------------------------------------------------------------------------------------------------------------->
-            <transition name="fadeBattle" style="position: relative;">
+            <transition name="fadeBattle" style="position: absolute;">
                 <!-- <div v-if="g3stateVariable == `Battle` && mapper.properties.battle.type.trainer.value == true"> -->
                 <div v-if="(g3stateVariable == `Battle` || g3stateVariable == `To Battle` || g3stateVariable == `From Battle`) && mapper.properties.battle.type.trainer.value == true">
                     <div class="movepoolTitle">{{ enemyTrainer.trainer_name }}</div>
@@ -202,6 +206,11 @@
                     </div> 
                 </div>
                 <img v-else :src="`images/movepool/${starterString.toLowerCase()}.png`" >
+            </transition>
+            <transition name="fadeDelayed">
+                <div v-if="((g3stateVariable == `Battle` || g3stateVariable == `To Battle` || g3stateVariable == `From Battle`) && g3trainerEnemySelector(batt.trainer.opponentA.value) == 1) && showSpecialTrainerGraphics == true" style="position: absolute;" key=1>
+                    <img class="canvas" :src="specialTrainerGraphics()"/>
+                </div>
             </transition>
         </div>
     </div>
