@@ -7,6 +7,118 @@
 :root {
     height: 1920px; /* Fixed canvas size */
     width: 1080px;
+
+    --gradient1: hsl(0, 55%, 60%);
+    --gradient2: hsl(0, 55%, 63%);
+    --gradient3: hsl(0, 55%, 72%);
+    --gradient4: hsl(0, 55%, 78%);
+    --gradient5: hsl(0, 55%, 80%);
+    --gradient6: hsl(0, 55%, 78%);
+    --gradient7: hsl(0, 55%, 72%);
+    --gradient8: hsl(0, 55%, 63%);
+    --gradient9: hsl(0, 55%, 60%);
+    --outline1: #808080;
+    --outline2: #4d4d4d;
+    --outline3: #000000;
+
+    /* Movepool Type Colours */
+    --normal:   #a8a878;
+    --fighting: #c03028;
+    --grass:    #78c850;
+    --fire:     #f08030;
+    --water:    #6890f0;
+    --electric: #f3d230;
+    --ground:   #e0c068;
+    --rock:     #b8a038;
+    --psychic:  #f85888;
+    --poison:   #a040a0;
+    --flying:   #a890f0;
+    --bug:      #a8b820;
+    --ice:      #98d8d8;
+    --ghost:    #705898;
+    --dragon:   #7038f8;
+    --steel:    #b8b8d0;
+    --dark:     #705848;
+    --fairy:    #ee99ac;
+    --curse:    #2e9fa3;
+
+    /* Stat Colours */
+    --hp:     #ff5959;
+    --atk:    #f5ac78;
+    --def:    #fae078;
+    --spc:    #8ec7bc;
+    --spcAtk: #9db7f5;
+    --spcDef: #a7db8d;
+    --spd:    #fa92b2;
+    --dark_hp:     #ff0000;
+    --dark_atk:    #f08030;
+    --dark_def:    #f7c80c;
+    --dark_spc:    #28917c;
+    --dark_spcAtk: #6890f0;
+    --dark_spcDef: #78c850;
+    --dark_spd:    #e95380;
+
+    /* Stat Gradients */
+
+    /* Default Border Colours */
+    --normal1:   #6d6d4e;
+    --normal2:   #a8a878;
+    --normal3:   #c6c6a7;
+    --fighting1: #791c17;
+    --fighting2: #bf2923;
+    --fighting3: #d67873;
+    --grass1:    #497d30;
+    --grass2:    #78c850;
+    --grass3:    #a7db8d;
+    --fire1:     #9c531f;
+    --fire2:     #f08030;
+    --fire3:     #f5ac78;
+    --water1:    #445e9c;
+    --water2:    #6890f0;
+    --water3:    #9db7f5;
+    --electric1: #a1871f;
+    --electric2: #f8d030;
+    --electric3: #fae078;
+    --ground1:   #927d44;
+    --ground2:   #e0c068;
+    --ground3:   #ebd69d;
+    --rock1:     #716019;
+    --rock2:     #b89f34;
+    --rock3:     #d1c17d;
+    --psychic1:  #9c3152;
+    --psychic2:  #fa5889;
+    --psychic3:  #fa92b2;
+    --poison1:   #682a68;
+    --poison2:   #a743a7;
+    --poison3:   #c183c1;
+    --flying1:   #675797;
+    --flying2:   #b294e2;
+    --flying3:   #c6b7f5;
+    --bug1:      #697413;
+    --bug2:      #a9bf1f;
+    --bug3:      #c6d16e;
+    --ice1:      #588585;
+    --ice2:      #98dbdb;
+    --ice3:      #bce6e6;
+    --ghost1:    #4f4067;
+    --ghost2:    #6e5597;
+    --ghost3:    #a292bc;
+    --dragon1:   #3b139a;
+    --dragon2:   #6432dd;
+    --dragon3:   #a27dfa;
+    --steel1:    #737382;
+    --steel2:    #bcbcd5;
+    --steel3:    #d1d1e0;
+    --dark1:     #3b291e;
+    --dark2:     #695948;
+    --dark3:     #a29288;
+    --fairy1:    #9b6470;
+    --fairy2:    #ee99ac;
+    --fairy3:    #f4bdc9;
+
+    /* Exp Bar Colours */
+    --expBarBackground: linear-gradient(rgb(239, 239, 239), rgb(157, 157, 157));
+    --expBarExperience: linear-gradient(90deg,hsl(189, 92%, 45%), hsl(187, 100%, 69%));
 }
 
 html {
@@ -25,7 +137,9 @@ canvas {  /* or some other selector */
     width: 1920px;
     height: 1080px;
 }
-
+.border {
+    border: 1px solid #ff0000;
+}
 /*  ------------------------------------  */
 /*  ------------- FONTS ----------------  */
 /*  replace font to change - leave label  */
@@ -60,7 +174,9 @@ canvas {  /* or some other selector */
 /*  ------------------------------------  */
 /*  --------------- CSS ----------------  */
 /*  ------------------------------------  */
-
+.posAbs {
+    position: absolute;
+}
 .override {
 	display: block;
     max-width:1920px;
@@ -166,29 +282,20 @@ canvas {  /* or some other selector */
     z-index: -70;
 }
 
-.labelAbility {
-    font-size: 44px;
+.abilityHeldItemLabelStyle {
+    font-size: 36px;
     position: fixed;
-    line-height: 37.3px;
-    top: 835px;
-    left: 385px;
     opacity: .6;
+    text-align: center;
     z-index: 30000;
-    text-align: left;
     font-family: osb;
-    font-weight: 500
+    top: 832px;
+}
+.labelAbility {
+    left: 398px;
 }
 .labelHeldItem {
-    font-size: 44px;
-    position: fixed;
-    line-height: 37.3px;
-    top: 835px;
-    left: 950px;
-    opacity: .6;
-    z-index: 30000;
-    text-align: left;
-    font-family: osb;
-    font-weight: 500
+    left: 970px;
 }
 .labelNature {
     font-size: 30px;
@@ -1320,19 +1427,19 @@ canvas {  /* or some other selector */
 
 
 .gamestate {
-    font-size: 54px;
+    font-size: 22px;
     position: fixed;
-    left: 400px;
-    top: 50px;
+    left: 380px;
+    top: 30px;
     z-index: 5;
-    line-height: 66px;
+    line-height: 23px;
     text-transform: capitalize;
     text-align: left;
     font-family: osb;
     font-weight: 700;
     z-index: 20000;
 }
-.gametime {
+/* .gametime {
     font-size: 20px;
     position: absolute;
     left: -1369px;
@@ -1345,12 +1452,15 @@ canvas {  /* or some other selector */
     text-align: center;
     font-family: osb;
     font-weight: 700
-}
+} */
 .nature {
     font-size: 20px;
-    position: fixed;
-    left: -1342px;
-    top: 827px;
+    position: absolute;
+    left: 235px;
+    width: 110px;
+    height: 32px;
+    border: 1px solid #ff000000;
+    top: 826px;
     bottom: 0px;
     right: 0px;
     z-index: 5;
@@ -1362,9 +1472,12 @@ canvas {  /* or some other selector */
 }
 .growthRate {
     font-size: 20px;
-    position: fixed;
-    left: -1618px;
-    top: 827px;
+    position: absolute;
+    left: 14px;
+    width: 156px;
+    height: 32px;
+    border: 1px solid #ff000000;
+    top: 366px;
     bottom: 0px;
     right: 0px;
     z-index: 5;
@@ -1375,9 +1488,12 @@ canvas {  /* or some other selector */
     font-weight: 700
 }
 .ability {
-    font-size: 44px;
+    font-size: 40px;
     position: fixed;
-    left: -460px;
+    border: 1px solid #ff000000;
+    width: 367px;
+    height: 40px;
+    left: 550px;
     top: 836px;
     bottom: 0px;
     right: 0px;
@@ -1386,15 +1502,17 @@ canvas {  /* or some other selector */
     text-transform: capitalize;
     text-align: center;
     font-family: osb;
-    /* filter: drop-shadow(1px 1px 1px #000); */
     font-weight: 700
 }
 
 .gameTime {
-    font-size: 22px;
-    position: fixed;
-    left: -1328px;
-    top: 16px;
+    font-size: 21px;
+    position: absolute;
+    border: 1px solid #ff000000;
+    width: 108px;
+    height: 34px;
+    left: 182px;
+    top: -445px;
     bottom: 0px;
     right: 0px;
     z-index: 5;
@@ -1407,7 +1525,7 @@ canvas {  /* or some other selector */
 
 /* STATS AREA */
 .heldItem {
-    font-size: 44px;
+    font-size: 40px;
     position: fixed;
     left: 804px;
     top: 836px;
@@ -1512,109 +1630,59 @@ canvas {  /* or some other selector */
     font-family: osb;
     font-weight: 700
 }
-
+.movePPStyle {
+    display: block;
+    position: fixed;
+    width: 52px;
+    z-index: 5;
+    text-align: right;
+    font-family: osb;
+    font-weight: 700
+}
 .move1pp {
-    display: block;
-    font-size: 44px;
-    position: fixed;
     left: 890px;
-    width: 52px;
-    top: 935px;
-    z-index: 5;
-    text-align: right;
-    font-family: osb;
-    font-weight: 700
+    top: 940px;
 }
-
 .move2pp {
-    display: block;
-    font-size: 44px;
-    position: fixed;
     left: 1480px;
-    width: 52px;
-    top: 935px;
-    z-index: 5;
-    text-align: right;
-    font-family: osb;
-    font-weight: 700
+    top: 940px;
 }
-
 .move3pp {
-    display: block;
-    font-size: 44px;
-    position: fixed;
-    top: 1007px;
+    top: 1012px;
     left: 890px;
-    width: 52px;
-    z-index: 10;
-    text-align: right;
-    font-family: osb;
-    font-weight: 700
 }
-
 .move4pp {
-    display: block;
-    font-size: 44px;
-    position: fixed;
-    top: 1007px;
+    top: 1012px;
     left: 1480px;
-    width: 52px;
-    z-index: 10;
-    text-align: right;
-    font-family: osb;
-    font-weight: 700
 }
 
-.move1power {
+.movePowerStyle {
     display: block;
-    font-size: 44px;
-    position: fixed;
-    left: 770px;
+    position: absolute;
     width: 100px;
-    top: 935px;
     z-index: 5;
     text-align: right;
     font-family: osb;
     font-weight: 700
+}
+.move1power {
+    left: 670px;
+    top: 935px;
 }
 
 .move2power {
-    display: block;
-    font-size: 44px;
-    position: fixed;
-    left: 1355px;
-    width: 100px;
+    left: 1265px;
     top: 935px;
-    z-index: 5;
-    text-align: right;
-    font-family: osb;
-    font-weight: 700
 }
 
 .move3power {
-    display: block;
-    font-size: 44px;
-    position: fixed;
-    left: 770px;
-    width: 100px;
+    left: 670px;
     top: 1007px;
-    z-index: 5;
-    text-align: right;
-    font-family: osb;
-    font-weight: 700
 }
 
 .move4power {
-    display: block;
-    font-size: 44px;
-    position: fixed;
-    left: 1355px;
-    width: 100px;
+    left: 1265px;
     top: 1007px;
-    z-index: 5;
-    text-align: right;
-    font-family: osb;
-    font-weight: 700
 }
 
 .move1icon {
@@ -1977,6 +2045,13 @@ canvas {  /* or some other selector */
 .fadeDelayed-leave-to     { opacity: 0; }
 .fadeDelayed-leave-active { transition: opacity 200ms ease-in-out; }
 
+.fade2-enter-from { opacity: 0; }
+.fade2-enter-to { opacity: 1; }
+.fade2-enter-active { transition: opacity 500ms ease-in-out; }
+.fade2-leave-from { opacity: 1; }
+.fade2-leave-to { opacity: 0; }
+.fade2-leave-active { transition: opacity 500ms ease-in-out 400ms; }
+
 .opacityTransition { transition: opacity 500ms ease-in-out;}
 .ePkmn1 {
     border: 1px solid rgba(255, 102, 0, 0);
@@ -2237,4 +2312,186 @@ canvas {  /* or some other selector */
     width: 100px;
     left: 1px;
     top: 865px;
+}
+.movesetLabel {
+    position: absolute;
+    font-family: titan;
+    opacity: .72;
+    font-size: 21px;
+    top: 894px;
+}
+.movesetLabelColumn1 {
+    left: 720px;
+}
+.movesetLabelColumn2 {
+    left: 840px;
+}
+.movesetLabelColumn3 {
+    left: 910px;
+}
+.movesetLabelColumn4 {
+    left: 1310px;
+}
+.movesetLabelColumn5 {
+    left: 1434px;
+}
+.movesetLabelColumn6 {
+    left: 1504px;
+}
+
+.movesetFontSize {
+    font-size: 38px;
+}
+.movesetSmallFontSize {
+    font-size: 30px;
+}
+.movesetPercentage {
+    font-size: 24px;
+}
+
+.moveAccuracyStyle {
+    display: block;
+    position: fixed;
+    width: 100px;
+    z-index: 5;
+    text-align: right;
+    font-family: osb;
+    font-weight: 700;
+    border: 1px solid #ff000000;
+}
+.move1acc {
+    left: 784px;
+    top: 940px;
+}
+.move2acc {
+    left: 1374px;
+    top: 940px;
+}
+.move3acc {
+    left: 784px;
+    top: 1012px;
+}
+.move4acc {
+    left: 1374px;
+    top: 1012px;
+}
+
+.movepool_way {
+    text-align: left;
+    padding-right: 4px;
+    padding-left: 4px;
+    /* border: 1px solid #a6c400; */
+}
+.movepool_move {
+    text-align: left;
+    padding-right: 4px;
+    /* border: 1px solid #a6c400; */
+}
+.movepool_type {
+    text-align: center;
+    padding-right: 2px;
+    /* border: 1px solid #a6c400; */
+}
+.movepool_tableC {
+    text-align: center;
+    padding-left: 1px;
+    padding-right: 1px;
+}
+/* :nth-child(odd) {
+    background-color: #7e7e7e;
+} */
+.movepool_header {
+    line-height: 17px;
+}
+.movepoolDemo {
+    display: block;
+    position: absolute;
+    /* border: 1px solid #00ff0d00; */
+    background-color: #ffffff;
+    font-size: 15px;
+    line-height: 20px;
+    width: 328px;
+    height: 1001px;
+    font-family: play;
+    left: 1576px;
+    top: 57px;
+    opacity: .9;
+    border: none;
+}
+/* .movepoolDemo tr {
+    transform: scaleY(.9);
+} */
+.movepoolBorder {
+    z-index: 1;
+}
+.movepoolDemo th:nth-child(1) {
+    width: 50px;
+}
+.movepoolDemo th:nth-child(2) {
+    width: 162px;
+}
+.movepoolDemo th:nth-child(3) {
+    width: 89px;
+}
+.movepoolDemo th:nth-child(4) {
+    width: 37px;
+}
+.movepoolDemo th:nth-child(5) {
+    width: 46px;
+}
+.movepoolDemo th:nth-child(6) {
+    width: 42px;
+}
+.movepoolTable {
+    font-size: 17px;
+}
+.movepoolDemo tr:nth-child(odd) {
+    background-color: #cfcfcf;
+}
+.enemyStatsArea {
+    display: block;
+    max-width:1920px;
+    max-height:1080px;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    transition: opacity 500ms ease-in-out, filter 500ms ease-in-out;
+}
+.uiPngElement {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+.accEvaStyle {
+    font-family: play;
+    position: absolute;
+    border: 1px solid #ff000000;
+    text-align: center;
+    width: 114px;
+}
+.accEvaLabel {
+    text-decoration: underline;
+    opacity: .6;
+    font-size: 16px;
+}
+.accuracyLabel {
+    left: 10px;
+    top: 230px;
+}
+.accEvaMod {
+    font-size: 40px;
+    height: 50px;
+    top: 380px;
+}
+.accuracyMod {
+    left: 10px;
+    top: 245px;
+}
+.evasionLabel {
+    left: 137px;
+    top: 230px;
+}
+.evasionMod {
+    left: 137px;
+    top: 245px;
 }

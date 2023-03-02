@@ -14,8 +14,8 @@
         <div v-else>
             <div>
                 <img v-show="graphicOverlay == true" class="frame" :src="`images/overlay/${starterString}.png`" />
-                <div v-show="labels == true" class="labelAbility">Ability:</div>
-                <div v-show="labels == true" class="labelHeldItem">Held Item:</div>
+                <div v-show="labels == true" class="abilityHeldItemLabelStyle labelAbility">Ability:</div>
+                <div v-show="labels == true" class="abilityHeldItemLabelStyle labelHeldItem">Held Item:</div>
                 <div v-show="labels == true" class="labelNature"></div>
                 <div v-show="labels == true" class="labelGametime">Game-time:</div>
             </div>
@@ -37,12 +37,10 @@
 <!--------- STATE MANAGEMENT ----------------------------------------------------------------------------------------------------------------->
             <div v-if="gamestate == true">
                 <div class="gamestate">G3StateVariable: {{ g3stateVariable }}<br><br>
-                    callback1: {{ mapper.properties.pointers.callback1.value }}<br>
-                    callback2: {{ mapper.properties.pointers.callback2.value }}<br>
+                    <!-- callback1: {{ mapper.properties.pointers.callback1.value }}<br> -->
+                    <!-- callback2: {{ mapper.properties.pointers.callback2.value }}<br> -->
+                    <!-- <br> -->
                     <br>
-                    {{ batt.trainer.opponentA.value }}<br>
-                    {{ g3trainerEnemySelector(batt.trainer.opponentA.value) }}<br>
-                    {{ specialTrainerGraphics() }}<br>
                 </div>
             </div>
 
@@ -85,7 +83,7 @@
                 <div>
                     <div v-if="g3stateVariable == `Overworld` || g3stateVariable == `Battle` || g3stateVariable == `To Battle` || g3stateVariable == `From Battle`">
                         <div class="statsheader">Level {{ mapper.properties.player.team[0].level.value }}</div>
-                        <div class="heldItem">{{ nullToSpace(camelCase(mapper.properties.player.team[0].itemHeld.value)) }}</div>
+                        <div class="abilityHeldItemLabelStyle heldItem">{{ nullToSpace(camelCase(mapper.properties.player.team[0].itemHeld.value)) }}</div>
 
                         <div class="statsColumn1">
                             {{ mapper.properties.player.team[0].maxHp }}<br>
@@ -117,13 +115,20 @@
             </div>
 
 <!--------- MOVESET (MOVES, POWER, PP) -------------------------------------------------------------------------------------------------------------------->
+            <div class="movesetLabel movesetLabelColumn1">pwr.</div>
+            <div class="movesetLabel movesetLabelColumn2">acc.</div>
+            <div class="movesetLabel movesetLabelColumn3">pp</div>
+            <div class="movesetLabel movesetLabelColumn4">pwr.</div>
+            <div class="movesetLabel movesetLabelColumn5">acc.</div>
+            <div class="movesetLabel movesetLabelColumn6">pp</div>
             <div v-show="moveset == true" id="moveset">
                 <div v-for="x in pkmnMoves">
                     <div v-if="mapper.properties.player.team[0].level.value > 0 && mapper.properties.player.team[0][x].value != null">
-                        <div :class="`${x}`">{{ camelCase(mapper.properties.player.team[0][x].value) }}</div>
-                        <div :class="`${x}pp`">{{ mapper.properties.player.team[0][x + "pp"] }}</div>
-                        <div :class="`${x}power`">{{ typeEffectiveness(mapper.properties.player.team[0][x].value) }}</div>
-                        <img :class="`${x}icon`" :src="moveTypeIcon(mapper.properties.player.team[0][x].value)" />
+                        <div :class="`movesetFontSize ${x}`">{{ camelCase(mapper.properties.player.team[0][x].value) }}</div>
+                        <div :class="`movePowerStyle movesetFontSize ${x}power`">{{ typeEffectiveness(mapper.properties.player.team[0][x].value) }}</div>
+                        <div :class="`movesetSmallFontSize moveAccuracyStyle movesetFontSize ${x}acc`">{{ moveAccuracyDynamic(mapper.properties.player.team[0][x].value) }}<span class="movesetPercentage">%</span></div>
+                        <div :class="`movesetSmallFontSize movePPStyle movesetFontSize ${x}pp`">{{ mapper.properties.player.team[0][x + "pp"] }}</div>
+                        <img :class="`movesetFontSize ${x}icon`" :src="moveTypeIcon(mapper.properties.player.team[0][x].value)" />
                     </div>
                 </div>
             </div>
@@ -190,6 +195,7 @@
                         <div v-show="enemyTrainer.pokemon[x] != undefined" :class="`ePkmn${x + 1}`">
                             <img v-show="enemyTrainer.pokemon[x]?.species != undefined" class="ePkmnSprite" :style="enemyPkmnFaint(batt.trainer.team[x])" :src="`images/pokemon/${enemyTrainer.pokemon[x]?.species}.png`"/>
                             <div class="ePkmnSpecies opacityTransition" :style="enemyPkmnSpecies(batt.trainer.team[x])">{{ enemyTrainer.pokemon[x]?.species }}</div>
+                            <img class="enemyStatsArea" :style="enemyPkmnFaintStats(batt.trainer.team[x])" :src="`images/enemy_area/stats/${x}.png`"/>
                             <!-- <div class="ePkmnLevel">Lv: {{g2trainersOtto[mapper.properties.battle.trainer.class.value]?.pokemon[x]?.level}}</div> -->
                             <div class="ePkmnMove1 opacityTransition" :style="enemyPkmnText(batt.trainer.team[x])">{{ enemyTrainer.pokemon[x]?.moves[0] }}</div>
                             <div class="ePkmnMove2 opacityTransition" :style="enemyPkmnText(batt.trainer.team[x])">{{ enemyTrainer.pokemon[x]?.moves[1] }}</div>
@@ -205,11 +211,74 @@
                         </div>
                     </div> 
                 </div>
-                <img v-else :src="`images/movepool/${starterString.toLowerCase()}.png`" >
+                <div v-else key=2>
+                    <table class="movepoolDemo" cellspacing="0">
+                        <tr>
+                        <tr :style="{'background-color': `var(--${typeHeaderColor?.toLowerCase()})`, 'outline': '2px solid #000'}">
+                            <th class="movepool_header movepool_way">Way</th>
+                            <th class="movepool_header movepool_move">Move</th>
+                            <th class="movepool_header movepool_type">Type</th>
+                            <th class="movepool_header movepool_tableC">Pwr.</th>
+                            <th class="movepool_header movepool_tableC">Acc.</th>
+                            <th class="movepool_header movepool_tableC">PP</th>
+                        </tr>
+                        <tr v-for="x in getMovepool(dexDataRubySapphireEmerald, g3MoveData, g3tmhmMapping, s1dynamicReset.species.value).level">
+                            <td class="movepool_way">{{x.Level}}</td>
+                            <td class="movepool_move">{{x.Move}}</td>
+                            <td class="movepool_type" :style="{'background-color': `var(--${x.Type?.toLowerCase()})`}">{{x.Type}}</td>
+                            <td class="movepool_tableC">{{x.Power}}</td>
+                            <td class="movepool_tableC">{{x.Accuracy}}%</td>
+                            <td class="movepool_tableC">{{x.PP}}</td>
+                        </tr>
+                        <tr v-for="x in getMovepool(dexDataRubySapphireEmerald, g3MoveData, g3tmhmMapping, s1dynamicReset.species.value).tmhm">
+                            <td class="movepool_way">{{x.tmhm}}</td>
+                            <td class="movepool_move">{{x.Move}}</td>
+                            <td class="movepool_type" :style="{'background-color': `var(--${x.Type?.toLowerCase()})`}">{{x.Type}}</td>
+                            <td class="movepool_tableC">{{x.Power}}</td>
+                            <td class="movepool_tableC">{{x.Accuracy}}%</td>
+                            <td class="movepool_tableC">{{x.PP}}</td>
+                        </tr>
+                        <!-- <tr v-for="x in getMovepool(dexDataRubySapphireEmerald, g3MoveData, g3tmhmMapping, s1dynamicReset.species.value).tutor">
+                            <td class="movepool_way">Tutor</td>
+                            <td class="movepool_move">{{x.Move}}</td>
+                            <td class="movepool_type" :style="{'background-color': `var(--${x.Type?.toLowerCase()})`}">{{x.Type}}</td>
+                            <td class="movepool_tableC">{{x.Power}}</td>
+                            <td class="movepool_tableC">{{x.Accuracy}}%</td>
+                            <td class="movepool_tableC">{{x.PP}}</td>
+                        </tr>
+                        <tr v-for="x in getMovepool(dexDataRubySapphireEmerald, g3MoveData, g3tmhmMapping, s1dynamicReset.species.value).egg">
+                            <td class="movepool_way">Egg</td>
+                            <td class="movepool_move">{{x.Move}}</td>
+                            <td class="movepool_type" :style="{'background-color': `var(--${x.Type?.toLowerCase()})`}">{{x.Type}}</td>
+                            <td class="movepool_tableC">{{x.Power}}</td>
+                            <td class="movepool_tableC">{{x.Accuracy}}%</td>
+                            <td class="movepool_tableC">{{x.PP}}</td>
+                        </tr> -->
+                    </table>
+                    <img class="canvas" :src="`images/movepool_border/${s1dynamicReset.species.value.toLowerCase()}.png`"/>
+                </div>
+                <!-- <img v-else :src="`images/movepool/${starterString.toLowerCase()}.png`" > -->
             </transition>
             <transition name="fadeDelayed">
                 <div v-if="((g3stateVariable == `Battle` || g3stateVariable == `To Battle` || g3stateVariable == `From Battle`) && g3trainerEnemySelector(batt.trainer.opponentA.value) == 1) && showSpecialTrainerGraphics == true" style="position: absolute;" key=1>
                     <img class="canvas" :src="specialTrainerGraphics()"/>
+                </div>
+            </transition>
+
+            <!-- ACCURACY -->
+            <transition name="fade2">
+                <div v-show="g3stateVariable == `Battle` && batt.yourPokemon?.modStageAccuracy?.value != `0`">
+                    <img class="uiPngElement" :src="`images/pop_ups/accuracy/${starterString}.png`"/>
+                    <div class="accEvaStyle accEvaLabel accuracyLabel">Accuracy:</div>
+                    <div class="accEvaStyle accEvaMod accuracyMod">{{ batt.yourPokemon?.modStageAccuracy?.value }}</div>
+                </div>
+            </transition>
+            <!-- EVASION -->
+            <transition name="fade2">
+                <div v-show="g3stateVariable == `Battle` && batt.yourPokemon?.modStageEvasion?.value != `0`">
+                    <img class="uiPngElement" :src="`images/pop_ups/evasion/${starterString}.png`"/>
+                    <div class="accEvaStyle accEvaLabel evasionLabel">Evasion:</div>
+                    <div class="accEvaStyle accEvaMod evasionMod">{{ batt.yourPokemon?.modStageEvasion?.value }}</div>
                 </div>
             </transition>
         </div>
@@ -221,6 +290,8 @@
     <script src="http://localhost:8085/dist/gameHookMapperClient.js"></script>
     <!-- DATA -->
     <script src="data/gen1data.js"></script>
+    <script src="data/g3MovesData.js"></script>
+    <script src="data/g3tmhmmapping.js"></script>
     <script src="data/gen1dataGrowthMovepool.js"></script>
     <script src="data/gen1moves.js"></script>
     <script src="data/gen3data.js"></script>

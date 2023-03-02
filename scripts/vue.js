@@ -82,6 +82,8 @@ const app = Vue.createApp({
             typeBoostingItems: typeBoostingItems,
             dexDataRubySapphireEmerald: dexDataRubySapphireEmerald,
             emeraldTrainers: emeraldTrainers,
+            g3MoveData: g3MoveData,
+            g3tmhmMapping: g3tmhmMapping,
             hiddenPowerTypes : {
                 0 : "Fighting",
                 1 : "Flying",
@@ -205,16 +207,99 @@ const app = Vue.createApp({
             return this.mapper?.properties?.battle?.enemyPokemon
         },
         s1dynamic() {
-            if (this.g1stateVariable == `Battle`) {
+            if (this.g3stateVariable == `Battle`) {
                 return this.mapper?.properties?.battle?.yourPokemon
             }
             else {
                 return this.mapper?.properties?.player?.team[0]
             }
         },
+        s1dynamicReset() {
+            if (this.g3stateVariable == `Battle`) {
+                
+                return this.mapper?.properties?.battle?.yourPokemon
+            }
+            else if (this.g3stateVariable == `Base Stats`) {
+                var data = this.dexDataRubySapphireEmerald[this.starterString]
+                return {
+                    species: { value: data["name"] },
+                    ...data
+                }
+            }
+            else {
+                return this.mapper?.properties?.player?.team[0]
+            }
+        },
+        typeHeaderColor() {
+            if (this.g3stateVariable == `Battle`) { return this.mapper.properties.battle.yourPokemon.type2.value }
+            if (this.g3stateVariable == `Overworld`) { return this.dexDataRubySapphireEmerald[this.mapper.properties.player.team[0].species.value].type_2 }
+            if (this.g3stateVariable == `Base Stats`) { return this.dexDataRubySapphireEmerald[this.starterString].type_2}
+            else { return this.dexDataRubySapphireEmerald[this.starterString].type_2}
+        },
     },
 
     methods: { 
+        curseType(x) {
+            if (x == `Curse`) {
+                return "???"
+            }
+            else {
+                return x
+            }
+        },
+        //AUTOMATION MOVEPOOL GRAPHIC
+        dataSearch(dataObject, pointerValue) {
+            if (!pointerValue) return ""
+            const key = Object.keys(dataObject).find(x => x.toLowerCase() == pointerValue.toLowerCase())
+            return dataObject[key] || "ERROR"
+        },
+        getMovepool(gen3PkmnData, moveData, tmhmMapping, species) {
+            const pkmn = this.dataSearch(gen3PkmnData, species)
+            let obj = {
+                level: pkmn.levelup_moveset.map(x => {
+                    return {
+                        ...{Level: x[0]},
+                        ...this.dataSearch(moveData, x[1]) //searching for index 1
+                    }
+                }), 
+                tmhm: pkmn.tm_hm_learnset.map(x => {
+                    return {
+                        ...{tmhm: tmhmMapping.find(y => y.Move == x)?.tmhmIndex??"TM01"},
+                        ...this.dataSearch(moveData, x)
+                    }
+                }),     
+                tutor: pkmn.tutor_learnset.map(x => {
+                    return this.dataSearch(moveData, x)
+                }),    
+                egg: pkmn.egg_moves.map(x => {
+                    return this.dataSearch(moveData, x)
+                }),    
+            }
+            return obj
+        }, 
+
+        // MOVE ACCURACY
+        moveAccuracyStatic(move) {
+            var moveObject = this.gen1moves.find(x => x.Move.toUpperCase() === move)
+            return moveObject.Accuracy
+        },
+        moveAccuracyDynamic(move) {
+            var moveObject = this.gen3moves.find(x => x.Move.toUpperCase() === move)
+            var moveAccuracy = moveObject.Accuracy
+            var stageMods = this.stageModifiersData.find(x => x.modType === "accuracy")
+            var currentModStage = this.batt.yourPokemon.modStageAccuracy.value
+            if (moveAccuracy == `-`) {
+                return `-`
+            }
+            else if (this.g3stateVariable == `Battle`) {
+                return Math.floor(moveAccuracy * stageMods[currentModStage])
+            }
+            else {
+                return moveAccuracy
+            }
+        },
+
+        // ENEMY TRAINER GRAPHIC
         g3trainerEnemySelector(trainerClass) {
             if (
                 trainerClass == "LEADER_ROXANNE_1" ||
@@ -347,17 +432,17 @@ const app = Vue.createApp({
             }
         },
         enemyPkmnFaint(pkmnData) {
-            if (this.g3stateVariable != `Battle`) { return "filter: drop-shadow(2px 2px 2px #000) saturate(1.3) grayscale(0%);" }
-            if (pkmnData.hp == 0) {
-                return "filter: drop-shadow(2px 2px 2px #000) saturate(1.3) grayscale(100%); opacity: .3;"
+            if (this.g3stateVariable != `Battle`) { return "filter: drop-shadow(2px 2px 2px #000) saturate(1.1) grayscale(0%);" }
+            if (pkmnData.hp == 0 || this.g3stateVariable == `From Battle`) {
+                return "filter: drop-shadow(2px 2px 2px #000) saturate(1.1) grayscale(100%); opacity: .3;"
             }
             else {
-                return "filter: drop-shadow(2px 2px 2px #000) saturate(1.3) grayscale(0%);"
+                return "filter: drop-shadow(2px 2px 2px #000) saturate(1.1) grayscale(0%);"
             }
         },
         enemyPkmnText(pkmnData) {
             if (this.g3stateVariable != `Battle`) { return "opacity: 1" }
-            if (pkmnData.hp == 0) {
+            if (pkmnData.hp == 0 || this.g3stateVariable == `From Battle`) {
                 return "opacity: .3"
             }
             else {
@@ -366,13 +451,25 @@ const app = Vue.createApp({
         },
         enemyPkmnSpecies(pkmnData) {
             if (this.g3stateVariable != `Battle`) { return "opacity: .7" }
-            if (pkmnData.hp == 0) {
+            if (pkmnData.hp == 0 || this.g3stateVariable == `From Battle`) {
                 return "opacity: .3"
             }
             else {
                 return "opacity: .7"
             }
         },
+        enemyPkmnFaintStats(pkmnData) {
+            if (this.g3stateVariable == `To Battle`) {
+                return "filter: grayscale(0%);"
+            }
+            else if (pkmnData.hp == 0 || this.g3stateVariable == `From Battle`) {
+                return "filter: grayscale(100%); opacity: .5;"
+            }
+            else {
+                return "filter: grayscale(0%);"
+            }
+        },
+
         // STAGE MULTIPLIERS
         activeSlot(activePkmn, currentSlot, statLabel, stat, modifier) {
             var modData = this.stageModifiersData.find(x => x.modType === "stat")
