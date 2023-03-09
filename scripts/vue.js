@@ -219,7 +219,7 @@ const app = Vue.createApp({
                 
                 return this.mapper?.properties?.battle?.yourPokemon
             }
-            else if (this.g3stateVariable == `Base Stats`) {
+            else if (this.g3stateVariable == `Base Stats` || this.mapper?.properties?.player?.team[0].species.value == null) {
                 var data = this.dexDataRubySapphireEmerald[this.starterString]
                 return {
                     species: { value: data["name"] },
@@ -1462,17 +1462,7 @@ const app = Vue.createApp({
             if (prop.value == "NO_SAFARI_BALLS") { this.g3stateVariable = "From Battle"}
             if (prop.value == "FORFEITED") { this.g3stateVariable = "From Battle"}
             if (prop.value == "POKEMON_TELEPORTED") { this.g3stateVariable = "From Battle"}
-            // if (prop.value == "WON") { this.g3stateVariable = "From Battle - Won"}
-            // if (prop.value == "LOST") { this.g3stateVariable = "From Battle - Lost"}
-            // if (prop.value == "DRAW") { this.g3stateVariable = "From Battle - Draw"}
-            // if (prop.value == "RAN") { this.g3stateVariable = "From Battle - Ran"}
-            // if (prop.value == "CAUGHT") { this.g3stateVariable = "From Battle - Caught"}
-            // if (prop.value == "PLAYER_TELEPORTED") { this.g3stateVariable = "From Battle - Player_Teleported"}
-            // if (prop.value == "POKEMON_FLED") { this.g3stateVariable = "From Battle - Fled"}
-            // if (prop.value == "NO_SAFARI_BALLS") { this.g3stateVariable = "From Battle - No_Safari_Balls"}
-            // if (prop.value == "FORFEITED") { this.g3stateVariable = "From Battle - Forfeited"}
-            // if (prop.value == "POKEMON_TELEPORTED") { this.g3stateVariable = "From Battle - Teleported"}
-        });9
+        });
 
         this.mapper.properties.pointers.callback2.change((prop) => {
             if (prop.value == "Owners") { 

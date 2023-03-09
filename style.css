@@ -906,7 +906,7 @@ canvas {  /* or some other selector */
     width: 340px;
     text-align: center; /* need a fix */
     position: absolute;
-    top: 27px;
+    top: 26px;
     left: 1570px;
     font-family: titan;
     z-index: 600;
@@ -1506,7 +1506,7 @@ canvas {  /* or some other selector */
 }
 
 .gameTime {
-    font-size: 21px;
+    font-size: 20px;
     position: absolute;
     border: 1px solid #ff000000;
     width: 108px;
