@@ -22,7 +22,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Submission",
         "Counter",
         "Seismic Toss",
@@ -65,7 +65,7 @@ const gen1dataGrowthMovepool =
         "Whirlwind",
         "Toxic",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Hyper Beam",
         "Rage",
         "Dragon Rage",
@@ -121,7 +121,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Hyper Beam",
         "Submission",
         "Counter",
@@ -191,7 +191,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Hyper Beam",
         "Rage",
         "Mega Drain",
@@ -252,7 +252,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Hyper Beam",
         "Rage",
         "Dragon Rage",
@@ -291,7 +291,7 @@ const gen1dataGrowthMovepool =
         "Whirlwind",
         "Toxic",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "BubbleBeam",
         "Water Gun",
         "Ice Beam",
@@ -342,7 +342,7 @@ const gen1dataGrowthMovepool =
         "Swords Dance",
         "Toxic",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Hyper Beam",
         "Rage",
         "Mega Drain",
@@ -403,10 +403,10 @@ const gen1dataGrowthMovepool =
         "Swords Dance",
         "Toxic",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Rage",
         "Mega Drain",
-        "Solar Beam",
+        "SolarBeam",
         "Mimic",
         "Double Team",
         "Reflect",
@@ -470,7 +470,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "BubbleBeam",
         "Water Gun",
         "Ice Beam",
@@ -541,10 +541,10 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Rage",
         "Mega Drain",
-        "Solar Beam",
+        "SolarBeam",
         "Mimic",
         "Double Team",
         "Reflect",
@@ -580,7 +580,7 @@ const gen1dataGrowthMovepool =
         ],
         [
             48,
-            "Solar Beam"
+            "SolarBeam"
         ]
         ]
     },
@@ -604,11 +604,11 @@ const gen1dataGrowthMovepool =
         "Whirlwind",
         "Toxic",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Hyper Beam",
         "Rage",
         "Mega Drain",
-        "Solar Beam",
+        "SolarBeam",
         "Psychic",
         "Teleport",
         "Mimic",
@@ -697,7 +697,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "BubbleBeam",
         "Water Gun",
         "Ice Beam",
@@ -707,7 +707,7 @@ const gen1dataGrowthMovepool =
         "Counter",
         "Seismic Toss",
         "Rage",
-        "Solar Beam",
+        "SolarBeam",
         "Thunderbolt",
         "Thunder",
         "Psychic",
@@ -732,7 +732,7 @@ const gen1dataGrowthMovepool =
         levelup_moveset: [
         [
             12,
-            "Doubleslap"
+            "DoubleSlap"
         ],
         [
             24,
@@ -756,7 +756,7 @@ const gen1dataGrowthMovepool =
         ],
         [
             54,
-            "Double Edge"
+            "Double-Edge"
         ]
         ]
     },
@@ -785,7 +785,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Hyper Beam",
         "Submission",
         "Counter",
@@ -858,7 +858,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Submission",
         "Counter",
         "Seismic Toss",
@@ -928,7 +928,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Submission",
         "Counter",
         "Seismic Toss",
@@ -987,7 +987,7 @@ const gen1dataGrowthMovepool =
         base_xp: 129,
         initial_moveset: [
         "Sing",
-        "Doubleslap",
+        "DoubleSlap",
         "Minimize",
         "Metronome"
         ],
@@ -998,7 +998,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "BubbleBeam",
         "Water Gun",
         "Ice Beam",
@@ -1008,7 +1008,7 @@ const gen1dataGrowthMovepool =
         "Counter",
         "Seismic Toss",
         "Rage",
-        "Solar Beam",
+        "SolarBeam",
         "Thunderbolt",
         "Thunder",
         "Psychic",
@@ -1052,7 +1052,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "BubbleBeam",
         "Water Gun",
         "Ice Beam",
@@ -1061,7 +1061,7 @@ const gen1dataGrowthMovepool =
         "Counter",
         "Seismic Toss",
         "Rage",
-        "Solar Beam",
+        "SolarBeam",
         "Thunderbolt",
         "Thunder",
         "Psychic",
@@ -1088,7 +1088,7 @@ const gen1dataGrowthMovepool =
         ],
         [
             18,
-            "Doubleslap"
+            "DoubleSlap"
         ],
         [
             24,
@@ -1129,7 +1129,7 @@ const gen1dataGrowthMovepool =
         tm_hm_learnset: [
         "Toxic",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "BubbleBeam",
         "Water Gun",
         "Ice Beam",
@@ -1177,7 +1177,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "BubbleBeam",
         "Water Gun",
         "Ice Beam",
@@ -1255,7 +1255,7 @@ const gen1dataGrowthMovepool =
         "Horn Drill",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "BubbleBeam",
         "Water Gun",
         "Ice Beam",
@@ -1314,7 +1314,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Rage",
         "Earthquake",
         "Fissure",
@@ -1338,7 +1338,7 @@ const gen1dataGrowthMovepool =
         ],
         [
             24,
-            "Sand Attack"
+            "Sand-Attack"
         ],
         [
             31,
@@ -1390,7 +1390,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Hyper Beam",
         "Rage",
         "Mimic",
@@ -1451,7 +1451,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Rage",
         "Mimic",
         "Double Team",
@@ -1513,7 +1513,7 @@ const gen1dataGrowthMovepool =
         "Horn Drill",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "BubbleBeam",
         "Water Gun",
         "Ice Beam",
@@ -1581,7 +1581,7 @@ const gen1dataGrowthMovepool =
         "Horn Drill",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "BubbleBeam",
         "Water Gun",
         "Ice Beam",
@@ -1647,7 +1647,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "BubbleBeam",
         "Water Gun",
         "Ice Beam",
@@ -1713,7 +1713,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Submission",
         "Counter",
         "Seismic Toss",
@@ -1782,7 +1782,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Hyper Beam",
         "Rage",
         "Earthquake",
@@ -1807,7 +1807,7 @@ const gen1dataGrowthMovepool =
         ],
         [
             24,
-            "Sand Attack"
+            "Sand-Attack"
         ],
         [
             35,
@@ -1839,7 +1839,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Rage",
         "Mimic",
         "Double Team",
@@ -1853,7 +1853,7 @@ const gen1dataGrowthMovepool =
         levelup_moveset: [
         [
             8,
-            "Sand Attack"
+            "Sand-Attack"
         ],
         [
             16,
@@ -1897,7 +1897,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Rage",
         "Mega Drain",
         "Earthquake",
@@ -1957,7 +1957,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Hyper Beam",
         "Submission",
         "Counter",
@@ -1992,7 +1992,7 @@ const gen1dataGrowthMovepool =
         ],
         [
             42,
-            "Thunder Punch"
+            "ThunderPunch"
         ],
         [
             49,
@@ -2018,7 +2018,7 @@ const gen1dataGrowthMovepool =
         initial_moveset: [
         "Tackle",
         "Screech",
-        "Sonic Boom"
+        "SonicBoom"
         ],
         growth_rate: "Medium Fast",
         tm_hm_learnset: [
@@ -2045,7 +2045,7 @@ const gen1dataGrowthMovepool =
         levelup_moveset: [
         [
             17,
-            "Sonic Boom"
+            "SonicBoom"
         ],
         [
             22,
@@ -2084,7 +2084,7 @@ const gen1dataGrowthMovepool =
         tm_hm_learnset: [
         "Toxic",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Rage",
         "Psychic",
         "Teleport",
@@ -2118,7 +2118,7 @@ const gen1dataGrowthMovepool =
         ],
         [
             42,
-            "Solar Beam"
+            "SolarBeam"
         ],
         [
             48,
@@ -2145,11 +2145,11 @@ const gen1dataGrowthMovepool =
         tm_hm_learnset: [
         "Toxic",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Hyper Beam",
         "Rage",
         "Mega Drain",
-        "Solar Beam",
+        "SolarBeam",
         "Psychic",
         "Teleport",
         "Mimic",
@@ -2184,7 +2184,7 @@ const gen1dataGrowthMovepool =
         base_xp: 94,
         initial_moveset: [
         "Peck",
-        "Sand Attack"
+        "Sand-Attack"
         ],
         growth_rate: "Medium Fast",
         tm_hm_learnset: [
@@ -2194,7 +2194,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Rage",
         "Mimic",
         "Double Team",
@@ -2252,7 +2252,7 @@ const gen1dataGrowthMovepool =
         "Whirlwind",
         "Toxic",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Hyper Beam",
         "Rage",
         "Mimic",
@@ -2309,7 +2309,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Hyper Beam",
         "Rage",
         "Mimic",
@@ -2325,7 +2325,7 @@ const gen1dataGrowthMovepool =
         levelup_moveset: [
         [
             8,
-            "Sand Attack"
+            "Sand-Attack"
         ],
         [
             16,
@@ -2425,7 +2425,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Hyper Beam",
         "Submission",
         "Counter",
@@ -2479,7 +2479,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Submission",
         "Counter",
         "Seismic Toss",
@@ -2547,10 +2547,10 @@ const gen1dataGrowthMovepool =
         "Swords Dance",
         "Toxic",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Rage",
         "Mega Drain",
-        "Solar Beam",
+        "SolarBeam",
         "Mimic",
         "Double Team",
         "Reflect",
@@ -2582,7 +2582,7 @@ const gen1dataGrowthMovepool =
         ],
         [
             52,
-            "Solar Beam"
+            "SolarBeam"
         ]
         ]
     },
@@ -2608,7 +2608,7 @@ const gen1dataGrowthMovepool =
         "Whirlwind",
         "Toxic",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Hyper Beam",
         "Rage",
         "Mega Drain",
@@ -2662,7 +2662,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Horn Drill",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "BubbleBeam",
         "Water Gun",
         "Ice Beam",
@@ -2727,7 +2727,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "BubbleBeam",
         "Water Gun",
         "Ice Beam",
@@ -2794,7 +2794,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Hyper Beam",
         "Submission",
         "Counter",
@@ -2863,7 +2863,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Submission",
         "Counter",
         "Seismic Toss",
@@ -2989,7 +2989,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Rage",
         "Dragon Rage",
         "Dig",
@@ -3045,7 +3045,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "BubbleBeam",
         "Water Gun",
         "Ice Beam",
@@ -3156,7 +3156,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Submission",
         "Counter",
         "Seismic Toss",
@@ -3182,7 +3182,7 @@ const gen1dataGrowthMovepool =
         ],
         [
             43,
-            "Thunder Punch"
+            "ThunderPunch"
         ],
         [
             48,
@@ -3216,7 +3216,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Submission",
         "Counter",
         "Seismic Toss",
@@ -3272,7 +3272,7 @@ const gen1dataGrowthMovepool =
         tm_hm_learnset: [
         "Toxic",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "BubbleBeam",
         "Water Gun",
         "Ice Beam",
@@ -3290,7 +3290,7 @@ const gen1dataGrowthMovepool =
         levelup_moveset: [
         [
             19,
-            "Smokescreen"
+            "SmokeScreen"
         ],
         [
             24,
@@ -3334,7 +3334,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Hyper Beam",
         "Submission",
         "Counter",
@@ -3405,10 +3405,10 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Rage",
         "Mega Drain",
-        "Solar Beam",
+        "SolarBeam",
         "Mimic",
         "Double Team",
         "Reflect",
@@ -3444,7 +3444,7 @@ const gen1dataGrowthMovepool =
         ],
         [
             54,
-            "Solar Beam"
+            "SolarBeam"
         ]
         ]
     },
@@ -3469,7 +3469,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "BubbleBeam",
         "Water Gun",
         "Ice Beam",
@@ -3478,7 +3478,7 @@ const gen1dataGrowthMovepool =
         "Counter",
         "Seismic Toss",
         "Rage",
-        "Solar Beam",
+        "SolarBeam",
         "Thunderbolt",
         "Thunder",
         "Psychic",
@@ -3512,7 +3512,7 @@ const gen1dataGrowthMovepool =
         ],
         [
             24,
-            "Doubleslap"
+            "DoubleSlap"
         ],
         [
             29,
@@ -3524,7 +3524,7 @@ const gen1dataGrowthMovepool =
         ],
         [
             39,
-            "Double Edge"
+            "Double-Edge"
         ]
         ]
     },
@@ -3550,7 +3550,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Hyper Beam",
         "Rage",
         "Thunderbolt",
@@ -3569,7 +3569,7 @@ const gen1dataGrowthMovepool =
         levelup_moveset: [
         [
             8,
-            "Sand Attack"
+            "Sand-Attack"
         ],
         [
             16,
@@ -3623,7 +3623,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "BubbleBeam",
         "Water Gun",
         "Ice Beam",
@@ -3652,7 +3652,7 @@ const gen1dataGrowthMovepool =
         ],
         [
             23,
-            "Doubleslap"
+            "DoubleSlap"
         ],
         [
             31,
@@ -3692,7 +3692,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "BubbleBeam",
         "Water Gun",
         "Ice Beam",
@@ -3749,7 +3749,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "BubbleBeam",
         "Water Gun",
         "Ice Beam",
@@ -3809,7 +3809,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Submission",
         "Counter",
         "Seismic Toss",
@@ -3897,7 +3897,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "BubbleBeam",
         "Water Gun",
         "Ice Beam",
@@ -3967,7 +3967,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "BubbleBeam",
         "Water Gun",
         "Ice Beam",
@@ -4043,7 +4043,7 @@ const gen1dataGrowthMovepool =
         ],
         [
             37,
-            "Smokescreen"
+            "SmokeScreen"
         ],
         [
             40,
@@ -4080,7 +4080,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "BubbleBeam",
         "Water Gun",
         "Ice Beam",
@@ -4139,14 +4139,14 @@ const gen1dataGrowthMovepool =
         "Horn Drill",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "BubbleBeam",
         "Water Gun",
         "Ice Beam",
         "Blizzard",
         "Hyper Beam",
         "Rage",
-        "Solar Beam",
+        "SolarBeam",
         "Dragon Rage",
         "Thunderbolt",
         "Thunder",
@@ -4212,7 +4212,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "BubbleBeam",
         "Water Gun",
         "Ice Beam",
@@ -4283,7 +4283,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Hyper Beam",
         "Submission",
         "Counter",
@@ -4349,7 +4349,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Submission",
         "Counter",
         "Seismic Toss",
@@ -4412,7 +4412,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Submission",
         "Counter",
         "Seismic Toss",
@@ -4498,7 +4498,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Hyper Beam",
         "Submission",
         "Counter",
@@ -4532,7 +4532,7 @@ const gen1dataGrowthMovepool =
         ],
         [
             48,
-            "Smokescreen"
+            "SmokeScreen"
         ],
         [
             52,
@@ -4562,7 +4562,7 @@ const gen1dataGrowthMovepool =
         tm_hm_learnset: [
         "Toxic",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Rage",
         "Thunderbolt",
         "Thunder",
@@ -4580,7 +4580,7 @@ const gen1dataGrowthMovepool =
         levelup_moveset: [
         [
             21,
-            "Sonic Boom"
+            "SonicBoom"
         ],
         [
             25,
@@ -4617,14 +4617,14 @@ const gen1dataGrowthMovepool =
         base_xp: 161,
         initial_moveset: [
         "Tackle",
-        "Sonic Boom",
+        "SonicBoom",
         "Thundershock"
         ],
         growth_rate: "Medium Fast",
         tm_hm_learnset: [
         "Toxic",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Hyper Beam",
         "Rage",
         "Thunderbolt",
@@ -4643,7 +4643,7 @@ const gen1dataGrowthMovepool =
         levelup_moveset: [
         [
             21,
-            "Sonic Boom"
+            "SonicBoom"
         ],
         [
             25,
@@ -4689,7 +4689,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Pay Day",
         "Submission",
         "Counter",
@@ -4762,7 +4762,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "BubbleBeam",
         "Water Gun",
         "Ice Beam",
@@ -4839,7 +4839,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "BubbleBeam",
         "Water Gun",
         "Pay Day",
@@ -4925,7 +4925,7 @@ const gen1dataGrowthMovepool =
         "Horn Drill",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "BubbleBeam",
         "Water Gun",
         "Ice Beam",
@@ -4937,7 +4937,7 @@ const gen1dataGrowthMovepool =
         "Seismic Toss",
         "Rage",
         "Mega Drain",
-        "Solar Beam",
+        "SolarBeam",
         "Dragon Rage",
         "Thunderbolt",
         "Thunder",
@@ -5015,7 +5015,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "BubbleBeam",
         "Water Gun",
         "Ice Beam",
@@ -5025,7 +5025,7 @@ const gen1dataGrowthMovepool =
         "Counter",
         "Seismic Toss",
         "Rage",
-        "Solar Beam",
+        "SolarBeam",
         "Thunderbolt",
         "Thunder",
         "Psychic",
@@ -5090,7 +5090,7 @@ const gen1dataGrowthMovepool =
         "Whirlwind",
         "Toxic",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Hyper Beam",
         "Rage",
         "Mimic",
@@ -5141,13 +5141,13 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Hyper Beam",
         "Submission",
         "Counter",
         "Seismic Toss",
         "Rage",
-        "Solar Beam",
+        "SolarBeam",
         "Thunderbolt",
         "Thunder",
         "Psychic",
@@ -5175,7 +5175,7 @@ const gen1dataGrowthMovepool =
         ],
         [
             31,
-            "Doubleslap"
+            "DoubleSlap"
         ],
         [
             39,
@@ -5273,7 +5273,7 @@ const gen1dataGrowthMovepool =
         "Horn Drill",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "BubbleBeam",
         "Water Gun",
         "Ice Beam",
@@ -5340,7 +5340,7 @@ const gen1dataGrowthMovepool =
         "Horn Drill",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "BubbleBeam",
         "Water Gun",
         "Ice Beam",
@@ -5402,7 +5402,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Blizzard",
         "Rage",
         "Thunderbolt",
@@ -5463,7 +5463,7 @@ const gen1dataGrowthMovepool =
         "Horn Drill",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Blizzard",
         "Rage",
         "Thunderbolt",
@@ -5525,7 +5525,7 @@ const gen1dataGrowthMovepool =
         "Horn Drill",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "BubbleBeam",
         "Water Gun",
         "Ice Beam",
@@ -5590,7 +5590,7 @@ const gen1dataGrowthMovepool =
         "Horn Drill",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "BubbleBeam",
         "Water Gun",
         "Ice Beam",
@@ -5655,7 +5655,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Hyper Beam",
         "Rage",
         "Dig",
@@ -5690,10 +5690,10 @@ const gen1dataGrowthMovepool =
         "Swords Dance",
         "Toxic",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Rage",
         "Mega Drain",
-        "Solar Beam",
+        "SolarBeam",
         "Mimic",
         "Double Team",
         "Reflect",
@@ -5725,7 +5725,7 @@ const gen1dataGrowthMovepool =
         ],
         [
             46,
-            "Solar Beam"
+            "SolarBeam"
         ]
         ]
     },
@@ -5749,7 +5749,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "BubbleBeam",
         "Water Gun",
         "Ice Beam",
@@ -5804,7 +5804,7 @@ const gen1dataGrowthMovepool =
         "Horn Drill",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "BubbleBeam",
         "Water Gun",
         "Ice Beam",
@@ -5861,7 +5861,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Rage",
         "Earthquake",
         "Fissure",
@@ -5920,10 +5920,10 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Rage",
         "Mega Drain",
-        "Solar Beam",
+        "SolarBeam",
         "Dig",
         "Mimic",
         "Double Team",
@@ -5979,11 +5979,11 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Hyper Beam",
         "Rage",
         "Mega Drain",
-        "Solar Beam",
+        "SolarBeam",
         "Dig",
         "Mimic",
         "Double Team",
@@ -6039,7 +6039,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "BubbleBeam",
         "Water Gun",
         "Hyper Beam",
@@ -6091,7 +6091,7 @@ const gen1dataGrowthMovepool =
         base_xp: 172,
         initial_moveset: [
         "Gust",
-        "Sand Attack",
+        "Sand-Attack",
         "Quick Attack"
         ],
         growth_rate: "Medium Slow",
@@ -6100,7 +6100,7 @@ const gen1dataGrowthMovepool =
         "Whirlwind",
         "Toxic",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Hyper Beam",
         "Rage",
         "Mimic",
@@ -6116,7 +6116,7 @@ const gen1dataGrowthMovepool =
         levelup_moveset: [
         [
             5,
-            "Sand Attack"
+            "Sand-Attack"
         ],
         [
             12,
@@ -6153,7 +6153,7 @@ const gen1dataGrowthMovepool =
         base_xp: 113,
         initial_moveset: [
         "Gust",
-        "Sand Attack"
+        "Sand-Attack"
         ],
         growth_rate: "Medium Slow",
         tm_hm_learnset: [
@@ -6161,7 +6161,7 @@ const gen1dataGrowthMovepool =
         "Whirlwind",
         "Toxic",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Rage",
         "Mimic",
         "Double Team",
@@ -6176,7 +6176,7 @@ const gen1dataGrowthMovepool =
         levelup_moveset: [
         [
             5,
-            "Sand Attack"
+            "Sand-Attack"
         ],
         [
             12,
@@ -6220,7 +6220,7 @@ const gen1dataGrowthMovepool =
         "Whirlwind",
         "Toxic",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Rage",
         "Mimic",
         "Double Team",
@@ -6235,7 +6235,7 @@ const gen1dataGrowthMovepool =
         levelup_moveset: [
         [
             5,
-            "Sand Attack"
+            "Sand-Attack"
         ],
         [
             12,
@@ -6281,7 +6281,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Pay Day",
         "Submission",
         "Seismic Toss",
@@ -6358,7 +6358,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Hyper Beam",
         "Submission",
         "Seismic Toss",
@@ -6421,7 +6421,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "BubbleBeam",
         "Water Gun",
         "Ice Beam",
@@ -6448,7 +6448,7 @@ const gen1dataGrowthMovepool =
         ],
         [
             25,
-            "Doubleslap"
+            "DoubleSlap"
         ],
         [
             31,
@@ -6487,7 +6487,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "BubbleBeam",
         "Water Gun",
         "Ice Beam",
@@ -6521,7 +6521,7 @@ const gen1dataGrowthMovepool =
         ],
         [
             26,
-            "Doubleslap"
+            "DoubleSlap"
         ],
         [
             33,
@@ -6551,7 +6551,7 @@ const gen1dataGrowthMovepool =
         initial_moveset: [
         "Hypnosis",
         "Water Gun",
-        "Doubleslap",
+        "DoubleSlap",
         "Body Slam"
         ],
         growth_rate: "Medium Slow",
@@ -6561,7 +6561,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "BubbleBeam",
         "Water Gun",
         "Ice Beam",
@@ -6616,7 +6616,7 @@ const gen1dataGrowthMovepool =
         "Horn Drill",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Rage",
         "Mimic",
         "Double Team",
@@ -6675,7 +6675,7 @@ const gen1dataGrowthMovepool =
         tm_hm_learnset: [
         "Toxic",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Ice Beam",
         "Blizzard",
         "Hyper Beam",
@@ -6740,7 +6740,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Hyper Beam",
         "Pay Day",
         "Submission",
@@ -6817,7 +6817,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "BubbleBeam",
         "Water Gun",
         "Ice Beam",
@@ -6884,7 +6884,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Hyper Beam",
         "Pay Day",
         "Submission",
@@ -6928,7 +6928,7 @@ const gen1dataGrowthMovepool =
         "Horn Drill",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Hyper Beam",
         "Rage",
         "Mimic",
@@ -6989,7 +6989,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "BubbleBeam",
         "Water Gun",
         "Ice Beam",
@@ -7046,7 +7046,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "BubbleBeam",
         "Water Gun",
         "Blizzard",
@@ -7106,7 +7106,7 @@ const gen1dataGrowthMovepool =
         "Horn Drill",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "BubbleBeam",
         "Water Gun",
         "Ice Beam",
@@ -7180,7 +7180,7 @@ const gen1dataGrowthMovepool =
         "Horn Drill",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Rage",
         "Thunderbolt",
         "Thunder",
@@ -7244,7 +7244,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Submission",
         "Seismic Toss",
         "Rage",
@@ -7265,7 +7265,7 @@ const gen1dataGrowthMovepool =
         levelup_moveset: [
         [
             10,
-            "Sand Attack"
+            "Sand-Attack"
         ],
         [
             17,
@@ -7298,7 +7298,7 @@ const gen1dataGrowthMovepool =
         base_xp: 163,
         initial_moveset: [
         "Scratch",
-        "Sand Attack"
+        "Sand-Attack"
         ],
         growth_rate: "Medium Fast",
         tm_hm_learnset: [
@@ -7306,7 +7306,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Hyper Beam",
         "Submission",
         "Seismic Toss",
@@ -7328,7 +7328,7 @@ const gen1dataGrowthMovepool =
         levelup_moveset: [
         [
             10,
-            "Sand Attack"
+            "Sand-Attack"
         ],
         [
             17,
@@ -7367,7 +7367,7 @@ const gen1dataGrowthMovepool =
         "Swords Dance",
         "Toxic",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Hyper Beam",
         "Rage",
         "Mimic",
@@ -7423,13 +7423,13 @@ const gen1dataGrowthMovepool =
         base_xp: 155,
         initial_moveset: [
         "Bubble",
-        "Smokescreen"
+        "SmokeScreen"
         ],
         growth_rate: "Medium Fast",
         tm_hm_learnset: [
         "Toxic",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "BubbleBeam",
         "Water Gun",
         "Ice Beam",
@@ -7448,7 +7448,7 @@ const gen1dataGrowthMovepool =
         levelup_moveset: [
         [
             19,
-            "Smokescreen"
+            "SmokeScreen"
         ],
         [
             24,
@@ -7489,7 +7489,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Horn Drill",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "BubbleBeam",
         "Water Gun",
         "Ice Beam",
@@ -7552,7 +7552,7 @@ const gen1dataGrowthMovepool =
         "Horn Drill",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "BubbleBeam",
         "Water Gun",
         "Ice Beam",
@@ -7610,7 +7610,7 @@ const gen1dataGrowthMovepool =
         tm_hm_learnset: [
         "Toxic",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "BubbleBeam",
         "Water Gun",
         "Ice Beam",
@@ -7675,7 +7675,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "BubbleBeam",
         "Water Gun",
         "Ice Beam",
@@ -7757,7 +7757,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "BubbleBeam",
         "Water Gun",
         "Ice Beam",
@@ -7835,7 +7835,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "BubbleBeam",
         "Water Gun",
         "Ice Beam",
@@ -7846,7 +7846,7 @@ const gen1dataGrowthMovepool =
         "Counter",
         "Seismic Toss",
         "Rage",
-        "Solar Beam",
+        "SolarBeam",
         "Thunderbolt",
         "Thunder",
         "Earthquake",
@@ -7878,7 +7878,7 @@ const gen1dataGrowthMovepool =
         ],
         [
             48,
-            "Double Edge"
+            "Double-Edge"
         ],
         [
             56,
@@ -7907,7 +7907,7 @@ const gen1dataGrowthMovepool =
         "Whirlwind",
         "Toxic",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Rage",
         "Mimic",
         "Double Team",
@@ -7963,7 +7963,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "BubbleBeam",
         "Water Gun",
         "Ice Beam",
@@ -8030,7 +8030,7 @@ const gen1dataGrowthMovepool =
         tm_hm_learnset: [
         "Toxic",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "BubbleBeam",
         "Water Gun",
         "Ice Beam",
@@ -8075,7 +8075,7 @@ const gen1dataGrowthMovepool =
         tm_hm_learnset: [
         "Toxic",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "BubbleBeam",
         "Water Gun",
         "Ice Beam",
@@ -8150,11 +8150,11 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Hyper Beam",
         "Rage",
         "Mega Drain",
-        "Solar Beam",
+        "SolarBeam",
         "Mimic",
         "Double Team",
         "Bide",
@@ -8218,7 +8218,7 @@ const gen1dataGrowthMovepool =
         "Horn Drill",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Ice Beam",
         "Blizzard",
         "Hyper Beam",
@@ -8278,7 +8278,7 @@ const gen1dataGrowthMovepool =
         "Swords Dance",
         "Toxic",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "BubbleBeam",
         "Water Gun",
         "Ice Beam",
@@ -8351,7 +8351,7 @@ const gen1dataGrowthMovepool =
         "Swords Dance",
         "Toxic",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "BubbleBeam",
         "Water Gun",
         "Ice Beam",
@@ -8426,7 +8426,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "BubbleBeam",
         "Water Gun",
         "Ice Beam",
@@ -8446,7 +8446,7 @@ const gen1dataGrowthMovepool =
         levelup_moveset: [
         [
             8,
-            "Sand Attack"
+            "Sand-Attack"
         ],
         [
             16,
@@ -8505,11 +8505,11 @@ const gen1dataGrowthMovepool =
         "Whirlwind",
         "Toxic",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Hyper Beam",
         "Rage",
         "Mega Drain",
-        "Solar Beam",
+        "SolarBeam",
         "Psychic",
         "Teleport",
         "Mimic",
@@ -8568,10 +8568,10 @@ const gen1dataGrowthMovepool =
         tm_hm_learnset: [
         "Toxic",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Rage",
         "Mega Drain",
-        "Solar Beam",
+        "SolarBeam",
         "Psychic",
         "Mimic",
         "Double Team",
@@ -8640,11 +8640,11 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Hyper Beam",
         "Rage",
         "Mega Drain",
-        "Solar Beam",
+        "SolarBeam",
         "Mimic",
         "Double Team",
         "Reflect",
@@ -8680,7 +8680,7 @@ const gen1dataGrowthMovepool =
         ],
         [
             65,
-            "Solar Beam"
+            "SolarBeam"
         ]
         ]
     },
@@ -8707,11 +8707,11 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Hyper Beam",
         "Rage",
         "Mega Drain",
-        "Solar Beam",
+        "SolarBeam",
         "Mimic",
         "Double Team",
         "Reflect",
@@ -8758,11 +8758,11 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Hyper Beam",
         "Rage",
         "Mega Drain",
-        "Solar Beam",
+        "SolarBeam",
         "Mimic",
         "Double Team",
         "Reflect",
@@ -8824,7 +8824,7 @@ const gen1dataGrowthMovepool =
         levelup_moveset: [
         [
             17,
-            "Sonic Boom"
+            "SonicBoom"
         ],
         [
             22,
@@ -8864,7 +8864,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Rage",
         "Dig",
         "Mimic",
@@ -8923,7 +8923,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "BubbleBeam",
         "Water Gun",
         "Ice Beam",
@@ -9010,10 +9010,10 @@ const gen1dataGrowthMovepool =
         "Swords Dance",
         "Toxic",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Rage",
         "Mega Drain",
-        "Solar Beam",
+        "SolarBeam",
         "Mimic",
         "Double Team",
         "Reflect",
@@ -9092,7 +9092,7 @@ const gen1dataGrowthMovepool =
         ],
         [
             39,
-            "Smokescreen"
+            "SmokeScreen"
         ],
         [
             43,
@@ -9123,7 +9123,7 @@ const gen1dataGrowthMovepool =
         "Sing",
         "Disable",
         "Defense Curl",
-        "Doubleslap"
+        "DoubleSlap"
         ],
         growth_rate: "Fast",
         tm_hm_learnset: [
@@ -9132,7 +9132,7 @@ const gen1dataGrowthMovepool =
         "Toxic",
         "Body Slam",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "BubbleBeam",
         "Water Gun",
         "Ice Beam",
@@ -9142,7 +9142,7 @@ const gen1dataGrowthMovepool =
         "Counter",
         "Seismic Toss",
         "Rage",
-        "Solar Beam",
+        "SolarBeam",
         "Thunderbolt",
         "Thunder",
         "Psychic",
@@ -9184,7 +9184,7 @@ const gen1dataGrowthMovepool =
         "Whirlwind",
         "Toxic",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Hyper Beam",
         "Rage",
         "Thunderbolt",
@@ -9236,7 +9236,7 @@ const gen1dataGrowthMovepool =
         "Whirlwind",
         "Toxic",
         "Take Down",
-        "Double Edge",
+        "Double-Edge",
         "Rage",
         "Mega Drain",
         "Mimic",

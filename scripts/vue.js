@@ -333,21 +333,29 @@ const app = Vue.createApp({
 
     methods: { 
         move_name(move_string) { //converts move strings so that they are formatted correctly
-            if (move_string == "Vicegrip")     { return "ViceGrip" }
-            if (move_string == "Solarbeam")    { return "SolarBeam" }
-            if (move_string == "Extremespeed") { return "ExtremeSpeed" }
-            if (move_string == "Dynamicpunch") { return "DynamicPunch" }
-            if (move_string == "Thunderpunch") { return "ThunderPunch" }
-            if (move_string == "Bubblebeam")   { return "BubbleBeam" }
-            if (move_string == "Grasswhistle") { return "GrassWhistle" }
-            if (move_string == "Softboiled")   { return "Softboiled" }
-            if (move_string == "Sand-attack")  { return "Sand-Attack" }
-            if (move_string == "Mud-slap")     { return "Mud-Slap" }
-            if (move_string == "Featherdance") { return "FeatherDance" }
-            if (move_string == "Poisonpowder") { return "PoisonPowder" }
-            if (move_string == "Dragonbreath") { return "DragonBreath" }
-            if (move_string == "Ancientpower") { return "AncientPower" }
-            if (move_string == "Smellingsalt") { return "SmellingSalt" }
+            if (move_string != undefined) {
+                if (move_string.toLowerCase() == "vicegrip")     { return "ViceGrip" }
+                if (move_string.toLowerCase() == "doubleslap")   { return "DoubleSlap" }
+                if (move_string.toLowerCase() == "double-edge")  { return "Double-Edge" }
+                if (move_string.toLowerCase() == "solarbeam")    { return "SolarBeam" }
+                if (move_string.toLowerCase() == "extremespeed") { return "ExtremeSpeed" }
+                if (move_string.toLowerCase() == "dynamicpunch") { return "DynamicPunch" }
+                if (move_string.toLowerCase() == "thunderpunch") { return "ThunderPunch" }
+                if (move_string.toLowerCase() == "bubblebeam")   { return "BubbleBeam" }
+                if (move_string.toLowerCase() == "grasswhistle") { return "GrassWhistle" }
+                if (move_string.toLowerCase() == "softboiled")   { return "Softboiled" }
+                if (move_string.toLowerCase() == "sand-attack")  { return "Sand-Attack" }
+                if (move_string.toLowerCase() == "mud-slap")     { return "Mud-Slap" }
+                if (move_string.toLowerCase() == "featherdance") { return "FeatherDance" }
+                if (move_string.toLowerCase() == "poisonpowder") { return "PoisonPowder" }
+                if (move_string.toLowerCase() == "dragonbreath") { return "DragonBreath" }
+                if (move_string.toLowerCase() == "ancientpower") { return "AncientPower" }
+                if (move_string.toLowerCase() == "smellingsalt") { return "SmellingSalt" }
+                if (move_string.toLowerCase() == "selfdestruct") { return "Selfdestruct" }
+                if (move_string.toLowerCase() == "smokescreen")  { return "SmokeScreen" }
+                if (move_string.toLowerCase() == "sonicboom")    { return "SonicBoom" }
+                else { return move_string }
+            }
             else { return move_string }
         },
         paralysis(speed) {
@@ -1689,6 +1697,11 @@ const app = Vue.createApp({
         this.mapper.onConnected = (x) => this.ready = true
         this.mapper.onDisconnected = (x) => this.ready = false
         await this.mapper.connect()
+
+        for (var species of Object.keys(dexDataRubySapphireEmerald)) {
+            var image = new Image();
+            image.src = `images/pokemon/${species}.png`;
+        }
 
         //GAMESTATE MANAGEMENT
         // set initial gamestate value when the layout is loaded

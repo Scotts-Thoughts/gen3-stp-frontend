@@ -137,7 +137,7 @@
                     "Leech Seed",
                     "Mega Drain",
                     "Headbutt",
-                    "Poison Powder"
+                    "PoisonPowder"
                 ],
                 "ability": "Effect Spore",
                 "xp": 390,
@@ -155,7 +155,7 @@
                 "spd": 51,
                 "held_item": null,
                 "moves": [
-                    "Poison Powder",
+                    "PoisonPowder",
                     "Stun Spore",
                     "Sleep Powder",
                     "Acid"
@@ -214,7 +214,7 @@
                     "Leech Seed",
                     "Mega Drain",
                     "Headbutt",
-                    "Poison Powder"
+                    "PoisonPowder"
                 ],
                 "ability": "Effect Spore",
                 "xp": 430,
@@ -232,7 +232,7 @@
                 "spd": 57,
                 "held_item": null,
                 "moves": [
-                    "Poison Powder",
+                    "PoisonPowder",
                     "Stun Spore",
                     "Sleep Powder",
                     "Acid"
@@ -256,7 +256,7 @@
                     "Mega Drain",
                     "Leech Seed",
                     "Magical Leaf",
-                    "Grass Whistle"
+                    "GrassWhistle"
                 ],
                 "ability": "Natural Cure",
                 "xp": 1009,
@@ -309,7 +309,7 @@
                 "spd": 57,
                 "held_item": null,
                 "moves": [
-                    "Poison Powder",
+                    "PoisonPowder",
                     "Stun Spore",
                     "Sleep Powder",
                     "Acid"
@@ -332,7 +332,7 @@
                 "moves": [
                     "Leech Seed",
                     "Magical Leaf",
-                    "Grass Whistle",
+                    "GrassWhistle",
                     "Giga Drain"
                 ],
                 "ability": "Natural Cure",
@@ -367,7 +367,7 @@
                 "moves": [
                     "Dig",
                     "Slash",
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Poison Sting"
                 ],
                 "ability": "Sand Veil",
@@ -402,7 +402,7 @@
                 "moves": [
                     "Dig",
                     "Slash",
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Poison Sting"
                 ],
                 "ability": "Sand Veil",
@@ -437,7 +437,7 @@
                 "moves": [
                     "Dig",
                     "Slash",
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Poison Sting"
                 ],
                 "ability": "Sand Veil",
@@ -472,7 +472,7 @@
                 "moves": [
                     "Dig",
                     "Slash",
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Poison Sting"
                 ],
                 "ability": "Sand Veil",
@@ -507,7 +507,7 @@
                 "moves": [
                     "Dig",
                     "Slash",
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Poison Sting"
                 ],
                 "ability": "Sand Veil",
@@ -599,7 +599,7 @@
                     "Tail Whip",
                     "Water Gun",
                     "Rollout",
-                    "Bubble Beam"
+                    "BubbleBeam"
                 ],
                 "ability": "Thick Fat",
                 "xp": 322,
@@ -620,7 +620,7 @@
                     "Tail Whip",
                     "Water Gun",
                     "Rollout",
-                    "Bubble Beam"
+                    "BubbleBeam"
                 ],
                 "ability": "Thick Fat",
                 "xp": 322,
@@ -654,8 +654,8 @@
                 "moves": [
                     "Water Gun",
                     "Rollout",
-                    "Bubble Beam",
-                    "Double Edge"
+                    "BubbleBeam",
+                    "Double-Edge"
                 ],
                 "ability": "Thick Fat",
                 "xp": 360,
@@ -675,8 +675,8 @@
                 "moves": [
                     "Water Gun",
                     "Rollout",
-                    "Bubble Beam",
-                    "Double Edge"
+                    "BubbleBeam",
+                    "Double-Edge"
                 ],
                 "ability": "Thick Fat",
                 "xp": 360,
@@ -710,8 +710,8 @@
                 "moves": [
                     "Water Gun",
                     "Rollout",
-                    "Bubble Beam",
-                    "Double Edge"
+                    "BubbleBeam",
+                    "Double-Edge"
                 ],
                 "ability": "Thick Fat",
                 "xp": 397,
@@ -731,8 +731,8 @@
                 "moves": [
                     "Water Gun",
                     "Rollout",
-                    "Bubble Beam",
-                    "Double Edge"
+                    "BubbleBeam",
+                    "Double-Edge"
                 ],
                 "ability": "Thick Fat",
                 "xp": 397,
@@ -766,8 +766,8 @@
                 "moves": [
                     "Water Gun",
                     "Rollout",
-                    "Bubble Beam",
-                    "Double Edge"
+                    "BubbleBeam",
+                    "Double-Edge"
                 ],
                 "ability": "Thick Fat",
                 "xp": 1147,
@@ -787,8 +787,8 @@
                 "moves": [
                     "Water Gun",
                     "Rollout",
-                    "Bubble Beam",
-                    "Double Edge"
+                    "BubbleBeam",
+                    "Double-Edge"
                 ],
                 "ability": "Thick Fat",
                 "xp": 1147,
@@ -820,7 +820,7 @@
                 "spd": 16,
                 "held_item": null,
                 "moves": [
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Headbutt",
                     "Tail Whip",
                     "Surf"
@@ -855,7 +855,7 @@
                 "spd": 38,
                 "held_item": null,
                 "moves": [
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Pin Missile",
                     "Tail Whip",
                     "Surf"
@@ -890,7 +890,7 @@
                 "spd": 42,
                 "held_item": null,
                 "moves": [
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Pin Missile",
                     "Tail Whip",
                     "Surf"
@@ -925,7 +925,7 @@
                 "spd": 46,
                 "held_item": null,
                 "moves": [
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Pin Missile",
                     "Tail Whip",
                     "Surf"
@@ -960,7 +960,7 @@
                 "spd": 50,
                 "held_item": null,
                 "moves": [
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Pin Missile",
                     "Tail Whip",
                     "Surf"
@@ -1479,7 +1479,7 @@
                     "Mega Drain",
                     "Leech Seed",
                     "Magical Leaf",
-                    "Grass Whistle"
+                    "GrassWhistle"
                 ],
                 "ability": "Natural Cure",
                 "xp": 943,
@@ -1558,7 +1558,7 @@
                     "Mega Drain",
                     "Leech Seed",
                     "Magical Leaf",
-                    "Grass Whistle"
+                    "GrassWhistle"
                 ],
                 "ability": "Natural Cure",
                 "xp": 1041,
@@ -1636,7 +1636,7 @@
                 "moves": [
                     "Leech Seed",
                     "Magical Leaf",
-                    "Grass Whistle",
+                    "GrassWhistle",
                     "Giga Drain"
                 ],
                 "ability": "Natural Cure",
@@ -1714,7 +1714,7 @@
                 "held_item": null,
                 "moves": [
                     "Focus Energy",
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Arm Thrust",
                     "Vital Throw"
                 ],
@@ -1953,7 +1953,7 @@
                     "Fake Out",
                     "Whirlwind",
                     "Knock Off",
-                    "Smelling Salt"
+                    "SmellingSalt"
                 ],
                 "ability": "Thick Fat",
                 "xp": 595,
@@ -2032,7 +2032,7 @@
                     "Fake Out",
                     "Whirlwind",
                     "Knock Off",
-                    "Smelling Salt"
+                    "SmellingSalt"
                 ],
                 "ability": "Thick Fat",
                 "xp": 1380,
@@ -2362,7 +2362,7 @@
                 "held_item": "Nugget",
                 "moves": [
                     "Headbutt",
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Odor Sleuth",
                     "Mud Sport"
                 ],
@@ -2398,7 +2398,7 @@
                 "spd": 46,
                 "held_item": "Nugget",
                 "moves": [
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Odor Sleuth",
                     "Mud Sport",
                     "Fury Swipes"
@@ -2435,7 +2435,7 @@
                 "spd": 50,
                 "held_item": "Nugget",
                 "moves": [
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Odor Sleuth",
                     "Mud Sport",
                     "Fury Swipes"
@@ -2475,7 +2475,7 @@
                     "Fury Swipes",
                     "Mud Sport",
                     "Odor Sleuth",
-                    "Sand Attack"
+                    "Sand-Attack"
                 ],
                 "ability": "Pickup",
                 "xp": 987,
@@ -2826,7 +2826,7 @@
                 "held_item": "Nugget",
                 "moves": [
                     "Headbutt",
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Odor Sleuth",
                     "Mud Sport"
                 ],
@@ -2862,7 +2862,7 @@
                 "spd": 45,
                 "held_item": "Nugget",
                 "moves": [
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Odor Sleuth",
                     "Mud Sport",
                     "Fury Swipes"
@@ -2899,7 +2899,7 @@
                 "spd": 49,
                 "held_item": "Nugget",
                 "moves": [
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Odor Sleuth",
                     "Mud Sport",
                     "Fury Swipes"
@@ -2939,7 +2939,7 @@
                     "Fury Swipes",
                     "Mud Sport",
                     "Odor Sleuth",
-                    "Sand Attack"
+                    "Sand-Attack"
                 ],
                 "ability": "Pickup",
                 "xp": 987,
@@ -2971,7 +2971,7 @@
                 "spd": 18,
                 "held_item": null,
                 "moves": [
-                    "Mud Slap",
+                    "Mud-Slap",
                     "Headbutt",
                     "Metal Claw",
                     "Iron Defense"
@@ -3316,7 +3316,7 @@
                 "moves": [
                     "Camouflage",
                     "Swift",
-                    "Bubble Beam",
+                    "BubbleBeam",
                     "Minimize"
                 ],
                 "ability": "Illuminate",
@@ -3806,7 +3806,7 @@
                 "moves": [
                     "Thunder Shock",
                     "Supersonic",
-                    "Sonic Boom",
+                    "SonicBoom",
                     "Thunder Wave"
                 ],
                 "ability": "Magnet Pull",
@@ -3848,7 +3848,7 @@
                 "moves": [
                     "Thunder Shock",
                     "Supersonic",
-                    "Sonic Boom",
+                    "SonicBoom",
                     "Thunder Wave"
                 ],
                 "ability": "Magnet Pull",
@@ -3882,7 +3882,7 @@
                 "held_item": null,
                 "moves": [
                     "Supersonic",
-                    "Sonic Boom",
+                    "SonicBoom",
                     "Thunder Wave",
                     "Spark"
                 ],
@@ -3924,7 +3924,7 @@
                 "held_item": null,
                 "moves": [
                     "Supersonic",
-                    "Sonic Boom",
+                    "SonicBoom",
                     "Thunder Wave",
                     "Spark"
                 ],
@@ -3959,7 +3959,7 @@
                 "held_item": null,
                 "moves": [
                     "Supersonic",
-                    "Sonic Boom",
+                    "SonicBoom",
                     "Thunder Wave",
                     "Spark"
                 ],
@@ -4001,7 +4001,7 @@
                 "held_item": null,
                 "moves": [
                     "Supersonic",
-                    "Sonic Boom",
+                    "SonicBoom",
                     "Thunder Wave",
                     "Spark"
                 ],
@@ -4036,7 +4036,7 @@
                 "held_item": null,
                 "moves": [
                     "Supersonic",
-                    "Sonic Boom",
+                    "SonicBoom",
                     "Thunder Wave",
                     "Spark"
                 ],
@@ -4078,7 +4078,7 @@
                 "held_item": null,
                 "moves": [
                     "Supersonic",
-                    "Sonic Boom",
+                    "SonicBoom",
                     "Thunder Wave",
                     "Spark"
                 ],
@@ -4393,7 +4393,7 @@
                 "held_item": null,
                 "moves": [
                     "Headbutt",
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Odor Sleuth",
                     "Mud Sport"
                 ],
@@ -4448,7 +4448,7 @@
                 "spd": 26,
                 "held_item": null,
                 "moves": [
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Odor Sleuth",
                     "Mud Sport",
                     "Pin Missile"
@@ -4504,7 +4504,7 @@
                 "spd": 44,
                 "held_item": null,
                 "moves": [
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Odor Sleuth",
                     "Mud Sport",
                     "Fury Swipes"
@@ -4560,7 +4560,7 @@
                 "spd": 21,
                 "held_item": null,
                 "moves": [
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Poison Sting",
                     "Slash",
                     "Swift"
@@ -4602,7 +4602,7 @@
                 "spd": 43,
                 "held_item": null,
                 "moves": [
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Odor Sleuth",
                     "Mud Sport",
                     "Fury Swipes"
@@ -4658,7 +4658,7 @@
                 "spd": 38,
                 "held_item": null,
                 "moves": [
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Poison Sting",
                     "Slash",
                     "Swift"
@@ -4679,7 +4679,7 @@
                 "spd": 51,
                 "held_item": null,
                 "moves": [
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Odor Sleuth",
                     "Mud Sport",
                     "Fury Swipes"
@@ -4997,7 +4997,7 @@
                     "Quick Attack",
                     "Sweet Scent",
                     "Water Sport",
-                    "Bubble Beam"
+                    "BubbleBeam"
                 ],
                 "ability": "Swift Swim",
                 "xp": 378,
@@ -5018,7 +5018,7 @@
                     "Quick Attack",
                     "Sweet Scent",
                     "Water Sport",
-                    "Bubble Beam"
+                    "BubbleBeam"
                 ],
                 "ability": "Swift Swim",
                 "xp": 378,
@@ -5039,7 +5039,7 @@
                     "Quick Attack",
                     "Sweet Scent",
                     "Water Sport",
-                    "Bubble Beam"
+                    "BubbleBeam"
                 ],
                 "ability": "Swift Swim",
                 "xp": 378,
@@ -5073,7 +5073,7 @@
                 "moves": [
                     "Sweet Scent",
                     "Water Sport",
-                    "Bubble Beam",
+                    "BubbleBeam",
                     "Agility"
                 ],
                 "ability": "Swift Swim",
@@ -5094,7 +5094,7 @@
                 "moves": [
                     "Sweet Scent",
                     "Water Sport",
-                    "Bubble Beam",
+                    "BubbleBeam",
                     "Agility"
                 ],
                 "ability": "Swift Swim",
@@ -5115,7 +5115,7 @@
                 "moves": [
                     "Sweet Scent",
                     "Water Sport",
-                    "Bubble Beam",
+                    "BubbleBeam",
                     "Agility"
                 ],
                 "ability": "Swift Swim",
@@ -5150,7 +5150,7 @@
                 "moves": [
                     "Sweet Scent",
                     "Water Sport",
-                    "Bubble Beam",
+                    "BubbleBeam",
                     "Agility"
                 ],
                 "ability": "Swift Swim",
@@ -5171,7 +5171,7 @@
                 "moves": [
                     "Sweet Scent",
                     "Water Sport",
-                    "Bubble Beam",
+                    "BubbleBeam",
                     "Agility"
                 ],
                 "ability": "Swift Swim",
@@ -5227,7 +5227,7 @@
                 "moves": [
                     "Sweet Scent",
                     "Water Sport",
-                    "Bubble Beam",
+                    "BubbleBeam",
                     "Agility"
                 ],
                 "ability": "Swift Swim",
@@ -5268,7 +5268,7 @@
                 "moves": [
                     "Sweet Scent",
                     "Water Sport",
-                    "Bubble Beam",
+                    "BubbleBeam",
                     "Agility"
                 ],
                 "ability": "Swift Swim",
@@ -5322,7 +5322,7 @@
                 "spd": 50,
                 "held_item": null,
                 "moves": [
-                    "Bubble Beam",
+                    "BubbleBeam",
                     "Agility",
                     "Mist",
                     "Haze"
@@ -5364,7 +5364,7 @@
                 "spd": 46,
                 "held_item": null,
                 "moves": [
-                    "Bubble Beam",
+                    "BubbleBeam",
                     "Agility",
                     "Mist",
                     "Haze"
@@ -5668,7 +5668,7 @@
                     "Psywave",
                     "Cosmic Power",
                     "Rock Slide",
-                    "Solar Beam"
+                    "SolarBeam"
                 ],
                 "ability": "Levitate",
                 "xp": 1381,
@@ -6072,7 +6072,7 @@
                 "held_item": null,
                 "moves": [
                     "Headbutt",
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Odor Sleuth",
                     "Fury Swipes"
                 ],
@@ -6128,7 +6128,7 @@
                 "held_item": null,
                 "moves": [
                     "Headbutt",
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Odor Sleuth",
                     "Fury Swipes"
                 ],
@@ -6184,7 +6184,7 @@
                 "held_item": null,
                 "moves": [
                     "Headbutt",
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Odor Sleuth",
                     "Fury Swipes"
                 ],
@@ -6372,7 +6372,7 @@
                     "Leech Seed",
                     "Mega Drain",
                     "Headbutt",
-                    "Poison Powder"
+                    "PoisonPowder"
                 ],
                 "ability": "Effect Spore",
                 "xp": 403,
@@ -7587,7 +7587,7 @@
                 "moves": [
                     "Arm Thrust",
                     "Knock Off",
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Dig"
                 ],
                 "ability": "Thick Fat",
@@ -7622,7 +7622,7 @@
                 "moves": [
                     "Arm Thrust",
                     "Knock Off",
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Dig"
                 ],
                 "ability": "Thick Fat",
@@ -7657,7 +7657,7 @@
                 "moves": [
                     "Arm Thrust",
                     "Belly Drum",
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Dig"
                 ],
                 "ability": "Thick Fat",
@@ -7692,7 +7692,7 @@
                 "moves": [
                     "Arm Thrust",
                     "Belly Drum",
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Dig"
                 ],
                 "ability": "Thick Fat",
@@ -7861,7 +7861,7 @@
                     "Fake Out",
                     "Whirlwind",
                     "Knock Off",
-                    "Smelling Salt"
+                    "SmellingSalt"
                 ],
                 "ability": "Thick Fat",
                 "xp": 1300,
@@ -7917,7 +7917,7 @@
                     "Fake Out",
                     "Whirlwind",
                     "Knock Off",
-                    "Smelling Salt"
+                    "SmellingSalt"
                 ],
                 "ability": "Thick Fat",
                 "xp": 1419,
@@ -7973,7 +7973,7 @@
                     "Fake Out",
                     "Whirlwind",
                     "Knock Off",
-                    "Smelling Salt"
+                    "SmellingSalt"
                 ],
                 "ability": "Thick Fat",
                 "xp": 1537,
@@ -8040,7 +8040,7 @@
                 "held_item": null,
                 "moves": [
                     "Headbutt",
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Odor Sleuth",
                     "Mud Sport"
                 ],
@@ -8095,7 +8095,7 @@
                 "spd": 42,
                 "held_item": null,
                 "moves": [
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Odor Sleuth",
                     "Mud Sport",
                     "Fury Swipes"
@@ -8151,7 +8151,7 @@
                 "spd": 46,
                 "held_item": null,
                 "moves": [
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Odor Sleuth",
                     "Mud Sport",
                     "Fury Swipes"
@@ -8451,7 +8451,7 @@
                     "Supersonic",
                     "Constrict",
                     "Acid",
-                    "Bubble Beam"
+                    "BubbleBeam"
                 ],
                 "ability": "Clear Body",
                 "xp": 585,
@@ -8547,7 +8547,7 @@
                 "moves": [
                     "Constrict",
                     "Acid",
-                    "Bubble Beam",
+                    "BubbleBeam",
                     "Wrap"
                 ],
                 "ability": "Clear Body",
@@ -8666,7 +8666,7 @@
                 "moves": [
                     "Constrict",
                     "Acid",
-                    "Bubble Beam",
+                    "BubbleBeam",
                     "Wrap"
                 ],
                 "ability": "Clear Body",
@@ -8702,7 +8702,7 @@
                     "Tackle",
                     "Thunder Shock",
                     "Supersonic",
-                    "Sonic Boom"
+                    "SonicBoom"
                 ],
                 "ability": "Magnet Pull",
                 "xp": 324,
@@ -8735,7 +8735,7 @@
                 "held_item": null,
                 "moves": [
                     "Supersonic",
-                    "Sonic Boom",
+                    "SonicBoom",
                     "Thunder Wave",
                     "Spark"
                 ],
@@ -8770,7 +8770,7 @@
                 "held_item": null,
                 "moves": [
                     "Supersonic",
-                    "Sonic Boom",
+                    "SonicBoom",
                     "Thunder Wave",
                     "Spark"
                 ],
@@ -8805,7 +8805,7 @@
                 "held_item": null,
                 "moves": [
                     "Supersonic",
-                    "Sonic Boom",
+                    "SonicBoom",
                     "Thunder Wave",
                     "Spark"
                 ],
@@ -8839,7 +8839,7 @@
                 "spd": 58,
                 "held_item": null,
                 "moves": [
-                    "Sonic Boom",
+                    "SonicBoom",
                     "Thunder Wave",
                     "Spark",
                     "Lock On"
@@ -8877,7 +8877,7 @@
                     "Tackle",
                     "Thunder Shock",
                     "Supersonic",
-                    "Sonic Boom"
+                    "SonicBoom"
                 ],
                 "ability": "Magnet Pull",
                 "xp": 324,
@@ -8910,7 +8910,7 @@
                 "held_item": null,
                 "moves": [
                     "Supersonic",
-                    "Sonic Boom",
+                    "SonicBoom",
                     "Thunder Wave",
                     "Spark"
                 ],
@@ -8945,7 +8945,7 @@
                 "held_item": null,
                 "moves": [
                     "Supersonic",
-                    "Sonic Boom",
+                    "SonicBoom",
                     "Thunder Wave",
                     "Spark"
                 ],
@@ -8980,7 +8980,7 @@
                 "held_item": null,
                 "moves": [
                     "Supersonic",
-                    "Sonic Boom",
+                    "SonicBoom",
                     "Thunder Wave",
                     "Spark"
                 ],
@@ -9014,7 +9014,7 @@
                 "spd": 52,
                 "held_item": null,
                 "moves": [
-                    "Sonic Boom",
+                    "SonicBoom",
                     "Thunder Wave",
                     "Spark",
                     "Lock On"
@@ -9051,7 +9051,7 @@
                 "moves": [
                     "Camouflage",
                     "Swift",
-                    "Bubble Beam",
+                    "BubbleBeam",
                     "Minimize"
                 ],
                 "ability": "Illuminate",
@@ -9085,7 +9085,7 @@
                 "held_item": null,
                 "moves": [
                     "Swift",
-                    "Bubble Beam",
+                    "BubbleBeam",
                     "Minimize",
                     "Light Screen"
                 ],
@@ -9119,7 +9119,7 @@
                 "spd": 46,
                 "held_item": null,
                 "moves": [
-                    "Bubble Beam",
+                    "BubbleBeam",
                     "Minimize",
                     "Light Screen",
                     "Cosmic Power"
@@ -9226,7 +9226,7 @@
                 "moves": [
                     "Camouflage",
                     "Swift",
-                    "Bubble Beam",
+                    "BubbleBeam",
                     "Minimize"
                 ],
                 "ability": "Illuminate",
@@ -9260,7 +9260,7 @@
                 "held_item": null,
                 "moves": [
                     "Swift",
-                    "Bubble Beam",
+                    "BubbleBeam",
                     "Minimize",
                     "Light Screen"
                 ],
@@ -9294,7 +9294,7 @@
                 "spd": 52,
                 "held_item": null,
                 "moves": [
-                    "Bubble Beam",
+                    "BubbleBeam",
                     "Minimize",
                     "Light Screen",
                     "Cosmic Power"
@@ -9752,7 +9752,7 @@
                     "Safeguard",
                     "Mist",
                     "Take Down",
-                    "Dragon Breath"
+                    "DragonBreath"
                 ],
                 "ability": "Natural Cure",
                 "xp": 1530,
@@ -9773,7 +9773,7 @@
                     "Safeguard",
                     "Mist",
                     "Take Down",
-                    "Dragon Breath"
+                    "DragonBreath"
                 ],
                 "ability": "Natural Cure",
                 "xp": 1530,
@@ -9807,7 +9807,7 @@
                 "moves": [
                     "Mist",
                     "Take Down",
-                    "Dragon Breath",
+                    "DragonBreath",
                     "Dragon Dance"
                 ],
                 "ability": "Natural Cure",
@@ -9828,7 +9828,7 @@
                 "moves": [
                     "Mist",
                     "Take Down",
-                    "Dragon Breath",
+                    "DragonBreath",
                     "Dragon Dance"
                 ],
                 "ability": "Natural Cure",
@@ -9863,7 +9863,7 @@
                 "moves": [
                     "Mist",
                     "Take Down",
-                    "Dragon Breath",
+                    "DragonBreath",
                     "Dragon Dance"
                 ],
                 "ability": "Natural Cure",
@@ -9884,7 +9884,7 @@
                 "moves": [
                     "Mist",
                     "Take Down",
-                    "Dragon Breath",
+                    "DragonBreath",
                     "Dragon Dance"
                 ],
                 "ability": "Natural Cure",
@@ -9918,7 +9918,7 @@
                 "held_item": null,
                 "moves": [
                     "Ember",
-                    "Dragon Breath",
+                    "DragonBreath",
                     "Scary Face",
                     "Crunch"
                 ],
@@ -9939,7 +9939,7 @@
                 "held_item": null,
                 "moves": [
                     "Take Down",
-                    "Dragon Breath",
+                    "DragonBreath",
                     "Dragon Dance",
                     "Refresh"
                 ],
@@ -9960,7 +9960,7 @@
                 "held_item": null,
                 "moves": [
                     "Take Down",
-                    "Dragon Breath",
+                    "DragonBreath",
                     "Dragon Dance",
                     "Refresh"
                 ],
@@ -9995,7 +9995,7 @@
                 "held_item": null,
                 "moves": [
                     "Take Down",
-                    "Dragon Breath",
+                    "DragonBreath",
                     "Dragon Dance",
                     "Refresh"
                 ],
@@ -10016,7 +10016,7 @@
                 "held_item": null,
                 "moves": [
                     "Take Down",
-                    "Dragon Breath",
+                    "DragonBreath",
                     "Dragon Dance",
                     "Refresh"
                 ],
@@ -10038,7 +10038,7 @@
                 "moves": [
                     "Ember",
                     "Protect",
-                    "Dragon Breath",
+                    "DragonBreath",
                     "Scary Face"
                 ],
                 "ability": "Rock Head",
@@ -10186,7 +10186,7 @@
                     "Safeguard",
                     "Mist",
                     "Take Down",
-                    "Dragon Breath"
+                    "DragonBreath"
                 ],
                 "ability": "Natural Cure",
                 "xp": 1410,
@@ -10242,7 +10242,7 @@
                     "Safeguard",
                     "Mist",
                     "Take Down",
-                    "Dragon Breath"
+                    "DragonBreath"
                 ],
                 "ability": "Natural Cure",
                 "xp": 1530,
@@ -10276,7 +10276,7 @@
                 "moves": [
                     "Mist",
                     "Take Down",
-                    "Dragon Breath",
+                    "DragonBreath",
                     "Dragon Dance"
                 ],
                 "ability": "Natural Cure",
@@ -10333,7 +10333,7 @@
                     "Poison Gas",
                     "Tackle",
                     "Smog",
-                    "Self Destruct"
+                    "Selfdestruct"
                 ],
                 "ability": "Levitate",
                 "xp": 414,
@@ -10375,7 +10375,7 @@
                     "Poison Gas",
                     "Tackle",
                     "Smog",
-                    "Self Destruct"
+                    "Selfdestruct"
                 ],
                 "ability": "Levitate",
                 "xp": 414,
@@ -10431,7 +10431,7 @@
                     "Poison Gas",
                     "Tackle",
                     "Sludge",
-                    "Self Destruct"
+                    "Selfdestruct"
                 ],
                 "ability": "Levitate",
                 "xp": 585,
@@ -10473,7 +10473,7 @@
                     "Poison Gas",
                     "Tackle",
                     "Sludge",
-                    "Self Destruct"
+                    "Selfdestruct"
                 ],
                 "ability": "Levitate",
                 "xp": 585,
@@ -10529,7 +10529,7 @@
                     "Poison Gas",
                     "Tackle",
                     "Sludge",
-                    "Self Destruct"
+                    "Selfdestruct"
                 ],
                 "ability": "Levitate",
                 "xp": 658,
@@ -10550,7 +10550,7 @@
                     "Poison Gas",
                     "Tackle",
                     "Sludge",
-                    "Self Destruct"
+                    "Selfdestruct"
                 ],
                 "ability": "Levitate",
                 "xp": 658,
@@ -10746,7 +10746,7 @@
                     "Poison Gas",
                     "Tackle",
                     "Sludge",
-                    "Self Destruct"
+                    "Selfdestruct"
                 ],
                 "ability": "Levitate",
                 "xp": 805,
@@ -10767,7 +10767,7 @@
                     "Poison Gas",
                     "Tackle",
                     "Sludge",
-                    "Self Destruct"
+                    "Selfdestruct"
                 ],
                 "ability": "Levitate",
                 "xp": 805,
@@ -10841,7 +10841,7 @@
                 "spd": 18,
                 "held_item": null,
                 "moves": [
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Arm Thrust",
                     "Vital Throw",
                     "Fake Out"
@@ -11068,7 +11068,7 @@
                     "Fake Out",
                     "Whirlwind",
                     "Knock Off",
-                    "Smelling Salt"
+                    "SmellingSalt"
                 ],
                 "ability": "Thick Fat",
                 "xp": 1380,
@@ -11207,7 +11207,7 @@
                 "moves": [
                     "Leech Seed",
                     "Mega Drain",
-                    "Grass Whistle",
+                    "GrassWhistle",
                     "Sunny Day"
                 ],
                 "ability": "Natural Cure",
@@ -11263,7 +11263,7 @@
                 "moves": [
                     "Leech Seed",
                     "Giga Drain",
-                    "Solar Beam",
+                    "SolarBeam",
                     "Sunny Day"
                 ],
                 "ability": "Natural Cure",
@@ -11422,7 +11422,7 @@
                 "spd": 52,
                 "held_item": null,
                 "moves": [
-                    "Bubble Beam",
+                    "BubbleBeam",
                     "Minimize",
                     "Light Screen",
                     "Cosmic Power"
@@ -11577,7 +11577,7 @@
                 "held_item": null,
                 "moves": [
                     "Sweet Scent",
-                    "Poison Powder",
+                    "PoisonPowder",
                     "Stun Spore",
                     "Sleep Powder"
                 ],
@@ -11653,7 +11653,7 @@
                 "spd": 42,
                 "held_item": null,
                 "moves": [
-                    "Poison Powder",
+                    "PoisonPowder",
                     "Stun Spore",
                     "Sleep Powder",
                     "Acid"
@@ -11730,7 +11730,7 @@
                 "spd": 51,
                 "held_item": null,
                 "moves": [
-                    "Poison Powder",
+                    "PoisonPowder",
                     "Stun Spore",
                     "Sleep Powder",
                     "Acid"
@@ -11807,7 +11807,7 @@
                 "spd": 57,
                 "held_item": null,
                 "moves": [
-                    "Poison Powder",
+                    "PoisonPowder",
                     "Stun Spore",
                     "Sleep Powder",
                     "Acid"
@@ -11907,7 +11907,7 @@
                 "moves": [
                     "Mist",
                     "Take Down",
-                    "Dragon Breath",
+                    "DragonBreath",
                     "Dragon Dance"
                 ],
                 "ability": "Natural Cure",
@@ -12243,7 +12243,7 @@
                 "moves": [
                     "Constrict",
                     "Acid",
-                    "Bubble Beam",
+                    "BubbleBeam",
                     "Wrap"
                 ],
                 "ability": "Clear Body",
@@ -12319,7 +12319,7 @@
                 "held_item": null,
                 "moves": [
                     "Acid",
-                    "Bubble Beam",
+                    "BubbleBeam",
                     "Wrap",
                     "Barrier"
                 ],
@@ -12396,7 +12396,7 @@
                 "held_item": null,
                 "moves": [
                     "Acid",
-                    "Bubble Beam",
+                    "BubbleBeam",
                     "Wrap",
                     "Barrier"
                 ],
@@ -12473,7 +12473,7 @@
                 "held_item": null,
                 "moves": [
                     "Acid",
-                    "Bubble Beam",
+                    "BubbleBeam",
                     "Wrap",
                     "Barrier"
                 ],
@@ -12571,7 +12571,7 @@
                 "held_item": null,
                 "moves": [
                     "Acid",
-                    "Bubble Beam",
+                    "BubbleBeam",
                     "Wrap",
                     "Barrier"
                 ],
@@ -13068,7 +13068,7 @@
                     "Tail Whip",
                     "Water Gun",
                     "Rollout",
-                    "Bubble Beam"
+                    "BubbleBeam"
                 ],
                 "ability": "Thick Fat",
                 "xp": 273,
@@ -13208,7 +13208,7 @@
                     "Tail Whip",
                     "Water Gun",
                     "Rollout",
-                    "Bubble Beam"
+                    "BubbleBeam"
                 ],
                 "ability": "Thick Fat",
                 "xp": 310,
@@ -13347,8 +13347,8 @@
                 "moves": [
                     "Water Gun",
                     "Rollout",
-                    "Bubble Beam",
-                    "Double Edge"
+                    "BubbleBeam",
+                    "Double-Edge"
                 ],
                 "ability": "Thick Fat",
                 "xp": 348,
@@ -13488,7 +13488,7 @@
                     "Tail Whip",
                     "Water Gun",
                     "Rollout",
-                    "Bubble Beam"
+                    "BubbleBeam"
                 ],
                 "ability": "Thick Fat",
                 "xp": 1015,
@@ -13509,7 +13509,7 @@
                     "Mega Drain",
                     "Leech Seed",
                     "Magical Leaf",
-                    "Grass Whistle"
+                    "GrassWhistle"
                 ],
                 "ability": "Natural Cure",
                 "xp": 1009,
@@ -13626,7 +13626,7 @@
                 "moves": [
                     "Tackle",
                     "Harden",
-                    "Mud Slap",
+                    "Mud-Slap",
                     "Headbutt"
                 ],
                 "ability": "Sturdy",
@@ -13647,7 +13647,7 @@
                 "moves": [
                     "Tackle",
                     "Howl",
-                    "Sand Attack"
+                    "Sand-Attack"
                 ],
                 "ability": "Run Away",
                 "xp": 141,
@@ -13688,7 +13688,7 @@
                 "moves": [
                     "Tackle",
                     "Focus Energy",
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Arm Thrust"
                 ],
                 "ability": "Thick Fat",
@@ -13744,7 +13744,7 @@
                 "moves": [
                     "Tail Whip",
                     "Headbutt",
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Odor Sleuth"
                 ],
                 "ability": "Pickup",
@@ -13784,7 +13784,7 @@
                 "spd": 31,
                 "held_item": null,
                 "moves": [
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Bite",
                     "Odor Sleuth",
                     "Roar"
@@ -13883,7 +13883,7 @@
                 "held_item": null,
                 "moves": [
                     "Headbutt",
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Odor Sleuth",
                     "Mud Sport"
                 ],
@@ -13924,7 +13924,7 @@
                 "spd": 35,
                 "held_item": null,
                 "moves": [
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Bite",
                     "Odor Sleuth",
                     "Roar"
@@ -14023,7 +14023,7 @@
                 "held_item": null,
                 "moves": [
                     "Headbutt",
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Odor Sleuth",
                     "Mud Sport"
                 ],
@@ -14162,7 +14162,7 @@
                 "spd": 39,
                 "held_item": null,
                 "moves": [
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Odor Sleuth",
                     "Mud Sport",
                     "Fury Swipes"
@@ -14283,7 +14283,7 @@
                 "spd": 42,
                 "held_item": null,
                 "moves": [
-                    "Poison Powder",
+                    "PoisonPowder",
                     "Stun Spore",
                     "Sleep Powder",
                     "Acid"
@@ -14341,7 +14341,7 @@
                 "spd": 46,
                 "held_item": null,
                 "moves": [
-                    "Poison Powder",
+                    "PoisonPowder",
                     "Stun Spore",
                     "Sleep Powder",
                     "Acid"
@@ -14365,7 +14365,7 @@
                     "Mega Drain",
                     "Leech Seed",
                     "Magical Leaf",
-                    "Grass Whistle"
+                    "GrassWhistle"
                 ],
                 "ability": "Natural Cure",
                 "xp": 976,
@@ -14399,7 +14399,7 @@
                 "spd": 51,
                 "held_item": null,
                 "moves": [
-                    "Poison Powder",
+                    "PoisonPowder",
                     "Stun Spore",
                     "Sleep Powder",
                     "Acid"
@@ -14422,7 +14422,7 @@
                 "moves": [
                     "Leech Seed",
                     "Magical Leaf",
-                    "Grass Whistle",
+                    "GrassWhistle",
                     "Giga Drain"
                 ],
                 "ability": "Natural Cure",
@@ -14480,7 +14480,7 @@
                 "moves": [
                     "Leech Seed",
                     "Magical Leaf",
-                    "Grass Whistle",
+                    "GrassWhistle",
                     "Giga Drain"
                 ],
                 "ability": "Natural Cure",
@@ -14537,7 +14537,7 @@
                 "held_item": null,
                 "moves": [
                     "Magical Leaf",
-                    "Grass Whistle",
+                    "GrassWhistle",
                     "Giga Drain",
                     "Sweet Scent"
                 ],
@@ -15203,7 +15203,7 @@
                 "moves": [
                     "Sweet Scent",
                     "Water Sport",
-                    "Bubble Beam",
+                    "BubbleBeam",
                     "Agility"
                 ],
                 "ability": "Swift Swim",
@@ -15280,7 +15280,7 @@
                 "moves": [
                     "Sweet Scent",
                     "Water Sport",
-                    "Bubble Beam",
+                    "BubbleBeam",
                     "Agility"
                 ],
                 "ability": "Swift Swim",
@@ -15477,7 +15477,7 @@
                     "Mud Sport",
                     "Rock Throw",
                     "Magnitude",
-                    "Self Destruct"
+                    "Selfdestruct"
                 ],
                 "ability": "Rock Head",
                 "xp": 441,
@@ -15498,7 +15498,7 @@
                     "Mud Sport",
                     "Rock Throw",
                     "Magnitude",
-                    "Self Destruct"
+                    "Selfdestruct"
                 ],
                 "ability": "Rock Head",
                 "xp": 441,
@@ -15519,7 +15519,7 @@
                     "Mud Sport",
                     "Rock Throw",
                     "Magnitude",
-                    "Self Destruct"
+                    "Selfdestruct"
                 ],
                 "ability": "Rock Head",
                 "xp": 441,
@@ -15540,7 +15540,7 @@
                     "Mud Sport",
                     "Rock Throw",
                     "Magnitude",
-                    "Self Destruct"
+                    "Selfdestruct"
                 ],
                 "ability": "Rock Head",
                 "xp": 688,
@@ -15574,7 +15574,7 @@
                 "moves": [
                     "Rock Throw",
                     "Magnitude",
-                    "Self Destruct",
+                    "Selfdestruct",
                     "Rollout"
                 ],
                 "ability": "Rock Head",
@@ -15595,7 +15595,7 @@
                 "moves": [
                     "Rock Throw",
                     "Magnitude",
-                    "Self Destruct",
+                    "Selfdestruct",
                     "Rollout"
                 ],
                 "ability": "Rock Head",
@@ -15617,7 +15617,7 @@
                     "Mud Sport",
                     "Rock Throw",
                     "Magnitude",
-                    "Self Destruct"
+                    "Selfdestruct"
                 ],
                 "ability": "Rock Head",
                 "xp": 774,
@@ -15638,7 +15638,7 @@
                     "Mud Sport",
                     "Rock Throw",
                     "Magnitude",
-                    "Self Destruct"
+                    "Selfdestruct"
                 ],
                 "ability": "Rock Head",
                 "xp": 774,
@@ -15672,7 +15672,7 @@
                 "moves": [
                     "Rock Throw",
                     "Magnitude",
-                    "Self Destruct",
+                    "Selfdestruct",
                     "Rollout"
                 ],
                 "ability": "Rock Head",
@@ -15693,7 +15693,7 @@
                 "moves": [
                     "Rock Throw",
                     "Magnitude",
-                    "Self Destruct",
+                    "Selfdestruct",
                     "Rollout"
                 ],
                 "ability": "Rock Head",
@@ -15714,7 +15714,7 @@
                 "moves": [
                     "Rock Throw",
                     "Magnitude",
-                    "Self Destruct",
+                    "Selfdestruct",
                     "Rollout"
                 ],
                 "ability": "Rock Head",
@@ -15735,7 +15735,7 @@
                 "moves": [
                     "Rock Throw",
                     "Magnitude",
-                    "Self Destruct",
+                    "Selfdestruct",
                     "Rollout"
                 ],
                 "ability": "Rock Head",
@@ -15770,7 +15770,7 @@
                 "moves": [
                     "Rock Throw",
                     "Magnitude",
-                    "Self Destruct",
+                    "Selfdestruct",
                     "Rollout"
                 ],
                 "ability": "Rock Head",
@@ -15791,7 +15791,7 @@
                 "moves": [
                     "Rock Throw",
                     "Magnitude",
-                    "Self Destruct",
+                    "Selfdestruct",
                     "Rollout"
                 ],
                 "ability": "Rock Head",
@@ -15812,7 +15812,7 @@
                 "moves": [
                     "Rock Throw",
                     "Magnitude",
-                    "Self Destruct",
+                    "Selfdestruct",
                     "Rollout"
                 ],
                 "ability": "Rock Head",
@@ -15833,7 +15833,7 @@
                 "moves": [
                     "Rock Throw",
                     "Magnitude",
-                    "Self Destruct",
+                    "Selfdestruct",
                     "Rollout"
                 ],
                 "ability": "Rock Head",
@@ -16093,7 +16093,7 @@
                     "Signal Beam",
                     "Protect",
                     "Helping Hand",
-                    "Double Edge"
+                    "Double-Edge"
                 ],
                 "ability": "Illuminate",
                 "xp": 1219,
@@ -16151,7 +16151,7 @@
                 "moves": [
                     "Aerial Ace",
                     "Safeguard",
-                    "Dragon Breath",
+                    "DragonBreath",
                     "Dragon Dance"
                 ],
                 "ability": "Natural Cure",
@@ -16273,7 +16273,7 @@
                 "moves": [
                     "Aerial Ace",
                     "Safeguard",
-                    "Dragon Breath",
+                    "DragonBreath",
                     "Dragon Dance"
                 ],
                 "ability": "Natural Cure",
@@ -16395,7 +16395,7 @@
                 "moves": [
                     "Aerial Ace",
                     "Safeguard",
-                    "Dragon Breath",
+                    "DragonBreath",
                     "Dragon Dance"
                 ],
                 "ability": "Natural Cure",
@@ -16517,7 +16517,7 @@
                 "moves": [
                     "Aerial Ace",
                     "Safeguard",
-                    "Dragon Breath",
+                    "DragonBreath",
                     "Dragon Dance"
                 ],
                 "ability": "Natural Cure",
@@ -17142,7 +17142,7 @@
                 "moves": [
                     "Tackle",
                     "Howl",
-                    "Sand Attack"
+                    "Sand-Attack"
                 ],
                 "ability": "Run Away",
                 "xp": 105,
@@ -17176,7 +17176,7 @@
                 "moves": [
                     "Tackle",
                     "Howl",
-                    "Sand Attack"
+                    "Sand-Attack"
                 ],
                 "ability": "Run Away",
                 "xp": 105,
@@ -17196,7 +17196,7 @@
                 "moves": [
                     "Tackle",
                     "Howl",
-                    "Sand Attack"
+                    "Sand-Attack"
                 ],
                 "ability": "Run Away",
                 "xp": 105,
@@ -17230,7 +17230,7 @@
                 "moves": [
                     "Tackle",
                     "Howl",
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Bite"
                 ],
                 "ability": "Run Away",
@@ -17251,7 +17251,7 @@
                 "moves": [
                     "Tackle",
                     "Howl",
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Bite"
                 ],
                 "ability": "Run Away",
@@ -17286,7 +17286,7 @@
                 "moves": [
                     "Tackle",
                     "Howl",
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Bite"
                 ],
                 "ability": "Run Away",
@@ -17307,7 +17307,7 @@
                 "moves": [
                     "Tackle",
                     "Howl",
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Bite"
                 ],
                 "ability": "Run Away",
@@ -17362,7 +17362,7 @@
                 "held_item": null,
                 "moves": [
                     "Howl",
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Bite",
                     "Odor Sleuth"
                 ],
@@ -17418,7 +17418,7 @@
                 "held_item": null,
                 "moves": [
                     "Howl",
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Bite",
                     "Odor Sleuth"
                 ],
@@ -17454,7 +17454,7 @@
                 "moves": [
                     "Tackle",
                     "Howl",
-                    "Sand Attack"
+                    "Sand-Attack"
                 ],
                 "ability": "Run Away",
                 "xp": 129,
@@ -18293,7 +18293,7 @@
                 "held_item": null,
                 "moves": [
                     "Howl",
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Bite",
                     "Odor Sleuth"
                 ],
@@ -18543,7 +18543,7 @@
                 "spd": 38,
                 "held_item": null,
                 "moves": [
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Bite",
                     "Odor Sleuth",
                     "Roar"
@@ -18732,7 +18732,7 @@
                 "spd": 46,
                 "held_item": null,
                 "moves": [
-                    "Poison Powder",
+                    "PoisonPowder",
                     "Stun Spore",
                     "Sleep Powder",
                     "Acid"
@@ -18790,7 +18790,7 @@
                 "moves": [
                     "Dig",
                     "Slash",
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Poison Sting"
                 ],
                 "ability": "Sand Veil",
@@ -18811,7 +18811,7 @@
                 "moves": [
                     "Dig",
                     "Slash",
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Poison Sting"
                 ],
                 "ability": "Sand Veil",
@@ -18832,7 +18832,7 @@
                 "moves": [
                     "Dig",
                     "Slash",
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Poison Sting"
                 ],
                 "ability": "Sand Veil",
@@ -18867,7 +18867,7 @@
                 "moves": [
                     "Dig",
                     "Slash",
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Poison Sting"
                 ],
                 "ability": "Sand Veil",
@@ -18888,7 +18888,7 @@
                 "moves": [
                     "Dig",
                     "Slash",
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Poison Sting"
                 ],
                 "ability": "Sand Veil",
@@ -18924,7 +18924,7 @@
                     "Tackle",
                     "Thunder Shock",
                     "Supersonic",
-                    "Sonic Boom"
+                    "SonicBoom"
                 ],
                 "ability": "Magnet Pull",
                 "xp": 361,
@@ -18978,7 +18978,7 @@
                 "held_item": null,
                 "moves": [
                     "Supersonic",
-                    "Sonic Boom",
+                    "SonicBoom",
                     "Thunder Wave",
                     "Spark"
                 ],
@@ -19034,7 +19034,7 @@
                 "held_item": null,
                 "moves": [
                     "Supersonic",
-                    "Sonic Boom",
+                    "SonicBoom",
                     "Thunder Wave",
                     "Spark"
                 ],
@@ -19090,7 +19090,7 @@
                 "held_item": null,
                 "moves": [
                     "Supersonic",
-                    "Sonic Boom",
+                    "SonicBoom",
                     "Thunder Wave",
                     "Spark"
                 ],
@@ -19145,7 +19145,7 @@
                 "spd": 59,
                 "held_item": null,
                 "moves": [
-                    "Sonic Boom",
+                    "SonicBoom",
                     "Thunder Wave",
                     "Spark",
                     "Lock On"
@@ -19201,7 +19201,7 @@
                 "spd": 63,
                 "held_item": null,
                 "moves": [
-                    "Sonic Boom",
+                    "SonicBoom",
                     "Thunder Wave",
                     "Metal Sound",
                     "Thunderbolt"
@@ -19260,7 +19260,7 @@
                     "Tail Whip",
                     "Water Gun",
                     "Rollout",
-                    "Bubble Beam"
+                    "BubbleBeam"
                 ],
                 "ability": "Thick Fat",
                 "xp": 334,
@@ -19295,7 +19295,7 @@
                     "Tail Whip",
                     "Water Gun",
                     "Rollout",
-                    "Bubble Beam"
+                    "BubbleBeam"
                 ],
                 "ability": "Thick Fat",
                 "xp": 334,
@@ -19386,7 +19386,7 @@
                     "Tail Whip",
                     "Water Gun",
                     "Rollout",
-                    "Bubble Beam"
+                    "BubbleBeam"
                 ],
                 "ability": "Thick Fat",
                 "xp": 334,
@@ -19460,7 +19460,7 @@
                 "held_item": null,
                 "moves": [
                     "Headbutt",
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Odor Sleuth",
                     "Mud Sport"
                 ],
@@ -19498,7 +19498,7 @@
                 "held_item": null,
                 "moves": [
                     "Headbutt",
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Odor Sleuth",
                     "Mud Sport"
                 ],
@@ -19638,7 +19638,7 @@
                     "Thunderbolt",
                     "Supersonic",
                     "Thunder Wave",
-                    "Sonic Boom"
+                    "SonicBoom"
                 ],
                 "ability": "Magnet Pull",
                 "xp": 1000,
@@ -20147,7 +20147,7 @@
                 "held_item": null,
                 "moves": [
                     "Acid",
-                    "Bubble Beam",
+                    "BubbleBeam",
                     "Wrap",
                     "Barrier"
                 ],
@@ -20185,7 +20185,7 @@
                 "moves": [
                     "Rock Throw",
                     "Magnitude",
-                    "Self Destruct",
+                    "Selfdestruct",
                     "Rollout"
                 ],
                 "ability": "Rock Head",
@@ -20302,7 +20302,7 @@
                 "held_item": null,
                 "moves": [
                     "Headbutt",
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Odor Sleuth",
                     "Mud Sport"
                 ],
@@ -20399,7 +20399,7 @@
                 "moves": [
                     "Mega Drain",
                     "Magical Leaf",
-                    "Grass Whistle",
+                    "GrassWhistle",
                     "Leech Seed"
                 ],
                 "ability": "Natural Cure",
@@ -20550,7 +20550,7 @@
                 "spd": 72,
                 "held_item": null,
                 "moves": [
-                    "Grass Whistle",
+                    "GrassWhistle",
                     "Giga Drain",
                     "Sweet Scent",
                     "Ingrain"
@@ -20587,7 +20587,7 @@
                 "spd": 115,
                 "held_item": null,
                 "moves": [
-                    "Ancient Power",
+                    "AncientPower",
                     "Sandstorm",
                     "Hyper Beam",
                     "Cosmic Power"
@@ -21229,7 +21229,7 @@
                     "Tail Whip",
                     "Water Gun",
                     "Rollout",
-                    "Bubble Beam"
+                    "BubbleBeam"
                 ],
                 "ability": "Thick Fat",
                 "xp": 273,
@@ -21389,8 +21389,8 @@
                 "moves": [
                     "Water Gun",
                     "Rollout",
-                    "Bubble Beam",
-                    "Double Edge"
+                    "BubbleBeam",
+                    "Double-Edge"
                 ],
                 "ability": "Thick Fat",
                 "xp": 1344,
@@ -21573,8 +21573,8 @@
                 "held_item": "Nugget",
                 "moves": [
                     "Rollout",
-                    "Bubble Beam",
-                    "Double Edge",
+                    "BubbleBeam",
+                    "Double-Edge",
                     "Rain Dance"
                 ],
                 "ability": "Thick Fat",
@@ -21769,7 +21769,7 @@
                     "Supersonic",
                     "Constrict",
                     "Acid",
-                    "Bubble Beam"
+                    "BubbleBeam"
                 ],
                 "ability": "Clear Body",
                 "xp": 562,
@@ -21825,7 +21825,7 @@
                     "Supersonic",
                     "Constrict",
                     "Acid",
-                    "Bubble Beam"
+                    "BubbleBeam"
                 ],
                 "ability": "Clear Body",
                 "xp": 585,
@@ -21846,7 +21846,7 @@
                     "Supersonic",
                     "Constrict",
                     "Acid",
-                    "Bubble Beam"
+                    "BubbleBeam"
                 ],
                 "ability": "Clear Body",
                 "xp": 585,
@@ -21881,7 +21881,7 @@
                     "Supersonic",
                     "Constrict",
                     "Acid",
-                    "Bubble Beam"
+                    "BubbleBeam"
                 ],
                 "ability": "Clear Body",
                 "xp": 607,
@@ -21916,7 +21916,7 @@
                     "Supersonic",
                     "Constrict",
                     "Acid",
-                    "Bubble Beam"
+                    "BubbleBeam"
                 ],
                 "ability": "Clear Body",
                 "xp": 585,
@@ -22062,7 +22062,7 @@
                 "moves": [
                     "Constrict",
                     "Acid",
-                    "Bubble Beam",
+                    "BubbleBeam",
                     "Wrap"
                 ],
                 "ability": "Clear Body",
@@ -22083,7 +22083,7 @@
                 "moves": [
                     "Constrict",
                     "Acid",
-                    "Bubble Beam",
+                    "BubbleBeam",
                     "Wrap"
                 ],
                 "ability": "Clear Body",
@@ -22104,7 +22104,7 @@
                 "moves": [
                     "Constrict",
                     "Acid",
-                    "Bubble Beam",
+                    "BubbleBeam",
                     "Wrap"
                 ],
                 "ability": "Clear Body",
@@ -22174,7 +22174,7 @@
                 "moves": [
                     "Camouflage",
                     "Swift",
-                    "Bubble Beam",
+                    "BubbleBeam",
                     "Minimize"
                 ],
                 "ability": "Illuminate",
@@ -22228,7 +22228,7 @@
                 "spd": 22,
                 "held_item": null,
                 "moves": [
-                    "Smokescreen",
+                    "SmokeScreen",
                     "Leer",
                     "Water Gun",
                     "Twister"
@@ -22375,7 +22375,7 @@
                 "spd": 22,
                 "held_item": null,
                 "moves": [
-                    "Smokescreen",
+                    "SmokeScreen",
                     "Leer",
                     "Water Gun",
                     "Twister"
@@ -22489,7 +22489,7 @@
                 "moves": [
                     "Constrict",
                     "Acid",
-                    "Bubble Beam",
+                    "BubbleBeam",
                     "Wrap"
                 ],
                 "ability": "Clear Body",
@@ -22594,7 +22594,7 @@
                 "moves": [
                     "Constrict",
                     "Acid",
-                    "Bubble Beam",
+                    "BubbleBeam",
                     "Wrap"
                 ],
                 "ability": "Clear Body",
@@ -22650,7 +22650,7 @@
                 "moves": [
                     "Constrict",
                     "Acid",
-                    "Bubble Beam",
+                    "BubbleBeam",
                     "Wrap"
                 ],
                 "ability": "Clear Body",
@@ -22706,7 +22706,7 @@
                 "moves": [
                     "Camouflage",
                     "Swift",
-                    "Bubble Beam",
+                    "BubbleBeam",
                     "Minimize"
                 ],
                 "ability": "Illuminate",
@@ -22762,7 +22762,7 @@
                 "moves": [
                     "Constrict",
                     "Acid",
-                    "Bubble Beam",
+                    "BubbleBeam",
                     "Wrap"
                 ],
                 "ability": "Clear Body",
@@ -22804,7 +22804,7 @@
                 "moves": [
                     "Constrict",
                     "Acid",
-                    "Bubble Beam",
+                    "BubbleBeam",
                     "Wrap"
                 ],
                 "ability": "Clear Body",
@@ -22987,7 +22987,7 @@
                     "Fake Out",
                     "Whirlwind",
                     "Knock Off",
-                    "Smelling Salt"
+                    "SmellingSalt"
                 ],
                 "ability": "Thick Fat",
                 "xp": 615,
@@ -23008,7 +23008,7 @@
                     "Fake Out",
                     "Whirlwind",
                     "Knock Off",
-                    "Smelling Salt"
+                    "SmellingSalt"
                 ],
                 "ability": "Thick Fat",
                 "xp": 615,
@@ -23309,7 +23309,7 @@
                     "Tackle",
                     "Thunder Shock",
                     "Supersonic",
-                    "Sonic Boom"
+                    "SonicBoom"
                 ],
                 "ability": "Magnet Pull",
                 "xp": 342,
@@ -23379,7 +23379,7 @@
                     "Tackle",
                     "Thunder Shock",
                     "Supersonic",
-                    "Sonic Boom"
+                    "SonicBoom"
                 ],
                 "ability": "Magnet Pull",
                 "xp": 342,
@@ -23435,7 +23435,7 @@
                     "Charge",
                     "Tackle",
                     "Screech",
-                    "Sonic Boom"
+                    "SonicBoom"
                 ],
                 "ability": "Soundproof",
                 "xp": 375,
@@ -23456,7 +23456,7 @@
                     "Charge",
                     "Tackle",
                     "Screech",
-                    "Sonic Boom"
+                    "SonicBoom"
                 ],
                 "ability": "Soundproof",
                 "xp": 375,
@@ -23477,7 +23477,7 @@
                     "Charge",
                     "Tackle",
                     "Screech",
-                    "Sonic Boom"
+                    "SonicBoom"
                 ],
                 "ability": "Soundproof",
                 "xp": 375,
@@ -23846,7 +23846,7 @@
                 "held_item": null,
                 "moves": [
                     "Dig",
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Poison Sting",
                     "Slash"
                 ],
@@ -23881,7 +23881,7 @@
                 "held_item": null,
                 "moves": [
                     "Rapid Spin",
-                    "Mud Slap",
+                    "Mud-Slap",
                     "Psybeam",
                     "Rock Tomb"
                 ],
@@ -23902,7 +23902,7 @@
                 "held_item": null,
                 "moves": [
                     "Poison Sting",
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Scratch",
                     "Dig"
                 ],
@@ -23923,7 +23923,7 @@
                 "held_item": null,
                 "moves": [
                     "Rapid Spin",
-                    "Mud Slap",
+                    "Mud-Slap",
                     "Psybeam",
                     "Rock Tomb"
                 ],
@@ -23959,7 +23959,7 @@
                 "moves": [
                     "Tail Whip",
                     "Headbutt",
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Odor Sleuth"
                 ],
                 "ability": "Pickup",
@@ -24015,7 +24015,7 @@
                 "moves": [
                     "Scratch",
                     "Defense Curl",
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Poison Sting"
                 ],
                 "ability": "Sand Veil",
@@ -24162,7 +24162,7 @@
                 "moves": [
                     "Scratch",
                     "Defense Curl",
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Poison Sting"
                 ],
                 "ability": "Sand Veil",
@@ -24198,7 +24198,7 @@
                     "Quick Attack",
                     "Sweet Scent",
                     "Water Sport",
-                    "Bubble Beam"
+                    "BubbleBeam"
                 ],
                 "ability": "Swift Swim",
                 "xp": 364,
@@ -24378,7 +24378,7 @@
                 "moves": [
                     "Harden",
                     "Leech Life",
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Fury Swipes"
                 ],
                 "ability": "Compound Eyes",
@@ -25154,7 +25154,7 @@
                 "moves": [
                     "Roar",
                     "Take Down",
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Crunch"
                 ],
                 "ability": "Intimidate",
@@ -25540,7 +25540,7 @@
                 "held_item": null,
                 "moves": [
                     "Take Down",
-                    "Dragon Breath",
+                    "DragonBreath",
                     "Dragon Dance",
                     "Refresh"
                 ],
@@ -25561,7 +25561,7 @@
                 "held_item": null,
                 "moves": [
                     "Dig",
-                    "Dragon Breath",
+                    "DragonBreath",
                     "Fly",
                     "Sandstorm"
                 ],
@@ -25583,8 +25583,8 @@
                 "moves": [
                     "Flamethrower",
                     "Crunch",
-                    "Dragon Breath",
-                    "Sand Attack"
+                    "DragonBreath",
+                    "Sand-Attack"
                 ],
                 "ability": "Levitate",
                 "xp": 2236,
@@ -25722,7 +25722,7 @@
                 "moves": [
                     "Arm Thrust",
                     "Knock Off",
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Bulk Up"
                 ],
                 "ability": "Thick Fat",
@@ -25759,7 +25759,7 @@
                 "held_item": null,
                 "moves": [
                     "Supersonic",
-                    "Sonic Boom",
+                    "SonicBoom",
                     "Thunder Shock",
                     "Thunder Wave"
                 ],
@@ -25780,9 +25780,9 @@
                 "held_item": null,
                 "moves": [
                     "Rollout",
-                    "Self Destruct",
+                    "Selfdestruct",
                     "Spark",
-                    "Sonic Boom"
+                    "SonicBoom"
                 ],
                 "ability": "Soundproof",
                 "xp": 441,
@@ -25801,7 +25801,7 @@
                 "held_item": null,
                 "moves": [
                     "Supersonic",
-                    "Sonic Boom",
+                    "SonicBoom",
                     "Shock Wave",
                     "Thunder Wave"
                 ],
@@ -26040,7 +26040,7 @@
                 "spd": 57,
                 "held_item": null,
                 "moves": [
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Fury Attack",
                     "Steel Wing",
                     "Aerial Ace"
@@ -26062,7 +26062,7 @@
                 "held_item": null,
                 "moves": [
                     "Earthquake",
-                    "Dragon Breath",
+                    "DragonBreath",
                     "Dragon Dance",
                     "Aerial Ace"
                 ],
@@ -26123,7 +26123,7 @@
                 "held_item": null,
                 "moves": [
                     "Sunny Day",
-                    "Solar Beam",
+                    "SolarBeam",
                     "Psychic",
                     "Flamethrower"
                 ],
@@ -26336,7 +26336,7 @@
                 "moves": [
                     "Absorb",
                     "Sweet Scent",
-                    "Poison Powder"
+                    "PoisonPowder"
                 ],
                 "ability": "Chlorophyll",
                 "xp": 250,
@@ -26523,7 +26523,7 @@
                     "Growl",
                     "Tail Whip",
                     "Headbutt",
-                    "Sand Attack"
+                    "Sand-Attack"
                 ],
                 "ability": "Pickup",
                 "xp": 205,
@@ -26787,8 +26787,8 @@
                 "held_item": "Oran Berry",
                 "moves": [
                     "Rollout",
-                    "Bubble Beam",
-                    "Double Edge",
+                    "BubbleBeam",
+                    "Double-Edge",
                     "Rain Dance"
                 ],
                 "ability": "Thick Fat",
@@ -26809,8 +26809,8 @@
                 "moves": [
                     "Water Gun",
                     "Rollout",
-                    "Bubble Beam",
-                    "Double Edge"
+                    "BubbleBeam",
+                    "Double-Edge"
                 ],
                 "ability": "Thick Fat",
                 "xp": 1311,
@@ -27098,7 +27098,7 @@
                 "held_item": null,
                 "moves": [
                     "Headbutt",
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Growl",
                     "Thunderbolt"
                 ],
@@ -27135,7 +27135,7 @@
                     "Scratch",
                     "Harden",
                     "Leech Life",
-                    "Sand Attack"
+                    "Sand-Attack"
                 ],
                 "ability": "Compound Eyes",
                 "xp": 124,
@@ -27156,7 +27156,7 @@
                     "Scratch",
                     "Harden",
                     "Leech Life",
-                    "Sand Attack"
+                    "Sand-Attack"
                 ],
                 "ability": "Compound Eyes",
                 "xp": 124,
@@ -27191,7 +27191,7 @@
                     "Scratch",
                     "Harden",
                     "Leech Life",
-                    "Sand Attack"
+                    "Sand-Attack"
                 ],
                 "ability": "Compound Eyes",
                 "xp": 124,
@@ -27212,7 +27212,7 @@
                     "Scratch",
                     "Harden",
                     "Leech Life",
-                    "Sand Attack"
+                    "Sand-Attack"
                 ],
                 "ability": "Compound Eyes",
                 "xp": 124,
@@ -27245,7 +27245,7 @@
                 "held_item": null,
                 "moves": [
                     "Bite",
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Faint Attack"
                 ],
                 "ability": "Hyper Cutter",
@@ -27266,7 +27266,7 @@
                 "moves": [
                     "Tail Whip",
                     "Headbutt",
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Odor Sleuth"
                 ],
                 "ability": "Pickup",
@@ -27299,7 +27299,7 @@
                 "spd": 21,
                 "held_item": null,
                 "moves": [
-                    "Mud Slap",
+                    "Mud-Slap",
                     "Headbutt",
                     "Metal Claw",
                     "Iron Defense"
@@ -27337,7 +27337,7 @@
                     "Growl",
                     "Tail Whip",
                     "Headbutt",
-                    "Sand Attack"
+                    "Sand-Attack"
                 ],
                 "ability": "Pickup",
                 "xp": 180,
@@ -27358,7 +27358,7 @@
                     "Growl",
                     "Tail Whip",
                     "Headbutt",
-                    "Sand Attack"
+                    "Sand-Attack"
                 ],
                 "ability": "Pickup",
                 "xp": 205,
@@ -27444,7 +27444,7 @@
                 "moves": [
                     "Tackle",
                     "Howl",
-                    "Sand Attack"
+                    "Sand-Attack"
                 ],
                 "ability": "Run Away",
                 "xp": 141,
@@ -27463,7 +27463,7 @@
                 "held_item": null,
                 "moves": [
                     "Harden",
-                    "Mud Slap",
+                    "Mud-Slap",
                     "Headbutt",
                     "Metal Claw"
                 ],
@@ -27546,7 +27546,7 @@
                 "moves": [
                     "Reflect",
                     "Light Screen",
-                    "Ancient Power",
+                    "AncientPower",
                     "Earthquake"
                 ],
                 "ability": "Levitate",
@@ -27567,7 +27567,7 @@
                 "moves": [
                     "Thunder",
                     "Earthquake",
-                    "Solar Beam",
+                    "SolarBeam",
                     "Dragon Claw"
                 ],
                 "ability": "Sturdy",
@@ -27587,7 +27587,7 @@
                 "held_item": null,
                 "moves": [
                     "Giga Drain",
-                    "Ancient Power",
+                    "AncientPower",
                     "Sludge Bomb",
                     "Confuse Ray"
                 ],
@@ -27608,7 +27608,7 @@
                 "held_item": null,
                 "moves": [
                     "Water Pulse",
-                    "Ancient Power",
+                    "AncientPower",
                     "Aerial Ace",
                     "Slash"
                 ],
@@ -28219,7 +28219,7 @@
                     "Supersonic",
                     "Constrict",
                     "Acid",
-                    "Bubble Beam"
+                    "BubbleBeam"
                 ],
                 "ability": "Clear Body",
                 "xp": 562,
@@ -28459,7 +28459,7 @@
                     "Tackle",
                     "Thunder Shock",
                     "Supersonic",
-                    "Sonic Boom"
+                    "SonicBoom"
                 ],
                 "ability": "Magnet Pull",
                 "xp": 304,
@@ -28480,7 +28480,7 @@
                     "Tackle",
                     "Thunder Shock",
                     "Supersonic",
-                    "Sonic Boom"
+                    "SonicBoom"
                 ],
                 "ability": "Magnet Pull",
                 "xp": 304,
@@ -28589,7 +28589,7 @@
                 "moves": [
                     "Camouflage",
                     "Swift",
-                    "Bubble Beam",
+                    "BubbleBeam",
                     "Minimize"
                 ],
                 "ability": "Illuminate",
@@ -28610,7 +28610,7 @@
                 "moves": [
                     "Camouflage",
                     "Swift",
-                    "Bubble Beam",
+                    "BubbleBeam",
                     "Minimize"
                 ],
                 "ability": "Illuminate",
@@ -28631,7 +28631,7 @@
                 "moves": [
                     "Camouflage",
                     "Swift",
-                    "Bubble Beam",
+                    "BubbleBeam",
                     "Minimize"
                 ],
                 "ability": "Illuminate",
@@ -28652,7 +28652,7 @@
                 "moves": [
                     "Camouflage",
                     "Swift",
-                    "Bubble Beam",
+                    "BubbleBeam",
                     "Minimize"
                 ],
                 "ability": "Illuminate",
@@ -28687,7 +28687,7 @@
                 "moves": [
                     "Camouflage",
                     "Swift",
-                    "Bubble Beam",
+                    "BubbleBeam",
                     "Minimize"
                 ],
                 "ability": "Illuminate",
@@ -28722,7 +28722,7 @@
                 "moves": [
                     "Camouflage",
                     "Swift",
-                    "Bubble Beam",
+                    "BubbleBeam",
                     "Minimize"
                 ],
                 "ability": "Illuminate",
@@ -28778,7 +28778,7 @@
                 "moves": [
                     "Camouflage",
                     "Swift",
-                    "Bubble Beam",
+                    "BubbleBeam",
                     "Minimize"
                 ],
                 "ability": "Illuminate",
@@ -28834,7 +28834,7 @@
                 "moves": [
                     "Camouflage",
                     "Swift",
-                    "Bubble Beam",
+                    "BubbleBeam",
                     "Minimize"
                 ],
                 "ability": "Illuminate",
@@ -28911,7 +28911,7 @@
                 "moves": [
                     "Camouflage",
                     "Swift",
-                    "Bubble Beam",
+                    "BubbleBeam",
                     "Minimize"
                 ],
                 "ability": "Illuminate",
@@ -28953,7 +28953,7 @@
                 "moves": [
                     "Camouflage",
                     "Swift",
-                    "Bubble Beam",
+                    "BubbleBeam",
                     "Minimize"
                 ],
                 "ability": "Illuminate",
@@ -28988,7 +28988,7 @@
                 "moves": [
                     "Camouflage",
                     "Swift",
-                    "Bubble Beam",
+                    "BubbleBeam",
                     "Minimize"
                 ],
                 "ability": "Illuminate",
@@ -29065,7 +29065,7 @@
                 "moves": [
                     "Camouflage",
                     "Swift",
-                    "Bubble Beam",
+                    "BubbleBeam",
                     "Minimize"
                 ],
                 "ability": "Illuminate",
@@ -29122,7 +29122,7 @@
                     "Headbutt",
                     "Focus Energy",
                     "Ember",
-                    "Dragon Breath"
+                    "DragonBreath"
                 ],
                 "ability": "Rock Head",
                 "xp": 667,
@@ -29966,7 +29966,7 @@
                 "spd": 20,
                 "held_item": null,
                 "moves": [
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Fury Swipes",
                     "Mind Reader",
                     "False Swipe"
@@ -29988,9 +29988,9 @@
                 "held_item": null,
                 "moves": [
                     "Smog",
-                    "Self Destruct",
+                    "Selfdestruct",
                     "Sludge",
-                    "Smokescreen"
+                    "SmokeScreen"
                 ],
                 "ability": "Levitate",
                 "xp": 610,
@@ -30100,7 +30100,7 @@
                 "held_item": null,
                 "moves": [
                     "Leech Life",
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Fury Swipes",
                     "Mind Reader"
                 ],
@@ -30121,7 +30121,7 @@
                 "held_item": null,
                 "moves": [
                     "Bite",
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Faint Attack"
                 ],
                 "ability": "Hyper Cutter",
@@ -30176,7 +30176,7 @@
                 "held_item": null,
                 "moves": [
                     "Leech Life",
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Fury Swipes",
                     "Mind Reader"
                 ],
@@ -30197,7 +30197,7 @@
                 "held_item": null,
                 "moves": [
                     "Leech Life",
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Fury Swipes",
                     "Mind Reader"
                 ],
@@ -30562,7 +30562,7 @@
                     "Tail Whip",
                     "Water Gun",
                     "Rollout",
-                    "Bubble Beam"
+                    "BubbleBeam"
                 ],
                 "ability": "Thick Fat",
                 "xp": 334,
@@ -30667,7 +30667,7 @@
                     "Tail Whip",
                     "Water Gun",
                     "Rollout",
-                    "Bubble Beam"
+                    "BubbleBeam"
                 ],
                 "ability": "Thick Fat",
                 "xp": 310,
@@ -30742,7 +30742,7 @@
                 "held_item": null,
                 "moves": [
                     "Bubble",
-                    "Smokescreen",
+                    "SmokeScreen",
                     "Leer",
                     "Water Gun"
                 ],
@@ -30765,7 +30765,7 @@
                     "Tail Whip",
                     "Water Gun",
                     "Rollout",
-                    "Bubble Beam"
+                    "BubbleBeam"
                 ],
                 "ability": "Thick Fat",
                 "xp": 322,
@@ -30842,7 +30842,7 @@
                     "Tail Whip",
                     "Water Gun",
                     "Rollout",
-                    "Bubble Beam"
+                    "BubbleBeam"
                 ],
                 "ability": "Thick Fat",
                 "xp": 297,
@@ -30974,8 +30974,8 @@
                 "moves": [
                     "Water Gun",
                     "Rollout",
-                    "Bubble Beam",
-                    "Double Edge"
+                    "BubbleBeam",
+                    "Double-Edge"
                 ],
                 "ability": "Thick Fat",
                 "xp": 409,
@@ -31142,8 +31142,8 @@
                 "moves": [
                     "Water Gun",
                     "Rollout",
-                    "Bubble Beam",
-                    "Double Edge"
+                    "BubbleBeam",
+                    "Double-Edge"
                 ],
                 "ability": "Thick Fat",
                 "xp": 397,
@@ -31329,7 +31329,7 @@
                 "spd": 21,
                 "held_item": null,
                 "moves": [
-                    "Smokescreen",
+                    "SmokeScreen",
                     "Leer",
                     "Water Gun",
                     "Twister"
@@ -31443,8 +31443,8 @@
                 "moves": [
                     "Water Gun",
                     "Rollout",
-                    "Bubble Beam",
-                    "Double Edge"
+                    "BubbleBeam",
+                    "Double-Edge"
                 ],
                 "ability": "Thick Fat",
                 "xp": 409,
@@ -31486,7 +31486,7 @@
                     "Tail Whip",
                     "Water Gun",
                     "Rollout",
-                    "Bubble Beam"
+                    "BubbleBeam"
                 ],
                 "ability": "Thick Fat",
                 "xp": 1081,
@@ -31609,7 +31609,7 @@
                 "spd": 22,
                 "held_item": null,
                 "moves": [
-                    "Smokescreen",
+                    "SmokeScreen",
                     "Leer",
                     "Water Gun",
                     "Twister"
@@ -31630,7 +31630,7 @@
                 "spd": 35,
                 "held_item": null,
                 "moves": [
-                    "Smokescreen",
+                    "SmokeScreen",
                     "Leer",
                     "Water Gun",
                     "Twister"
@@ -31834,7 +31834,7 @@
                 "held_item": null,
                 "moves": [
                     "Dig",
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Poison Sting",
                     "Slash"
                 ],
@@ -31855,7 +31855,7 @@
                 "held_item": null,
                 "moves": [
                     "Rapid Spin",
-                    "Mud Slap",
+                    "Mud-Slap",
                     "Psybeam",
                     "Rock Tomb"
                 ],
@@ -31889,7 +31889,7 @@
                 "spd": 19,
                 "held_item": null,
                 "moves": [
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Poison Sting",
                     "Slash",
                     "Dig"
@@ -32604,7 +32604,7 @@
                 "held_item": null,
                 "moves": [
                     "Acid",
-                    "Bubble Beam",
+                    "BubbleBeam",
                     "Wrap",
                     "Barrier"
                 ],
@@ -33462,7 +33462,7 @@
                 "moves": [
                     "Aerial Ace",
                     "Safeguard",
-                    "Dragon Breath",
+                    "DragonBreath",
                     "Dragon Dance"
                 ],
                 "ability": "Natural Cure",
@@ -33899,7 +33899,7 @@
                     "Leech Seed",
                     "Mega Drain",
                     "Headbutt",
-                    "Poison Powder"
+                    "PoisonPowder"
                 ],
                 "ability": "Effect Spore",
                 "xp": 403,
@@ -33919,7 +33919,7 @@
                 "moves": [
                     "Double Kick",
                     "Peck",
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Bulk Up"
                 ],
                 "ability": "Blaze",
@@ -34064,7 +34064,7 @@
                     "Leech Seed",
                     "Mega Drain",
                     "Headbutt",
-                    "Poison Powder"
+                    "PoisonPowder"
                 ],
                 "ability": "Effect Spore",
                 "xp": 403,
@@ -34458,7 +34458,7 @@
                     "Leech Seed",
                     "Mega Drain",
                     "Headbutt",
-                    "Poison Powder"
+                    "PoisonPowder"
                 ],
                 "ability": "Effect Spore",
                 "xp": 403,
@@ -34478,7 +34478,7 @@
                 "moves": [
                     "Double Kick",
                     "Peck",
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Bulk Up"
                 ],
                 "ability": "Blaze",
@@ -34623,7 +34623,7 @@
                     "Leech Seed",
                     "Mega Drain",
                     "Headbutt",
-                    "Poison Powder"
+                    "PoisonPowder"
                 ],
                 "ability": "Effect Spore",
                 "xp": 403,
@@ -34700,7 +34700,7 @@
                     "Growl",
                     "Tail Whip",
                     "Headbutt",
-                    "Sand Attack"
+                    "Sand-Attack"
                 ],
                 "ability": "Pickup",
                 "xp": 192,
@@ -34740,7 +34740,7 @@
                 "moves": [
                     "Tackle",
                     "Howl",
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Bite"
                 ],
                 "ability": "Run Away",
@@ -35139,7 +35139,7 @@
                 "held_item": null,
                 "moves": [
                     "Magical Leaf",
-                    "Grass Whistle",
+                    "GrassWhistle",
                     "Giga Drain",
                     "Sweet Scent"
                 ],
@@ -35178,7 +35178,7 @@
                 "moves": [
                     "Smog",
                     "Curse",
-                    "Smokescreen",
+                    "SmokeScreen",
                     "Fire Spin"
                 ],
                 "ability": "White Smoke",
@@ -35646,7 +35646,7 @@
                 "held_item": null,
                 "moves": [
                     "Rapid Spin",
-                    "Mud Slap",
+                    "Mud-Slap",
                     "Psybeam",
                     "Rock Tomb"
                 ],
@@ -35682,7 +35682,7 @@
                 "moves": [
                     "Tackle",
                     "Howl",
-                    "Sand Attack"
+                    "Sand-Attack"
                 ],
                 "ability": "Run Away",
                 "xp": 105,
@@ -35716,7 +35716,7 @@
                 "moves": [
                     "Tackle",
                     "Howl",
-                    "Sand Attack"
+                    "Sand-Attack"
                 ],
                 "ability": "Run Away",
                 "xp": 105,
@@ -35736,7 +35736,7 @@
                 "moves": [
                     "Tackle",
                     "Howl",
-                    "Sand Attack"
+                    "Sand-Attack"
                 ],
                 "ability": "Run Away",
                 "xp": 105,
@@ -35770,7 +35770,7 @@
                 "moves": [
                     "Tackle",
                     "Howl",
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Bite"
                 ],
                 "ability": "Run Away",
@@ -35791,7 +35791,7 @@
                 "moves": [
                     "Tackle",
                     "Howl",
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Bite"
                 ],
                 "ability": "Run Away",
@@ -35826,7 +35826,7 @@
                 "moves": [
                     "Tackle",
                     "Howl",
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Bite"
                 ],
                 "ability": "Run Away",
@@ -35847,7 +35847,7 @@
                 "moves": [
                     "Tackle",
                     "Howl",
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Bite"
                 ],
                 "ability": "Run Away",
@@ -35902,7 +35902,7 @@
                 "held_item": null,
                 "moves": [
                     "Howl",
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Bite",
                     "Odor Sleuth"
                 ],
@@ -35958,7 +35958,7 @@
                 "held_item": null,
                 "moves": [
                     "Howl",
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Bite",
                     "Odor Sleuth"
                 ],
@@ -35994,7 +35994,7 @@
                 "moves": [
                     "Tackle",
                     "Howl",
-                    "Sand Attack"
+                    "Sand-Attack"
                 ],
                 "ability": "Run Away",
                 "xp": 129,
@@ -36304,7 +36304,7 @@
                 "held_item": null,
                 "moves": [
                     "Rapid Spin",
-                    "Mud Slap",
+                    "Mud-Slap",
                     "Psybeam",
                     "Rock Tomb"
                 ],
@@ -36887,7 +36887,7 @@
                 "held_item": null,
                 "moves": [
                     "Howl",
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Bite",
                     "Odor Sleuth"
                 ],
@@ -37193,7 +37193,7 @@
                 "spd": 34,
                 "held_item": null,
                 "moves": [
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Bite",
                     "Odor Sleuth",
                     "Roar"
@@ -37435,7 +37435,7 @@
                 "moves": [
                     "Absorb",
                     "Sweet Scent",
-                    "Poison Powder",
+                    "PoisonPowder",
                     "Stun Spore"
                 ],
                 "ability": "Chlorophyll",
@@ -37888,7 +37888,7 @@
                 "spd": 22,
                 "held_item": null,
                 "moves": [
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Fury Swipes",
                     "Mind Reader",
                     "False Swipe"
@@ -37909,7 +37909,7 @@
                 "spd": 18,
                 "held_item": null,
                 "moves": [
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Fury Swipes",
                     "Mind Reader",
                     "False Swipe"
@@ -38226,7 +38226,7 @@
                     "Mud Sport",
                     "Rock Throw",
                     "Magnitude",
-                    "Self Destruct"
+                    "Selfdestruct"
                 ],
                 "ability": "Rock Head",
                 "xp": 405,
@@ -38268,7 +38268,7 @@
                     "Mud Sport",
                     "Rock Throw",
                     "Magnitude",
-                    "Self Destruct"
+                    "Selfdestruct"
                 ],
                 "ability": "Rock Head",
                 "xp": 631,
@@ -38374,10 +38374,10 @@
                 "spd": 34,
                 "held_item": null,
                 "moves": [
-                    "Mud Slap",
+                    "Mud-Slap",
                     "Psybeam",
                     "Rock Tomb",
-                    "Self Destruct"
+                    "Selfdestruct"
                 ],
                 "ability": "Levitate",
                 "xp": 261,
@@ -38395,10 +38395,10 @@
                 "spd": 34,
                 "held_item": null,
                 "moves": [
-                    "Mud Slap",
+                    "Mud-Slap",
                     "Psybeam",
                     "Rock Tomb",
-                    "Self Destruct"
+                    "Selfdestruct"
                 ],
                 "ability": "Levitate",
                 "xp": 261,
@@ -38785,7 +38785,7 @@
                     "Bide",
                     "Detect",
                     "Confusion",
-                    "Thunder Punch"
+                    "ThunderPunch"
                 ],
                 "ability": "Pure Power",
                 "xp": 370,
@@ -38853,9 +38853,9 @@
                 "held_item": null,
                 "moves": [
                     "Tackle",
-                    "Self Destruct",
+                    "Selfdestruct",
                     "Sludge",
-                    "Smokescreen"
+                    "SmokeScreen"
                 ],
                 "ability": "Levitate",
                 "xp": 634,
@@ -38876,7 +38876,7 @@
                     "Tackle",
                     "Poison Gas",
                     "Sludge",
-                    "Smokescreen"
+                    "SmokeScreen"
                 ],
                 "ability": "Levitate",
                 "xp": 634,
@@ -38911,7 +38911,7 @@
                     "Poison Gas",
                     "Tackle",
                     "Sludge",
-                    "Smokescreen"
+                    "SmokeScreen"
                 ],
                 "ability": "Levitate",
                 "xp": 708,
@@ -38929,7 +38929,7 @@
                 "spd": 34,
                 "held_item": null,
                 "moves": [
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Double Team",
                     "Fury Cutter",
                     "Swords Dance"
@@ -38986,9 +38986,9 @@
                 "held_item": null,
                 "moves": [
                     "Tackle",
-                    "Self Destruct",
+                    "Selfdestruct",
                     "Sludge",
-                    "Smokescreen"
+                    "SmokeScreen"
                 ],
                 "ability": "Levitate",
                 "xp": 684,
@@ -39310,7 +39310,7 @@
                     "Leech Seed",
                     "Mega Drain",
                     "Headbutt",
-                    "Poison Powder"
+                    "PoisonPowder"
                 ],
                 "ability": "Effect Spore",
                 "xp": 445,
@@ -39329,7 +39329,7 @@
                 "held_item": null,
                 "moves": [
                     "Peck",
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Bulk Up",
                     "Quick Attack"
                 ],
@@ -39387,7 +39387,7 @@
                     "Leech Seed",
                     "Mega Drain",
                     "Headbutt",
-                    "Poison Powder"
+                    "PoisonPowder"
                 ],
                 "ability": "Effect Spore",
                 "xp": 445,
@@ -39604,7 +39604,7 @@
                     "Leech Seed",
                     "Mega Drain",
                     "Headbutt",
-                    "Poison Powder"
+                    "PoisonPowder"
                 ],
                 "ability": "Effect Spore",
                 "xp": 445,
@@ -39623,7 +39623,7 @@
                 "held_item": null,
                 "moves": [
                     "Peck",
-                    "Sand Attack",
+                    "Sand-Attack",
                     "Bulk Up",
                     "Quick Attack"
                 ],
@@ -39681,7 +39681,7 @@
                     "Leech Seed",
                     "Mega Drain",
                     "Headbutt",
-                    "Poison Powder"
+                    "PoisonPowder"
                 ],
                 "ability": "Effect Spore",
                 "xp": 445,
@@ -39778,7 +39778,7 @@
                 "moves": [
                     "Constrict",
                     "Acid",
-                    "Bubble Beam",
+                    "BubbleBeam",
                     "Wrap"
                 ],
                 "ability": "Clear Body",
@@ -39855,7 +39855,7 @@
                 "moves": [
                     "Constrict",
                     "Acid",
-                    "Bubble Beam",
+                    "BubbleBeam",
                     "Wrap"
                 ],
                 "ability": "Clear Body",
@@ -39897,7 +39897,7 @@
                 "moves": [
                     "Constrict",
                     "Acid",
-                    "Bubble Beam",
+                    "BubbleBeam",
                     "Wrap"
                 ],
                 "ability": "Clear Body",
@@ -40048,8 +40048,8 @@
                 "moves": [
                     "Water Gun",
                     "Rollout",
-                    "Bubble Beam",
-                    "Double Edge"
+                    "BubbleBeam",
+                    "Double-Edge"
                 ],
                 "ability": "Thick Fat",
                 "xp": 1147,
@@ -40106,7 +40106,7 @@
                 "moves": [
                     "Rock Throw",
                     "Magnitude",
-                    "Self Destruct",
+                    "Selfdestruct",
                     "Rollout"
                 ],
                 "ability": "Rock Head",
@@ -40218,7 +40218,7 @@
                 "moves": [
                     "Constrict",
                     "Acid",
-                    "Bubble Beam",
+                    "BubbleBeam",
                     "Wrap"
                 ],
                 "ability": "Clear Body",
@@ -40239,7 +40239,7 @@
                 "moves": [
                     "Constrict",
                     "Acid",
-                    "Bubble Beam",
+                    "BubbleBeam",
                     "Wrap"
                 ],
                 "ability": "Clear Body",
@@ -40281,7 +40281,7 @@
                 "moves": [
                     "Constrict",
                     "Acid",
-                    "Bubble Beam",
+                    "BubbleBeam",
                     "Wrap"
                 ],
                 "ability": "Clear Body",
@@ -40771,8 +40771,8 @@
                 "moves": [
                     "Water Gun",
                     "Rollout",
-                    "Bubble Beam",
-                    "Double Edge"
+                    "BubbleBeam",
+                    "Double-Edge"
                 ],
                 "ability": "Thick Fat",
                 "xp": 1179,
@@ -40849,7 +40849,7 @@
                     "Supersonic",
                     "Constrict",
                     "Acid",
-                    "Bubble Beam"
+                    "BubbleBeam"
                 ],
                 "ability": "Clear Body",
                 "xp": 585,

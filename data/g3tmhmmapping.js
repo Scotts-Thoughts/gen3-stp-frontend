@@ -20,7 +20,7 @@ const g3tmhmMapping = [
   {	tmhmIndex:	"TM19",	Move:	"Giga Drain", },
   {	tmhmIndex:	"TM20",	Move:	"Safeguard", },
   {	tmhmIndex:	"TM21",	Move:	"Frustration", },
-  {	tmhmIndex:	"TM22",	Move:	"Solarbeam", },
+  {	tmhmIndex:	"TM22",	Move:	"SolarBeam", },
   {	tmhmIndex:	"TM23",	Move:	"Iron Tail", },
   {	tmhmIndex:	"TM24",	Move:	"Thunderbolt", },
   {	tmhmIndex:	"TM25",	Move:	"Thunder", },

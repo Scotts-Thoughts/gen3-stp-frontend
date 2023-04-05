@@ -208,7 +208,7 @@ const gen3moves = [
     Description: "Launches shock waves that always inflict 40 HP damage."
   },
   {
-    Move: "Dragonbreath",
+    Move: "DragonBreath",
     Type: "Dragon",
     PP: "20",
     Power: "60",
@@ -664,7 +664,7 @@ const gen3moves = [
     Description: "A corkscrewing attack with the beak acting as a drill."
   },
   {
-    Move: "Featherdance",
+    Move: "FeatherDance",
     Type: "Flying",
     PP: "15",
     Power: "-",
@@ -928,7 +928,7 @@ const gen3moves = [
     Description: "Scatters a powder that may cause the foe to sleep."
   },
   {
-    Move: "Solarbeam",
+    Move: "SolarBeam",
     Type: "Grass",
     PP: "10",
     Power: "120",
@@ -1344,7 +1344,7 @@ const gen3moves = [
     Description: "Creates illusory copies to raise evasiveness."
   },
   {
-    Move: "Double Edge",
+    Move: "Double-Edge",
     Type: "Normal",
     PP: "15",
     Power: "120",
@@ -1992,7 +1992,7 @@ const gen3moves = [
     Description: "Powerful against paralyzed foes, but also heals them."
   },
   {
-    Move: "Smokescreen",
+    Move: "SmokeScreen",
     Type: "Normal",
     PP: "20",
     Power: "-",
@@ -2016,7 +2016,7 @@ const gen3moves = [
     Description: "Recovers up to half the user's maximum HP."
   },
   {
-    Move: "Sonicboom",
+    Move: "SonicBoom",
     Type: "Normal",
     PP: "20",
     Power: "-",

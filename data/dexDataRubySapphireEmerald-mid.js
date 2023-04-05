@@ -48,7 +48,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 15,
-                "Poison Powder"
+                "PoisonPowder"
             ],
             [
                 15,
@@ -72,7 +72,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 46,
-                "Solarbeam"
+                "SolarBeam"
             ]
         ],
         "tm_hm_learnset": [
@@ -83,7 +83,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Return",
             "Double Team",
             "Sludge Bomb",
@@ -99,12 +99,12 @@ const dexDataRubySapphireEmerald =
         "tutor_learnset": [
             "Swords Dance",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl",
@@ -117,7 +117,7 @@ const dexDataRubySapphireEmerald =
             "Charm",
             "Petal Dance",
             "Magical Leaf",
-            "Grass Whistle",
+            "GrassWhistle",
             "Curse"
         ],
         "weight": 6.9
@@ -178,7 +178,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 15,
-                "Poison Powder"
+                "PoisonPowder"
             ],
             [
                 15,
@@ -202,7 +202,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 56,
-                "Solarbeam"
+                "SolarBeam"
             ]
         ],
         "tm_hm_learnset": [
@@ -213,7 +213,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Return",
             "Double Team",
             "Sludge Bomb",
@@ -229,12 +229,12 @@ const dexDataRubySapphireEmerald =
         "tutor_learnset": [
             "Swords Dance",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl",
@@ -303,7 +303,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 15,
-                "Poison Powder"
+                "PoisonPowder"
             ],
             [
                 15,
@@ -327,7 +327,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 65,
-                "Solarbeam"
+                "SolarBeam"
             ]
         ],
         "tm_hm_learnset": [
@@ -340,7 +340,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Earthquake",
             "Return",
             "Double Team",
@@ -357,12 +357,12 @@ const dexDataRubySapphireEmerald =
         "tutor_learnset": [
             "Swords Dance",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl",
@@ -415,7 +415,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 13,
-                "Smokescreen"
+                "SmokeScreen"
             ],
             [
                 19,
@@ -472,16 +472,16 @@ const dexDataRubySapphireEmerald =
             "Swords Dance",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
@@ -491,7 +491,7 @@ const dexDataRubySapphireEmerald =
         ],
         "egg_moves": [
             "Belly Drum",
-            "Ancient Power",
+            "AncientPower",
             "Rock Slide",
             "Bite",
             "Outrage",
@@ -549,7 +549,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 13,
-                "Smokescreen"
+                "SmokeScreen"
             ],
             [
                 20,
@@ -606,16 +606,16 @@ const dexDataRubySapphireEmerald =
             "Swords Dance",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
@@ -670,7 +670,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 1,
-                "Smokescreen"
+                "SmokeScreen"
             ],
             [
                 7,
@@ -678,7 +678,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 13,
-                "Smokescreen"
+                "SmokeScreen"
             ],
             [
                 20,
@@ -744,16 +744,16 @@ const dexDataRubySapphireEmerald =
             "Swords Dance",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
@@ -869,17 +869,17 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -1010,17 +1010,17 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -1149,17 +1149,17 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -1296,7 +1296,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 13,
-                "Poison Powder"
+                "PoisonPowder"
             ],
             [
                 14,
@@ -1341,7 +1341,7 @@ const dexDataRubySapphireEmerald =
             "Giga Drain",
             "Safeguard",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Return",
             "Psychic",
             "Shadow Ball",
@@ -1356,7 +1356,7 @@ const dexDataRubySapphireEmerald =
             "Flash"
         ],
         "tutor_learnset": [
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Dream Eater",
             "Substitute",
@@ -1532,7 +1532,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Return",
             "Brick Break",
             "Double Team",
@@ -1548,7 +1548,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Swords Dance",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
@@ -1597,7 +1597,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 5,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 9,
@@ -1617,7 +1617,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 31,
-                "Feather Dance"
+                "FeatherDance"
             ],
             [
                 39,
@@ -1647,12 +1647,12 @@ const dexDataRubySapphireEmerald =
             "Fly"
         ],
         "tutor_learnset": [
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -1702,7 +1702,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 1,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 1,
@@ -1710,7 +1710,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 5,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 9,
@@ -1730,7 +1730,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 34,
-                "Feather Dance"
+                "FeatherDance"
             ],
             [
                 43,
@@ -1760,12 +1760,12 @@ const dexDataRubySapphireEmerald =
             "Fly"
         ],
         "tutor_learnset": [
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -1809,7 +1809,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 1,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 1,
@@ -1821,7 +1821,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 5,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 9,
@@ -1841,7 +1841,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 34,
-                "Feather Dance"
+                "FeatherDance"
             ],
             [
                 48,
@@ -1872,12 +1872,12 @@ const dexDataRubySapphireEmerald =
             "Fly"
         ],
         "tutor_learnset": [
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -1977,7 +1977,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Mimic",
             "Thunder Wave",
@@ -1985,7 +1985,7 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
@@ -2102,7 +2102,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Mimic",
             "Thunder Wave",
@@ -2110,7 +2110,7 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
@@ -2205,12 +2205,12 @@ const dexDataRubySapphireEmerald =
             "Fly"
         ],
         "tutor_learnset": [
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -2317,12 +2317,12 @@ const dexDataRubySapphireEmerald =
             "Fly"
         ],
         "tutor_learnset": [
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -2431,7 +2431,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Rock Slide",
             "Substitute",
@@ -2559,7 +2559,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Rock Slide",
             "Substitute",
@@ -2674,22 +2674,22 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Thunder Wave",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
             "Defense Curl",
-            "Thunder Punch"
+            "ThunderPunch"
         ],
         "egg_moves": [],
         "weight": 6.0
@@ -2771,22 +2771,22 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Thunder Wave",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
             "Defense Curl",
-            "Thunder Punch"
+            "ThunderPunch"
         ],
         "egg_moves": [],
         "weight": 30.0
@@ -2831,7 +2831,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 11,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 17,
@@ -2886,17 +2886,17 @@ const dexDataRubySapphireEmerald =
         "tutor_learnset": [
             "Swords Dance",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
@@ -2955,7 +2955,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 1,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 6,
@@ -2963,7 +2963,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 11,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 17,
@@ -3019,17 +3019,17 @@ const dexDataRubySapphireEmerald =
         "tutor_learnset": [
             "Swords Dance",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
@@ -3140,13 +3140,13 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Mimic",
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl"
@@ -3263,13 +3263,13 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Mimic",
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl"
@@ -3373,22 +3373,22 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Defense Curl",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch",
             "Fury Cutter"
         ],
@@ -3495,13 +3495,13 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Mimic",
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl"
@@ -3617,13 +3617,13 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Mimic",
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl"
@@ -3726,22 +3726,22 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Defense Curl",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch",
             "Fury Cutter"
         ],
@@ -3845,7 +3845,7 @@ const dexDataRubySapphireEmerald =
             "Rain Dance",
             "Safeguard",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Iron Tail",
             "Thunderbolt",
             "Thunder",
@@ -3871,7 +3871,7 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
@@ -3880,17 +3880,17 @@ const dexDataRubySapphireEmerald =
             "Dream Eater",
             "Thunder Wave",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Defense Curl",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch"
         ],
         "egg_moves": [],
@@ -3958,7 +3958,7 @@ const dexDataRubySapphireEmerald =
             "Rain Dance",
             "Safeguard",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Iron Tail",
             "Thunderbolt",
             "Thunder",
@@ -3984,7 +3984,7 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
@@ -3993,17 +3993,17 @@ const dexDataRubySapphireEmerald =
             "Dream Eater",
             "Thunder Wave",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Defense Curl",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch"
         ],
         "egg_moves": [],
@@ -4106,7 +4106,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
@@ -4201,7 +4201,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
@@ -4285,7 +4285,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 49,
-                "Double Edge"
+                "Double-Edge"
             ]
         ],
         "tm_hm_learnset": [
@@ -4301,7 +4301,7 @@ const dexDataRubySapphireEmerald =
             "Rain Dance",
             "Safeguard",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Thunderbolt",
             "Thunder",
             "Return",
@@ -4326,24 +4326,24 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Dream Eater",
             "Thunder Wave",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Defense Curl",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch"
         ],
         "egg_moves": [],
@@ -4410,7 +4410,7 @@ const dexDataRubySapphireEmerald =
             "Rain Dance",
             "Safeguard",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Thunderbolt",
             "Thunder",
             "Return",
@@ -4435,24 +4435,24 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Dream Eater",
             "Thunder Wave",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Defense Curl",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch"
         ],
         "egg_moves": [],
@@ -4553,7 +4553,7 @@ const dexDataRubySapphireEmerald =
             "Snatch"
         ],
         "tutor_learnset": [
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
@@ -4680,7 +4680,7 @@ const dexDataRubySapphireEmerald =
             "Snatch"
         ],
         "tutor_learnset": [
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
@@ -4732,7 +4732,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 14,
-                "Poison Powder"
+                "PoisonPowder"
             ],
             [
                 16,
@@ -4763,7 +4763,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Return",
             "Double Team",
             "Sludge Bomb",
@@ -4776,7 +4776,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Swords Dance",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
@@ -4834,7 +4834,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 1,
-                "Poison Powder"
+                "PoisonPowder"
             ],
             [
                 7,
@@ -4842,7 +4842,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 14,
-                "Poison Powder"
+                "PoisonPowder"
             ],
             [
                 16,
@@ -4873,7 +4873,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Return",
             "Double Team",
             "Sludge Bomb",
@@ -4886,7 +4886,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Swords Dance",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
@@ -4957,7 +4957,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Return",
             "Double Team",
             "Sludge Bomb",
@@ -4971,7 +4971,7 @@ const dexDataRubySapphireEmerald =
         "tutor_learnset": [
             "Swords Dance",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
@@ -5022,7 +5022,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 13,
-                "Poison Powder"
+                "PoisonPowder"
             ],
             [
                 19,
@@ -5057,7 +5057,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Return",
             "Dig",
             "Double Team",
@@ -5075,7 +5075,7 @@ const dexDataRubySapphireEmerald =
         "tutor_learnset": [
             "Swords Dance",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Mimic",
             "Substitute",
@@ -5137,7 +5137,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 1,
-                "Poison Powder"
+                "PoisonPowder"
             ],
             [
                 7,
@@ -5145,7 +5145,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 13,
-                "Poison Powder"
+                "PoisonPowder"
             ],
             [
                 19,
@@ -5181,7 +5181,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Return",
             "Dig",
             "Double Team",
@@ -5199,7 +5199,7 @@ const dexDataRubySapphireEmerald =
         "tutor_learnset": [
             "Swords Dance",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Mimic",
             "Substitute",
@@ -5264,7 +5264,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 20,
-                "Poison Powder"
+                "PoisonPowder"
             ],
             [
                 25,
@@ -5294,7 +5294,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Return",
             "Psychic",
             "Double Team",
@@ -5308,7 +5308,7 @@ const dexDataRubySapphireEmerald =
             "Flash"
         ],
         "tutor_learnset": [
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
@@ -5385,7 +5385,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 20,
-                "Poison Powder"
+                "PoisonPowder"
             ],
             [
                 25,
@@ -5420,7 +5420,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Return",
             "Psychic",
             "Double Team",
@@ -5435,7 +5435,7 @@ const dexDataRubySapphireEmerald =
             "Flash"
         ],
         "tutor_learnset": [
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
@@ -5484,7 +5484,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 1,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 5,
@@ -5500,7 +5500,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 25,
-                "Mud Slap"
+                "Mud-Slap"
             ],
             [
                 33,
@@ -5538,20 +5538,20 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Rock Slide",
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk"
         ],
         "egg_moves": [
             "Faint Attack",
             "Screech",
-            "Ancient Power",
+            "AncientPower",
             "Pursuit",
             "Beat Up",
             "Uproar",
@@ -5600,7 +5600,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 1,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 1,
@@ -5620,7 +5620,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 25,
-                "Mud Slap"
+                "Mud-Slap"
             ],
             [
                 26,
@@ -5663,13 +5663,13 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Rock Slide",
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk"
         ],
@@ -5773,7 +5773,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Dream Eater",
             "Substitute",
@@ -5781,7 +5781,7 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
@@ -5900,7 +5900,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Dream Eater",
             "Substitute",
@@ -5908,7 +5908,7 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
@@ -6018,17 +6018,17 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Psych Up",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -6156,17 +6156,17 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Psych Up",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -6280,24 +6280,24 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Metronome",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Swift",
             "Defense Curl",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch"
         ],
         "egg_moves": [
@@ -6308,7 +6308,7 @@ const dexDataRubySapphireEmerald =
             "Reversal",
             "Beat Up",
             "Revenge",
-            "Smelling Salt"
+            "SmellingSalt"
         ],
         "weight": 28.0
     },
@@ -6429,24 +6429,24 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Metronome",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Swift",
             "Defense Curl",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch"
         ],
         "egg_moves": [],
@@ -6549,7 +6549,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
@@ -6647,7 +6647,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
@@ -6748,7 +6748,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
@@ -6761,7 +6761,7 @@ const dexDataRubySapphireEmerald =
         "egg_moves": [
             "Mist",
             "Splash",
-            "Bubble Beam",
+            "BubbleBeam",
             "Haze",
             "Mind Reader",
             "Water Sport",
@@ -6873,7 +6873,7 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
@@ -6882,7 +6882,7 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -6982,17 +6982,17 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Metronome",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -7070,7 +7070,7 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
@@ -7078,14 +7078,14 @@ const dexDataRubySapphireEmerald =
             "Dream Eater",
             "Thunder Wave",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Psych Up",
             "Snore",
             "Endure",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch"
         ],
         "egg_moves": [
@@ -7093,7 +7093,7 @@ const dexDataRubySapphireEmerald =
             "Barrier",
             "Knock Off",
             "Fire Punch",
-            "Thunder Punch",
+            "ThunderPunch",
             "Ice Punch"
         ],
         "weight": 19.5
@@ -7211,7 +7211,7 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
@@ -7219,14 +7219,14 @@ const dexDataRubySapphireEmerald =
             "Dream Eater",
             "Thunder Wave",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Psych Up",
             "Snore",
             "Endure",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch"
         ],
         "egg_moves": [],
@@ -7346,7 +7346,7 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
@@ -7354,14 +7354,14 @@ const dexDataRubySapphireEmerald =
             "Dream Eater",
             "Thunder Wave",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Psych Up",
             "Snore",
             "Endure",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch"
         ],
         "egg_moves": [],
@@ -7443,7 +7443,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 49,
-                "Dynamic Punch"
+                "DynamicPunch"
             ]
         ],
         "tm_hm_learnset": [
@@ -7475,21 +7475,21 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Metronome",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch"
         ],
         "egg_moves": [
@@ -7497,7 +7497,7 @@ const dexDataRubySapphireEmerald =
             "Meditate",
             "Rolling Kick",
             "Encore",
-            "Smelling Salt",
+            "SmellingSalt",
             "Counter",
             "Rock Slide"
         ],
@@ -7583,7 +7583,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 59,
-                "Dynamic Punch"
+                "DynamicPunch"
             ]
         ],
         "tm_hm_learnset": [
@@ -7615,21 +7615,21 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Metronome",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch"
         ],
         "egg_moves": [],
@@ -7715,7 +7715,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 59,
-                "Dynamic Punch"
+                "DynamicPunch"
             ]
         ],
         "tm_hm_learnset": [
@@ -7748,21 +7748,21 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Metronome",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch"
         ],
         "egg_moves": [],
@@ -7816,7 +7816,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 17,
-                "Poison Powder"
+                "PoisonPowder"
             ],
             [
                 19,
@@ -7847,7 +7847,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Return",
             "Double Team",
             "Sludge Bomb",
@@ -7861,7 +7861,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Swords Dance",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
@@ -7936,7 +7936,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 17,
-                "Poison Powder"
+                "PoisonPowder"
             ],
             [
                 19,
@@ -7967,7 +7967,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Return",
             "Double Team",
             "Sludge Bomb",
@@ -7981,7 +7981,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Swords Dance",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
@@ -8048,7 +8048,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Return",
             "Double Team",
             "Sludge Bomb",
@@ -8063,7 +8063,7 @@ const dexDataRubySapphireEmerald =
         "tutor_learnset": [
             "Swords Dance",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
@@ -8123,7 +8123,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 25,
-                "Bubble Beam"
+                "BubbleBeam"
             ],
             [
                 30,
@@ -8168,7 +8168,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Swords Dance",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
@@ -8244,7 +8244,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 25,
-                "Bubble Beam"
+                "BubbleBeam"
             ],
             [
                 30,
@@ -8290,7 +8290,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Swords Dance",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
@@ -8355,7 +8355,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 21,
-                "Self Destruct"
+                "Selfdestruct"
             ],
             [
                 26,
@@ -8375,7 +8375,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 46,
-                "Double Edge"
+                "Double-Edge"
             ]
         ],
         "tm_hm_learnset": [
@@ -8404,7 +8404,7 @@ const dexDataRubySapphireEmerald =
         "tutor_learnset": [
             "Mega Punch",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
@@ -8412,11 +8412,11 @@ const dexDataRubySapphireEmerald =
             "Explosion",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl",
@@ -8490,7 +8490,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 21,
-                "Self Destruct"
+                "Selfdestruct"
             ],
             [
                 29,
@@ -8510,7 +8510,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 62,
-                "Double Edge"
+                "Double-Edge"
             ]
         ],
         "tm_hm_learnset": [
@@ -8539,7 +8539,7 @@ const dexDataRubySapphireEmerald =
         "tutor_learnset": [
             "Mega Punch",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
@@ -8547,11 +8547,11 @@ const dexDataRubySapphireEmerald =
             "Explosion",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl",
@@ -8621,7 +8621,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 21,
-                "Self Destruct"
+                "Selfdestruct"
             ],
             [
                 29,
@@ -8641,7 +8641,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 62,
-                "Double Edge"
+                "Double-Edge"
             ]
         ],
         "tm_hm_learnset": [
@@ -8673,7 +8673,7 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
@@ -8681,11 +8681,11 @@ const dexDataRubySapphireEmerald =
             "Explosion",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl",
@@ -8773,7 +8773,7 @@ const dexDataRubySapphireEmerald =
             "Sunny Day",
             "Protect",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Iron Tail",
             "Return",
             "Double Team",
@@ -8788,7 +8788,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
@@ -8803,7 +8803,7 @@ const dexDataRubySapphireEmerald =
             "Double Kick",
             "Hypnosis",
             "Charm",
-            "Double Edge"
+            "Double-Edge"
         ],
         "weight": 30.0
     },
@@ -8902,7 +8902,7 @@ const dexDataRubySapphireEmerald =
             "Hyper Beam",
             "Protect",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Iron Tail",
             "Return",
             "Double Team",
@@ -8917,7 +8917,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
@@ -9035,7 +9035,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Dream Eater",
             "Thunder Wave",
@@ -9044,7 +9044,7 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -9180,19 +9180,19 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Dream Eater",
             "Thunder Wave",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Psych Up",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -9251,7 +9251,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 16,
-                "Sonic Boom"
+                "SonicBoom"
             ],
             [
                 21,
@@ -9297,7 +9297,7 @@ const dexDataRubySapphireEmerald =
             "Flash"
         ],
         "tutor_learnset": [
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Thunder Wave",
             "Substitute",
@@ -9368,7 +9368,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 16,
-                "Sonic Boom"
+                "SonicBoom"
             ],
             [
                 21,
@@ -9415,7 +9415,7 @@ const dexDataRubySapphireEmerald =
             "Flash"
         ],
         "tutor_learnset": [
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Thunder Wave",
             "Substitute",
@@ -9466,7 +9466,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 6,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 11,
@@ -9523,13 +9523,13 @@ const dexDataRubySapphireEmerald =
         "tutor_learnset": [
             "Swords Dance",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -9541,7 +9541,7 @@ const dexDataRubySapphireEmerald =
             "Gust",
             "Quick Attack",
             "Flail",
-            "Feather Dance",
+            "FeatherDance",
             "Curse"
         ],
         "weight": 15.0
@@ -9633,12 +9633,12 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -9751,12 +9751,12 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -9851,7 +9851,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
@@ -9976,7 +9976,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
@@ -10091,14 +10091,14 @@ const dexDataRubySapphireEmerald =
             "Mimic",
             "Explosion",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch"
         ],
         "egg_moves": [
@@ -10224,14 +10224,14 @@ const dexDataRubySapphireEmerald =
             "Mimic",
             "Explosion",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch"
         ],
         "egg_moves": [],
@@ -10320,7 +10320,7 @@ const dexDataRubySapphireEmerald =
             "Dive"
         ],
         "tutor_learnset": [
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Explosion",
             "Substitute",
@@ -10332,7 +10332,7 @@ const dexDataRubySapphireEmerald =
             "Swift"
         ],
         "egg_moves": [
-            "Bubble Beam",
+            "BubbleBeam",
             "Take Down",
             "Barrier",
             "Rapid Spin",
@@ -10418,7 +10418,7 @@ const dexDataRubySapphireEmerald =
             "Dive"
         ],
         "tutor_learnset": [
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Explosion",
             "Substitute",
@@ -10767,7 +10767,7 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
@@ -10775,14 +10775,14 @@ const dexDataRubySapphireEmerald =
             "Dream Eater",
             "Explosion",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Psych Up",
             "Snore",
             "Endure",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch"
         ],
         "egg_moves": [],
@@ -10861,7 +10861,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 57,
-                "Double Edge"
+                "Double-Edge"
             ]
         ],
         "tm_hm_learnset": [
@@ -10889,7 +10889,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Explosion",
             "Rock Slide",
@@ -10897,7 +10897,7 @@ const dexDataRubySapphireEmerald =
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk"
         ],
@@ -11012,7 +11012,7 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
@@ -11020,14 +11020,14 @@ const dexDataRubySapphireEmerald =
             "Dream Eater",
             "Thunder Wave",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Psych Up",
             "Snore",
             "Endure",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch"
         ],
         "egg_moves": [
@@ -11035,7 +11035,7 @@ const dexDataRubySapphireEmerald =
             "Assist",
             "Role Play",
             "Fire Punch",
-            "Thunder Punch",
+            "ThunderPunch",
             "Ice Punch"
         ],
         "weight": 32.4
@@ -11152,7 +11152,7 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
@@ -11160,14 +11160,14 @@ const dexDataRubySapphireEmerald =
             "Dream Eater",
             "Thunder Wave",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Psych Up",
             "Snore",
             "Endure",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch"
         ],
         "egg_moves": [],
@@ -11269,13 +11269,13 @@ const dexDataRubySapphireEmerald =
         "tutor_learnset": [
             "Swords Dance",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Fury Cutter"
@@ -11396,13 +11396,13 @@ const dexDataRubySapphireEmerald =
         "tutor_learnset": [
             "Swords Dance",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Fury Cutter"
@@ -11455,7 +11455,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 15,
-                "Sonic Boom"
+                "SonicBoom"
             ],
             [
                 21,
@@ -11463,7 +11463,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 27,
-                "Self Destruct"
+                "Selfdestruct"
             ],
             [
                 32,
@@ -11566,7 +11566,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 1,
-                "Sonic Boom"
+                "SonicBoom"
             ],
             [
                 8,
@@ -11574,7 +11574,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 15,
-                "Sonic Boom"
+                "SonicBoom"
             ],
             [
                 21,
@@ -11582,7 +11582,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 27,
-                "Self Destruct"
+                "Selfdestruct"
             ],
             [
                 34,
@@ -11701,7 +11701,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 31,
-                "Poison Powder"
+                "PoisonPowder"
             ],
             [
                 37,
@@ -11709,7 +11709,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 43,
-                "Solarbeam"
+                "SolarBeam"
             ]
         ],
         "tm_hm_learnset": [
@@ -11721,7 +11721,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Return",
             "Psychic",
             "Double Team",
@@ -11737,7 +11737,7 @@ const dexDataRubySapphireEmerald =
             "Flash"
         ],
         "tutor_learnset": [
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Dream Eater",
             "Explosion",
@@ -11753,7 +11753,7 @@ const dexDataRubySapphireEmerald =
             "Synthesis",
             "Moonlight",
             "Reflect",
-            "Ancient Power",
+            "AncientPower",
             "Psych Up",
             "Ingrain",
             "Curse"
@@ -11821,7 +11821,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Return",
             "Psychic",
             "Double Team",
@@ -11837,7 +11837,7 @@ const dexDataRubySapphireEmerald =
             "Flash"
         ],
         "tutor_learnset": [
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Dream Eater",
             "Explosion",
@@ -11929,7 +11929,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 45,
-                "Double Edge"
+                "Double-Edge"
             ]
         ],
         "tm_hm_learnset": [
@@ -11965,25 +11965,25 @@ const dexDataRubySapphireEmerald =
             "Swords Dance",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch"
         ],
         "egg_moves": [
             "Rock Slide",
-            "Ancient Power",
+            "AncientPower",
             "Belly Drum",
             "Screech",
             "Skull Bash",
@@ -12081,7 +12081,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 61,
-                "Double Edge"
+                "Double-Edge"
             ]
         ],
         "tm_hm_learnset": [
@@ -12118,20 +12118,20 @@ const dexDataRubySapphireEmerald =
             "Swords Dance",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch"
         ],
         "egg_moves": [],
@@ -12246,17 +12246,17 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Metronome",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -12316,7 +12316,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 26,
-                "Thunder Punch"
+                "ThunderPunch"
             ],
             [
                 26,
@@ -12369,22 +12369,22 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Metronome",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Swift",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch"
         ],
         "egg_moves": [],
@@ -12474,7 +12474,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Rain Dance",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Iron Tail",
             "Thunderbolt",
             "Thunder",
@@ -12504,25 +12504,25 @@ const dexDataRubySapphireEmerald =
             "Swords Dance",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Dream Eater",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Psych Up",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Defense Curl",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch"
         ],
         "egg_moves": [
@@ -12530,7 +12530,7 @@ const dexDataRubySapphireEmerald =
             "Magnitude",
             "Body Slam",
             "Curse",
-            "Smelling Salt",
+            "SmellingSalt",
             "Sleep Talk",
             "Snore",
             "Substitute"
@@ -12581,7 +12581,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 17,
-                "Self Destruct"
+                "Selfdestruct"
             ],
             [
                 21,
@@ -12589,7 +12589,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 25,
-                "Smokescreen"
+                "SmokeScreen"
             ],
             [
                 33,
@@ -12697,7 +12697,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 1,
-                "Self Destruct"
+                "Selfdestruct"
             ],
             [
                 9,
@@ -12705,7 +12705,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 17,
-                "Self Destruct"
+                "Selfdestruct"
             ],
             [
                 21,
@@ -12713,7 +12713,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 25,
-                "Smokescreen"
+                "SmokeScreen"
             ],
             [
                 33,
@@ -12876,7 +12876,7 @@ const dexDataRubySapphireEmerald =
         "tutor_learnset": [
             "Swords Dance",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Mimic",
             "Rock Slide",
@@ -12885,7 +12885,7 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk"
         ],
@@ -13021,21 +13021,21 @@ const dexDataRubySapphireEmerald =
             "Swords Dance",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch",
             "Fury Cutter"
         ],
@@ -13119,7 +13119,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 57,
-                "Double Edge"
+                "Double-Edge"
             ]
         ],
         "tm_hm_learnset": [
@@ -13138,7 +13138,7 @@ const dexDataRubySapphireEmerald =
             "Rain Dance",
             "Safeguard",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Iron Tail",
             "Thunderbolt",
             "Thunder",
@@ -13167,7 +13167,7 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
@@ -13176,13 +13176,13 @@ const dexDataRubySapphireEmerald =
             "Dream Eater",
             "Thunder Wave",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Psych Up",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl"
@@ -13248,7 +13248,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 19,
-                "Poison Powder"
+                "PoisonPowder"
             ],
             [
                 22,
@@ -13284,7 +13284,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Return",
             "Double Team",
             "Sludge Bomb",
@@ -13300,7 +13300,7 @@ const dexDataRubySapphireEmerald =
         "tutor_learnset": [
             "Swords Dance",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Psych Up",
@@ -13405,7 +13405,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Rain Dance",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Iron Tail",
             "Thunderbolt",
             "Thunder",
@@ -13435,21 +13435,21 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch",
             "Fury Cutter"
         ],
@@ -13501,7 +13501,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 8,
-                "Smokescreen"
+                "SmokeScreen"
             ],
             [
                 15,
@@ -13549,7 +13549,7 @@ const dexDataRubySapphireEmerald =
             "Dive"
         ],
         "tutor_learnset": [
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
@@ -13566,7 +13566,7 @@ const dexDataRubySapphireEmerald =
             "Disable",
             "Splash",
             "Dragon Rage",
-            "Dragon Breath"
+            "DragonBreath"
         ],
         "weight": 8.0
     },
@@ -13606,7 +13606,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 1,
-                "Smokescreen"
+                "SmokeScreen"
             ],
             [
                 1,
@@ -13618,7 +13618,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 8,
-                "Smokescreen"
+                "SmokeScreen"
             ],
             [
                 15,
@@ -13667,7 +13667,7 @@ const dexDataRubySapphireEmerald =
             "Dive"
         ],
         "tutor_learnset": [
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
@@ -13773,7 +13773,7 @@ const dexDataRubySapphireEmerald =
             "Dive"
         ],
         "tutor_learnset": [
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
@@ -13890,7 +13890,7 @@ const dexDataRubySapphireEmerald =
             "Dive"
         ],
         "tutor_learnset": [
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
@@ -13964,7 +13964,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 28,
-                "Bubble Beam"
+                "BubbleBeam"
             ],
             [
                 33,
@@ -14009,7 +14009,7 @@ const dexDataRubySapphireEmerald =
             "Dive"
         ],
         "tutor_learnset": [
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Thunder Wave",
             "Substitute",
@@ -14104,7 +14104,7 @@ const dexDataRubySapphireEmerald =
             "Dive"
         ],
         "tutor_learnset": [
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Dream Eater",
             "Thunder Wave",
@@ -14224,7 +14224,7 @@ const dexDataRubySapphireEmerald =
             "Rain Dance",
             "Safeguard",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Thunderbolt",
             "Thunder",
             "Return",
@@ -14248,7 +14248,7 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
@@ -14259,11 +14259,11 @@ const dexDataRubySapphireEmerald =
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch"
         ],
         "egg_moves": [
@@ -14373,7 +14373,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Swords Dance",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Mimic",
             "Substitute",
@@ -14513,19 +14513,19 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Metronome",
             "Dream Eater",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Psych Up",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk"
@@ -14573,11 +14573,11 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 1,
-                "Thunder Punch"
+                "ThunderPunch"
             ],
             [
                 9,
-                "Thunder Punch"
+                "ThunderPunch"
             ],
             [
                 17,
@@ -14630,21 +14630,21 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Thunder Wave",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Swift",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch"
         ],
         "egg_moves": [],
@@ -14710,7 +14710,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 25,
-                "Smokescreen"
+                "SmokeScreen"
             ],
             [
                 33,
@@ -14756,18 +14756,18 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch"
         ],
         "egg_moves": [],
@@ -14872,7 +14872,7 @@ const dexDataRubySapphireEmerald =
         "tutor_learnset": [
             "Swords Dance",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Seismic Toss",
             "Mimic",
             "Rock Slide",
@@ -14969,7 +14969,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Rain Dance",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Iron Tail",
             "Thunderbolt",
             "Thunder",
@@ -14991,7 +14991,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
@@ -15152,7 +15152,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Thunder Wave",
             "Substitute",
@@ -15277,7 +15277,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Dream Eater",
             "Substitute",
@@ -15383,7 +15383,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 8,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 16,
@@ -15425,12 +15425,12 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -15489,7 +15489,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 8,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 16,
@@ -15548,13 +15548,13 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -15606,7 +15606,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 8,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 16,
@@ -15662,13 +15662,13 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Thunder Wave",
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -15720,7 +15720,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 8,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 16,
@@ -15775,12 +15775,12 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -15873,7 +15873,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Rain Dance",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Iron Tail",
             "Thunderbolt",
             "Thunder",
@@ -15890,7 +15890,7 @@ const dexDataRubySapphireEmerald =
             "Flash"
         ],
         "tutor_learnset": [
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Dream Eater",
             "Thunder Wave",
@@ -15971,7 +15971,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 49,
-                "Ancient Power"
+                "AncientPower"
             ],
             [
                 55,
@@ -16004,7 +16004,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Rock Slide",
             "Substitute",
@@ -16016,7 +16016,7 @@ const dexDataRubySapphireEmerald =
             "Sleep Talk"
         ],
         "egg_moves": [
-            "Bubble Beam",
+            "BubbleBeam",
             "Aurora Beam",
             "Slam",
             "Supersonic",
@@ -16099,7 +16099,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 55,
-                "Ancient Power"
+                "AncientPower"
             ],
             [
                 65,
@@ -16133,7 +16133,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Seismic Toss",
             "Mimic",
             "Rock Slide",
@@ -16201,7 +16201,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 31,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 37,
@@ -16217,7 +16217,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 55,
-                "Ancient Power"
+                "AncientPower"
             ]
         ],
         "tm_hm_learnset": [
@@ -16248,7 +16248,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Rock Slide",
             "Substitute",
@@ -16260,7 +16260,7 @@ const dexDataRubySapphireEmerald =
             "Sleep Talk"
         ],
         "egg_moves": [
-            "Bubble Beam",
+            "BubbleBeam",
             "Aurora Beam",
             "Rapid Spin",
             "Dig",
@@ -16327,7 +16327,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 31,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 37,
@@ -16347,7 +16347,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 65,
-                "Ancient Power"
+                "AncientPower"
             ]
         ],
         "tm_hm_learnset": [
@@ -16384,7 +16384,7 @@ const dexDataRubySapphireEmerald =
             "Swords Dance",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Seismic Toss",
             "Mimic",
             "Rock Slide",
@@ -16449,7 +16449,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 29,
-                "Ancient Power"
+                "AncientPower"
             ],
             [
                 36,
@@ -16496,7 +16496,7 @@ const dexDataRubySapphireEmerald =
             "Rock Smash"
         ],
         "tutor_learnset": [
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Rock Slide",
             "Substitute",
@@ -16511,7 +16511,7 @@ const dexDataRubySapphireEmerald =
             "Pursuit",
             "Foresight",
             "Steel Wing",
-            "Dragon Breath",
+            "DragonBreath",
             "Curse"
         ],
         "weight": 59.0
@@ -16612,7 +16612,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Rain Dance",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Thunderbolt",
             "Thunder",
             "Earthquake",
@@ -16637,31 +16637,31 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Metronome",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Psych Up",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Defense Curl",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch"
         ],
         "egg_moves": [
             "Lick",
             "Charm",
-            "Double Edge",
+            "Double-Edge",
             "Curse",
             "Fissure",
             "Substitute"
@@ -16761,13 +16761,13 @@ const dexDataRubySapphireEmerald =
             "Rock Smash"
         ],
         "tutor_learnset": [
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -16868,13 +16868,13 @@ const dexDataRubySapphireEmerald =
             "Rock Smash"
         ],
         "tutor_learnset": [
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Thunder Wave",
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -16974,12 +16974,12 @@ const dexDataRubySapphireEmerald =
             "Rock Smash"
         ],
         "tutor_learnset": [
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -17088,7 +17088,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Thunder Wave",
             "Substitute",
@@ -17104,7 +17104,7 @@ const dexDataRubySapphireEmerald =
             "Mist",
             "Haze",
             "Supersonic",
-            "Dragon Breath",
+            "DragonBreath",
             "Dragon Dance"
         ],
         "weight": 3.3
@@ -17218,7 +17218,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Thunder Wave",
             "Substitute",
@@ -17359,20 +17359,20 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Thunder Wave",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Swift",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch",
             "Fury Cutter"
         ],
@@ -17472,7 +17472,7 @@ const dexDataRubySapphireEmerald =
             "Rain Dance",
             "Safeguard",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Iron Tail",
             "Thunderbolt",
             "Thunder",
@@ -17503,7 +17503,7 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
@@ -17511,17 +17511,17 @@ const dexDataRubySapphireEmerald =
             "Dream Eater",
             "Thunder Wave",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Psych Up",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Swift",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch"
         ],
         "egg_moves": [],
@@ -17579,7 +17579,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 50,
-                "Ancient Power"
+                "AncientPower"
             ]
         ],
         "tm_hm_learnset": [
@@ -17604,7 +17604,7 @@ const dexDataRubySapphireEmerald =
             "Giga Drain",
             "Safeguard",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Iron Tail",
             "Thunderbolt",
             "Thunder",
@@ -17647,7 +17647,7 @@ const dexDataRubySapphireEmerald =
             "Swords Dance",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
@@ -17658,19 +17658,19 @@ const dexDataRubySapphireEmerald =
             "Explosion",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Psych Up",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Swift",
             "Defense Curl",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch",
             "Fury Cutter"
         ],
@@ -17725,7 +17725,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 15,
-                "Poison Powder"
+                "PoisonPowder"
             ],
             [
                 22,
@@ -17745,7 +17745,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 50,
-                "Solarbeam"
+                "SolarBeam"
             ]
         ],
         "tm_hm_learnset": [
@@ -17758,7 +17758,7 @@ const dexDataRubySapphireEmerald =
             "Giga Drain",
             "Safeguard",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Iron Tail",
             "Return",
             "Double Team",
@@ -17773,13 +17773,13 @@ const dexDataRubySapphireEmerald =
         "tutor_learnset": [
             "Swords Dance",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Mimic",
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk"
         ],
@@ -17787,11 +17787,11 @@ const dexDataRubySapphireEmerald =
             "Vine Whip",
             "Leech Seed",
             "Counter",
-            "Ancient Power",
+            "AncientPower",
             "Flail",
             "Nature Power",
             "Ingrain",
-            "Grass Whistle"
+            "GrassWhistle"
         ],
         "weight": 6.4
     },
@@ -17851,7 +17851,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 15,
-                "Poison Powder"
+                "PoisonPowder"
             ],
             [
                 23,
@@ -17871,7 +17871,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 55,
-                "Solarbeam"
+                "SolarBeam"
             ]
         ],
         "tm_hm_learnset": [
@@ -17884,7 +17884,7 @@ const dexDataRubySapphireEmerald =
             "Giga Drain",
             "Safeguard",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Iron Tail",
             "Return",
             "Double Team",
@@ -17901,13 +17901,13 @@ const dexDataRubySapphireEmerald =
         "tutor_learnset": [
             "Swords Dance",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Mimic",
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Fury Cutter"
@@ -17971,7 +17971,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 15,
-                "Poison Powder"
+                "PoisonPowder"
             ],
             [
                 23,
@@ -17991,7 +17991,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 61,
-                "Solarbeam"
+                "SolarBeam"
             ]
         ],
         "tm_hm_learnset": [
@@ -18005,7 +18005,7 @@ const dexDataRubySapphireEmerald =
             "Giga Drain",
             "Safeguard",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Iron Tail",
             "Earthquake",
             "Return",
@@ -18023,13 +18023,13 @@ const dexDataRubySapphireEmerald =
         "tutor_learnset": [
             "Swords Dance",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Mimic",
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Fury Cutter"
@@ -18077,7 +18077,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 6,
-                "Smokescreen"
+                "SmokeScreen"
             ],
             [
                 12,
@@ -18121,13 +18121,13 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
@@ -18185,11 +18185,11 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 1,
-                "Smokescreen"
+                "SmokeScreen"
             ],
             [
                 6,
-                "Smokescreen"
+                "SmokeScreen"
             ],
             [
                 12,
@@ -18238,13 +18238,13 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
@@ -18294,7 +18294,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 1,
-                "Smokescreen"
+                "SmokeScreen"
             ],
             [
                 1,
@@ -18302,7 +18302,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 6,
-                "Smokescreen"
+                "SmokeScreen"
             ],
             [
                 12,
@@ -18355,22 +18355,22 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
             "Defense Curl",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch",
             "Fury Cutter"
         ],
@@ -18475,17 +18475,17 @@ const dexDataRubySapphireEmerald =
             "Swords Dance",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk"
@@ -18494,7 +18494,7 @@ const dexDataRubySapphireEmerald =
             "Crunch",
             "Thrash",
             "Hydro Pump",
-            "Ancient Power",
+            "AncientPower",
             "Rock Slide",
             "Mud Sport",
             "Water Sport",
@@ -18607,17 +18607,17 @@ const dexDataRubySapphireEmerald =
             "Swords Dance",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -18738,17 +18738,17 @@ const dexDataRubySapphireEmerald =
             "Swords Dance",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -18835,7 +18835,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Rain Dance",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Iron Tail",
             "Thunderbolt",
             "Return",
@@ -18855,25 +18855,25 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Swift",
             "Defense Curl",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch",
             "Fury Cutter"
         ],
         "egg_moves": [
-            "Double Edge",
+            "Double-Edge",
             "Pursuit",
             "Slash",
             "Focus Energy",
@@ -18972,7 +18972,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Rain Dance",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Iron Tail",
             "Thunderbolt",
             "Thunder",
@@ -18995,20 +18995,20 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Swift",
             "Defense Curl",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch",
             "Fury Cutter"
         ],
@@ -19106,13 +19106,13 @@ const dexDataRubySapphireEmerald =
             "Flash"
         ],
         "tutor_learnset": [
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Dream Eater",
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -19124,7 +19124,7 @@ const dexDataRubySapphireEmerald =
             "Wing Attack",
             "Whirlwind",
             "Sky Attack",
-            "Feather Dance"
+            "FeatherDance"
         ],
         "weight": 21.2
     },
@@ -19228,13 +19228,13 @@ const dexDataRubySapphireEmerald =
             "Flash"
         ],
         "tutor_learnset": [
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Dream Eater",
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -19311,7 +19311,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 50,
-                "Double Edge"
+                "Double-Edge"
             ]
         ],
         "tm_hm_learnset": [
@@ -19324,7 +19324,7 @@ const dexDataRubySapphireEmerald =
             "Giga Drain",
             "Safeguard",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Return",
             "Dig",
             "Brick Break",
@@ -19341,10 +19341,10 @@ const dexDataRubySapphireEmerald =
         "tutor_learnset": [
             "Mega Punch",
             "Swords Dance",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Snore",
             "Endure",
@@ -19352,7 +19352,7 @@ const dexDataRubySapphireEmerald =
             "Swagger",
             "Sleep Talk",
             "Swift",
-            "Thunder Punch"
+            "ThunderPunch"
         ],
         "egg_moves": [
             "Psybeam",
@@ -19434,7 +19434,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 60,
-                "Double Edge"
+                "Double-Edge"
             ]
         ],
         "tm_hm_learnset": [
@@ -19448,7 +19448,7 @@ const dexDataRubySapphireEmerald =
             "Giga Drain",
             "Safeguard",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Return",
             "Dig",
             "Brick Break",
@@ -19465,10 +19465,10 @@ const dexDataRubySapphireEmerald =
         "tutor_learnset": [
             "Mega Punch",
             "Swords Dance",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Snore",
             "Endure",
@@ -19476,7 +19476,7 @@ const dexDataRubySapphireEmerald =
             "Swagger",
             "Sleep Talk",
             "Swift",
-            "Thunder Punch"
+            "ThunderPunch"
         ],
         "egg_moves": [],
         "weight": 35.6
@@ -19560,7 +19560,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Return",
             "Dig",
             "Psychic",
@@ -19575,7 +19575,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
@@ -19586,7 +19586,7 @@ const dexDataRubySapphireEmerald =
         "egg_moves": [
             "Psybeam",
             "Disable",
-            "Sonic Boom",
+            "SonicBoom",
             "Baton Pass",
             "Pursuit",
             "Signal Beam"
@@ -19681,7 +19681,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Return",
             "Dig",
             "Psychic",
@@ -19696,7 +19696,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
@@ -19816,7 +19816,7 @@ const dexDataRubySapphireEmerald =
             "Fly"
         ],
         "tutor_learnset": [
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
@@ -19925,7 +19925,7 @@ const dexDataRubySapphireEmerald =
             "Dive"
         ],
         "tutor_learnset": [
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Thunder Wave",
             "Substitute",
@@ -20043,7 +20043,7 @@ const dexDataRubySapphireEmerald =
             "Dive"
         ],
         "tutor_learnset": [
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Thunder Wave",
             "Substitute",
@@ -20129,7 +20129,7 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
@@ -20138,7 +20138,7 @@ const dexDataRubySapphireEmerald =
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
@@ -20216,7 +20216,7 @@ const dexDataRubySapphireEmerald =
             "Rain Dance",
             "Safeguard",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Iron Tail",
             "Return",
             "Dig",
@@ -20237,7 +20237,7 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
@@ -20251,7 +20251,7 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl"
@@ -20329,7 +20329,7 @@ const dexDataRubySapphireEmerald =
             "Rain Dance",
             "Safeguard",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Return",
             "Dig",
             "Psychic",
@@ -20349,7 +20349,7 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
@@ -20361,7 +20361,7 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl"
@@ -20444,7 +20444,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 41,
-                "Double Edge"
+                "Double-Edge"
             ]
         ],
         "tm_hm_learnset": [
@@ -20457,7 +20457,7 @@ const dexDataRubySapphireEmerald =
             "Rain Dance",
             "Safeguard",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Return",
             "Psychic",
             "Shadow Ball",
@@ -20477,7 +20477,7 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
@@ -20490,7 +20490,7 @@ const dexDataRubySapphireEmerald =
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
@@ -20576,7 +20576,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 41,
-                "Double Edge"
+                "Double-Edge"
             ]
         ],
         "tm_hm_learnset": [
@@ -20591,7 +20591,7 @@ const dexDataRubySapphireEmerald =
             "Rain Dance",
             "Safeguard",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Return",
             "Psychic",
             "Shadow Ball",
@@ -20615,7 +20615,7 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
@@ -20628,7 +20628,7 @@ const dexDataRubySapphireEmerald =
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
@@ -20711,7 +20711,7 @@ const dexDataRubySapphireEmerald =
             "Rain Dance",
             "Giga Drain",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Return",
             "Psychic",
             "Shadow Ball",
@@ -20728,7 +20728,7 @@ const dexDataRubySapphireEmerald =
             "Flash"
         ],
         "tutor_learnset": [
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Dream Eater",
             "Thunder Wave",
@@ -20747,7 +20747,7 @@ const dexDataRubySapphireEmerald =
             "Faint Attack",
             "Steel Wing",
             "Psych Up",
-            "Feather Dance",
+            "FeatherDance",
             "Refresh"
         ],
         "weight": 2.0
@@ -20827,7 +20827,7 @@ const dexDataRubySapphireEmerald =
             "Rain Dance",
             "Giga Drain",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Return",
             "Psychic",
             "Shadow Ball",
@@ -20845,7 +20845,7 @@ const dexDataRubySapphireEmerald =
             "Flash"
         ],
         "tutor_learnset": [
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Dream Eater",
             "Thunder Wave",
@@ -20940,7 +20940,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Thunder Wave",
             "Substitute",
@@ -21052,20 +21052,20 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Thunder Wave",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Endure",
             "Swagger",
             "Sleep Talk",
             "Swift",
             "Defense Curl",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch"
         ],
         "egg_moves": [],
@@ -21131,7 +21131,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 30,
-                "Thunder Punch"
+                "ThunderPunch"
             ],
             [
                 42,
@@ -21170,20 +21170,20 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Thunder Wave",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Endure",
             "Swagger",
             "Sleep Talk",
             "Swift",
             "Defense Curl",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch"
         ],
         "egg_moves": [],
@@ -21241,7 +21241,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 55,
-                "Solarbeam"
+                "SolarBeam"
             ]
         ],
         "tm_hm_learnset": [
@@ -21254,7 +21254,7 @@ const dexDataRubySapphireEmerald =
             "Giga Drain",
             "Safeguard",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Return",
             "Double Team",
             "Sludge Bomb",
@@ -21267,7 +21267,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Swords Dance",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
@@ -21331,11 +21331,11 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 21,
-                "Bubble Beam"
+                "BubbleBeam"
             ],
             [
                 28,
-                "Double Edge"
+                "Double-Edge"
             ],
             [
                 36,
@@ -21376,16 +21376,16 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Seismic Toss",
             "Mimic",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -21469,11 +21469,11 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 24,
-                "Bubble Beam"
+                "BubbleBeam"
             ],
             [
                 34,
-                "Double Edge"
+                "Double-Edge"
             ],
             [
                 45,
@@ -21515,16 +21515,16 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Seismic Toss",
             "Mimic",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -21599,7 +21599,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 57,
-                "Double Edge"
+                "Double-Edge"
             ]
         ],
         "tm_hm_learnset": [
@@ -21630,28 +21630,28 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Explosion",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Defense Curl",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch"
         ],
         "egg_moves": [
-            "Self Destruct"
+            "Selfdestruct"
         ],
         "weight": 38.0
     },
@@ -21744,17 +21744,17 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Metronome",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl"
@@ -21810,7 +21810,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 13,
-                "Poison Powder"
+                "PoisonPowder"
             ],
             [
                 15,
@@ -21841,7 +21841,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Return",
             "Double Team",
             "Aerial Ace",
@@ -21853,7 +21853,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Swords Dance",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
@@ -21865,7 +21865,7 @@ const dexDataRubySapphireEmerald =
         "egg_moves": [
             "Confusion",
             "Encore",
-            "Double Edge",
+            "Double-Edge",
             "Reflect",
             "Amnesia",
             "Helping Hand",
@@ -21933,7 +21933,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 13,
-                "Poison Powder"
+                "PoisonPowder"
             ],
             [
                 15,
@@ -21964,7 +21964,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Return",
             "Double Team",
             "Aerial Ace",
@@ -21976,7 +21976,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Swords Dance",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
@@ -22048,7 +22048,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 13,
-                "Poison Powder"
+                "PoisonPowder"
             ],
             [
                 15,
@@ -22080,7 +22080,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Return",
             "Double Team",
             "Aerial Ace",
@@ -22092,7 +22092,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Swords Dance",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
@@ -22145,7 +22145,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 6,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 13,
@@ -22186,7 +22186,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Rain Dance",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Iron Tail",
             "Thunderbolt",
             "Thunder",
@@ -22211,7 +22211,7 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
@@ -22219,16 +22219,16 @@ const dexDataRubySapphireEmerald =
             "Dream Eater",
             "Thunder Wave",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Swift",
             "Defense Curl",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch",
             "Fury Cutter"
         ],
@@ -22317,7 +22317,7 @@ const dexDataRubySapphireEmerald =
             "Giga Drain",
             "Safeguard",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Return",
             "Double Team",
             "Sludge Bomb",
@@ -22330,7 +22330,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Swords Dance",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
@@ -22339,7 +22339,7 @@ const dexDataRubySapphireEmerald =
             "Sleep Talk"
         ],
         "egg_moves": [
-            "Grass Whistle",
+            "GrassWhistle",
             "Encore",
             "Leech Seed",
             "Nature Power",
@@ -22412,7 +22412,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 42,
-                "Solarbeam"
+                "SolarBeam"
             ]
         ],
         "tm_hm_learnset": [
@@ -22426,7 +22426,7 @@ const dexDataRubySapphireEmerald =
             "Giga Drain",
             "Safeguard",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Return",
             "Double Team",
             "Sludge Bomb",
@@ -22439,7 +22439,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Swords Dance",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
@@ -22499,7 +22499,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 19,
-                "Sonic Boom"
+                "SonicBoom"
             ],
             [
                 25,
@@ -22529,7 +22529,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Return",
             "Psychic",
             "Shadow Ball",
@@ -22544,7 +22544,7 @@ const dexDataRubySapphireEmerald =
             "Flash"
         ],
         "tutor_learnset": [
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Dream Eater",
             "Substitute",
@@ -22664,14 +22664,14 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -22679,7 +22679,7 @@ const dexDataRubySapphireEmerald =
         ],
         "egg_moves": [
             "Body Slam",
-            "Ancient Power",
+            "AncientPower",
             "Safeguard",
             "Curse",
             "Mud Sport",
@@ -22797,16 +22797,16 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -22859,7 +22859,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 8,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 16,
@@ -22917,14 +22917,14 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Dream Eater",
             "Substitute",
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -22976,7 +22976,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 8,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 16,
@@ -23033,14 +23033,14 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Dream Eater",
             "Substitute",
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -23135,7 +23135,7 @@ const dexDataRubySapphireEmerald =
             "Fly"
         ],
         "tutor_learnset": [
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Dream Eater",
             "Thunder Wave",
@@ -23144,7 +23144,7 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -23156,7 +23156,7 @@ const dexDataRubySapphireEmerald =
             "Wing Attack",
             "Sky Attack",
             "Confuse Ray",
-            "Feather Dance",
+            "FeatherDance",
             "Perish Song"
         ],
         "weight": 2.1
@@ -23273,19 +23273,19 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Dream Eater",
             "Thunder Wave",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Psych Up",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -23394,7 +23394,7 @@ const dexDataRubySapphireEmerald =
             "Flash"
         ],
         "tutor_learnset": [
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Dream Eater",
             "Thunder Wave",
@@ -23610,7 +23610,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Dream Eater",
             "Thunder Wave",
@@ -23618,7 +23618,7 @@ const dexDataRubySapphireEmerald =
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -23675,7 +23675,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 8,
-                "Self Destruct"
+                "Selfdestruct"
             ],
             [
                 15,
@@ -23699,7 +23699,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 50,
-                "Double Edge"
+                "Double-Edge"
             ]
         ],
         "tm_hm_learnset": [
@@ -23710,7 +23710,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Earthquake",
             "Return",
             "Dig",
@@ -23726,7 +23726,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Mimic",
             "Explosion",
@@ -23789,11 +23789,11 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 1,
-                "Self Destruct"
+                "Selfdestruct"
             ],
             [
                 8,
-                "Self Destruct"
+                "Selfdestruct"
             ],
             [
                 15,
@@ -23817,7 +23817,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 59,
-                "Double Edge"
+                "Double-Edge"
             ]
         ],
         "tm_hm_learnset": [
@@ -23829,7 +23829,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Earthquake",
             "Return",
             "Dig",
@@ -23845,7 +23845,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Mimic",
             "Explosion",
@@ -23940,7 +23940,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Rain Dance",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Iron Tail",
             "Thunderbolt",
             "Thunder",
@@ -23963,7 +23963,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Mimic",
             "Dream Eater",
@@ -23974,14 +23974,14 @@ const dexDataRubySapphireEmerald =
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl"
         ],
         "egg_moves": [
             "Bide",
-            "Ancient Power",
+            "AncientPower",
             "Rock Slide",
             "Bite",
             "Headbutt",
@@ -24027,7 +24027,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 6,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 13,
@@ -24082,7 +24082,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Swords Dance",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Mimic",
             "Dream Eater",
@@ -24177,7 +24177,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 57,
-                "Double Edge"
+                "Double-Edge"
             ]
         ],
         "tm_hm_learnset": [
@@ -24207,7 +24207,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Explosion",
             "Rock Slide",
@@ -24215,7 +24215,7 @@ const dexDataRubySapphireEmerald =
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl"
@@ -24307,7 +24307,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Rain Dance",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Thunderbolt",
             "Thunder",
             "Earthquake",
@@ -24334,22 +24334,22 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Metronome",
             "Thunder Wave",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Defense Curl",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch"
         ],
         "egg_moves": [
@@ -24360,7 +24360,7 @@ const dexDataRubySapphireEmerald =
             "Crunch",
             "Heal Bell",
             "Snore",
-            "Smelling Salt"
+            "SmellingSalt"
         ],
         "weight": 7.8
     },
@@ -24449,7 +24449,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Rain Dance",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Iron Tail",
             "Thunderbolt",
             "Thunder",
@@ -24478,7 +24478,7 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
@@ -24486,15 +24486,15 @@ const dexDataRubySapphireEmerald =
             "Thunder Wave",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Defense Curl",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch"
         ],
         "egg_moves": [],
@@ -24593,7 +24593,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Swords Dance",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Thunder Wave",
             "Substitute",
@@ -24609,7 +24609,7 @@ const dexDataRubySapphireEmerald =
         "egg_moves": [
             "Flail",
             "Haze",
-            "Bubble Beam",
+            "BubbleBeam",
             "Supersonic",
             "Astonish"
         ],
@@ -24714,7 +24714,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Swords Dance",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Mimic",
             "Substitute",
@@ -24811,14 +24811,14 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Rock Slide",
             "Substitute",
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl"
@@ -24928,7 +24928,7 @@ const dexDataRubySapphireEmerald =
         "tutor_learnset": [
             "Swords Dance",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
@@ -25062,17 +25062,17 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Swords Dance",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Mimic",
             "Dream Eater",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Psych Up",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -25194,23 +25194,23 @@ const dexDataRubySapphireEmerald =
             "Swords Dance",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Metronome",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Swift",
             "Defense Curl",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch",
             "Fury Cutter"
         ],
@@ -25339,24 +25339,24 @@ const dexDataRubySapphireEmerald =
             "Swords Dance",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Metronome",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Swift",
             "Defense Curl",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch",
             "Fury Cutter"
         ],
@@ -25452,14 +25452,14 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Rock Slide",
             "Substitute",
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl"
@@ -25572,14 +25572,14 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Rock Slide",
             "Substitute",
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl"
@@ -25677,14 +25677,14 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Rock Slide",
             "Substitute",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl"
@@ -25694,10 +25694,10 @@ const dexDataRubySapphireEmerald =
             "Bite",
             "Body Slam",
             "Rock Slide",
-            "Ancient Power",
+            "AncientPower",
             "Mud Shot",
             "Icicle Spear",
-            "Double Edge"
+            "Double-Edge"
         ],
         "weight": 6.5
     },
@@ -25804,14 +25804,14 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Rock Slide",
             "Substitute",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl"
@@ -25872,7 +25872,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 23,
-                "Bubble Beam"
+                "BubbleBeam"
             ],
             [
                 28,
@@ -25888,7 +25888,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 45,
-                "Ancient Power"
+                "AncientPower"
             ]
         ],
         "tm_hm_learnset": [
@@ -25924,7 +25924,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Explosion",
             "Rock Slide",
@@ -25932,7 +25932,7 @@ const dexDataRubySapphireEmerald =
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl"
@@ -25997,7 +25997,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 22,
-                "Bubble Beam"
+                "BubbleBeam"
             ],
             [
                 33,
@@ -26038,13 +26038,13 @@ const dexDataRubySapphireEmerald =
             "Dive"
         ],
         "tutor_learnset": [
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Thunder Wave",
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
@@ -26109,7 +26109,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 22,
-                "Bubble Beam"
+                "BubbleBeam"
             ],
             [
                 25,
@@ -26156,14 +26156,14 @@ const dexDataRubySapphireEmerald =
             "Dive"
         ],
         "tutor_learnset": [
-            "Double Edge",
+            "Double-Edge",
             "Seismic Toss",
             "Mimic",
             "Thunder Wave",
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
@@ -26233,7 +26233,7 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
@@ -26241,7 +26241,7 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -26301,7 +26301,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 15,
-                "Bubble Beam"
+                "BubbleBeam"
             ],
             [
                 22,
@@ -26348,13 +26348,13 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -26410,7 +26410,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 10,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 13,
@@ -26465,14 +26465,14 @@ const dexDataRubySapphireEmerald =
             "Rock Smash"
         ],
         "tutor_learnset": [
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Mimic",
             "Rock Slide",
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -26566,7 +26566,7 @@ const dexDataRubySapphireEmerald =
             "Taunt",
             "Protect",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Iron Tail",
             "Return",
             "Shadow Ball",
@@ -26586,14 +26586,14 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Mimic",
             "Dream Eater",
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -26695,7 +26695,7 @@ const dexDataRubySapphireEmerald =
             "Hyper Beam",
             "Protect",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Iron Tail",
             "Return",
             "Shadow Ball",
@@ -26716,14 +26716,14 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Mimic",
             "Dream Eater",
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -26767,7 +26767,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 1,
-                "Smokescreen"
+                "SmokeScreen"
             ],
             [
                 1,
@@ -26779,7 +26779,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 8,
-                "Smokescreen"
+                "SmokeScreen"
             ],
             [
                 15,
@@ -26829,7 +26829,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
@@ -26906,7 +26906,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 49,
-                "Double Edge"
+                "Double-Edge"
             ]
         ],
         "tm_hm_learnset": [
@@ -26931,14 +26931,14 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Mimic",
             "Substitute",
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl"
@@ -26946,7 +26946,7 @@ const dexDataRubySapphireEmerald =
         "egg_moves": [
             "Focus Energy",
             "Body Slam",
-            "Ancient Power",
+            "AncientPower",
             "Snore",
             "Counter",
             "Fissure"
@@ -27043,7 +27043,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Mimic",
             "Rock Slide",
@@ -27051,7 +27051,7 @@ const dexDataRubySapphireEmerald =
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl"
@@ -27144,7 +27144,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Rain Dance",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Iron Tail",
             "Thunderbolt",
             "Thunder",
@@ -27161,7 +27161,7 @@ const dexDataRubySapphireEmerald =
             "Flash"
         ],
         "tutor_learnset": [
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Dream Eater",
             "Thunder Wave",
@@ -27230,7 +27230,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 31,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 37,
@@ -27255,7 +27255,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Rain Dance",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Iron Tail",
             "Thunderbolt",
             "Thunder",
@@ -27276,7 +27276,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Dream Eater",
             "Thunder Wave",
@@ -27284,7 +27284,7 @@ const dexDataRubySapphireEmerald =
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -27433,7 +27433,7 @@ const dexDataRubySapphireEmerald =
         "tutor_learnset": [
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
@@ -27441,7 +27441,7 @@ const dexDataRubySapphireEmerald =
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -27555,7 +27555,7 @@ const dexDataRubySapphireEmerald =
         "tutor_learnset": [
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
@@ -27563,7 +27563,7 @@ const dexDataRubySapphireEmerald =
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -27675,19 +27675,19 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Metronome",
             "Dream Eater",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Psych Up",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk"
@@ -27741,7 +27741,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 9,
-                "Thunder Punch"
+                "ThunderPunch"
             ],
             [
                 17,
@@ -27791,21 +27791,21 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Thunder Wave",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Swift",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch"
         ],
         "egg_moves": [
@@ -27867,7 +27867,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 25,
-                "Smokescreen"
+                "SmokeScreen"
             ],
             [
                 31,
@@ -27911,18 +27911,18 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch"
         ],
         "egg_moves": [
@@ -27931,7 +27931,7 @@ const dexDataRubySapphireEmerald =
             "Barrier",
             "Screech",
             "Cross Chop",
-            "Thunder Punch"
+            "ThunderPunch"
         ],
         "weight": 21.4
     },
@@ -28014,7 +28014,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Rain Dance",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Iron Tail",
             "Thunderbolt",
             "Thunder",
@@ -28038,7 +28038,7 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
@@ -28046,18 +28046,18 @@ const dexDataRubySapphireEmerald =
             "Thunder Wave",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Psych Up",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Defense Curl",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch"
         ],
         "egg_moves": [
@@ -28149,7 +28149,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 47,
-                "Double Edge"
+                "Double-Edge"
             ]
         ],
         "tm_hm_learnset": [
@@ -28168,7 +28168,7 @@ const dexDataRubySapphireEmerald =
             "Rain Dance",
             "Safeguard",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Iron Tail",
             "Thunderbolt",
             "Thunder",
@@ -28197,7 +28197,7 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
@@ -28206,12 +28206,12 @@ const dexDataRubySapphireEmerald =
             "Dream Eater",
             "Thunder Wave",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl"
@@ -28319,14 +28319,14 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Thunder Wave",
             "Substitute",
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -28415,7 +28415,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Rain Dance",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Iron Tail",
             "Return",
             "Dig",
@@ -28434,13 +28434,13 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -28488,7 +28488,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 11,
-                "Bubble Beam"
+                "BubbleBeam"
             ],
             [
                 21,
@@ -28550,14 +28550,14 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Psych Up",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -28660,13 +28660,13 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Rock Slide",
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk"
         ],
@@ -28675,7 +28675,7 @@ const dexDataRubySapphireEmerald =
             "Stomp",
             "Outrage",
             "Focus Energy",
-            "Ancient Power",
+            "AncientPower",
             "Dragon Dance",
             "Curse"
         ],
@@ -28784,13 +28784,13 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Rock Slide",
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk"
         ],
@@ -28919,17 +28919,17 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Thunder Wave",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Fire Punch",
@@ -29002,7 +29002,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 88,
-                "Ancient Power"
+                "AncientPower"
             ],
             [
                 99,
@@ -29052,7 +29052,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Dream Eater",
             "Thunder Wave",
@@ -29061,7 +29061,7 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -29133,7 +29133,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 88,
-                "Ancient Power"
+                "AncientPower"
             ],
             [
                 99,
@@ -29153,7 +29153,7 @@ const dexDataRubySapphireEmerald =
             "Giga Drain",
             "Safeguard",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Thunderbolt",
             "Thunder",
             "Earthquake",
@@ -29178,7 +29178,7 @@ const dexDataRubySapphireEmerald =
             "Rock Smash"
         ],
         "tutor_learnset": [
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Dream Eater",
             "Thunder Wave",
@@ -29186,7 +29186,7 @@ const dexDataRubySapphireEmerald =
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -29246,7 +29246,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 20,
-                "Ancient Power"
+                "AncientPower"
             ],
             [
                 30,
@@ -29274,7 +29274,7 @@ const dexDataRubySapphireEmerald =
             "Giga Drain",
             "Safeguard",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Return",
             "Psychic",
             "Shadow Ball",
@@ -29292,7 +29292,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Swords Dance",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Metronome",
             "Dream Eater",
@@ -29300,7 +29300,7 @@ const dexDataRubySapphireEmerald =
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
@@ -29394,7 +29394,7 @@ const dexDataRubySapphireEmerald =
             "Giga Drain",
             "Safeguard",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Iron Tail",
             "Return",
             "Dig",
@@ -29416,19 +29416,19 @@ const dexDataRubySapphireEmerald =
             "Swords Dance",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fury Cutter"
         ],
         "egg_moves": [
@@ -29436,7 +29436,7 @@ const dexDataRubySapphireEmerald =
             "Mud Sport",
             "Endeavor",
             "Leech Seed",
-            "Dragon Breath",
+            "DragonBreath",
             "Crush Claw"
         ],
         "weight": 5.0
@@ -29538,7 +29538,7 @@ const dexDataRubySapphireEmerald =
             "Giga Drain",
             "Safeguard",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Iron Tail",
             "Return",
             "Dig",
@@ -29560,19 +29560,19 @@ const dexDataRubySapphireEmerald =
             "Swords Dance",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fury Cutter"
         ],
         "egg_moves": [],
@@ -29678,7 +29678,7 @@ const dexDataRubySapphireEmerald =
             "Giga Drain",
             "Safeguard",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Iron Tail",
             "Earthquake",
             "Return",
@@ -29701,19 +29701,19 @@ const dexDataRubySapphireEmerald =
             "Swords Dance",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fury Cutter"
         ],
         "egg_moves": [],
@@ -29771,7 +29771,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 19,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 25,
@@ -29821,7 +29821,7 @@ const dexDataRubySapphireEmerald =
             "Swords Dance",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
@@ -29829,7 +29829,7 @@ const dexDataRubySapphireEmerald =
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -29840,7 +29840,7 @@ const dexDataRubySapphireEmerald =
             "Endure",
             "Swagger",
             "Rock Slide",
-            "Smelling Salt"
+            "SmellingSalt"
         ],
         "weight": 2.5
     },
@@ -29908,7 +29908,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 21,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 28,
@@ -29961,20 +29961,20 @@ const dexDataRubySapphireEmerald =
             "Swords Dance",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch",
             "Fury Cutter"
         ],
@@ -30049,7 +30049,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 21,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 28,
@@ -30109,20 +30109,20 @@ const dexDataRubySapphireEmerald =
             "Swords Dance",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch",
             "Fury Cutter"
         ],
@@ -30169,7 +30169,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 6,
-                "Mud Slap"
+                "Mud-Slap"
             ],
             [
                 10,
@@ -30235,14 +30235,14 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Rollout",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl"
@@ -30297,7 +30297,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 1,
-                "Mud Slap"
+                "Mud-Slap"
             ],
             [
                 1,
@@ -30305,7 +30305,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 6,
-                "Mud Slap"
+                "Mud-Slap"
             ],
             [
                 10,
@@ -30378,18 +30378,18 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -30438,7 +30438,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 1,
-                "Mud Slap"
+                "Mud-Slap"
             ],
             [
                 1,
@@ -30446,7 +30446,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 6,
-                "Mud Slap"
+                "Mud-Slap"
             ],
             [
                 10,
@@ -30523,18 +30523,18 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -30583,7 +30583,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 9,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 13,
@@ -30647,14 +30647,14 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Mimic",
             "Substitute",
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk"
         ],
@@ -30707,7 +30707,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 1,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 1,
@@ -30719,7 +30719,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 9,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 13,
@@ -30785,14 +30785,14 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Mimic",
             "Substitute",
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk"
         ],
@@ -30847,7 +30847,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 13,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 17,
@@ -30907,7 +30907,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Thunder Wave",
             "Substitute",
@@ -30915,7 +30915,7 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
@@ -30987,7 +30987,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 13,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 17,
@@ -31050,7 +31050,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Thunder Wave",
             "Substitute",
@@ -31058,7 +31058,7 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
@@ -31240,7 +31240,7 @@ const dexDataRubySapphireEmerald =
             "Giga Drain",
             "Safeguard",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Return",
             "Psychic",
             "Shadow Ball",
@@ -31254,7 +31254,7 @@ const dexDataRubySapphireEmerald =
             "Flash"
         ],
         "tutor_learnset": [
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
@@ -31390,7 +31390,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Return",
             "Psychic",
             "Shadow Ball",
@@ -31405,7 +31405,7 @@ const dexDataRubySapphireEmerald =
             "Flash"
         ],
         "tutor_learnset": [
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
@@ -31490,7 +31490,7 @@ const dexDataRubySapphireEmerald =
             "Rain Dance",
             "Giga Drain",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Return",
             "Double Team",
             "Facade",
@@ -31504,7 +31504,7 @@ const dexDataRubySapphireEmerald =
         "tutor_learnset": [
             "Swords Dance",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
@@ -31608,7 +31608,7 @@ const dexDataRubySapphireEmerald =
             "Rain Dance",
             "Giga Drain",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Return",
             "Brick Break",
             "Double Team",
@@ -31627,18 +31627,18 @@ const dexDataRubySapphireEmerald =
         "tutor_learnset": [
             "Swords Dance",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch"
         ],
         "egg_moves": [],
@@ -31707,7 +31707,7 @@ const dexDataRubySapphireEmerald =
             "Rain Dance",
             "Giga Drain",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Return",
             "Brick Break",
             "Double Team",
@@ -31728,21 +31728,21 @@ const dexDataRubySapphireEmerald =
             "Swords Dance",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Metronome",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch"
         ],
         "egg_moves": [],
@@ -31816,7 +31816,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Return",
             "Dig",
             "Shadow Ball",
@@ -31831,7 +31831,7 @@ const dexDataRubySapphireEmerald =
         "tutor_learnset": [
             "Swords Dance",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Explosion",
             "Substitute",
@@ -31933,7 +31933,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Return",
             "Dig",
             "Shadow Ball",
@@ -31955,7 +31955,7 @@ const dexDataRubySapphireEmerald =
             "Swords Dance",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Explosion",
             "Substitute",
@@ -31963,7 +31963,7 @@ const dexDataRubySapphireEmerald =
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
@@ -32030,7 +32030,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Return",
             "Dig",
             "Shadow Ball",
@@ -32053,7 +32053,7 @@ const dexDataRubySapphireEmerald =
             "Swords Dance",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Explosion",
             "Substitute",
@@ -32061,7 +32061,7 @@ const dexDataRubySapphireEmerald =
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
@@ -32115,7 +32115,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 9,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 14,
@@ -32131,7 +32131,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 31,
-                "Mud Slap"
+                "Mud-Slap"
             ],
             [
                 38,
@@ -32149,7 +32149,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Return",
             "Dig",
             "Shadow Ball",
@@ -32163,12 +32163,12 @@ const dexDataRubySapphireEmerald =
             "Flash"
         ],
         "tutor_learnset": [
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Fury Cutter"
@@ -32225,7 +32225,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 1,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 5,
@@ -32233,7 +32233,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 9,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 14,
@@ -32280,7 +32280,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Return",
             "Dig",
             "Shadow Ball",
@@ -32297,12 +32297,12 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Swords Dance",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
@@ -32355,7 +32355,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 9,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 14,
@@ -32390,7 +32390,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Return",
             "Dig",
             "Shadow Ball",
@@ -32405,13 +32405,13 @@ const dexDataRubySapphireEmerald =
             "Flash"
         ],
         "tutor_learnset": [
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Dream Eater",
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Fury Cutter"
@@ -32505,13 +32505,13 @@ const dexDataRubySapphireEmerald =
             "Fly"
         ],
         "tutor_learnset": [
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Mimic",
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -32621,13 +32621,13 @@ const dexDataRubySapphireEmerald =
             "Fly"
         ],
         "tutor_learnset": [
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Mimic",
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -32691,7 +32691,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 28,
-                "Poison Powder"
+                "PoisonPowder"
             ],
             [
                 36,
@@ -32715,7 +32715,7 @@ const dexDataRubySapphireEmerald =
             "Giga Drain",
             "Safeguard",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Return",
             "Double Team",
             "Sludge Bomb",
@@ -32729,7 +32729,7 @@ const dexDataRubySapphireEmerald =
         "tutor_learnset": [
             "Swords Dance",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
@@ -32830,7 +32830,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 54,
-                "Dynamic Punch"
+                "DynamicPunch"
             ]
         ],
         "tm_hm_learnset": [
@@ -32845,7 +32845,7 @@ const dexDataRubySapphireEmerald =
             "Giga Drain",
             "Safeguard",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Iron Tail",
             "Return",
             "Brick Break",
@@ -32866,18 +32866,18 @@ const dexDataRubySapphireEmerald =
             "Swords Dance",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fury Cutter"
         ],
         "egg_moves": [],
@@ -32947,7 +32947,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 45,
-                "Double Edge"
+                "Double-Edge"
             ],
             [
                 49,
@@ -32992,7 +32992,7 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
@@ -33000,19 +33000,19 @@ const dexDataRubySapphireEmerald =
             "Dream Eater",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Psych Up",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Swift",
             "Defense Curl",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch"
         ],
         "egg_moves": [
@@ -33023,7 +33023,7 @@ const dexDataRubySapphireEmerald =
             "Baton Pass",
             "Wish",
             "Trick",
-            "Smelling Salt"
+            "SmellingSalt"
         ],
         "weight": 5.0
     },
@@ -33113,13 +33113,13 @@ const dexDataRubySapphireEmerald =
             "Fly"
         ],
         "tutor_learnset": [
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -33241,13 +33241,13 @@ const dexDataRubySapphireEmerald =
             "Surf"
         ],
         "tutor_learnset": [
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -33303,7 +33303,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 25,
-                "Bubble Beam"
+                "BubbleBeam"
             ],
             [
                 31,
@@ -33329,7 +33329,7 @@ const dexDataRubySapphireEmerald =
             "Rain Dance",
             "Giga Drain",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Return",
             "Shadow Ball",
             "Double Team",
@@ -33341,7 +33341,7 @@ const dexDataRubySapphireEmerald =
             "Flash"
         ],
         "tutor_learnset": [
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Psych Up",
@@ -33452,7 +33452,7 @@ const dexDataRubySapphireEmerald =
             "Rain Dance",
             "Giga Drain",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Return",
             "Shadow Ball",
             "Double Team",
@@ -33465,7 +33465,7 @@ const dexDataRubySapphireEmerald =
             "Flash"
         ],
         "tutor_learnset": [
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Psych Up",
@@ -33586,7 +33586,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Rollout",
@@ -33598,7 +33598,7 @@ const dexDataRubySapphireEmerald =
             "Defense Curl"
         ],
         "egg_moves": [
-            "Double Edge",
+            "Double-Edge",
             "Thrash",
             "Swagger",
             "Snore",
@@ -33729,7 +33729,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Rollout",
@@ -33819,7 +33819,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 39,
-                "Double Edge"
+                "Double-Edge"
             ]
         ],
         "tm_hm_learnset": [
@@ -33834,7 +33834,7 @@ const dexDataRubySapphireEmerald =
             "Rain Dance",
             "Safeguard",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Iron Tail",
             "Thunderbolt",
             "Thunder",
@@ -33851,7 +33851,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Dream Eater",
             "Thunder Wave",
@@ -33861,7 +33861,7 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
@@ -33939,7 +33939,7 @@ const dexDataRubySapphireEmerald =
             "Rain Dance",
             "Safeguard",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Iron Tail",
             "Thunderbolt",
             "Thunder",
@@ -33958,7 +33958,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Dream Eater",
             "Thunder Wave",
@@ -33968,7 +33968,7 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
@@ -34057,7 +34057,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 49,
-                "Ancient Power"
+                "AncientPower"
             ]
         ],
         "tm_hm_learnset": [
@@ -34071,7 +34071,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Rain Dance",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Iron Tail",
             "Thunderbolt",
             "Thunder",
@@ -34101,7 +34101,7 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
@@ -34109,19 +34109,19 @@ const dexDataRubySapphireEmerald =
             "Thunder Wave",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Psych Up",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Swift",
             "Defense Curl",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch",
             "Fury Cutter"
         ],
@@ -34176,7 +34176,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 7,
-                "Mud Slap"
+                "Mud-Slap"
             ],
             [
                 11,
@@ -34188,11 +34188,11 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 19,
-                "Self Destruct"
+                "Selfdestruct"
             ],
             [
                 25,
-                "Ancient Power"
+                "AncientPower"
             ],
             [
                 31,
@@ -34216,7 +34216,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Rain Dance",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Earthquake",
             "Return",
             "Dig",
@@ -34233,7 +34233,7 @@ const dexDataRubySapphireEmerald =
             "Flash"
         ],
         "tutor_learnset": [
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Dream Eater",
             "Explosion",
@@ -34242,7 +34242,7 @@ const dexDataRubySapphireEmerald =
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk"
         ],
@@ -34305,7 +34305,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 7,
-                "Mud Slap"
+                "Mud-Slap"
             ],
             [
                 11,
@@ -34317,11 +34317,11 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 19,
-                "Self Destruct"
+                "Selfdestruct"
             ],
             [
                 25,
-                "Ancient Power"
+                "AncientPower"
             ],
             [
                 31,
@@ -34350,7 +34350,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Rain Dance",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Earthquake",
             "Return",
             "Dig",
@@ -34369,7 +34369,7 @@ const dexDataRubySapphireEmerald =
             "Rock Smash"
         ],
         "tutor_learnset": [
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Dream Eater",
             "Explosion",
@@ -34378,7 +34378,7 @@ const dexDataRubySapphireEmerald =
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk"
         ],
@@ -34482,22 +34482,22 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Thunder Wave",
             "Explosion",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Defense Curl",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch"
         ],
         "egg_moves": [
@@ -34551,7 +34551,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 14,
-                "Smokescreen"
+                "SmokeScreen"
             ],
             [
                 17,
@@ -34608,14 +34608,14 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Explosion",
             "Rock Slide",
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk"
         ],
@@ -34745,22 +34745,22 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Metronome",
             "Dream Eater",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch",
             "Fury Cutter"
         ],
@@ -34803,7 +34803,7 @@ const dexDataRubySapphireEmerald =
         "levelup_moveset": [
             [
                 1,
-                "Mud Slap"
+                "Mud-Slap"
             ],
             [
                 6,
@@ -34870,13 +34870,13 @@ const dexDataRubySapphireEmerald =
             "Dive"
         ],
         "tutor_learnset": [
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk"
         ],
@@ -34923,7 +34923,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 1,
-                "Mud Slap"
+                "Mud-Slap"
             ],
             [
                 1,
@@ -35001,14 +35001,14 @@ const dexDataRubySapphireEmerald =
             "Dive"
         ],
         "tutor_learnset": [
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Rock Slide",
             "Substitute",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk"
         ],
@@ -35104,7 +35104,7 @@ const dexDataRubySapphireEmerald =
             "Dive"
         ],
         "tutor_learnset": [
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Psych Up",
@@ -35172,7 +35172,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 20,
-                "Bubble Beam"
+                "BubbleBeam"
             ],
             [
                 23,
@@ -35230,14 +35230,14 @@ const dexDataRubySapphireEmerald =
         "tutor_learnset": [
             "Swords Dance",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Mimic",
             "Substitute",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Fury Cutter"
@@ -35246,7 +35246,7 @@ const dexDataRubySapphireEmerald =
             "Mud Sport",
             "Endeavor",
             "Body Slam",
-            "Ancient Power"
+            "AncientPower"
         ],
         "weight": 11.5
     },
@@ -35311,7 +35311,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 20,
-                "Bubble Beam"
+                "BubbleBeam"
             ],
             [
                 23,
@@ -35371,14 +35371,14 @@ const dexDataRubySapphireEmerald =
         "tutor_learnset": [
             "Swords Dance",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Mimic",
             "Substitute",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
@@ -35451,7 +35451,7 @@ const dexDataRubySapphireEmerald =
             "Dive"
         ],
         "tutor_learnset": [
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
@@ -35463,7 +35463,7 @@ const dexDataRubySapphireEmerald =
         ],
         "egg_moves": [
             "Mirror Coat",
-            "Dragon Breath",
+            "DragonBreath",
             "Mud Sport",
             "Hypnosis",
             "Light Screen",
@@ -35571,14 +35571,14 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Psych Up",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -35681,13 +35681,13 @@ const dexDataRubySapphireEmerald =
             "Dive"
         ],
         "tutor_learnset": [
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
@@ -35695,7 +35695,7 @@ const dexDataRubySapphireEmerald =
         ],
         "egg_moves": [
             "Hydro Pump",
-            "Double Edge",
+            "Double-Edge",
             "Thrash"
         ],
         "weight": 20.8
@@ -35817,13 +35817,13 @@ const dexDataRubySapphireEmerald =
             "Dive"
         ],
         "tutor_learnset": [
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
@@ -35869,7 +35869,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 9,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 17,
@@ -35904,7 +35904,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Earthquake",
             "Return",
             "Dig",
@@ -35920,13 +35920,13 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Rock Slide",
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk"
         ],
@@ -35974,7 +35974,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 1,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 1,
@@ -35986,7 +35986,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 9,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 17,
@@ -36002,7 +36002,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 35,
-                "Dragon Breath"
+                "DragonBreath"
             ],
             [
                 41,
@@ -36025,7 +36025,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Earthquake",
             "Return",
             "Dig",
@@ -36043,13 +36043,13 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Rock Slide",
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -36094,7 +36094,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 1,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 1,
@@ -36106,7 +36106,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 9,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 17,
@@ -36122,7 +36122,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 35,
-                "Dragon Breath"
+                "DragonBreath"
             ],
             [
                 41,
@@ -36146,7 +36146,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Iron Tail",
             "Earthquake",
             "Return",
@@ -36167,13 +36167,13 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Rock Slide",
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
@@ -36224,7 +36224,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 4,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 10,
@@ -36248,7 +36248,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 31,
-                "Smelling Salt"
+                "SmellingSalt"
             ],
             [
                 37,
@@ -36294,21 +36294,21 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Metronome",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch"
         ],
         "egg_moves": [
@@ -36318,7 +36318,7 @@ const dexDataRubySapphireEmerald =
             "Helping Hand",
             "Cross Chop",
             "Revenge",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Counter"
         ],
         "weight": 86.4
@@ -36364,7 +36364,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 1,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 1,
@@ -36372,7 +36372,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 4,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 10,
@@ -36396,7 +36396,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 33,
-                "Smelling Salt"
+                "SmellingSalt"
             ],
             [
                 40,
@@ -36443,21 +36443,21 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Metronome",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch"
         ],
         "egg_moves": [],
@@ -36562,13 +36562,13 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Thunder Wave",
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -36694,13 +36694,13 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Thunder Wave",
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -36776,7 +36776,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 49,
-                "Double Edge"
+                "Double-Edge"
             ]
         ],
         "tm_hm_learnset": [
@@ -36803,14 +36803,14 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Rock Slide",
             "Substitute",
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl"
@@ -36934,7 +36934,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Explosion",
             "Rock Slide",
@@ -36942,7 +36942,7 @@ const dexDataRubySapphireEmerald =
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl"
@@ -37056,7 +37056,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Rock Slide",
             "Substitute",
@@ -37064,7 +37064,7 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl"
@@ -37192,7 +37192,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Rock Slide",
             "Substitute",
@@ -37200,7 +37200,7 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl"
@@ -37320,7 +37320,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Rock Slide",
             "Substitute",
@@ -37328,7 +37328,7 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl"
@@ -37388,7 +37388,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 17,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 21,
@@ -37428,7 +37428,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Return",
             "Double Team",
             "Sandstorm",
@@ -37443,25 +37443,25 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Swords Dance",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fury Cutter"
         ],
         "egg_moves": [
-            "Grass Whistle",
+            "GrassWhistle",
             "Acid",
             "Teeter Dance",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Counter"
         ],
         "weight": 51.3
@@ -37526,7 +37526,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 17,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 21,
@@ -37567,7 +37567,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Return",
             "Double Team",
             "Sandstorm",
@@ -37584,18 +37584,18 @@ const dexDataRubySapphireEmerald =
             "Swords Dance",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fury Cutter"
         ],
         "egg_moves": [],
@@ -37699,7 +37699,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
@@ -37828,7 +37828,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Explosion",
             "Substitute",
@@ -37941,7 +37941,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Dream Eater",
             "Explosion",
@@ -38023,7 +38023,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 43,
-                "Solarbeam"
+                "SolarBeam"
             ],
             [
                 49,
@@ -38040,7 +38040,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Safeguard",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Earthquake",
             "Return",
             "Psychic",
@@ -38060,7 +38060,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Dream Eater",
             "Explosion",
@@ -38156,14 +38156,14 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Rollout",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
@@ -38283,7 +38283,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Dream Eater",
             "Substitute",
@@ -38424,23 +38424,23 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Dream Eater",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Psych Up",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Swift",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch"
         ],
         "egg_moves": [],
@@ -38544,23 +38544,23 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Metronome",
             "Thunder Wave",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
             "Defense Curl",
-            "Thunder Punch"
+            "ThunderPunch"
         ],
         "egg_moves": [
             "Substitute",
@@ -38666,23 +38666,23 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Metronome",
             "Thunder Wave",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
             "Defense Curl",
-            "Thunder Punch"
+            "ThunderPunch"
         ],
         "egg_moves": [
             "Substitute",
@@ -38781,7 +38781,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Rain Dance",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Return",
             "Brick Break",
             "Double Team",
@@ -38803,29 +38803,29 @@ const dexDataRubySapphireEmerald =
             "Swords Dance",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Psych Up",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
-            "Thunder Punch"
+            "ThunderPunch"
         ],
         "egg_moves": [
             "Swords Dance",
             "False Swipe",
             "Poison Fang",
             "Psych Up",
-            "Ancient Power",
+            "AncientPower",
             "Tickle"
         ],
         "weight": 11.5
@@ -38935,33 +38935,33 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Metronome",
             "Dream Eater",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Swift",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch"
         ],
         "egg_moves": [
             "Fire Punch",
-            "Thunder Punch",
+            "ThunderPunch",
             "Ice Punch",
             "Foresight",
             "Fake Out",
             "Baton Pass",
-            "Dynamic Punch"
+            "DynamicPunch"
         ],
         "weight": 11.2
     },
@@ -39001,7 +39001,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 1,
-                "Thunder Punch"
+                "ThunderPunch"
             ],
             [
                 1,
@@ -39095,7 +39095,7 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
@@ -39103,16 +39103,16 @@ const dexDataRubySapphireEmerald =
             "Dream Eater",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Swift",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch"
         ],
         "egg_moves": [],
@@ -39202,7 +39202,7 @@ const dexDataRubySapphireEmerald =
             "Rain Dance",
             "Safeguard",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Return",
             "Double Team",
             "Aerial Ace",
@@ -39216,14 +39216,14 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Dream Eater",
             "Substitute",
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -39308,7 +39308,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 35,
-                "Dragon Breath"
+                "DragonBreath"
             ],
             [
                 40,
@@ -39339,7 +39339,7 @@ const dexDataRubySapphireEmerald =
             "Rain Dance",
             "Safeguard",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Iron Tail",
             "Earthquake",
             "Return",
@@ -39358,14 +39358,14 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Dream Eater",
             "Substitute",
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -39539,7 +39539,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Dream Eater",
             "Substitute",
@@ -39682,7 +39682,7 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
@@ -39690,16 +39690,16 @@ const dexDataRubySapphireEmerald =
             "Dream Eater",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Psych Up",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch"
         ],
         "egg_moves": [],
@@ -39766,7 +39766,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 29,
-                "Grass Whistle"
+                "GrassWhistle"
             ],
             [
                 33,
@@ -39805,7 +39805,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Return",
             "Shadow Ball",
             "Double Team",
@@ -39820,13 +39820,13 @@ const dexDataRubySapphireEmerald =
         "tutor_learnset": [
             "Swords Dance",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
@@ -39919,7 +39919,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Rain Dance",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Thunderbolt",
             "Thunder",
             "Return",
@@ -39942,21 +39942,21 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch",
             "Fury Cutter"
         ],
@@ -40064,7 +40064,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Rain Dance",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Thunderbolt",
             "Thunder",
             "Earthquake",
@@ -40088,21 +40088,21 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch",
             "Fury Cutter"
         ],
@@ -40203,7 +40203,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Rain Dance",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Thunderbolt",
             "Thunder",
             "Earthquake",
@@ -40227,21 +40227,21 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch",
             "Fury Cutter"
         ],
@@ -40335,7 +40335,7 @@ const dexDataRubySapphireEmerald =
             "Rain Dance",
             "Giga Drain",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Return",
             "Shadow Ball",
             "Double Team",
@@ -40351,22 +40351,22 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Mimic",
             "Dream Eater",
             "Explosion",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Defense Curl",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch"
         ],
         "egg_moves": [
@@ -40481,7 +40481,7 @@ const dexDataRubySapphireEmerald =
             "Rain Dance",
             "Giga Drain",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Return",
             "Shadow Ball",
             "Double Team",
@@ -40497,22 +40497,22 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Mimic",
             "Dream Eater",
             "Explosion",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Defense Curl",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch"
         ],
         "egg_moves": [],
@@ -40586,7 +40586,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 41,
-                "Solarbeam"
+                "SolarBeam"
             ],
             [
                 47,
@@ -40604,7 +40604,7 @@ const dexDataRubySapphireEmerald =
             "Giga Drain",
             "Safeguard",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Earthquake",
             "Return",
             "Double Team",
@@ -40623,12 +40623,12 @@ const dexDataRubySapphireEmerald =
         "tutor_learnset": [
             "Swords Dance",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Fury Cutter"
@@ -40728,7 +40728,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Rain Dance",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Return",
             "Shadow Ball",
             "Double Team",
@@ -40744,23 +40744,23 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Psych Up",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Defense Curl",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch"
         ],
         "egg_moves": [
@@ -40768,7 +40768,7 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Swagger",
             "Extrasensory",
-            "Smelling Salt"
+            "SmellingSalt"
         ],
         "weight": 16.3
     },
@@ -40871,7 +40871,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Rain Dance",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Earthquake",
             "Return",
             "Shadow Ball",
@@ -40893,24 +40893,24 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Psych Up",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Defense Curl",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch"
         ],
         "egg_moves": [],
@@ -41020,7 +41020,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Rain Dance",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Earthquake",
             "Return",
             "Shadow Ball",
@@ -41042,24 +41042,24 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Psych Up",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Defense Curl",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch"
         ],
         "egg_moves": [],
@@ -41134,7 +41134,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
@@ -41241,13 +41241,13 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -41344,13 +41344,13 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -41473,7 +41473,7 @@ const dexDataRubySapphireEmerald =
         "tutor_learnset": [
             "Swords Dance",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Mimic",
             "Dream Eater",
@@ -41484,7 +41484,7 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
@@ -41493,7 +41493,7 @@ const dexDataRubySapphireEmerald =
         "egg_moves": [
             "Baton Pass",
             "Faint Attack",
-            "Double Edge",
+            "Double-Edge",
             "Magic Coat",
             "Curse",
             "Substitute"
@@ -41599,7 +41599,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Dream Eater",
             "Thunder Wave",
@@ -41732,7 +41732,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Metronome",
             "Dream Eater",
@@ -41742,7 +41742,7 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk"
         ],
@@ -41847,12 +41847,12 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
@@ -41955,7 +41955,7 @@ const dexDataRubySapphireEmerald =
             "Rain Dance",
             "Giga Drain",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Iron Tail",
             "Thunderbolt",
             "Thunder",
@@ -41981,25 +41981,25 @@ const dexDataRubySapphireEmerald =
             "Swords Dance",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Thunder Wave",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Swift",
             "Defense Curl",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch",
             "Fury Cutter"
         ],
@@ -42074,7 +42074,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 43,
-                "Ancient Power"
+                "AncientPower"
             ],
             [
                 50,
@@ -42082,7 +42082,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 57,
-                "Double Edge"
+                "Double-Edge"
             ],
             [
                 64,
@@ -42118,7 +42118,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Rock Slide",
             "Substitute",
@@ -42126,7 +42126,7 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk"
         ],
@@ -42181,7 +42181,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 7,
-                "Mud Slap"
+                "Mud-Slap"
             ],
             [
                 10,
@@ -42217,7 +42217,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 44,
-                "Double Edge"
+                "Double-Edge"
             ]
         ],
         "tm_hm_learnset": [
@@ -42248,14 +42248,14 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Rock Slide",
             "Substitute",
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl",
@@ -42265,7 +42265,7 @@ const dexDataRubySapphireEmerald =
             "Endeavor",
             "Body Slam",
             "Stomp",
-            "Smelling Salt"
+            "SmellingSalt"
         ],
         "weight": 60.0
     },
@@ -42310,7 +42310,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 1,
-                "Mud Slap"
+                "Mud-Slap"
             ],
             [
                 1,
@@ -42322,7 +42322,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 7,
-                "Mud Slap"
+                "Mud-Slap"
             ],
             [
                 10,
@@ -42358,7 +42358,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 53,
-                "Double Edge"
+                "Double-Edge"
             ]
         ],
         "tm_hm_learnset": [
@@ -42389,14 +42389,14 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Rock Slide",
             "Substitute",
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl",
@@ -42446,7 +42446,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 1,
-                "Mud Slap"
+                "Mud-Slap"
             ],
             [
                 1,
@@ -42458,7 +42458,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 7,
-                "Mud Slap"
+                "Mud-Slap"
             ],
             [
                 10,
@@ -42494,7 +42494,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 63,
-                "Double Edge"
+                "Double-Edge"
             ]
         ],
         "tm_hm_learnset": [
@@ -42512,7 +42512,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Rain Dance",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Iron Tail",
             "Thunderbolt",
             "Thunder",
@@ -42540,24 +42540,24 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Thunder Wave",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Defense Curl",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch",
             "Fury Cutter"
         ],
@@ -42638,7 +42638,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Rain Dance",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Thunderbolt",
             "Thunder",
             "Return",
@@ -42657,7 +42657,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Thunder Wave",
             "Substitute",
@@ -42745,7 +42745,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 37,
-                "Double Edge"
+                "Double-Edge"
             ]
         ],
         "tm_hm_learnset": [
@@ -42759,7 +42759,7 @@ const dexDataRubySapphireEmerald =
             "Rain Dance",
             "Giga Drain",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Thunderbolt",
             "Thunder",
             "Return",
@@ -42779,23 +42779,23 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Metronome",
             "Thunder Wave",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Swift",
-            "Thunder Punch"
+            "ThunderPunch"
         ],
         "egg_moves": [
             "Baton Pass",
@@ -42886,7 +42886,7 @@ const dexDataRubySapphireEmerald =
             "Rain Dance",
             "Giga Drain",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Thunderbolt",
             "Thunder",
             "Return",
@@ -42906,23 +42906,23 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Metronome",
             "Thunder Wave",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Swift",
-            "Thunder Punch"
+            "ThunderPunch"
         ],
         "egg_moves": [
             "Baton Pass",
@@ -42987,7 +42987,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 43,
-                "Ancient Power"
+                "AncientPower"
             ],
             [
                 50,
@@ -43010,7 +43010,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Return",
             "Double Team",
             "Sludge Bomb",
@@ -43022,14 +43022,14 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Rock Slide",
             "Substitute",
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk"
         ],
@@ -43109,7 +43109,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 48,
-                "Ancient Power"
+                "AncientPower"
             ],
             [
                 60,
@@ -43133,7 +43133,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Earthquake",
             "Return",
             "Double Team",
@@ -43149,14 +43149,14 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Rock Slide",
             "Substitute",
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk"
         ],
@@ -43219,7 +43219,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 37,
-                "Ancient Power"
+                "AncientPower"
             ],
             [
                 43,
@@ -43258,13 +43258,13 @@ const dexDataRubySapphireEmerald =
         "tutor_learnset": [
             "Swords Dance",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Rock Slide",
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Fury Cutter"
@@ -43345,7 +43345,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 37,
-                "Ancient Power"
+                "AncientPower"
             ],
             [
                 46,
@@ -43388,14 +43388,14 @@ const dexDataRubySapphireEmerald =
         "tutor_learnset": [
             "Swords Dance",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Seismic Toss",
             "Mimic",
             "Rock Slide",
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Fury Cutter"
@@ -43505,7 +43505,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Dream Eater",
             "Thunder Wave",
@@ -43514,12 +43514,12 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Defense Curl",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch"
         ],
         "egg_moves": [
@@ -43645,7 +43645,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Dream Eater",
             "Thunder Wave",
@@ -43654,12 +43654,12 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Defense Curl",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch"
         ],
         "egg_moves": [],
@@ -43780,7 +43780,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Dream Eater",
             "Thunder Wave",
@@ -43789,12 +43789,12 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Defense Curl",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch"
         ],
         "egg_moves": [],
@@ -43856,7 +43856,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 33,
-                "Dragon Breath"
+                "DragonBreath"
             ],
             [
                 37,
@@ -43872,7 +43872,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 53,
-                "Double Edge"
+                "Double-Edge"
             ]
         ],
         "tm_hm_learnset": [
@@ -43901,13 +43901,13 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Rock Slide",
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Fury Cutter"
@@ -43993,7 +43993,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 38,
-                "Dragon Breath"
+                "DragonBreath"
             ],
             [
                 47,
@@ -44009,7 +44009,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 78,
-                "Double Edge"
+                "Double-Edge"
             ]
         ],
         "tm_hm_learnset": [
@@ -44038,14 +44038,14 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Rock Slide",
             "Substitute",
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl",
@@ -44126,7 +44126,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 38,
-                "Dragon Breath"
+                "DragonBreath"
             ],
             [
                 47,
@@ -44146,7 +44146,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 93,
-                "Double Edge"
+                "Double-Edge"
             ]
         ],
         "tm_hm_learnset": [
@@ -44180,14 +44180,14 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Rock Slide",
             "Substitute",
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
@@ -44338,24 +44338,24 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Explosion",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Psych Up",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Swift",
             "Defense Curl",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fury Cutter"
         ],
         "egg_moves": [],
@@ -44474,24 +44474,24 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Explosion",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Psych Up",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Swift",
             "Defense Curl",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fury Cutter"
         ],
         "egg_moves": [],
@@ -44545,7 +44545,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 33,
-                "Ancient Power"
+                "AncientPower"
             ],
             [
                 41,
@@ -44593,7 +44593,7 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
@@ -44601,17 +44601,17 @@ const dexDataRubySapphireEmerald =
             "Explosion",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Defense Curl",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch"
         ],
         "egg_moves": [],
@@ -44665,7 +44665,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 33,
-                "Ancient Power"
+                "AncientPower"
             ],
             [
                 41,
@@ -44713,7 +44713,7 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
@@ -44721,18 +44721,18 @@ const dexDataRubySapphireEmerald =
             "Explosion",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Psych Up",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Defense Curl",
-            "Thunder Punch"
+            "ThunderPunch"
         ],
         "egg_moves": [],
         "weight": 175.0
@@ -44785,7 +44785,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 33,
-                "Ancient Power"
+                "AncientPower"
             ],
             [
                 41,
@@ -44838,7 +44838,7 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
@@ -44846,17 +44846,17 @@ const dexDataRubySapphireEmerald =
             "Explosion",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Defense Curl",
-            "Thunder Punch"
+            "ThunderPunch"
         ],
         "egg_moves": [],
         "weight": 205.0
@@ -44901,7 +44901,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 15,
-                "Ancient Power"
+                "AncientPower"
             ],
             [
                 20,
@@ -44929,7 +44929,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 65,
-                "Double Edge"
+                "Double-Edge"
             ],
             [
                 75,
@@ -44969,7 +44969,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Thunder Wave",
             "Rock Slide",
@@ -44978,7 +44978,7 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
@@ -45027,7 +45027,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 15,
-                "Ancient Power"
+                "AncientPower"
             ],
             [
                 20,
@@ -45055,7 +45055,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 65,
-                "Solarbeam"
+                "SolarBeam"
             ],
             [
                 75,
@@ -45073,7 +45073,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Safeguard",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Iron Tail",
             "Thunderbolt",
             "Thunder",
@@ -45101,24 +45101,24 @@ const dexDataRubySapphireEmerald =
             "Swords Dance",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
             "Thunder Wave",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
             "Defense Curl",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch",
             "Fury Cutter"
         ],
@@ -45165,7 +45165,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 15,
-                "Ancient Power"
+                "AncientPower"
             ],
             [
                 20,
@@ -45214,7 +45214,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Rain Dance",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Iron Tail",
             "Thunderbolt",
             "Thunder",
@@ -45240,7 +45240,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Thunder Wave",
             "Rock Slide",
@@ -45249,7 +45249,7 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
@@ -45306,7 +45306,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 20,
-                "Dragon Breath"
+                "DragonBreath"
             ],
             [
                 25,
@@ -45348,7 +45348,7 @@ const dexDataRubySapphireEmerald =
             "Rain Dance",
             "Safeguard",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Thunderbolt",
             "Thunder",
             "Earthquake",
@@ -45374,7 +45374,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Dream Eater",
             "Thunder Wave",
@@ -45383,7 +45383,7 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
@@ -45440,7 +45440,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 20,
-                "Dragon Breath"
+                "DragonBreath"
             ],
             [
                 25,
@@ -45482,7 +45482,7 @@ const dexDataRubySapphireEmerald =
             "Rain Dance",
             "Safeguard",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Thunderbolt",
             "Thunder",
             "Earthquake",
@@ -45508,7 +45508,7 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Dream Eater",
             "Thunder Wave",
@@ -45517,7 +45517,7 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
@@ -45590,7 +45590,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 35,
-                "Double Edge"
+                "Double-Edge"
             ],
             [
                 40,
@@ -45635,24 +45635,24 @@ const dexDataRubySapphireEmerald =
         ],
         "tutor_learnset": [
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Metronome",
             "Dream Eater",
             "Thunder Wave",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Psych Up",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Swift",
             "Defense Curl",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch"
         ],
         "egg_moves": [],
@@ -45752,7 +45752,7 @@ const dexDataRubySapphireEmerald =
             "Rain Dance",
             "Safeguard",
             "Frustration",
-            "Solarbeam",
+            "SolarBeam",
             "Thunderbolt",
             "Thunder",
             "Return",
@@ -45779,7 +45779,7 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Mega Kick",
             "Body Slam",
-            "Double Edge",
+            "Double-Edge",
             "Counter",
             "Seismic Toss",
             "Mimic",
@@ -45787,17 +45787,17 @@ const dexDataRubySapphireEmerald =
             "Thunder Wave",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Psych Up",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Swift",
-            "Thunder Punch",
+            "ThunderPunch",
             "Fire Punch"
         ],
         "egg_moves": [],
@@ -45867,7 +45867,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 33,
-                "Double Edge"
+                "Double-Edge"
             ],
             [
                 38,
@@ -45909,7 +45909,7 @@ const dexDataRubySapphireEmerald =
             "Flash"
         ],
         "tutor_learnset": [
-            "Double Edge",
+            "Double-Edge",
             "Mimic",
             "Dream Eater",
             "Substitute",

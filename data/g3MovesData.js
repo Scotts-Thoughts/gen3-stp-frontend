@@ -233,9 +233,9 @@ const g3MoveData = {
     Accuracy: "100",
     Description: "Launches shock waves that always inflict 40 HP damage."
   },
-"Dragonbreath" :
+"DragonBreath" :
   {
-    Move: "Dragonbreath",
+    Move: "DragonBreath",
     Type: "Dragon",
     PP: "20",
     Power: "60",
@@ -746,9 +746,9 @@ const g3MoveData = {
     Accuracy: "100",
     Description: "A corkscrewing attack with the beak acting as a drill."
   },
-"Featherdance" :
+"FeatherDance" :
   {
-    Move: "Featherdance",
+    Move: "FeatherDance",
     Type: "Flying",
     PP: "15",
     Power: "-",
@@ -953,9 +953,9 @@ const g3MoveData = {
     Accuracy: "100",
     Description: "An attack that steals half the damage inflicted."
   },
-"Grasswhistle" :
+"GrassWhistle" :
   {
-    Move: "Grasswhistle",
+    Move: "GrassWhistle",
     Type: "Grass",
     PP: "15",
     Power: "-",
@@ -1169,7 +1169,7 @@ const g3MoveData = {
     Accuracy: "100",
     Description: "Covers the user in mud to raise electrical resistance."
   },
-"Mud-slap" :
+"Mud-Slap" :
   {
     Move: "Mud-Slap",
     Type: "Ground",
@@ -1511,18 +1511,18 @@ const g3MoveData = {
     Accuracy: "-",
     Description: "Creates illusory copies to raise evasiveness."
   },
-"Double Edge" :
+"Double-Edge" :
   {
-    Move: "Double Edge",
+    Move: "Double-Edge",
     Type: "Normal",
     PP: "15",
     Power: "120",
     Accuracy: "100",
     Description: "A life-risking tackle that also hurts the user."
   },
-"Doubleslap" :
+"DoubleSlap" :
   {
-    Move: "Doubleslap",
+    Move: "DoubleSlap",
     Type: "Normal",
     PP: "10",
     Power: "15",
@@ -2231,18 +2231,18 @@ const g3MoveData = {
     Accuracy: "-",
     Description: "Uses an own move randomly while asleep."
   },
-"Smellingsalt" :
+"SmellingSalt" :
   {
-    Move: "Smellingsalt",
+    Move: "SmellingSalt",
     Type: "Normal",
     PP: "10",
     Power: "60",
     Accuracy: "100",
     Description: "Powerful against paralyzed foes, but also heals them."
   },
-"Smokescreen" :
+"SmokeScreen" :
   {
-    Move: "Smokescreen",
+    Move: "SmokeScreen",
     Type: "Normal",
     PP: "20",
     Power: "-",
@@ -2267,9 +2267,9 @@ const g3MoveData = {
     Accuracy: "100",
     Description: "Recovers up to half the user's maximum HP."
   },
-"Sonicboom" :
+"SonicBoom" :
   {
-    Move: "Sonicboom",
+    Move: "SonicBoom",
     Type: "Normal",
     PP: "20",
     Power: "-",
@@ -2915,9 +2915,9 @@ const g3MoveData = {
     Accuracy: "100",
     Description: "Tricks the foe into trading held items."
   },
-"Ancient Power" :
+"AncientPower" :
   {
-    Move: "Ancient Power",
+    Move: "AncientPower",
     Type: "Rock",
     PP: "5",
     Power: "60",

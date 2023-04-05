@@ -5,7 +5,7 @@ const gen3abilities =
         "Speed Boost":	"The Pokémon’s Speed stat is gradually boosted.",
         "Battle Armor":	"The Pokémon is protected against critical hits.",
         "Sturdy":	    "The Pokémon is protected against 1-hit KO attacks.",
-        "Damp":	        "Prevents combatants from self destructing.",
+        "Damp":	        "Prevents combatants from Selfdestructing.",
         "Limber":	    "The Pokémon is protected from paralysis.",
         "Sand Veil":	"Boosts the Pokémon’s evasion in a sandstorm.",
         "Static":	    "Contact with the Pokémon may cause paralysis.",
