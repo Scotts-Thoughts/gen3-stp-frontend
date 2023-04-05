@@ -60,7 +60,7 @@ const gen1moves = [
     Description: "The strongest of all ELECTRIC-type attacks. Has a one-in-ten chance of paralyzing the target."
   },
   {
-    Move: "Thunder Punch",
+    Move: "ThunderPunch",
     Type: "Electric",
     Power: 75,
     Accuracy: 100,
@@ -1010,7 +1010,7 @@ const gen1moves = [
     Description: "A terrifying roar that drives wild Pokémon away. It is useful only in the wild."
   },
   {
-    Move: "Sand Attack",
+    Move: "Sand-Attack",
     Type: "Normal",
     Power: "-",
     Accuracy: 100,
@@ -1290,7 +1290,7 @@ const gen1moves = [
     Description: "A NORMAL-type attack. A triangular field of energy is created and launched at the target."
   },
   {
-    Move: "Vice Grip",
+    Move: "Vicegrip",
     Type: "Normal",
     Power: 55,
     Accuracy: 100,
@@ -1350,7 +1350,7 @@ const gen1moves = [
     Description: "A poisonous cloud of gas is forcefully expelled to poison the target."
   },
   {
-    Move: "Poisonpowder",
+    Move: "PoisonPowder",
     Type: "Poison",
     Power: "-",
     Accuracy: 74.6,
@@ -1580,7 +1580,7 @@ const gen1moves = [
     Description: "A WATER-type attack. Has a one-in-three chance of reducing the target's SPEED."
   },
   {
-    Move: "Bubble Beam",
+    Move: "BubbleBeam",
     Type: "Water",
     Power: 65,
     Accuracy: 100,

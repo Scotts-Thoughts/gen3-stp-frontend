@@ -1,11 +1,3 @@
-// 2023-02-09
-// !BUG - EXP bar doesn't animate correctly when it maxes out and the Pkmn lvls up
-// !BUG - Beginning of battle pop in
-    // ! - currently affects exp bar, moveset, held item
-    // ! - lilely caused by the fact that Gamehook looses the properties (either DMA, or slow decryption)
-// TODO - Time Experience Bar on the overlay with the experience bar in game
-// TODO - 
-
 const app = Vue.createApp({
     data() {
         return {
@@ -13,26 +5,13 @@ const app = Vue.createApp({
             mapper: null,
 
             // POKEMON CONFIG (components) ---------------------------------------------------------------------//
-            starter:        357, //select starter (1-386)
-            starterString: "Tropius",
-            pkmnNature: "Hardy",
-            pkmnAbility: "Chlorophyll",
-            pkmnGrowthRate: "Slow",
-            // hpTypeChoice:   "hpDark", //select hidden power type in hp + type. (ie. hpFire, hpDark, hpIce, hpDragon)
-            // natureChoice:   "Rash", //select Pokemon nature
+            // starter:        357, //select starter (1-386)
+            starterString: "Poochyena",
+            pkmnNature: "Adamant",
+            pkmn_ability: false, // false = ability 1, true = ability 2
+            hidden_power_type: "Grass",
+            pkmn_gender: "Male",
             
-            // SET BADGE
-            useBadgeOverride: false,
-            badge1set: false,
-            badge2set: false,
-            badge3set: false,
-            badge4set: false,
-            badge5set: false,
-            badge6set: false,
-            badge7set: false,
-            badge8set: false,
-
-
             // USER CONFIG (components) ------------------------------------------------------------------------// 
             graphicOverlay: true, //places a single image as the overlay  //MVP
             staticOverlay:  false, //assembles an overlay based on starter selection
@@ -63,6 +42,7 @@ const app = Vue.createApp({
             returnPower:    true, //dynamically calculates the power of Return
             gamestate:      true, //shows the current gamestate in the place of the timer
             labels:         true, //shows the current gamestate in the place of the timer
+            websocket:      false,
             showSpecialTrainerGraphics: true, 
 
             badges: ["badge1", "badge2", "badge3", "badge4", "badge5", "badge6", "badge7", "badge8"],
@@ -84,6 +64,7 @@ const app = Vue.createApp({
             emeraldTrainers: emeraldTrainers,
             g3MoveData: g3MoveData,
             g3tmhmMapping: g3tmhmMapping,
+            g3hiddenPowerTypeSelector: g3hiddenPowerTypeSelector,
             hiddenPowerTypes : {
                 0 : "Fighting",
                 1 : "Flying",
@@ -102,14 +83,6 @@ const app = Vue.createApp({
                 14 : "Dragon",
                 15 : "Dark",
             },
-            
-            //VARIABLES
-            // pkmn1: this.mapper.properties.player.team[0],
-            boostAttack:  false, //badge1 - Roxanne's badge - attack boosted by 10%
-            boostSpeed:   false, //badge3 - Watson's badge - speed boosted by 10%
-            boostDefense: false, //badge5 - Norman's badge - defense boosted by 10%
-            boostSpecial: false, //badge7 - Tate & Liza's badge - special attack & defense boosted by 10%
-
             //VARIABLES THAT TRACK IN GAME PROGRESS ------------------------------------------------------------//
             playerId: -1,
             resets:   0,
@@ -169,22 +142,31 @@ const app = Vue.createApp({
 
             //STATE MANAGEMENT ---------------------------------------------------------------------------------//
             gamestateLogging: false,
-            currentGameState: "Initialization",
-            simpleGameState: "Out of Game",
-            currentGameStateNew: "Initialization",
-            simpleGameStateNew: "Out of Game",
             gameStarted:  true, //tracks if the player has a save game or not
+            currentGameStateNew: "",
             playerID: 999,
             g3stateVariable: "Base Stats",
             prevSpecies: undefined,
             prevExpPoints: 0,
             expDebounceTimeoutId: -1,
-            expBarAnimation: false,
+            expBarAnimation: true,
             slotTimingFix: false,
             showAllTrainers: true,
+            enemyModColour: ["0", "background: #d84444;"],
+            enemyState: "Pokemon",
+            field_array: ["Reflect", 0],
+            last_initiated_field_effect: "Reflect",
         }
     },
     computed: {
+        pkmnAbility() {
+            if (this.pkmn_ability == false) {
+                return this.dexDataRubySapphireEmerald[this.starterString]["abilities"][0]
+            }
+            if (this.pkmn_ability == true) {
+                return this.dexDataRubySapphireEmerald[this.starterString]["abilities"][1]
+            }
+        },
         enemyTrainerName() {
             return this.emeraldTrainers[this.mapper.properties.battle.trainer.opponentAId.value]?.trainer_name
         },
@@ -232,13 +214,197 @@ const app = Vue.createApp({
         },
         typeHeaderColor() {
             if (this.g3stateVariable == `Battle`) { return this.mapper.properties.battle.yourPokemon.type2.value }
-            if (this.g3stateVariable == `Overworld`) { return this.dexDataRubySapphireEmerald[this.mapper.properties.player.team[0].species.value].type_2 }
-            if (this.g3stateVariable == `Base Stats`) { return this.dexDataRubySapphireEmerald[this.starterString].type_2}
+            if (this.g3stateVariable == `Overworld` && this.mapper.properties.player.team[0].species.value == null) { return this.dexDataRubySapphireEmerald[this.starterString]?.type_2 }
+            if (this.g3stateVariable == `Overworld`) { return this.dexDataRubySapphireEmerald[this.mapper.properties.player.team[0].species.value]?.type_2 }
+            if (this.g3stateVariable == `Base Stats`) { return this.dexDataRubySapphireEmerald[this.starterString]?.type_2}
             else { return this.dexDataRubySapphireEmerald[this.starterString].type_2}
         },
+        //BATTLE FADE
+        battle_fade() {
+            if (
+            (this.batt.trainer.opponentA.value == "ELITE_FOUR_SIDNEY" ||
+            this.batt.trainer.opponentA.value == "ELITE_FOUR_PHOEBE" ||
+            this.batt.trainer.opponentA.value == "ELITE_FOUR_GLACIA" ||
+            this.batt.trainer.opponentA.value == "ELITE_FOUR_DRAKE" ||
+            this.batt.trainer.opponentA.value == "CHAMPION_WALLACE") &&
+            (this.g3stateVariable == "To Battle" ||
+            this.g3stateVariable == "Battle" ||
+            this.g3stateVariable == "From Battle")
+            ) {
+                return true
+            }
+            else if (
+            this.g3stateVariable == "To Battle" ||
+            this.g3stateVariable == "Battle") {
+                return true
+            }
+            else {
+                return false
+            }
+        },
+        // SCREENS
+        screen_weather() { // [statusReflect, reflectCount, statusLightScreen, LightScreenCount, weather, weatherCount, showPopUp]
+            var fieldArray = [null, null, null, null, null, null, false]
+            if (this.batt.field.weather.value != null) {
+                fieldArray[4] = this.batt.field.weather.value
+                fieldArray[5] = this.batt.field.weatherCount.value
+                fieldArray[6] = true
+            }
+            if (this.batt.field.player.statusReflect.value == true) {
+                fieldArray[2] = "Reflect"
+                fieldArray[3] = this.batt.field.player.reflectCount.value
+                fieldArray[6] = true
+            }
+            if (this.batt.field.player.statusLightScreen.value == true) {
+                fieldArray[0] = "Light Screen"
+                fieldArray[1] = this.batt.field.player.lightScreenCount.value
+                fieldArray[6] = true
+            }
+            return fieldArray
+        },
+        //SELECT THE RELEVANT FIELD MOVE
+        field_selector() {
+            var reflect = [this.batt.field.player?.reflectCount?.value, this.batt.field?.player?.statusReflect?.value, "Reflect"]
+            var lightscreen = [this.batt.field?.player?.lightScreenCount?.value, this.batt.field?.player?.statusLightScreen?.value, "Light Screen"]
+            var safeguard = [this.batt.field?.player?.safeguardCount?.value, this.batt.field?.player?.statusSafeguard?.value, "Safeguard"]
+            var weather = [this.batt.field?.weatherCount?.value, this.weather_boolean, this.pascalCaseSpace(this.camelCase(this.batt.field?.weather?.value?.toLowerCase()))]
+            var comparison = [reflect, lightscreen, safeguard, weather]
+            var maxArr = [0, false, ""]
+            for(var i = 0; i < comparison.length; i++) {
+                if ((comparison[i][0])) {
+                    if(maxArr[0] < comparison[i][0]) {
+                        maxArr = comparison[i];
+                    }
+                }
+            }
+            return maxArr
+        },
+        weather_boolean() {
+            if (this.batt.field?.weather?.value == "Sun" || this.batt.field?.weather?.value == "Rain" || this.batt.field?.weather?.value == "Sandstorm") {
+                return true
+            }
+            else {
+                return false
+            }
+        },
+        pkmnGrowthRate() {
+            if (this.dexDataRubySapphireEmerald[this.starterString].growth_rate == `GROWTH_MEDIUM_SLOW`) { return "Medium Slow" }
+            if (this.dexDataRubySapphireEmerald[this.starterString].growth_rate == `GROWTH_MEDIUM_FAST`) { return "Medium Fast" }
+            if (this.dexDataRubySapphireEmerald[this.starterString].growth_rate == `GROWTH_SLOW`) { return "Slow" }
+            if (this.dexDataRubySapphireEmerald[this.starterString].growth_rate == `GROWTH_FAST`) { return "Fast" }
+            if (this.dexDataRubySapphireEmerald[this.starterString].growth_rate == `GROWTH_FLUCTUATING`) { return "Fluctuating" }
+            if (this.dexDataRubySapphireEmerald[this.starterString].growth_rate == `GROWTH_ERRATIC`) { return "Erratic" }
+        },
+        field_effect_array() {
+            var effect_array = [
+                ["Reflect", false, 0,],
+                ["Light Screen", false, 0,],
+                ["Safeguard", false, 0,],
+                [this.mapper.properties.battle.field.weather.value, false, 0,],
+            ]
+            if (this.g3stateVariable == `Battle`) {
+                effect_array[0][1] = this.batt.field.player.statusReflect?.value
+                effect_array[0][2] = this.batt.field.player.reflectCount?.value
+                effect_array[1][1] = this.batt.field.player.statusLightScreen?.value
+                effect_array[1][2] = this.batt.field.player.lightScreenCount?.value
+                effect_array[2][1] = this.batt.field.player.statusSafeguard?.value
+                effect_array[2][2] = this.batt.field.player.safeguardCount?.value
+                effect_array[3][1] = this.batt.field.weather?.value
+                effect_array[3][2] = this.batt.field.weatherCount?.value
+            }
+            return effect_array
+        },
+        field_effect_first_expiring() {
+            var field_effect_most_recent_array = ["Reflect", false, 6,]
+            for(var i = 0; i < this.field_effect_array.length; i++) {
+                if (this.field_effect_array[i][2] < field_effect_most_recent_array[2] && this.field_effect_array[i][2] != 0) {
+                    field_effect_most_recent_array = this.field_effect_array[i]
+                }
+            }
+            if (this.field_effect_array[0][2] == 0 && this.field_effect_array[1][2] == 0 && this.field_effect_array[2][2] == 0 && this.field_effect_array[3][2] == 0) {
+                field_effect_most_recent_array = [this.last_initiated_field_effect, false, 0]
+            }
+            return field_effect_most_recent_array
+        },
+        starter() {
+            return this.dexDataRubySapphireEmerald[this.starterString].dex_number
+        }
     },
 
     methods: { 
+        move_name(move_string) { //converts move strings so that they are formatted correctly
+            if (move_string == "Vicegrip")     { return "ViceGrip" }
+            if (move_string == "Solarbeam")    { return "SolarBeam" }
+            if (move_string == "Extremespeed") { return "ExtremeSpeed" }
+            if (move_string == "Dynamicpunch") { return "DynamicPunch" }
+            if (move_string == "Thunderpunch") { return "ThunderPunch" }
+            if (move_string == "Bubblebeam")   { return "BubbleBeam" }
+            if (move_string == "Grasswhistle") { return "GrassWhistle" }
+            if (move_string == "Softboiled")   { return "Softboiled" }
+            if (move_string == "Sand-attack")  { return "Sand-Attack" }
+            if (move_string == "Mud-slap")     { return "Mud-Slap" }
+            if (move_string == "Featherdance") { return "FeatherDance" }
+            if (move_string == "Poisonpowder") { return "PoisonPowder" }
+            if (move_string == "Dragonbreath") { return "DragonBreath" }
+            if (move_string == "Ancientpower") { return "AncientPower" }
+            if (move_string == "Smellingsalt") { return "SmellingSalt" }
+            else { return move_string }
+        },
+        paralysis(speed) {
+            if (this.s1.statusCondition.value == `Paralyzed`) {
+                return Math.floor(speed * 0.25)
+            }
+            else {
+                return speed
+            }
+        },
+        //ENEMY MOD STYLING
+        enemyMods(modValue) {
+            if (this.g3stateVariable != "Battle") { return this.enemyModColour }
+            var raised = [modValue, "background: #d84444;"]
+            var lowered = [modValue, "background: #21c500"]
+            if (modValue < 0) { this.enemyModColour = raised }
+            if (modValue > 0) { this.enemyModColour = lowered }
+            return this.enemyModColour 
+        },
+        enemyDynamic(activePkmn, currentSlot) {
+            if (activePkmn == currentSlot && this.g3stateVariable == "Battle") {
+                return this.mapper?.properties?.battle?.enemyPokemon
+            }
+            else { 
+                return this.mapper?.properties?.battle?.trainer?.team[activePkmn]
+            }
+        },
+
+        //SPLITS
+        currentSplit(splitData) {
+            var arrayLength = splitData.length
+            var split = splitData[arrayLength]["realtime.end"]
+            return this.formatDuration(split)
+        },
+        lastSplit(splitData) {
+            var arrayLength = splitData.length
+            var splitNumber = arrayLength - 1
+            var split = splitData[splitNumber]["realtime.end"]
+            return this.formatDuration(split)
+        },
+        formatDuration(x) {
+            if (x.startsWith("00:")) {
+                x = x.substring(3)
+            }
+            if (x.startsWith(0)) {
+                x = x.substring(1)
+            }
+            x = x.substring(0, x.length-4)
+            return x
+        },
+        split(splitName, splits) {
+            console.log(splits)
+            var split = splits.find(x => x.trainer_name === splitName)
+            if (split == undefined) return
+            return split["realtime.end.hours"] + ":" + split["realtime.end.minutes"] + ":" + split["realtime.end.seconds"]
+        },
+
         curseType(x) {
             if (x == `Curse`) {
                 return "???"
@@ -288,20 +454,33 @@ const app = Vue.createApp({
             var moveAccuracy = moveObject.Accuracy
             var stageMods = this.stageModifiersData.find(x => x.modType === "accuracy")
             var currentModStage = this.batt.yourPokemon.modStageAccuracy.value
+            var abilityMod = 1
+            if (this.pkmnAbility == "Compound Eyes") {
+                abilityMod = 1.3
+            }
             if (moveAccuracy == `-`) {
                 return `-`
             }
             else if (this.g3stateVariable == `Battle`) {
-                return Math.floor(moveAccuracy * stageMods[currentModStage])
+                var accuracy = Math.floor(moveAccuracy * stageMods[currentModStage] * abilityMod)
+                if (accuracy > 100) {
+                    return 100
+                }
+                return accuracy
             }
             else {
-                return moveAccuracy
+                var accuracy = moveAccuracy * abilityMod
+                if (accuracy > 100) {
+                    return 100
+                }
+                return accuracy
             }
         },
 
         // ENEMY TRAINER GRAPHIC
         g3trainerEnemySelector(trainerClass) {
             if (
+                trainerClass == "YOUNGSTER_CALVIN_1" ||
                 trainerClass == "LEADER_ROXANNE_1" ||
                 trainerClass == "LEADER_BRAWLY_1" ||
                 trainerClass == "LEADER_WATTSON_1" ||
@@ -309,8 +488,38 @@ const app = Vue.createApp({
                 trainerClass == "LEADER_NORMAN_1" ||
                 trainerClass == "LEADER_WINONA_1" ||
                 trainerClass == "LEADER_TATE_AND_LIZA_1" ||
-                trainerClass == "LEADER_JUAN_1"
+                trainerClass == "LEADER_JUAN_1" ||
+                trainerClass == "RIVAL_BRENDAN_RUSTBORO_TREECKO" ||
+                trainerClass == "RIVAL_BRENDAN_RUSTBORO_MUDKIP" ||
+                trainerClass == "RIVAL_BRENDAN_RUSTBORO_TORCHIC" ||
+                trainerClass == "RIVAL_BRENDAN_ROUTE_103_MUDKIP" ||
+                trainerClass == "RIVAL_BRENDAN_ROUTE_110_MUDKIP" ||
+                trainerClass == "RIVAL_BRENDAN_ROUTE_119_MUDKIP" ||
+                trainerClass == "RIVAL_BRENDAN_ROUTE_103_TREECKO" ||
+                trainerClass == "RIVAL_BRENDAN_ROUTE_110_TREECKO" ||
+                trainerClass == "RIVAL_BRENDAN_ROUTE_119_TREECKO" ||
+                trainerClass == "RIVAL_BRENDAN_ROUTE_103_TORCHIC" ||
+                trainerClass == "RIVAL_BRENDAN_ROUTE_110_TORCHIC" ||
+                trainerClass == "RIVAL_BRENDAN_ROUTE_119_TORCHIC" ||
+                trainerClass == "RIVAL_MAY_RUSTBORO_TREECKO" ||
+                trainerClass == "RIVAL_MAY_RUSTBORO_TORCHIC" ||
+                trainerClass == "RIVAL_MAY_RUSTBORO_MUDKIP" ||
+                trainerClass == "RIVAL_MAY_ROUTE_103_MUDKIP" ||
+                trainerClass == "RIVAL_MAY_ROUTE_110_MUDKIP" ||
+                trainerClass == "RIVAL_MAY_ROUTE_119_MUDKIP" ||
+                trainerClass == "RIVAL_MAY_ROUTE_103_TREECKO" ||
+                trainerClass == "RIVAL_MAY_ROUTE_110_TREECKO" ||
+                trainerClass == "RIVAL_MAY_ROUTE_119_TREECKO" ||
+                trainerClass == "RIVAL_MAY_ROUTE_103_TORCHIC" ||
+                trainerClass == "RIVAL_MAY_ROUTE_110_TORCHIC" ||
+                trainerClass == "RIVAL_MAY_ROUTE_119_TORCHIC" ||
+                trainerClass == "RIVAL_WALLY_MAUVILLE"
                 // trainerClass == "ELITE_FOUR_SIDNEY"
+                // trainerClass == "ELITE_FOUR_PHOEBE"
+                // trainerClass == "ELITE_FOUR_GLACIA"
+                // trainerClass == "ELITE_FOUR_DRAKE"
+                // trainerClass == "CHAMPION_WALLACE"
+                // trainerClass == "RIVAL_STEVEN"
                 ) {
                     return 1
                 }
@@ -319,6 +528,7 @@ const app = Vue.createApp({
         },
         specialTrainerGraphics() {
             if (this.showSpecialTrainerGraphics == true) {
+                if (this.batt.trainer.opponentA.value == "YOUNGSTER_CALVIN_1") return `images/trainers/${this.batt.trainer.opponentA.value}.png`
                 if (this.batt.trainer.opponentA.value == "LEADER_ROXANNE_1") return `images/trainers/${this.batt.trainer.opponentA.value}.png`
                 if (this.batt.trainer.opponentA.value == "LEADER_BRAWLY_1") return `images/trainers/${this.batt.trainer.opponentA.value}.png`
                 if (this.batt.trainer.opponentA.value == "LEADER_WATTSON_1") return `images/trainers/${this.batt.trainer.opponentA.value}.png`
@@ -327,6 +537,42 @@ const app = Vue.createApp({
                 if (this.batt.trainer.opponentA.value == "LEADER_WINONA_1") return `images/trainers/${this.batt.trainer.opponentA.value}.png`
                 if (this.batt.trainer.opponentA.value == "LEADER_TATE_AND_LIZA_1") return `images/trainers/${this.batt.trainer.opponentA.value}.png`
                 if (this.batt.trainer.opponentA.value == "LEADER_JUAN_1") return `images/trainers/${this.batt.trainer.opponentA.value}.png`
+                
+                // if (this.batt.trainer.opponentA.value == "ELITE_FOUR_SIDNEY") return `images/trainers/${this.batt.trainer.opponentA.value}.png`
+                // if (this.batt.trainer.opponentA.value == "ELITE_FOUR_PHOEBE") return `images/trainers/${this.batt.trainer.opponentA.value}.png`
+                // if (this.batt.trainer.opponentA.value == "ELITE_FOUR_GLACIA") return `images/trainers/${this.batt.trainer.opponentA.value}.png`
+                // if (this.batt.trainer.opponentA.value == "ELITE_FOUR_DRAKE") return `images/trainers/${this.batt.trainer.opponentA.value}.png`
+                // if (this.batt.trainer.opponentA.value == "CHAMPION_WALLACE") return `images/trainers/${this.batt.trainer.opponentA.value}.png`
+                // if (this.batt.trainer.opponentA.value == "RIVAL_STEVEN") return `images/trainers/${this.batt.trainer.opponentA.value}.png`
+
+                if (this.batt.trainer.opponentA.value == "RIVAL_WALLY_MAUVILLE") return `images/trainers/RIVAL_WALLY.png`
+                // if (this.batt.trainer.opponentA.value == "RIVAL_WALLY_VR_1") return `images/trainers/RIVAL_WALLY.png`
+
+                if (this.batt.trainer.opponentA.value == "RIVAL_MAY_RUSTBORO_TREECKO") return `images/trainers/RIVAL_MAY.png`
+                if (this.batt.trainer.opponentA.value == "RIVAL_MAY_RUSTBORO_TORCHIC") return `images/trainers/RIVAL_MAY.png`
+                if (this.batt.trainer.opponentA.value == "RIVAL_MAY_RUSTBORO_MUDKIP") return `images/trainers/RIVAL_MAY.png`
+                if (this.batt.trainer.opponentA.value == "RIVAL_MAY_ROUTE_103_MUDKIP") return `images/trainers/RIVAL_MAY.png`
+                if (this.batt.trainer.opponentA.value == "RIVAL_MAY_ROUTE_110_MUDKIP") return `images/trainers/RIVAL_MAY.png`
+                if (this.batt.trainer.opponentA.value == "RIVAL_MAY_ROUTE_119_MUDKIP") return `images/trainers/RIVAL_MAY.png`
+                if (this.batt.trainer.opponentA.value == "RIVAL_MAY_ROUTE_103_TREECKO") return `images/trainers/RIVAL_MAY.png`
+                if (this.batt.trainer.opponentA.value == "RIVAL_MAY_ROUTE_110_TREECKO") return `images/trainers/RIVAL_MAY.png`
+                if (this.batt.trainer.opponentA.value == "RIVAL_MAY_ROUTE_119_TREECKO") return `images/trainers/RIVAL_MAY.png`
+                if (this.batt.trainer.opponentA.value == "RIVAL_MAY_ROUTE_103_TORCHIC") return `images/trainers/RIVAL_MAY.png`
+                if (this.batt.trainer.opponentA.value == "RIVAL_MAY_ROUTE_110_TORCHIC") return `images/trainers/RIVAL_MAY.png`
+                if (this.batt.trainer.opponentA.value == "RIVAL_MAY_ROUTE_119_TORCHIC") return `images/trainers/RIVAL_MAY.png`
+
+                if (this.batt.trainer.opponentA.value == "RIVAL_BRENDAN_RUSTBORO_TREECKO") return `images/trainers/RIVAL_BRENDAN.png`
+                if (this.batt.trainer.opponentA.value == "RIVAL_BRENDAN_RUSTBORO_MUDKIP") return `images/trainers/RIVAL_BRENDAN.png`
+                if (this.batt.trainer.opponentA.value == "RIVAL_BRENDAN_RUSTBORO_TORCHIC") return `images/trainers/RIVAL_BRENDAN.png`
+                if (this.batt.trainer.opponentA.value == "RIVAL_BRENDAN_ROUTE_103_MUDKIP") return `images/trainers/RIVAL_BRENDAN.png`
+                if (this.batt.trainer.opponentA.value == "RIVAL_BRENDAN_ROUTE_110_MUDKIP") return `images/trainers/RIVAL_BRENDAN.png`
+                if (this.batt.trainer.opponentA.value == "RIVAL_BRENDAN_ROUTE_119_MUDKIP") return `images/trainers/RIVAL_BRENDAN.png`
+                if (this.batt.trainer.opponentA.value == "RIVAL_BRENDAN_ROUTE_103_TREECKO") return `images/trainers/RIVAL_BRENDAN.png`
+                if (this.batt.trainer.opponentA.value == "RIVAL_BRENDAN_ROUTE_110_TREECKO") return `images/trainers/RIVAL_BRENDAN.png`
+                if (this.batt.trainer.opponentA.value == "RIVAL_BRENDAN_ROUTE_119_TREECKO") return `images/trainers/RIVAL_BRENDAN.png`
+                if (this.batt.trainer.opponentA.value == "RIVAL_BRENDAN_ROUTE_103_TORCHIC") return `images/trainers/RIVAL_BRENDAN.png`
+                if (this.batt.trainer.opponentA.value == "RIVAL_BRENDAN_ROUTE_110_TORCHIC") return `images/trainers/RIVAL_BRENDAN.png`
+                if (this.batt.trainer.opponentA.value == "RIVAL_BRENDAN_ROUTE_119_TORCHIC") return `images/trainers/RIVAL_BRENDAN.png`
                 else return null;
             }
         },
@@ -432,7 +678,7 @@ const app = Vue.createApp({
             }
         },
         enemyPkmnFaint(pkmnData) {
-            if (this.g3stateVariable != `Battle`) { return "filter: drop-shadow(2px 2px 2px #000) saturate(1.1) grayscale(0%);" }
+            if (this.g3stateVariable != `Battle` && this.g3stateVariable != `From Battle`) { return "filter: drop-shadow(2px 2px 2px #000) saturate(1.1) grayscale(0%);" }
             if (pkmnData.hp == 0 || this.g3stateVariable == `From Battle`) {
                 return "filter: drop-shadow(2px 2px 2px #000) saturate(1.1) grayscale(100%); opacity: .3;"
             }
@@ -441,7 +687,7 @@ const app = Vue.createApp({
             }
         },
         enemyPkmnText(pkmnData) {
-            if (this.g3stateVariable != `Battle`) { return "opacity: 1" }
+            if (this.g3stateVariable != `Battle` && this.g3stateVariable != `From Battle`) { return "opacity: 1" }
             if (pkmnData.hp == 0 || this.g3stateVariable == `From Battle`) {
                 return "opacity: .3"
             }
@@ -450,7 +696,7 @@ const app = Vue.createApp({
             }
         },
         enemyPkmnSpecies(pkmnData) {
-            if (this.g3stateVariable != `Battle`) { return "opacity: .7" }
+            if (this.g3stateVariable != `Battle` && this.g3stateVariable != `From Battle`) { return "opacity: .7" }
             if (pkmnData.hp == 0 || this.g3stateVariable == `From Battle`) {
                 return "opacity: .3"
             }
@@ -473,10 +719,10 @@ const app = Vue.createApp({
         // STAGE MULTIPLIERS
         activeSlot(activePkmn, currentSlot, statLabel, stat, modifier) {
             var modData = this.stageModifiersData.find(x => x.modType === "stat")
-            if (this.slotTimingFix == true) {
+            if (this.enemyState == "Fainted" || this.g3stateVariable == "From Battle") {
                 return stat 
             }
-            else {
+            else if (this.enemyState == "Pokemon" || this.enemyState == "Fainting") {
                 if (activePkmn == currentSlot && this.g3stateVariable == "Battle") {
                     return Math.floor(stat * modData[modifier])
                 }
@@ -484,8 +730,24 @@ const app = Vue.createApp({
                     return stat
                 }
             }
+            else {
+                return stat
+            }
         },
-
+        // activeSlot(activePkmn, currentSlot, statLabel, stat, modifier) {
+        //     var modData = this.stageModifiersData.find(x => x.modType === "stat")
+        //     if (this.slotTimingFix == true) {
+        //         return stat 
+        //     }
+        //     else {
+        //         if (activePkmn == currentSlot && this.g3stateVariable == "Battle") {
+        //             return Math.floor(stat * modData[modifier])
+        //         }
+        //         else { 
+        //             return stat
+        //         }
+        //     }
+        // },
         writeBufferDisplay() {
             this.bufferAbility = this.mapper.properties.battle.yourPokemon.ability.value
             this.bufferNature = this.mapper.properties.player.team[0].personalityValue.value
@@ -794,6 +1056,20 @@ const app = Vue.createApp({
             return str.toString().replace(/(?:^\w|[A-Z]|\b\w)/g, function (word, index) {
                 return index == 0 ? word.toUpperCase() : word.toLowerCase();
             })
+        },
+        pascalCaseSpace(str) {
+            let words = str.split(' ');
+            for (let char of words) {
+                words[words.indexOf(char)] = char.charAt(0).toUpperCase() + char.slice(1);
+            }
+            return words.join(' ');
+        },
+        pascalCaseDot(str) {
+            let words = str.split('.');
+            for (let char of words) {
+                words[words.indexOf(char)] = char.charAt(0).toUpperCase() + char.slice(1);
+            }
+            return words.join(' ');
         },
         getPokemonImageUrl: function (x) {
             if (x != null)
@@ -1127,6 +1403,14 @@ const app = Vue.createApp({
                     var specialMovePower = Math.floor(255-friendshipValue/2.5)
                     return specialMovePower
                 }
+                else if (y == "LOW KICK") { //test
+                    if (this.dexDataRubySapphireEmerald[this.batt.enemyPokemon.species.value]?.weight < 10) { return 20 }
+                    if (this.dexDataRubySapphireEmerald[this.batt.enemyPokemon.species.value]?.weight < 25) { return 40 }
+                    if (this.dexDataRubySapphireEmerald[this.batt.enemyPokemon.species.value]?.weight < 50) { return 60 }
+                    if (this.dexDataRubySapphireEmerald[this.batt.enemyPokemon.species.value]?.weight < 100) { return 80 }
+                    if (this.dexDataRubySapphireEmerald[this.batt.enemyPokemon.species.value]?.weight < 200) { return 100 }
+                    if (this.dexDataRubySapphireEmerald[this.batt.enemyPokemon.species.value]?.weight >= 200) { return 120 }
+                }
                 else if (y == "HIDDEN POWER") {
                     return this.hiddenPowerPowerCalc(this.mapper.properties.player.team[0])
                 }
@@ -1323,6 +1607,9 @@ const app = Vue.createApp({
             var weatherBoost = this.weatherModifier(this.mapper.properties.battle.turnInfo.battleWeather.value, x, this.moveType(x))
             var burnModifier = this.burnModifier(x)
             //IN BATTLE
+            if (this.batt.trainer.opponentA.value == `LEADER_TATE_AND_LIZA_1` || this.batt.trainer.opponentA.value == `MAGMA_LEADER_MAXIE_MOSSDEEP`) {
+                return power
+            }
             if (this.typeCalcs == true && this.g3stateVariable == "Battle") {
                 //STATUS MOVE
                 if (power == "-") { return power }
@@ -1403,26 +1690,6 @@ const app = Vue.createApp({
         this.mapper.onDisconnected = (x) => this.ready = false
         await this.mapper.connect()
 
-        //BUFFER ASSIGNMENT
-        // this.mapper.properties.pointers.callback1.change(async (x) => {
-        //     if (this.mapper.properties.pointers.callback1) {
-        //         this.buffer_move1 = this.pascalCaseSpace(this.camelCase(this.mapper.properties.player.team[0].move1.value))
-        //         this.buffer_move2 = this.pascalCaseSpace(this.camelCase(this.mapper.properties.player.team[0].move2.value))
-        //         this.buffer_move3 = this.pascalCaseSpace(this.camelCase(this.mapper.properties.player.team[0].move3.value))
-        //         this.buffer_move4 = this.pascalCaseSpace(this.camelCase(this.mapper.properties.player.team[0].move4.value))
-        //         this.buffer_power_move1 = this.typeEffectiveness(this.mapper.properties.player.team[0].move1.value)
-        //         this.buffer_power_move2 = this.typeEffectiveness(this.mapper.properties.player.team[0].move2.value)
-        //         this.buffer_power_move3 = this.typeEffectiveness(this.mapper.properties.player.team[0].move3.value)
-        //         this.buffer_power_move4 = this.typeEffectiveness(this.mapper.properties.player.team[0].move4.value)
-        //         this.buffer_move1pp = this.mapper.properties.player.team[0].move1pp.value
-        //         this.buffer_move2pp = this.mapper.properties.player.team[0].move2pp.value
-        //         this.buffer_move3pp = this.mapper.properties.player.team[0].move3pp.value
-        //         this.buffer_move4pp = this.mapper.properties.player.team[0].move4pp.value
-        //         this.buffer_exp = this.mapper.properties.player.team[0]?.expPoints.value
-        //         this.buffer_heldItem = this.mapper.properties.player.team[0].heldItem.value
-        //     }
-        // })
-
         //GAMESTATE MANAGEMENT
         // set initial gamestate value when the layout is loaded
         if (this.mapper.properties.player.team[0].level.value == 0) 
@@ -1473,6 +1740,94 @@ const app = Vue.createApp({
             }
         });
 
+        this.mapper.properties.player.team[0].personalityValue.change((prop) => {
+            if (prop.value == 0) {
+                this.g3stateVariable = "Base Stats"
+            }
+        });
+
+        //ENEMY STATE
+        //ENEMY STATE MANAGER
+        //"Pokemon", "Fainted"
+        // this.mapper.properties.battle.enemyPokemon.partyPos.change(async (newProp, oldProp) => {
+        //     await this.sleep(100)
+        //     this.enemyState = "Pokemon"
+        // })
+        if (this.mapper.properties.player.team[0].level.value == 0) 
+            this.enemyState = "Not In Battle";
+        else if (this.mapper.properties.battle.turnInfo.battleDialogue.value ==  6)
+            this.enemyState = "Pokemon";
+        else if (this.mapper.properties.battle.type.is_battle.value == true)
+            this.enemyState = "Not In Battle";
+        else if  (this.mapper.properties.battle.enemyPokemon.hp.value == 0)
+            this.enemyState = "Fainted";
+        else if  (this.mapper.properties.battle.enemyPokemon.hp.value > 0 && this.mapper.properties.screen.menu.currentItem.value == 0)
+            this.enemyState = "Pokemon Sent Out";
+        else if  (this.mapper.properties.battle.enemyPokemon.hp.value > 0 && this.mapper.properties.screen.menu.currentItem.value > 0)
+            this.enemyState = "Pokemon";
+
+        this.mapper.properties.pointers.callback2.change((prop) => {
+            if (prop.value == "Battle Animation") { 
+                this.enemyState = "Battle Starting"
+            }
+        });
+        this.mapper.properties.battle.turnInfo.battleDialogue.change((prop) => {
+            if (prop.value == `Player Control` && this.enemyState == "Battle Starting") {
+                this.enemyState = "Pokemon";
+            }
+        });
+        this.mapper.properties.battle.enemyPokemon.hp.change(async (newProp, oldProp) => {
+            if (newProp == 0 && this.enemyState == "Pokemon") {
+                this.enemyState = "Fainting"
+                await this.sleep(200)
+                this.enemyState = "Fainted"
+            }
+            if (newProp > 0 && this.enemyState == "Fainted") {
+                this.enemyState = "Pokemon"
+            }
+        });
+        // this.mapper.properties.screen.tiles.column1.tile7.change((prop) => {
+        //     if (prop == 127 && 
+        //         this.mapper.properties.screen.tiles.column1.tile6 == 127 && 
+        //         this.mapper.properties.screen.tiles.column1.tile5 == 127 && 
+        //         this.mapper.properties.screen.tiles.column1.tile4 == 127 && 
+        //         this.mapper.properties.screen.tiles.column1.tile3 == 127 && 
+        //         this.mapper.properties.screen.tiles.column1.tile2 == 127 && 
+        //         this.mapper.properties.screen.tiles.column1.tile1 == 127 &&
+        //         this.enemyState == "Fainting") {
+        //             this.enemyState = "Fainted"
+        //         }
+        // });
+        this.mapper.properties.battle.outcome.change(async (prop) => {
+            if (prop.value != null) {
+                this.enemyState = "Battle Finished"
+            }
+        });
+
+
+        //MOST RECENT FIELD STATUS
+        //resets the field status at the start of battle
+        this.mapper.properties.battle.field?.player?.statusReflect.change(async (prop) => { 
+            if (prop.value == true) {
+                this.last_initiated_field_effect = "Reflect"
+            }
+        });
+        this.mapper.properties.battle.field?.player?.statusLightScreen.change(async (prop) => { 
+            if (prop.value == true) {
+                this.last_initiated_field_effect = "Light Screen"
+            }
+        });
+        this.mapper.properties.battle.field?.player?.statusSafeguard.change(async (prop) => { 
+            if (prop.value == true) {
+                this.last_initiated_field_effect = "Safeguard"
+            }
+        });
+        this.mapper.properties.battle.field?.weather.change(async (prop) => { 
+            if (prop.value != null) {
+                this.last_initiated_field_effect = prop.value
+            }
+        });
+
 
         // TRACK VARIABLES HERE ------------------------------------------------------------------------------------------------//
         this.mapper.properties.gameTime.seconds.change(async (x) => {
@@ -1484,6 +1839,7 @@ const app = Vue.createApp({
             }
         })
         
+
         // DEFINE FUNCTIONS FOR GAMEHOOK MODIFICATIONS HERE --------------------------------------------------------------------//
         const onLoad = async () => {
             const noMod = 0x06 //0x06 - no modifier
@@ -1511,44 +1867,8 @@ const app = Vue.createApp({
             }
         }
 
-        //THIS FUNCTION MANAGES BADGE BOOSTS
-        const badgeBoostSwitch = async () => {
-            if (this.mapper.properties.player.badges.badge1 == true) //check badges
-                this.boostAttack = true //set badge boost
-            if (this.mapper.properties.player.badges.badge3 == true) //check badges
-                this.boostSpeed = true //set badge boost
-            if (this.mapper.properties.player.badges.badge5 == true) //check badges
-                this.boostDefense = true //set badge boost
-            if (this.mapper.properties.player.badges.badge6 == true) //check badges
-                this.boostSpecial = true //set badge boost
-        }
-
-        // ---------------------------------------------------------------------------------------------------------------------//
-        // MODIFY GAMEHOOK PROPERTIES ------------------------------------------------------------------------------------------//
-        // ---------------------------------------------------------------------------------------------------------------------//
-        // this.currentGameState.change(async (x) => {
-        //     await gamestateManagement()
-        // })
         this.mapper.properties.battle.turnInfo.battleOutcome.change(async (x) => {
             await stageMods()
-        })
-        // this.mapper.properties.player.team[0].personalityValue.value.change(async (x) => {
-        //     await onLoad()
-        // })
-        // this.mapper.properties.player.team[0].ivEggAbilityBlock.change(async (x) => {
-        //     await setPokemon()
-        // })
-        this.mapper.properties.player.badges.badge1.change(async (x) => {
-            await badgeBoostSwitch()
-        })
-        this.mapper.properties.player.badges.badge3.change(async (x) => {
-            await badgeBoostSwitch()
-        })
-        this.mapper.properties.player.badges.badge5.change(async (x) => {
-            await badgeBoostSwitch()
-        })
-        this.mapper.properties.player.badges.badge7.change(async (x) => {
-            await badgeBoostSwitch()
         })
         this.mapper.properties.player.team[0].move1.change(async (x) => {
             if (x.value == null) {
@@ -1557,16 +1877,103 @@ const app = Vue.createApp({
             that.move1 = x
         })
 
+
+        //AUTOSPLITTER WEBSOCKET
+        if (this.websocket == true) {
+            let client = new WebSocket("ws://localhost:6789/");
+                client.onmessage = (event) => {
+                const data = JSON.parse(event.data);
+                this.splitData.push(data);
+                console.log("DATA FROM WEBSOCKET", data);
+            };
+        };
+
+
+        // SETTING THE STARTER POKEMON'S STATS ----------------------------------------------------------------------------------------------//
+        const setStartingAttributes = async () => {
+            const personalityValue = this.natures[this.pkmnNature][`personality_value_${this.pkmn_gender.toLowerCase()}`]
+            const iv_block = this.g3hiddenPowerTypeSelector[this.hidden_power_type]
+
+            // only recalculate stats when IVs when your starter is received
+            if (this.mapper.properties.overworld.mapName.value == "ROUTE 101" && this.mapper.properties.player.team[0].level.value == 5) {
+                await Promise.all([
+                    await this.mapper.properties.player.team[0].personalityValue.set(personalityValue, false), 
+                    await this.mapper.properties.player.team[0].ivEggAbilityBlock.set(iv_block, false), 
+                ])
+            }
+        }
+        const setStartingStats = async () => {
+            const pkmnData = this.dexDataRubySapphireEmerald[this.starterString]
+            const level = 5
+            const natures = this.natures[this.pkmnNature]
+
+            var ivHp = this.mapper.properties.player.team[0].ivHp.value
+            var ivAtk = this.mapper.properties.player.team[0].ivAttack.value
+            var ivDef = this.mapper.properties.player.team[0].ivDefense.value
+            var ivSpA = this.mapper.properties.player.team[0].ivSpecialAttack.value
+            var ivSpD = this.mapper.properties.player.team[0].ivSpecialDefense.value
+            var ivSpe = this.mapper.properties.player.team[0].ivSpeed.value
+
+            //calculates the Pokemon's starting stats with the desired DVs
+            var hitpoints = Math.floor((((2 * pkmnData.base_hp + ivHp + 0) * level)/100) + level + 10)
+            var attack = Math.floor(Math.floor(((((2 * pkmnData.base_atk + ivAtk + 0) * level)/100) + 5)) * natures["nature_attack"])
+            var defense = Math.floor(Math.floor(((((2 * pkmnData.base_def + ivDef + 0) * level)/100) + 5)) * natures["nature_defense"])
+            var specialAttack = Math.floor(Math.floor(((((2 * pkmnData.base_spc_atk + ivSpA + 0) * level)/100) + 5)) * natures["nature_specialAttack"])
+            var specialDefense = Math.floor(Math.floor(((((2 * pkmnData.base_spc_def + ivSpD + 0) * level)/100) + 5)) * natures["nature_specialDefense"])
+            var speed = Math.floor(Math.floor(((((2 * pkmnData.base_spd + ivSpe + 0) * level)/100) + 5)) * natures["nature_speed"])
+
+            // only recalculate stats when IVs when your starter is received
+            if (this.mapper.properties.overworld.mapName.value == "ROUTE 101" && this.mapper.properties.player.team[0].level.value == 5) {
+                await Promise.all([
+                    await this.mapper.properties.player.team[0].hp.set(hitpoints, false), 
+                    await this.mapper.properties.player.team[0].maxHp.set(hitpoints, false), 
+                    await this.mapper.properties.player.team[0].attack.set(attack, false), 
+                    await this.mapper.properties.player.team[0].defense.set(defense, false), 
+                    await this.mapper.properties.player.team[0].specialAttack.set(specialAttack, false), 
+                    await this.mapper.properties.player.team[0].specialDefense.set(specialDefense, false), 
+                    await this.mapper.properties.player.team[0].speed.set(speed, false), 
+                ])
+            }
+        }
+        this.mapper.properties.player.team[0].level.change(async (newProp) => {
+            if (newProp == 5 && this.mapper.properties.overworld.mapName.value == "ROUTE 101") {
+                await setStartingAttributes()
+            }
+        })
+        this.mapper.properties.battle.type.first_battle.change(async (newProp, oldProp) => {
+            if (newProp.value == true && oldProp.value == false && this.mapper.properties.overworld.mapName.value == "ROUTE 101" && this.mapper.properties.player.team[0].level.value == 5) {
+                await setStartingStats()
+            }
+        })
+
+        
+        //SET OPTIONS
+        this.mapper.properties.overworld.mapName.change(async (prop) => {
+            this.mapper.properties.options.textSpeed.set(2, false)
+            this.mapper.properties.options.battleAnim.set(true, false)
+            await this.sleep(100)
+            this.mapper.properties.options.battleStyle.set(true, false)
+        })
+        this.mapper.properties.pointers.callback2.change(async (newProp, oldProp) => {
+            if (newProp.value == `Main Menu`) {
+                this.mapper.properties.options.textSpeed.set(2, false)
+                this.mapper.properties.options.battleAnim.set(true, false)
+                await this.sleep(100)
+                this.mapper.properties.options.battleStyle.set(true, false)
+            }
+        })
+
         //FIX OF ENEMY BATTLE STATS
-        this.mapper.properties.battle.enemyPokemon.partyPos.change(async (newProp, oldProp) => {
+        this.mapper.properties.battle.enemyPokemon.partyPos.change(async (newProp) => {
             if (newProp == 0 || newProp == 255) { return }
             this.slotTimingFix = true    
-            await this.sleep(150)
+            await this.sleep(100)
             this.slotTimingFix = false
         })
 
+
         //EXP BAR ANIMATION FUNCTION
-        var species = this.mapper.properties.player.team[0].species.value;
+        var species = this.mapper.properties.player.team[0].species.value??this.starterString;
         var growthRate = this.dexDataRubySapphireEmerald[species].growth_rate
         var expStats = this.calcExpStats(growthRate, this.mapper.properties.player.team[0].expPoints.value);
         this.$refs.expBar.style.width = (expStats.percent * 100) + "%";
@@ -1578,17 +1985,17 @@ const app = Vue.createApp({
                 const growthRate = this.dexDataRubySapphireEmerald[currSpecies].growth_rate
                 const oldExpStats = this.calcExpStats(growthRate, oldProp.value);
                 const newExpStats = this.calcExpStats(growthRate, newProp.value);
-                console.log(oldExpStats, newExpStats, oldProp)
-    
+                const animationMaxDuration = 650
+
                 if (oldProp.value == newProp.value) { return }
                 // did we switch out?
                 // there is still a bug here. what if we changed to the same species?
-                if (this.g1stateVariable == `Overworld`) {
+                if (this.g3stateVariable == `Overworld` || this.g3stateVariable == "Base Stats") {
                     this.$refs.expBar.style.width = (newExpStats.percent * 100) + "%";
+                    console.log((newExpStats.percent * 100) + "%")
                 }
                 else if (this.prevSpecies != currSpecies) {
                     // update prevSpecies
-                    console.log("prevSpecies != currSpecies")
 
                     this.prevSpecies = currSpecies; 
                     // dont animate, just set newExpStats.percent
@@ -1597,13 +2004,11 @@ const app = Vue.createApp({
                 // same pokemon but exp changed
                 else {
                     if (oldExpStats.level == newExpStats.level) {
-                        console.log("If")
                         // animate width to newExpStats.percent
                         this.$refs.expBar.style.transition = 'width 200ms ease-in-out';
                         this.$refs.expBar.style.width = (newExpStats.percent * 100) + "%";
                         await this.sleep(250);
                     } else {
-                        console.log("Else")
                         // animate width to 100%
                         this.$refs.expBar.style.transition = 'width 200ms ease-in';
                         this.$refs.expBar.style.width = "100%";

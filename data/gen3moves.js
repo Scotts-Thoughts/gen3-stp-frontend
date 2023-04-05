@@ -288,7 +288,7 @@ const gen3moves = [
     Description: "A strong electrical attack that may paralyze the foe."
   },
   {
-    Move: "Thunderpunch",
+    Move: "ThunderPunch",
     Type: "Electric",
     PP: "15",
     Power: "75",
@@ -376,7 +376,7 @@ const gen3moves = [
     Description: "A double-kicking attack that strikes the foe twice."
   },
   {
-    Move: "Dynamicpunch",
+    Move: "DynamicPunch",
     Type: "Fighting",
     PP: "5",
     Power: "100",
@@ -848,7 +848,7 @@ const gen3moves = [
     Description: "An attack that steals half the damage inflicted."
   },
   {
-    Move: "Grasswhistle",
+    Move: "GrassWhistle",
     Type: "Grass",
     PP: "15",
     Power: "-",
@@ -1040,7 +1040,7 @@ const gen3moves = [
     Description: "Covers the user in mud to raise electrical resistance."
   },
   {
-    Move: "Mud-slap",
+    Move: "Mud-Slap",
     Type: "Ground",
     PP: "10",
     Power: "20",
@@ -1056,7 +1056,7 @@ const gen3moves = [
     Description: "Traps and hurts the foe in quicksand for 2 to 5 turns."
   },
   {
-    Move: "Sand Attack",
+    Move: "Sand-Attack",
     Type: "Ground",
     PP: "15",
     Power: "-",
@@ -1352,7 +1352,7 @@ const gen3moves = [
     Description: "A life-risking tackle that also hurts the user."
   },
   {
-    Move: "Doubleslap",
+    Move: "Double Slap",
     Type: "Normal",
     PP: "10",
     Power: "15",
@@ -1400,7 +1400,7 @@ const gen3moves = [
     Description: "Inflicts severe damage but makes the user faint."
   },
   {
-    Move: "Extremespeed",
+    Move: "ExtremeSpeed",
     Type: "Normal",
     PP: "5",
     Power: "80",
@@ -1984,7 +1984,7 @@ const gen3moves = [
     Description: "Uses an own move randomly while asleep."
   },
   {
-    Move: "Smellingsalt",
+    Move: "SmellingSalt",
     Type: "Normal",
     PP: "10",
     Power: "60",
@@ -2328,7 +2328,7 @@ const gen3moves = [
     Description: "Has a high critical-hit ratio. May also poison."
   },
   {
-    Move: "Poisonpowder",
+    Move: "PoisonPowder",
     Type: "Poison",
     PP: "35",
     Power: "-",
@@ -2592,7 +2592,7 @@ const gen3moves = [
     Description: "Tricks the foe into trading held items."
   },
   {
-    Move: "Ancient Power",
+    Move: "AncientPower",
     Type: "Rock",
     PP: "5",
     Power: "60",
@@ -2712,7 +2712,7 @@ const gen3moves = [
     Description: "An attack using bubbles. May lower the foe's SPEED."
   },
   {
-    Move: "Bubblebeam",
+    Move: "BubbleBeam",
     Type: "Water",
     PP: "20",
     Power: "65",

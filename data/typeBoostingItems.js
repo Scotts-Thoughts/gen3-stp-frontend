@@ -8,7 +8,7 @@ const typeBoostingItems = {
     "METAL COAT":     "Steel",
     "MIRACLE SEED":   "Grass",
     "MYSTIC WATER":   "Water",
-    "NEVER MELT ICE": "Ice",
+    "NEVERMELTICE":   "Ice",
     "PINK BOW":       "Normal",
     "POISON BARB":    "Poison",
     "POLKADOT BOW":   "Normal",

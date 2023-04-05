@@ -19,6 +19,16 @@
                 <div v-show="labels == true" class="labelNature"></div>
                 <div v-show="labels == true" class="labelGametime">Game-time:</div>
             </div>
+<!--------- DEBUGGING ----------------------------------------------------------------------------------------------------------------->
+            <div v-if="gamestate == true">
+                <div class="gamestate">G3StateVariable: {{ g3stateVariable }}<br><br>
+                    <div>enemyState: {{enemyState}}</div>
+                    <br>
+                    <div>typeHeaderColor: {{ typeHeaderColor }}</div>
+                    <div>gender: {{ typeHeaderColor }}</div>
+                </div>
+            </div>
+
 
 <!------ TYPE ICONS --------------------------------------------------------------------------------------------------------------------------->
             <div class="typeIconContainer">
@@ -29,18 +39,8 @@
 
 <!--------- BADGE ICONS ---------------------------------------------------------------------------------------------------------------------->
             <div v-for="x in badges">
-                <div v-if="badgeBar == true && mapper.properties.player.badges[x].value == true">
+                <div v-if="badgeBar == true && mapper.properties.player.badges[x].value == true && g3stateVariable != `Base Stats`">
                     <img class="badge" :src="`images/badges/${x}.png`"/>
-                </div>
-            </div>
-
-<!--------- STATE MANAGEMENT ----------------------------------------------------------------------------------------------------------------->
-            <div v-if="gamestate == true">
-                <div class="gamestate">G3StateVariable: {{ g3stateVariable }}<br><br>
-                    <!-- callback1: {{ mapper.properties.pointers.callback1.value }}<br> -->
-                    <!-- callback2: {{ mapper.properties.pointers.callback2.value }}<br> -->
-                    <!-- <br> -->
-                    <br>
                 </div>
             </div>
 
@@ -50,7 +50,7 @@
             <div class="ability">{{ pkmnAbility }}</div>
             <div class="statsContainer" v-show="stats == true" id="stats">
                 <!-- STATS LABELS ------------------------------------------------------------------------------>
-                <div class="growthRate">{{ growthRate() }}</div>
+                <div class="growthRate">{{ pkmnGrowthRate }}</div>
                 <div class="labelHp">HP</div>
 
                 <!--------- BADGE BOOST ICONS ---------------------------------------------------------------------------------------------------------------------->
@@ -66,7 +66,6 @@
                     {{ stageModifiers(mapper.properties.battle.yourPokemon.modStageAttack.value) }}<br>
                     {{ stageModifiers(mapper.properties.battle.yourPokemon.modStageDefense.value) }}<br>
                 </div>
-                
                 <div v-show="g3stateVariable == `Battle`" class="sSASDMods">
                     {{ stageModifiers(mapper.properties.battle.yourPokemon.modStageSpecialAttack.value) }}<br>
                     {{ stageModifiers(mapper.properties.battle.yourPokemon.modStageSpecialDefense.value) }}<br>
@@ -76,25 +75,40 @@
                 <div :style="{'z-index': 20, opacity: statLabelOpacity(mapper.properties.battle.yourPokemon.modStageAttack)}" class="labelAtk">Atk.</div>
                 <div :style="{'z-index': 20, opacity: statLabelOpacity(mapper.properties.battle.yourPokemon.modStageDefense)}" class="labelDef">Def.</div>
                 <div :style="{'z-index': 20, opacity: statLabelOpacity(mapper.properties.battle.yourPokemon.modStageSpeed)}" class="labelSpd">Spe.</div>
-                <div :style="{'z-index': 20, opacity: statLabelOpacity(mapper.properties.battle.yourPokemon.modStageSpecialAttack)}" class="labelSpcAtk">Spc.<br>Atk.</div>
-                <div :style="{'z-index': 20, opacity: statLabelOpacity(mapper.properties.battle.yourPokemon.modStageSpecialDefense)}" class="labelSpcDef">Spc.<br>Def.</div>
+                <div :style="{'z-index': 20, opacity: statLabelOpacity(mapper.properties.battle.yourPokemon.modStageSpecialAttack)}" class="labelSpcAtk2">SpA.</div>
+                <div :style="{'z-index': 20, opacity: statLabelOpacity(mapper.properties.battle.yourPokemon.modStageSpecialDefense)}" class="labelSpcDef2">SpD.</div>
+                <!-- <div :style="{'z-index': 20, opacity: statLabelOpacity(mapper.properties.battle.yourPokemon.modStageSpecialAttack)}" class="labelSpcAtk">Spc.<br>Atk.</div>
+                <div :style="{'z-index': 20, opacity: statLabelOpacity(mapper.properties.battle.yourPokemon.modStageSpecialDefense)}" class="labelSpcDef">Spc.<br>Def.</div> -->
 
                 <!-- STATS -------------------------------------------------------------------------------->  
                 <div>
-                    <div v-if="g3stateVariable == `Overworld` || g3stateVariable == `Battle` || g3stateVariable == `To Battle` || g3stateVariable == `From Battle`">
+                    <!-- <div v-if="(mapper.properties.battle.type.first_battle.value != true && mapper.properties.player.team[0].species.value != null && g3stateVariable == `Overworld`)">
+                        <div class="statsheader">Base Stats</div>
+                        <div class="statsColumn1">
+                            {{ pokemon(starter,`baseHp`) }}<br>
+                            {{ pokemon(starter,`baseAtk`) }}<br>
+                            {{ pokemon(starter,`baseDef`) }}<br>
+                        </div>
+                        <div class="statsColumn2">
+                            {{ pokemon(starter,`baseSpcA`) }}<br>
+                            {{ pokemon(starter,`baseSpcD`) }}<br>
+                            {{ pokemon(starter,`baseSpd`) }}<br>
+                        </div>
+                    </div> -->
+                    
+                    <div v-if="(g3stateVariable == `Overworld` || g3stateVariable == `Battle` || g3stateVariable == `To Battle` || g3stateVariable == `From Battle`) && mapper.properties.player.team[0].species.value != null">
                         <div class="statsheader">Level {{ mapper.properties.player.team[0].level.value }}</div>
-                        <div class="abilityHeldItemLabelStyle heldItem">{{ nullToSpace(camelCase(mapper.properties.player.team[0].itemHeld.value)) }}</div>
+                        <div class="heldItemStyle heldItem">{{ nullToSpace(camelCase(mapper.properties.player.team[0].itemHeld.value)) }}</div>
 
                         <div class="statsColumn1">
                             {{ mapper.properties.player.team[0].maxHp }}<br>
-                            {{ bbAttack(stageMultiplier(mapper.properties.battle.yourPokemon.modStageAttack.value, mapper.properties.player.team[0].attack)) }}<br>
-                            {{ bbDefense(stageMultiplier(mapper.properties.battle.yourPokemon.modStageDefense.value, mapper.properties.player.team[0].defense)) }}<br>
+                            {{ ability(pkmnAbility,"attack",bbAttack(stageMultiplier(mapper.properties.battle.yourPokemon.modStageAttack.value, mapper.properties.player.team[0].attack))) }}<br>
+                            {{ ability(pkmnAbility,"defense",bbDefense(stageMultiplier(mapper.properties.battle.yourPokemon.modStageDefense.value, mapper.properties.player.team[0].defense))) }}<br>
                         </div>
-                        
                         <div class="statsColumn2">
                             {{ bbSpecialAttack(stageMultiplier(mapper.properties.battle.yourPokemon.modStageSpecialAttack.value, mapper.properties.player.team[0].specialAttack)) }}<br>
                             {{ bbSpecialDefense(stageMultiplier(mapper.properties.battle.yourPokemon.modStageSpecialDefense.value, mapper.properties.player.team[0].specialDefense)) }}<br>
-                            {{ bbSpeed(stageMultiplier(mapper.properties.battle.yourPokemon.modStageSpeed.value, mapper.properties.player.team[0].speed)) }}<br>
+                            {{ ability(pkmnAbility,"speed",paralysis(bbSpeed(stageMultiplier(mapper.properties.battle.yourPokemon.modStageSpeed.value, mapper.properties.player.team[0].speed)))) }}<br>
                         </div>
                     </div>
                     
@@ -124,58 +138,14 @@
             <div v-show="moveset == true" id="moveset">
                 <div v-for="x in pkmnMoves">
                     <div v-if="mapper.properties.player.team[0].level.value > 0 && mapper.properties.player.team[0][x].value != null">
-                        <div :class="`movesetFontSize ${x}`">{{ camelCase(mapper.properties.player.team[0][x].value) }}</div>
-                        <div :class="`movePowerStyle movesetFontSize ${x}power`">{{ typeEffectiveness(mapper.properties.player.team[0][x].value) }}</div>
+                        <div :class="`movesetFontSize moveStyle ${x}`">{{ move_name(camelCase(mapper.properties.player.team[0][x].value)) }}</div>
+                        <div :class="`movesetSmallFontSize movePowerStyle movesetFontSize ${x}power`">{{ typeEffectiveness(mapper.properties.player.team[0][x].value) }}</div>
                         <div :class="`movesetSmallFontSize moveAccuracyStyle movesetFontSize ${x}acc`">{{ moveAccuracyDynamic(mapper.properties.player.team[0][x].value) }}<span class="movesetPercentage">%</span></div>
                         <div :class="`movesetSmallFontSize movePPStyle movesetFontSize ${x}pp`">{{ mapper.properties.player.team[0][x + "pp"] }}</div>
                         <img :class="`movesetFontSize ${x}icon`" :src="moveTypeIcon(mapper.properties.player.team[0][x].value)" />
                     </div>
                 </div>
             </div>
-            <!-- <div v-if="g3stateVariable != `To Battle`">
-                <div v-for="x in pkmnMoves">
-                    <div v-show="moveset == true" id="moveset">
-                        <div v-if="mapper.properties.player.team[0].level.value > 0 && mapper.properties.player.team[0][x].value != null && g3stateVariable != `Battle`">
-                            <div :class="`${x}`">{{ camelCase(mapper.properties.player.team[0][x].value) }}</div>
-                            <div :class="`${x}pp`">{{ mapper.properties.player.team[0][x + "pp"] }}</div>
-                            <div :class="`${x}power`">{{ typeEffectiveness(mapper.properties.player.team[0][x].value) }}</div>
-                            <img :class="`${x}icon`" :src="moveTypeIcon(mapper.properties.player.team[0][x].value)" />
-                        </div>
-                        <div v-else-if="mapper.properties.player.team[0].level.value > 0 && mapper.properties.player.team[0][x].value != null && g3stateVariable == `Battle`">
-                            <div :class="`${x}`">{{ camelCase(mapper.properties.battle.yourPokemon[x].value) }}</div>
-                            <div :class="`${x}pp`">{{ mapper.properties.battle.yourPokemon[x + "pp"] }}</div>
-                            <div :class="`${x}power`">{{ typeEffectiveness(mapper.properties.battle.yourPokemon[x].value) }}</div>
-                            <img :class="`${x}icon`" :src="moveTypeIcon(mapper.properties.battle.yourPokemon[x].value)" />
-                        </div>
-                    </div>    
-                </div>
-            </div>
-            <div v-if="g3stateVariable == `To Battle`">
-                <div v-show="moveset == true" id="moveset">
-                    <div class="move1">{{ buffer_move1 }}</div>
-                    <div class="move1pp">{{ buffer_move1pp }}</div>
-                    <div class="move1power">{{ buffer_power_move1 }}</div>
-                    <img class="move1icon" :src="moveTypeIcon(buffer_move1)" />
-                </div>    
-                <div v-show="moveset == true" id="moveset">
-                    <div class="move2">{{ buffer_move2 }}</div>
-                    <div class="move2pp">{{ buffer_move2pp }}</div>
-                    <div class="move2power">{{ buffer_power_move2 }}</div>
-                    <img class="move2icon" :src="moveTypeIcon(buffer_move2)" />
-                </div>    
-                <div v-show="moveset == true" id="moveset">
-                    <div class="move3">{{ buffer_move3 }}</div>
-                    <div class="move3pp">{{ buffer_move3pp }}</div>
-                    <div class="move3power">{{ buffer_power_move3 }}</div>
-                    <img class="move3icon" :src="moveTypeIcon(buffer_move3)" />
-                </div>    
-                <div v-show="moveset == true" id="moveset">
-                    <div class="move4">{{ buffer_move4 }}</div>
-                    <div class="move4pp">{{ buffer_move4pp }}</div>
-                    <div class="move4power">{{ buffer_power_move4 }}</div>
-                    <img class="move4icon" :src="moveTypeIcon(buffer_move4)" />
-                </div>    
-            </div> -->
 
 <!--------- EXP BAR -------------------------------------------------------------------------------------------------------------------------------------->
             <div>
@@ -187,7 +157,7 @@
 <!--------- MOVEPOOL ------------------------------------------------------------------------------------------------------------------------------------->
             <transition name="fadeBattle" style="position: absolute;">
                 <!-- <div v-if="g3stateVariable == `Battle` && mapper.properties.battle.type.trainer.value == true"> -->
-                <div v-if="(g3stateVariable == `Battle` || g3stateVariable == `To Battle` || g3stateVariable == `From Battle`) && mapper.properties.battle.type.trainer.value == true">
+                <div v-if="(g3stateVariable == `Battle` || g3stateVariable == `To Battle`) && mapper.properties.battle.type.trainer.value == true">
                     <div class="movepoolTitle">{{ enemyTrainer.trainer_name }}</div>
                     <img class="enemyPng" :src="`images/enemy_area/${starterString.toLowerCase()}.png`" :style="battlePokemonCrop()"/>
                     <img class="enemyPng" :src="`images/abilities/${starterString.toLowerCase()}.png`" :style="battlePokemonCrop()"/>
@@ -208,6 +178,12 @@
                             <div class="ePkmnSpd opacityTransition" :style="enemyPkmnText(batt.trainer.team[x])">{{ activeSlot(x, batt.enemyPokemon.partyPos.value, "specialDefense", enemyTrainer.pokemon[x]?.spd, batt.enemyPokemon.modStageSpecialDefense.value) }}</div>
                             <div class="ePkmnSpe opacityTransition" :style="enemyPkmnText(batt.trainer.team[x])">{{ activeSlot(x, batt.enemyPokemon.partyPos.value, "speed", enemyTrainer.pokemon[x]?.spe, batt.enemyPokemon.modStageSpeed.value) }}</div>
                             <div class="ePkmnAbility opacityTransition" :style="enemyPkmnText(batt.trainer.team[x])">{{ enemyTrainer.pokemon[x]?.ability }}</div>
+                        
+                            <transition name="fadeMod"><div v-show="(enemyState == `Pokemon` || enemyState == `Fainting`) && g3stateVariable == `Battle` && batt.enemyPokemon.partyPos.value == x && batt.enemyPokemon.modStageAttack.value != 0"         class="enemyMods attackMod"         :style="`${enemyMods(batt.enemyPokemon.modStageAttack.value)[1]}`">{{batt.enemyPokemon.modStageAttack.value}}</div></transition>
+                            <transition name="fadeMod"><div v-show="(enemyState == `Pokemon` || enemyState == `Fainting`) && g3stateVariable == `Battle` && batt.enemyPokemon.partyPos.value == x && batt.enemyPokemon.modStageDefense.value != 0"        class="enemyMods defenseMod"        :style="`${enemyMods(batt.enemyPokemon.modStageDefense.value)[1]}`">{{batt.enemyPokemon.modStageDefense.value}}</div></transition>
+                            <transition name="fadeMod"><div v-show="(enemyState == `Pokemon` || enemyState == `Fainting`) && g3stateVariable == `Battle` && batt.enemyPokemon.partyPos.value == x && batt.enemyPokemon.modStageSpecialAttack.value != 0"  class="enemyMods specialAttackMod"  :style="`${enemyMods(batt.enemyPokemon.modStageSpecialAttack.value)[1]}`">{{batt.enemyPokemon.modStageSpecialAttack.value}}</div></transition>
+                            <transition name="fadeMod"><div v-show="(enemyState == `Pokemon` || enemyState == `Fainting`) && g3stateVariable == `Battle` && batt.enemyPokemon.partyPos.value == x && batt.enemyPokemon.modStageSpecialDefense.value != 0" class="enemyMods specialDefenseMod" :style="`${enemyMods(batt.enemyPokemon.modStageSpecialDefense.value)[1]}`">{{batt.enemyPokemon.modStageSpecialDefense.value}}</div></transition>
+                            <transition name="fadeMod"><div v-show="(enemyState == `Pokemon` || enemyState == `Fainting`) && g3stateVariable == `Battle` && batt.enemyPokemon.partyPos.value == x && batt.enemyPokemon.modStageSpeed.value != 0"          class="enemyMods speedMod"          :style="`${enemyMods(batt.enemyPokemon.modStageSpeed.value)[1]}`">{{batt.enemyPokemon.modStageSpeed.value}}</div></transition>
                         </div>
                     </div> 
                 </div>
@@ -257,36 +233,47 @@
                     </table>
                     <img class="canvas" :src="`images/movepool_border/${s1dynamicReset.species.value.toLowerCase()}.png`"/>
                 </div>
-                <!-- <img v-else :src="`images/movepool/${starterString.toLowerCase()}.png`" > -->
             </transition>
             <transition name="fadeDelayed">
-                <div v-if="((g3stateVariable == `Battle` || g3stateVariable == `To Battle` || g3stateVariable == `From Battle`) && g3trainerEnemySelector(batt.trainer.opponentA.value) == 1) && showSpecialTrainerGraphics == true" style="position: absolute;" key=1>
+                <div v-if="((g3stateVariable == `Battle` || g3stateVariable == `To Battle` || g3stateVariable == `From Battle`) && g3trainerEnemySelector(batt.trainer.opponentA.value) == 1) && showSpecialTrainerGraphics == true && batt.type.trainer.value == true" style="position: absolute;" key=1>
                     <img class="canvas" :src="specialTrainerGraphics()"/>
                 </div>
             </transition>
 
             <!-- ACCURACY -->
-            <transition name="fade2">
-                <div v-show="g3stateVariable == `Battle` && batt.yourPokemon?.modStageAccuracy?.value != `0`">
+            <transition name="fadeBattle">
+                <div v-show="(g3stateVariable == `Battle` || g3stateVariable == `From Battle`) && batt.yourPokemon?.modStageAccuracy?.value != `0`">
                     <img class="uiPngElement" :src="`images/pop_ups/accuracy/${starterString}.png`"/>
                     <div class="accEvaStyle accEvaLabel accuracyLabel">Accuracy:</div>
                     <div class="accEvaStyle accEvaMod accuracyMod">{{ batt.yourPokemon?.modStageAccuracy?.value }}</div>
                 </div>
             </transition>
             <!-- EVASION -->
-            <transition name="fade2">
-                <div v-show="g3stateVariable == `Battle` && batt.yourPokemon?.modStageEvasion?.value != `0`">
+            <transition name="fadeBattle">
+                <div v-show="(g3stateVariable == `Battle` || g3stateVariable == `From Battle`) && batt.yourPokemon?.modStageEvasion?.value != `0`">
                     <img class="uiPngElement" :src="`images/pop_ups/evasion/${starterString}.png`"/>
                     <div class="accEvaStyle accEvaLabel evasionLabel">Evasion:</div>
                     <div class="accEvaStyle accEvaMod evasionMod">{{ batt.yourPokemon?.modStageEvasion?.value }}</div>
+                </div>
+            </transition>
+            <!-- SCREENS -->
+            <transition name="fadeBattle">
+                <div v-show="(g3stateVariable == `Battle` || g3stateVariable == `From Battle`) && field_effect_first_expiring[2] != 0">
+                    <img class="canvas" :src="`images/pop_ups/screens/${starterString.toLowerCase()}.png`">
+                    <div class="playerFieldEffectsLarge">
+                        <div class="field_header">Field:</div>
+                        <div class="field_effect">{{field_effect_first_expiring[0]}}: {{field_effect_first_expiring[2]}}</div>
+                    </div>
                 </div>
             </transition>
         </div>
     </div>
 
 <!--------------------------------------- JAVASCRIPT ------------------------------------------------->
-    <script src="https://unpkg.com/@microsoft/signalr@latest/dist/browser/signalr.min.js"></script> 
-    <script src="https://unpkg.com/vue@latest/dist/vue.global.js"></script>
+    <!-- <script src="https://unpkg.com/@microsoft/signalr@latest/dist/browser/signalr.min.js"></script>  -->
+    <!-- <script src="https://unpkg.com/vue@latest/dist/vue.global.js"></script> -->
+    <script src="packages/signalR.js"></script>
+    <script src="packages/vue.js"></script>
     <script src="http://localhost:8085/dist/gameHookMapperClient.js"></script>
     <!-- DATA -->
     <script src="data/gen1data.js"></script>
@@ -300,6 +287,7 @@
     <script src="data/gen3abilities.js"></script>
     <script src="data/dexDataRubySapphireEmerald.js"></script>
     <script src="lib/emerald_trainers.js"></script>
+    <script src="lib/hiddenPowerTypeSelector.js"></script>
     <script src="data/gen3moves.js"></script>
     <script src="data/type-effectiveness.js"></script>
     <script src="data/typeBoostingItems.js"></script>

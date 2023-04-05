@@ -323,9 +323,9 @@ const g3MoveData = {
     Accuracy: "100",
     Description: "A strong electrical attack that may paralyze the foe."
   },
-"Thunderpunch" :
+"ThunderPunch" :
   {
-    Move: "Thunderpunch",
+    Move: "ThunderPunch",
     Type: "Electric",
     PP: "15",
     Power: "75",
@@ -422,9 +422,9 @@ const g3MoveData = {
     Accuracy: "100",
     Description: "A double-kicking attack that strikes the foe twice."
   },
-"Dynamicpunch" :
+"DynamicPunch" :
   {
-    Move: "Dynamicpunch",
+    Move: "DynamicPunch",
     Type: "Fighting",
     PP: "5",
     Power: "100",
@@ -1171,7 +1171,7 @@ const g3MoveData = {
   },
 "Mud-slap" :
   {
-    Move: "Mud-slap",
+    Move: "Mud-Slap",
     Type: "Ground",
     PP: "10",
     Power: "20",
@@ -1187,9 +1187,9 @@ const g3MoveData = {
     Accuracy: "70",
     Description: "Traps and hurts the foe in quicksand for 2 to 5 turns."
   },
-"Sand Attack" :
+"Sand-Attack" :
   {
-    Move: "Sand Attack",
+    Move: "Sand-Attack",
     Type: "Ground",
     PP: "15",
     Power: "-",
@@ -2618,9 +2618,9 @@ const g3MoveData = {
     Accuracy: "100",
     Description: "Has a high critical-hit ratio. May also poison."
   },
-"Poisonpowder" :
+"PoisonPowder" :
   {
-    Move: "Poisonpowder",
+    Move: "PoisonPowder",
     Type: "Poison",
     PP: "35",
     Power: "-",

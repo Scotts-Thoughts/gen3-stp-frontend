@@ -291,6 +291,14 @@ canvas {  /* or some other selector */
     font-family: osb;
     top: 832px;
 }
+.heldItemStyle {
+    font-size: 36px;
+    position: fixed;
+    text-align: center;
+    z-index: 30000;
+    font-family: osb;
+    top: 832px;
+}
 .labelAbility {
     left: 398px;
 }
@@ -1284,6 +1292,34 @@ canvas {  /* or some other selector */
     z-index: 50;
 
 }
+.labelSpcAtk2 {
+    font-size: 24px;
+    position: fixed;
+    line-height: 27px;
+    color:rgb(68, 68, 68);
+    top: 891px;
+    left: 187px;
+    opacity: 1;
+    text-align: left;
+    font-family: osb;
+    font-weight: 500;
+    z-index: 50;
+
+}
+
+.labelSpcDef2 {
+    font-size: 24px;
+    position: fixed;
+    line-height: 27px;
+    color:rgb(68, 68, 68);
+    top: 953px;
+    left: 187px;
+    opacity: 1;
+    text-align: left;
+    font-family: osb;
+    font-weight: 500;
+    z-index: 50;
+}
 
 .labelSpd {
     font-size: 24px;
@@ -1571,64 +1607,33 @@ canvas {  /* or some other selector */
 }
 
 /* MOVESET */
+.moveStyle {
+    font-size: 50px;
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    z-index: 5;
+    line-height: 34px;
+    text-transform: capitalize;
+    text-align: left;
+    font-family: osb;
+    font-weight: 700
+}
 .move1 {
-    font-size: 50px;
-    position: fixed;
     left: 436px;
     top: 940px;
-    bottom: 0px;
-    right: 0px;
-    z-index: 5;
-    line-height: 34px;
-    text-transform: capitalize;
-    text-align: left;
-    font-family: play;
-    font-weight: 700
 }
-
 .move2 {
-    font-size: 50px;
-    position: fixed;
     left: 1030px;
     top: 940px;
-    bottom: 0px;
-    right: 0px;
-    z-index: 5;
-    line-height: 34px;
-    text-transform: capitalize;
-    text-align: left;
-    font-family: osb;
-    font-weight: 700
 }
-
 .move3 {
-    font-size: 50px;
-    position: fixed;
     left: 436px;
     top: 1012px;
-    bottom: 0px;
-    right: 0px;
-    z-index: 5;
-    line-height: 34px;
-    text-transform: capitalize;
-    text-align: left;
-    font-family: osb;
-    font-weight: 700
 }
-
 .move4 {
-    font-size: 50px;
-    position: fixed;
     left: 1030px;
     top: 1012px;
-    bottom: 0px;
-    right: 0px;
-    z-index: 5;
-    line-height: 34px;
-    text-transform: capitalize;
-    text-align: left;
-    font-family: osb;
-    font-weight: 700
 }
 .movePPStyle {
     display: block;
@@ -1667,22 +1672,22 @@ canvas {  /* or some other selector */
 }
 .move1power {
     left: 670px;
-    top: 935px;
+    top: 940px;
 }
 
 .move2power {
     left: 1265px;
-    top: 935px;
+    top: 940px;
 }
 
 .move3power {
     left: 670px;
-    top: 1007px;
+    top: 1012px;
 }
 
 .move4power {
     left: 1265px;
-    top: 1007px;
+    top: 1012px;
 }
 
 .move1icon {
@@ -2036,7 +2041,15 @@ canvas {  /* or some other selector */
 .fadeBattle-enter-active { transition: opacity 300ms ease-in-out; }
 .fadeBattle-leave-from { opacity: 1; }
 .fadeBattle-leave-to { opacity: 0; }
-.fadeBattle-leave-active { transition: opacity 200ms ease-in-out; }
+.fadeBattle-leave-active { transition: opacity 300ms ease-in-out; }
+
+
+.fadeBattleEnemy-enter-from { opacity: 0; }
+.fadeBattleEnemy-enter-to { opacity: 1; }
+.fadeBattleEnemy-enter-active { transition: opacity 500ms ease-in-out 500ms; }
+.fadeBattleEnemy-leave-from { opacity: 1; }
+.fadeBattleEnemy-leave-to { opacity: 0; }
+.fadeBattleEnemy-leave-active { transition: opacity 500ms ease-in-out; }
 
 .fadeDelayed-enter-from   { opacity: 0; }
 .fadeDelayed-enter-to     { opacity: 1; }
@@ -2051,6 +2064,13 @@ canvas {  /* or some other selector */
 .fade2-leave-from { opacity: 1; }
 .fade2-leave-to { opacity: 0; }
 .fade2-leave-active { transition: opacity 500ms ease-in-out 400ms; }
+
+.fadeMod-enter-from   { opacity: 0; }
+.fadeMod-enter-to     { opacity: 1; }
+.fadeMod-enter-active { transition: opacity 400ms ease-in; }
+.fadeMod-leave-from   { opacity: 1; }
+.fadeMod-leave-to     { opacity: 0; }
+.fadeMod-leave-active { transition: opacity 400ms ease-out; }
 
 .opacityTransition { transition: opacity 500ms ease-in-out;}
 .ePkmn1 {
@@ -2361,19 +2381,19 @@ canvas {  /* or some other selector */
 }
 .move1acc {
     left: 784px;
-    top: 940px;
+    top: 939px;
 }
 .move2acc {
     left: 1374px;
-    top: 940px;
+    top: 939px;
 }
 .move3acc {
     left: 784px;
-    top: 1012px;
+    top: 1011px;
 }
 .move4acc {
     left: 1374px;
-    top: 1012px;
+    top: 1011px;
 }
 
 .movepool_way {
@@ -2494,4 +2514,67 @@ canvas {  /* or some other selector */
 .evasionMod {
     left: 137px;
     top: 245px;
+}
+.playerFieldEffects {
+    position: absolute;
+    border: 1px solid #ff000000;
+    width: 102px;
+    height: 65px;
+    top: 441px;
+    left: 14px;
+    text-align: center;
+    font-family: play;
+    font-size: 14px;
+    line-height: 21px;
+    transition: opacity 500ms ease-in-out, filter 500ms ease-in-out;
+}
+.playerFieldEffectsLarge {
+    position: absolute;
+    border: 1px solid #ff000000;
+    width: 240px;
+    height: 51px;
+    top: 660px;
+    left: 11px;
+    text-align: center;
+    font-family: play;
+    line-height: 23px;
+    transition: opacity 500ms ease-in-out, filter 500ms ease-in-out;
+}
+.field_header {
+    font-size: 16px;
+    opacity: .6;
+    text-decoration: underline;
+}
+.field_effect {
+    font-size: 26px;
+}
+.enemyMods {
+    position: absolute;
+    font-size: 16px;
+    width: 23px;
+    height: 21px;
+    line-height: 22px;
+    /* border: 1px solid #000; */
+    text-align: center;
+    border-radius: 15px;
+    background: #a1a1a1;
+    filter: drop-shadow(0px 0px 2px);
+    /* left: 157px; */
+    left: 177px;
+    padding-left: 1px;
+}
+.attackMod {
+    top: 32px;
+}
+.defenseMod {
+    top: 56px;
+}
+.specialAttackMod {
+    top: 80px;
+}
+.specialDefenseMod {
+    top: 105.5px;
+}
+.speedMod {
+    top: 129.5px;
 }

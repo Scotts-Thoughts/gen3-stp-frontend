@@ -48,7 +48,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 15,
-                "Poison Powder"
+                "PoisonPowder"
             ],
             [
                 15,
@@ -72,7 +72,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 46,
-                "SolarBeam"
+                "Solarbeam"
             ]
         ],
         "tm_hm_learnset": [
@@ -83,7 +83,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Return",
             "Double Team",
             "Sludge Bomb",
@@ -104,7 +104,7 @@ const dexDataRubySapphireEmerald =
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl",
@@ -119,7 +119,9 @@ const dexDataRubySapphireEmerald =
             "Magical Leaf",
             "Grass Whistle",
             "Curse"
-        ]
+        ],
+        "dex_number": 1,
+        "weight": 6.9
     },
     "Ivysaur": {
         "name": "Ivysaur",
@@ -177,7 +179,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 15,
-                "Poison Powder"
+                "PoisonPowder"
             ],
             [
                 15,
@@ -201,7 +203,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 56,
-                "SolarBeam"
+                "Solarbeam"
             ]
         ],
         "tm_hm_learnset": [
@@ -212,7 +214,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Return",
             "Double Team",
             "Sludge Bomb",
@@ -233,13 +235,15 @@ const dexDataRubySapphireEmerald =
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl",
             "Fury Cutter"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 2,
+        "weight": 13.0
     },
     "Venusaur": {
         "name": "Venusaur",
@@ -301,7 +305,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 15,
-                "Poison Powder"
+                "PoisonPowder"
             ],
             [
                 15,
@@ -325,7 +329,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 65,
-                "SolarBeam"
+                "Solarbeam"
             ]
         ],
         "tm_hm_learnset": [
@@ -338,7 +342,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Earthquake",
             "Return",
             "Double Team",
@@ -360,13 +364,15 @@ const dexDataRubySapphireEmerald =
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl",
             "Fury Cutter"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 3,
+        "weight": 100.0
     },
     "Charmander": {
         "name": "Charmander",
@@ -475,10 +481,10 @@ const dexDataRubySapphireEmerald =
             "Mimic",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
@@ -495,7 +501,9 @@ const dexDataRubySapphireEmerald =
             "Beat Up",
             "Swords Dance",
             "Dragon Dance"
-        ]
+        ],
+        "dex_number": 4,
+        "weight": 8.5
     },
     "Charmeleon": {
         "name": "Charmeleon",
@@ -608,10 +616,10 @@ const dexDataRubySapphireEmerald =
             "Mimic",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
@@ -619,7 +627,9 @@ const dexDataRubySapphireEmerald =
             "Fire Punch",
             "Fury Cutter"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 5,
+        "weight": 19.0
     },
     "Charizard": {
         "name": "Charizard",
@@ -745,10 +755,10 @@ const dexDataRubySapphireEmerald =
             "Mimic",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
@@ -756,7 +766,9 @@ const dexDataRubySapphireEmerald =
             "Fire Punch",
             "Fury Cutter"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 6,
+        "weight": 90.5
     },
     "Squirtle": {
         "name": "Squirtle",
@@ -868,12 +880,12 @@ const dexDataRubySapphireEmerald =
             "Seismic Toss",
             "Mimic",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -888,7 +900,9 @@ const dexDataRubySapphireEmerald =
             "Refresh",
             "Mud Sport",
             "Yawn"
-        ]
+        ],
+        "dex_number": 7,
+        "weight": 9.0
     },
     "Wartortle": {
         "name": "Wartortle",
@@ -1008,18 +1022,20 @@ const dexDataRubySapphireEmerald =
             "Seismic Toss",
             "Mimic",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Defense Curl"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 8,
+        "weight": 22.5
     },
     "Blastoise": {
         "name": "Blastoise",
@@ -1146,18 +1162,20 @@ const dexDataRubySapphireEmerald =
             "Seismic Toss",
             "Mimic",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Defense Curl"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 9,
+        "weight": 85.5
     },
     "Caterpie": {
         "name": "Caterpie",
@@ -1200,7 +1218,9 @@ const dexDataRubySapphireEmerald =
         ],
         "tm_hm_learnset": [],
         "tutor_learnset": [],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 10,
+        "weight": 2.9
     },
     "Metapod": {
         "name": "Metapod",
@@ -1243,7 +1263,9 @@ const dexDataRubySapphireEmerald =
         ],
         "tm_hm_learnset": [],
         "tutor_learnset": [],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 11,
+        "weight": 9.9
     },
     "Butterfree": {
         "name": "Butterfree",
@@ -1285,7 +1307,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 13,
-                "Poison Powder"
+                "PoisonPowder"
             ],
             [
                 14,
@@ -1330,7 +1352,7 @@ const dexDataRubySapphireEmerald =
             "Giga Drain",
             "Safeguard",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Return",
             "Psychic",
             "Shadow Ball",
@@ -1355,7 +1377,9 @@ const dexDataRubySapphireEmerald =
             "Sleep Talk",
             "Swift"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 12,
+        "weight": 32.0
     },
     "Weedle": {
         "name": "Weedle",
@@ -1398,7 +1422,9 @@ const dexDataRubySapphireEmerald =
         ],
         "tm_hm_learnset": [],
         "tutor_learnset": [],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 13,
+        "weight": 3.2
     },
     "Kakuna": {
         "name": "Kakuna",
@@ -1441,7 +1467,9 @@ const dexDataRubySapphireEmerald =
         ],
         "tm_hm_learnset": [],
         "tutor_learnset": [],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 14,
+        "weight": 10.0
     },
     "Beedrill": {
         "name": "Beedrill",
@@ -1518,7 +1546,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Return",
             "Brick Break",
             "Double Team",
@@ -1544,7 +1572,9 @@ const dexDataRubySapphireEmerald =
             "Swift",
             "Fury Cutter"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 15,
+        "weight": 29.5
     },
     "Pidgey": {
         "name": "Pidgey",
@@ -1582,7 +1612,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 5,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 9,
@@ -1637,7 +1667,7 @@ const dexDataRubySapphireEmerald =
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -1648,7 +1678,9 @@ const dexDataRubySapphireEmerald =
             "Foresight",
             "Steel Wing",
             "Air Cutter"
-        ]
+        ],
+        "dex_number": 16,
+        "weight": 1.8
     },
     "Pidgeotto": {
         "name": "Pidgeotto",
@@ -1686,7 +1718,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 1,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 1,
@@ -1694,7 +1726,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 5,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 9,
@@ -1749,12 +1781,14 @@ const dexDataRubySapphireEmerald =
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 17,
+        "weight": 30.0
     },
     "Pidgeot": {
         "name": "Pidgeot",
@@ -1792,7 +1826,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 1,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 1,
@@ -1804,7 +1838,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 5,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 9,
@@ -1860,12 +1894,14 @@ const dexDataRubySapphireEmerald =
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 18,
+        "weight": 39.5
     },
     "Rattata": {
         "name": "Rattata",
@@ -1967,7 +2003,7 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
@@ -1982,7 +2018,9 @@ const dexDataRubySapphireEmerald =
             "Reversal",
             "Uproar",
             "Swagger"
-        ]
+        ],
+        "dex_number": 19,
+        "weight": 3.5
     },
     "Raticate": {
         "name": "Raticate",
@@ -2091,13 +2129,15 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
             "Defense Curl"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 20,
+        "weight": 18.5
     },
     "Spearow": {
         "name": "Spearow",
@@ -2190,7 +2230,7 @@ const dexDataRubySapphireEmerald =
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -2203,7 +2243,9 @@ const dexDataRubySapphireEmerald =
             "Tri Attack",
             "Astonish",
             "Sky Attack"
-        ]
+        ],
+        "dex_number": 21,
+        "weight": 2.0
     },
     "Fearow": {
         "name": "Fearow",
@@ -2301,12 +2343,14 @@ const dexDataRubySapphireEmerald =
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 22,
+        "weight": 38.0
     },
     "Ekans": {
         "name": "Ekans",
@@ -2424,7 +2468,9 @@ const dexDataRubySapphireEmerald =
             "Spite",
             "Beat Up",
             "Poison Fang"
-        ]
+        ],
+        "dex_number": 23,
+        "weight": 6.9
     },
     "Arbok": {
         "name": "Arbok",
@@ -2545,7 +2591,9 @@ const dexDataRubySapphireEmerald =
             "Swagger",
             "Sleep Talk"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 24,
+        "weight": 65.0
     },
     "Pikachu": {
         "name": "Pikachu",
@@ -2656,18 +2704,20 @@ const dexDataRubySapphireEmerald =
             "Mimic",
             "Thunder Wave",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
             "Defense Curl",
             "Thunder Punch"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 25,
+        "weight": 6.0
     },
     "Raichu": {
         "name": "Raichu",
@@ -2752,18 +2802,20 @@ const dexDataRubySapphireEmerald =
             "Mimic",
             "Thunder Wave",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
             "Defense Curl",
             "Thunder Punch"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 26,
+        "weight": 30.0
     },
     "Sandshrew": {
         "name": "Sandshrew",
@@ -2805,7 +2857,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 11,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 17,
@@ -2866,11 +2918,11 @@ const dexDataRubySapphireEmerald =
             "Mimic",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
@@ -2886,7 +2938,9 @@ const dexDataRubySapphireEmerald =
             "Metal Claw",
             "Swords Dance",
             "Crush Claw"
-        ]
+        ],
+        "dex_number": 27,
+        "weight": 12.0
     },
     "Sandslash": {
         "name": "Sandslash",
@@ -2928,7 +2982,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 1,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 6,
@@ -2936,7 +2990,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 11,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 17,
@@ -2998,18 +3052,20 @@ const dexDataRubySapphireEmerald =
             "Mimic",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
             "Defense Curl",
             "Fury Cutter"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 28,
+        "weight": 29.5
     },
     "NidoranF": {
         "name": "NidoranF",
@@ -3118,7 +3174,7 @@ const dexDataRubySapphireEmerald =
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl"
@@ -3131,7 +3187,9 @@ const dexDataRubySapphireEmerald =
             "Charm",
             "Counter",
             "Beat Up"
-        ]
+        ],
+        "dex_number": 29,
+        "weight": 7.0
     },
     "Nidorina": {
         "name": "Nidorina",
@@ -3240,12 +3298,14 @@ const dexDataRubySapphireEmerald =
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 30,
+        "weight": 20.0
     },
     "Nidoqueen": {
         "name": "Nidoqueen",
@@ -3349,11 +3409,11 @@ const dexDataRubySapphireEmerald =
             "Mimic",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -3362,7 +3422,9 @@ const dexDataRubySapphireEmerald =
             "Fire Punch",
             "Fury Cutter"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 31,
+        "weight": 60.0
     },
     "NidoranM": {
         "name": "NidoranM",
@@ -3470,7 +3532,7 @@ const dexDataRubySapphireEmerald =
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl"
@@ -3483,7 +3545,9 @@ const dexDataRubySapphireEmerald =
             "Amnesia",
             "Confusion",
             "Beat Up"
-        ]
+        ],
+        "dex_number": 32,
+        "weight": 9.0
     },
     "Nidorino": {
         "name": "Nidorino",
@@ -3591,12 +3655,14 @@ const dexDataRubySapphireEmerald =
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 33,
+        "weight": 19.5
     },
     "Nidoking": {
         "name": "Nidoking",
@@ -3699,11 +3765,11 @@ const dexDataRubySapphireEmerald =
             "Mimic",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -3712,7 +3778,9 @@ const dexDataRubySapphireEmerald =
             "Fire Punch",
             "Fury Cutter"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 34,
+        "weight": 62.0
     },
     "Clefairy": {
         "name": "Clefairy",
@@ -3762,7 +3830,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 13,
-                "Double Slap"
+                "DoubleSlap"
             ],
             [
                 17,
@@ -3811,7 +3879,7 @@ const dexDataRubySapphireEmerald =
             "Rain Dance",
             "Safeguard",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Iron Tail",
             "Thunderbolt",
             "Thunder",
@@ -3846,12 +3914,12 @@ const dexDataRubySapphireEmerald =
             "Dream Eater",
             "Thunder Wave",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -3859,7 +3927,9 @@ const dexDataRubySapphireEmerald =
             "Thunder Punch",
             "Fire Punch"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 35,
+        "weight": 7.5
     },
     "Clefable": {
         "name": "Clefable",
@@ -3897,7 +3967,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 1,
-                "Double Slap"
+                "DoubleSlap"
             ],
             [
                 1,
@@ -3923,7 +3993,7 @@ const dexDataRubySapphireEmerald =
             "Rain Dance",
             "Safeguard",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Iron Tail",
             "Thunderbolt",
             "Thunder",
@@ -3958,12 +4028,12 @@ const dexDataRubySapphireEmerald =
             "Dream Eater",
             "Thunder Wave",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -3971,7 +4041,9 @@ const dexDataRubySapphireEmerald =
             "Thunder Punch",
             "Fire Punch"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 36,
+        "weight": 40.0
     },
     "Vulpix": {
         "name": "Vulpix",
@@ -4088,7 +4160,9 @@ const dexDataRubySapphireEmerald =
             "Howl",
             "Psych Up",
             "Heat Wave"
-        ]
+        ],
+        "dex_number": 37,
+        "weight": 9.9
     },
     "Ninetales": {
         "name": "Ninetales",
@@ -4173,7 +4247,9 @@ const dexDataRubySapphireEmerald =
             "Sleep Talk",
             "Swift"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 38,
+        "weight": 19.9
     },
     "Jigglypuff": {
         "name": "Jigglypuff",
@@ -4227,7 +4303,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 24,
-                "Double Slap"
+                "DoubleSlap"
             ],
             [
                 29,
@@ -4263,7 +4339,7 @@ const dexDataRubySapphireEmerald =
             "Rain Dance",
             "Safeguard",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Thunderbolt",
             "Thunder",
             "Return",
@@ -4295,12 +4371,12 @@ const dexDataRubySapphireEmerald =
             "Dream Eater",
             "Thunder Wave",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -4308,7 +4384,9 @@ const dexDataRubySapphireEmerald =
             "Thunder Punch",
             "Fire Punch"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 39,
+        "weight": 5.5
     },
     "Wigglytuff": {
         "name": "Wigglytuff",
@@ -4354,7 +4432,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 1,
-                "Double Slap"
+                "DoubleSlap"
             ]
         ],
         "tm_hm_learnset": [
@@ -4371,7 +4449,7 @@ const dexDataRubySapphireEmerald =
             "Rain Dance",
             "Safeguard",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Thunderbolt",
             "Thunder",
             "Return",
@@ -4403,12 +4481,12 @@ const dexDataRubySapphireEmerald =
             "Dream Eater",
             "Thunder Wave",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -4416,7 +4494,9 @@ const dexDataRubySapphireEmerald =
             "Thunder Punch",
             "Fire Punch"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 40,
+        "weight": 12.0
     },
     "Zubat": {
         "name": "Zubat",
@@ -4529,7 +4609,9 @@ const dexDataRubySapphireEmerald =
             "Gust",
             "Whirlwind",
             "Curse"
-        ]
+        ],
+        "dex_number": 41,
+        "weight": 7.5
     },
     "Golbat": {
         "name": "Golbat",
@@ -4648,7 +4730,9 @@ const dexDataRubySapphireEmerald =
             "Sleep Talk",
             "Swift"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 42,
+        "weight": 55.0
     },
     "Oddish": {
         "name": "Oddish",
@@ -4690,7 +4774,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 14,
-                "Poison Powder"
+                "PoisonPowder"
             ],
             [
                 16,
@@ -4721,7 +4805,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Return",
             "Double Team",
             "Sludge Bomb",
@@ -4749,7 +4833,9 @@ const dexDataRubySapphireEmerald =
             "Synthesis",
             "Charm",
             "Ingrain"
-        ]
+        ],
+        "dex_number": 43,
+        "weight": 5.4
     },
     "Gloom": {
         "name": "Gloom",
@@ -4791,7 +4877,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 1,
-                "Poison Powder"
+                "PoisonPowder"
             ],
             [
                 7,
@@ -4799,7 +4885,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 14,
-                "Poison Powder"
+                "PoisonPowder"
             ],
             [
                 16,
@@ -4830,7 +4916,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Return",
             "Double Team",
             "Sludge Bomb",
@@ -4851,7 +4937,9 @@ const dexDataRubySapphireEmerald =
             "Swagger",
             "Sleep Talk"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 44,
+        "weight": 8.6
     },
     "Vileplume": {
         "name": "Vileplume",
@@ -4913,7 +5001,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Return",
             "Double Team",
             "Sludge Bomb",
@@ -4935,7 +5023,9 @@ const dexDataRubySapphireEmerald =
             "Swagger",
             "Sleep Talk"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 45,
+        "weight": 18.6
     },
     "Paras": {
         "name": "Paras",
@@ -4977,7 +5067,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 13,
-                "Poison Powder"
+                "PoisonPowder"
             ],
             [
                 19,
@@ -5012,7 +5102,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Return",
             "Dig",
             "Double Team",
@@ -5049,7 +5139,9 @@ const dexDataRubySapphireEmerald =
             "Sweet Scent",
             "Light Screen",
             "Pursuit"
-        ]
+        ],
+        "dex_number": 46,
+        "weight": 5.4
     },
     "Parasect": {
         "name": "Parasect",
@@ -5091,7 +5183,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 1,
-                "Poison Powder"
+                "PoisonPowder"
             ],
             [
                 7,
@@ -5099,7 +5191,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 13,
-                "Poison Powder"
+                "PoisonPowder"
             ],
             [
                 19,
@@ -5135,7 +5227,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Return",
             "Dig",
             "Double Team",
@@ -5163,7 +5255,9 @@ const dexDataRubySapphireEmerald =
             "Sleep Talk",
             "Fury Cutter"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 47,
+        "weight": 29.5
     },
     "Venonat": {
         "name": "Venonat",
@@ -5217,7 +5311,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 20,
-                "Poison Powder"
+                "PoisonPowder"
             ],
             [
                 25,
@@ -5247,7 +5341,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Return",
             "Psychic",
             "Double Team",
@@ -5275,7 +5369,9 @@ const dexDataRubySapphireEmerald =
             "Screech",
             "Giga Drain",
             "Signal Beam"
-        ]
+        ],
+        "dex_number": 48,
+        "weight": 30.0
     },
     "Venomoth": {
         "name": "Venomoth",
@@ -5337,7 +5433,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 20,
-                "Poison Powder"
+                "PoisonPowder"
             ],
             [
                 25,
@@ -5372,7 +5468,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Return",
             "Psychic",
             "Double Team",
@@ -5396,7 +5492,9 @@ const dexDataRubySapphireEmerald =
             "Sleep Talk",
             "Swift"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 49,
+        "weight": 12.5
     },
     "Diglett": {
         "name": "Diglett",
@@ -5435,7 +5533,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 1,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 5,
@@ -5451,7 +5549,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 25,
-                "Mud Slap"
+                "Mud-Slap"
             ],
             [
                 33,
@@ -5495,7 +5593,7 @@ const dexDataRubySapphireEmerald =
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk"
         ],
@@ -5507,7 +5605,9 @@ const dexDataRubySapphireEmerald =
             "Beat Up",
             "Uproar",
             "Rock Slide"
-        ]
+        ],
+        "dex_number": 50,
+        "weight": 0.8
     },
     "Dugtrio": {
         "name": "Dugtrio",
@@ -5550,7 +5650,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 1,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 1,
@@ -5570,7 +5670,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 25,
-                "Mud Slap"
+                "Mud-Slap"
             ],
             [
                 26,
@@ -5619,11 +5719,13 @@ const dexDataRubySapphireEmerald =
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 51,
+        "weight": 33.3
     },
     "Meowth": {
         "name": "Meowth",
@@ -5730,7 +5832,7 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
@@ -5743,7 +5845,9 @@ const dexDataRubySapphireEmerald =
             "Amnesia",
             "Psych Up",
             "Assist"
-        ]
+        ],
+        "dex_number": 52,
+        "weight": 4.2
     },
     "Persian": {
         "name": "Persian",
@@ -5856,13 +5960,15 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
             "Defense Curl"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 53,
+        "weight": 32.0
     },
     "Psyduck": {
         "name": "Psyduck",
@@ -5970,12 +6076,12 @@ const dexDataRubySapphireEmerald =
             "Seismic Toss",
             "Mimic",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Psych Up",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -5990,7 +6096,9 @@ const dexDataRubySapphireEmerald =
             "Psychic",
             "Cross Chop",
             "Refresh"
-        ]
+        ],
+        "dex_number": 54,
+        "weight": 19.6
     },
     "Golduck": {
         "name": "Golduck",
@@ -6107,19 +6215,21 @@ const dexDataRubySapphireEmerald =
             "Seismic Toss",
             "Mimic",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Psych Up",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Swift",
             "Fury Cutter"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 55,
+        "weight": 76.6
     },
     "Mankey": {
         "name": "Mankey",
@@ -6232,11 +6342,11 @@ const dexDataRubySapphireEmerald =
             "Metronome",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -6254,7 +6364,9 @@ const dexDataRubySapphireEmerald =
             "Beat Up",
             "Revenge",
             "Smelling Salt"
-        ]
+        ],
+        "dex_number": 56,
+        "weight": 28.0
     },
     "Primeape": {
         "name": "Primeape",
@@ -6380,11 +6492,11 @@ const dexDataRubySapphireEmerald =
             "Metronome",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -6393,7 +6505,9 @@ const dexDataRubySapphireEmerald =
             "Thunder Punch",
             "Fire Punch"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 57,
+        "weight": 32.0
     },
     "Growlithe": {
         "name": "Growlithe",
@@ -6509,7 +6623,9 @@ const dexDataRubySapphireEmerald =
             "Fire Spin",
             "Howl",
             "Heat Wave"
-        ]
+        ],
+        "dex_number": 58,
+        "weight": 19.0
     },
     "Arcanine": {
         "name": "Arcanine",
@@ -6598,7 +6714,9 @@ const dexDataRubySapphireEmerald =
             "Sleep Talk",
             "Swift"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 59,
+        "weight": 155.0
     },
     "Poliwag": {
         "name": "Poliwag",
@@ -6645,7 +6763,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 19,
-                "Double Slap"
+                "DoubleSlap"
             ],
             [
                 25,
@@ -6702,12 +6820,14 @@ const dexDataRubySapphireEmerald =
         "egg_moves": [
             "Mist",
             "Splash",
-            "BubbleBeam",
+            "Bubble Beam",
             "Haze",
             "Mind Reader",
             "Water Sport",
             "Ice Ball"
-        ]
+        ],
+        "dex_number": 60,
+        "weight": 12.4
     },
     "Poliwhirl": {
         "name": "Poliwhirl",
@@ -6762,7 +6882,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 19,
-                "Double Slap"
+                "DoubleSlap"
             ],
             [
                 27,
@@ -6822,13 +6942,15 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Defense Curl"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 61,
+        "weight": 20.0
     },
     "Poliwrath": {
         "name": "Poliwrath",
@@ -6871,7 +6993,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 1,
-                "Double Slap"
+                "DoubleSlap"
             ],
             [
                 1,
@@ -6927,17 +7049,19 @@ const dexDataRubySapphireEmerald =
             "Mimic",
             "Metronome",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Defense Curl"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 62,
+        "weight": 54.0
     },
     "Abra": {
         "name": "Abra",
@@ -7016,7 +7140,7 @@ const dexDataRubySapphireEmerald =
             "Dream Eater",
             "Thunder Wave",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Psych Up",
             "Snore",
             "Endure",
@@ -7033,7 +7157,9 @@ const dexDataRubySapphireEmerald =
             "Fire Punch",
             "Thunder Punch",
             "Ice Punch"
-        ]
+        ],
+        "dex_number": 63,
+        "weight": 19.5
     },
     "Kadabra": {
         "name": "Kadabra",
@@ -7156,7 +7282,7 @@ const dexDataRubySapphireEmerald =
             "Dream Eater",
             "Thunder Wave",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Psych Up",
             "Snore",
             "Endure",
@@ -7166,7 +7292,9 @@ const dexDataRubySapphireEmerald =
             "Thunder Punch",
             "Fire Punch"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 64,
+        "weight": 56.5
     },
     "Alakazam": {
         "name": "Alakazam",
@@ -7290,7 +7418,7 @@ const dexDataRubySapphireEmerald =
             "Dream Eater",
             "Thunder Wave",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Psych Up",
             "Snore",
             "Endure",
@@ -7300,7 +7428,9 @@ const dexDataRubySapphireEmerald =
             "Thunder Punch",
             "Fire Punch"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 65,
+        "weight": 48.0
     },
     "Machop": {
         "name": "Machop",
@@ -7378,7 +7508,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 49,
-                "Dynamic Punch"
+                "DynamicPunch"
             ]
         ],
         "tm_hm_learnset": [
@@ -7417,10 +7547,10 @@ const dexDataRubySapphireEmerald =
             "Metronome",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -7435,7 +7565,9 @@ const dexDataRubySapphireEmerald =
             "Smelling Salt",
             "Counter",
             "Rock Slide"
-        ]
+        ],
+        "dex_number": 66,
+        "weight": 19.5
     },
     "Machoke": {
         "name": "Machoke",
@@ -7517,7 +7649,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 59,
-                "Dynamic Punch"
+                "DynamicPunch"
             ]
         ],
         "tm_hm_learnset": [
@@ -7556,17 +7688,19 @@ const dexDataRubySapphireEmerald =
             "Metronome",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Thunder Punch",
             "Fire Punch"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 67,
+        "weight": 70.5
     },
     "Machamp": {
         "name": "Machamp",
@@ -7648,7 +7782,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 59,
-                "Dynamic Punch"
+                "DynamicPunch"
             ]
         ],
         "tm_hm_learnset": [
@@ -7688,17 +7822,19 @@ const dexDataRubySapphireEmerald =
             "Metronome",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Thunder Punch",
             "Fire Punch"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 68,
+        "weight": 130.0
     },
     "Bellsprout": {
         "name": "Bellsprout",
@@ -7748,7 +7884,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 17,
-                "Poison Powder"
+                "PoisonPowder"
             ],
             [
                 19,
@@ -7779,7 +7915,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Return",
             "Double Team",
             "Sludge Bomb",
@@ -7809,7 +7945,9 @@ const dexDataRubySapphireEmerald =
             "Leech Life",
             "Ingrain",
             "Magical Leaf"
-        ]
+        ],
+        "dex_number": 69,
+        "weight": 4.0
     },
     "Weepinbell": {
         "name": "Weepinbell",
@@ -7867,7 +8005,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 17,
-                "Poison Powder"
+                "PoisonPowder"
             ],
             [
                 19,
@@ -7898,7 +8036,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Return",
             "Double Team",
             "Sludge Bomb",
@@ -7920,7 +8058,9 @@ const dexDataRubySapphireEmerald =
             "Swagger",
             "Sleep Talk"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 70,
+        "weight": 6.4
     },
     "Victreebel": {
         "name": "Victreebel",
@@ -7978,7 +8118,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Return",
             "Double Team",
             "Sludge Bomb",
@@ -8001,7 +8141,9 @@ const dexDataRubySapphireEmerald =
             "Swagger",
             "Sleep Talk"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 71,
+        "weight": 15.5
     },
     "Tentacool": {
         "name": "Tentacool",
@@ -8052,7 +8194,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 25,
-                "BubbleBeam"
+                "Bubble Beam"
             ],
             [
                 30,
@@ -8113,7 +8255,9 @@ const dexDataRubySapphireEmerald =
             "Haze",
             "Safeguard",
             "Confuse Ray"
-        ]
+        ],
+        "dex_number": 72,
+        "weight": 45.5
     },
     "Tentacruel": {
         "name": "Tentacruel",
@@ -8172,7 +8316,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 25,
-                "BubbleBeam"
+                "Bubble Beam"
             ],
             [
                 30,
@@ -8227,7 +8371,9 @@ const dexDataRubySapphireEmerald =
             "Swagger",
             "Sleep Talk"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 73,
+        "weight": 55.0
     },
     "Geodude": {
         "name": "Geodude",
@@ -8339,11 +8485,11 @@ const dexDataRubySapphireEmerald =
             "Explosion",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl",
@@ -8353,7 +8499,9 @@ const dexDataRubySapphireEmerald =
             "Mega Punch",
             "Rock Slide",
             "Block"
-        ]
+        ],
+        "dex_number": 74,
+        "weight": 20.0
     },
     "Graveler": {
         "name": "Graveler",
@@ -8473,17 +8621,19 @@ const dexDataRubySapphireEmerald =
             "Explosion",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl",
             "Fire Punch"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 75,
+        "weight": 105.0
     },
     "Golem": {
         "name": "Golem",
@@ -8606,18 +8756,20 @@ const dexDataRubySapphireEmerald =
             "Explosion",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl",
             "Fire Punch",
             "Fury Cutter"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 76,
+        "weight": 300.0
     },
     "Ponyta": {
         "name": "Ponyta",
@@ -8697,7 +8849,7 @@ const dexDataRubySapphireEmerald =
             "Sunny Day",
             "Protect",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Iron Tail",
             "Return",
             "Double Team",
@@ -8728,7 +8880,9 @@ const dexDataRubySapphireEmerald =
             "Hypnosis",
             "Charm",
             "Double Edge"
-        ]
+        ],
+        "dex_number": 77,
+        "weight": 30.0
     },
     "Rapidash": {
         "name": "Rapidash",
@@ -8825,7 +8979,7 @@ const dexDataRubySapphireEmerald =
             "Hyper Beam",
             "Protect",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Iron Tail",
             "Return",
             "Double Team",
@@ -8849,7 +9003,9 @@ const dexDataRubySapphireEmerald =
             "Sleep Talk",
             "Swift"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 78,
+        "weight": 95.0
     },
     "Slowpoke": {
         "name": "Slowpoke",
@@ -8966,7 +9122,7 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -8979,7 +9135,9 @@ const dexDataRubySapphireEmerald =
             "Mud Sport",
             "Sleep Talk",
             "Snore"
-        ]
+        ],
+        "dex_number": 79,
+        "weight": 36.0
     },
     "Slowbro": {
         "name": "Slowbro",
@@ -9108,19 +9266,21 @@ const dexDataRubySapphireEmerald =
             "Dream Eater",
             "Thunder Wave",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Psych Up",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Swift",
             "Fury Cutter"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 80,
+        "weight": 78.5
     },
     "Magnemite": {
         "name": "Magnemite",
@@ -9228,7 +9388,9 @@ const dexDataRubySapphireEmerald =
             "Sleep Talk",
             "Swift"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 81,
+        "weight": 6.0
     },
     "Magneton": {
         "name": "Magneton",
@@ -9345,7 +9507,9 @@ const dexDataRubySapphireEmerald =
             "Sleep Talk",
             "Swift"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 82,
+        "weight": 60.0
     },
     "Farfetchd": {
         "name": "Farfetchd",
@@ -9384,7 +9548,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 6,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 11,
@@ -9447,7 +9611,7 @@ const dexDataRubySapphireEmerald =
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -9461,7 +9625,9 @@ const dexDataRubySapphireEmerald =
             "Flail",
             "Feather Dance",
             "Curse"
-        ]
+        ],
+        "dex_number": 83,
+        "weight": 15.0
     },
     "Doduo": {
         "name": "Doduo",
@@ -9555,7 +9721,7 @@ const dexDataRubySapphireEmerald =
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -9567,7 +9733,9 @@ const dexDataRubySapphireEmerald =
             "Faint Attack",
             "Flail",
             "Endeavor"
-        ]
+        ],
+        "dex_number": 84,
+        "weight": 39.2
     },
     "Dodrio": {
         "name": "Dodrio",
@@ -9672,12 +9840,14 @@ const dexDataRubySapphireEmerald =
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 85,
+        "weight": 85.2
     },
     "Seel": {
         "name": "Seel",
@@ -9784,7 +9954,9 @@ const dexDataRubySapphireEmerald =
             "Encore",
             "Fake Out",
             "Icicle Spear"
-        ]
+        ],
+        "dex_number": 86,
+        "weight": 90.0
     },
     "Dewgong": {
         "name": "Dewgong",
@@ -9899,7 +10071,9 @@ const dexDataRubySapphireEmerald =
             "Swagger",
             "Sleep Talk"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 87,
+        "weight": 120.0
     },
     "Grimer": {
         "name": "Grimer",
@@ -10004,10 +10178,10 @@ const dexDataRubySapphireEmerald =
             "Mimic",
             "Explosion",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -10022,7 +10196,9 @@ const dexDataRubySapphireEmerald =
             "Curse",
             "Shadow Punch",
             "Explosion"
-        ]
+        ],
+        "dex_number": 88,
+        "weight": 30.0
     },
     "Muk": {
         "name": "Muk",
@@ -10136,17 +10312,19 @@ const dexDataRubySapphireEmerald =
             "Mimic",
             "Explosion",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Thunder Punch",
             "Fire Punch"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 89,
+        "weight": 30.0
     },
     "Shellder": {
         "name": "Shellder",
@@ -10243,13 +10421,15 @@ const dexDataRubySapphireEmerald =
             "Swift"
         ],
         "egg_moves": [
-            "BubbleBeam",
+            "Bubble Beam",
             "Take Down",
             "Barrier",
             "Rapid Spin",
             "Screech",
             "Icicle Spear"
-        ]
+        ],
+        "dex_number": 90,
+        "weight": 4.0
     },
     "Cloyster": {
         "name": "Cloyster",
@@ -10339,7 +10519,9 @@ const dexDataRubySapphireEmerald =
             "Sleep Talk",
             "Swift"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 91,
+        "weight": 132.5
     },
     "Gastly": {
         "name": "Gastly",
@@ -10451,7 +10633,9 @@ const dexDataRubySapphireEmerald =
             "Will O Wisp",
             "Grudge",
             "Explosion"
-        ]
+        ],
+        "dex_number": 92,
+        "weight": 0.1
     },
     "Haunter": {
         "name": "Haunter",
@@ -10563,7 +10747,9 @@ const dexDataRubySapphireEmerald =
             "Swagger",
             "Sleep Talk"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 93,
+        "weight": 0.1
     },
     "Gengar": {
         "name": "Gengar",
@@ -10682,7 +10868,7 @@ const dexDataRubySapphireEmerald =
             "Dream Eater",
             "Explosion",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Psych Up",
             "Snore",
             "Endure",
@@ -10692,7 +10878,9 @@ const dexDataRubySapphireEmerald =
             "Thunder Punch",
             "Fire Punch"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 94,
+        "weight": 40.5
     },
     "Onix": {
         "name": "Onix",
@@ -10803,7 +10991,7 @@ const dexDataRubySapphireEmerald =
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk"
         ],
@@ -10812,7 +11000,9 @@ const dexDataRubySapphireEmerald =
             "Flail",
             "Explosion",
             "Block"
-        ]
+        ],
+        "dex_number": 95,
+        "weight": 210.0
     },
     "Drowzee": {
         "name": "Drowzee",
@@ -10925,7 +11115,7 @@ const dexDataRubySapphireEmerald =
             "Dream Eater",
             "Thunder Wave",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Psych Up",
             "Snore",
             "Endure",
@@ -10942,7 +11132,9 @@ const dexDataRubySapphireEmerald =
             "Fire Punch",
             "Thunder Punch",
             "Ice Punch"
-        ]
+        ],
+        "dex_number": 96,
+        "weight": 32.4
     },
     "Hypno": {
         "name": "Hypno",
@@ -11064,7 +11256,7 @@ const dexDataRubySapphireEmerald =
             "Dream Eater",
             "Thunder Wave",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Psych Up",
             "Snore",
             "Endure",
@@ -11074,7 +11266,9 @@ const dexDataRubySapphireEmerald =
             "Thunder Punch",
             "Fire Punch"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 97,
+        "weight": 75.6
     },
     "Krabby": {
         "name": "Krabby",
@@ -11178,7 +11372,7 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Fury Cutter"
@@ -11191,7 +11385,9 @@ const dexDataRubySapphireEmerald =
             "Slam",
             "Knock Off",
             "Swords Dance"
-        ]
+        ],
+        "dex_number": 98,
+        "weight": 6.5
     },
     "Kingler": {
         "name": "Kingler",
@@ -11304,12 +11500,14 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Fury Cutter"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 99,
+        "weight": 60.0
     },
     "Voltorb": {
         "name": "Voltorb",
@@ -11419,7 +11617,9 @@ const dexDataRubySapphireEmerald =
             "Sleep Talk",
             "Swift"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 100,
+        "weight": 10.4
     },
     "Electrode": {
         "name": "Electrode",
@@ -11538,7 +11738,9 @@ const dexDataRubySapphireEmerald =
             "Sleep Talk",
             "Swift"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 101,
+        "weight": 66.6
     },
     "Exeggcute": {
         "name": "Exeggcute",
@@ -11600,7 +11802,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 31,
-                "Poison Powder"
+                "PoisonPowder"
             ],
             [
                 37,
@@ -11608,7 +11810,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 43,
-                "SolarBeam"
+                "Solarbeam"
             ]
         ],
         "tm_hm_learnset": [
@@ -11620,7 +11822,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Return",
             "Psychic",
             "Double Team",
@@ -11656,7 +11858,9 @@ const dexDataRubySapphireEmerald =
             "Psych Up",
             "Ingrain",
             "Curse"
-        ]
+        ],
+        "dex_number": 102,
+        "weight": 2.5
     },
     "Exeggutor": {
         "name": "Exeggutor",
@@ -11719,7 +11923,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Return",
             "Psychic",
             "Double Team",
@@ -11747,7 +11951,9 @@ const dexDataRubySapphireEmerald =
             "Swagger",
             "Sleep Talk"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 103,
+        "weight": 120.0
     },
     "Cubone": {
         "name": "Cubone",
@@ -11868,11 +12074,11 @@ const dexDataRubySapphireEmerald =
             "Mimic",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Thunder Punch",
@@ -11886,7 +12092,9 @@ const dexDataRubySapphireEmerald =
             "Skull Bash",
             "Perish Song",
             "Swords Dance"
-        ]
+        ],
+        "dex_number": 104,
+        "weight": 6.5
     },
     "Marowak": {
         "name": "Marowak",
@@ -12020,17 +12228,19 @@ const dexDataRubySapphireEmerald =
             "Mimic",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Thunder Punch",
             "Fire Punch"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 105,
+        "weight": 45.0
     },
     "Hitmonlee": {
         "name": "Hitmonlee",
@@ -12148,15 +12358,17 @@ const dexDataRubySapphireEmerald =
             "Metronome",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 106,
+        "weight": 49.8
     },
     "Hitmonchan": {
         "name": "Hitmonchan",
@@ -12270,10 +12482,10 @@ const dexDataRubySapphireEmerald =
             "Metronome",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -12281,7 +12493,9 @@ const dexDataRubySapphireEmerald =
             "Thunder Punch",
             "Fire Punch"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 107,
+        "weight": 50.2
     },
     "Lickitung": {
         "name": "Lickitung",
@@ -12367,7 +12581,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Rain Dance",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Iron Tail",
             "Thunderbolt",
             "Thunder",
@@ -12404,13 +12618,13 @@ const dexDataRubySapphireEmerald =
             "Dream Eater",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Psych Up",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -12427,7 +12641,9 @@ const dexDataRubySapphireEmerald =
             "Sleep Talk",
             "Snore",
             "Substitute"
-        ]
+        ],
+        "dex_number": 108,
+        "weight": 65.5
     },
     "Koffing": {
         "name": "Koffing",
@@ -12542,7 +12758,9 @@ const dexDataRubySapphireEmerald =
             "Destiny Bond",
             "Pain Split",
             "Will O Wisp"
-        ]
+        ],
+        "dex_number": 109,
+        "weight": 1.0
     },
     "Weezing": {
         "name": "Weezing",
@@ -12659,7 +12877,9 @@ const dexDataRubySapphireEmerald =
             "Swagger",
             "Sleep Talk"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 110,
+        "weight": 9.5
     },
     "Rhyhorn": {
         "name": "Rhyhorn",
@@ -12775,7 +12995,7 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk"
         ],
@@ -12788,7 +13008,9 @@ const dexDataRubySapphireEmerald =
             "Swords Dance",
             "Curse",
             "Crush Claw"
-        ]
+        ],
+        "dex_number": 111,
+        "weight": 115.0
     },
     "Rhydon": {
         "name": "Rhydon",
@@ -12916,19 +13138,21 @@ const dexDataRubySapphireEmerald =
             "Mimic",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Thunder Punch",
             "Fire Punch",
             "Fury Cutter"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 112,
+        "weight": 120.0
     },
     "Chansey": {
         "name": "Chansey",
@@ -12983,7 +13207,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 17,
-                "Double Slap"
+                "DoubleSlap"
             ],
             [
                 23,
@@ -13026,7 +13250,7 @@ const dexDataRubySapphireEmerald =
             "Rain Dance",
             "Safeguard",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Iron Tail",
             "Thunderbolt",
             "Thunder",
@@ -13064,13 +13288,13 @@ const dexDataRubySapphireEmerald =
             "Dream Eater",
             "Thunder Wave",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Psych Up",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl"
@@ -13081,7 +13305,9 @@ const dexDataRubySapphireEmerald =
             "Heal Bell",
             "Aromatherapy",
             "Substitute"
-        ]
+        ],
+        "dex_number": 113,
+        "weight": 34.6
     },
     "Tangela": {
         "name": "Tangela",
@@ -13135,7 +13361,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 19,
-                "Poison Powder"
+                "PoisonPowder"
             ],
             [
                 22,
@@ -13171,7 +13397,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Return",
             "Double Team",
             "Sludge Bomb",
@@ -13204,7 +13430,9 @@ const dexDataRubySapphireEmerald =
             "Amnesia",
             "Leech Seed",
             "Nature Power"
-        ]
+        ],
+        "dex_number": 114,
+        "weight": 35.0
     },
     "Kangaskhan": {
         "name": "Kangaskhan",
@@ -13291,7 +13519,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Rain Dance",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Iron Tail",
             "Thunderbolt",
             "Thunder",
@@ -13327,11 +13555,11 @@ const dexDataRubySapphireEmerald =
             "Mimic",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -13348,7 +13576,9 @@ const dexDataRubySapphireEmerald =
             "Counter",
             "Crush Claw",
             "Substitute"
-        ]
+        ],
+        "dex_number": 115,
+        "weight": 80.0
     },
     "Horsea": {
         "name": "Horsea",
@@ -13451,8 +13681,10 @@ const dexDataRubySapphireEmerald =
             "Disable",
             "Splash",
             "Dragon Rage",
-            "Dragon Breath"
-        ]
+            "DragonBreath"
+        ],
+        "dex_number": 116,
+        "weight": 8.0
     },
     "Seadra": {
         "name": "Seadra",
@@ -13561,7 +13793,9 @@ const dexDataRubySapphireEmerald =
             "Sleep Talk",
             "Swift"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 117,
+        "weight": 25.0
     },
     "Goldeen": {
         "name": "Goldeen",
@@ -13672,7 +13906,9 @@ const dexDataRubySapphireEmerald =
             "Hydro Pump",
             "Sleep Talk",
             "Mud Sport"
-        ]
+        ],
+        "dex_number": 118,
+        "weight": 15.0
     },
     "Seaking": {
         "name": "Seaking",
@@ -13782,7 +14018,9 @@ const dexDataRubySapphireEmerald =
             "Sleep Talk",
             "Swift"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 119,
+        "weight": 39.0
     },
     "Staryu": {
         "name": "Staryu",
@@ -13845,7 +14083,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 28,
-                "BubbleBeam"
+                "Bubble Beam"
             ],
             [
                 33,
@@ -13902,7 +14140,9 @@ const dexDataRubySapphireEmerald =
             "Sleep Talk",
             "Swift"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 120,
+        "weight": 34.5
     },
     "Starmie": {
         "name": "Starmie",
@@ -13997,7 +14237,9 @@ const dexDataRubySapphireEmerald =
             "Sleep Talk",
             "Swift"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 121,
+        "weight": 80.0
     },
     "MrMime": {
         "name": "MrMime",
@@ -14047,7 +14289,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 17,
-                "Double Slap"
+                "DoubleSlap"
             ],
             [
                 21,
@@ -14103,7 +14345,7 @@ const dexDataRubySapphireEmerald =
             "Rain Dance",
             "Safeguard",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Thunderbolt",
             "Thunder",
             "Return",
@@ -14138,7 +14380,7 @@ const dexDataRubySapphireEmerald =
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -14152,7 +14394,9 @@ const dexDataRubySapphireEmerald =
             "Psych Up",
             "Fake Out",
             "Trick"
-        ]
+        ],
+        "dex_number": 122,
+        "weight": 54.5
     },
     "Scyther": {
         "name": "Scyther",
@@ -14271,7 +14515,9 @@ const dexDataRubySapphireEmerald =
             "Light Screen",
             "Endure",
             "Silver Wind"
-        ]
+        ],
+        "dex_number": 123,
+        "weight": 56.0
     },
     "Jynx": {
         "name": "Jynx",
@@ -14329,7 +14575,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 21,
-                "Double Slap"
+                "DoubleSlap"
             ],
             [
                 25,
@@ -14397,17 +14643,19 @@ const dexDataRubySapphireEmerald =
             "Metronome",
             "Dream Eater",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Psych Up",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 124,
+        "weight": 40.6
     },
     "Electabuzz": {
         "name": "Electabuzz",
@@ -14512,10 +14760,10 @@ const dexDataRubySapphireEmerald =
             "Mimic",
             "Thunder Wave",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -14523,7 +14771,9 @@ const dexDataRubySapphireEmerald =
             "Thunder Punch",
             "Fire Punch"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 125,
+        "weight": 30.0
     },
     "Magmar": {
         "name": "Magmar",
@@ -14636,16 +14886,18 @@ const dexDataRubySapphireEmerald =
             "Seismic Toss",
             "Mimic",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Thunder Punch",
             "Fire Punch"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 126,
+        "weight": 44.5
     },
     "Pinsir": {
         "name": "Pinsir",
@@ -14762,7 +15014,9 @@ const dexDataRubySapphireEmerald =
             "Flail",
             "False Swipe",
             "Faint Attack"
-        ]
+        ],
+        "dex_number": 127,
+        "weight": 55.0
     },
     "Tauros": {
         "name": "Tauros",
@@ -14842,7 +15096,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Rain Dance",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Iron Tail",
             "Thunderbolt",
             "Thunder",
@@ -14873,7 +15127,9 @@ const dexDataRubySapphireEmerald =
             "Swagger",
             "Sleep Talk"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 128,
+        "weight": 88.4
     },
     "Magikarp": {
         "name": "Magikarp",
@@ -14920,7 +15176,9 @@ const dexDataRubySapphireEmerald =
         ],
         "tm_hm_learnset": [],
         "tutor_learnset": [],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 129,
+        "weight": 10.0
     },
     "Gyarados": {
         "name": "Gyarados",
@@ -15033,7 +15291,9 @@ const dexDataRubySapphireEmerald =
             "Swagger",
             "Sleep Talk"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 130,
+        "weight": 235.0
     },
     "Lapras": {
         "name": "Lapras",
@@ -15166,7 +15426,9 @@ const dexDataRubySapphireEmerald =
             "Curse",
             "Sleep Talk",
             "Horn Drill"
-        ]
+        ],
+        "dex_number": 131,
+        "weight": 220.0
     },
     "Ditto": {
         "name": "Ditto",
@@ -15205,7 +15467,9 @@ const dexDataRubySapphireEmerald =
         ],
         "tm_hm_learnset": [],
         "tutor_learnset": [],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 132,
+        "weight": 4.0
     },
     "Eevee": {
         "name": "Eevee",
@@ -15251,7 +15515,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 8,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 16,
@@ -15298,7 +15562,7 @@ const dexDataRubySapphireEmerald =
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -15310,7 +15574,9 @@ const dexDataRubySapphireEmerald =
             "Curse",
             "Tickle",
             "Wish"
-        ]
+        ],
+        "dex_number": 133,
+        "weight": 6.5
     },
     "Vaporeon": {
         "name": "Vaporeon",
@@ -15356,7 +15622,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 8,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 16,
@@ -15421,12 +15687,14 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 134,
+        "weight": 29.0
     },
     "Jolteon": {
         "name": "Jolteon",
@@ -15472,7 +15740,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 8,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 16,
@@ -15534,12 +15802,14 @@ const dexDataRubySapphireEmerald =
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 135,
+        "weight": 24.5
     },
     "Flareon": {
         "name": "Flareon",
@@ -15585,7 +15855,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 8,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 16,
@@ -15645,12 +15915,14 @@ const dexDataRubySapphireEmerald =
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 136,
+        "weight": 25.0
     },
     "Porygon": {
         "name": "Porygon",
@@ -15737,7 +16009,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Rain Dance",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Iron Tail",
             "Thunderbolt",
             "Thunder",
@@ -15767,7 +16039,9 @@ const dexDataRubySapphireEmerald =
             "Sleep Talk",
             "Swift"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 137,
+        "weight": 36.5
     },
     "Omanyte": {
         "name": "Omanyte",
@@ -15879,14 +16153,16 @@ const dexDataRubySapphireEmerald =
             "Sleep Talk"
         ],
         "egg_moves": [
-            "BubbleBeam",
+            "Bubble Beam",
             "Aurora Beam",
             "Slam",
             "Supersonic",
             "Haze",
             "Rock Slide",
             "Spikes"
-        ]
+        ],
+        "dex_number": 138,
+        "weight": 7.5
     },
     "Omastar": {
         "name": "Omastar",
@@ -16007,7 +16283,9 @@ const dexDataRubySapphireEmerald =
             "Swagger",
             "Sleep Talk"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 139,
+        "weight": 35.0
     },
     "Kabuto": {
         "name": "Kabuto",
@@ -16062,7 +16340,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 31,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 37,
@@ -16121,14 +16399,16 @@ const dexDataRubySapphireEmerald =
             "Sleep Talk"
         ],
         "egg_moves": [
-            "BubbleBeam",
+            "Bubble Beam",
             "Aurora Beam",
             "Rapid Spin",
             "Dig",
             "Flail",
             "Knock Off",
             "Confuse Ray"
-        ]
+        ],
+        "dex_number": 140,
+        "weight": 11.5
     },
     "Kabutops": {
         "name": "Kabutops",
@@ -16187,7 +16467,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 31,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 37,
@@ -16257,7 +16537,9 @@ const dexDataRubySapphireEmerald =
             "Sleep Talk",
             "Fury Cutter"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 141,
+        "weight": 40.5
     },
     "Aerodactyl": {
         "name": "Aerodactyl",
@@ -16370,9 +16652,11 @@ const dexDataRubySapphireEmerald =
             "Pursuit",
             "Foresight",
             "Steel Wing",
-            "Dragon Breath",
+            "DragonBreath",
             "Curse"
-        ]
+        ],
+        "dex_number": 142,
+        "weight": 59.0
     },
     "Snorlax": {
         "name": "Snorlax",
@@ -16470,7 +16754,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Rain Dance",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Thunderbolt",
             "Thunder",
             "Earthquake",
@@ -16502,13 +16786,13 @@ const dexDataRubySapphireEmerald =
             "Metronome",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Psych Up",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -16523,7 +16807,9 @@ const dexDataRubySapphireEmerald =
             "Curse",
             "Fissure",
             "Substitute"
-        ]
+        ],
+        "dex_number": 143,
+        "weight": 460.0
     },
     "Articuno": {
         "name": "Articuno",
@@ -16624,12 +16910,14 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 144,
+        "weight": 55.4
     },
     "Zapdos": {
         "name": "Zapdos",
@@ -16730,12 +17018,14 @@ const dexDataRubySapphireEmerald =
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 145,
+        "weight": 52.6
     },
     "Moltres": {
         "name": "Moltres",
@@ -16834,12 +17124,14 @@ const dexDataRubySapphireEmerald =
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 146,
+        "weight": 60.0
     },
     "Dratini": {
         "name": "Dratini",
@@ -16958,9 +17250,11 @@ const dexDataRubySapphireEmerald =
             "Mist",
             "Haze",
             "Supersonic",
-            "Dragon Breath",
+            "DragonBreath",
             "Dragon Dance"
-        ]
+        ],
+        "dex_number": 147,
+        "weight": 3.3
     },
     "Dragonair": {
         "name": "Dragonair",
@@ -17082,7 +17376,9 @@ const dexDataRubySapphireEmerald =
             "Sleep Talk",
             "Swift"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 148,
+        "weight": 16.5
     },
     "Dragonite": {
         "name": "Dragonite",
@@ -17215,11 +17511,11 @@ const dexDataRubySapphireEmerald =
             "Mimic",
             "Thunder Wave",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -17228,7 +17524,9 @@ const dexDataRubySapphireEmerald =
             "Fire Punch",
             "Fury Cutter"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 149,
+        "weight": 210.0
     },
     "Mewtwo": {
         "name": "Mewtwo",
@@ -17323,7 +17621,7 @@ const dexDataRubySapphireEmerald =
             "Rain Dance",
             "Safeguard",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Iron Tail",
             "Thunderbolt",
             "Thunder",
@@ -17362,12 +17660,12 @@ const dexDataRubySapphireEmerald =
             "Dream Eater",
             "Thunder Wave",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Psych Up",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -17375,7 +17673,9 @@ const dexDataRubySapphireEmerald =
             "Thunder Punch",
             "Fire Punch"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 150,
+        "weight": 122.0
     },
     "Mew": {
         "name": "Mew",
@@ -17454,7 +17754,7 @@ const dexDataRubySapphireEmerald =
             "Giga Drain",
             "Safeguard",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Iron Tail",
             "Thunderbolt",
             "Thunder",
@@ -17508,13 +17808,13 @@ const dexDataRubySapphireEmerald =
             "Explosion",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Psych Up",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -17524,7 +17824,9 @@ const dexDataRubySapphireEmerald =
             "Fire Punch",
             "Fury Cutter"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 151,
+        "weight": 4.0
     },
     "Chikorita": {
         "name": "Chikorita",
@@ -17574,7 +17876,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 15,
-                "Poison Powder"
+                "PoisonPowder"
             ],
             [
                 22,
@@ -17594,7 +17896,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 50,
-                "SolarBeam"
+                "Solarbeam"
             ]
         ],
         "tm_hm_learnset": [
@@ -17607,7 +17909,7 @@ const dexDataRubySapphireEmerald =
             "Giga Drain",
             "Safeguard",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Iron Tail",
             "Return",
             "Double Team",
@@ -17628,7 +17930,7 @@ const dexDataRubySapphireEmerald =
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk"
         ],
@@ -17641,7 +17943,9 @@ const dexDataRubySapphireEmerald =
             "Nature Power",
             "Ingrain",
             "Grass Whistle"
-        ]
+        ],
+        "dex_number": 152,
+        "weight": 6.4
     },
     "Bayleef": {
         "name": "Bayleef",
@@ -17699,7 +18003,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 15,
-                "Poison Powder"
+                "PoisonPowder"
             ],
             [
                 23,
@@ -17719,7 +18023,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 55,
-                "SolarBeam"
+                "Solarbeam"
             ]
         ],
         "tm_hm_learnset": [
@@ -17732,7 +18036,7 @@ const dexDataRubySapphireEmerald =
             "Giga Drain",
             "Safeguard",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Iron Tail",
             "Return",
             "Double Team",
@@ -17755,12 +18059,14 @@ const dexDataRubySapphireEmerald =
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Fury Cutter"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 153,
+        "weight": 15.8
     },
     "Meganium": {
         "name": "Meganium",
@@ -17818,7 +18124,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 15,
-                "Poison Powder"
+                "PoisonPowder"
             ],
             [
                 23,
@@ -17838,7 +18144,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 61,
-                "SolarBeam"
+                "Solarbeam"
             ]
         ],
         "tm_hm_learnset": [
@@ -17852,7 +18158,7 @@ const dexDataRubySapphireEmerald =
             "Giga Drain",
             "Safeguard",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Iron Tail",
             "Earthquake",
             "Return",
@@ -17876,12 +18182,14 @@ const dexDataRubySapphireEmerald =
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Fury Cutter"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 154,
+        "weight": 100.5
     },
     "Cyndaquil": {
         "name": "Cyndaquil",
@@ -17973,7 +18281,7 @@ const dexDataRubySapphireEmerald =
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
@@ -17988,7 +18296,9 @@ const dexDataRubySapphireEmerald =
             "Covet",
             "Howl",
             "Crush Claw"
-        ]
+        ],
+        "dex_number": 155,
+        "weight": 7.9
     },
     "Quilava": {
         "name": "Quilava",
@@ -18089,14 +18399,16 @@ const dexDataRubySapphireEmerald =
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
             "Defense Curl",
             "Fury Cutter"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 156,
+        "weight": 19.0
     },
     "Typhlosion": {
         "name": "Typhlosion",
@@ -18205,11 +18517,11 @@ const dexDataRubySapphireEmerald =
             "Mimic",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
@@ -18218,7 +18530,9 @@ const dexDataRubySapphireEmerald =
             "Fire Punch",
             "Fury Cutter"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 157,
+        "weight": 79.5
     },
     "Totodile": {
         "name": "Totodile",
@@ -18324,11 +18638,11 @@ const dexDataRubySapphireEmerald =
             "Mimic",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk"
@@ -18342,7 +18656,9 @@ const dexDataRubySapphireEmerald =
             "Mud Sport",
             "Water Sport",
             "Dragon Claw"
-        ]
+        ],
+        "dex_number": 158,
+        "weight": 9.5
     },
     "Croconaw": {
         "name": "Croconaw",
@@ -18455,17 +18771,19 @@ const dexDataRubySapphireEmerald =
             "Mimic",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Fury Cutter"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 159,
+        "weight": 25.0
     },
     "Feraligatr": {
         "name": "Feraligatr",
@@ -18585,17 +18903,19 @@ const dexDataRubySapphireEmerald =
             "Mimic",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Fury Cutter"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 160,
+        "weight": 88.8
     },
     "Sentret": {
         "name": "Sentret",
@@ -18675,7 +18995,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Rain Dance",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Iron Tail",
             "Thunderbolt",
             "Return",
@@ -18698,11 +19018,11 @@ const dexDataRubySapphireEmerald =
             "Double Edge",
             "Mimic",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -18721,7 +19041,9 @@ const dexDataRubySapphireEmerald =
             "Substitute",
             "Trick",
             "Assist"
-        ]
+        ],
+        "dex_number": 161,
+        "weight": 6.0
     },
     "Furret": {
         "name": "Furret",
@@ -18811,7 +19133,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Rain Dance",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Iron Tail",
             "Thunderbolt",
             "Thunder",
@@ -18837,11 +19159,11 @@ const dexDataRubySapphireEmerald =
             "Double Edge",
             "Mimic",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -18851,7 +19173,9 @@ const dexDataRubySapphireEmerald =
             "Fire Punch",
             "Fury Cutter"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 162,
+        "weight": 32.5
     },
     "Hoothoot": {
         "name": "Hoothoot",
@@ -18950,7 +19274,7 @@ const dexDataRubySapphireEmerald =
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -18963,7 +19287,9 @@ const dexDataRubySapphireEmerald =
             "Whirlwind",
             "Sky Attack",
             "Feather Dance"
-        ]
+        ],
+        "dex_number": 163,
+        "weight": 21.2
     },
     "Noctowl": {
         "name": "Noctowl",
@@ -19071,12 +19397,14 @@ const dexDataRubySapphireEmerald =
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 164,
+        "weight": 40.8
     },
     "Ledyba": {
         "name": "Ledyba",
@@ -19160,7 +19488,7 @@ const dexDataRubySapphireEmerald =
             "Giga Drain",
             "Safeguard",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Return",
             "Dig",
             "Brick Break",
@@ -19180,7 +19508,7 @@ const dexDataRubySapphireEmerald =
             "Double Edge",
             "Mimic",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Snore",
             "Endure",
@@ -19194,7 +19522,9 @@ const dexDataRubySapphireEmerald =
             "Psybeam",
             "Bide",
             "Silver Wind"
-        ]
+        ],
+        "dex_number": 165,
+        "weight": 10.8
     },
     "Ledian": {
         "name": "Ledian",
@@ -19283,7 +19613,7 @@ const dexDataRubySapphireEmerald =
             "Giga Drain",
             "Safeguard",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Return",
             "Dig",
             "Brick Break",
@@ -19303,7 +19633,7 @@ const dexDataRubySapphireEmerald =
             "Double Edge",
             "Mimic",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Snore",
             "Endure",
@@ -19313,7 +19643,9 @@ const dexDataRubySapphireEmerald =
             "Swift",
             "Thunder Punch"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 166,
+        "weight": 35.6
     },
     "Spinarak": {
         "name": "Spinarak",
@@ -19394,7 +19726,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Return",
             "Dig",
             "Psychic",
@@ -19424,7 +19756,9 @@ const dexDataRubySapphireEmerald =
             "Baton Pass",
             "Pursuit",
             "Signal Beam"
-        ]
+        ],
+        "dex_number": 167,
+        "weight": 8.5
     },
     "Ariados": {
         "name": "Ariados",
@@ -19514,7 +19848,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Return",
             "Dig",
             "Psychic",
@@ -19537,7 +19871,9 @@ const dexDataRubySapphireEmerald =
             "Swagger",
             "Sleep Talk"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 168,
+        "weight": 33.5
     },
     "Crobat": {
         "name": "Crobat",
@@ -19657,7 +19993,9 @@ const dexDataRubySapphireEmerald =
             "Sleep Talk",
             "Swift"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 169,
+        "weight": 75.0
     },
     "Chinchou": {
         "name": "Chinchou",
@@ -19769,7 +20107,9 @@ const dexDataRubySapphireEmerald =
             "Flail",
             "Screech",
             "Amnesia"
-        ]
+        ],
+        "dex_number": 170,
+        "weight": 12.0
     },
     "Lanturn": {
         "name": "Lanturn",
@@ -19882,7 +20222,9 @@ const dexDataRubySapphireEmerald =
             "Swagger",
             "Sleep Talk"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 171,
+        "weight": 22.5
     },
     "Pichu": {
         "name": "Pichu",
@@ -19967,7 +20309,7 @@ const dexDataRubySapphireEmerald =
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
@@ -19978,10 +20320,12 @@ const dexDataRubySapphireEmerald =
             "Bide",
             "Present",
             "Encore",
-            "Double Slap",
+            "DoubleSlap",
             "Wish",
             "Charge"
-        ]
+        ],
+        "dex_number": 172,
+        "weight": 2.0
     },
     "Cleffa": {
         "name": "Cleffa",
@@ -20044,7 +20388,7 @@ const dexDataRubySapphireEmerald =
             "Rain Dance",
             "Safeguard",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Iron Tail",
             "Return",
             "Dig",
@@ -20079,7 +20423,7 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl"
@@ -20093,7 +20437,9 @@ const dexDataRubySapphireEmerald =
             "Mimic",
             "Wish",
             "Substitute"
-        ]
+        ],
+        "dex_number": 173,
+        "weight": 3.0
     },
     "Igglybuff": {
         "name": "Igglybuff",
@@ -20156,7 +20502,7 @@ const dexDataRubySapphireEmerald =
             "Rain Dance",
             "Safeguard",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Return",
             "Dig",
             "Psychic",
@@ -20188,7 +20534,7 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl"
@@ -20199,7 +20545,9 @@ const dexDataRubySapphireEmerald =
             "Faint Attack",
             "Wish",
             "Fake Tears"
-        ]
+        ],
+        "dex_number": 174,
+        "weight": 1.0
     },
     "Togepi": {
         "name": "Togepi",
@@ -20283,7 +20631,7 @@ const dexDataRubySapphireEmerald =
             "Rain Dance",
             "Safeguard",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Return",
             "Psychic",
             "Shadow Ball",
@@ -20316,7 +20664,7 @@ const dexDataRubySapphireEmerald =
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
@@ -20330,7 +20678,9 @@ const dexDataRubySapphireEmerald =
             "Future Sight",
             "Substitute",
             "Psych Up"
-        ]
+        ],
+        "dex_number": 175,
+        "weight": 1.5
     },
     "Togetic": {
         "name": "Togetic",
@@ -20416,7 +20766,7 @@ const dexDataRubySapphireEmerald =
             "Rain Dance",
             "Safeguard",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Return",
             "Psychic",
             "Shadow Ball",
@@ -20453,13 +20803,15 @@ const dexDataRubySapphireEmerald =
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
             "Defense Curl"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 176,
+        "weight": 3.2
     },
     "Natu": {
         "name": "Natu",
@@ -20535,7 +20887,7 @@ const dexDataRubySapphireEmerald =
             "Rain Dance",
             "Giga Drain",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Return",
             "Psychic",
             "Shadow Ball",
@@ -20573,7 +20925,9 @@ const dexDataRubySapphireEmerald =
             "Psych Up",
             "Feather Dance",
             "Refresh"
-        ]
+        ],
+        "dex_number": 177,
+        "weight": 2.0
     },
     "Xatu": {
         "name": "Xatu",
@@ -20650,7 +21004,7 @@ const dexDataRubySapphireEmerald =
             "Rain Dance",
             "Giga Drain",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Return",
             "Psychic",
             "Shadow Ball",
@@ -20680,7 +21034,9 @@ const dexDataRubySapphireEmerald =
             "Sleep Talk",
             "Swift"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 178,
+        "weight": 15.0
     },
     "Mareep": {
         "name": "Mareep",
@@ -20781,7 +21137,9 @@ const dexDataRubySapphireEmerald =
             "Reflect",
             "Odor Sleuth",
             "Charge"
-        ]
+        ],
+        "dex_number": 179,
+        "weight": 7.8
     },
     "Flaaffy": {
         "name": "Flaaffy",
@@ -20879,7 +21237,7 @@ const dexDataRubySapphireEmerald =
             "Mimic",
             "Thunder Wave",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Endure",
             "Swagger",
@@ -20889,7 +21247,9 @@ const dexDataRubySapphireEmerald =
             "Thunder Punch",
             "Fire Punch"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 180,
+        "weight": 13.3
     },
     "Ampharos": {
         "name": "Ampharos",
@@ -20996,7 +21356,7 @@ const dexDataRubySapphireEmerald =
             "Mimic",
             "Thunder Wave",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Endure",
             "Swagger",
@@ -21006,7 +21366,9 @@ const dexDataRubySapphireEmerald =
             "Thunder Punch",
             "Fire Punch"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 181,
+        "weight": 61.5
     },
     "Bellossom": {
         "name": "Bellossom",
@@ -21060,7 +21422,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 55,
-                "SolarBeam"
+                "Solarbeam"
             ]
         ],
         "tm_hm_learnset": [
@@ -21073,7 +21435,7 @@ const dexDataRubySapphireEmerald =
             "Giga Drain",
             "Safeguard",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Return",
             "Double Team",
             "Sludge Bomb",
@@ -21094,7 +21456,9 @@ const dexDataRubySapphireEmerald =
             "Swagger",
             "Sleep Talk"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 182,
+        "weight": 5.8
     },
     "Marill": {
         "name": "Marill",
@@ -21149,7 +21513,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 21,
-                "BubbleBeam"
+                "Bubble Beam"
             ],
             [
                 28,
@@ -21198,12 +21562,12 @@ const dexDataRubySapphireEmerald =
             "Seismic Toss",
             "Mimic",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -21219,7 +21583,9 @@ const dexDataRubySapphireEmerald =
             "Perish Song",
             "Supersonic",
             "Substitute"
-        ]
+        ],
+        "dex_number": 183,
+        "weight": 8.5
     },
     "Azumarill": {
         "name": "Azumarill",
@@ -21286,7 +21652,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 24,
-                "BubbleBeam"
+                "Bubble Beam"
             ],
             [
                 34,
@@ -21336,19 +21702,21 @@ const dexDataRubySapphireEmerald =
             "Seismic Toss",
             "Mimic",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Swift",
             "Defense Curl"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 184,
+        "weight": 28.5
     },
     "Sudowoodo": {
         "name": "Sudowoodo",
@@ -21453,12 +21821,12 @@ const dexDataRubySapphireEmerald =
             "Explosion",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -21468,7 +21836,9 @@ const dexDataRubySapphireEmerald =
         ],
         "egg_moves": [
             "Self Destruct"
-        ]
+        ],
+        "dex_number": 185,
+        "weight": 38.0
     },
     "Politoed": {
         "name": "Politoed",
@@ -21511,7 +21881,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 1,
-                "Double Slap"
+                "DoubleSlap"
             ],
             [
                 1,
@@ -21565,16 +21935,18 @@ const dexDataRubySapphireEmerald =
             "Mimic",
             "Metronome",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 186,
+        "weight": 33.9
     },
     "Hoppip": {
         "name": "Hoppip",
@@ -21624,7 +21996,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 13,
-                "Poison Powder"
+                "PoisonPowder"
             ],
             [
                 15,
@@ -21655,7 +22027,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Return",
             "Double Team",
             "Aerial Ace",
@@ -21684,7 +22056,9 @@ const dexDataRubySapphireEmerald =
             "Amnesia",
             "Helping Hand",
             "Psych Up"
-        ]
+        ],
+        "dex_number": 187,
+        "weight": 0.5
     },
     "Skiploom": {
         "name": "Skiploom",
@@ -21746,7 +22120,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 13,
-                "Poison Powder"
+                "PoisonPowder"
             ],
             [
                 15,
@@ -21777,7 +22151,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Return",
             "Double Team",
             "Aerial Ace",
@@ -21798,7 +22172,9 @@ const dexDataRubySapphireEmerald =
             "Sleep Talk",
             "Defense Curl"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 188,
+        "weight": 1.0
     },
     "Jumpluff": {
         "name": "Jumpluff",
@@ -21860,7 +22236,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 13,
-                "Poison Powder"
+                "PoisonPowder"
             ],
             [
                 15,
@@ -21892,7 +22268,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Return",
             "Double Team",
             "Aerial Ace",
@@ -21913,7 +22289,9 @@ const dexDataRubySapphireEmerald =
             "Sleep Talk",
             "Defense Curl"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 189,
+        "weight": 3.0
     },
     "Aipom": {
         "name": "Aipom",
@@ -21956,7 +22334,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 6,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 13,
@@ -21997,7 +22375,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Rain Dance",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Iron Tail",
             "Thunderbolt",
             "Thunder",
@@ -22030,10 +22408,10 @@ const dexDataRubySapphireEmerald =
             "Dream Eater",
             "Thunder Wave",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -22050,9 +22428,11 @@ const dexDataRubySapphireEmerald =
             "Agility",
             "Spite",
             "Slam",
-            "Double Slap",
+            "DoubleSlap",
             "Beat Up"
-        ]
+        ],
+        "dex_number": 190,
+        "weight": 11.5
     },
     "Sunkern": {
         "name": "Sunkern",
@@ -22127,7 +22507,7 @@ const dexDataRubySapphireEmerald =
             "Giga Drain",
             "Safeguard",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Return",
             "Double Team",
             "Sludge Bomb",
@@ -22155,7 +22535,9 @@ const dexDataRubySapphireEmerald =
             "Nature Power",
             "Curse",
             "Helping Hand"
-        ]
+        ],
+        "dex_number": 191,
+        "weight": 1.8
     },
     "Sunflora": {
         "name": "Sunflora",
@@ -22221,7 +22603,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 42,
-                "SolarBeam"
+                "Solarbeam"
             ]
         ],
         "tm_hm_learnset": [
@@ -22235,7 +22617,7 @@ const dexDataRubySapphireEmerald =
             "Giga Drain",
             "Safeguard",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Return",
             "Double Team",
             "Sludge Bomb",
@@ -22256,7 +22638,9 @@ const dexDataRubySapphireEmerald =
             "Swagger",
             "Sleep Talk"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 192,
+        "weight": 8.5
     },
     "Yanma": {
         "name": "Yanma",
@@ -22337,7 +22721,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Return",
             "Psychic",
             "Shadow Ball",
@@ -22368,7 +22752,9 @@ const dexDataRubySapphireEmerald =
             "Leech Life",
             "Signal Beam",
             "Silver Wind"
-        ]
+        ],
+        "dex_number": 193,
+        "weight": 38.0
     },
     "Wooper": {
         "name": "Wooper",
@@ -22474,11 +22860,11 @@ const dexDataRubySapphireEmerald =
             "Double Edge",
             "Mimic",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -22493,7 +22879,9 @@ const dexDataRubySapphireEmerald =
             "Stockpile",
             "Swallow",
             "Spit Up"
-        ]
+        ],
+        "dex_number": 194,
+        "weight": 8.5
     },
     "Quagsire": {
         "name": "Quagsire",
@@ -22608,17 +22996,19 @@ const dexDataRubySapphireEmerald =
             "Seismic Toss",
             "Mimic",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Defense Curl"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 195,
+        "weight": 75.0
     },
     "Espeon": {
         "name": "Espeon",
@@ -22664,7 +23054,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 8,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 16,
@@ -22729,12 +23119,14 @@ const dexDataRubySapphireEmerald =
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 196,
+        "weight": 26.5
     },
     "Umbreon": {
         "name": "Umbreon",
@@ -22780,7 +23172,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 8,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 16,
@@ -22844,12 +23236,14 @@ const dexDataRubySapphireEmerald =
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 197,
+        "weight": 27.0
     },
     "Murkrow": {
         "name": "Murkrow",
@@ -22947,7 +23341,7 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -22961,7 +23355,9 @@ const dexDataRubySapphireEmerald =
             "Confuse Ray",
             "Feather Dance",
             "Perish Song"
-        ]
+        ],
+        "dex_number": 198,
+        "weight": 2.1
     },
     "Slowking": {
         "name": "Slowking",
@@ -23082,19 +23478,21 @@ const dexDataRubySapphireEmerald =
             "Dream Eater",
             "Thunder Wave",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Psych Up",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Swift",
             "Fury Cutter"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 199,
+        "weight": 79.5
     },
     "Misdreavus": {
         "name": "Misdreavus",
@@ -23213,7 +23611,9 @@ const dexDataRubySapphireEmerald =
             "Destiny Bond",
             "Psych Up",
             "Imprison"
-        ]
+        ],
+        "dex_number": 200,
+        "weight": 1.0
     },
     "Unown": {
         "name": "Unown",
@@ -23252,7 +23652,9 @@ const dexDataRubySapphireEmerald =
         ],
         "tm_hm_learnset": [],
         "tutor_learnset": [],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 201,
+        "weight": 5.0
     },
     "Wobbuffet": {
         "name": "Wobbuffet",
@@ -23303,7 +23705,9 @@ const dexDataRubySapphireEmerald =
         ],
         "tm_hm_learnset": [],
         "tutor_learnset": [],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 202,
+        "weight": 28.5
     },
     "Girafarig": {
         "name": "Girafarig",
@@ -23416,7 +23820,7 @@ const dexDataRubySapphireEmerald =
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -23430,7 +23834,9 @@ const dexDataRubySapphireEmerald =
             "Psych Up",
             "Wish",
             "Magic Coat"
-        ]
+        ],
+        "dex_number": 203,
+        "weight": 41.5
     },
     "Pineco": {
         "name": "Pineco",
@@ -23507,7 +23913,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Earthquake",
             "Return",
             "Dig",
@@ -23543,7 +23949,9 @@ const dexDataRubySapphireEmerald =
             "Swift",
             "Counter",
             "Sand Tomb"
-        ]
+        ],
+        "dex_number": 204,
+        "weight": 7.2
     },
     "Forretress": {
         "name": "Forretress",
@@ -23625,7 +24033,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Earthquake",
             "Return",
             "Dig",
@@ -23654,7 +24062,9 @@ const dexDataRubySapphireEmerald =
             "Sleep Talk",
             "Defense Curl"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 205,
+        "weight": 125.8
     },
     "Dunsparce": {
         "name": "Dunsparce",
@@ -23735,7 +24145,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Rain Dance",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Iron Tail",
             "Thunderbolt",
             "Thunder",
@@ -23769,7 +24179,7 @@ const dexDataRubySapphireEmerald =
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl"
@@ -23782,7 +24192,9 @@ const dexDataRubySapphireEmerald =
             "Headbutt",
             "Astonish",
             "Curse"
-        ]
+        ],
+        "dex_number": 206,
+        "weight": 14.0
     },
     "Gligar": {
         "name": "Gligar",
@@ -23821,7 +24233,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 6,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 13,
@@ -23895,7 +24307,9 @@ const dexDataRubySapphireEmerald =
             "Razor Wind",
             "Counter",
             "Sand Tomb"
-        ]
+        ],
+        "dex_number": 207,
+        "weight": 64.8
     },
     "Steelix": {
         "name": "Steelix",
@@ -24008,12 +24422,14 @@ const dexDataRubySapphireEmerald =
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 208,
+        "weight": 400.0
     },
     "Snubbull": {
         "name": "Snubbull",
@@ -24099,7 +24515,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Rain Dance",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Thunderbolt",
             "Thunder",
             "Earthquake",
@@ -24133,10 +24549,10 @@ const dexDataRubySapphireEmerald =
             "Metronome",
             "Thunder Wave",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -24153,7 +24569,9 @@ const dexDataRubySapphireEmerald =
             "Heal Bell",
             "Snore",
             "Smelling Salt"
-        ]
+        ],
+        "dex_number": 209,
+        "weight": 7.8
     },
     "Granbull": {
         "name": "Granbull",
@@ -24240,7 +24658,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Rain Dance",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Iron Tail",
             "Thunderbolt",
             "Thunder",
@@ -24277,10 +24695,10 @@ const dexDataRubySapphireEmerald =
             "Thunder Wave",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -24288,7 +24706,9 @@ const dexDataRubySapphireEmerald =
             "Thunder Punch",
             "Fire Punch"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 210,
+        "weight": 48.7
     },
     "Qwilfish": {
         "name": "Qwilfish",
@@ -24399,10 +24819,12 @@ const dexDataRubySapphireEmerald =
         "egg_moves": [
             "Flail",
             "Haze",
-            "BubbleBeam",
+            "Bubble Beam",
             "Supersonic",
             "Astonish"
-        ]
+        ],
+        "dex_number": 211,
+        "weight": 3.9
     },
     "Scizor": {
         "name": "Scizor",
@@ -24514,7 +24936,9 @@ const dexDataRubySapphireEmerald =
             "Swift",
             "Fury Cutter"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 212,
+        "weight": 118.0
     },
     "Shuckle": {
         "name": "Shuckle",
@@ -24606,14 +25030,16 @@ const dexDataRubySapphireEmerald =
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl"
         ],
         "egg_moves": [
             "Sweet Scent"
-        ]
+        ],
+        "dex_number": 213,
+        "weight": 20.5
     },
     "Heracross": {
         "name": "Heracross",
@@ -24732,7 +25158,9 @@ const dexDataRubySapphireEmerald =
             "Bide",
             "Flail",
             "False Swipe"
-        ]
+        ],
+        "dex_number": 214,
+        "weight": 54.0
     },
     "Sneasel": {
         "name": "Sneasel",
@@ -24853,12 +25281,12 @@ const dexDataRubySapphireEmerald =
             "Mimic",
             "Dream Eater",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Psych Up",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -24874,7 +25302,9 @@ const dexDataRubySapphireEmerald =
             "Bite",
             "Crush Claw",
             "Fake Out"
-        ]
+        ],
+        "dex_number": 215,
+        "weight": 28.0
     },
     "Teddiursa": {
         "name": "Teddiursa",
@@ -24985,11 +25415,11 @@ const dexDataRubySapphireEmerald =
             "Mimic",
             "Metronome",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -25008,7 +25438,9 @@ const dexDataRubySapphireEmerald =
             "Fake Tears",
             "Yawn",
             "Sleep Talk"
-        ]
+        ],
+        "dex_number": 216,
+        "weight": 8.8
     },
     "Ursaring": {
         "name": "Ursaring",
@@ -25130,11 +25562,11 @@ const dexDataRubySapphireEmerald =
             "Metronome",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -25144,7 +25576,9 @@ const dexDataRubySapphireEmerald =
             "Fire Punch",
             "Fury Cutter"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 217,
+        "weight": 125.8
     },
     "Slugma": {
         "name": "Slugma",
@@ -25242,7 +25676,7 @@ const dexDataRubySapphireEmerald =
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl"
@@ -25250,7 +25684,9 @@ const dexDataRubySapphireEmerald =
         "egg_moves": [
             "Acid Armor",
             "Heat Wave"
-        ]
+        ],
+        "dex_number": 218,
+        "weight": 35.0
     },
     "Magcargo": {
         "name": "Magcargo",
@@ -25361,12 +25797,14 @@ const dexDataRubySapphireEmerald =
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 219,
+        "weight": 55.0
     },
     "Swinub": {
         "name": "Swinub",
@@ -25465,7 +25903,7 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl"
@@ -25479,7 +25917,9 @@ const dexDataRubySapphireEmerald =
             "Mud Shot",
             "Icicle Spear",
             "Double Edge"
-        ]
+        ],
+        "dex_number": 220,
+        "weight": 6.5
     },
     "Piloswine": {
         "name": "Piloswine",
@@ -25591,12 +26031,14 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 221,
+        "weight": 55.8
     },
     "Corsola": {
         "name": "Corsola",
@@ -25651,7 +26093,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 23,
-                "BubbleBeam"
+                "Bubble Beam"
             ],
             [
                 28,
@@ -25711,7 +26153,7 @@ const dexDataRubySapphireEmerald =
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl"
@@ -25725,7 +26167,9 @@ const dexDataRubySapphireEmerald =
             "Ingrain",
             "Confuse Ray",
             "Icicle Spear"
-        ]
+        ],
+        "dex_number": 222,
+        "weight": 5.0
     },
     "Remoraid": {
         "name": "Remoraid",
@@ -25775,7 +26219,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 22,
-                "BubbleBeam"
+                "Bubble Beam"
             ],
             [
                 33,
@@ -25822,7 +26266,7 @@ const dexDataRubySapphireEmerald =
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
@@ -25836,7 +26280,9 @@ const dexDataRubySapphireEmerald =
             "Screech",
             "Thunder Wave",
             "Rock Blast"
-        ]
+        ],
+        "dex_number": 223,
+        "weight": 12.0
     },
     "Octillery": {
         "name": "Octillery",
@@ -25886,7 +26332,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 22,
-                "BubbleBeam"
+                "Bubble Beam"
             ],
             [
                 25,
@@ -25940,13 +26386,15 @@ const dexDataRubySapphireEmerald =
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
             "Defense Curl"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 224,
+        "weight": 28.5
     },
     "Delibird": {
         "name": "Delibird",
@@ -26017,7 +26465,7 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -26029,7 +26477,9 @@ const dexDataRubySapphireEmerald =
             "Splash",
             "Rapid Spin",
             "Ice Ball"
-        ]
+        ],
+        "dex_number": 225,
+        "weight": 16.0
     },
     "Mantine": {
         "name": "Mantine",
@@ -26076,7 +26526,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 15,
-                "BubbleBeam"
+                "Bubble Beam"
             ],
             [
                 22,
@@ -26129,7 +26579,7 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -26141,7 +26591,9 @@ const dexDataRubySapphireEmerald =
             "Slam",
             "Mud Sport",
             "Rock Slide"
-        ]
+        ],
+        "dex_number": 226,
+        "weight": 220.0
     },
     "Skarmory": {
         "name": "Skarmory",
@@ -26184,7 +26636,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 10,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 13,
@@ -26246,7 +26698,7 @@ const dexDataRubySapphireEmerald =
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -26257,7 +26709,9 @@ const dexDataRubySapphireEmerald =
             "Whirlwind",
             "Sky Attack",
             "Curse"
-        ]
+        ],
+        "dex_number": 227,
+        "weight": 50.5
     },
     "Houndour": {
         "name": "Houndour",
@@ -26339,7 +26793,7 @@ const dexDataRubySapphireEmerald =
             "Taunt",
             "Protect",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Iron Tail",
             "Return",
             "Shadow Ball",
@@ -26366,7 +26820,7 @@ const dexDataRubySapphireEmerald =
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -26380,7 +26834,9 @@ const dexDataRubySapphireEmerald =
             "Reversal",
             "Beat Up",
             "Will O Wisp"
-        ]
+        ],
+        "dex_number": 228,
+        "weight": 10.8
     },
     "Houndoom": {
         "name": "Houndoom",
@@ -26467,7 +26923,7 @@ const dexDataRubySapphireEmerald =
             "Hyper Beam",
             "Protect",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Iron Tail",
             "Return",
             "Shadow Ball",
@@ -26495,12 +26951,14 @@ const dexDataRubySapphireEmerald =
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 229,
+        "weight": 35.0
     },
     "Kingdra": {
         "name": "Kingdra",
@@ -26610,7 +27068,9 @@ const dexDataRubySapphireEmerald =
             "Sleep Talk",
             "Swift"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 230,
+        "weight": 152.0
     },
     "Phanpy": {
         "name": "Phanpy",
@@ -26708,7 +27168,7 @@ const dexDataRubySapphireEmerald =
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl"
@@ -26720,7 +27180,9 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Counter",
             "Fissure"
-        ]
+        ],
+        "dex_number": 231,
+        "weight": 33.5
     },
     "Donphan": {
         "name": "Donphan",
@@ -26820,12 +27282,14 @@ const dexDataRubySapphireEmerald =
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 232,
+        "weight": 120.0
     },
     "Porygon2": {
         "name": "Porygon2",
@@ -26912,7 +27376,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Rain Dance",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Iron Tail",
             "Thunderbolt",
             "Thunder",
@@ -26943,7 +27407,9 @@ const dexDataRubySapphireEmerald =
             "Swift",
             "Defense Curl"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 233,
+        "weight": 32.5
     },
     "Stantler": {
         "name": "Stantler",
@@ -26997,7 +27463,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 31,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 37,
@@ -27022,7 +27488,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Rain Dance",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Iron Tail",
             "Thunderbolt",
             "Thunder",
@@ -27051,7 +27517,7 @@ const dexDataRubySapphireEmerald =
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -27063,7 +27529,9 @@ const dexDataRubySapphireEmerald =
             "Swagger",
             "Psych Up",
             "Extrasensory"
-        ]
+        ],
+        "dex_number": 234,
+        "weight": 71.2
     },
     "Smeargle": {
         "name": "Smeargle",
@@ -27138,7 +27606,9 @@ const dexDataRubySapphireEmerald =
         ],
         "tm_hm_learnset": [],
         "tutor_learnset": [],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 235,
+        "weight": 58.0
     },
     "Tyrogue": {
         "name": "Tyrogue",
@@ -27206,7 +27676,7 @@ const dexDataRubySapphireEmerald =
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -27217,7 +27687,9 @@ const dexDataRubySapphireEmerald =
             "Mach Punch",
             "Mind Reader",
             "Helping Hand"
-        ]
+        ],
+        "dex_number": 236,
+        "weight": 21.0
     },
     "Hitmontop": {
         "name": "Hitmontop",
@@ -27327,12 +27799,14 @@ const dexDataRubySapphireEmerald =
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 237,
+        "weight": 48.0
     },
     "Smoochum": {
         "name": "Smoochum",
@@ -27445,12 +27919,12 @@ const dexDataRubySapphireEmerald =
             "Metronome",
             "Dream Eater",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Psych Up",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk"
@@ -27461,7 +27935,9 @@ const dexDataRubySapphireEmerald =
             "Fake Out",
             "Wish",
             "Ice Punch"
-        ]
+        ],
+        "dex_number": 238,
+        "weight": 6.0
     },
     "Elekid": {
         "name": "Elekid",
@@ -27559,10 +28035,10 @@ const dexDataRubySapphireEmerald =
             "Mimic",
             "Thunder Wave",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -27578,7 +28054,9 @@ const dexDataRubySapphireEmerald =
             "Cross Chop",
             "Fire Punch",
             "Ice Punch"
-        ]
+        ],
+        "dex_number": 239,
+        "weight": 23.5
     },
     "Magby": {
         "name": "Magby",
@@ -27677,10 +28155,10 @@ const dexDataRubySapphireEmerald =
             "Seismic Toss",
             "Mimic",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Thunder Punch",
@@ -27693,7 +28171,9 @@ const dexDataRubySapphireEmerald =
             "Screech",
             "Cross Chop",
             "Thunder Punch"
-        ]
+        ],
+        "dex_number": 240,
+        "weight": 21.4
     },
     "Miltank": {
         "name": "Miltank",
@@ -27774,7 +28254,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Rain Dance",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Iron Tail",
             "Thunderbolt",
             "Thunder",
@@ -27806,13 +28286,13 @@ const dexDataRubySapphireEmerald =
             "Thunder Wave",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Psych Up",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -27829,7 +28309,9 @@ const dexDataRubySapphireEmerald =
             "Curse",
             "Helping Hand",
             "Sleep Talk"
-        ]
+        ],
+        "dex_number": 241,
+        "weight": 75.5
     },
     "Blissey": {
         "name": "Blissey",
@@ -27884,7 +28366,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 13,
-                "Double Slap"
+                "DoubleSlap"
             ],
             [
                 18,
@@ -27927,7 +28409,7 @@ const dexDataRubySapphireEmerald =
             "Rain Dance",
             "Safeguard",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Iron Tail",
             "Thunderbolt",
             "Thunder",
@@ -27965,17 +28447,19 @@ const dexDataRubySapphireEmerald =
             "Dream Eater",
             "Thunder Wave",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 242,
+        "weight": 46.8
     },
     "Raikou": {
         "name": "Raikou",
@@ -28084,12 +28568,14 @@ const dexDataRubySapphireEmerald =
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 243,
+        "weight": 178.0
     },
     "Entei": {
         "name": "Entei",
@@ -28172,7 +28658,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Rain Dance",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Iron Tail",
             "Return",
             "Dig",
@@ -28197,12 +28683,14 @@ const dexDataRubySapphireEmerald =
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 244,
+        "weight": 198.0
     },
     "Suicune": {
         "name": "Suicune",
@@ -28244,7 +28732,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 11,
-                "BubbleBeam"
+                "Bubble Beam"
             ],
             [
                 21,
@@ -28313,12 +28801,14 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 245,
+        "weight": 187.0
     },
     "Larvitar": {
         "name": "Larvitar",
@@ -28421,7 +28911,7 @@ const dexDataRubySapphireEmerald =
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk"
         ],
@@ -28433,7 +28923,9 @@ const dexDataRubySapphireEmerald =
             "Ancient Power",
             "Dragon Dance",
             "Curse"
-        ]
+        ],
+        "dex_number": 246,
+        "weight": 72.0
     },
     "Pupitar": {
         "name": "Pupitar",
@@ -28544,11 +29036,13 @@ const dexDataRubySapphireEmerald =
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 247,
+        "weight": 152.0
     },
     "Tyranitar": {
         "name": "Tyranitar",
@@ -28679,16 +29173,18 @@ const dexDataRubySapphireEmerald =
             "Thunder Wave",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Fire Punch",
             "Fury Cutter"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 248,
+        "weight": 202.0
     },
     "Lugia": {
         "name": "Lugia",
@@ -28813,12 +29309,14 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 249,
+        "weight": 216.0
     },
     "HoOh": {
         "name": "HoOh",
@@ -28904,7 +29402,7 @@ const dexDataRubySapphireEmerald =
             "Giga Drain",
             "Safeguard",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Thunderbolt",
             "Thunder",
             "Earthquake",
@@ -28937,12 +29435,14 @@ const dexDataRubySapphireEmerald =
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 250,
+        "weight": 199.0
     },
     "Celebi": {
         "name": "Celebi",
@@ -29024,7 +29524,7 @@ const dexDataRubySapphireEmerald =
             "Giga Drain",
             "Safeguard",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Return",
             "Psychic",
             "Shadow Ball",
@@ -29050,13 +29550,15 @@ const dexDataRubySapphireEmerald =
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
             "Defense Curl"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 251,
+        "weight": 5.0
     },
     "Treecko": {
         "name": "Treecko",
@@ -29143,7 +29645,7 @@ const dexDataRubySapphireEmerald =
             "Giga Drain",
             "Safeguard",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Iron Tail",
             "Return",
             "Dig",
@@ -29170,10 +29672,10 @@ const dexDataRubySapphireEmerald =
             "Seismic Toss",
             "Mimic",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
@@ -29185,9 +29687,11 @@ const dexDataRubySapphireEmerald =
             "Mud Sport",
             "Endeavor",
             "Leech Seed",
-            "Dragon Breath",
+            "DragonBreath",
             "Crush Claw"
-        ]
+        ],
+        "dex_number": 252,
+        "weight": 5.0
     },
     "Grovyle": {
         "name": "Grovyle",
@@ -29286,7 +29790,7 @@ const dexDataRubySapphireEmerald =
             "Giga Drain",
             "Safeguard",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Iron Tail",
             "Return",
             "Dig",
@@ -29313,17 +29817,19 @@ const dexDataRubySapphireEmerald =
             "Seismic Toss",
             "Mimic",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
             "Thunder Punch",
             "Fury Cutter"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 253,
+        "weight": 21.6
     },
     "Sceptile": {
         "name": "Sceptile",
@@ -29425,7 +29931,7 @@ const dexDataRubySapphireEmerald =
             "Giga Drain",
             "Safeguard",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Iron Tail",
             "Earthquake",
             "Return",
@@ -29453,17 +29959,19 @@ const dexDataRubySapphireEmerald =
             "Seismic Toss",
             "Mimic",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
             "Thunder Punch",
             "Fury Cutter"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 254,
+        "weight": 52.2
     },
     "Torchic": {
         "name": "Torchic",
@@ -29517,7 +30025,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 19,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 25,
@@ -29575,7 +30083,7 @@ const dexDataRubySapphireEmerald =
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -29587,7 +30095,9 @@ const dexDataRubySapphireEmerald =
             "Swagger",
             "Rock Slide",
             "Smelling Salt"
-        ]
+        ],
+        "dex_number": 255,
+        "weight": 2.5
     },
     "Combusken": {
         "name": "Combusken",
@@ -29653,7 +30163,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 21,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 28,
@@ -29712,10 +30222,10 @@ const dexDataRubySapphireEmerald =
             "Mimic",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
@@ -29723,7 +30233,9 @@ const dexDataRubySapphireEmerald =
             "Fire Punch",
             "Fury Cutter"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 256,
+        "weight": 19.5
     },
     "Blaziken": {
         "name": "Blaziken",
@@ -29793,7 +30305,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 21,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 28,
@@ -29859,10 +30371,10 @@ const dexDataRubySapphireEmerald =
             "Mimic",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
@@ -29870,7 +30382,9 @@ const dexDataRubySapphireEmerald =
             "Fire Punch",
             "Fury Cutter"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 257,
+        "weight": 52.0
     },
     "Mudkip": {
         "name": "Mudkip",
@@ -29912,7 +30426,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 6,
-                "Mud Slap"
+                "Mud-Slap"
             ],
             [
                 10,
@@ -29985,7 +30499,7 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl"
@@ -29997,7 +30511,9 @@ const dexDataRubySapphireEmerald =
             "Stomp",
             "Ice Ball",
             "Mirror Coat"
-        ]
+        ],
+        "dex_number": 258,
+        "weight": 7.6
     },
     "Marshtomp": {
         "name": "Marshtomp",
@@ -30039,7 +30555,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 1,
-                "Mud Slap"
+                "Mud-Slap"
             ],
             [
                 1,
@@ -30047,7 +30563,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 6,
-                "Mud Slap"
+                "Mud-Slap"
             ],
             [
                 10,
@@ -30126,18 +30642,20 @@ const dexDataRubySapphireEmerald =
             "Mimic",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Defense Curl"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 259,
+        "weight": 28.0
     },
     "Swampert": {
         "name": "Swampert",
@@ -30179,7 +30697,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 1,
-                "Mud Slap"
+                "Mud-Slap"
             ],
             [
                 1,
@@ -30187,7 +30705,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 6,
-                "Mud Slap"
+                "Mud-Slap"
             ],
             [
                 10,
@@ -30270,18 +30788,20 @@ const dexDataRubySapphireEmerald =
             "Mimic",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Defense Curl"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 260,
+        "weight": 81.9
     },
     "Poochyena": {
         "name": "Poochyena",
@@ -30323,7 +30843,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 9,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 13,
@@ -30394,7 +30914,7 @@ const dexDataRubySapphireEmerald =
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk"
         ],
@@ -30404,7 +30924,9 @@ const dexDataRubySapphireEmerald =
             "Covet",
             "Leer",
             "Yawn"
-        ]
+        ],
+        "dex_number": 261,
+        "weight": 13.6
     },
     "Mightyena": {
         "name": "Mightyena",
@@ -30446,7 +30968,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 1,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 1,
@@ -30458,7 +30980,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 9,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 13,
@@ -30531,11 +31053,13 @@ const dexDataRubySapphireEmerald =
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 262,
+        "weight": 37.0
     },
     "Zigzagoon": {
         "name": "Zigzagoon",
@@ -30585,7 +31109,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 13,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 17,
@@ -30653,7 +31177,7 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
@@ -30666,7 +31190,9 @@ const dexDataRubySapphireEmerald =
             "Substitute",
             "Tickle",
             "Trick"
-        ]
+        ],
+        "dex_number": 263,
+        "weight": 17.5
     },
     "Linoone": {
         "name": "Linoone",
@@ -30724,7 +31250,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 13,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 17,
@@ -30795,14 +31321,16 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
             "Defense Curl",
             "Fury Cutter"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 264,
+        "weight": 32.5
     },
     "Wurmple": {
         "name": "Wurmple",
@@ -30849,7 +31377,9 @@ const dexDataRubySapphireEmerald =
         ],
         "tm_hm_learnset": [],
         "tutor_learnset": [],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 265,
+        "weight": 3.6
     },
     "Silcoon": {
         "name": "Silcoon",
@@ -30892,7 +31422,9 @@ const dexDataRubySapphireEmerald =
         ],
         "tm_hm_learnset": [],
         "tutor_learnset": [],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 266,
+        "weight": 10.0
     },
     "Beautifly": {
         "name": "Beautifly",
@@ -30974,7 +31506,7 @@ const dexDataRubySapphireEmerald =
             "Giga Drain",
             "Safeguard",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Return",
             "Psychic",
             "Shadow Ball",
@@ -30997,7 +31529,9 @@ const dexDataRubySapphireEmerald =
             "Sleep Talk",
             "Swift"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 267,
+        "weight": 28.4
     },
     "Cascoon": {
         "name": "Cascoon",
@@ -31040,7 +31574,9 @@ const dexDataRubySapphireEmerald =
         ],
         "tm_hm_learnset": [],
         "tutor_learnset": [],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 268,
+        "weight": 11.5
     },
     "Dustox": {
         "name": "Dustox",
@@ -31122,7 +31658,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Return",
             "Psychic",
             "Shadow Ball",
@@ -31146,7 +31682,9 @@ const dexDataRubySapphireEmerald =
             "Sleep Talk",
             "Swift"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 269,
+        "weight": 31.6
     },
     "Lotad": {
         "name": "Lotad",
@@ -31221,7 +31759,7 @@ const dexDataRubySapphireEmerald =
             "Rain Dance",
             "Giga Drain",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Return",
             "Double Team",
             "Facade",
@@ -31251,7 +31789,9 @@ const dexDataRubySapphireEmerald =
             "Leech Seed",
             "Flail",
             "Water Gun"
-        ]
+        ],
+        "dex_number": 270,
+        "weight": 2.6
     },
     "Lombre": {
         "name": "Lombre",
@@ -31338,7 +31878,7 @@ const dexDataRubySapphireEmerald =
             "Rain Dance",
             "Giga Drain",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Return",
             "Brick Break",
             "Double Team",
@@ -31360,18 +31900,20 @@ const dexDataRubySapphireEmerald =
             "Double Edge",
             "Mimic",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Thunder Punch",
             "Fire Punch"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 271,
+        "weight": 32.5
     },
     "Ludicolo": {
         "name": "Ludicolo",
@@ -31436,7 +31978,7 @@ const dexDataRubySapphireEmerald =
             "Rain Dance",
             "Giga Drain",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Return",
             "Brick Break",
             "Double Team",
@@ -31463,18 +32005,20 @@ const dexDataRubySapphireEmerald =
             "Mimic",
             "Metronome",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Thunder Punch",
             "Fire Punch"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 272,
+        "weight": 55.0
     },
     "Seedot": {
         "name": "Seedot",
@@ -31544,7 +32088,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Return",
             "Dig",
             "Shadow Ball",
@@ -31577,7 +32121,9 @@ const dexDataRubySapphireEmerald =
             "Razor Wind",
             "Take Down",
             "False Swipe"
-        ]
+        ],
+        "dex_number": 273,
+        "weight": 4.0
     },
     "Nuzleaf": {
         "name": "Nuzleaf",
@@ -31660,7 +32206,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Return",
             "Dig",
             "Shadow Ball",
@@ -31690,14 +32236,16 @@ const dexDataRubySapphireEmerald =
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
             "Defense Curl",
             "Fury Cutter"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 274,
+        "weight": 28.0
     },
     "Shiftry": {
         "name": "Shiftry",
@@ -31756,7 +32304,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Return",
             "Dig",
             "Shadow Ball",
@@ -31787,14 +32335,16 @@ const dexDataRubySapphireEmerald =
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
             "Defense Curl",
             "Fury Cutter"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 275,
+        "weight": 59.6
     },
     "Nincada": {
         "name": "Nincada",
@@ -31840,7 +32390,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 9,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 14,
@@ -31856,7 +32406,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 31,
-                "Mud Slap"
+                "Mud-Slap"
             ],
             [
                 38,
@@ -31874,7 +32424,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Return",
             "Dig",
             "Shadow Ball",
@@ -31893,7 +32443,7 @@ const dexDataRubySapphireEmerald =
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Fury Cutter"
@@ -31903,7 +32453,9 @@ const dexDataRubySapphireEmerald =
             "Faint Attack",
             "Gust",
             "Silver Wind"
-        ]
+        ],
+        "dex_number": 290,
+        "weight": 5.5
     },
     "Ninjask": {
         "name": "Ninjask",
@@ -31949,7 +32501,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 1,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 5,
@@ -31957,7 +32509,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 9,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 14,
@@ -32004,7 +32556,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Return",
             "Dig",
             "Shadow Ball",
@@ -32026,13 +32578,15 @@ const dexDataRubySapphireEmerald =
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
             "Fury Cutter"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 291,
+        "weight": 12.0
     },
     "Shedinja": {
         "name": "Shedinja",
@@ -32078,7 +32632,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 9,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 14,
@@ -32113,7 +32667,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Return",
             "Dig",
             "Shadow Ball",
@@ -32134,12 +32688,14 @@ const dexDataRubySapphireEmerald =
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Fury Cutter"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 292,
+        "weight": 1.2
     },
     "Taillow": {
         "name": "Taillow",
@@ -32233,7 +32789,7 @@ const dexDataRubySapphireEmerald =
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -32245,7 +32801,9 @@ const dexDataRubySapphireEmerald =
             "Mirror Move",
             "Rage",
             "Sky Attack"
-        ]
+        ],
+        "dex_number": 276,
+        "weight": 2.3
     },
     "Swellow": {
         "name": "Swellow",
@@ -32348,12 +32906,14 @@ const dexDataRubySapphireEmerald =
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 277,
+        "weight": 19.8
     },
     "Shroomish": {
         "name": "Shroomish",
@@ -32411,7 +32971,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 28,
-                "Poison Powder"
+                "PoisonPowder"
             ],
             [
                 36,
@@ -32435,7 +32995,7 @@ const dexDataRubySapphireEmerald =
             "Giga Drain",
             "Safeguard",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Return",
             "Double Team",
             "Sludge Bomb",
@@ -32463,7 +33023,9 @@ const dexDataRubySapphireEmerald =
             "Charm",
             "False Swipe",
             "Helping Hand"
-        ]
+        ],
+        "dex_number": 285,
+        "weight": 4.5
     },
     "Breloom": {
         "name": "Breloom",
@@ -32549,7 +33111,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 54,
-                "Dynamic Punch"
+                "DynamicPunch"
             ]
         ],
         "tm_hm_learnset": [
@@ -32564,7 +33126,7 @@ const dexDataRubySapphireEmerald =
             "Giga Drain",
             "Safeguard",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Iron Tail",
             "Return",
             "Brick Break",
@@ -32590,16 +33152,18 @@ const dexDataRubySapphireEmerald =
             "Seismic Toss",
             "Mimic",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Thunder Punch",
             "Fury Cutter"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 286,
+        "weight": 39.2
     },
     "Spinda": {
         "name": "Spinda",
@@ -32718,13 +33282,13 @@ const dexDataRubySapphireEmerald =
             "Dream Eater",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Psych Up",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -32742,7 +33306,9 @@ const dexDataRubySapphireEmerald =
             "Wish",
             "Trick",
             "Smelling Salt"
-        ]
+        ],
+        "dex_number": 327,
+        "weight": 5.0
     },
     "Wingull": {
         "name": "Wingull",
@@ -32836,7 +33402,7 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -32847,7 +33413,9 @@ const dexDataRubySapphireEmerald =
             "Agility",
             "Gust",
             "Water Sport"
-        ]
+        ],
+        "dex_number": 278,
+        "weight": 9.5
     },
     "Pelipper": {
         "name": "Pelipper",
@@ -32963,12 +33531,14 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 279,
+        "weight": 28.0
     },
     "Surskit": {
         "name": "Surskit",
@@ -33018,7 +33588,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 25,
-                "BubbleBeam"
+                "Bubble Beam"
             ],
             [
                 31,
@@ -33044,7 +33614,7 @@ const dexDataRubySapphireEmerald =
             "Rain Dance",
             "Giga Drain",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Return",
             "Shadow Ball",
             "Double Team",
@@ -33073,7 +33643,9 @@ const dexDataRubySapphireEmerald =
             "Psybeam",
             "Hydro Pump",
             "Mind Reader"
-        ]
+        ],
+        "dex_number": 283,
+        "weight": 1.7
     },
     "Masquerain": {
         "name": "Masquerain",
@@ -33166,7 +33738,7 @@ const dexDataRubySapphireEmerald =
             "Rain Dance",
             "Giga Drain",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Return",
             "Shadow Ball",
             "Double Team",
@@ -33190,7 +33762,9 @@ const dexDataRubySapphireEmerald =
             "Sleep Talk",
             "Swift"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 284,
+        "weight": 3.6
     },
     "Wailmer": {
         "name": "Wailmer",
@@ -33319,7 +33893,9 @@ const dexDataRubySapphireEmerald =
             "Curse",
             "Fissure",
             "Tickle"
-        ]
+        ],
+        "dex_number": 320,
+        "weight": 130.0
     },
     "Wailord": {
         "name": "Wailord",
@@ -33452,7 +34028,9 @@ const dexDataRubySapphireEmerald =
             "Sleep Talk",
             "Defense Curl"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 321,
+        "weight": 398.0
     },
     "Skitty": {
         "name": "Skitty",
@@ -33506,7 +34084,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 15,
-                "Double Slap"
+                "DoubleSlap"
             ],
             [
                 19,
@@ -33545,7 +34123,7 @@ const dexDataRubySapphireEmerald =
             "Rain Dance",
             "Safeguard",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Iron Tail",
             "Thunderbolt",
             "Thunder",
@@ -33572,7 +34150,7 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
@@ -33587,7 +34165,9 @@ const dexDataRubySapphireEmerald =
             "Baton Pass",
             "Substitute",
             "Tickle"
-        ]
+        ],
+        "dex_number": 300,
+        "weight": 11.0
     },
     "Delcatty": {
         "name": "Delcatty",
@@ -33633,7 +34213,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 1,
-                "Double Slap"
+                "DoubleSlap"
             ]
         ],
         "tm_hm_learnset": [
@@ -33649,7 +34229,7 @@ const dexDataRubySapphireEmerald =
             "Rain Dance",
             "Safeguard",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Iron Tail",
             "Thunderbolt",
             "Thunder",
@@ -33678,13 +34258,15 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
             "Defense Curl"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 301,
+        "weight": 32.6
     },
     "Kecleon": {
         "name": "Kecleon",
@@ -33780,7 +34362,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Rain Dance",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Iron Tail",
             "Thunderbolt",
             "Thunder",
@@ -33818,13 +34400,13 @@ const dexDataRubySapphireEmerald =
             "Thunder Wave",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Psych Up",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -33838,7 +34420,9 @@ const dexDataRubySapphireEmerald =
             "Disable",
             "Magic Coat",
             "Trick"
-        ]
+        ],
+        "dex_number": 352,
+        "weight": 22.0
     },
     "Baltoy": {
         "name": "Baltoy",
@@ -33884,7 +34468,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 7,
-                "Mud Slap"
+                "Mud-Slap"
             ],
             [
                 11,
@@ -33924,7 +34508,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Rain Dance",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Earthquake",
             "Return",
             "Dig",
@@ -33950,11 +34534,13 @@ const dexDataRubySapphireEmerald =
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 343,
+        "weight": 21.5
     },
     "Claydol": {
         "name": "Claydol",
@@ -34012,7 +34598,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 7,
-                "Mud Slap"
+                "Mud-Slap"
             ],
             [
                 11,
@@ -34057,7 +34643,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Rain Dance",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Earthquake",
             "Return",
             "Dig",
@@ -34085,11 +34671,13 @@ const dexDataRubySapphireEmerald =
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 344,
+        "weight": 108.0
     },
     "Nosepass": {
         "name": "Nosepass",
@@ -34194,11 +34782,11 @@ const dexDataRubySapphireEmerald =
             "Explosion",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -34210,7 +34798,9 @@ const dexDataRubySapphireEmerald =
             "Magnitude",
             "Rollout",
             "Explosion"
-        ]
+        ],
+        "dex_number": 299,
+        "weight": 97.0
     },
     "Torkoal": {
         "name": "Torkoal",
@@ -34320,7 +34910,7 @@ const dexDataRubySapphireEmerald =
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk"
         ],
@@ -34329,7 +34919,9 @@ const dexDataRubySapphireEmerald =
             "Endure",
             "Sleep Talk",
             "Yawn"
-        ]
+        ],
+        "dex_number": 324,
+        "weight": 80.4
     },
     "Sableye": {
         "name": "Sableye",
@@ -34456,11 +35048,11 @@ const dexDataRubySapphireEmerald =
             "Metronome",
             "Dream Eater",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -34472,7 +35064,9 @@ const dexDataRubySapphireEmerald =
             "Psych Up",
             "Recover",
             "Moonlight"
-        ]
+        ],
+        "dex_number": 302,
+        "weight": 11.0
     },
     "Barboach": {
         "name": "Barboach",
@@ -34506,7 +35100,7 @@ const dexDataRubySapphireEmerald =
         "levelup_moveset": [
             [
                 1,
-                "Mud Slap"
+                "Mud-Slap"
             ],
             [
                 6,
@@ -34579,7 +35173,7 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk"
         ],
@@ -34587,7 +35181,9 @@ const dexDataRubySapphireEmerald =
             "Thrash",
             "Whirlpool",
             "Spark"
-        ]
+        ],
+        "dex_number": 339,
+        "weight": 1.9
     },
     "Whiscash": {
         "name": "Whiscash",
@@ -34625,7 +35221,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 1,
-                "Mud Slap"
+                "Mud-Slap"
             ],
             [
                 1,
@@ -34710,11 +35306,13 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 340,
+        "weight": 23.6
     },
     "Luvdisc": {
         "name": "Luvdisc",
@@ -34821,7 +35419,9 @@ const dexDataRubySapphireEmerald =
             "Supersonic",
             "Water Sport",
             "Mud Sport"
-        ]
+        ],
+        "dex_number": 370,
+        "weight": 8.7
     },
     "Corphish": {
         "name": "Corphish",
@@ -34872,7 +35472,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 20,
-                "BubbleBeam"
+                "Bubble Beam"
             ],
             [
                 23,
@@ -34937,7 +35537,7 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Fury Cutter"
@@ -34947,7 +35547,9 @@ const dexDataRubySapphireEmerald =
             "Endeavor",
             "Body Slam",
             "Ancient Power"
-        ]
+        ],
+        "dex_number": 341,
+        "weight": 11.5
     },
     "Crawdaunt": {
         "name": "Crawdaunt",
@@ -34990,7 +35592,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 1,
-                "Vice Grip"
+                "Vicegrip"
             ],
             [
                 1,
@@ -35002,7 +35604,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 10,
-                "Vice Grip"
+                "Vicegrip"
             ],
             [
                 13,
@@ -35077,13 +35679,15 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
             "Fury Cutter"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 342,
+        "weight": 32.8
     },
     "Feebas": {
         "name": "Feebas",
@@ -35161,12 +35765,14 @@ const dexDataRubySapphireEmerald =
         ],
         "egg_moves": [
             "Mirror Coat",
-            "Dragon Breath",
+            "DragonBreath",
             "Mud Sport",
             "Hypnosis",
             "Light Screen",
             "Confuse Ray"
-        ]
+        ],
+        "dex_number": 349,
+        "weight": 7.4
     },
     "Milotic": {
         "name": "Milotic",
@@ -35275,12 +35881,14 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 350,
+        "weight": 162.0
     },
     "Carvanha": {
         "name": "Carvanha",
@@ -35383,7 +35991,7 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
@@ -35393,7 +36001,9 @@ const dexDataRubySapphireEmerald =
             "Hydro Pump",
             "Double Edge",
             "Thrash"
-        ]
+        ],
+        "dex_number": 318,
+        "weight": 20.8
     },
     "Sharpedo": {
         "name": "Sharpedo",
@@ -35518,13 +36128,15 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
             "Fury Cutter"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 319,
+        "weight": 88.8
     },
     "Trapinch": {
         "name": "Trapinch",
@@ -35563,7 +36175,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 9,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 17,
@@ -35598,7 +36210,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Earthquake",
             "Return",
             "Dig",
@@ -35620,7 +36232,7 @@ const dexDataRubySapphireEmerald =
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk"
         ],
@@ -35628,7 +36240,9 @@ const dexDataRubySapphireEmerald =
             "Focus Energy",
             "Quick Attack",
             "Gust"
-        ]
+        ],
+        "dex_number": 328,
+        "weight": 15.0
     },
     "Vibrava": {
         "name": "Vibrava",
@@ -35667,7 +36281,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 1,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 1,
@@ -35679,7 +36293,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 9,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 17,
@@ -35695,7 +36309,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 35,
-                "Dragon Breath"
+                "DragonBreath"
             ],
             [
                 41,
@@ -35718,7 +36332,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Earthquake",
             "Return",
             "Dig",
@@ -35742,12 +36356,14 @@ const dexDataRubySapphireEmerald =
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 329,
+        "weight": 15.3
     },
     "Flygon": {
         "name": "Flygon",
@@ -35786,7 +36402,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 1,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 1,
@@ -35798,7 +36414,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 9,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 17,
@@ -35814,7 +36430,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 35,
-                "Dragon Breath"
+                "DragonBreath"
             ],
             [
                 41,
@@ -35838,7 +36454,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Iron Tail",
             "Earthquake",
             "Return",
@@ -35865,14 +36481,16 @@ const dexDataRubySapphireEmerald =
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
             "Fire Punch",
             "Fury Cutter"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 330,
+        "weight": 82.0
     },
     "Makuhita": {
         "name": "Makuhita",
@@ -35915,7 +36533,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 4,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 10,
@@ -35992,10 +36610,10 @@ const dexDataRubySapphireEmerald =
             "Metronome",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -36009,9 +36627,11 @@ const dexDataRubySapphireEmerald =
             "Helping Hand",
             "Cross Chop",
             "Revenge",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Counter"
-        ]
+        ],
+        "dex_number": 296,
+        "weight": 86.4
     },
     "Hariyama": {
         "name": "Hariyama",
@@ -36054,7 +36674,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 1,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 1,
@@ -36062,7 +36682,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 4,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 10,
@@ -36140,17 +36760,19 @@ const dexDataRubySapphireEmerald =
             "Metronome",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Thunder Punch",
             "Fire Punch"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 297,
+        "weight": 253.8
     },
     "Electrike": {
         "name": "Electrike",
@@ -36257,7 +36879,7 @@ const dexDataRubySapphireEmerald =
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -36268,7 +36890,9 @@ const dexDataRubySapphireEmerald =
             "Uproar",
             "Curse",
             "Swift"
-        ]
+        ],
+        "dex_number": 309,
+        "weight": 15.2
     },
     "Manectric": {
         "name": "Manectric",
@@ -36388,12 +37012,14 @@ const dexDataRubySapphireEmerald =
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 310,
+        "weight": 40.2
     },
     "Numel": {
         "name": "Numel",
@@ -36497,7 +37123,7 @@ const dexDataRubySapphireEmerald =
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl"
@@ -36509,7 +37135,9 @@ const dexDataRubySapphireEmerald =
             "Rollout",
             "Defense Curl",
             "Stomp"
-        ]
+        ],
+        "dex_number": 322,
+        "weight": 24.0
     },
     "Camerupt": {
         "name": "Camerupt",
@@ -36628,12 +37256,14 @@ const dexDataRubySapphireEmerald =
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 323,
+        "weight": 220.0
     },
     "Spheal": {
         "name": "Spheal",
@@ -36749,7 +37379,7 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl"
@@ -36763,7 +37393,9 @@ const dexDataRubySapphireEmerald =
             "Rock Slide",
             "Curse",
             "Fissure"
-        ]
+        ],
+        "dex_number": 363,
+        "weight": 39.5
     },
     "Sealeo": {
         "name": "Sealeo",
@@ -36884,12 +37516,14 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 364,
+        "weight": 87.6
     },
     "Walrein": {
         "name": "Walrein",
@@ -37011,12 +37645,14 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 365,
+        "weight": 150.6
     },
     "Cacnea": {
         "name": "Cacnea",
@@ -37070,7 +37706,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 17,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 21,
@@ -37110,7 +37746,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Return",
             "Double Team",
             "Sandstorm",
@@ -37130,10 +37766,10 @@ const dexDataRubySapphireEmerald =
             "Seismic Toss",
             "Mimic",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Thunder Punch",
@@ -37143,9 +37779,11 @@ const dexDataRubySapphireEmerald =
             "Grass Whistle",
             "Acid",
             "Teeter Dance",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Counter"
-        ]
+        ],
+        "dex_number": 331,
+        "weight": 51.3
     },
     "Cacturne": {
         "name": "Cacturne",
@@ -37207,7 +37845,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 17,
-                "Sand Attack"
+                "Sand-Attack"
             ],
             [
                 21,
@@ -37248,7 +37886,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Return",
             "Double Team",
             "Sandstorm",
@@ -37270,16 +37908,18 @@ const dexDataRubySapphireEmerald =
             "Seismic Toss",
             "Mimic",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Thunder Punch",
             "Fury Cutter"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 332,
+        "weight": 77.4
     },
     "Snorunt": {
         "name": "Snorunt",
@@ -37391,7 +38031,9 @@ const dexDataRubySapphireEmerald =
         "egg_moves": [
             "Block",
             "Spikes"
-        ]
+        ],
+        "dex_number": 361,
+        "weight": 16.8
     },
     "Glalie": {
         "name": "Glalie",
@@ -37519,7 +38161,9 @@ const dexDataRubySapphireEmerald =
             "Sleep Talk",
             "Defense Curl"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 362,
+        "weight": 256.5
     },
     "Lunatone": {
         "name": "Lunatone",
@@ -37634,7 +38278,9 @@ const dexDataRubySapphireEmerald =
             "Swift",
             "Defense Curl"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 337,
+        "weight": 168.0
     },
     "Solrock": {
         "name": "Solrock",
@@ -37700,7 +38346,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 43,
-                "SolarBeam"
+                "Solarbeam"
             ],
             [
                 49,
@@ -37717,7 +38363,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Safeguard",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Earthquake",
             "Return",
             "Psychic",
@@ -37752,7 +38398,9 @@ const dexDataRubySapphireEmerald =
             "Swift",
             "Defense Curl"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 338,
+        "weight": 154.0
     },
     "Azurill": {
         "name": "Azurill",
@@ -37839,7 +38487,7 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
@@ -37851,7 +38499,9 @@ const dexDataRubySapphireEmerald =
             "Refresh",
             "Slam",
             "Tickle"
-        ]
+        ],
+        "dex_number": 298,
+        "weight": 2.0
     },
     "Spoink": {
         "name": "Spoink",
@@ -37975,7 +38625,9 @@ const dexDataRubySapphireEmerald =
             "Extrasensory",
             "Substitute",
             "Trick"
-        ]
+        ],
+        "dex_number": 325,
+        "weight": 30.6
     },
     "Grumpig": {
         "name": "Grumpig",
@@ -38104,12 +38756,12 @@ const dexDataRubySapphireEmerald =
             "Mimic",
             "Dream Eater",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Psych Up",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -38117,7 +38769,9 @@ const dexDataRubySapphireEmerald =
             "Thunder Punch",
             "Fire Punch"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 326,
+        "weight": 71.5
     },
     "Plusle": {
         "name": "Plusle",
@@ -38224,11 +38878,11 @@ const dexDataRubySapphireEmerald =
             "Metronome",
             "Thunder Wave",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
@@ -38238,7 +38892,9 @@ const dexDataRubySapphireEmerald =
         "egg_moves": [
             "Substitute",
             "Wish"
-        ]
+        ],
+        "dex_number": 311,
+        "weight": 4.2
     },
     "Minun": {
         "name": "Minun",
@@ -38345,11 +39001,11 @@ const dexDataRubySapphireEmerald =
             "Metronome",
             "Thunder Wave",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
@@ -38359,7 +39015,9 @@ const dexDataRubySapphireEmerald =
         "egg_moves": [
             "Substitute",
             "Wish"
-        ]
+        ],
+        "dex_number": 312,
+        "weight": 4.2
     },
     "Mawile": {
         "name": "Mawile",
@@ -38452,7 +39110,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Rain Dance",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Return",
             "Brick Break",
             "Double Team",
@@ -38480,12 +39138,12 @@ const dexDataRubySapphireEmerald =
             "Mimic",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Psych Up",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -38498,7 +39156,9 @@ const dexDataRubySapphireEmerald =
             "Psych Up",
             "Ancient Power",
             "Tickle"
-        ]
+        ],
+        "dex_number": 303,
+        "weight": 11.5
     },
     "Meditite": {
         "name": "Meditite",
@@ -38612,11 +39272,11 @@ const dexDataRubySapphireEmerald =
             "Metronome",
             "Dream Eater",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -38631,8 +39291,10 @@ const dexDataRubySapphireEmerald =
             "Foresight",
             "Fake Out",
             "Baton Pass",
-            "Dynamic Punch"
-        ]
+            "DynamicPunch"
+        ],
+        "dex_number": 307,
+        "weight": 11.2
     },
     "Medicham": {
         "name": "Medicham",
@@ -38772,11 +39434,11 @@ const dexDataRubySapphireEmerald =
             "Dream Eater",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -38784,7 +39446,9 @@ const dexDataRubySapphireEmerald =
             "Thunder Punch",
             "Fire Punch"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 308,
+        "weight": 31.5
     },
     "Swablu": {
         "name": "Swablu",
@@ -38870,7 +39534,7 @@ const dexDataRubySapphireEmerald =
             "Rain Dance",
             "Safeguard",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Return",
             "Double Team",
             "Aerial Ace",
@@ -38891,7 +39555,7 @@ const dexDataRubySapphireEmerald =
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
@@ -38901,7 +39565,9 @@ const dexDataRubySapphireEmerald =
             "Haze",
             "Pursuit",
             "Rage"
-        ]
+        ],
+        "dex_number": 333,
+        "weight": 1.2
     },
     "Altaria": {
         "name": "Altaria",
@@ -38975,7 +39641,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 35,
-                "Dragon Breath"
+                "DragonBreath"
             ],
             [
                 40,
@@ -39006,7 +39672,7 @@ const dexDataRubySapphireEmerald =
             "Rain Dance",
             "Safeguard",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Iron Tail",
             "Earthquake",
             "Return",
@@ -39032,12 +39698,14 @@ const dexDataRubySapphireEmerald =
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 334,
+        "weight": 20.6
     },
     "Wynaut": {
         "name": "Wynaut",
@@ -39100,7 +39768,9 @@ const dexDataRubySapphireEmerald =
         ],
         "tm_hm_learnset": [],
         "tutor_learnset": [],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 360,
+        "weight": 14.0
     },
     "Duskull": {
         "name": "Duskull",
@@ -39222,7 +39892,9 @@ const dexDataRubySapphireEmerald =
             "Grudge",
             "Memento",
             "Faint Attack"
-        ]
+        ],
+        "dex_number": 355,
+        "weight": 15.0
     },
     "Dusclops": {
         "name": "Dusclops",
@@ -39354,19 +40026,21 @@ const dexDataRubySapphireEmerald =
             "Dream Eater",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Psych Up",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Thunder Punch",
             "Fire Punch"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 356,
+        "weight": 30.6
     },
     "Roselia": {
         "name": "Roselia",
@@ -39468,7 +40142,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Return",
             "Shadow Ball",
             "Double Team",
@@ -39489,7 +40163,7 @@ const dexDataRubySapphireEmerald =
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
@@ -39500,7 +40174,9 @@ const dexDataRubySapphireEmerald =
             "Synthesis",
             "Pin Missile",
             "Cotton Spore"
-        ]
+        ],
+        "dex_number": 315,
+        "weight": 2.0
     },
     "Slakoth": {
         "name": "Slakoth",
@@ -39581,7 +40257,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Rain Dance",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Thunderbolt",
             "Thunder",
             "Return",
@@ -39610,11 +40286,11 @@ const dexDataRubySapphireEmerald =
             "Mimic",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -39630,7 +40306,9 @@ const dexDataRubySapphireEmerald =
             "Crush Claw",
             "Curse",
             "Sleep Talk"
-        ]
+        ],
+        "dex_number": 287,
+        "weight": 24.0
     },
     "Vigoroth": {
         "name": "Vigoroth",
@@ -39725,7 +40403,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Rain Dance",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Thunderbolt",
             "Thunder",
             "Earthquake",
@@ -39755,11 +40433,11 @@ const dexDataRubySapphireEmerald =
             "Mimic",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -39767,7 +40445,9 @@ const dexDataRubySapphireEmerald =
             "Fire Punch",
             "Fury Cutter"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 288,
+        "weight": 46.5
     },
     "Slaking": {
         "name": "Slaking",
@@ -39863,7 +40543,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Rain Dance",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Thunderbolt",
             "Thunder",
             "Earthquake",
@@ -39893,11 +40573,11 @@ const dexDataRubySapphireEmerald =
             "Mimic",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -39905,7 +40585,9 @@ const dexDataRubySapphireEmerald =
             "Fire Punch",
             "Fury Cutter"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 289,
+        "weight": 130.5
     },
     "Gulpin": {
         "name": "Gulpin",
@@ -39994,7 +40676,7 @@ const dexDataRubySapphireEmerald =
             "Rain Dance",
             "Giga Drain",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Return",
             "Shadow Ball",
             "Double Team",
@@ -40016,11 +40698,11 @@ const dexDataRubySapphireEmerald =
             "Dream Eater",
             "Explosion",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -40033,7 +40715,9 @@ const dexDataRubySapphireEmerald =
             "Acid Armor",
             "Smog",
             "Pain Split"
-        ]
+        ],
+        "dex_number": 316,
+        "weight": 10.3
     },
     "Swalot": {
         "name": "Swalot",
@@ -40139,7 +40823,7 @@ const dexDataRubySapphireEmerald =
             "Rain Dance",
             "Giga Drain",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Return",
             "Shadow Ball",
             "Double Team",
@@ -40161,11 +40845,11 @@ const dexDataRubySapphireEmerald =
             "Dream Eater",
             "Explosion",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -40173,7 +40857,9 @@ const dexDataRubySapphireEmerald =
             "Thunder Punch",
             "Fire Punch"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 317,
+        "weight": 80.0
     },
     "Tropius": {
         "name": "Tropius",
@@ -40243,7 +40929,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 41,
-                "SolarBeam"
+                "Solarbeam"
             ],
             [
                 47,
@@ -40261,7 +40947,7 @@ const dexDataRubySapphireEmerald =
             "Giga Drain",
             "Safeguard",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Earthquake",
             "Return",
             "Double Team",
@@ -40285,7 +40971,7 @@ const dexDataRubySapphireEmerald =
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Fury Cutter"
@@ -40296,7 +40982,9 @@ const dexDataRubySapphireEmerald =
             "Razor Wind",
             "Leech Seed",
             "Nature Power"
-        ]
+        ],
+        "dex_number": 357,
+        "weight": 100.0
     },
     "Whismur": {
         "name": "Whismur",
@@ -40384,7 +41072,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Rain Dance",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Return",
             "Shadow Ball",
             "Double Team",
@@ -40405,13 +41093,13 @@ const dexDataRubySapphireEmerald =
             "Seismic Toss",
             "Mimic",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Psych Up",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -40425,7 +41113,9 @@ const dexDataRubySapphireEmerald =
             "Swagger",
             "Extrasensory",
             "Smelling Salt"
-        ]
+        ],
+        "dex_number": 293,
+        "weight": 16.3
     },
     "Loudred": {
         "name": "Loudred",
@@ -40526,7 +41216,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Rain Dance",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Earthquake",
             "Return",
             "Shadow Ball",
@@ -40554,13 +41244,13 @@ const dexDataRubySapphireEmerald =
             "Mimic",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Psych Up",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -40568,7 +41258,9 @@ const dexDataRubySapphireEmerald =
             "Thunder Punch",
             "Fire Punch"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 294,
+        "weight": 40.5
     },
     "Exploud": {
         "name": "Exploud",
@@ -40674,7 +41366,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Rain Dance",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Earthquake",
             "Return",
             "Shadow Ball",
@@ -40702,13 +41394,13 @@ const dexDataRubySapphireEmerald =
             "Mimic",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Psych Up",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -40716,7 +41408,9 @@ const dexDataRubySapphireEmerald =
             "Thunder Punch",
             "Fire Punch"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 295,
+        "weight": 84.0
     },
     "Clamperl": {
         "name": "Clamperl",
@@ -40803,7 +41497,9 @@ const dexDataRubySapphireEmerald =
             "Supersonic",
             "Barrier",
             "Confuse Ray"
-        ]
+        ],
+        "dex_number": 366,
+        "weight": 52.5
     },
     "Huntail": {
         "name": "Huntail",
@@ -40899,12 +41595,14 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 367,
+        "weight": 27.0
     },
     "Gorebyss": {
         "name": "Gorebyss",
@@ -41001,12 +41699,14 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 368,
+        "weight": 22.6
     },
     "Absol": {
         "name": "Absol",
@@ -41134,7 +41834,7 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
@@ -41147,7 +41847,9 @@ const dexDataRubySapphireEmerald =
             "Magic Coat",
             "Curse",
             "Substitute"
-        ]
+        ],
+        "dex_number": 359,
+        "weight": 47.0
     },
     "Shuppet": {
         "name": "Shuppet",
@@ -41266,7 +41968,9 @@ const dexDataRubySapphireEmerald =
             "Foresight",
             "Astonish",
             "Imprison"
-        ]
+        ],
+        "dex_number": 353,
+        "weight": 2.3
     },
     "Banette": {
         "name": "Banette",
@@ -41390,11 +42094,13 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 354,
+        "weight": 12.5
     },
     "Seviper": {
         "name": "Seviper",
@@ -41499,7 +42205,7 @@ const dexDataRubySapphireEmerald =
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
@@ -41510,7 +42216,9 @@ const dexDataRubySapphireEmerald =
             "Swallow",
             "Spit Up",
             "Body Slam"
-        ]
+        ],
+        "dex_number": 336,
+        "weight": 52.5
     },
     "Zangoose": {
         "name": "Zangoose",
@@ -41601,7 +42309,7 @@ const dexDataRubySapphireEmerald =
             "Rain Dance",
             "Giga Drain",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Iron Tail",
             "Thunderbolt",
             "Thunder",
@@ -41634,12 +42342,12 @@ const dexDataRubySapphireEmerald =
             "Thunder Wave",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -41656,7 +42364,9 @@ const dexDataRubySapphireEmerald =
             "Counter",
             "Roar",
             "Curse"
-        ]
+        ],
+        "dex_number": 335,
+        "weight": 40.3
     },
     "Relicanth": {
         "name": "Relicanth",
@@ -41771,7 +42481,7 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk"
         ],
@@ -41782,7 +42492,9 @@ const dexDataRubySapphireEmerald =
             "Amnesia",
             "Sleep Talk",
             "Rock Slide"
-        ]
+        ],
+        "dex_number": 369,
+        "weight": 23.4
     },
     "Aron": {
         "name": "Aron",
@@ -41825,7 +42537,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 7,
-                "Mud Slap"
+                "Mud-Slap"
             ],
             [
                 10,
@@ -41899,7 +42611,7 @@ const dexDataRubySapphireEmerald =
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl",
@@ -41910,7 +42622,9 @@ const dexDataRubySapphireEmerald =
             "Body Slam",
             "Stomp",
             "Smelling Salt"
-        ]
+        ],
+        "dex_number": 304,
+        "weight": 60.0
     },
     "Lairon": {
         "name": "Lairon",
@@ -41953,7 +42667,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 1,
-                "Mud Slap"
+                "Mud-Slap"
             ],
             [
                 1,
@@ -41965,7 +42679,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 7,
-                "Mud Slap"
+                "Mud-Slap"
             ],
             [
                 10,
@@ -42039,13 +42753,15 @@ const dexDataRubySapphireEmerald =
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl",
             "Fury Cutter"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 305,
+        "weight": 120.0
     },
     "Aggron": {
         "name": "Aggron",
@@ -42088,7 +42804,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 1,
-                "Mud Slap"
+                "Mud-Slap"
             ],
             [
                 1,
@@ -42100,7 +42816,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 7,
-                "Mud Slap"
+                "Mud-Slap"
             ],
             [
                 10,
@@ -42154,7 +42870,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Rain Dance",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Iron Tail",
             "Thunderbolt",
             "Thunder",
@@ -42189,12 +42905,12 @@ const dexDataRubySapphireEmerald =
             "Thunder Wave",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -42203,7 +42919,9 @@ const dexDataRubySapphireEmerald =
             "Fire Punch",
             "Fury Cutter"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 306,
+        "weight": 360.0
     },
     "Castform": {
         "name": "Castform",
@@ -42279,7 +42997,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Rain Dance",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Thunderbolt",
             "Thunder",
             "Return",
@@ -42314,7 +43032,9 @@ const dexDataRubySapphireEmerald =
         "egg_moves": [
             "Future Sight",
             "Psych Up"
-        ]
+        ],
+        "dex_number": 351,
+        "weight": 0.8
     },
     "Volbeat": {
         "name": "Volbeat",
@@ -42399,7 +43119,7 @@ const dexDataRubySapphireEmerald =
             "Rain Dance",
             "Giga Drain",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Thunderbolt",
             "Thunder",
             "Return",
@@ -42426,11 +43146,11 @@ const dexDataRubySapphireEmerald =
             "Metronome",
             "Thunder Wave",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -42441,7 +43161,9 @@ const dexDataRubySapphireEmerald =
             "Baton Pass",
             "Silver Wind",
             "Trick"
-        ]
+        ],
+        "dex_number": 313,
+        "weight": 17.7
     },
     "Illumise": {
         "name": "Illumise",
@@ -42525,7 +43247,7 @@ const dexDataRubySapphireEmerald =
             "Rain Dance",
             "Giga Drain",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Thunderbolt",
             "Thunder",
             "Return",
@@ -42552,11 +43274,11 @@ const dexDataRubySapphireEmerald =
             "Metronome",
             "Thunder Wave",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -42567,7 +43289,9 @@ const dexDataRubySapphireEmerald =
             "Baton Pass",
             "Silver Wind",
             "Growth"
-        ]
+        ],
+        "dex_number": 314,
+        "weight": 17.7
     },
     "Lileep": {
         "name": "Lileep",
@@ -42648,7 +43372,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Return",
             "Double Team",
             "Sludge Bomb",
@@ -42667,7 +43391,7 @@ const dexDataRubySapphireEmerald =
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk"
         ],
@@ -42676,7 +43400,9 @@ const dexDataRubySapphireEmerald =
             "Recover",
             "Mirror Coat",
             "Rock Slide"
-        ]
+        ],
+        "dex_number": 345,
+        "weight": 23.8
     },
     "Cradily": {
         "name": "Cradily",
@@ -42770,7 +43496,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Giga Drain",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Earthquake",
             "Return",
             "Double Team",
@@ -42793,11 +43519,13 @@ const dexDataRubySapphireEmerald =
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 346,
+        "weight": 60.4
     },
     "Anorith": {
         "name": "Anorith",
@@ -42900,7 +43628,7 @@ const dexDataRubySapphireEmerald =
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Fury Cutter"
@@ -42910,7 +43638,9 @@ const dexDataRubySapphireEmerald =
             "Knock Off",
             "Swords Dance",
             "Rock Slide"
-        ]
+        ],
+        "dex_number": 347,
+        "weight": 12.5
     },
     "Armaldo": {
         "name": "Armaldo",
@@ -43030,12 +43760,14 @@ const dexDataRubySapphireEmerald =
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Fury Cutter"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 348,
+        "weight": 68.2
     },
     "Ralts": {
         "name": "Ralts",
@@ -43148,7 +43880,7 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -43162,7 +43894,9 @@ const dexDataRubySapphireEmerald =
             "Mean Look",
             "Memento",
             "Destiny Bond"
-        ]
+        ],
+        "dex_number": 280,
+        "weight": 6.6
     },
     "Kirlia": {
         "name": "Kirlia",
@@ -43287,7 +44021,7 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -43295,7 +44029,9 @@ const dexDataRubySapphireEmerald =
             "Thunder Punch",
             "Fire Punch"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 281,
+        "weight": 20.2
     },
     "Gardevoir": {
         "name": "Gardevoir",
@@ -43421,7 +44157,7 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -43429,7 +44165,9 @@ const dexDataRubySapphireEmerald =
             "Thunder Punch",
             "Fire Punch"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 282,
+        "weight": 48.4
     },
     "Bagon": {
         "name": "Bagon",
@@ -43487,7 +44225,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 33,
-                "Dragon Breath"
+                "DragonBreath"
             ],
             [
                 37,
@@ -43538,7 +44276,7 @@ const dexDataRubySapphireEmerald =
             "Substitute",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Fury Cutter"
@@ -43549,7 +44287,9 @@ const dexDataRubySapphireEmerald =
             "Dragon Rage",
             "Twister",
             "Dragon Dance"
-        ]
+        ],
+        "dex_number": 371,
+        "weight": 42.1
     },
     "Shelgon": {
         "name": "Shelgon",
@@ -43623,7 +44363,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 38,
-                "Dragon Breath"
+                "DragonBreath"
             ],
             [
                 47,
@@ -43675,13 +44415,15 @@ const dexDataRubySapphireEmerald =
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Defense Curl",
             "Fury Cutter"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 372,
+        "weight": 110.5
     },
     "Salamence": {
         "name": "Salamence",
@@ -43755,7 +44497,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 38,
-                "Dragon Breath"
+                "DragonBreath"
             ],
             [
                 47,
@@ -43816,14 +44558,16 @@ const dexDataRubySapphireEmerald =
             "Rollout",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
             "Defense Curl",
             "Fury Cutter"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 373,
+        "weight": 102.6
     },
     "Beldum": {
         "name": "Beldum",
@@ -43862,7 +44606,9 @@ const dexDataRubySapphireEmerald =
         ],
         "tm_hm_learnset": [],
         "tutor_learnset": [],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 374,
+        "weight": 95.2
     },
     "Metang": {
         "name": "Metang",
@@ -43970,13 +44716,13 @@ const dexDataRubySapphireEmerald =
             "Explosion",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Psych Up",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -43985,7 +44731,9 @@ const dexDataRubySapphireEmerald =
             "Thunder Punch",
             "Fury Cutter"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 375,
+        "weight": 202.5
     },
     "Metagross": {
         "name": "Metagross",
@@ -44105,13 +44853,13 @@ const dexDataRubySapphireEmerald =
             "Explosion",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Psych Up",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -44120,7 +44868,9 @@ const dexDataRubySapphireEmerald =
             "Thunder Punch",
             "Fury Cutter"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 376,
+        "weight": 550.0
     },
     "Regirock": {
         "name": "Regirock",
@@ -44226,12 +44976,12 @@ const dexDataRubySapphireEmerald =
             "Explosion",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -44239,7 +44989,9 @@ const dexDataRubySapphireEmerald =
             "Thunder Punch",
             "Fire Punch"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 377,
+        "weight": 230.0
     },
     "Regice": {
         "name": "Regice",
@@ -44345,20 +45097,22 @@ const dexDataRubySapphireEmerald =
             "Explosion",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Psych Up",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Defense Curl",
             "Thunder Punch"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 378,
+        "weight": 175.0
     },
     "Registeel": {
         "name": "Registeel",
@@ -44469,19 +45223,21 @@ const dexDataRubySapphireEmerald =
             "Explosion",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
             "Defense Curl",
             "Thunder Punch"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 379,
+        "weight": 205.0
     },
     "Kyogre": {
         "name": "Kyogre",
@@ -44600,13 +45356,15 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
             "Defense Curl"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 382,
+        "weight": 352.0
     },
     "Groudon": {
         "name": "Groudon",
@@ -44676,7 +45434,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 65,
-                "SolarBeam"
+                "Solarbeam"
             ],
             [
                 75,
@@ -44694,7 +45452,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Safeguard",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Iron Tail",
             "Thunderbolt",
             "Thunder",
@@ -44729,12 +45487,12 @@ const dexDataRubySapphireEmerald =
             "Thunder Wave",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Rollout",
             "Psych Up",
             "Snore",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
@@ -44743,7 +45501,9 @@ const dexDataRubySapphireEmerald =
             "Fire Punch",
             "Fury Cutter"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 383,
+        "weight": 950.0
     },
     "Rayquaza": {
         "name": "Rayquaza",
@@ -44834,7 +45594,7 @@ const dexDataRubySapphireEmerald =
             "Protect",
             "Rain Dance",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Iron Tail",
             "Thunderbolt",
             "Thunder",
@@ -44869,13 +45629,15 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
             "Fury Cutter"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 384,
+        "weight": 206.5
     },
     "Latias": {
         "name": "Latias",
@@ -44925,7 +45687,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 20,
-                "Dragon Breath"
+                "DragonBreath"
             ],
             [
                 25,
@@ -44967,7 +45729,7 @@ const dexDataRubySapphireEmerald =
             "Rain Dance",
             "Safeguard",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Thunderbolt",
             "Thunder",
             "Earthquake",
@@ -45002,13 +45764,15 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
             "Fury Cutter"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 380,
+        "weight": 40.0
     },
     "Latios": {
         "name": "Latios",
@@ -45058,7 +45822,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 20,
-                "Dragon Breath"
+                "DragonBreath"
             ],
             [
                 25,
@@ -45100,7 +45864,7 @@ const dexDataRubySapphireEmerald =
             "Rain Dance",
             "Safeguard",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Thunderbolt",
             "Thunder",
             "Earthquake",
@@ -45135,13 +45899,15 @@ const dexDataRubySapphireEmerald =
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Swagger",
             "Sleep Talk",
             "Swift",
             "Fury Cutter"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 381,
+        "weight": 60.0
     },
     "Jirachi": {
         "name": "Jirachi",
@@ -45258,12 +46024,12 @@ const dexDataRubySapphireEmerald =
             "Dream Eater",
             "Thunder Wave",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Psych Up",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -45272,7 +46038,9 @@ const dexDataRubySapphireEmerald =
             "Thunder Punch",
             "Fire Punch"
         ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 385,
+        "weight": 1.1
     },
     "Deoxys": {
         "name": "Deoxys",
@@ -45287,138 +46055,6 @@ const dexDataRubySapphireEmerald =
         "ev_yield_def": 0,
         "ev_yield_spd": 1,
         "ev_yield_spc_atk": 1,
-        "ev_yield_spc_def": 0,
-        "type_1": "Psychic",
-        "type_2": "Psychic",
-        "catch_rate": 3,
-        "base_xp": 215,
-        "common_item": null,
-        "rare_item": null,
-        "gender_ratio": "Mon Genderless",
-        "egg_cycles": 120,
-        "friendship": 0,
-        "growth_rate": "GROWTH_SLOW",
-        "egg_group_1": "Undiscovered",
-        "egg_group_2": "Undiscovered",
-        "abilities": [
-            "Pressure"
-        ],
-        "levelup_moveset": [
-            [
-                1,
-                "Leer"
-            ],
-            [
-                1,
-                "Wrap"
-            ],
-            [
-                5,
-                "Night Shade"
-            ],
-            [
-                10,
-                "Teleport"
-            ],
-            [
-                15,
-                "Knock Off"
-            ],
-            [
-                20,
-                "Pursuit"
-            ],
-            [
-                25,
-                "Psychic"
-            ],
-            [
-                30,
-                "Snatch"
-            ],
-            [
-                35,
-                "Cosmic Power"
-            ],
-            [
-                40,
-                "Recover"
-            ],
-            [
-                45,
-                "Psycho Boost"
-            ],
-            [
-                50,
-                "Hyper Beam"
-            ]
-        ],
-        "tm_hm_learnset": [
-            "Focus Punch",
-            "Water Pulse",
-            "Calm Mind",
-            "Toxic",
-            "Hidden Power",
-            "Sunny Day",
-            "Taunt",
-            "Ice Beam",
-            "Hyper Beam",
-            "Light Screen",
-            "Protect",
-            "Rain Dance",
-            "Safeguard",
-            "Frustration",
-            "SolarBeam",
-            "Thunderbolt",
-            "Thunder",
-            "Return",
-            "Psychic",
-            "Shadow Ball",
-            "Brick Break",
-            "Double Team",
-            "Reflect",
-            "Shock Wave",
-            "Rock Tomb",
-            "Aerial Ace",
-            "Torment",
-            "Facade",
-            "Secret Power",
-            "Rest",
-            "Skill Swap",
-            "Snatch",
-            "Cut",
-            "Strength",
-            "Flash",
-            "Rock Smash"
-        ],
-        "tutor_learnset": [
-            "Body Slam",
-            "Double Edge",
-            "Seismic Toss",
-            "Mimic",
-            "Dream Eater",
-            "Thunder Wave",
-            "Substitute",
-            "Dynamic Punch",
-            "Icy Wind",
-            "Nightmare",
-            "Swagger"
-        ],
-        "egg_moves": []
-    },
-    "Deoxys (S)": {
-        "name": "Deoxys (S)",
-        "base_hp": 50,
-        "base_atk": 95,
-        "base_def": 90,
-        "base_spd": 180,
-        "base_spc_atk": 95,
-        "base_spc_def": 90,
-        "ev_yield_hp": 0,
-        "ev_yield_atk": 0,
-        "ev_yield_def": 0,
-        "ev_yield_spd": 3,
-        "ev_yield_spc_atk": 0,
         "ev_yield_spc_def": 0,
         "type_1": "Psychic",
         "type_2": "Psychic",
@@ -45500,7 +46136,7 @@ const dexDataRubySapphireEmerald =
             "Rain Dance",
             "Safeguard",
             "Frustration",
-            "SolarBeam",
+            "Solarbeam",
             "Thunderbolt",
             "Thunder",
             "Return",
@@ -45535,12 +46171,12 @@ const dexDataRubySapphireEmerald =
             "Thunder Wave",
             "Rock Slide",
             "Substitute",
-            "Dynamic Punch",
+            "DynamicPunch",
             "Psych Up",
             "Snore",
             "Icy Wind",
             "Endure",
-            "Mud Slap",
+            "Mud-Slap",
             "Ice Punch",
             "Swagger",
             "Sleep Talk",
@@ -45548,279 +46184,9 @@ const dexDataRubySapphireEmerald =
             "Thunder Punch",
             "Fire Punch"
         ],
-        "egg_moves": []
-    },
-    "Deoxys (D)": {
-        "name": "Deoxys (D)",
-        "base_hp": 50,
-        "base_atk": 70,
-        "base_def": 160,
-        "base_spd": 90,
-        "base_spc_atk": 70,
-        "base_spc_def": 160,
-        "ev_yield_hp": 0,
-        "ev_yield_atk": 0,
-        "ev_yield_def": 2,
-        "ev_yield_spd": 0,
-        "ev_yield_spc_atk": 0,
-        "ev_yield_spc_def": 1,
-        "type_1": "Psychic",
-        "type_2": "Psychic",
-        "catch_rate": 3,
-        "base_xp": 215,
-        "common_item": null,
-        "rare_item": null,
-        "gender_ratio": "Mon Genderless",
-        "egg_cycles": 120,
-        "friendship": 0,
-        "growth_rate": "GROWTH_SLOW",
-        "egg_group_1": "Undiscovered",
-        "egg_group_2": "Undiscovered",
-        "abilities": [
-            "Pressure"
-        ],
-        "levelup_moveset": [
-            [
-                1,
-                "Leer"
-            ],
-            [
-                1,
-                "Wrap"
-            ],
-            [
-                5,
-                "Night Shade"
-            ],
-            [
-                10,
-                "Teleport"
-            ],
-            [
-                15,
-                "Knock Off"
-            ],
-            [
-                20,
-                "Spikes"
-            ],
-            [
-                25,
-                "Psychic"
-            ],
-            [
-                30,
-                "Snatch"
-            ],
-            [
-                35,
-                "Iron Defense"
-            ],
-            [
-                35,
-                "Amnesia"
-            ],
-            [
-                40,
-                "Recover"
-            ],
-            [
-                45,
-                "Psycho Boost"
-            ],
-            [
-                50,
-                "Counter"
-            ],
-            [
-                50,
-                "Mirror Coat"
-            ]
-        ],
-        "tm_hm_learnset": [
-            "Focus Punch",
-            "Water Pulse",
-            "Calm Mind",
-            "Toxic",
-            "Hidden Power",
-            "Sunny Day",
-            "Taunt",
-            "Ice Beam",
-            "Hyper Beam",
-            "Light Screen",
-            "Protect",
-            "Rain Dance",
-            "Safeguard",
-            "Frustration",
-            "SolarBeam",
-            "Thunderbolt",
-            "Thunder",
-            "Return",
-            "Psychic",
-            "Shadow Ball",
-            "Brick Break",
-            "Double Team",
-            "Reflect",
-            "Shock Wave",
-            "Rock Tomb",
-            "Aerial Ace",
-            "Torment",
-            "Facade",
-            "Secret Power",
-            "Rest",
-            "Skill Swap",
-            "Snatch",
-            "Cut",
-            "Strength",
-            "Flash",
-            "Rock Smash"
-        ],
-        "tutor_learnset": [
-            "Mega Punch",
-            "Mega Kick",
-            "Body Slam",
-            "Double Edge",
-            "Counter",
-            "Seismic Toss",
-            "Mimic",
-            "Dream Eater",
-            "Thunder Wave",
-            "Rock Slide",
-            "Substitute"
-        ],
-        "egg_moves": []
-    },
-    "Deoxys (A)": {
-        "name": "Deoxys (A)",
-        "base_hp": 50,
-        "base_atk": 180,
-        "base_def": 20,
-        "base_spd": 180,
-        "base_spc_atk": 150,
-        "base_spc_def": 20,
-        "ev_yield_hp": 0,
-        "ev_yield_atk": 2,
-        "ev_yield_def": 0,
-        "ev_yield_spd": 0,
-        "ev_yield_spc_atk": 1,
-        "ev_yield_spc_def": 0,
-        "type_1": "Psychic",
-        "type_2": "Psychic",
-        "catch_rate": 3,
-        "base_xp": 215,
-        "common_item": null,
-        "rare_item": null,
-        "gender_ratio": "Mon Genderless",
-        "egg_cycles": 120,
-        "friendship": 0,
-        "growth_rate": "GROWTH_SLOW",
-        "egg_group_1": "Undiscovered",
-        "egg_group_2": "Undiscovered",
-        "abilities": [
-            "Pressure"
-        ],
-        "levelup_moveset": [
-            [
-                1,
-                "Leer"
-            ],
-            [
-                1,
-                "Wrap"
-            ],
-            [
-                5,
-                "Night Shade"
-            ],
-            [
-                10,
-                "Teleport"
-            ],
-            [
-                15,
-                "Taunt"
-            ],
-            [
-                20,
-                "Pursuit"
-            ],
-            [
-                25,
-                "Psychic"
-            ],
-            [
-                30,
-                "Superpower"
-            ],
-            [
-                35,
-                "Cosmic Power"
-            ],
-            [
-                40,
-                "Zap Cannon"
-            ],
-            [
-                45,
-                "Psycho Boost"
-            ],
-            [
-                50,
-                "Hyper Beam"
-            ]
-        ],
-        "tm_hm_learnset": [
-            "Focus Punch",
-            "Water Pulse",
-            "Calm Mind",
-            "Toxic",
-            "Hidden Power",
-            "Sunny Day",
-            "Taunt",
-            "Ice Beam",
-            "Hyper Beam",
-            "Light Screen",
-            "Protect",
-            "Rain Dance",
-            "Safeguard",
-            "Frustration",
-            "SolarBeam",
-            "Thunderbolt",
-            "Thunder",
-            "Return",
-            "Psychic",
-            "Shadow Ball",
-            "Brick Break",
-            "Double Team",
-            "Reflect",
-            "Shock Wave",
-            "Rock Tomb",
-            "Aerial Ace",
-            "Torment",
-            "Facade",
-            "Secret Power",
-            "Rest",
-            "Skill Swap",
-            "Snatch",
-            "Cut",
-            "Strength",
-            "Flash",
-            "Rock Smash"
-        ],
-        "tutor_learnset": [
-            "Mega Punch",
-            "Mega Kick",
-            "Body Slam",
-            "Double Edge",
-            "Counter",
-            "Seismic Toss",
-            "Mimic",
-            "Dream Eater",
-            "Thunder Wave",
-            "Rock Slide",
-            "Substitute"
-        ],
-        "egg_moves": []
+        "egg_moves": [],
+        "dex_number": 386,
+        "weight": 60.8
     },
     "Chimecho": {
         "name": "Chimecho",
@@ -45946,6 +46312,8 @@ const dexDataRubySapphireEmerald =
             "Curse",
             "Hypnosis",
             "Dream Eater"
-        ]
+        ],
+        "dex_number": 358,
+        "weight": 1.0
     }
 }
