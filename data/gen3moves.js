@@ -1352,7 +1352,7 @@ const gen3moves = [
     Description: "A life-risking tackle that also hurts the user."
   },
   {
-    Move: "Double Slap",
+    Move: "DoubleSlap",
     Type: "Normal",
     PP: "10",
     Power: "15",

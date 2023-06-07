@@ -4057,7 +4057,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 17,
-                "Will O Wisp"
+                "Will-O-Wisp"
             ],
             [
                 21,
@@ -10539,7 +10539,7 @@ const dexDataRubySapphireEmerald =
             "Perish Song",
             "Haze",
             "Astonish",
-            "Will O Wisp",
+            "Will-O-Wisp",
             "Grudge",
             "Explosion"
         ],
@@ -12649,7 +12649,7 @@ const dexDataRubySapphireEmerald =
             "Psybeam",
             "Destiny Bond",
             "Pain Split",
-            "Will O Wisp"
+            "Will-O-Wisp"
         ],
         "weight": 1.0
     },
@@ -26606,7 +26606,7 @@ const dexDataRubySapphireEmerald =
             "Spite",
             "Reversal",
             "Beat Up",
-            "Will O Wisp"
+            "Will-O-Wisp"
         ],
         "weight": 10.8
     },
@@ -39501,7 +39501,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 38,
-                "Will O Wisp"
+                "Will-O-Wisp"
             ],
             [
                 45,
@@ -39636,7 +39636,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 41,
-                "Will O Wisp"
+                "Will-O-Wisp"
             ],
             [
                 51,
@@ -41552,7 +41552,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 32,
-                "Will O Wisp"
+                "Will-O-Wisp"
             ],
             [
                 37,
@@ -41684,7 +41684,7 @@ const dexDataRubySapphireEmerald =
             ],
             [
                 32,
-                "Will O Wisp"
+                "Will-O-Wisp"
             ],
             [
                 39,
@@ -43524,7 +43524,7 @@ const dexDataRubySapphireEmerald =
         ],
         "egg_moves": [
             "Disable",
-            "Will O Wisp",
+            "Will-O-Wisp",
             "Mean Look",
             "Memento",
             "Destiny Bond"

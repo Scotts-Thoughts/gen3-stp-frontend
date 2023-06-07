@@ -44,7 +44,7 @@ const g3tmhmMapping = [
   {	tmhmIndex:	"TM43",	Move:	"Secret Power", },
   {	tmhmIndex:	"TM44",	Move:	"Rest", },
   {	tmhmIndex:	"TM45",	Move:	"Attract", },
-  {	tmhmIndex:	"TM46",	Move:	"Theif", },
+  {	tmhmIndex:	"TM46",	Move:	"Thief", },
   {	tmhmIndex:	"TM47",	Move:	"Steel Wing", },
   {	tmhmIndex:	"TM48",	Move:	"Skill Swap", },
   {	tmhmIndex:	"TM49",	Move:	"Snatch", },

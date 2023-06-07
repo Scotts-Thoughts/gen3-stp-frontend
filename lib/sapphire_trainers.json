@@ -2249,7 +2249,7 @@
                     "Confuse Ray",
                     "Pursuit",
                     "Curse",
-                    "Will O Wisp"
+                    "Will-O-Wisp"
                 ],
                 "ability": "Levitate",
                 "xp": 873,
@@ -6762,7 +6762,7 @@
                     "Night Shade",
                     "Curse",
                     "Spite",
-                    "Will O Wisp"
+                    "Will-O-Wisp"
                 ],
                 "ability": "Insomnia",
                 "xp": 1303,
@@ -20819,7 +20819,7 @@
                 "moves": [
                     "Curse",
                     "Spite",
-                    "Will O Wisp",
+                    "Will-O-Wisp",
                     "Faint Attack"
                 ],
                 "ability": "Insomnia",
@@ -25297,7 +25297,7 @@
                 "moves": [
                     "Shadow Ball",
                     "Spite",
-                    "Will O Wisp",
+                    "Will-O-Wisp",
                     "Faint Attack"
                 ],
                 "ability": "Insomnia",

@@ -2084,7 +2084,7 @@ const g3MoveData = {
     Type: "Normal",
     PP: "20",
     Power: "-",
-    Accuracy: "100",
+    Accuracy: "-",
     Description: "Heals poisoning, paralysis, or a burn."
   },
 "Return" :

@@ -4250,7 +4250,7 @@
                     "Tail Whip",
                     "Roar",
                     "Quick Attack",
-                    "Will O Wisp"
+                    "Will-O-Wisp"
                 ],
                 "ability": "Flash Fire",
                 "xp": 243,
@@ -4303,7 +4303,7 @@
                 "spd": 44,
                 "held_item": null,
                 "moves": [
-                    "Will O Wisp",
+                    "Will-O-Wisp",
                     "Confuse Ray",
                     "Imprison",
                     "Flamethrower"
@@ -6817,7 +6817,7 @@
                 "moves": [
                     "Roar",
                     "Quick Attack",
-                    "Will O Wisp",
+                    "Will-O-Wisp",
                     "Confuse Ray"
                 ],
                 "ability": "Flash Fire",
@@ -6871,7 +6871,7 @@
                 "spd": 46,
                 "held_item": null,
                 "moves": [
-                    "Will O Wisp",
+                    "Will-O-Wisp",
                     "Confuse Ray",
                     "Imprison",
                     "Flamethrower"
@@ -22185,7 +22185,7 @@
                 "moves": [
                     "Flamethrower",
                     "Confuse Ray",
-                    "Will O Wisp",
+                    "Will-O-Wisp",
                     "Grudge"
                 ],
                 "ability": "Flash Fire",
@@ -22306,7 +22306,7 @@
                 "moves": [
                     "Flamethrower",
                     "Confuse Ray",
-                    "Will O Wisp",
+                    "Will-O-Wisp",
                     "Grudge"
                 ],
                 "ability": "Flash Fire",
@@ -25788,7 +25788,7 @@
                 "spd": 42,
                 "held_item": null,
                 "moves": [
-                    "Will O Wisp",
+                    "Will-O-Wisp",
                     "Confuse Ray",
                     "Imprison",
                     "Flamethrower"
@@ -25859,7 +25859,7 @@
                 "held_item": null,
                 "moves": [
                     "Quick Attack",
-                    "Will O Wisp",
+                    "Will-O-Wisp",
                     "Confuse Ray",
                     "Imprison"
                 ],
@@ -35179,7 +35179,7 @@
                 "held_item": null,
                 "moves": [
                     "Safeguard",
-                    "Will O Wisp",
+                    "Will-O-Wisp",
                     "Confuse Ray",
                     "Fire Spin"
                 ],
@@ -35479,7 +35479,7 @@
                 "held_item": null,
                 "moves": [
                     "Flamethrower",
-                    "Will O Wisp",
+                    "Will-O-Wisp",
                     "Confuse Ray",
                     "Grudge"
                 ],
