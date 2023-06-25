@@ -6,10 +6,10 @@ const app = Vue.createApp({
 
             // POKEMON CONFIG (components) ---------------------------------------------------------------------//
             // starter:        357, //select starter (1-386)
-            starterString: "Salamence",
-            pkmnNature: "Adamant",
+            starterString: "Pelipper",
+            pkmnNature: "Modest",
             pkmn_ability: false, // false = ability 1, true = ability 2
-            hidden_power_type: "Ghost",
+            hidden_power_type: "Fire",
             pkmn_gender: "Female",
             
             // USER CONFIG (components) ------------------------------------------------------------------------// 
