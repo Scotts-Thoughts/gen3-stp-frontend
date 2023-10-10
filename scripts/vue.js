@@ -6,10 +6,10 @@ const app = Vue.createApp({
 
             // POKEMON CONFIG (components) ---------------------------------------------------------------------//
             // starter:        357, //select starter (1-386)
-            starterString: "Pelipper",
-            pkmnNature: "Modest",
+            starterString: "Salamence",
+            pkmnNature: "Brave",
             pkmn_ability: false, // false = ability 1, true = ability 2
-            hidden_power_type: "Fire",
+            hidden_power_type: "Electric",
             pkmn_gender: "Female",
             
             // USER CONFIG (components) ------------------------------------------------------------------------// 
@@ -1308,6 +1308,9 @@ const app = Vue.createApp({
             if (ability == `Hustle` && statname == `attack`) {
                 return Math.floor(statValue * 1.5)
             }
+            else if (ability == `Pure Power` && statname == `attack`) {
+                return Math.floor(statValue * 2)
+            }
             else if (ability == `Huge Power` && statname == `attack`) {
                 return Math.floor(statValue * 2)
             }
@@ -1818,118 +1821,118 @@ const app = Vue.createApp({
         }
 
         //GAMESTATE MANAGEMENT
-// set initial gamestate value when the layout is loaded
-if (this.mapper.properties.player.team[0].level.value == 0) 
-    this.g3stateVariable = "Base Stats"
-else if (this.mapper.properties.pointers.callback1.value == null)
-    this.g3stateVariable = "Base Stats"
-else if (this.mapper.properties.pointers.callback1.value == "Overworld")
-    this.g3stateVariable = "Overworld"
-else if (this.mapper.properties.pointers.callback1.value == "Battle") {
-    if (this.mapper.properties.pointers.callback1.value == "Battle Animation") {
-        this.g3stateVariable = "To Battle"
-    }
-    else if (this.mapper.properties.pointers.callback1.value == "Battle") {
-        this.g3stateVariable = "Battle"
-    }
-}
-else
-    this.g3stateVariable = "Battle"
+        // set initial gamestate value when the layout is loaded
+        if (this.mapper.properties.player.team[0].level.value == 0) 
+            this.g3stateVariable = "Base Stats"
+        else if (this.mapper.properties.pointers.callback1.value == null)
+            this.g3stateVariable = "Base Stats"
+        else if (this.mapper.properties.pointers.callback1.value == "Overworld")
+            this.g3stateVariable = "Overworld"
+        else if (this.mapper.properties.pointers.callback1.value == "Battle") {
+            if (this.mapper.properties.pointers.callback1.value == "Battle Animation") {
+                this.g3stateVariable = "To Battle"
+            }
+            else if (this.mapper.properties.pointers.callback1.value == "Battle") {
+                this.g3stateVariable = "Battle"
+            }
+        }
+        else
+            this.g3stateVariable = "Battle"
 
-// wait for events to change the state
-this.mapper.properties.pointers.callback1.change((prop) => {
-    if (prop.value == "Overworld") { this.g3stateVariable = "Overworld" } 
-});
+        // wait for events to change the state
+        this.mapper.properties.pointers.callback1.change((prop) => {
+            if (prop.value == "Overworld") { this.g3stateVariable = "Overworld" } 
+        });
 
-this.mapper.properties.battle.turnInfo.battleDialogue.change((prop) => {
-    if (prop.value == "Player Control") { this.g3stateVariable = "Battle"}
-})
+        this.mapper.properties.battle.turnInfo.battleDialogue.change((prop) => {
+            if (prop.value == "Player Control") { this.g3stateVariable = "Battle"}
+        })
 
-this.mapper.properties.battle.turnInfo.battleOutcome.change((prop) => {
-    if (prop.value == "WON") { this.g3stateVariable = "From Battle"}
-    if (prop.value == "LOST") { this.g3stateVariable = "From Battle"}
-    if (prop.value == "DRAW") { this.g3stateVariable = "From Battle"}
-    if (prop.value == "RAN") { this.g3stateVariable = "From Battle"}
-    if (prop.value == "CAUGHT") { this.g3stateVariable = "From Battle"}
-    if (prop.value == "PLAYER_TELEPORTED") { this.g3stateVariable = "From Battle"}
-    if (prop.value == "POKEMON_FLED") { this.g3stateVariable = "From Battle"}
-    if (prop.value == "NO_SAFARI_BALLS") { this.g3stateVariable = "From Battle"}
-    if (prop.value == "FORFEITED") { this.g3stateVariable = "From Battle"}
-    if (prop.value == "POKEMON_TELEPORTED") { this.g3stateVariable = "From Battle"}
-});
+        this.mapper.properties.battle.turnInfo.battleOutcome.change((prop) => {
+            if (prop.value == "WON") { this.g3stateVariable = "From Battle"}
+            if (prop.value == "LOST") { this.g3stateVariable = "From Battle"}
+            if (prop.value == "DRAW") { this.g3stateVariable = "From Battle"}
+            if (prop.value == "RAN") { this.g3stateVariable = "From Battle"}
+            if (prop.value == "CAUGHT") { this.g3stateVariable = "From Battle"}
+            if (prop.value == "PLAYER_TELEPORTED") { this.g3stateVariable = "From Battle"}
+            if (prop.value == "POKEMON_FLED") { this.g3stateVariable = "From Battle"}
+            if (prop.value == "NO_SAFARI_BALLS") { this.g3stateVariable = "From Battle"}
+            if (prop.value == "FORFEITED") { this.g3stateVariable = "From Battle"}
+            if (prop.value == "POKEMON_TELEPORTED") { this.g3stateVariable = "From Battle"}
+        });
 
-this.mapper.properties.pointers.callback2.change((prop) => {
-    if (prop.value == "Owners") { 
-        this.g3stateVariable = "Base Stats"
-    }
-    else if (prop.value == "Battle Animation") { 
-        this.g3stateVariable = "To Battle"
-    }
-});
+        this.mapper.properties.pointers.callback2.change((prop) => {
+            if (prop.value == "Owners") { 
+                this.g3stateVariable = "Base Stats"
+            }
+            else if (prop.value == "Battle Animation") { 
+                this.g3stateVariable = "To Battle"
+            }
+        });
 
-this.mapper.properties.player.team[0].personalityValue.change((prop) => {
-    if (prop.value == 0) {
-        this.g3stateVariable = "Base Stats"
-    }
-});
+        this.mapper.properties.player.team[0].personalityValue.change((prop) => {
+            if (prop.value == 0) {
+                this.g3stateVariable = "Base Stats"
+            }
+        });
 
-//ENEMY STATE
-//ENEMY STATE MANAGER
-//"Pokemon", "Fainted"
-// this.mapper.properties.battle.enemyPokemon.partyPos.change(async (newProp, oldProp) => {
-//     await this.sleep(100)
-//     this.enemyState = "Pokemon"
-// })
-if (this.mapper.properties.player.team[0].level.value == 0) 
-    this.enemyState = "Not In Battle";
-else if (this.mapper.properties.battle.turnInfo.battleDialogue.value ==  6)
-    this.enemyState = "Pokemon";
-else if (this.mapper.properties.battle.type.is_battle.value == true)
-    this.enemyState = "Not In Battle";
-else if  (this.mapper.properties.battle.enemyPokemon.hp.value == 0)
-    this.enemyState = "Fainted";
-else if  (this.mapper.properties.battle.enemyPokemon.hp.value > 0 && this.mapper.properties.screen.menu.currentItem.value == 0)
-    this.enemyState = "Pokemon Sent Out";
-else if  (this.mapper.properties.battle.enemyPokemon.hp.value > 0 && this.mapper.properties.screen.menu.currentItem.value > 0)
-    this.enemyState = "Pokemon";
+        //ENEMY STATE
+        //ENEMY STATE MANAGER
+        //"Pokemon", "Fainted"
+        // this.mapper.properties.battle.enemyPokemon.partyPos.change(async (newProp, oldProp) => {
+        //     await this.sleep(100)
+        //     this.enemyState = "Pokemon"
+        // })
+        if (this.mapper.properties.player.team[0].level.value == 0) 
+            this.enemyState = "Not In Battle";
+        else if (this.mapper.properties.battle.turnInfo.battleDialogue.value ==  6)
+            this.enemyState = "Pokemon";
+        else if (this.mapper.properties.battle.type.is_battle.value == true)
+            this.enemyState = "Not In Battle";
+        else if  (this.mapper.properties.battle.enemyPokemon.hp.value == 0)
+            this.enemyState = "Fainted";
+        else if  (this.mapper.properties.battle.enemyPokemon.hp.value > 0 && this.mapper.properties.screen.menu.currentItem.value == 0)
+            this.enemyState = "Pokemon Sent Out";
+        else if  (this.mapper.properties.battle.enemyPokemon.hp.value > 0 && this.mapper.properties.screen.menu.currentItem.value > 0)
+            this.enemyState = "Pokemon";
 
-this.mapper.properties.pointers.callback2.change((prop) => {
-    if (prop.value == "Battle Animation") { 
-        this.enemyState = "Battle Starting"
-    }
-});
-this.mapper.properties.battle.turnInfo.battleDialogue.change((prop) => {
-    if (prop.value == `Player Control` && this.enemyState == "Battle Starting") {
-        this.enemyState = "Pokemon";
-    }
-});
-this.mapper.properties.battle.enemyPokemon.hp.change(async (newProp, oldProp) => {
-    if (newProp == 0 && this.enemyState == "Pokemon") {
-        this.enemyState = "Fainting"
-        await this.sleep(200)
-        this.enemyState = "Fainted"
-    }
-    if (newProp > 0 && this.enemyState == "Fainted") {
-        this.enemyState = "Pokemon"
-    }
-});
-// this.mapper.properties.screen.tiles.column1.tile7.change((prop) => {
-//     if (prop == 127 && 
-//         this.mapper.properties.screen.tiles.column1.tile6 == 127 && 
-//         this.mapper.properties.screen.tiles.column1.tile5 == 127 && 
-//         this.mapper.properties.screen.tiles.column1.tile4 == 127 && 
-//         this.mapper.properties.screen.tiles.column1.tile3 == 127 && 
-//         this.mapper.properties.screen.tiles.column1.tile2 == 127 && 
-//         this.mapper.properties.screen.tiles.column1.tile1 == 127 &&
-//         this.enemyState == "Fainting") {
-//             this.enemyState = "Fainted"
-//         }
-// });
-this.mapper.properties.battle.outcome.change(async (prop) => {
-    if (prop.value != null) {
-        this.enemyState = "Battle Finished"
-    }
-});
+        this.mapper.properties.pointers.callback2.change((prop) => {
+            if (prop.value == "Battle Animation") { 
+                this.enemyState = "Battle Starting"
+            }
+        });
+        this.mapper.properties.battle.turnInfo.battleDialogue.change((prop) => {
+            if (prop.value == `Player Control` && this.enemyState == "Battle Starting") {
+                this.enemyState = "Pokemon";
+            }
+        });
+        this.mapper.properties.battle.enemyPokemon.hp.change(async (newProp, oldProp) => {
+            if (newProp == 0 && this.enemyState == "Pokemon") {
+                this.enemyState = "Fainting"
+                await this.sleep(200)
+                this.enemyState = "Fainted"
+            }
+            if (newProp > 0 && this.enemyState == "Fainted") {
+                this.enemyState = "Pokemon"
+            }
+        });
+        // this.mapper.properties.screen.tiles.column1.tile7.change((prop) => {
+        //     if (prop == 127 && 
+        //         this.mapper.properties.screen.tiles.column1.tile6 == 127 && 
+        //         this.mapper.properties.screen.tiles.column1.tile5 == 127 && 
+        //         this.mapper.properties.screen.tiles.column1.tile4 == 127 && 
+        //         this.mapper.properties.screen.tiles.column1.tile3 == 127 && 
+        //         this.mapper.properties.screen.tiles.column1.tile2 == 127 && 
+        //         this.mapper.properties.screen.tiles.column1.tile1 == 127 &&
+        //         this.enemyState == "Fainting") {
+        //             this.enemyState = "Fainted"
+        //         }
+        // });
+        this.mapper.properties.battle.outcome.change(async (prop) => {
+            if (prop.value != null) {
+                this.enemyState = "Battle Finished"
+            }
+        });
 
 
         //MOST RECENT FIELD STATUS
@@ -2019,7 +2022,10 @@ this.mapper.properties.battle.outcome.change(async (prop) => {
         // SETTING THE STARTER POKEMON'S STATS ----------------------------------------------------------------------------------------------//
         const setStartingAttributes = async () => {
             const personalityValue = this.natures[this.pkmnNature][`personality_value_${this.pkmn_gender.toLowerCase()}`]
-            const iv_block = this.g3hiddenPowerTypeSelector[this.hidden_power_type]
+            var iv_block = this.g3hiddenPowerTypeSelector[this.hidden_power_type]
+            if (this.pkmn_ability == true) {
+                iv_block = iv_block + 2147483648
+            }
 
             // only recalculate stats when IVs when your starter is received
             if (this.mapper.properties.overworld.mapName.value == "ROUTE 101" && this.mapper.properties.player.team[0].level.value == 5) {

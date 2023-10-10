@@ -2430,6 +2430,7 @@ canvas {  /* or some other selector */
     background-color: #ffffff;
     font-size: 15px;
     line-height: 20px;
+    line-height: 19px;
     width: 328px;
     height: 1001px;
     font-family: play;
