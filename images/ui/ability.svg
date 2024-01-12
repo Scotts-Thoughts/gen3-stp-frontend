@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Individual_Areas" data-name="Individual Areas" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1920 1080">
+  <defs>
+    <linearGradient id="Neutral_Grade" data-name="Neutral Grade" x1="368.5" y1="853.5" x2="918" y2="853.5" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#939598"/>
+      <stop offset=".17" stop-color="#a8aaac"/>
+      <stop offset=".35" stop-color="#b6b8bb"/>
+      <stop offset=".5" stop-color="#bcbec0"/>
+      <stop offset=".65" stop-color="#b6b8ba"/>
+      <stop offset=".83" stop-color="#a7a9ab"/>
+      <stop offset="1" stop-color="#939598"/>
+    </linearGradient>
+    <linearGradient id="Neutral_Grade-2" data-name="Neutral Grade" x2="549" xlink:href="#Neutral_Grade"/>
+  </defs>
+  <g id="Ability">
+    <g id="Ability_Text_Area" data-name="Ability Text Area">
+      <rect x="368.5" y="828.5" width="549.5" height="50" rx="8.5" ry="8.5" style="fill: url(#Neutral_Grade); stroke-width: 0px;"/>
+      <path d="m909.5,829c4.42,0,8,3.58,8,8v33c0,4.42-3.58,8-8,8H377c-4.42,0-8-3.58-8-8v-33c0-4.42,3.58-8,8-8h532.5m0-1H377c-4.96,0-9,4.04-9,9v33c0,4.96,4.04,9,9,9h532.5c4.96,0,9-4.04,9-9v-33c0-4.96-4.04-9-9-9h0Z" style="fill: #231f20; stroke-width: 0px;"/>
+      <path d="m909.5,831c3.31,0,6,2.69,6,6v33c0,3.31-2.69,6-6,6H377c-3.31,0-6-2.69-6-6v-33c0-3.31,2.69-6,6-6h532.5m0-2H377c-4.42,0-8,3.58-8,8v33c0,4.42,3.58,8,8,8h532.5c4.42,0,8-3.58,8-8v-33c0-4.42-3.58-8-8-8h0Z" style="fill: #808285; stroke-width: 0px;"/>
+    </g>
+    <g id="Ability-2" data-name="Ability">
+      <rect x="368.5" y="828.5" width="180.5" height="50" rx="8.5" ry="8.5" style="fill: url(#Neutral_Grade-2); stroke-width: 0px;"/>
+      <path d="m540.5,829c4.42,0,8,3.58,8,8v33c0,4.42-3.58,8-8,8h-163.5c-4.42,0-8-3.58-8-8v-33c0-4.42,3.58-8,8-8h163.5m0-1h-163.5c-4.96,0-9,4.04-9,9v33c0,4.96,4.04,9,9,9h163.5c4.96,0,9-4.04,9-9v-33c0-4.96-4.04-9-9-9h0Z" style="fill: #231f20; stroke-width: 0px;"/>
+      <path d="m540.5,833c2.21,0,4,1.79,4,4v33c0,2.21-1.79,4-4,4h-163.5c-2.21,0-4-1.79-4-4v-33c0-2.21,1.79-4,4-4h163.5m0-4h-163.5c-4.42,0-8,3.58-8,8v33c0,4.42,3.58,8,8,8h163.5c4.42,0,8-3.58,8-8v-33c0-4.42-3.58-8-8-8h0Z" style="fill: #808285; stroke-width: 0px;"/>
+      <path d="m540.5,831c3.31,0,6,2.69,6,6v33c0,3.31-2.69,6-6,6h-163.5c-3.31,0-6-2.69-6-6v-33c0-3.31,2.69-6,6-6h163.5m0-2h-163.5c-4.42,0-8,3.58-8,8v33c0,4.42,3.58,8,8,8h163.5c4.42,0,8-3.58,8-8v-33c0-4.42-3.58-8-8-8h0Z" style="fill: #414042; stroke-width: 0px;"/>
+    </g>
+  </g>
+</svg>

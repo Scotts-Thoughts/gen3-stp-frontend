@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Individual_Areas" data-name="Individual Areas" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1920 1080">
+  <defs>
+    <linearGradient id="linear-gradient" x1="1569" y1="542.5" x2="1911" y2="542.5" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#999"/>
+      <stop offset=".04" stop-color="#a0a0a0"/>
+      <stop offset=".21" stop-color="#b8b8b8"/>
+      <stop offset=".37" stop-color="#c6c6c6"/>
+      <stop offset=".5" stop-color="#ccc"/>
+      <stop offset=".63" stop-color="#c6c6c6"/>
+      <stop offset=".79" stop-color="#b7b7b7"/>
+      <stop offset=".97" stop-color="#9d9d9d"/>
+      <stop offset="1" stop-color="#999"/>
+    </linearGradient>
+  </defs>
+  <g id="Main_Elements" data-name="Main Elements">
+    <g style="opacity: .95;">
+      <path d="m1575,1064c-3.31,0-6-2.69-6-6V41.18c0-1.56.6-3.04,1.68-4.16l13.44-14.19c1.11-1.16,2.69-1.83,4.31-1.83h316.57c3.31,0,6,2.69,6,6v1031c0,3.31-2.69,6-6,6h-330Zm-2-4h334V54h-334v1006Z" style="fill: url(#linear-gradient); stroke-width: 0px;"/>
+      <path d="m1905,23c2.21,0,4,1.79,4,4v25h-338v1006V41.18c0-1.04.4-2.03,1.14-2.8l13.41-14.15c.75-.78,1.8-1.23,2.88-1.23h316.57m0,1039h-330,330m0-1043h-316.57c-2.17,0-4.25.88-5.76,2.45l-13.43,14.18c-1.44,1.49-2.24,3.48-2.24,5.55v1016.82c0,4.42,3.58,8,8,8h330c4.42,0,8-3.58,8-8V27c0-4.42-3.58-8-8-8h0Zm-330,1039V56h330v1002h-330Z" style="fill: gray; stroke-width: 0px;"/>
+      <path d="m1905,21c3.31,0,6,2.69,6,6v1031c0,3.31-2.69,6-6,6h-330c-3.31,0-6-2.69-6-6V41.18c0-1.56.6-3.04,1.69-4.18l13.42-14.17c1.12-1.17,2.7-1.84,4.32-1.84h316.57m-332,1039h334V54h-334v1006M1905,19h-316.57c-2.17,0-4.25.88-5.76,2.45l-13.43,14.18c-1.44,1.49-2.24,3.48-2.24,5.55v1016.82c0,4.42,3.58,8,8,8h330c4.42,0,8-3.58,8-8V27c0-4.42-3.58-8-8-8h0Zm-330,1039V56h330v1002h-330Z" style="fill: #4d4d4d; stroke-width: 0px;"/>
+      <path d="m1905,19c4.42,0,8,3.58,8,8v1031c0,4.42-3.58,8-8,8h-330c-4.42,0-8-3.58-8-8V41.18c0-2.07.8-4.06,2.24-5.55l13.43-14.18c1.51-1.57,3.59-2.45,5.76-2.45h316.57m-330,1039h330V56h-330v1002M1905,18h-316.57c-2.43,0-4.8,1.01-6.48,2.76l-13.44,14.18c-1.62,1.68-2.51,3.9-2.51,6.24v1016.82c0,4.96,4.04,9,9,9h330c4.96,0,9-4.04,9-9V27c0-4.96-4.04-9-9-9h0Zm-329,39h328v1000h-328V57h0Z" style="stroke-width: 0px;"/>
+    </g>
+  </g>
+</svg>

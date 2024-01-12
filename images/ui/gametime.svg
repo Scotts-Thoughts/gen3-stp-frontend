@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Individual_Areas" data-name="Individual Areas" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1912.32 1052.02">
+  <defs>
+    <linearGradient id="Neutral_Grade" data-name="Neutral Grade" x1="122.7" y1="16.32" x2="344.7" y2="16.32" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#939598"/>
+      <stop offset=".17" stop-color="#a8aaac"/>
+      <stop offset=".35" stop-color="#b6b8bb"/>
+      <stop offset=".5" stop-color="#bcbec0"/>
+      <stop offset=".65" stop-color="#b6b8ba"/>
+      <stop offset=".83" stop-color="#a7a9ab"/>
+      <stop offset="1" stop-color="#939598"/>
+    </linearGradient>
+    <linearGradient id="Neutral_Grade-2" data-name="Neutral Grade" x2="237.7" xlink:href="#Neutral_Grade"/>
+  </defs>
+  <g id="Gametime">
+    <g id="Gametime_Time_Area" data-name="Gametime Time Area">
+      <rect x="122.7" y="5.32" width="222" height="22" rx="8.5" ry="8.5" style="fill: url(#Neutral_Grade); stroke-width: 0px;"/>
+      <path d="m336.2,5.82c4.42,0,8,3.58,8,8v5c0,4.42-3.58,8-8,8h-205c-4.42,0-8-3.58-8-8v-5c0-4.42,3.58-8,8-8h205m0-1h-205c-4.96,0-9,4.04-9,9v5c0,4.96,4.04,9,9,9h205c4.96,0,9-4.04,9-9v-5c0-4.96-4.04-9-9-9h0Z" style="fill: #231f20; stroke-width: 0px;"/>
+      <path d="m336.2,7.82c3.31,0,6,2.69,6,6v5c0,3.31-2.69,6-6,6h-205c-3.31,0-6-2.69-6-6v-5c0-3.31,2.69-6,6-6h205m0-2h-205c-4.42,0-8,3.58-8,8v5c0,4.42,3.58,8,8,8h205c4.42,0,8-3.58,8-8v-5c0-4.42-3.58-8-8-8h0Z" style="fill: #808285; stroke-width: 0px;"/>
+    </g>
+    <g id="Gametime-2" data-name="Gametime">
+      <rect x="122.7" y="5.32" width="115" height="22" rx="8.5" ry="8.5" style="fill: url(#Neutral_Grade-2); stroke-width: 0px;"/>
+      <path d="m229.2,5.82c4.42,0,8,3.58,8,8v5c0,4.42-3.58,8-8,8h-98c-4.42,0-8-3.58-8-8v-5c0-4.42,3.58-8,8-8h98m0-1h-98c-4.96,0-9,4.04-9,9v5c0,4.96,4.04,9,9,9h98c4.96,0,9-4.04,9-9v-5c0-4.96-4.04-9-9-9h0Z" style="fill: #231f20; stroke-width: 0px;"/>
+      <path d="m229.2,7.82c3.31,0,6,2.69,6,6v5c0,3.31-2.69,6-6,6h-98c-3.31,0-6-2.69-6-6v-5c0-3.31,2.69-6,6-6h98m0-2h-98c-4.42,0-8,3.58-8,8v5c0,4.42,3.58,8,8,8h98c4.42,0,8-3.58,8-8v-5c0-4.42-3.58-8-8-8h0Z" style="fill: #808285; stroke-width: 0px;"/>
+      <path d="m229.2,6.82c3.86,0,7,3.14,7,7v5c0,3.86-3.14,7-7,7h-98c-3.86,0-7-3.14-7-7v-5c0-3.86,3.14-7,7-7h98m0-1h-98c-4.42,0-8,3.58-8,8v5c0,4.42,3.58,8,8,8h98c4.42,0,8-3.58,8-8v-5c0-4.42-3.58-8-8-8h0Z" style="fill: #414042; stroke-width: 0px;"/>
+    </g>
+  </g>
+</svg>

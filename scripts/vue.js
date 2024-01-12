@@ -1192,7 +1192,7 @@ const app = Vue.createApp({
             if (y === null) {
                 return ""
             }
-            else if (y == -6 && this.mapper.properties.battle.yourPokemon.species.value == null)
+            else if (y == -6 && this.mapper.properties.battle?.yourPokemon?.species?.value == null)
                 return ""
             else
                 if (y > 0) {
@@ -1585,7 +1585,7 @@ const app = Vue.createApp({
         
         //x = stat modifier property (not the value of the property. [ex. battle.modStageAttack])
         statLabelOpacity(x) {
-            if (this.mapper.properties.battle.yourPokemon.species.value == null)
+            if (this.mapper.properties.battle?.yourPokemon?.species?.value == null)
                 return 1
             else if (this.g3stateVariable == "Battle")
                 if (x.bytes != 6)
@@ -2007,77 +2007,65 @@ const app = Vue.createApp({
             that.move1 = x
         })
 
+        // // SETTING THE STARTER POKEMON'S STATS ----------------------------------------------------------------------------------------------//
+        // const setStartingAttributes = async () => {
+        //     const personalityValue = this.natures[this.pkmnNature][`personality_value_${this.pkmn_gender.toLowerCase()}`]
+        //     var iv_block = this.g3hiddenPowerTypeSelector[this.hidden_power_type]
+        //     if (this.pkmn_ability == true) {
+        //         iv_block = iv_block + 2147483648
+        //     }
 
-        //AUTOSPLITTER WEBSOCKET
-        if (this.websocket == true) {
-            let client = new WebSocket("ws://localhost:6789/");
-                client.onmessage = (event) => {
-                const data = JSON.parse(event.data);
-                this.splitData.push(data);
-                console.log("DATA FROM WEBSOCKET", data);
-            };
-        };
+        //     // only recalculate stats when IVs when your starter is received
+        //     if (this.mapper.properties.overworld.mapName.value == "ROUTE 101" && this.mapper.properties.player.team[0].level.value == 5) {
+        //         await Promise.all([
+        //             await this.mapper.properties.player.team[0].personalityValue.set(personalityValue, false), 
+        //             await this.mapper.properties.player.team[0].ivEggAbilityBlock.set(iv_block, false), 
+        //         ])
+        //     }
+        // }
+        // const setStartingStats = async () => {
+        //     const pkmnData = this.dexDataRubySapphireEmerald[this.starterString]
+        //     const level = 5
+        //     const natures = this.natures[this.pkmnNature]
 
+        //     var ivHp = this.mapper.properties.player.team[0].ivHp.value
+        //     var ivAtk = this.mapper.properties.player.team[0].ivAttack.value
+        //     var ivDef = this.mapper.properties.player.team[0].ivDefense.value
+        //     var ivSpA = this.mapper.properties.player.team[0].ivSpecialAttack.value
+        //     var ivSpD = this.mapper.properties.player.team[0].ivSpecialDefense.value
+        //     var ivSpe = this.mapper.properties.player.team[0].ivSpeed.value
 
-        // SETTING THE STARTER POKEMON'S STATS ----------------------------------------------------------------------------------------------//
-        const setStartingAttributes = async () => {
-            const personalityValue = this.natures[this.pkmnNature][`personality_value_${this.pkmn_gender.toLowerCase()}`]
-            var iv_block = this.g3hiddenPowerTypeSelector[this.hidden_power_type]
-            if (this.pkmn_ability == true) {
-                iv_block = iv_block + 2147483648
-            }
+        //     //calculates the Pokemon's starting stats with the desired DVs
+        //     var hitpoints = Math.floor((((2 * pkmnData.base_hp + ivHp + 0) * level)/100) + level + 10)
+        //     var attack = Math.floor(Math.floor(((((2 * pkmnData.base_atk + ivAtk + 0) * level)/100) + 5)) * natures["nature_attack"])
+        //     var defense = Math.floor(Math.floor(((((2 * pkmnData.base_def + ivDef + 0) * level)/100) + 5)) * natures["nature_defense"])
+        //     var specialAttack = Math.floor(Math.floor(((((2 * pkmnData.base_spc_atk + ivSpA + 0) * level)/100) + 5)) * natures["nature_specialAttack"])
+        //     var specialDefense = Math.floor(Math.floor(((((2 * pkmnData.base_spc_def + ivSpD + 0) * level)/100) + 5)) * natures["nature_specialDefense"])
+        //     var speed = Math.floor(Math.floor(((((2 * pkmnData.base_spd + ivSpe + 0) * level)/100) + 5)) * natures["nature_speed"])
 
-            // only recalculate stats when IVs when your starter is received
-            if (this.mapper.properties.overworld.mapName.value == "ROUTE 101" && this.mapper.properties.player.team[0].level.value == 5) {
-                await Promise.all([
-                    await this.mapper.properties.player.team[0].personalityValue.set(personalityValue, false), 
-                    await this.mapper.properties.player.team[0].ivEggAbilityBlock.set(iv_block, false), 
-                ])
-            }
-        }
-        const setStartingStats = async () => {
-            const pkmnData = this.dexDataRubySapphireEmerald[this.starterString]
-            const level = 5
-            const natures = this.natures[this.pkmnNature]
-
-            var ivHp = this.mapper.properties.player.team[0].ivHp.value
-            var ivAtk = this.mapper.properties.player.team[0].ivAttack.value
-            var ivDef = this.mapper.properties.player.team[0].ivDefense.value
-            var ivSpA = this.mapper.properties.player.team[0].ivSpecialAttack.value
-            var ivSpD = this.mapper.properties.player.team[0].ivSpecialDefense.value
-            var ivSpe = this.mapper.properties.player.team[0].ivSpeed.value
-
-            //calculates the Pokemon's starting stats with the desired DVs
-            var hitpoints = Math.floor((((2 * pkmnData.base_hp + ivHp + 0) * level)/100) + level + 10)
-            var attack = Math.floor(Math.floor(((((2 * pkmnData.base_atk + ivAtk + 0) * level)/100) + 5)) * natures["nature_attack"])
-            var defense = Math.floor(Math.floor(((((2 * pkmnData.base_def + ivDef + 0) * level)/100) + 5)) * natures["nature_defense"])
-            var specialAttack = Math.floor(Math.floor(((((2 * pkmnData.base_spc_atk + ivSpA + 0) * level)/100) + 5)) * natures["nature_specialAttack"])
-            var specialDefense = Math.floor(Math.floor(((((2 * pkmnData.base_spc_def + ivSpD + 0) * level)/100) + 5)) * natures["nature_specialDefense"])
-            var speed = Math.floor(Math.floor(((((2 * pkmnData.base_spd + ivSpe + 0) * level)/100) + 5)) * natures["nature_speed"])
-
-            // only recalculate stats when IVs when your starter is received
-            if (this.mapper.properties.overworld.mapName.value == "ROUTE 101" && this.mapper.properties.player.team[0].level.value == 5) {
-                await Promise.all([
-                    await this.mapper.properties.player.team[0].hp.set(hitpoints, false), 
-                    await this.mapper.properties.player.team[0].maxHp.set(hitpoints, false), 
-                    await this.mapper.properties.player.team[0].attack.set(attack, false), 
-                    await this.mapper.properties.player.team[0].defense.set(defense, false), 
-                    await this.mapper.properties.player.team[0].specialAttack.set(specialAttack, false), 
-                    await this.mapper.properties.player.team[0].specialDefense.set(specialDefense, false), 
-                    await this.mapper.properties.player.team[0].speed.set(speed, false), 
-                ])
-            }
-        }
-        this.mapper.properties.player.team[0].level.change(async (newProp) => {
-            if (newProp == 5 && this.mapper.properties.overworld.mapName.value == "ROUTE 101") {
-                await setStartingAttributes()
-            }
-        })
-        this.mapper.properties.battle.type.first_battle.change(async (newProp, oldProp) => {
-            if (newProp.value == true && oldProp.value == false && this.mapper.properties.overworld.mapName.value == "ROUTE 101" && this.mapper.properties.player.team[0].level.value == 5) {
-                await setStartingStats()
-            }
-        })
+        //     // only recalculate stats when IVs when your starter is received
+        //     if (this.mapper.properties.overworld.mapName.value == "ROUTE 101" && this.mapper.properties.player.team[0].level.value == 5) {
+        //         await Promise.all([
+        //             await this.mapper.properties.player.team[0].hp.set(hitpoints, false), 
+        //             await this.mapper.properties.player.team[0].maxHp.set(hitpoints, false), 
+        //             await this.mapper.properties.player.team[0].attack.set(attack, false), 
+        //             await this.mapper.properties.player.team[0].defense.set(defense, false), 
+        //             await this.mapper.properties.player.team[0].specialAttack.set(specialAttack, false), 
+        //             await this.mapper.properties.player.team[0].specialDefense.set(specialDefense, false), 
+        //             await this.mapper.properties.player.team[0].speed.set(speed, false), 
+        //         ])
+        //     }
+        // }
+        // this.mapper.properties.player.team[0].level.change(async (newProp) => {
+        //     if (newProp == 5 && this.mapper.properties.overworld.mapName.value == "ROUTE 101") {
+        //         await setStartingAttributes()
+        //     }
+        // })
+        // this.mapper.properties.battle.type.first_battle.change(async (newProp, oldProp) => {
+        //     if (newProp.value == true && oldProp.value == false && this.mapper.properties.overworld.mapName.value == "ROUTE 101" && this.mapper.properties.player.team[0].level.value == 5) {
+        //         await setStartingStats()
+        //     }
+        // })
 
         
         //SET OPTIONS

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Individual_Areas" data-name="Individual Areas" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1920 1080">
+  <defs>
+    <linearGradient id="linear-gradient" x1="1635" y1="1057.92" x2="1635" y2="1036" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#a3a3a3"/>
+      <stop offset="0" stop-color="#939598"/>
+      <stop offset="1" stop-color="#d1d3d4"/>
+    </linearGradient>
+    <filter id="drop-shadow-1" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="1"/>
+      <feGaussianBlur result="blur" stdDeviation="2"/>
+      <feFlood flood-color="#000" flood-opacity=".9"/>
+      <feComposite in2="blur" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="linear-gradient-2" y1="890.64" y2="869" xlink:href="#linear-gradient"/>
+    <filter id="drop-shadow-2" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="1"/>
+      <feGaussianBlur result="blur-2" stdDeviation="2"/>
+      <feFlood flood-color="#000" flood-opacity=".9"/>
+      <feComposite in2="blur-2" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="linear-gradient-3" y1="723.36" y2="701" xlink:href="#linear-gradient"/>
+    <filter id="drop-shadow-3" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="1"/>
+      <feGaussianBlur result="blur-3" stdDeviation="2"/>
+      <feFlood flood-color="#000" flood-opacity=".9"/>
+      <feComposite in2="blur-3" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="linear-gradient-4" x1="1635" y1="556.08" x2="1635" y2="534" xlink:href="#linear-gradient"/>
+    <filter id="drop-shadow-4" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="1"/>
+      <feGaussianBlur result="blur-4" stdDeviation="2"/>
+      <feFlood flood-color="#000" flood-opacity=".9"/>
+      <feComposite in2="blur-4" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="linear-gradient-5" x1="1635" y1="388.8" x2="1635" y2="367" xlink:href="#linear-gradient"/>
+    <filter id="drop-shadow-5" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="1"/>
+      <feGaussianBlur result="blur-5" stdDeviation="2"/>
+      <feFlood flood-color="#000" flood-opacity=".9"/>
+      <feComposite in2="blur-5" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="linear-gradient-6" x1="1635" y1="221.52" x2="1635" y2="200" xlink:href="#linear-gradient"/>
+    <filter id="drop-shadow-6" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="1"/>
+      <feGaussianBlur result="blur-6" stdDeviation="2"/>
+      <feFlood flood-color="#000" flood-opacity=".9"/>
+      <feComposite in2="blur-6" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Main_Elements" data-name="Main Elements">
+    <g id="Abilities">
+      <rect id="_pkmn1move4_" data-name="&amp;lt;pkmn1move4&amp;gt;" x="1575" y="1036" width="120" height="21.92" rx="6.22" ry="6.22" style="fill: url(#linear-gradient); filter: url(#drop-shadow-1); opacity: .85; stroke-width: 0px;"/>
+      <rect id="_pkmn1move4_-2" data-name="&amp;lt;pkmn1move4&amp;gt;" x="1575" y="869" width="120" height="21.64" rx="6.22" ry="6.22" style="fill: url(#linear-gradient-2); filter: url(#drop-shadow-2); opacity: .85; stroke-width: 0px;"/>
+      <rect id="_pkmn1move4_-3" data-name="&amp;lt;pkmn1move4&amp;gt;" x="1575" y="701" width="120" height="22.36" rx="6.22" ry="6.22" style="fill: url(#linear-gradient-3); filter: url(#drop-shadow-3); opacity: .85; stroke-width: 0px;"/>
+      <rect id="_pkmn1move4_-4" data-name="&amp;lt;pkmn1move4&amp;gt;" x="1575" y="534" width="120" height="22.08" rx="6.22" ry="6.22" style="fill: url(#linear-gradient-4); filter: url(#drop-shadow-4); opacity: .85; stroke-width: 0px;"/>
+      <rect id="_pkmn1move4_-5" data-name="&amp;lt;pkmn1move4&amp;gt;" x="1575" y="367" width="120" height="21.8" rx="6.22" ry="6.22" style="fill: url(#linear-gradient-5); filter: url(#drop-shadow-5); opacity: .85; stroke-width: 0px;"/>
+      <rect id="_pkmn1move4_-6" data-name="&amp;lt;pkmn1move4&amp;gt;" x="1575" y="200" width="120" height="21.52" rx="6.22" ry="6.22" style="fill: url(#linear-gradient-6); filter: url(#drop-shadow-6); opacity: .85; stroke-width: 0px;"/>
+    </g>
+  </g>
+</svg>
