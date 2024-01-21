@@ -1723,6 +1723,18 @@ body {
     font-family: osb;
     font-weight: 700
 }
+.movepoolTitle {
+    position: absolute;
+    display: block;
+    padding-top: 1px;
+    height: 40px;
+    font-size: 24px;
+    text-align: center;
+    font-family: titan;
+    left: 1570px;
+    top: 22px;
+    border: 1px solid #ff000000;
+}
 .move1 {
     left: 436px;
     top: 940px;
