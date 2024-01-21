@@ -1,0 +1,27 @@
+{
+  "name": "stp-generation-3-overlay-app",
+  "version": "0.0.1",
+  "description": "A minimal Electron application",
+  "main": "./main.js",
+  "build": {
+    "appId": "com.stp.layout-app",
+    "productName": "stp-layout-app",
+    "win": {
+      "executableName": "stp-layout-app",
+      "target": "zip",
+      "icon": "./icon.png"
+    },
+    "npmRebuild": false
+  },
+  "scripts": {
+    "dev": "electron .",
+    "build": "electron-builder --win --config"
+  },
+  "devDependencies": {
+    "electron": "^25.1.1",
+    "electron-builder": "^24.4.0"
+  },
+  "dependencies": {
+    "@electron-toolkit/utils": "^1.0.2"
+  }
+}

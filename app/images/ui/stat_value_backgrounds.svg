@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Individual_Areas" data-name="Individual Areas" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1920 1080">
+  <defs>
+    <linearGradient id="linear-gradient" x1="96.5" y1="933" x2="96.5" y2="874" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ed1c24"/>
+      <stop offset=".05" stop-color="#ee2229"/>
+      <stop offset=".25" stop-color="#f53a3e"/>
+      <stop offset=".47" stop-color="#fb4b4d"/>
+      <stop offset=".71" stop-color="#fe5556"/>
+      <stop offset="1" stop-color="#ff5959"/>
+    </linearGradient>
+    <filter id="drop-shadow-1" filterUnits="userSpaceOnUse">
+      <feOffset dx="1" dy="1"/>
+      <feGaussianBlur result="blur" stdDeviation="2"/>
+      <feFlood flood-color="#000" flood-opacity=".5"/>
+      <feComposite in2="blur" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="linear-gradient-2" x1="96.5" y1="995" x2="96.5" y2="936" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ed8124"/>
+      <stop offset=".17" stop-color="#ef8f41"/>
+      <stop offset=".35" stop-color="#f29c59"/>
+      <stop offset=".54" stop-color="#f3a56a"/>
+      <stop offset=".75" stop-color="#f4aa74"/>
+      <stop offset="1" stop-color="#f5ac78"/>
+    </linearGradient>
+    <filter id="drop-shadow-2" filterUnits="userSpaceOnUse">
+      <feOffset dx="1" dy="1"/>
+      <feGaussianBlur result="blur-2" stdDeviation="2"/>
+      <feFlood flood-color="#000" flood-opacity=".5"/>
+      <feComposite in2="blur-2" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="linear-gradient-3" x1="96.5" y1="1057" x2="96.5" y2="998" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#d4cf00"/>
+      <stop offset=".13" stop-color="#ded322"/>
+      <stop offset=".28" stop-color="#e8d841"/>
+      <stop offset=".44" stop-color="#f0db59"/>
+      <stop offset=".6" stop-color="#f5de6a"/>
+      <stop offset=".78" stop-color="#f8df74"/>
+      <stop offset="1" stop-color="#fae078"/>
+    </linearGradient>
+    <filter id="drop-shadow-3" filterUnits="userSpaceOnUse">
+      <feOffset dx="1" dy="1"/>
+      <feGaussianBlur result="blur-3" stdDeviation="2"/>
+      <feFlood flood-color="#000" flood-opacity=".5"/>
+      <feComposite in2="blur-3" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="linear-gradient-4" x1="264.5" y1="933" x2="264.5" y2="874" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#3f81ff"/>
+      <stop offset="1" stop-color="#9db7f5"/>
+    </linearGradient>
+    <filter id="drop-shadow-4" filterUnits="userSpaceOnUse">
+      <feOffset dx="1" dy="1"/>
+      <feGaussianBlur result="blur-4" stdDeviation="2"/>
+      <feFlood flood-color="#000" flood-opacity=".5"/>
+      <feComposite in2="blur-4" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="linear-gradient-5" x1="264.5" y1="995" x2="264.5" y2="936" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#00d413"/>
+      <stop offset=".04" stop-color="#0ed51d"/>
+      <stop offset=".5" stop-color="#58e958"/>
+      <stop offset="1" stop-color="#a5ff94"/>
+    </linearGradient>
+    <filter id="drop-shadow-5" filterUnits="userSpaceOnUse">
+      <feOffset dx="1" dy="1"/>
+      <feGaussianBlur result="blur-5" stdDeviation="2"/>
+      <feFlood flood-color="#000" flood-opacity=".5"/>
+      <feComposite in2="blur-5" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="linear-gradient-6" x1="264.5" y1="1057" x2="264.5" y2="998" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ff55c6"/>
+      <stop offset=".05" stop-color="#fe5bc3"/>
+      <stop offset=".25" stop-color="#fc73bc"/>
+      <stop offset=".47" stop-color="#fb84b6"/>
+      <stop offset=".71" stop-color="#fa8eb3"/>
+      <stop offset="1" stop-color="#fa92b2"/>
+    </linearGradient>
+    <filter id="drop-shadow-6" filterUnits="userSpaceOnUse">
+      <feOffset dx="1" dy="1"/>
+      <feGaussianBlur result="blur-6" stdDeviation="2"/>
+      <feFlood flood-color="#000" flood-opacity=".5"/>
+      <feComposite in2="blur-6" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Stats_Backgrounds" data-name="Stats Backgrounds">
+    <rect x="15" y="874" width="163" height="59" rx="9.65" ry="9.65" style="fill: url(#linear-gradient); filter: url(#drop-shadow-1); stroke-width: 0px;"/>
+    <rect x="15" y="936" width="163" height="59" rx="9.65" ry="9.65" style="fill: url(#linear-gradient-2); filter: url(#drop-shadow-2); stroke-width: 0px;"/>
+    <rect x="15" y="998" width="163" height="59" rx="9.65" ry="9.65" style="fill: url(#linear-gradient-3); filter: url(#drop-shadow-3); stroke-width: 0px;"/>
+    <rect x="183" y="874" width="163" height="59" rx="9.65" ry="9.65" style="fill: url(#linear-gradient-4); filter: url(#drop-shadow-4); stroke-width: 0px;"/>
+    <rect x="183" y="936" width="163" height="59" rx="9.65" ry="9.65" style="fill: url(#linear-gradient-5); filter: url(#drop-shadow-5); stroke-width: 0px;"/>
+    <rect x="183" y="998" width="163" height="59" rx="9.65" ry="9.65" style="fill: url(#linear-gradient-6); filter: url(#drop-shadow-6); stroke-width: 0px;"/>
+  </g>
+</svg>

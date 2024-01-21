@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Individual_Areas" data-name="Individual Areas" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
+  <g id="Game_Area" data-name="Game Area">
+    <rect x="359.5" y="18.5" width="1201" height="801" style="fill: #39b54a; stroke-width: 0px;"/>
+    <path d="m1560,19v800H360V19h1200m1-1H359v802h1202V18h0Z" style="fill: #231f20; stroke-width: 0px;"/>
+  </g>
+</svg>
