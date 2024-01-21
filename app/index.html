@@ -39,6 +39,14 @@
                 <div class="colored-image ds" style="--url: url(images/ui/moveset.svg)"></div>
                 <div class="colored-image ds" style="--url: url(images/ui/resets.svg)"></div>
                 <div class="colored-image ds" style="--url: url(images/ui/badges.svg)"></div>
+                <img class="canvas" src="images/elements/hoenn_badges_unobtained.png" />
+                <img class="canvas" src="images/elements/moveset.png" />
+                <!-- <img class="canvas" 
+                    v-if="mapper.properties.meta.gameName == 'Emerald' || mapper.properties.meta.gameName == 'Ruby and Sapphire'" 
+                    src="images/elements/hoenn_badges_unobtained.png" />
+                <img class="canvas" 
+                    v-if="mapper.properties.meta.game_name.value == 'FireRed and LeafGreen'"
+                    src="images/elements/hoenn_badges_unobtained.png" /> -->
                 <div class="colored-image ds" style="--url: url(images/ui/stats.svg)"></div>
                 <div class="colored-image ds" style="--url: url(images/ui/ability.svg)"></div>
                 <div class="colored-image ds" style="--url: url(images/ui/heldItem.svg)"></div>
@@ -48,8 +56,13 @@
                 <div v-show="labels == true" class="abilityHeldItemLabelStyle labelFriendship">Friendship:</div>
                 <div v-show="labels == true" class="abilityHeldItemLabelStyle labelAbility">Ability:</div>
                 <div v-show="labels == true" class="abilityHeldItemLabelStyle labelHeldItem">Held Item:</div>
-                <div v-show="labels == true" class="labelNature"></div>
-                <div v-show="labels == true" class="labelGametime">Game-time:</div>
+                <div v-show="timer_settings == `Real-Time`" class="gametime">
+                    <div class="timerTitle">time played at 4x game-speed</div>
+                    <div class="gametimeClock">{{timer_formatted_time[0]}}</div>
+                    <div class="gametimeFrames">{{timer_formatted_time[1]}}</div>
+                </div>
+                <div class="resetsTitle">resets</div>
+                <!-- <div v-show="labels == true" class="labelGametime">Game-time:</div> -->
             </div>
 <!--------- DEBUGGING ----------------------------------------------------------------------------------------------------------------->
             <div v-if="gamestate == true">
@@ -59,6 +72,10 @@
                         <option disabled value="">Select a species</option>
                         <option v-for="key in keys_function(dexDataRubySapphireEmerald)" :value="`${key}`">{{key}}</option>
                     </select>
+                    <br>
+                    <button class="buttonStyle" @click="newRun">New Run</button><br>
+                    <button @click="pauseUnpauseTime()" class="buttonStyle" style="background-color: rgb(201, 199, 100);">Toggle Pause Timer</button>
+                    <br>
                     <br>
                     <div>Pokemon Image Settings</div>
                     X-Offset: <input type="range" min="-400" max="400" v-model="imageXOffset"/><br>
@@ -71,7 +88,6 @@
                     <div>Overlay Color Selector:</div>
                     <button @click="color_picker" class="buttonStyle">Color Picker</button><br>
                     <button @click="clear_overlay_color" class="buttonStyle">Reset Overlay Color</button><br>
-                    <div>Overlay_color: {{overlay_color}}</div>
                     <br>
                     <div>Background Texture:</div>
                     <select v-model="backgroundTexture" class="dropdownMenu">
@@ -88,9 +104,7 @@
                     Blur: <input type="range" min="0" max="10" v-model="backgroundBlur"/><br>
                     Flip: <input class="checkBoxStyle" type="checkbox" v-model="backgroundFlip"/><br>
                     <button @click="reset()" class="buttonStyle">Reset Texture Settings</button><br>
-                    <br>
-                    <button class="buttonStyle" onClick="openFolder('splits')">Open Splits Folder</button>
-                    <button @click="pauseUnpauseTime()" class="buttonStyle" style="background-color: rgb(201, 199, 100);">Toggle Pause Timer</button>
+                    <button class="buttonStyle" onClick="openFolder('splits')">Open Splits Folder</button><br>
                 </div>
             </div>
 
@@ -203,7 +217,7 @@
                 <div v-if="expBarAnimation == true" class="expMeterOuter"><div class="expMeterInner" ref="expBar"></div></div>
                 <div v-if="expBarAnimation == false" class="expMeterOuter"><div class="expMeterInner" :style="{ width: expPercent(s1) + '%' }"></div></div>
                 <div v-show="labels == true" class="labelEXP">Exp:</div>
-                <!-- <img src="images/elements/ui/expLabel.png" style="top: 0px; position: absolute;"> -->
+                <img src="images/ui/exp_label.svg" style="top: 0px; position: absolute;">
             </div>
 
 <!--------- MOVEPOOL ------------------------------------------------------------------------------------------------------------------------------------->
@@ -319,6 +333,10 @@
                     </div>
                 </div>
             </transition>
+            <!-- RESET COUNTER -->
+            <div v-show="resetCounter == true" id="reset_counter" class="resets">
+                <div>{{playerResets}}</div>
+            </div>
         </div>
     </div>
 

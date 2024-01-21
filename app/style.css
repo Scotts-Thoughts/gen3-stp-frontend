@@ -219,6 +219,7 @@ body {
     position: absolute;
     inset: 0; /* sets top/left/bottom/right to 0 */
     background-color: var(--overlay-color);
+    filter: saturate(.6);
     background-size: 1920px 1080px;
     -webkit-mask-size: 1920px 1080px;
     -webkit-mask-image: var(--url); /* fallback, just to be safe */
@@ -458,20 +459,56 @@ body {
     position: absolute;
     border-radius: 4px;
     background: linear-gradient(rgb(239, 239, 239), rgb(157, 157, 157));
-    width: 281px;
+    width: 284px;
     height: 11px;
     top: 828px;
-    left: 65px;
+    left: 61px;
     z-index: 0;
 }
-
+.timerTitle {
+    position: absolute;
+    font-family: titan;
+    opacity: .7;
+    padding-left: 25px;
+    padding-top: 26px;
+}
+.resetsTitle {
+    position: absolute;
+    font-family: titan;
+    opacity: .7;
+    padding-left: 25px;
+    padding-top: 127px;
+}
+.gametimeClock {
+    font-size: 68px;
+    display:block;
+    position: absolute;
+    text-align: right;
+    left: 255px;
+    top: 46px;
+    line-height: 60px;
+    font-family: oseb;
+    font-weight: 700;
+    /* filter: drop-shadow(1px 1px 1px #000000) */
+}
+.gametimeFrames {
+    font-size: 35px;
+    top: 60px;
+    left: 292px;
+    position: absolute;
+    text-align: right;
+    line-height: 60px;
+    font-family: oseb;
+    font-weight: 700;
+    /* filter: drop-shadow(1px 1px 1px #000000) */
+}
 .expMeterInner {
     position: relative;
     border-radius: 4px;
     background: linear-gradient(90deg,hsl(189, 92%, 45%), hsl(187, 100%, 69%));
-    width: 277px;
+    width: 284px;
     top: -1px;
-    height: 16px;
+    height: 11px;
     border: 1px solid #000;
     /* background:rgb(0, 217, 255); */
 }
@@ -682,12 +719,12 @@ body {
     max-width: 250;
     position: fixed;
     max-height: 250;
-    font-size: 78px;
+    font-size: 68px;
     z-index: 5;
     /* top: 195px;
     left: 295px; old coordinates*/
-    top: 379px;
-    left: 31px;
+    top: 150px;
+    left: 35px;
     line-height: 60px;
     text-align: center;
     font-family: oseb;
@@ -1040,28 +1077,6 @@ body {
 .parent {
     text-align: right;
     position: relative;
-}
-
-
-.gametimeClock {
-    font-size: 65px;
-    display:block;
-    position: absolute;
-    top: 64px;
-    left: 77px;
-    line-height: 60px;
-    font-family: oseb;
-    font-weight: 700;
-}
-
-.gametimeFrames {
-    font-size: 35px;
-    position: absolute;
-    top: 78px;
-    left: 304px;
-    line-height: 60px;
-    font-family: oseb;
-    font-weight: 700;
 }
 
 
@@ -1552,15 +1567,17 @@ body {
 .gamestate {
     font-size: 22px;
     position: fixed;
-    left: 380px;
+    left: 372px;
     top: 30px;
     z-index: 5;
+    height: 780px;
     line-height: 23px;
     text-transform: capitalize;
     text-align: left;
     font-family: osb;
     font-weight: 700;
     z-index: 20000;
+    border: 1px solid #ff0000;
 }
 /* .gametime {
     font-size: 20px;

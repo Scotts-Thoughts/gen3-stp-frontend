@@ -368,6 +368,39 @@ const app = Vue.createApp({
                 "backgroundSaturation",
                 "backgroundFlip",
             ],
+            //timer variables
+            timer_startTime: MyStorage["timer_startTime"] ?? 0,
+            timer_pause: MyStorage["timer_pause"] ?? true,
+            timer_formatted_time: MyStorage["timer_formatted_time"] ?? ["0", ".00"],
+            timer_pause_time: MyStorage["timer_pause_time"] ?? 0,
+            time_h: 0,
+            time_m: 0,
+            time_s: 0,
+            time_ms: 0,
+            time_split_start: "00:00:00:00",
+            battle_start: 0,
+            timer_settings: MyStorage["timer_settings"] ?? "Real-Time",
+
+            //resets
+            playerId: MyStorage["playerId"] ?? 0,
+            playerName: "",
+            resetCatcher: "NINTEN",
+            playerResets: MyStorage["playerResets"] ?? 0,
+            blackout_counter: MyStorage["blackout_counter"] ?? 0,
+            resetCounter: true,
+            game_over: false,
+            lance_defeated: false,
+            finished_logs: false,
+            attempt_number: 0,
+            finished_run_count: 0,
+            pb_time: "None",
+            most_recent_move: "",
+            split_logStr: "",
+            simple_data_str: MyStorage["simple_data_str"] ?? "",
+            full_data_str: MyStorage["full_data_str"] ?? "",
+            deprecated_data_str: MyStorage["deprecated_data_str"] ?? "",
+            simple_data: MyStorage["simple_data"] ?? "",
+            testRun: MyStorage['testRun'] ?? false,
         }
     },
     created() {
@@ -455,7 +488,7 @@ const app = Vue.createApp({
         }, 
         playerResets(newProp) {
             if (newProp.toString().length == 1) {
-                document.getElementById("reset_counter").style.fontSize = "75px"
+                document.getElementById("reset_counter").style.fontSize = "68px"
             }
             if (newProp.toString().length == 3) {
                 document.getElementById("reset_counter").style.fontSize = "54px"
