@@ -329,7 +329,7 @@ const app = Vue.createApp({
             imageScale:    MyStorage["imageScale"] ?? 1,
             imageFlip:     MyStorage["imageFlip"] ?? false,
             imageSat:      MyStorage["imageSat"] ?? 100,
-            imageRotation: MyStorage["imageRotation"] ?? 90,
+            imageRotation: MyStorage["imageRotation"] ?? 0,
 
             //background texture settings
             backgroundBlur:        MyStorage["backgroundBlur"] ?? 0,
@@ -411,7 +411,7 @@ const app = Vue.createApp({
             this.imageScale = MyStorage[this.starterString].imageScale ?? 1;
             this.imageFlip = MyStorage[this.starterString].imageFlip ?? false;
             this.imageSat = MyStorage[this.starterString].imageSat ?? 100
-            this.imageRotation = MyStorage[this.starterString].imageRotation ?? 100
+            this.imageRotation = MyStorage[this.starterString].imageRotation ?? 0
             this.backgroundBlur = MyStorage[this.starterString].backgroundBlur ?? 0
             this.backgroundScale = MyStorage[this.starterString].backgroundScale ?? 100
             this.backgroundUrl = MyStorage[this.starterString].backgroundUrl ?? ""
@@ -843,7 +843,7 @@ const app = Vue.createApp({
             this.imageScale =    MyStorage[this.starterString]?.imageScale ?? 1
             this.imageFlip =     MyStorage[this.starterString]?.imageFlip ?? false
             this.imageSat =      MyStorage[this.starterString]?.imageSat ?? 100
-            this.imageRotation = MyStorage[this.starterString]?.imageRotation ?? 90
+            this.imageRotation = MyStorage[this.starterString]?.imageRotation ?? 0
 
             //background texture settings
             this.backgroundBlur =        MyStorage[this.starterString]?.backgroundBlur ?? 0
