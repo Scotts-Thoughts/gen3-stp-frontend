@@ -6,8 +6,8 @@ const { electronApp, optimizer } = require('@electron-toolkit/utils')
 function createWindow() {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 900,
-    height: 670,
+    width: 1920,
+    height: 1080,
     show: false,
     autoHideMenuBar: true,
     webPreferences: {
@@ -16,6 +16,10 @@ function createWindow() {
   })
 
   mainWindow.on('ready-to-show', () => {
+    const contentBounds = mainWindow.getContentBounds()
+    const titleBarHeight = 1080 - contentBounds.height
+    const borderWidth = (1920 - contentBounds.width) / 2
+    mainWindow.setSize(1920 + borderWidth * 2, 1080 + titleBarHeight)
     mainWindow.show()
   })
 
