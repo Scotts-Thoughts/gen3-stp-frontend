@@ -13,6 +13,24 @@ function createWindow() {
     webPreferences: {
       sandbox: false
     }
+    
+  })
+
+  mainWindow.on('resize', () => {
+    // Get the new size of the window
+    const { width } = mainWindow.getContentBounds();
+    const { height } = mainWindow.getContentBounds();
+    const horizontalZoomFactor = width / 1920;
+    const verticalZoomFactor = height / 1080;
+    let zoomFactor = 1;
+    //take the smaller factor
+    if(horizontalZoomFactor > verticalZoomFactor){
+      zoomFactor = verticalZoomFactor;
+    }
+    else {
+      zoomFactor = horizontalZoomFactor;
+    }
+    mainWindow.webContents.setZoomFactor(zoomFactor);
   })
 
   mainWindow.on('ready-to-show', () => {
