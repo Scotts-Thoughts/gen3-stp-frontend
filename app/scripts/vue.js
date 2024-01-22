@@ -401,6 +401,11 @@ const app = Vue.createApp({
             deprecated_data_str: MyStorage["deprecated_data_str"] ?? "",
             simple_data: MyStorage["simple_data"] ?? "",
             testRun: MyStorage['testRun'] ?? false,
+
+            //movepool starting parameters. set to -1 if not initialized
+            movepoolDefaultFontSize: -1,
+            movepoolDefaultLineHeight: -1,
+            movepoolDefaultContainerHeight: -1,
         }
     },
     created() {
@@ -1013,6 +1018,32 @@ const app = Vue.createApp({
             }
             return obj
         }, 
+        movepoolResize() {
+            if(!dexDataRubySapphireEmerald){ 
+                return;
+            }
+            //retrieve the default sizing from the .css
+            var element = document.getElementById('movepoolMoveTable')
+            var moveElement = document.querySelector('.movepoolDemo');
+            if (!moveElement) {
+                return;
+            }
+            //store the default sizes so we can access them after overwriting them
+            var computedStyle = window.getComputedStyle(moveElement);
+            if(this.movepoolDefaultFontSize==-1) {
+                this.movepoolDefaultFontSize = parseInt(computedStyle.getPropertyValue('font-size'),10);
+                this.movepoolDefaultLineHeight = parseInt(computedStyle.getPropertyValue('line-height'),10);
+                this.movepoolDefaultContainerHeight = parseInt(computedStyle.getPropertyValue('height'),10)-this.movepoolDefaultLineHeight+1;
+            }
+            //calculate new sizes
+            let movepoolSize = dexDataRubySapphireEmerald[this.starterString].tm_hm_learnset.length+dexDataRubySapphireEmerald[this.starterString].levelup_moveset.length+dexDataRubySapphireEmerald[this.starterString].tutor_learnset.length;
+            let maxSize = this.movepoolDefaultContainerHeight / this.movepoolDefaultLineHeight;
+            let correctedLineHeight = this.movepoolDefaultContainerHeight / movepoolSize;
+            let correctedFontSize = correctedLineHeight * (this.movepoolDefaultFontSize)/this.movepoolDefaultLineHeight;
+            if(movepoolSize > (this.movepoolDefaultContainerHeight/this.movepoolDefaultLineHeight)){
+                return "line-height: " + correctedLineHeight + "px; font-size: "+correctedFontSize+"px;";
+            }
+        },
 
         // MOVE ACCURACY
         moveAccuracyStatic(move) {

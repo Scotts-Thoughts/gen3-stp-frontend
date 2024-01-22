@@ -255,7 +255,7 @@
                 </div>
                 <div v-else key=2>
                     <div class="movepoolTitle">Movepool</div>
-                    <table class="movepoolDemo" cellspacing="0">
+                    <table class="movepoolDemo" cellspacing="0" :style="movepoolResize()">
                         <tr :style="{'background-color': `var(--${typeHeaderColor?.toLowerCase()})`, 'outline': '2px solid #000'}">
                             <th class="movepool_header movepool_way">Way</th>
                             <th class="movepool_header movepool_move">Move</th>
@@ -281,14 +281,14 @@
                             <td class="movepool_tableC">{{x.Accuracy}}%</td>
                             <td class="movepool_tableC">{{x.PP}}</td>
                         </tr>
-                        <!-- <tr v-for="x in getMovepool(dexDataRubySapphireEmerald, g3MoveData, g3tmhmMapping, s1dynamicReset.species.value).tutor">
+                        <tr v-for="x in getMovepool(dexDataRubySapphireEmerald, g3MoveData, g3tmhmMapping, s1dynamicReset.species.value).tutor">
                             <td class="movepool_way">Tutor</td>
                             <td class="movepool_move">{{x.Move}}</td>
                             <td class="movepool_type" :style="{'background-color': `var(--${x.Type?.toLowerCase()})`}">{{x.Type}}</td>
                             <td class="movepool_tableC">{{x.Power}}</td>
                             <td class="movepool_tableC">{{x.Accuracy}}%</td>
                             <td class="movepool_tableC">{{x.PP}}</td>
-                        </tr>
+                        <!--  </tr> 
                         <tr v-for="x in getMovepool(dexDataRubySapphireEmerald, g3MoveData, g3tmhmMapping, s1dynamicReset.species.value).egg">
                             <td class="movepool_way">Egg</td>
                             <td class="movepool_move">{{x.Move}}</td>
