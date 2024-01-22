@@ -2555,7 +2555,7 @@ const app = Vue.createApp({
 
         // TRACK VARIABLES HERE ------------------------------------------------------------------------------------------------//
         this.mapper.properties.gameTime.seconds.change(async (x) => {
-            if (this.mapper.properties.battle.yourPokemon.species.value != null) {
+            if (this.mapper.properties.battle.yourPokemon.speciesArray.value != null) {
                 this.bufferNature = this.natureCalculation(this.mapper.properties.player.team[0].personalityValue.value)
                 this.bufferAbility = this.camelCase(this.mapper.properties.battle.yourPokemon.ability.value)
                 this.bufferHeldItem = this.camelCase(this.mapper.properties.player.team[0].itemHeld.value)
