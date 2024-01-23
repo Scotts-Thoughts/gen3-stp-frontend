@@ -2397,6 +2397,23 @@ const app = Vue.createApp({
                 return "height: 1080px;"
             }
         },
+        trackResets() {
+            this.mapper.properties.pointers.callback2.change((newProp, oldProp) => {
+                if(newProp=="Owners" && oldProp != "Title Screen") {
+                    this.playerResets++;
+                }
+            })
+        },
+        newGame() {
+
+            this.mapper.properties.misc.palette5.change((newProp, oldProp) => {
+                if(newProp.value=="NEW GAME" && oldProp.value == "MAIN MENU"){
+                    // console.log("new game started")
+                    this.newRun();
+                    this.startTime();
+                }
+            })
+        }
     },
     
 
@@ -2414,6 +2431,7 @@ const app = Vue.createApp({
             image.src = `images/pokemon/${species}.png`;
         }
 
+        
         //GAMESTATE MANAGEMENT
         // set initial gamestate value when the layout is loaded
         if (this.mapper.properties.player.team[0].level.value == 0) 
@@ -2470,6 +2488,8 @@ const app = Vue.createApp({
             }
         });
 
+        this.trackResets();
+        this.newGame();
         //ENEMY STATE
         //ENEMY STATE MANAGER
         //"Pokemon", "Fainted"
@@ -2689,6 +2709,9 @@ const app = Vue.createApp({
 
         //EXP BAR ANIMATION FUNCTION
         var species = this.mapper.properties.player.team[0].species.value??this.starterString;
+        if(this.dexDataRubySapphireEmerald[species]==null){
+            return;
+        }
         var growthRate = this.dexDataRubySapphireEmerald[species].growth_rate
         var expStats = this.calcExpStats(growthRate, this.mapper.properties.player.team[0].expPoints.value);
         this.$refs.expBar.style.width = (expStats.percent * 100) + "%";
@@ -2696,6 +2719,9 @@ const app = Vue.createApp({
 
         this.mapper.properties.player.team[0].expPoints.change(async (newProp, oldProp) => {
             if (this.expBarAnimation == true) {
+                if(!this.mapper.properties.player.team[0].species){
+                    return;
+                }
                 const currSpecies = this.mapper.properties.player.team[0].species.value;
                 const growthRate = this.dexDataRubySapphireEmerald[currSpecies].growth_rate
                 const oldExpStats = this.calcExpStats(growthRate, oldProp.value);
