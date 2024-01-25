@@ -607,8 +607,8 @@ body {
 }
 .badgeBoost {
     position: absolute;
-    top: -460px;
-    left: -60px;
+    /* top: -460px;
+    left: -60px; */
     height: 1080px;
     width: 1920px;
     z-index: 15;
