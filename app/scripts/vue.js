@@ -1664,7 +1664,6 @@ const app = Vue.createApp({
 
             //ABILITIES
             //Guts
-           
             if (pkmnData.ability.value.toLowerCase() == "guts" && statLabel == "attack" && 
             (pkmnData.status1.value == "Burned" || pkmnData.status1.value == "Paralyzed" || pkmnData.status1.value == "Poisoned" || pkmnData.status1.value == "Badly Poisoned" || pkmnData.status1.value == "Badly Posioned")) {
                 mod_ability = 1.5 
@@ -3008,6 +3007,9 @@ const app = Vue.createApp({
                     return;
                 }
                 const currSpecies = this.mapper.properties.player.team[0].species.value;
+                if(!this.dexDataRubySapphireEmerald[currSpecies]) { 
+                    return;
+                }
                 const growthRate = this.dexDataRubySapphireEmerald[currSpecies].growth_rate
                 const oldExpStats = this.calcExpStats(growthRate, oldProp.value);
                 const newExpStats = this.calcExpStats(growthRate, newProp.value);
