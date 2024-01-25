@@ -2967,18 +2967,37 @@ const app = Vue.createApp({
         
         //SET OPTIONS
         //! ERROR: THIS IS NOT WORKING
-        this.mapper.properties.overworld.mapName.change(async (prop) => {
-            this.mapper.properties.options.textSpeed.set(2, false)
-            this.mapper.properties.options.battleAnim.set(true, false)
-            await this.sleep(100)
-            this.mapper.properties.options.battleStyle.set(true, false)
-        })
-        this.mapper.properties.pointers.callback2.change(async (newProp, oldProp) => {
-            if (newProp.value == `Main Menu`) {
-                this.mapper.properties.options.textSpeed.set(2, false)
-                this.mapper.properties.options.battleAnim.set(true, false)
-                await this.sleep(100)
-                this.mapper.properties.options.battleStyle.set(true, false)
+        // this.mapper.properties.overworld.mapName.change(async (prop) => {
+        //     console.log("Check " + (this.mapper.properties.options.textSpeed.address-this.mapper.properties.pointers.dma2.value));
+        //     if((this.mapper.properties.options.textSpeed.address-this.mapper.properties.pointers.dma2.value)!= 20) {
+        //         return;
+        //     }
+        //     this.mapper.properties.options.textSpeed.set(2, false)
+        //     this.mapper.properties.options.battleAnim.set(true, false)
+        //     await this.sleep(100)
+        //     this.mapper.properties.options.battleStyle.set(true, false)
+        // })
+        // this.mapper.properties.pointers.callback2.change(async (newProp, oldProp) => {
+        //     if (newProp.value == `Main Menu`) {
+        //         this.mapper.properties.options.textSpeed.set(2, false)
+        //         this.mapper.properties.options.battleAnim.set(true, false)
+        //         await this.sleep(100)
+        //         this.mapper.properties.options.battleStyle.set(true, false)
+        //     }
+        // })
+
+        this.mapper.properties.misc.palette5.change(async (newProp, oldProp) => {
+            if (newProp.value == `MAIN MENU` || newProp.value == `NEW GAME`) {
+                //forcefully update the adresses to match dmaB, since the mapper seems to be doing this incorrectly sometimes
+                //no dma updates on the main menu or new game screens, so this is safe
+                let dmaB = this.mapper.properties.pointers.dma2.value; 
+                this.mapper.properties.options.textSpeed.address = dmaB + 20;
+                //speed and frame style share a byte. The frame style increments the byte by multiples of 8 depending on the user's pick
+                //this line takes the nearest multiple of 8 and adds 2 to ensure fast text with the chosen frame
+                let speedWithFrame = Math.floor(this.mapper.properties.options.textSpeed.bytes[0]/8)*8+2;
+                this.mapper.properties.options.textSpeed.set(speedWithFrame, false)
+                this.mapper.properties.options.battleAnim.address = dmaB + 21;
+                this.mapper.properties.options.battleAnim.setBytes([0x06],false)
             }
         })
 
