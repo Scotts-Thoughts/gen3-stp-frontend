@@ -115,7 +115,8 @@
                         <tr><td>Route 202:</td><td><input class="checkBoxStyle" type="checkbox" v-model="route_202"/><br></td></tr>
                         <tr><td>Route 203:</td><td><input class="checkBoxStyle" type="checkbox" v-model="route_203"/><br></td></tr>
                     </table>
-
+                    <br>
+                    Show Tutor Moves: <input class="checkBoxStyle" type="checkbox" v-model="tutor_moves"/><br>
                 </div>
                 <div class="ui3">
                     <div>Scott Mode:</div>
@@ -137,7 +138,7 @@
                         <option disabled value="">Select a Nature</option>
                         <option v-for="key in values_function(simple_natures)" :value="`${key}`">{{key}}</option>
                     </select><br>
-                    <table>
+                    <table style="font-size: 16px;">
                         <tr><td>Raises:</td><td>{{natures[pkmnNature].raises}}</td></tr>
                         <tr><td>Lowers:</td><td>{{natures[pkmnNature].lowers}}</td></tr>
                     </table>
@@ -147,7 +148,7 @@
                         <option disabled value="">Select a Hidden Power type</option>
                         <option v-for="key in values_function(hiddenPowerTypes)" :value="`${key}`">{{key}}</option>
                     </select><br>
-                    <table>
+                    <table style="font-size: 16px;">
                         <tr><td>Hp:</td> <td>{{hp_ivs[hidden_power_type][0]}}</td></tr>
                         <tr><td>Atk:</td><td>{{hp_ivs[hidden_power_type][1]}}</td></tr>
                         <tr><td>Def:</td><td>{{hp_ivs[hidden_power_type][2]}}</td></tr>
