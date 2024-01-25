@@ -911,6 +911,9 @@ const app = Vue.createApp({
         enemyTrainer() {
             return this.emeraldTrainers[this.mapper.properties.battle.trainer.opponentAId.value]
         },
+        enemyTeam() {
+            return this.mapper.properties.battle.trainer.team
+        },
         s1() {
             return this.mapper?.properties?.player?.team[0]
         },
@@ -1083,6 +1086,9 @@ const app = Vue.createApp({
     },
 
     methods: { 
+        enemyType(slotNumber) {
+            return this.dexDataRubySapphireEmerald[this.enemyTeam[slotNumber].species.value].type_1
+        },
         clear_overlay_color() {
             starterType = this.dexDataRubySapphireEmerald[this.starterString].type_1;
             newColor = getComputedStyle(document.documentElement).getPropertyValue("--"+starterType.toLowerCase());
