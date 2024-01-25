@@ -108,11 +108,53 @@
                 </div>
                 <div class="ui2">
                     <div>Advanced Settings:</div>
+                    <br>
+                    <div>Encounters:</div>
+                    <table>
+                        <tr><td>Route 201:</td><td><input class="checkBoxStyle" type="checkbox" v-model="route_201"/><br></td></tr>
+                        <tr><td>Route 202:</td><td><input class="checkBoxStyle" type="checkbox" v-model="route_202"/><br></td></tr>
+                        <tr><td>Route 203:</td><td><input class="checkBoxStyle" type="checkbox" v-model="route_203"/><br></td></tr>
+                    </table>
 
                 </div>
                 <div class="ui3">
                     <div>Scott Mode:</div>
-                    
+                    <div>Gender:</div>
+                    <select v-model="pkmn_gender" class="dropdownMenu">
+                        <option disabled value="">Select a gender</option>
+                        <option v-for="key in values_function(genders)" :value="`${key}`">{{key}}</option>
+                    </select><br>
+                    <br>
+                    <div>Abilities:</div>
+                    <select v-model="pkmn_ability" class="dropdownMenu">
+                        <option disabled value="">Select an ability</option>
+                        <option v-for="key in values_function(dexDataRubySapphireEmerald[starterString].abilities)" :value="`${key}`">{{key}}</option>
+                    </select><br>
+                    <br>
+                    <br>
+                    <div>Nature:</div>
+                    <select v-model="pkmnNature" class="dropdownMenu">
+                        <option disabled value="">Select a Nature</option>
+                        <option v-for="key in values_function(simple_natures)" :value="`${key}`">{{key}}</option>
+                    </select><br>
+                    <table>
+                        <tr><td>Raises:</td><td>{{natures[pkmnNature].raises}}</td></tr>
+                        <tr><td>Lowers:</td><td>{{natures[pkmnNature].lowers}}</td></tr>
+                    </table>
+                    <br>
+                    <div>Hidden Power:</div>
+                    <select v-model="hidden_power_type" class="dropdownMenu">
+                        <option disabled value="">Select a Hidden Power type</option>
+                        <option v-for="key in values_function(hiddenPowerTypes)" :value="`${key}`">{{key}}</option>
+                    </select><br>
+                    <table>
+                        <tr><td>Hp:</td> <td>{{hp_ivs[hidden_power_type][0]}}</td></tr>
+                        <tr><td>Atk:</td><td>{{hp_ivs[hidden_power_type][1]}}</td></tr>
+                        <tr><td>Def:</td><td>{{hp_ivs[hidden_power_type][2]}}</td></tr>
+                        <tr><td>Spe:</td><td>{{hp_ivs[hidden_power_type][3]}}</td></tr>
+                        <tr><td>SpA:</td><td>{{hp_ivs[hidden_power_type][4]}}</td></tr>
+                        <tr><td>SpD:</td><td>{{hp_ivs[hidden_power_type][5]}}</td></tr>
+                    </table>
                 </div>
             </div>
 
@@ -290,14 +332,14 @@
                             <td class="movepool_tableC">{{x.PP}}</td>
                         </tr>
                         <tr v-for="x in getMovepool(dexDataRubySapphireEmerald, g3MoveData, g3tmhmMapping, s1dynamicReset.species.value).tutor">
-                            <td class="movepool_way">Tutor</td>
-                            <td class="movepool_move">{{x.Move}}</td>
-                            <td class="movepool_type" :style="{'background-color': `var(--${x.Type?.toLowerCase()})`}">{{x.Type}}</td>
-                            <td class="movepool_tableC">{{x.Power}}</td>
-                            <td class="movepool_tableC">{{x.Accuracy}}%</td>
-                            <td class="movepool_tableC">{{x.PP}}</td>
-                        <!--  </tr> 
-                        <tr v-for="x in getMovepool(dexDataRubySapphireEmerald, g3MoveData, g3tmhmMapping, s1dynamicReset.species.value).egg">
+                            <td v-if="tutor_moves" class="movepool_way">Tutor</td>
+                            <td v-if="tutor_moves" class="movepool_move">{{x.Move}}</td>
+                            <td v-if="tutor_moves" class="movepool_type" :style="{'background-color': `var(--${x.Type?.toLowerCase()})`}">{{x.Type}}</td>
+                            <td v-if="tutor_moves" class="movepool_tableC">{{x.Power}}</td>
+                            <td v-if="tutor_moves" class="movepool_tableC">{{x.Accuracy}}%</td>
+                            <td v-if="tutor_moves" class="movepool_tableC">{{x.PP}}</td>
+                         </tr> 
+                        <!-- <tr v-for="x in getMovepool(dexDataRubySapphireEmerald, g3MoveData, g3tmhmMapping, s1dynamicReset.species.value).egg">
                             <td class="movepool_way">Egg</td>
                             <td class="movepool_move">{{x.Move}}</td>
                             <td class="movepool_type" :style="{'background-color': `var(--${x.Type?.toLowerCase()})`}">{{x.Type}}</td>
@@ -372,6 +414,7 @@
     <script src="data/typeBoostingItems.js"></script>
     <script src="lib/textures.js"></script>
     <script src="lib/default_colors.js"></script>
+    <script src="lib/hp_ivs.js"></script>
     <!-- VUE APP -->
     <script type="text/javascript" src="scripts/vue.js"></script>
 </body>

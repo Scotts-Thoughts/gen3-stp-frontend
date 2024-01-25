@@ -170,7 +170,7 @@ const app = Vue.createApp({
             // starter:        357, //select starter (1-386)
             starterString: "Rayquaza",
             pkmnNature: "Adamant",
-            pkmn_ability: false, // false = ability 1, true = ability 2
+            pkmn_ability: "Pressure", // false = ability 1, true = ability 2
             hidden_power_type: "Electric",
             pkmn_gender: "Female",
             
@@ -206,6 +206,7 @@ const app = Vue.createApp({
             labels:         true, //shows the current gamestate in the place of the timer
             websocket:      false,
             showSpecialTrainerGraphics: true, 
+            tutor_moves: false,
 
             badges: ["badge1", "badge2", "badge3", "badge4", "badge5", "badge6", "badge7", "badge8"],
             badgeBoosts: ["badge1", "badge3", "badge5", "badge7"],
@@ -229,7 +230,39 @@ const app = Vue.createApp({
             g3hiddenPowerTypeSelector: g3hiddenPowerTypeSelector,
             textures: textures,
             default_colors: default_colors,
+            hp_ivs: hp_ivs,
 
+            genders: {
+                "false": "Male",
+                "true": "Female",
+            },
+            simple_natures: {
+                "0": "Hardy",
+                "1": "Lonely",
+                "2": "Brave",
+                "3": "Adamant",
+                "4": "Naughty",
+                "5": "Bold",
+                "6": "Docile",
+                "7": "Relaxed",
+                "8": "Impish",
+                "9": "Lax",
+                "10": "Timid",
+                "11": "Hasty",
+                "12": "Serious",
+                "13": "Jolly",
+                "14": "Naive",
+                "15": "Modest",
+                "16": "Mild",
+                "17": "Quiet",
+                "18": "Bashful",
+                "19": "Rash",
+                "20": "Calm",
+                "21": "Gentle",
+                "22": "Sassy",
+                "23": "Careful",
+                "24": "Quirky",
+            },
             hiddenPowerTypes : {
                 0 : "Fighting",
                 1 : "Flying",
@@ -406,6 +439,11 @@ const app = Vue.createApp({
             movepoolDefaultFontSize: -1,
             movepoolDefaultLineHeight: -1,
             movepoolDefaultContainerHeight: -1,
+
+            //encounters
+            route_201: true,
+            route_202: true,
+            route_203: true,
         }
     },
     created() {
@@ -741,6 +779,9 @@ const app = Vue.createApp({
         },
         keys_function(object) {
             return Object.keys(object)
+        },
+        values_function(object) {
+            return Object.values(object)
         },
         //*timer methods
         //start the timer
