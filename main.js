@@ -11,9 +11,10 @@ function createWindow() {
     show: false,
     autoHideMenuBar: true,
     webPreferences: {
-      sandbox: false
-    }
-    
+      sandbox: false,
+      contextIsolation: false,
+      nodeIntegration: true
+    },
   })
 
   mainWindow.on('resize', () => {
@@ -39,6 +40,7 @@ function createWindow() {
     const borderWidth = (1920 - contentBounds.width) / 2
     mainWindow.setSize(1920 + borderWidth * 2, 1080 + titleBarHeight)
     mainWindow.show()
+    // mainWindow.webContents.openDevTools()
   })
 
   mainWindow.webContents.setWindowOpenHandler((details) => {
@@ -48,6 +50,7 @@ function createWindow() {
 
   // and load the index.html of the app.
   mainWindow.loadFile(path.join(__dirname, 'app/index.html'))
+  
 }
 
 // This method will be called when Electron has finished
@@ -67,7 +70,6 @@ app.whenReady().then(() => {
   createWindow()
 
 })
-
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.

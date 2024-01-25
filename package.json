@@ -1,13 +1,13 @@
 {
-  "name": "stp-generation-3-overlay-app",
+  "name": "stp-generation3-overlay",
   "version": "0.0.1",
-  "description": "A minimal Electron application",
+  "description": "Scott's Thoughts Overlay.",
   "main": "./main.js",
   "build": {
-    "appId": "com.stp.layout-app",
-    "productName": "stp-layout-app",
+    "appId": "com.stp-generation3-overlay",
+    "productName": "stp-generation3-overlay",
     "win": {
-      "executableName": "stp-layout-app",
+      "executableName": "stp-generation3-overlay",
       "target": "zip",
       "icon": "./icon.png"
     },

@@ -18,147 +18,448 @@ const MyStorage = new Proxy({}, {
     }
 });
 
-// // Open the folder ./splits/ in the file explorer with node.js
-// function openFolder(folderName) {
-//     require('child_process').exec(`start .\\${folderName}\\`);
-// }
+// Open the folder ./splits/ in the file explorer with node.js
+function openFolder(folderName) {
+    require('child_process').exec(`start .\\${folderName}\\`);
+}
 
-// const fs = require("fs");
-// const path = require("path");
-// const { finished } = require('stream');
-// function logData(gameName, str, file_name, starter, log_type, testStatus, toggle) {
-//         return new Promise((resolve, reject) => {
-//         const dirPath = `./splits/Crystal/${starter}/attempts/`;
-//         const testStatusText = testStatus ? "test_run_" : "";
-//         let filePath = path.join(dirPath, `${testStatusText}${starter}-${file_name}-simple.csv`);
-//         let header = "player_name,pokemon,trainer_name,real_time_hmmss,resets,blackouts,failures,level,game_time,battle_duration,move1,move2,move3,move4\n";
-//         if (log_type == "Simple") {
-//             header = "player_name,pokemon,trainer_name,real_time_hmmss,resets,blackouts,level,game_time," +
-//             "battle_duration,move1,move2,move3,move4\n";
-//         }
-//         else if (log_type == "Full" && toggle == true) {
-//             filePath = path.join(dirPath, `${testStatusText}${starter}-${file_name}-full.csv`);
-//             header = "player_name,pokemon,trainer_name,real_time_hmmss,resets,blackouts,level,game_time," +
-//             "battle_duration,move1,move2,move3,move4\n";
-//         }
-//         else if (log_type == "Full" && toggle == false) {
-//             filePath = path.join(dirPath, `${testStatusText}${starter}-${file_name}-full.csv`);
-//             header = "date_string,time_string,player_name,pokemon,trainer_name,trainer_id,location,total_pokemon," +
-//                 "real_time_total,real_time_hmmss,real_time_file_label,resets,blackouts,failures,level,game_time,battle_duration," + 
-//                 "move1,move2,move3,move4,move1pp,move2pp,move3pp,move4pp,move1ppUp,move2ppUp,move3ppUp,move4ppUp," +
-//                 "saves,steps,bonks,trainerBattles,wildBattles,battleTurns,playerTurns,enemyTurns," +
-//                 "itemsInBag,money,rivalTeam," +
-//                 "statusCondition,type1,type2,experience," +
-//                 "ROM,Species,Trainer,Start Time,Real Time,Game Time,Level,Resets," +
-//                 "RTHours,RTMinutes,RTSeconds,RTMilliseconds,Move 1,Move 2,Move 3,Move 4," +
-//                 "Hp,Max HP,Attack,Defense,Sp. Attack,Sp. Defense,Speed,Attack DV,Defense DV,Speed DV,Special DV," +
-//                 "StatExp HP,StatExp Attack,StatExp Def,StatExp Sp. Attack,StatExp Sp. Defense,StatExp Speed," +
-//                 "Attack Stage,Defense Stage,Sp. Attack Stage,Sp. Defense Stage,Speed Stage,Accuracy Stage,Evasion Stage," +
-//                 "Battle Attack,Battle Defense,Battle Sp. Attack,Battle Sp. Defense,Battle Speed," +
-//                 "Frame Count,Overworld Frame Count,Battle Frame Count,Menu Frame Count,Intro Frame Count," +
-//                 "Save Count,Reload Count,Clock Reset Count,Steps Count,Steps Count Walk,Steps Count Bike,Steps Count Surf,Bonks," + 
-//                 "Battles,Trainer Battles,Wild Battles,Battles Fled,Failed Runs," +
-//                 "Total Damage Dealt,Actual Damage Dealt,Total Damage Taken,Actual Damage Taken," +
-//                 "Own Moves Hit,Own Moves Missed,Enemy Moves Hit,Enemy Moves Missed," +
-//                 "Own Moves Super Effective,Own Moves Not Very Effective,Enemy Moves Super Effective,Enemy Moves Not Very Effective," +
-//                 "Criticals Dealt,OHKOs Dealt,Criticals Taken,OHKOs Taken," +
-//                 "Was Confused,Enemy Became Confused,Was Paralyzed,Enemy Was Paralyzed,Was Burned,Enemy Was Burned," +
-//                 "Was Frozen,Enemy Was Frozen,Was Poisoned,Enemy Was Poisoned,Was Badly Poisoned,Enemy Was Badly Poisoned," +
-//                 "Fell Asleep,Enemy Fell Asleep,Player Turns Confused,Player Turns Confused Hit Self,Player Turns Paralyzed," +
-//                 "Player Turns Paralyzed Fully,Enemy Turns Confused,Enemy Turns Confused Hit Self,Enemy Turns Paralyzed," +
-//                 "Enemy Turns Paralyzed Fully, Player Turns Asleep, Enemy Turns Asleep,Player HP Healed,Enemy HP Healed," +
-//                 "Player Pokemon Fainted,Enemy Pokemon Fainted," +
-//                 "Experience Gained,Switchouts," +
-//                 "Money Made,Money Spent,Money Lost," +
-//                 "Items Picked Up,Items Bought,Items Sold," +
-//                 "Balls Thrown,Pokemon Caught In Balls,Moves Learnt," +
-//                 "Blackouts,Attempt Number,Failures, Rival's Team\n";
-//         }
-//         else if (log_type == "Deprecated") {
-//             filePath = path.join(dirPath, `${testStatusText}${starter}-${file_name}-deprecated.csv`);
-//             header = "ROM,Species,Trainer,Start Time,Real Time,Game Time,Level,Resets," +
-//                 "RTHours,RTMinutes,RTSeconds,RTMilliseconds,Move 1,Move 2,Move 3,Move 4," +
-//                 "Attack,Defense,Sp. Attack,Sp. Defense,Speed," +
-//                 "Attack Stage,Defense Stage,Sp. Attack Stage,Sp. Defense Stage,Speed Stage,Accuracy Stage,Evasion Stage," +
-//                 "Battle Attack,Battle Defense,Battle Sp. Attack,Battle Sp. Defense,Battle Speed," +
-//                 "Frame Count,Overworld Frame Count,Battle Frame Count,Menu Frame Count,Intro Frame Count," +
-//                 "Save Count,Reload Count,Clock Reset Count,Steps Count,Steps Count Walk,Steps Count Bike,Steps Count Surf,Bonks," + 
-//                 "Battles,Trainer Battles,Wild Battles,Battles Fled,Failed Runs," +
-//                 "Total Damage Dealt,Actual Damage Dealt,Total Damage Taken,Actual Damage Taken," +
-//                 "Own Moves Hit,Own Moves Missed,Enemy Moves Hit,Enemy Moves Missed," +
-//                 "Own Moves Super Effective,Own Moves Not Very Effective,Enemy Moves Super Effective,Enemy Moves Not Very Effective," +
-//                 "Criticals Dealt,OHKOs Dealt,Criticals Taken,OHKOs Taken," +
-//                 "Was Confused,Enemy Became Confused,Was Paralyzed,Enemy Was Paralyzed,Was Burned,Enemy Was Burned," +
-//                 "Was Frozen,Enemy Was Frozen,Was Poisoned,Enemy Was Poisoned,Was Badly Poisoned,Enemy Was Badly Poisoned," +
-//                 "Fell Asleep,Enemy Fell Asleep,Player Turns Confused,Player Turns Confused Hit Self,Player Turns Paralyzed," +
-//                 "Player Turns Paralyzed Fully,Enemy Turns Confused,Enemy Turns Confused Hit Self,Enemy Turns Paralyzed," +
-//                 "Enemy Turns Paralyzed Fully,Player HP Healed,Enemy HP Healed," +
-//                 "Player Pokemon Fainted,Enemy Pokemon Fainted," +
-//                 "Experience Gained,Switchouts," +
-//                 "Money Made,Money Spent,Money Lost," +
-//                 "Items Picked Up,Items Bought,Items Sold," +
-//                 "Balls Thrown,Pokemon Caught In Balls,Moves Learnt," +
-//                 //new properties
-//                 "Blackouts,Attempt Number,Failures, Rival's Team\n"
-//         }
-//         else if (log_type == "Battle Summary") {
-//             filePath = path.join(dirPath, `${starter}-${file_name}-battleSummary.csv`);
-//             header = "Unknown"
-//         }
-//         fs.mkdir(dirPath, { recursive: true }, (err) => {
-//             if (!fs.existsSync(filePath)) {
-//                 fs.writeFile(filePath, header, (err) => {
-//                     if (err) {
-//                         console.error(err);
-//                     } else {
-//                         fs.appendFile(filePath, str, (err) => {
-//                             if (err) {
-//                                 console.error(err);
-//                             }
-//                             resolve();
-//                         });
-//                     }
-//                 });
-//             } else {
-//                 fs.appendFile(filePath, str, (err) => {
-//                     if (err) {
-//                         console.error(err);
-//                     }
-//                     resolve();
+const Keys = {
+    "ESCAPE":         0x1B,
+    "BACKSPACE":      0x08,
+    "TAB":            0x09,
+    
+    "LEFT":           0x25,
+    "UP":             0x26,
+    "RIGHT":          0x27,
+    "DOWN":           0x28,
+    
+    "CAPS_LOCK":      0x14,
+    "NUM_LOCK":       0x90,
+    "SCROLL_LOCK":    0x91,
+    
+    "SHIFT":          0x10,
+    "L_SHIFT":        0xA0,
+    "R_SHIFT":        0xA1,
 
-//                 });   
-//             }
-//         });
-//     });
-// }
+    "CTRL":           0x11,
+    "L_CTRL":         0xA2,
+    "R_CTRL":         0xA3,
+    
+    "ALT":            0x12,
+    "L_ALT":          0xA4,
+    "R_ALT":          0xA5,
+    
+    "L_WIN":          0x5B,
+    "R_WIN":          0x5C,
 
-// function logCopy(gameName, file_name, starterName, finished_run_count) {
-//     var dirPathAttempts = `./splits/${gameName}/${starterName}/attempts/`;
-//     var dirPathFinishes = `./splits/${gameName}/${starterName}/finishes/`;
-//     fs.mkdir(dirPathFinishes, { recursive: true }, (err) => {
-//         fs.copyFile(
-//             path.join(dirPathAttempts, `${starterName}-${file_name}-simple.csv`), 
-//             path.join(dirPathFinishes, `${starterName}-${finished_run_count}-simple.csv`), (err) => {
-//             if (err) {
-//                 console.error(err);
-//             }
-//         });
-//         fs.copyFile(
-//             path.join(dirPathAttempts, `${starterName}-${file_name}-full.csv`), 
-//             path.join(dirPathFinishes, `${starterName}-${finished_run_count}-full.csv`), (err) => {
-//             if (err) {
-//                 console.error(err);
-//             }
-//         });
-//         fs.copyFile(
-//             path.join(dirPathAttempts, `${starterName}-${file_name}-deprecated.csv`), 
-//             path.join(dirPathFinishes, `${starterName}-${finished_run_count}-deprecated.csv`), (err) => {
-//             if (err) {
-//                 console.error(err);
-//             }
-//         });
-//     });
-// }
+    "0":              0x30,
+    "1":              0x31,
+    "2":              0x32,
+    "3":              0x33,
+    "4":              0x34,
+    "5":              0x35,
+    "6":              0x36,
+    "7":              0x37,
+    "8":              0x38,
+    "9":              0x39,
+
+    "A":              0x41,
+    "B":              0x42,
+    "C":              0x43,
+    "D":              0x44,
+    "E":              0x45,
+    "F":              0x46,
+    "G":              0x47,
+    "H":              0x48,
+    "I":              0x49,
+    "J":              0x4A,
+    "K":              0x4B,
+    "L":              0x4C,
+    "M":              0x4D,
+    "N":              0x4E,
+    "O":              0x4F,
+    "P":              0x50,
+    "Q":              0x51,
+    "R":              0x52,
+    "S":              0x53,
+    "T":              0x54,
+    "U":              0x55,
+    "V":              0x56,
+    "W":              0x57,
+    "X":              0x58,
+    "Y":              0x59,
+    "Z":              0x5A,
+
+    "NUMPAD0":        0x60,
+    "NUMPAD1":        0x61,
+    "NUMPAD2":        0x62,
+    "NUMPAD3":        0x63,
+    "NUMPAD4":        0x64,
+    "NUMPAD5":        0x65,
+    "NUMPAD6":        0x66,
+    "NUMPAD7":        0x67,
+    "NUMPAD8":        0x68,
+    "NUMPAD9":        0x69,
+    "SEPARATOR":      0x6C,
+    "DECIMAL":        0x6E,
+
+    "MULTIPLY":       0x6A,
+    "ADD":            0x6B,
+    "SUBTRACT":       0x6D,
+    "DIVIDE":         0x6F,
+    
+    "F1":             0x70,
+    "F2":             0x71,
+    "F3":             0x72,
+    "F4":             0x73,
+    "F5":             0x74,
+    "F6":             0x75,
+    "F7":             0x76,
+    "F8":             0x77,
+    "F9":             0x78,
+    "F10":            0x79,
+    "F11":            0x7A,
+    "F12":            0x7B,
+    "F13":            0x7C,
+    "F14":            0x7D,
+    "F15":            0x7E,
+    "F16":            0x7F,
+    "F17":            0x80,
+    "F18":            0x81,
+    "F19":            0x82,
+    "F20":            0x83,
+    "F21":            0x84,
+    "F22":            0x85,
+    "F23":            0x86,
+    "F24":            0x87,
+
+
+    "APPS":           0x5D,
+    "CLEAR":          0x0C,
+    "RETURN":         0x0D,
+    "PAUSE":          0x13,
+
+    "CONVERT":        0x1C,
+    "NONCONVERT":     0x1D,
+    "ACCEPT":         0x1E,
+    "MODECHANGE":     0x1F,
+
+    "SPACE":          0x20,
+    "PRIOR":          0x21,
+    "NEXT":           0x22,
+    "END":            0x23,
+    "HOME":           0x24,
+    "SELECT":         0x29,
+    "PRINT":          0x2A,
+    "EXECUTE":        0x2B,
+    "SNAPSHOT":       0x2C,
+    "INSERT":         0x2D,
+    "DELETE":         0x2E,
+    "HELP":           0x2F,
+    "SLEEP":          0x5F,
+}
+
+Object.entries(Keys).forEach(([k, v]) => Keys[v] = k);
+
+class KeyHook {
+    constructor() {
+        // start the keyboard hook
+        this.process = require("child_process").spawn("keyhook.exe");
+
+        // general logging
+        this.process.on("spawn", () => console.log("Keyboard hook started!"));
+        this.process.stderr.on("data", (data) => console.error(`${data}`));
+        
+        // handle output of the keyboard hook
+        this.process.stdout.on("data", (data) => {
+            for (const line of data.toString().split(/[\n\r]+/)) {
+                const parts = line.split(",").map(x => parseInt(x, 10));
+                const [down, key, time] = parts;
+                
+                if (parts.length !== 3 || parts.some(isNaN)) continue;
+                this._processKey(down === 1, key, time);
+            }
+        });  
+    
+        // general initialization
+        for (let i=0; i<256; i++)
+            this._keyState[i] = false;
+    }
+        
+    _listeners = {};
+    _keyState = [];
+    _processKey(down, keyCode, time) {
+        const oldState = this._keyState[keyCode] == true;
+        this._keyState[keyCode] = down;
+        const key = Keys[keyCode];
+        let type = "unknown";
+
+        if (oldState && down)
+            type = "repeat";
+        else if (down)
+            type = "down";
+        else
+            type = "up";
+
+        if (!this._listeners[type]) return;
+        for (const listener of this._listeners[type]) {
+            listener({
+                type, 
+                keyCode, 
+                key, 
+                alt: this.isAltDown,
+                ctrl: this.isCtrlDown,
+                shift: this.isShiftDown,
+                time,
+            });
+        }
+    }
+  
+    get isShiftDown() { return this._keyState[Keys.L_SHIFT] || this._keyState[Keys.R_SHIFT] || this._keyState[Keys.SHIFT]; }
+    get isCtrlDown()  { return this._keyState[Keys.L_CTRL]  || this._keyState[Keys.R_CTRL]  || this._keyState[Keys.CTRL]; }
+    get isAltDown()   { return this._keyState[Keys.L_ALT]   || this._keyState[Keys.R_ALT]   || this._keyState[Keys.ALT]; }
+
+    isKeyDown(key) { 
+        if (typeof key === 'string') key = Keys[key.toUpperCase()];
+        return this._keyState[key];
+    }
+    
+    on(event, callback) {
+        if (this._listeners[event] === undefined)
+            this._listeners[event] = [];
+        this._listeners[event].push(callback);
+    }
+
+    registerShortCut(shortCut, callback) {
+        // transform the shortcut into an array of key codes
+        if (typeof shortCut === 'number')
+            shortCut = [shortCut];
+        if (typeof shortCut === 'string')
+            shortCut = shortCut.toUpperCase().split("+").map(x => Keys[x.trim()]);
+            shortCut = shortCut.map(x => {
+            if (typeof x === 'string') x = Keys[x.toUpperCase()];
+            if (x === Keys.L_SHIFT || x === Keys.R_SHIFT) x = Keys.SHIFT;
+            if (x === Keys.L_CTRL || x === Keys.R_CTRL) x = Keys.CTRL;
+            if (x === Keys.L_ALT || x === Keys.R_ALT) x = Keys.ALT;
+            return x;
+        });
+
+        const checkAlt = shortCut.includes(Keys.ALT);
+        const checkCtrl = shortCut.includes(Keys.CTRL);
+        const checkShift = shortCut.includes(Keys.SHIFT);
+        const checkKeys = shortCut.filter(x => x !== Keys.ALT && x !== Keys.CTRL && x !== Keys.SHIFT);
+
+        if (checkKeys.some(x => typeof x !== 'number')) 
+            throw new Error("Invalid key code");
+
+        this.on("down", (data) => {
+            if (
+                checkAlt === data.alt &&
+                checkCtrl === data.ctrl &&
+                checkShift === data.shift &&
+                checkKeys.every(x => this.isKeyDown(x))
+            ) {
+                callback();
+            }
+        });
+    }
+
+    stop() {
+        return this.process.kill();
+    }
+}
+const keyhook = new KeyHook();
+
+const fs = require("fs");
+const path = require("path");
+const { finished } = require('stream');
+function logData(gameName, str, file_name, starter, log_type, testStatus, toggle) {
+        return new Promise((resolve, reject) => {
+        const dirPath = `./splits/Emerald/${starter}/attempts/`;
+        const testStatusText = testStatus ? "test_run_" : "";
+        let filePath = path.join(dirPath, `${testStatusText}${starter}-${file_name}-simple.csv`);
+        let header = [
+                    "player_name",
+                    "pokemon",
+                    "trainer_name",
+                    "real_time_hmmss",
+                    "resets",
+                    "blackouts",
+                    "failures",
+                    "level",
+                    "game_time",
+                    "battle_duration",
+                    "move1",
+                    "move2",
+                    "move3",
+                    "move4,\n",
+        ]
+        if (log_type == "Deprecated" && toggle == true) {
+            filePath = path.join(dirPath, `${testStatusText}${starter}-${file_name}-deprecated.csv`);
+            header = [
+                "ROM",
+                "Species",
+                "Trainer",
+                "Start Time",
+                "Real Time",
+                "Game Time",
+                "Level",
+                "Resets",
+                "RTHours",
+                "RTMinutes",
+                "RTSeconds",
+                "RTMilliseconds",
+                "Move 1",
+                "Move 2",
+                "Move 3",
+                "Move 4",
+                "Attack",
+                "Defense",
+                "Sp. Attack",
+                "Sp. Defense",
+                "Speed",
+                "Attack Stage",
+                "Defense Stage",
+                "Sp. Attack Stage",
+                "Sp. Defense Stage",
+                "Speed Stage",
+                "Accuracy Stage",
+                "Evasion Stage",
+                "Battle Attack",
+                "Battle Defense",
+                "Battle Sp. Attack",
+                "Battle Sp. Defense",
+                "Battle Speed",
+                "Frame Count",
+                "Overworld Frame Count",
+                "Battle Frame Count",
+                "Menu Frame Count",
+                "Intro Frame Count",
+                "Save Count",
+                "Reload Count",
+                "Clock Reset Count",
+                "Steps Count",
+                "Steps Count Walk",
+                "Steps Count Bike",
+                "Steps Count Surf",
+                "Bonks",
+                "Battles",
+                "Trainer Battles",
+                "Wild Battles",
+                "Battles Fled",
+                "Failed Runs",
+                "Total Damage Dealt",
+                "Actual Damage Dealt",
+                "Total Damage Taken",
+                "Actual Damage Taken",
+                "Own Moves Hit",
+                "Own Moves Missed",
+                "Enemy Moves Hit",
+                "Enemy Moves Missed",
+                "Own Moves Super Effective",
+                "Own Moves Not Very Effective",
+                "Enemy Moves Super Effective",
+                "Enemy Moves Not Very Effective",
+                "Criticals Dealt",
+                "OHKOs Dealt",
+                "Criticals Taken",
+                "OHKOs Taken",
+                "Was Confused",
+                "Enemy Became Confused",
+                "Was Paralyzed",
+                "Enemy Was Paralyzed",
+                "Was Burned",
+                "Enemy Was Burned",
+                "Was Frozen",
+                "Enemy Was Frozen",
+                "Was Poisoned",
+                "Enemy Was Poisoned",
+                "Was Badly Poisoned",
+                "Enemy Was Badly Poisoned",
+                "Fell Asleep",
+                "Enemy Fell Asleep",
+                "Player Turns Confused",
+                "Player Turns Confused Hit Self",
+                "Player Turns Paralyzed",
+                "Player Turns Paralyzed Fully",
+                "Enemy Turns Confused",
+                "Enemy Turns Confused Hit Self",
+                "Enemy Turns Paralyzed",
+                "Enemy Turns Paralyzed Fully",
+                "Player HP Healed",
+                "Enemy HP Healed",
+                "Player Pokemon Fainted",
+                "Enemy Pokemon Fainted",
+                "Experience Gained",
+                "Switchouts",
+                "Money Made",
+                "Money Spent",
+                "Money Lost",
+                "Items Picked Up",
+                "Items Bought",
+                "Items Sold",
+                "Balls Thrown",
+                "Pokemon Caught In Balls",
+                "Moves Learnt",
+                //new properties",
+                "Blackouts",
+                "Attempt Number",
+                "Failures",
+                "Rival's Team\n",
+            ]
+        fs.mkdir(dirPath, { recursive: true }, (err) => {
+            if (!fs.existsSync(filePath)) {
+                fs.writeFile(filePath, header, (err) => {
+                    if (err) {
+                        console.error(err);
+                    } else {
+                        fs.appendFile(filePath, str, (err) => {
+                            if (err) {
+                                console.error(err);
+                            }
+                            resolve();
+                        });
+                    }
+                });
+            } else {
+                fs.appendFile(filePath, str, (err) => {
+                    if (err) {
+                        console.error(err);
+                    }
+                    resolve();
+
+                });   
+            }
+        });
+    });
+}
+
+function logCopy(gameName, file_name, starterName, finished_run_count) {
+    var dirPathAttempts = `./splits/${gameName}/${starterName}/attempts/`;
+    var dirPathFinishes = `./splits/${gameName}/${starterName}/finishes/`;
+    fs.mkdir(dirPathFinishes, { recursive: true }, (err) => {
+        fs.copyFile(
+            path.join(dirPathAttempts, `${starterName}-${file_name}-simple.csv`), 
+            path.join(dirPathFinishes, `${starterName}-${finished_run_count}-simple.csv`), (err) => {
+            if (err) {
+                console.error(err);
+            }
+        });
+    });
+}
+
+function transition(fn, ms) {
+    return new Promise((resolve) => {
+        const T = performance.now()
+        function step() {
+            const t = performance.now() - T
+            fn(Math.min(t / ms, 1))
+            if (t < ms) requestAnimationFrame(step)
+            else resolve()
+        }
+        requestAnimationFrame(step)
+    })
+}
 
 const app = Vue.createApp({
     data() {
@@ -167,7 +468,6 @@ const app = Vue.createApp({
             mapper: null,
 
             // POKEMON CONFIG (components) ---------------------------------------------------------------------//
-            // starter:        357, //select starter (1-386)
             starterString: "Rayquaza",
             pkmnNature: "Adamant",
             pkmn_ability: "Pressure", // false = ability 1, true = ability 2
@@ -175,38 +475,33 @@ const app = Vue.createApp({
             pkmn_gender: "Female",
             
             // USER CONFIG (components) ------------------------------------------------------------------------// 
-            graphicOverlay: true, //places a single image as the overlay  //MVP
-            staticOverlay:  false, //assembles an overlay based on starter selection
-            texture:        false, //shows background texture
-            frame:          false, //shows overlay frame
-            gameArea:       false, //shows green box to place game in
-            pokeballFloor:  false, //shows floor for Pokemon to stand on
-            dynamicOverlay: false, //dynamically picks overlay graphics based on team slot 1
-            gametime:       false, //shows gametime
-            typeIcons:      true, //includes dynamic type icons
-            pick:           true,
-            typeCalcs:      true, //turns on type effectiveness calculations
-            moveset:        true, //includes the moveset area and dynamic PP  //MVP
-            dynamicPower:   false, //dynamically calculates power based on type effectiveness
-            resets:         false, //includes the resets graphics
-            stats:          true, //includes the dynamic stats  //MVP
-            movepool:       false, //includes the movepool graphic
-            inventory:      false, //includes the inventory graphic when in marts
-            badgeBar:       true, //includes the badge container (progress bar)
-            badgeBoosts:    false, //calculates badges boosts  //MVP
-            battleStats:    false, //calculates stats with stage modifiers  //MVP
-            battleInfo:     false, //includes rightBar battle graphic
-            conditions:     false, //shows status conditions as pop ups
-            expBar:         false, //includes a dynamic exp bar
-            splits:         false, //shows splits when a major battle is complete
-            tooltips:       false, //displays move tooltips when a new move is learned
-            btcInfo:        false, //shows behind the scenes info in the game area
-            returnPower:    true, //dynamically calculates the power of Return
-            gamestate:      true, //shows the current gamestate in the place of the timer
-            labels:         true, //shows the current gamestate in the place of the timer
-            websocket:      false,
-            showSpecialTrainerGraphics: true, 
-            tutor_moves: false,
+            graphicOverlay: MyStorage['graphicOverlay'] ?? true, //places a single image as the overlay  //MVP
+            frame:          MyStorage['frame']          ?? false, //shows overlay frame
+            gameArea:       MyStorage['gameArea']       ?? false, //shows green box to place game in
+            pokeballFloor:  MyStorage['pokeballFloor']  ?? false, //shows floor for Pokemon to stand on
+            dynamicOverlay: MyStorage['dynamicOverlay'] ?? false, //dynamically picks overlay graphics based on team slot 1
+            gametime:       MyStorage['gametime']       ?? false, //shows gametime
+            pick:           MyStorage['pick']           ?? true,
+            typeCalcs:      MyStorage['typeCalcs']      ?? true, //turns on type effectiveness calculations
+            moveset:        MyStorage['moveset']        ?? true, //includes the moveset area and dynamic PP  //MVP
+            dynamicPower:   MyStorage['dynamicPower']   ?? false, //dynamically calculates power based on type effectiveness
+            resets:         MyStorage['resets']         ?? false, //includes the resets graphics
+            stats:          MyStorage['stats']          ?? true, //includes the dynamic stats  //MVP
+            movepool:       MyStorage['movepool']       ?? false, //includes the movepool graphic
+            inventory:      MyStorage['inventory']      ?? false, //includes the inventory graphic when in marts
+            battleStats:    MyStorage['battleStats']    ?? false, //calculates stats with stage modifiers  //MVP
+            battleInfo:     MyStorage['battleInfo']     ?? false, //includes rightBar battle graphic
+            conditions:     MyStorage['conditions']     ?? false, //shows status conditions as pop ups
+            expBar:         MyStorage['expBar']         ?? false, //includes a dynamic exp bar
+            splits:         MyStorage['splits']         ?? false, //shows splits when a major battle is complete
+            tooltips:       MyStorage['tooltips']       ?? false, //displays move tooltips when a new move is learned
+            btcInfo:        MyStorage['btcInfo']        ?? false, //shows behind the scenes info in the game area
+            returnPower:    MyStorage['returnPower']    ?? true, //dynamically calculates the power of Return
+            gamestate:      MyStorage['gamestate']      ?? true, //shows the current gamestate in the place of the timer
+            labels:         MyStorage['labels']         ?? true, //shows the current gamestate in the place of the timer
+            tutor_moves:    MyStorage['tutor_moves']    ?? false,
+            testStatus:     MyStorage['testStatus']     ?? false,
+            showSpecialTrainerGraphics:  MyStorage['showSpecialTrainerGraphics'] ?? true, 
 
             badges: ["badge1", "badge2", "badge3", "badge4", "badge5", "badge6", "badge7", "badge8"],
             badgeBoosts: ["badge1", "badge3", "badge5", "badge7"],
@@ -216,21 +511,21 @@ const app = Vue.createApp({
             statLabelOpacityValue: 0, //used when a stage modifier is applied
 
             //DATA ---------------------------------------------------------------------------------------------//
-            gen3data: gen3data,
-            gen3moves: gen3moves,
-            gen3abilities: gen3abilities,
-            stageModifiersData: stageModifiersData,
-            natures: natures,
-            typeData: typeData,
-            typeBoostingItems: typeBoostingItems,
+            gen3data:                   gen3data,
+            gen3moves:                  gen3moves,
+            gen3abilities:              gen3abilities,
+            stageModifiersData:         stageModifiersData,
+            natures:                    natures,
+            typeData:                   typeData,
+            typeBoostingItems:          typeBoostingItems,
             dexDataRubySapphireEmerald: dexDataRubySapphireEmerald,
-            emeraldTrainers: emeraldTrainers,
-            g3MoveData: g3MoveData,
-            g3tmhmMapping: g3tmhmMapping,
-            g3hiddenPowerTypeSelector: g3hiddenPowerTypeSelector,
-            textures: textures,
-            default_colors: default_colors,
-            hp_ivs: hp_ivs,
+            emeraldTrainers:            emeraldTrainers,
+            g3MoveData:                 g3MoveData,
+            g3tmhmMapping:              g3tmhmMapping,
+            g3hiddenPowerTypeSelector:  g3hiddenPowerTypeSelector,
+            textures:                   textures,
+            default_colors:             default_colors,
+            hp_ivs:                     hp_ivs,
 
             genders: {
                 "false": "Male",
@@ -281,62 +576,9 @@ const app = Vue.createApp({
                 14 : "Dragon",
                 15 : "Dark",
             },
-            //VARIABLES THAT TRACK IN GAME PROGRESS ------------------------------------------------------------//
-            playerId: -1,
-            resets:   0,
-            trainerBattles: 0,
-            wildEncounters: 0,
 
             //LOOPS
             pkmnSlots: [0, 1, 2, 3, 4, 5],
-            
-            //DISPLAY BUFFER
-            bufferNature: "",
-            bufferAbility: "",
-            bufferHeldItem: "",
-            bufferLevel: "",
-            bufferHp: "",
-            bufferAtk: "",
-            bufferDef: "",
-            bufferSpcA: "",
-            bufferSpcD: "",
-            bufferSpd: "",
-            bufferBadge1: "",
-            bufferBadge2: "",
-            bufferBadge3: "",
-            bufferBadge4: "",
-            bufferBadge5: "",
-            bufferBadge6: "",
-            bufferBadge7: "",
-            bufferBadge8: "",
-
-            //BUFFER
-            buffer_move1: undefined,
-            buffer_move2: undefined,
-            buffer_move3: undefined,
-            buffer_move4: undefined,
-            buffer_power_move1: undefined,
-            buffer_power_move2: undefined,
-            buffer_power_move3: undefined,
-            buffer_power_move4: undefined,
-            buffer_move1pp: undefined,
-            buffer_move2pp: undefined,
-            buffer_move3pp: undefined,
-            buffer_move4pp: undefined,
-            buffer_exp: undefined,
-            buffer_heldItem: undefined,
-
-            //Reset buffer
-            resetBufferNature: "",
-            resetBufferAbility: "",
-            resetBufferHeldItem: "",
-            resetBufferLevel: "",
-            resetBufferHp: "",
-            resetBufferAtk: "",
-            resetBufferDef: "",
-            resetBufferSpcA: "",
-            resetBufferSpcD: "",
-            resetBufferSpd: "",
 
             //STATE MANAGEMENT ---------------------------------------------------------------------------------//
             gamestateLogging: false,
@@ -400,19 +642,24 @@ const app = Vue.createApp({
                 "backgroundContrast",
                 "backgroundSaturation",
                 "backgroundFlip",
+                "pkmnNature",
+                "pkmn_ability",
+                "hidden_power_type",
+                "pkmn_gender",
+                "attempt_number",
+                "finished_run_count",
             ],
             //timer variables
-            timer_startTime: MyStorage["timer_startTime"] ?? 0,
-            timer_pause: MyStorage["timer_pause"] ?? true,
+            timer_startTime:      MyStorage["timer_startTime"]      ?? 0,
+            timer_pause:          MyStorage["timer_pause"]          ?? true,
             timer_formatted_time: MyStorage["timer_formatted_time"] ?? ["0", ".00"],
-            timer_pause_time: MyStorage["timer_pause_time"] ?? 0,
-            time_h: 0,
-            time_m: 0,
-            time_s: 0,
-            time_ms: 0,
-            time_split_start: "00:00:00:00",
-            battle_start: 0,
-            timer_settings: MyStorage["timer_settings"] ?? "Real-Time",
+            timer_pause_time:     MyStorage["timer_pause_time"]     ?? 0,
+            time_h:               MyStorage['time_h']               ?? 0,
+            time_m:               MyStorage['time_m']               ?? 0,
+            time_s:               MyStorage['time_s']               ?? 0,
+            time_ms:              MyStorage['time_ms']              ?? 0,
+            time_split_start:     MyStorage['time_split_start']     ?? "00:00:00:00",
+            battle_start:         MyStorage['battle_start']         ?? 0,
 
             //resets
             playerId: MyStorage["playerId"] ?? 0,
@@ -422,28 +669,74 @@ const app = Vue.createApp({
             blackout_counter: MyStorage["blackout_counter"] ?? 0,
             resetCounter: true,
             game_over: false,
-            lance_defeated: false,
             finished_logs: false,
-            attempt_number: 0,
-            finished_run_count: 0,
             pb_time: "None",
-            most_recent_move: "",
             split_logStr: "",
-            simple_data_str: MyStorage["simple_data_str"] ?? "",
-            full_data_str: MyStorage["full_data_str"] ?? "",
+            attempt_number:     0,
+            finished_run_count: 0,
+            simple_data_str:     MyStorage["simple_data_str"]     ?? "",
+            full_data_str:       MyStorage["full_data_str"]       ?? "",
             deprecated_data_str: MyStorage["deprecated_data_str"] ?? "",
-            simple_data: MyStorage["simple_data"] ?? "",
-            testRun: MyStorage['testRun'] ?? false,
+            simple_data:         MyStorage["simple_data"]         ?? "",
+            testRun:             MyStorage['testRun']             ?? false,
 
             //movepool starting parameters. set to -1 if not initialized
-            movepoolDefaultFontSize: -1,
-            movepoolDefaultLineHeight: -1,
+            movepoolDefaultFontSize:        -1,
+            movepoolDefaultLineHeight:      -1,
             movepoolDefaultContainerHeight: -1,
 
             //encounters
-            route_201: true,
-            route_202: true,
-            route_203: true,
+            route_201: MyStorage['route_201'] ?? true,
+            route_202: MyStorage['route_202'] ?? true,
+            route_203: MyStorage['route_203'] ?? true,
+
+            auto_save: [
+                "graphicOverlay",
+                "frame",
+                "gameArea",
+                "pokeballFloor",
+                "dynamicOverlay",
+                "gametime",
+                "pick",
+                "typeCalcs",
+                "moveset",
+                "dynamicPower",
+                "resets",
+                "stats",
+                "movepool",
+                "inventory",
+                "battleStats",
+                "battleInfo",
+                "conditions",
+                "expBar",
+                "splits",
+                "tooltips",
+                "btcInfo",
+                "returnPower",
+                "gamestate",
+                "labels",
+                "tutor_moves",
+                "showSpecialTrainerGraphics",
+                "route_201",
+                "route_202",
+                "route_203",
+                "testRun",
+                "simple_data_str",
+                "full_data_str",
+                "deprecated_data_str",
+                "simple_data",
+                "timer_startTime",
+                "timer_pause",
+                "timer_formatted_time",
+                "timer_pause_time",
+                "time_h",
+                "time_m",
+                "time_s",
+                "time_ms",
+                "time_split_start",
+                "battle_start",
+                "testStatus",
+            ],
         }
     },
     created() {
@@ -481,28 +774,19 @@ const app = Vue.createApp({
                 }
             );
         }
+        for (let i = 0; i < this.auto_save.length; i++) {
+            let propName = this.auto_save[i];
+            this.$watch(
+                () => this[propName], // Using a function to return the property's value
+                (newValue) => {
+                    MyStorage[`${propName}`] = newValue;
+                }
+            );
+        }
     },
     watch: {
-        timeOfDay_user(value) {
-            MyStorage["timeOfDay_user"] = value
-        },
-        hpType(value) {
-            MyStorage["hpType"] = value
-        },
-        //timer functions
-        timer_formatted_time(value) {
-            MyStorage["timer_formatted_time"] = value
-        },
-        timer_startTime(value) {
-            MyStorage["timer_startTime"] = value
-        },
-        timer_pause(value) {
-            MyStorage["timer_pause"] = value
-        },
-        timer_pause_time(value) {
-            MyStorage["timer_pause_time"] = value
-        },
         starterString(newValue, oldValue) {
+            //background texture settings
             this.overlay_color =         MyStorage[`${newValue}`]?.overlay_color ?? this.default_colors[`${dexDataRubySapphireEmerald[newValue].type1}`],
             this.backgroundTexture =     MyStorage[`${newValue}`]?.backgroundTexture ?? `${this.dexDataRubySapphireEmerald[newValue].type_1.toLowerCase()}`
             this.backgroundBlur =        MyStorage[`${newValue}`]?.backgroundBlur ?? 0,
@@ -515,7 +799,15 @@ const app = Vue.createApp({
             this.backgroundBrightness =  MyStorage[`${newValue}`]?.backgroundBrightness ?? 100,
             this.backgroundContrast =    MyStorage[`${newValue}`]?.backgroundContrast ?? 100,
             this.backgroundSaturation =  MyStorage[`${newValue}`]?.backgroundSaturation ?? 100,
+            //Attempts and finishes
+            this.attempt_number =        MyStorage[`${newValue}`]?.attempt_number ?? 0,
+            this.finished_run_count =    MyStorage[`${newValue}`]?.finished_run_count ?? 0,
+            //main pokemon settings
             MyStorage['starterString'] = newValue
+            this.pkmnNature =            MyStorage[`${newValue}`]?.pkmnNature ?? "Adamant",
+            this.pkmn_ability =          MyStorage[`${newValue}`]?.pkmn_ability ?? "Pressure",
+            this.hidden_power_type =     MyStorage[`${newValue}`]?.hidden_power_type ?? "Dark",
+            this.pkmn_gender =           MyStorage[`${newValue}`]?.pkmn_gender ?? "Female"
         },
         playerId(newValue) {
             MyStorage["playerId"] = newValue
@@ -568,14 +860,23 @@ const app = Vue.createApp({
             MyStorage["playerNameChoice"] = this.playerNameChoice
             MyStorage["overlay_color"] = this.overlay_color
         },
-        testRun(newProp) {
-            MyStorage['testRun'] = newProp
-        },
         playerName(newName) {
             MyStorage['playerName'] = newName;
         }
     },
     computed: {
+        //boolean to check for the tutorial catching battle with wally
+        zigzagoon_check() {
+            const zigzagoon = this.mapper.properties.player.team[0].species.value
+            const map = this.mapper.properties.overworld.mapName.value
+            const starter = this.starterString
+            if (starter != "Zigzagoon" && map == "ROUTE 102" && zigzagoon == "Zigzagoon") {
+                return true
+            }
+            else { 
+                return false
+            }
+        },
         gametimeSplit() {
             h = this.mapper.properties.gameTime.hours
             m = this.mapper.properties.gameTime.minutes
@@ -625,7 +926,14 @@ const app = Vue.createApp({
             }
         },
         s1dynamicReset() {
-            if (this.g3stateVariable == `Battle`) {
+            if (this.zigzagoon_check == true) {
+                var data = this.dexDataRubySapphireEmerald[this.starterString]
+                return {
+                    species: { value: data["name"] },
+                    ...data
+                }
+            }
+            else if (this.g3stateVariable == `Battle`) {
                 
                 return this.mapper?.properties?.battle?.yourPokemon
             }
@@ -641,6 +949,7 @@ const app = Vue.createApp({
             }
         },
         typeHeaderColor() {
+            if (this.zigzagoon_check == `Base Stats`) { return this.dexDataRubySapphireEmerald[this.starterString]?.type_2}
             if (this.g3stateVariable == `Battle`) { return this.mapper.properties.battle.yourPokemon.type2.value }
             if (this.g3stateVariable == `Overworld` && this.mapper.properties.player.team[0].species.value == null) { return this.dexDataRubySapphireEmerald[this.starterString]?.type_2 }
             if (this.g3stateVariable == `Overworld`) { return this.dexDataRubySapphireEmerald[this.mapper.properties.player.team[0].species.value]?.type_2 }
@@ -848,7 +1157,6 @@ const app = Vue.createApp({
         // },
         newRun() {
             this.timer_pause = true
-            this.most_recent_move = ""
             this.timer_startTime = 0
             this.timer_pause_time = 0
             this.timer_formatted_time = [ "0", ".00" ]
@@ -859,28 +1167,52 @@ const app = Vue.createApp({
             // this.playerName = "NINTEN"
         },
         load_all_settings() {
-            // // this.help_menus = MyStorage["this.help_menus"] ?? "Settings"
-            this.starterString = MyStorage["starterString"] ?? "Aipom"
-            // this.options = MyStorage["options"] ?? true
-            // this.timeOfDay_user = MyStorage["timeOfDay_user"] ?? "Day"
-            // this.gametimeDisplay = MyStorage["gametimeDisplay"] ?? true
-            // this.resetCounter = MyStorage["resetCounter"] ?? true
-            // this.blackouts_as_resets = MyStorage["blackouts_as_resets"] ?? true
-            // this.blackout_counter = MyStorage["blackout_counter"] ?? 0
-            // this.battleGraphic = MyStorage["battleGraphic"] ?? true
-            // this.showAllTrainers = MyStorage["showAllTrainers"] ?? true
-            // this.showSpecialTrainerGraphics = MyStorage["showSpecialTrainerGraphics"] ?? true
-            // this.battlePopUps = MyStorage["battlePopUps"] ?? true
-            // this.rockTunnelDarkness = MyStorage["rockTunnelDarkness"] ?? false
-            // this.playerResets = MyStorage["playerResets"] ?? 0
-            // this.viridian_forest = MyStorage["viridian_forest"] ?? "Pidgey"
-            // this.pb_splits = MyStorage[`${this.starterString}_pb_splits`] ?? ["","","",""]
-            // this.attempt_number = MyStorage[`${this.starterString}`]?.attempt_number ?? 0
-            // this.finished_run_count = MyStorage[`${this.starterString}`]?.finished_run_count ?? 0
-            // this.pb_time = MyStorage[`${this.starterString}`]?.pb_time ?? "None"
-            // this.playerId = MyStorage["playerId"] ?? 0
-            // this.testRun = MyStorage["testRun"] ?? false
-            // this.playerName = MyStorage["playerName"]
+            this.starterString = MyStorage["starterString"] ?? "Rayquaza"
+
+            this.graphicOverlay =             MyStorage['graphicOverlay']             ?? true
+            this.frame =                      MyStorage['frame']                      ?? false
+            this.gameArea =                   MyStorage['gameArea']                   ?? false
+            this.pokeballFloor =              MyStorage['pokeballFloor']              ?? false
+            this.dynamicOverlay =             MyStorage['dynamicOverlay']             ?? false
+            this.gametime =                   MyStorage['gametime']                   ?? false
+            this.pick =                       MyStorage['pick']                       ?? true
+            this.typeCalcs =                  MyStorage['typeCalcs']                  ?? true
+            this.moveset =                    MyStorage['moveset']                    ?? true
+            this.dynamicPower =               MyStorage['dynamicPower']               ?? false
+            this.resets =                     MyStorage['resets']                     ?? false
+            this.stats =                      MyStorage['stats']                      ?? true
+            this.movepool =                   MyStorage['movepool']                   ?? false
+            this.inventory =                  MyStorage['inventory']                  ?? false
+            this.battleStats =                MyStorage['battleStats']                ?? false
+            this.battleInfo =                 MyStorage['battleInfo']                 ?? false
+            this.conditions =                 MyStorage['conditions']                 ?? false
+            this.expBar =                     MyStorage['expBar']                     ?? false
+            this.splits =                     MyStorage['splits']                     ?? false
+            this.tooltips =                   MyStorage['tooltips']                   ?? false
+            this.btcInfo =                    MyStorage['btcInfo']                    ?? false
+            this.returnPower =                MyStorage['returnPower']                ?? true
+            this.gamestate =                  MyStorage['gamestate']                  ?? true
+            this.labels =                     MyStorage['labels']                     ?? true
+            this.tutor_moves =                MyStorage['tutor_moves']                ?? false
+            this.showSpecialTrainerGraphics = MyStorage['showSpecialTrainerGraphics'] ?? true
+            this.route_201 =                  MyStorage['route_201']                  ?? true
+            this.route_202 =                  MyStorage['route_202']                  ?? true
+            this.route_203 =                  MyStorage['route_203']                  ?? true
+            this.testRun =                    MyStorage['testRun']                    ?? false
+            this.simple_data_str =            MyStorage['simple_data_str']            ?? ""
+            this.full_data_str =              MyStorage['full_data_str']              ?? ""
+            this.deprecated_data_str =        MyStorage['deprecated_data_str']        ?? ""
+            this.simple_data =                MyStorage['simple_data']                ?? ""
+            this.timer_startTime =            MyStorage['timer_startTime']            ?? 0
+            this.timer_pause =                MyStorage['timer_pause']                ?? true
+            this.timer_formatted_time =       MyStorage['timer_formatted_time']       ?? ["0", ".00"]
+            this.timer_pause_time =           MyStorage['timer_pause_time']           ?? 0
+            this.time_h =                     MyStorage['time_h']                     ?? 0
+            this.time_m =                     MyStorage['time_m']                     ?? 0
+            this.time_s =                     MyStorage['time_s']                     ?? 0
+            this.time_ms =                    MyStorage['time_ms']                    ?? 0
+            this.time_split_start =           MyStorage['time_split_start']           ?? "00:00:00:00"
+            this.battle_start =               MyStorage['battle_start']               ?? 0
 
             //Pokemon settings for local storage
             this.overlay_color = MyStorage[this.starterString]?.overlay_color ?? this.default_colors[`${dexDataRubySapphireEmerald[this.starterString].type_1}`]
@@ -1077,7 +1409,10 @@ const app = Vue.createApp({
                 this.movepoolDefaultContainerHeight = parseInt(computedStyle.getPropertyValue('height'),10)-this.movepoolDefaultLineHeight+1;
             }
             //calculate new sizes
-            let movepoolSize = dexDataRubySapphireEmerald[this.starterString].tm_hm_learnset.length+dexDataRubySapphireEmerald[this.starterString].levelup_moveset.length+dexDataRubySapphireEmerald[this.starterString].tutor_learnset.length;
+            let movepoolSize = dexDataRubySapphireEmerald[this.starterString].tm_hm_learnset.length + dexDataRubySapphireEmerald[this.starterString].levelup_moveset.length;
+            if (this.tutor_moves) {
+                movepoolSize = movepoolSize + dexDataRubySapphireEmerald[this.starterString].tutor_learnset.length;
+            }
             let maxSize = this.movepoolDefaultContainerHeight / this.movepoolDefaultLineHeight;
             let correctedLineHeight = this.movepoolDefaultContainerHeight / movepoolSize;
             let correctedFontSize = correctedLineHeight * (this.movepoolDefaultFontSize)/this.movepoolDefaultLineHeight;
@@ -1222,85 +1557,6 @@ const app = Vue.createApp({
             }
         },
 
-        //DAMAGE CALCULATION
-        damageCalculation(userPkmnData, targetPkmnData, move) {
-            if (this.g3stateVariable != `Battle`) { return "" }
-            //Setup data for calculation
-            var lvl = userPkmnData.level.value
-            var userAttack = userPkmnData.attack.value
-            var userSpecial = userPkmnData.special.value
-            var userType1 = userPkmnData.type1.value
-            var userType2 = userPkmnData.type2.value
-            
-            var targetDefense = targetPkmnData.defense.value
-            var targetSpecial = targetPkmnData.special.value
-            var targetMaxHp = targetPkmnData.maxHp.value
-            var targetType1 = targetPkmnData.type1.value
-            var targetType2 = targetPkmnData.type2.value
-            var defenderScreen = undefined
-
-            var moveData = this.gen1moves.find(x => x.Move.toUpperCase() === move)
-            var moveType = moveData.Type
-            var movePower = moveData.Power
-            var moveCategory = moveData.Category
-            
-            var stab = 1
-            var AttackingTypeEffectiveness = this.typeData.find(x => x.moveType === moveType)
-            var critical = 1
-            var screens = 1
-
-            var userOffensiveStat = undefined
-            var targetDefensiveStat = undefined
-
-            var AttackingTypeEffectiveness = this.typeData.find(x => x.moveType === moveType)
-            var type1 = AttackingTypeEffectiveness[targetType1]
-            var type2 = AttackingTypeEffectiveness[targetType2]
-
-            //Check values & update modifiers
-            if (moveType == userType1 || moveType == userType2) {
-                stab = 1.5
-            }
-            if (moveCategory == "Physical") {
-                userOffensiveStat = userAttack
-                targetDefensiveStat = targetDefense
-                defenderScreen = targetPkmnData.effects.reflect.value
-            }
-            if (moveCategory == "Special") {
-                userOffensiveStat = userSpecial
-                targetDefensiveStat = targetSpecial
-                defenderScreen = targetPkmnData.effects.lightScreen.value
-            }
-            if (moveCategory == "Status") {
-                return ""
-            }
-            if (defenderScreen == true) {
-                screens = .5
-            }
-            //Run damage calculation
-            part1 = Math.floor(Math.floor((2 * lvl * critical)/5 + 2) * movePower * userOffensiveStat)
-            part2 = Math.floor(part1/targetDefensiveStat)
-            part3 = Math.floor(part2/50) + 2
-            part4 = undefined
-            if (targetType1 == targetType2) {
-                part4 = Math.floor(Math.floor(Math.floor(part3 * stab) * type1) * screens)
-            }
-            else {
-                part4 = Math.floor(Math.floor(Math.floor(Math.floor(part3 * stab) * type1) * type2) * screens)
-            }
-            //Results to return
-            damageMin = Math.floor(part4 * (217/255))
-            damageMax = part4
-            minPercentage = Math.round((damageMin/targetMaxHp) * 100)
-            maxPercentage = Math.round((damageMax/targetMaxHp) * 100)
-            var recoilMin = 0
-            var recoilMax = 0
-            if (move == "TAKE DOWN" || move == "SUBMISSION" || move == "DOUBLE-EDGE") {
-                recoilMin = Math.floor(damageMin * 0.25)
-                recoilMax = Math.floor(damageMax * 0.25)
-            }
-
-            return [damageMin, damageMax, minPercentage, maxPercentage, recoilMin, recoilMax,]
-        },
         speedComparison(playerPkmnData, enemyPkmnData) {
             var playerSpeed = playerPkmnData.speed.value
             var enemySpeed = enemyPkmnData.speed.value
@@ -1411,58 +1667,6 @@ const app = Vue.createApp({
             return modified_stat
         },
 
-        writeBufferDisplay() {
-            this.bufferAbility = this.mapper.properties.battle.yourPokemon.ability.value
-            this.bufferNature = this.mapper.properties.player.team[0].personalityValue.value
-            this.bufferHeldItem = this.mapper.properties.player.team[0].itemHeld.value
-            this.bufferLevel = this.mapper.properties.player.team[0].level.value
-            this.bufferHp = this.mapper.properties.player.team[0].maxHp
-            this.bufferAtk = this.mapper.properties.player.team[0].attack
-            this.bufferDef = this.mapper.properties.player.team[0].defense
-            this.bufferSpcA = this.mapper.properties.player.team[0].specialAttack
-            this.bufferSpcD = this.mapper.properties.player.team[0].specialDefense
-            this.bufferSpd = this.mapper.properties.player.team[0].speed
-            this.bufferBadge1 = this.mapper.properties.player.badges.badge1.value
-            this.bufferBadge2 = this.mapper.properties.player.badges.badge2.value
-            this.bufferBadge3 = this.mapper.properties.player.badges.badge3.value
-            this.bufferBadge4 = this.mapper.properties.player.badges.badge4.value
-            this.bufferBadge5 = this.mapper.properties.player.badges.badge5.value
-            this.bufferBadge6 = this.mapper.properties.player.badges.badge6.value
-            this.bufferBadge7 = this.mapper.properties.player.badges.badge7.value
-            this.bufferBadge8 = this.mapper.properties.player.badges.badge8.value
-            if (gamestateLogging == true) {
-                console.log(this.bufferNature)
-                console.log(this.bufferAbility)
-                console.log(this.bufferHeldItem)
-                console.log(this.bufferLevel)
-                console.log(this.bufferHp)
-                console.log(this.bufferAtk)
-                console.log(this.bufferDef)
-                console.log(this.bufferSpcA)
-                console.log(this.bufferSpcD)
-                console.log(this.bufferSpd)
-                console.log(this.bufferBadge1)
-                console.log(this.bufferBadge2)
-                console.log(this.bufferBadge3)
-                console.log(this.bufferBadge4)
-                console.log(this.bufferBadge5)
-                console.log(this.bufferBadge6)
-                console.log(this.bufferBadge7)
-                console.log(this.bufferBadge8)
-            }
-        },
-        writeBufferReset() {
-            this.resetBufferAbility = this.mapper.properties.battle.yourPokemon.ability.value
-            this.resetBufferNature = this.mapper.properties.player.team[0].personalityValue.value
-            this.resetBufferHeldItem = this.mapper.properties.player.team[0].itemHeld.value
-            this.resetBufferLevel = this.mapper.properties.player.team[0].level.value
-            this.resetBufferHp = this.mapper.properties.player.team[0].maxHp
-            this.resetBufferAtk = this.mapper.properties.player.team[0].attack
-            this.resetBufferDef = this.mapper.properties.player.team[0].defense
-            this.resetBufferSpcA = this.mapper.properties.player.team[0].specialAttack
-            this.resetBufferSpcD = this.mapper.properties.player.team[0].specialDefense
-            this.resetBufferSpd = this.mapper.properties.player.team[0].speed
-        },
         setGamestate(state, number) {
             if (this.gamestateLogging == true)
                 console.log("Gamestate: "+"("+number+") "+state)
@@ -2446,7 +2650,6 @@ const app = Vue.createApp({
             })
         },
         newGame() {
-
             this.mapper.properties.misc.palette5.change((newProp, oldProp) => {
                 if(newProp.value=="NEW GAME" && oldProp.value == "MAIN MENU"){
                     // console.log("new game started")
@@ -2465,6 +2668,7 @@ const app = Vue.createApp({
         this.mapper.onConnected = (x) => this.ready = true
         this.mapper.onDisconnected = (x) => this.ready = false
         await this.mapper.connect()
+        this.updateTime()
         this.load_all_settings()
 
         for (var species of Object.keys(dexDataRubySapphireEmerald)) {
@@ -2472,7 +2676,6 @@ const app = Vue.createApp({
             image.src = `images/pokemon/${species}.png`;
         }
 
-        
         //GAMESTATE MANAGEMENT
         // set initial gamestate value when the layout is loaded
         if (this.mapper.properties.player.team[0].level.value == 0) 
@@ -2662,68 +2865,69 @@ const app = Vue.createApp({
             that.move1 = x
         })
 
-        // // SETTING THE STARTER POKEMON'S STATS ----------------------------------------------------------------------------------------------//
-        // const setStartingAttributes = async () => {
-        //     const personalityValue = this.natures[this.pkmnNature][`personality_value_${this.pkmn_gender.toLowerCase()}`]
-        //     var iv_block = this.g3hiddenPowerTypeSelector[this.hidden_power_type]
-        //     if (this.pkmn_ability == true) {
-        //         iv_block = iv_block + 2147483648
-        //     }
+        // SETTING THE STARTER POKEMON'S STATS ----------------------------------------------------------------------------------------------//
+        const setStartingAttributes = async () => {
+            const personalityValue = this.natures[this.pkmnNature][`personality_value_${this.pkmn_gender.toLowerCase()}`]
+            var iv_block = this.g3hiddenPowerTypeSelector[this.hidden_power_type]
+            if (this.pkmn_ability == true) {
+                iv_block = iv_block + 2147483648
+            }
 
-        //     // only recalculate stats when IVs when your starter is received
-        //     if (this.mapper.properties.overworld.mapName.value == "ROUTE 101" && this.mapper.properties.player.team[0].level.value == 5) {
-        //         await Promise.all([
-        //             await this.mapper.properties.player.team[0].personalityValue.set(personalityValue, false), 
-        //             await this.mapper.properties.player.team[0].ivEggAbilityBlock.set(iv_block, false), 
-        //         ])
-        //     }
-        // }
-        // const setStartingStats = async () => {
-        //     const pkmnData = this.dexDataRubySapphireEmerald[this.starterString]
-        //     const level = 5
-        //     const natures = this.natures[this.pkmnNature]
+            // only recalculate stats when IVs when your starter is received
+            if (this.mapper.properties.overworld.mapName.value == "ROUTE 101" && this.mapper.properties.player.team[0].level.value == 5) {
+                await Promise.all([
+                    await this.mapper.properties.player.team[0].personalityValue.set(personalityValue, false), 
+                    await this.mapper.properties.player.team[0].ivEggAbilityBlock.set(iv_block, false), 
+                ])
+            }
+        }
+        const setStartingStats = async () => {
+            const pkmnData = this.dexDataRubySapphireEmerald[this.starterString]
+            const level = 5
+            const natures = this.natures[this.pkmnNature]
 
-        //     var ivHp = this.mapper.properties.player.team[0].ivHp.value
-        //     var ivAtk = this.mapper.properties.player.team[0].ivAttack.value
-        //     var ivDef = this.mapper.properties.player.team[0].ivDefense.value
-        //     var ivSpA = this.mapper.properties.player.team[0].ivSpecialAttack.value
-        //     var ivSpD = this.mapper.properties.player.team[0].ivSpecialDefense.value
-        //     var ivSpe = this.mapper.properties.player.team[0].ivSpeed.value
+            var ivHp = this.mapper.properties.player.team[0].ivHp.value
+            var ivAtk = this.mapper.properties.player.team[0].ivAttack.value
+            var ivDef = this.mapper.properties.player.team[0].ivDefense.value
+            var ivSpA = this.mapper.properties.player.team[0].ivSpecialAttack.value
+            var ivSpD = this.mapper.properties.player.team[0].ivSpecialDefense.value
+            var ivSpe = this.mapper.properties.player.team[0].ivSpeed.value
 
-        //     //calculates the Pokemon's starting stats with the desired DVs
-        //     var hitpoints = Math.floor((((2 * pkmnData.base_hp + ivHp + 0) * level)/100) + level + 10)
-        //     var attack = Math.floor(Math.floor(((((2 * pkmnData.base_atk + ivAtk + 0) * level)/100) + 5)) * natures["nature_attack"])
-        //     var defense = Math.floor(Math.floor(((((2 * pkmnData.base_def + ivDef + 0) * level)/100) + 5)) * natures["nature_defense"])
-        //     var specialAttack = Math.floor(Math.floor(((((2 * pkmnData.base_spc_atk + ivSpA + 0) * level)/100) + 5)) * natures["nature_specialAttack"])
-        //     var specialDefense = Math.floor(Math.floor(((((2 * pkmnData.base_spc_def + ivSpD + 0) * level)/100) + 5)) * natures["nature_specialDefense"])
-        //     var speed = Math.floor(Math.floor(((((2 * pkmnData.base_spd + ivSpe + 0) * level)/100) + 5)) * natures["nature_speed"])
+            //calculates the Pokemon's starting stats with the desired DVs
+            var hitpoints = Math.floor((((2 * pkmnData.base_hp + ivHp + 0) * level)/100) + level + 10)
+            var attack = Math.floor(Math.floor(((((2 * pkmnData.base_atk + ivAtk + 0) * level)/100) + 5)) * natures["nature_attack"])
+            var defense = Math.floor(Math.floor(((((2 * pkmnData.base_def + ivDef + 0) * level)/100) + 5)) * natures["nature_defense"])
+            var specialAttack = Math.floor(Math.floor(((((2 * pkmnData.base_spc_atk + ivSpA + 0) * level)/100) + 5)) * natures["nature_specialAttack"])
+            var specialDefense = Math.floor(Math.floor(((((2 * pkmnData.base_spc_def + ivSpD + 0) * level)/100) + 5)) * natures["nature_specialDefense"])
+            var speed = Math.floor(Math.floor(((((2 * pkmnData.base_spd + ivSpe + 0) * level)/100) + 5)) * natures["nature_speed"])
 
-        //     // only recalculate stats when IVs when your starter is received
-        //     if (this.mapper.properties.overworld.mapName.value == "ROUTE 101" && this.mapper.properties.player.team[0].level.value == 5) {
-        //         await Promise.all([
-        //             await this.mapper.properties.player.team[0].hp.set(hitpoints, false), 
-        //             await this.mapper.properties.player.team[0].maxHp.set(hitpoints, false), 
-        //             await this.mapper.properties.player.team[0].attack.set(attack, false), 
-        //             await this.mapper.properties.player.team[0].defense.set(defense, false), 
-        //             await this.mapper.properties.player.team[0].specialAttack.set(specialAttack, false), 
-        //             await this.mapper.properties.player.team[0].specialDefense.set(specialDefense, false), 
-        //             await this.mapper.properties.player.team[0].speed.set(speed, false), 
-        //         ])
-        //     }
-        // }
-        // this.mapper.properties.player.team[0].level.change(async (newProp) => {
-        //     if (newProp == 5 && this.mapper.properties.overworld.mapName.value == "ROUTE 101") {
-        //         await setStartingAttributes()
-        //     }
-        // })
-        // this.mapper.properties.battle.type.first_battle.change(async (newProp, oldProp) => {
-        //     if (newProp.value == true && oldProp.value == false && this.mapper.properties.overworld.mapName.value == "ROUTE 101" && this.mapper.properties.player.team[0].level.value == 5) {
-        //         await setStartingStats()
-        //     }
-        // })
+            // only recalculate stats when IVs when your starter is received
+            if (this.mapper.properties.overworld.mapName.value == "ROUTE 101" && this.mapper.properties.player.team[0].level.value == 5) {
+                await Promise.all([
+                    await this.mapper.properties.player.team[0].hp.set(hitpoints, false), 
+                    await this.mapper.properties.player.team[0].maxHp.set(hitpoints, false), 
+                    await this.mapper.properties.player.team[0].attack.set(attack, false), 
+                    await this.mapper.properties.player.team[0].defense.set(defense, false), 
+                    await this.mapper.properties.player.team[0].specialAttack.set(specialAttack, false), 
+                    await this.mapper.properties.player.team[0].specialDefense.set(specialDefense, false), 
+                    await this.mapper.properties.player.team[0].speed.set(speed, false), 
+                ])
+            }
+        }
+        this.mapper.properties.player.team[0].level.change(async (newProp) => {
+            if (newProp == 5 && this.mapper.properties.overworld.mapName.value == "ROUTE 101") {
+                await setStartingAttributes()
+            }
+        })
+        this.mapper.properties.battle.type.first_battle.change(async (newProp, oldProp) => {
+            if (newProp.value == true && oldProp.value == false && this.mapper.properties.overworld.mapName.value == "ROUTE 101" && this.mapper.properties.player.team[0].level.value == 5) {
+                await setStartingStats()
+            }
+        })
 
         
         //SET OPTIONS
+        //! ERROR: THIS IS NOT WORKING
         this.mapper.properties.overworld.mapName.change(async (prop) => {
             this.mapper.properties.options.textSpeed.set(2, false)
             this.mapper.properties.options.battleAnim.set(true, false)
@@ -2808,5 +3012,12 @@ const app = Vue.createApp({
                 this.$refs.expBar.style.transition = null;
             }
         })
+        // // keybinds
+        // keyhook.registerShortCut('F23', async () => {
+        //     this.newRun()
+        // });
+        // keyhook.registerShortCut('F24', async () => {
+        //     this.pauseUnpauseTime()
+        // });
     },
 }).mount('#app')
