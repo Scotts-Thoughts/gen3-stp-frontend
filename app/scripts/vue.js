@@ -407,6 +407,7 @@ function logData(gameName, str, file_name, starter, log_type, testStatus, toggle
                 "Failures",
                 "Rival's Team\n",
             ]
+        }
         fs.mkdir(dirPath, { recursive: true }, (err) => {
             if (!fs.existsSync(filePath)) {
                 fs.writeFile(filePath, header, (err) => {
@@ -808,6 +809,7 @@ const app = Vue.createApp({
             this.pkmn_ability =          MyStorage[`${newValue}`]?.pkmn_ability ?? "Pressure",
             this.hidden_power_type =     MyStorage[`${newValue}`]?.hidden_power_type ?? "Dark",
             this.pkmn_gender =           MyStorage[`${newValue}`]?.pkmn_gender ?? "Female"
+            this.movepoolResize();
         },
         playerId(newValue) {
             MyStorage["playerId"] = newValue
@@ -934,8 +936,16 @@ const app = Vue.createApp({
                 }
             }
             else if (this.g3stateVariable == `Battle`) {
-                
-                return this.mapper?.properties?.battle?.yourPokemon
+                let specArr = this.mapper.properties.battle.yourPokemon.speciesArray.value;
+                let indexStart = specArr.indexOf("\'");
+                let indexEnd = specArr.indexOf("\'",indexStart+1);
+                let speciesValue = specArr.substring(indexStart+1,indexEnd);
+                return {
+                    species: {
+                        value: speciesValue
+                    }
+                };
+                // return this.mapper?.properties?.battle?.yourPokemon
             }
             else if (this.g3stateVariable == `Base Stats` || this.mapper?.properties?.player?.team[0].species.value == null) {
                 var data = this.dexDataRubySapphireEmerald[this.starterString]
@@ -1309,11 +1319,18 @@ const app = Vue.createApp({
         //ENEMY MOD STYLING
         enemyMods(modValue) {
             if (this.g3stateVariable != "Battle") { return this.enemyModColour }
+            var neutral = ["0", "background: #a1a1a1;"]
             var raised = [modValue, "background: #d84444;"]
             var lowered = [modValue, "background: #21c500"]
-            if (modValue < 0) { this.enemyModColour = raised }
-            if (modValue > 0) { this.enemyModColour = lowered }
-            return this.enemyModColour 
+            if (modValue < 0) {
+                this.enemyModColour = raised
+                return raised
+             }
+            if (modValue > 0) {
+                this.enemyModColour = lowered
+                return lowered
+            }
+            return neutral;
         },
         enemyDynamic(activePkmn, currentSlot) {
             if (activePkmn == currentSlot && this.g3stateVariable == "Battle") {
@@ -1392,6 +1409,13 @@ const app = Vue.createApp({
             return obj
         }, 
         movepoolResize() {
+            let out = this.movepoolResizeCalc();
+            this.mapper.properties.player.team[0].species.change((newProp, oldProp) => {
+                out = this.movepoolResizeCalc();
+            })
+            return out;
+        },
+        movepoolResizeCalc() {
             if(!dexDataRubySapphireEmerald){ 
                 return;
             }
@@ -1409,14 +1433,23 @@ const app = Vue.createApp({
                 this.movepoolDefaultContainerHeight = parseInt(computedStyle.getPropertyValue('height'),10)-this.movepoolDefaultLineHeight+1;
             }
             //calculate new sizes
-            let movepoolSize = dexDataRubySapphireEmerald[this.starterString].tm_hm_learnset.length + dexDataRubySapphireEmerald[this.starterString].levelup_moveset.length;
+            let currentStarter = this.s1dynamicReset.name;
+            if(currentStarter == undefined || currentStarter == null) {
+                if(this.mapper.properties.player.team[0].species) {
+                    currentStarter = this.mapper.properties.player.team[0].species.value;
+                }
+                else {
+                    currentStarter = this.starterString;
+                }
+            }
+            let movepoolSize = dexDataRubySapphireEmerald[currentStarter].tm_hm_learnset.length + dexDataRubySapphireEmerald[currentStarter].levelup_moveset.length;
             if (this.tutor_moves) {
-                movepoolSize = movepoolSize + dexDataRubySapphireEmerald[this.starterString].tutor_learnset.length;
+                movepoolSize = movepoolSize + dexDataRubySapphireEmerald[currentStarter].tutor_learnset.length;
             }
             let maxSize = this.movepoolDefaultContainerHeight / this.movepoolDefaultLineHeight;
             let correctedLineHeight = this.movepoolDefaultContainerHeight / movepoolSize;
-            let correctedFontSize = correctedLineHeight * (this.movepoolDefaultFontSize)/this.movepoolDefaultLineHeight;
-            if(movepoolSize > (this.movepoolDefaultContainerHeight/this.movepoolDefaultLineHeight)){
+            let correctedFontSize = this.movepoolDefaultFontSize * Math.sqrt(correctedLineHeight / this.movepoolDefaultLineHeight);
+            if(movepoolSize > (maxSize)){
                 return "line-height: " + correctedLineHeight + "px; font-size: "+correctedFontSize+"px;";
             }
         },
@@ -1631,6 +1664,7 @@ const app = Vue.createApp({
 
             //ABILITIES
             //Guts
+           
             if (pkmnData.ability.value.toLowerCase() == "guts" && statLabel == "attack" && 
             (pkmnData.status1.value == "Burned" || pkmnData.status1.value == "Paralyzed" || pkmnData.status1.value == "Poisoned" || pkmnData.status1.value == "Badly Poisoned" || pkmnData.status1.value == "Badly Posioned")) {
                 mod_ability = 1.5 
@@ -2701,7 +2735,13 @@ const app = Vue.createApp({
         });
 
         this.mapper.properties.battle.turnInfo.battleDialogue.change((prop) => {
-            if (prop.value == "Player Control") { this.g3stateVariable = "Battle"}
+            if(prop == " " || prop == null || prop == undefined ) {
+                return;
+            }
+            if (prop.value == "Player Control") { 
+            this.g3stateVariable = "Battle"
+        }
+
         })
 
         this.mapper.properties.battle.turnInfo.battleOutcome.change((prop) => {
