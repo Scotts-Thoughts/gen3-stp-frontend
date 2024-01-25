@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Scott's Thoughts Frontend v2.10.dev.01</title>
+    <title>Scott's Thoughts Generation 3 Overlay</title>
     <link rel="stylesheet" href="style.css" id="cssStylesheet">
 </head>
 
@@ -64,50 +64,6 @@
                 <div class="resetsTitle">resets</div>
                 <!-- <div v-show="labels == true" class="labelGametime">Game-time:</div> -->
             </div>
-<!--------- DEBUGGING ----------------------------------------------------------------------------------------------------------------->
-            <div v-if="gamestate == true">
-                <div class="gamestate">Generation 3 Overlay<br><br>
-                    <div>Solo Pokemon:</div>
-                    <select v-model="starterString" @change="load_pokemon_sprite_settings(s1dynamicReset.species.value)" class="dropdownMenu">
-                        <option disabled value="">Select a species</option>
-                        <option v-for="key in keys_function(dexDataRubySapphireEmerald)" :value="`${key}`">{{key}}</option>
-                    </select>
-                    <br>
-                    <button class="buttonStyle" @click="newRun">New Run</button><br>
-                    <button @click="pauseUnpauseTime()" class="buttonStyle" style="background-color: rgb(201, 199, 100);">Toggle Pause Timer</button>
-                    <br>
-                    <br>
-                    <div>Pokemon Image Settings</div>
-                    X-Offset: <input type="range" min="-400" max="400" v-model="imageXOffset"/><br>
-                    Y-Offset: <input type="range" min="-400" max="400"v-model="imageYOffset"/><br>
-                    Scale: <input type="range" min="0.2" max="2.5" step="0.01" v-model="imageScale"/><br>
-                    Saturation: <input type="range" min="90" max="150" step="1" v-model="imageSat"/><br>
-                    Rotation: <input type="range" min="-180" max="180" step=".25" v-model="imageRotation"/><br>
-                    Flip: <input class="checkBoxStyle" type="checkbox" v-model="imageFlip"/><br>
-                    <br>
-                    <div>Overlay Color Selector:</div>
-                    <button @click="color_picker" class="buttonStyle">Color Picker</button><br>
-                    <button @click="clear_overlay_color" class="buttonStyle">Reset Overlay Color</button><br>
-                    <br>
-                    <div>Background Texture:</div>
-                    <select v-model="backgroundTexture" class="dropdownMenu">
-                        <option v-for="key in dropdownDownMenuKeys.textures" :key="key" :value="key">
-                            {{ key }}
-                        </option>
-                    </select><br>
-                    X-Offset: <input type="range" min="-125" max="125" v-model="backgroundXOffset"/><br>
-                    Y-Offset: <input type="range" min="-125" max="125"v-model="backgroundYOffset"/><br>
-                    Scale: <input type="range" min="100" max="200" v-model="backgroundScale"/><br>
-                    Brightness: <input type="range" min="0" max="200" v-model="backgroundBrightness"/><br>
-                    Contrast: <input type="range" min="0" max="200" v-model="backgroundContrast"/><br>
-                    Saturation: <input type="range" min="0" max="200" v-model="backgroundSaturation"/><br>
-                    Blur: <input type="range" min="0" max="10" v-model="backgroundBlur"/><br>
-                    Flip: <input class="checkBoxStyle" type="checkbox" v-model="backgroundFlip"/><br>
-                    <button @click="reset()" class="buttonStyle">Reset Texture Settings</button><br>
-                    <button class="buttonStyle" onClick="openFolder('splits')">Open Splits Folder</button><br>
-                </div>
-            </div>
-
 
 <!------ TYPE ICONS --------------------------------------------------------------------------------------------------------------------------->
             <div class="typeIconContainer">
@@ -127,7 +83,7 @@
             <!-- STATS OVERLAY GRAPHIC  -->
             <div class="nature">{{ pkmnNature }}</div>
             <div class="friendship">{{mapper.properties.player.team[0].friendship}}</div>
-            <div class="ability">{{ pkmnAbility }}</div>
+            <div class="ability">{{ pkmn_ability }}</div>
             <div class="statsContainer" v-show="stats == true" id="stats">
                 <!-- STATS LABELS ------------------------------------------------------------------------------>
                 <div class="growthRate">{{pkmnGrowthRate}}</div>
@@ -268,7 +224,6 @@
                             <td class="movepool_way">{{x.Level}}</td>
                             <td class="movepool_move">{{x.Move}}</td>
                             <td class="movepool_type" :style="{'background-color': `var(--${movepoolTypeColor(x)?.toLowerCase()})`}">{{movepoolType(x)}}</td>
-                            <!-- <td class="movepool_type" :style="{'background-color': `var(--${x.Type?.toLowerCase()})`}">{{x.Type}}</td> -->
                             <td class="movepool_tableC">{{x.Power}}</td>
                             <td class="movepool_tableC">{{x.Accuracy}}%</td>
                             <td class="movepool_tableC">{{x.PP}}</td>
@@ -282,6 +237,7 @@
                             <td class="movepool_tableC">{{x.PP}}</td>
                         </tr>
                         <tr v-for="x in getMovepool(dexDataRubySapphireEmerald, g3MoveData, g3tmhmMapping, s1dynamicReset.species.value).tutor">
+<<<<<<< Updated upstream
                             <td class="movepool_way">Tutor</td>
                             <td class="movepool_move">{{x.Move}}</td>
                             <td class="movepool_type" :style="{'background-color': `var(--${x.Type?.toLowerCase()})`}">{{x.Type}}</td>
@@ -296,6 +252,22 @@
                             <td class="movepool_tableC">{{x.Power}}</td>
                             <td class="movepool_tableC">{{x.Accuracy}}%</td>
                             <td class="movepool_tableC">{{x.PP}}</td>
+=======
+                            <td v-if="tutor_moves == true" class="movepool_way">Tutor</td>
+                            <td v-if="tutor_moves == true" class="movepool_move">{{x.Move}}</td>
+                            <td v-if="tutor_moves == true" class="movepool_type" :style="{'background-color': `var(--${x.Type?.toLowerCase()})`}">{{x.Type}}</td>
+                            <td v-if="tutor_moves == true" class="movepool_tableC">{{x.Power}}</td>
+                            <td v-if="tutor_moves == true" class="movepool_tableC">{{x.Accuracy}}%</td>
+                            <td v-if="tutor_moves == true" class="movepool_tableC">{{x.PP}}</td>
+                        </tr>
+                        <!-- <tr v-for="x in getMovepool(dexDataRubySapphireEmerald, g3MoveData, g3tmhmMapping, s1dynamicReset.species.value).egg">
+                            <td v-if="egg_moves == true" class="movepool_way">Egg</td>
+                            <td v-if="egg_moves == true" class="movepool_move">{{x.Move}}</td>
+                            <td v-if="egg_moves == true" class="movepool_type" :style="{'background-color': `var(--${x.Type?.toLowerCase()})`}">{{x.Type}}</td>
+                            <td v-if="egg_moves == true" class="movepool_tableC">{{x.Power}}</td>
+                            <td v-if="egg_moves == true" class="movepool_tableC">{{x.Accuracy}}%</td>
+                            <td v-if="egg_moves == true" class="movepool_tableC">{{x.PP}}</td>
+>>>>>>> Stashed changes
                         </tr> -->
                     </table>
                     <div class="colored-image ds" style="--url: url(images/ui/movepool.svg)"></div>
@@ -337,12 +309,143 @@
             <div v-show="resetCounter == true" id="reset_counter" class="resets">
                 <div>{{playerResets}}</div>
             </div>
+
+            <!--------- UI ----------------------------------------------------------------------------------------------------------------->
+            <div>
+                <div class="gamestate">Generation 3 Overlay<br><br>
+                    <div>Solo Pokemon:</div>
+                    <select v-model="starterString" @change="load_pokemon_sprite_settings(s1dynamicReset.species.value)" class="dropdownMenu">
+                        <option disabled value="">Select a species</option>
+                        <option v-for="key in keys_function(dexDataRubySapphireEmerald)" :value="`${key}`">{{key}}</option>
+                    </select>
+                    <br>
+                    <button class="buttonStyle" @click="newRun">New Run</button><br>
+                    <button @click="pauseUnpauseTime()" class="buttonStyle" style="background-color: rgb(201, 199, 100);">Toggle Pause Timer</button>
+                    <br>
+                    <br>
+                    <div>Attempts: {{attempt_number}}<button @click="increment('attempt_number')" class="smallButtonStyle">^</button><button @click="decrement('attempt_number')" class="smallButtonStyle">v</button></div>
+                    <div>Finishes: {{finished_run_count}}<button @click="increment('finished_run_count')" class="smallButtonStyle">^</button><button @click="decrement('finished_run_count')" class="smallButtonStyle">v</button></div>
+                    <div>Resets: {{playerResets}}<button @click="increment('playerResets')" class="smallButtonStyle">^</button><button @click="decrement('playerResets')" class="smallButtonStyle">v</button></div>
+                    <br>
+                    <div>Pokemon Image Settings</div>
+                    X-Offset: <input type="range" min="-400" max="400" v-model="imageXOffset"/><br>
+                    Y-Offset: <input type="range" min="-400" max="400"v-model="imageYOffset"/><br>
+                    Scale: <input type="range" min="0.2" max="2.5" step="0.01" v-model="imageScale"/><br>
+                    Saturation: <input type="range" min="90" max="150" step="1" v-model="imageSat"/><br>
+                    Rotation: <input type="range" min="-180" max="180" step=".25" v-model="imageRotation"/><br>
+                    Flip: <input class="checkBoxStyle" type="checkbox" v-model="imageFlip"/><br>
+                    <br>
+                    <div>Overlay Color Selector:</div>
+                    <button @click="color_picker" class="buttonStyle">Color Picker</button><br>
+                    <button @click="clear_overlay_color" class="buttonStyle">Reset Overlay Color</button><br>
+                    <br>
+                    <div>Background Texture:</div>
+                    <select v-model="backgroundTexture" class="dropdownMenu">
+                        <option v-for="key in dropdownDownMenuKeys.textures" :key="key" :value="key">
+                            {{ key }}
+                        </option>
+                    </select><br>
+                    X-Offset: <input type="range" min="-125" max="125" v-model="backgroundXOffset"/><br>
+                    Y-Offset: <input type="range" min="-125" max="125"v-model="backgroundYOffset"/><br>
+                    Scale: <input type="range" min="100" max="200" v-model="backgroundScale"/><br>
+                    Brightness: <input type="range" min="0" max="200" v-model="backgroundBrightness"/><br>
+                    Contrast: <input type="range" min="0" max="200" v-model="backgroundContrast"/><br>
+                    Saturation: <input type="range" min="0" max="200" v-model="backgroundSaturation"/><br>
+                    Blur: <input type="range" min="0" max="10" v-model="backgroundBlur"/><br>
+                    Flip: <input class="checkBoxStyle" type="checkbox" v-model="backgroundFlip"/><br>
+                    <button @click="reset()" class="buttonStyle">Reset Texture Settings</button><br>
+                    <button class="buttonStyle" onClick="openFolder('splits')">Open Splits Folder</button><br>
+                </div>
+            </div>
+            <!-- Advanced Options -->
+            <div>
+                <div class="ui_second_panel">
+                    <div>Advanced Options</div>
+                    <br>
+                    <div>Encounter Settings:</div>
+                    <table>
+                        <tr>
+                            <td>Route 101</td>
+                            <td><input class="checkBoxStyle" type="checkbox" v-model="route_101"/></td>
+                        </tr>
+                        <tr>
+                            <td>Route 102</td>
+                            <td><input class="checkBoxStyle" type="checkbox" v-model="route_102"/></td>
+                        </tr>
+                        <tr>
+                            <td>Route 103</td>
+                            <td><input class="checkBoxStyle" type="checkbox" v-model="route_103"/></td>
+                        </tr>
+                    </table>
+                    <br>
+                    <div>Movepool Settings:</div>
+                    <table>
+                        <tr>
+                            <td>Show Tutor Moves:</td>
+                            <td><input class="checkBoxStyle" type="checkbox" v-model="tutor_moves"/></td>
+                        </tr>
+                        <!-- <tr>
+                            <td>Show Egg Moves:</td>
+                            <td><input class="checkBoxStyle" type="checkbox" v-model="egg_moves"/></td>
+                        </tr> -->
+                    </table>
+                </div>
+            </div>
+            <!-- Scott mode -->
+            <div>
+                <div class="scott_mode">
+                    <div>Scott Mode</div>
+                    <br>
+                    <div>Gender:</div>
+                    <select v-model="pkmn_gender" class="dropdownMenu">
+                        <option>Male</option>
+                        <option>Female</option>
+                    </select> <br>
+                    <br>
+                    <div>Ability:</div>
+                    <select v-model="pkmn_ability" class="dropdownMenu">
+                        <option v-for="key in dexDataRubySapphireEmerald[starterString].abilities" :key="key" :value="key">
+                            {{ key }}
+                        </option>
+                    </select><br>
+                    <br>
+                    <div>Nature:</div>
+                    <select v-model="pkmnNature" class="dropdownMenu">
+                        <option v-for="key in nature_list" :key="key" :value="key">
+                            {{ key }}
+                        </option>
+                    </select><br>
+                    <div>Increased: {{ natures[pkmnNature].raises }}</div>
+                    <div>Decreased: {{ natures[pkmnNature].lowers }}</div>
+                    <br>
+                    <div>Hidden Power:</div>
+                    <select v-model="hidden_power_type" class="dropdownMenu">
+                        <option v-for="key in hiddenPowerTypes" :key="key" :value="key">
+                            {{ key }}
+                        </option>
+                    </select>
+                    <table style="font-size: 18px;">
+                        <tr><td>Hp:</td><td>31{{}}</td></tr>
+                        <tr><td>Atk:</td><td>31{{}}</td></tr>
+                        <tr><td>Def:</td><td>31{{}}</td></tr>
+                        <tr><td>SpA:</td><td>31{{}}</td></tr>
+                        <tr><td>SpD:</td><td>31{{}}</td></tr>
+                        <tr><td>Spe:</td><td>31{{}}</td></tr>
+                    </table>
+                    <br>
+                    <table>
+                        <tr>
+                            <td>Test/Re-run Mode:</td>
+                            <td><input class="checkBoxStyle" type="checkbox" v-model="test_mode"/></td>
+                        </tr>
+                    </table>
+                    <div>Ability: {{pkmn_ability}}</div>
+                </div>
+            </div>
         </div>
     </div>
 
 <!--------------------------------------- JAVASCRIPT ------------------------------------------------->
-    <!-- <script src="https://unpkg.com/@microsoft/signalr@latest/dist/browser/signalr.min.js"></script>  -->
-    <!-- <script src="https://unpkg.com/vue@latest/dist/vue.global.js"></script> -->
     <script src="packages/signalR.js"></script>
     <script src="packages/vue.js"></script>
     <script src="http://localhost:8085/dist/gameHookMapperClient.js"></script>

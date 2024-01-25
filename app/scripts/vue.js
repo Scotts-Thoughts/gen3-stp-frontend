@@ -1,3 +1,17 @@
+//TODO:
+// Add start and stop triggers for the timer
+// Port the autospliter from gen2
+// Update the enemy area div
+// Add "scott-mode" functionality
+// Add attempt and reset counter functionality
+// Restyle friendship value
+// Generate splits folder on initial run
+// Add an option to show tutor and egg moves (restyle movepool dynamically; TODO: Austin)
+// Add encounter settings
+// Migrate GameState the GameHook mapper (deprecated and standard)
+// Implement Hidden Power IV calculations so the user can see the spread when deciding
+// Find the RAM address for encounter rate in gen3
+
 const MyStorage = new Proxy({}, {
     set: (_, prop, value) => {
         if (value === undefined || value === null)
@@ -167,12 +181,17 @@ const app = Vue.createApp({
             mapper: null,
 
             // POKEMON CONFIG (components) ---------------------------------------------------------------------//
-            // starter:        357, //select starter (1-386)
-            starterString: "Rayquaza",
-            pkmnNature: "Adamant",
-            pkmn_ability: false, // false = ability 1, true = ability 2
+            starterString:     "Rayquaza",
+            pkmnNature:        "Adamant",
+            pkmn_ability:      "", // false = ability 1, true = ability 2
             hidden_power_type: "Electric",
-            pkmn_gender: "Female",
+            pkmn_gender:       "Female",
+            scott_mode:        true,
+            test_mode:         true,
+
+            //Movepool settings
+            tutor_moves: MyStorage['tutor_moves'] ?? false,
+            egg_moves:   MyStorage['egg_moves']   ?? false,
             
             // USER CONFIG (components) ------------------------------------------------------------------------// 
             graphicOverlay: true, //places a single image as the overlay  //MVP
@@ -231,22 +250,49 @@ const app = Vue.createApp({
             default_colors: default_colors,
 
             hiddenPowerTypes : {
-                0 : "Fighting",
-                1 : "Flying",
-                2 : "Poison",
-                3 : "Ground",
-                4 : "Rock",
-                5 : "Bug",
-                6 : "Ghost",
-                7 : "Steel",
-                8 : "Fire",
-                9 : "Water",
+                0 :  "Fighting",
+                1 :  "Flying",
+                2 :  "Poison",
+                3 :  "Ground",
+                4 :  "Rock",
+                5 :  "Bug",
+                6 :  "Ghost",
+                7 :  "Steel",
+                8 :  "Fire",
+                9 :  "Water",
                 10 : "Grass",
                 11 : "Electric",
                 12 : "Psychic",
                 13 : "Ice",
                 14 : "Dragon",
                 15 : "Dark",
+            },
+            nature_list: {
+                0 : "Hardy",
+                1 : "Lonely",
+                2 : "Brave",
+                3 : "Adamant",
+                4 : "Naughty",
+                5 : "Bold",
+                6 : "Docile",
+                7 : "Relaxed",
+                8 : "Impish",
+                9 : "Lax",
+                10 :"Timid",
+                11 :"Hasty",
+                12 :"Serious",
+                13 :"Jolly",
+                14 :"Naive",
+                15 :"Modest",
+                16: "Mild",
+                17: "Quiet",
+                18: "Bashful",
+                19: "Rash",
+                20: "Calm",
+                21: "Gentle",
+                22: "Sassy",
+                23: "Careful",
+                24: "Quirky",
             },
             //VARIABLES THAT TRACK IN GAME PROGRESS ------------------------------------------------------------//
             playerId: -1,
@@ -256,54 +302,6 @@ const app = Vue.createApp({
 
             //LOOPS
             pkmnSlots: [0, 1, 2, 3, 4, 5],
-            
-            //DISPLAY BUFFER
-            bufferNature: "",
-            bufferAbility: "",
-            bufferHeldItem: "",
-            bufferLevel: "",
-            bufferHp: "",
-            bufferAtk: "",
-            bufferDef: "",
-            bufferSpcA: "",
-            bufferSpcD: "",
-            bufferSpd: "",
-            bufferBadge1: "",
-            bufferBadge2: "",
-            bufferBadge3: "",
-            bufferBadge4: "",
-            bufferBadge5: "",
-            bufferBadge6: "",
-            bufferBadge7: "",
-            bufferBadge8: "",
-
-            //BUFFER
-            buffer_move1: undefined,
-            buffer_move2: undefined,
-            buffer_move3: undefined,
-            buffer_move4: undefined,
-            buffer_power_move1: undefined,
-            buffer_power_move2: undefined,
-            buffer_power_move3: undefined,
-            buffer_power_move4: undefined,
-            buffer_move1pp: undefined,
-            buffer_move2pp: undefined,
-            buffer_move3pp: undefined,
-            buffer_move4pp: undefined,
-            buffer_exp: undefined,
-            buffer_heldItem: undefined,
-
-            //Reset buffer
-            resetBufferNature: "",
-            resetBufferAbility: "",
-            resetBufferHeldItem: "",
-            resetBufferLevel: "",
-            resetBufferHp: "",
-            resetBufferAtk: "",
-            resetBufferDef: "",
-            resetBufferSpcA: "",
-            resetBufferSpcD: "",
-            resetBufferSpd: "",
 
             //STATE MANAGEMENT ---------------------------------------------------------------------------------//
             gamestateLogging: false,
@@ -367,6 +365,10 @@ const app = Vue.createApp({
                 "backgroundContrast",
                 "backgroundSaturation",
                 "backgroundFlip",
+                "pkmnNature",    
+                "pkmn_ability",     
+                "hidden_power_type",
+                "pkmn_gender",      
             ],
             //timer variables
             timer_startTime: MyStorage["timer_startTime"] ?? 0,
@@ -402,10 +404,22 @@ const app = Vue.createApp({
             simple_data: MyStorage["simple_data"] ?? "",
             testRun: MyStorage['testRun'] ?? false,
 
+<<<<<<< Updated upstream
             //movepool starting parameters. set to -1 if not initialized
             movepoolDefaultFontSize: -1,
             movepoolDefaultLineHeight: -1,
             movepoolDefaultContainerHeight: -1,
+=======
+            //Encounters
+            route_101: MyStorage["route_101"] ?? true,
+            route_102: MyStorage["route_102"] ?? true,
+            route_103: MyStorage["route_103"] ?? true,
+            encounter_routes: [
+                "route_101",
+                "route_102",
+                "route_103",
+            ],
+>>>>>>> Stashed changes
         }
     },
     created() {
@@ -722,6 +736,15 @@ const app = Vue.createApp({
     },
 
     methods: { 
+        increment(property) {
+            this[property]++;
+        },
+        decrement(property) {
+            if (this[property] == 0) {
+                return 0
+            }
+            this[property]--;
+        },
         clear_overlay_color() {
             starterType = this.dexDataRubySapphireEmerald[this.starterString].type_1;
             newColor = getComputedStyle(document.documentElement).getPropertyValue("--"+starterType.toLowerCase());
@@ -819,7 +842,11 @@ const app = Vue.createApp({
         },
         load_all_settings() {
             // // this.help_menus = MyStorage["this.help_menus"] ?? "Settings"
-            this.starterString = MyStorage["starter"] ?? "Aipom"
+            this.starterString =     MyStorage["starterString"]                       ?? "Rayquaza",
+            this.pkmnNature =        MyStorage[this.starterString]?.pkmnNature        ?? "Adamant",
+            this.pkmn_ability =      MyStorage[this.starterString]?.pkmn_ability      ?? "", // false = ability 1, true = ability 2
+            this.hidden_power_type = MyStorage[this.starterString]?.hidden_power_type ?? "Electric",
+            this.pkmn_gender =       MyStorage[this.starterString]?.pkmn_gender       ?? "Female",
             // this.options = MyStorage["options"] ?? true
             // this.timeOfDay_user = MyStorage["timeOfDay_user"] ?? "Day"
             // this.gametimeDisplay = MyStorage["gametimeDisplay"] ?? true
