@@ -607,8 +607,8 @@ body {
 }
 .badgeBoost {
     position: absolute;
-    top: -460px;
-    left: -60px;
+    /* top: -460px;
+    left: -60px; */
     height: 1080px;
     width: 1920px;
     z-index: 15;
@@ -2599,7 +2599,7 @@ body {
     background-color: #ffffff;
     font-size: 15px;
     line-height: 20px;
-    line-height: 19px;
+    line-height: 18px;
     width: 328px;
     height: 1001px;
     font-family: play;

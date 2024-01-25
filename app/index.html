@@ -149,6 +149,9 @@
                 <div class="ui3">
                     <div style="font-size: 24px;">Scott Mode:</div>
                     <br>
+                    Autosplitter: <input class="checkBoxStyle" type="checkbox" v-model="autosplitter_toggle"/>
+                    <br>
+                    <br>
                     <div>Gender:</div>
                     <select v-model="pkmn_gender" class="dropdownMenu">
                         <option disabled value="">Select a gender</option>
@@ -160,7 +163,9 @@
                         <option disabled value="">Select an ability</option>
                         <option v-for="key in values_function(dexDataRubySapphireEmerald[starterString].abilities)" :value="`${key}`">{{key}}</option>
                     </select><br>
-                    <br>
+                    <div>Number of abilities that {{starterString}} has: {{dexDataRubySapphireEmerald[starterString].abilities.length}}</div>
+                    <div v-if="dexDataRubySapphireEmerald[starterString].abilities[0]">- {{dexDataRubySapphireEmerald[starterString].abilities[0]}}</div>
+                    <div v-if="dexDataRubySapphireEmerald[starterString].abilities[1]">- {{dexDataRubySapphireEmerald[starterString].abilities[1]}}</div>
                     <br>
                     <div>Nature:</div>
                     <select v-model="pkmnNature" class="dropdownMenu">
@@ -190,6 +195,9 @@
                     <br>
                     <div>Timer Pause: {{timer_pause}}</div>
                     <div>Zigzagoon Check: {{zigzagoon_check}}</div>
+                    <div>Battle Outcome: {{mapper.properties.battle.turnInfo.battleOutcome}}</div>
+                    <div>Battle Outcome: {{mapper.properties.battle.enemyPokemon.type1.value}}</div>
+                    <div>Battle Outcome: {{mapper.properties.battle.enemyPokemon.type2.value}}</div>
                 </div>
             </div>
 
@@ -212,7 +220,7 @@
             <!-- STATS OVERLAY GRAPHIC  -->
             <div class="nature">{{ pkmnNature }}</div>
             <div class="friendship">{{mapper.properties.player.team[0].friendship}}</div>
-            <div class="ability">{{ pkmnAbility }}</div>
+            <div class="ability">{{ pkmn_ability }}</div>
             <div class="statsContainer" v-show="stats == true" id="stats">
                 <!-- STATS LABELS ------------------------------------------------------------------------------>
                 <div class="growthRate">{{pkmnGrowthRate}}</div>
@@ -314,6 +322,14 @@
                     <div v-for="x in pkmnSlots" class="enemyGraphic">
                         <div v-show="enemyTrainer.pokemon[x] != undefined" :class="`ePkmn${x + 1}`">
                             <img v-show="enemyTrainer.pokemon[x]?.species != undefined" class="ePkmnSprite" :style="enemyPkmnFaint(batt.trainer.team[x])" :src="`images/pokemon/${enemyTrainer.pokemon[x]?.species}.png`"/>
+                            <!-- <img 
+                                v-show="enemyTrainer.pokemon[x]?.species != undefined && (dexDataRubySapphireEmerald[enemyTeam[x].species.value].type_1 != dexDataRubySapphireEmerald[enemyTeam[x].species.value].type_2)" 
+                                class="ePkmnType_1" :style="enemyPkmnFaint(batt.trainer.team[x])" 
+                                :src="`images/elements/type-icons/${enemyType(x)}.png`"/>
+                            <img 
+                                v-show="enemyTrainer.pokemon[x]?.species != undefined && (dexDataRubySapphireEmerald[enemyTeam[x].species.value].type_1 != dexDataRubySapphireEmerald[enemyTeam[x].species.value].type_2)" 
+                                class="ePkmnType_1" :style="enemyPkmnFaint(batt.trainer.team[x])" 
+                                :src="`images/elements/type-icons/${enemyType(x)}.png`"/> -->
                             <div class="ePkmnSpecies opacityTransition" :style="enemyPkmnSpecies(batt.trainer.team[x])">{{ enemyTrainer.pokemon[x]?.species }}</div>
                             <img class="enemyStatsArea" :style="enemyPkmnFaintStats(batt.trainer.team[x])" :src="`images/enemy_area/stats/${x}.png`"/>
                             <div class="ePkmnMove1 opacityTransition" :style="enemyPkmnText(batt.trainer.team[x])">{{ enemyTrainer.pokemon[x]?.moves[0] }}</div>
@@ -338,7 +354,8 @@
                 </div>
                 <div v-else key=2>
                     <div class="movepoolTitle">Movepool</div>
-                    <table class="movepoolDemo" cellspacing="0" :style="movepoolResize()">
+                    <table class="movepoolDemo" cellspacing="0">
+                    <!-- <table class="movepoolDemo" cellspacing="0" :style="movepoolResize()"> -->
                         <tr :style="{'background-color': `var(--${typeHeaderColor?.toLowerCase()})`, 'outline': '2px solid #000'}">
                             <th class="movepool_header movepool_way">Way</th>
                             <th class="movepool_header movepool_move">Move</th>
@@ -437,6 +454,7 @@
     <script src="lib/textures.js"></script>
     <script src="lib/default_colors.js"></script>
     <script src="lib/hp_ivs.js"></script>
+    <script src="data/autosplitter.js"></script>
     <!-- VUE APP -->
     <script type="text/javascript" src="scripts/vue.js"></script>
 </body>
