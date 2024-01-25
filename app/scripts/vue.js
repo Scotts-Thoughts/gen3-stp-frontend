@@ -1177,6 +1177,7 @@ const app = Vue.createApp({
             this.playerResets = 0
             this.finished_logs = false
             this.blackout_counter = 0
+            if (this.testRun) { this.attempt_number++ }
             this.playerId = 0
             // this.playerName = "NINTEN"
         },
@@ -3400,7 +3401,7 @@ const app = Vue.createApp({
                     return;
                 }
                 const currSpecies = this.mapper.properties.player.team[0].species.value;
-                const growthRate = this.dexDataRubySapphireEmerald[currSpecies]?.growth_rate ?? growthRate
+                const growthRate = this.dexDataRubySapphireEmerald[currSpecies]?.growth_rate ?? this.dexDataRubySapphireEmerald[this.starterString].growth_rate
                 const oldExpStats = this.calcExpStats(growthRate, oldProp.value);
                 const newExpStats = this.calcExpStats(growthRate, newProp.value);
                 const animationMaxDuration = 650
@@ -3444,12 +3445,12 @@ const app = Vue.createApp({
                 this.$refs.expBar.style.transition = null;
             }
         })
-        // // keybinds
-        // keyhook.registerShortCut('F23', async () => {
-        //     this.newRun()
-        // });
-        // keyhook.registerShortCut('F24', async () => {
-        //     this.pauseUnpauseTime()
-        // });
+        // keybinds
+        keyhook.registerShortCut('F23', async () => {
+            this.newRun()
+        });
+        keyhook.registerShortCut('F12', async () => {
+            this.pauseUnpauseTime()
+        });
     },
 }).mount('#app')

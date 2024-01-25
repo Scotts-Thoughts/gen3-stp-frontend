@@ -151,6 +151,7 @@
                     <br>
                     Autosplitter: <input class="checkBoxStyle" type="checkbox" v-model="autosplitter_toggle"/>
                     <br>
+                    <br>
                     <div>Gender:</div>
                     <select v-model="pkmn_gender" class="dropdownMenu">
                         <option disabled value="">Select a gender</option>
@@ -162,7 +163,9 @@
                         <option disabled value="">Select an ability</option>
                         <option v-for="key in values_function(dexDataRubySapphireEmerald[starterString].abilities)" :value="`${key}`">{{key}}</option>
                     </select><br>
-                    <br>
+                    <div>Number of abilities that {{starterString}} has: {{dexDataRubySapphireEmerald[starterString].abilities.length}}</div>
+                    <div v-if="dexDataRubySapphireEmerald[starterString].abilities[0]">- {{dexDataRubySapphireEmerald[starterString].abilities[0]}}</div>
+                    <div v-if="dexDataRubySapphireEmerald[starterString].abilities[1]">- {{dexDataRubySapphireEmerald[starterString].abilities[1]}}</div>
                     <br>
                     <div>Nature:</div>
                     <select v-model="pkmnNature" class="dropdownMenu">
@@ -341,7 +344,8 @@
                 </div>
                 <div v-else key=2>
                     <div class="movepoolTitle">Movepool</div>
-                    <table class="movepoolDemo" cellspacing="0" :style="movepoolResize()">
+                    <table class="movepoolDemo" cellspacing="0">
+                    <!-- <table class="movepoolDemo" cellspacing="0" :style="movepoolResize()"> -->
                         <tr :style="{'background-color': `var(--${typeHeaderColor?.toLowerCase()})`, 'outline': '2px solid #000'}">
                             <th class="movepool_header movepool_way">Way</th>
                             <th class="movepool_header movepool_move">Move</th>
