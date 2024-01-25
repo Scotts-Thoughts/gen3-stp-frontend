@@ -819,7 +819,7 @@ const app = Vue.createApp({
         },
         load_all_settings() {
             // // this.help_menus = MyStorage["this.help_menus"] ?? "Settings"
-            this.starterString = MyStorage["starter"] ?? "Aipom"
+            this.starterString = MyStorage["starterString"] ?? "Aipom"
             // this.options = MyStorage["options"] ?? true
             // this.timeOfDay_user = MyStorage["timeOfDay_user"] ?? "Day"
             // this.gametimeDisplay = MyStorage["gametimeDisplay"] ?? true
@@ -831,7 +831,7 @@ const app = Vue.createApp({
             // this.showSpecialTrainerGraphics = MyStorage["showSpecialTrainerGraphics"] ?? true
             // this.battlePopUps = MyStorage["battlePopUps"] ?? true
             // this.rockTunnelDarkness = MyStorage["rockTunnelDarkness"] ?? false
-            // this.playerResets = MyStorage["playerResets"] ?? 0
+            this.playerResets = MyStorage["playerResets"] ?? 0
             // this.viridian_forest = MyStorage["viridian_forest"] ?? "Pidgey"
             // this.pb_splits = MyStorage[`${this.starterString}_pb_splits`] ?? ["","","",""]
             // this.attempt_number = MyStorage[`${this.starterString}`]?.attempt_number ?? 0
