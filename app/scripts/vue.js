@@ -466,6 +466,7 @@ const app = Vue.createApp({
         return {
             ready: false,
             mapper: null,
+            scott_mode: true,
 
             // POKEMON CONFIG (components) ---------------------------------------------------------------------//
             starterString: "Rayquaza",
@@ -3276,17 +3277,15 @@ const app = Vue.createApp({
                 
                 let simple_data_str = simple_data.join(",") + "\n";
                 let full_data_str = full_data.join(",") + "\n";
+                let deprecated_data_str = deprecated_data.join(",") + "\n";
                 MyStorage["simple_data_str"] = simple_data_str
                 MyStorage["full_data_str"] = full_data_str
                 MyStorage["simple_data"] = simple_data
+                MyStorage["deprecated_data_str"] = deprecated_data_str
                 this.simple_data_str = simple_data_str
                 this.full_data_str = full_data_str
                 this.simple_data = simple_data
-                if (this.scott_mode == true) {
-                    MyStorage["deprecated_data_str"] = deprecated_data_str
-                    let deprecated_data_str = deprecated_data.join(",") + "\n";
-                    this.deprecated_data_str = deprecated_data_str
-                }
+                this.deprecated_data_str = deprecated_data_str
             }
         }
 
