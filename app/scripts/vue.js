@@ -2938,6 +2938,7 @@ const app = Vue.createApp({
                 ])
             }
         }
+        
         const setStartingStats = async () => {
             const pkmnData = this.dexDataRubySapphireEmerald[this.starterString]
             const level = 5
