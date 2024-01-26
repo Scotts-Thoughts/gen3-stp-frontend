@@ -690,9 +690,9 @@ const app = Vue.createApp({
             movepoolDefaultContainerHeight: -1,
 
             //encounters
-            route_201: MyStorage['route_201'] ?? true,
-            route_202: MyStorage['route_202'] ?? true,
-            route_203: MyStorage['route_203'] ?? true,
+            route_101: MyStorage['route_101'] ?? true,
+            route_102: MyStorage['route_102'] ?? true,
+            route_103: MyStorage['route_103'] ?? true,
 
             auto_save: [
                 "graphicOverlay",
@@ -2708,6 +2708,18 @@ const app = Vue.createApp({
                     this.startTime();
                 }
             })
+        },
+        freezeEncounters() {
+            this.mapper.properties.overworld.mapName.change((newProp) => {
+                if((newProp.value == "ROUTE 101" && ! this.route_101) ||
+                (newProp.value == "ROUTE 102" && ! this.route_102) ||
+                (newProp.value == "ROUTE 103" && ! this.route_103)) {
+                    this.mapper.properties.overworld.disabledEncounters.set(0x01,false);
+                }
+                else {
+                    this.mapper.properties.overworld.disabledEncounters.set(0x00,false);
+                }
+            })
         }
     },
     
@@ -2982,6 +2994,8 @@ const app = Vue.createApp({
                 await setStartingStats()
             }
         })
+
+        this.freezeEncounters();
 
         
         //SET OPTIONS
