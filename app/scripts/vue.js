@@ -721,9 +721,9 @@ const app = Vue.createApp({
                 "labels",
                 "tutor_moves",
                 "showSpecialTrainerGraphics",
-                "route_201",
-                "route_202",
-                "route_203",
+                "route_101",
+                "route_102",
+                "route_103",
                 "testRun",
                 "simple_data_str",
                 "full_data_str",
@@ -1216,9 +1216,9 @@ const app = Vue.createApp({
             this.labels =                     MyStorage['labels']                     ?? true
             this.tutor_moves =                MyStorage['tutor_moves']                ?? false
             this.showSpecialTrainerGraphics = MyStorage['showSpecialTrainerGraphics'] ?? true
-            this.route_201 =                  MyStorage['route_201']                  ?? true
-            this.route_202 =                  MyStorage['route_202']                  ?? true
-            this.route_203 =                  MyStorage['route_203']                  ?? true
+            this.route_101 =                  MyStorage['route_101']                  ?? true
+            this.route_102 =                  MyStorage['route_102']                  ?? true
+            this.route_103 =                  MyStorage['route_103']                  ?? true
             this.testRun =                    MyStorage['testRun']                    ?? false
             this.simple_data_str =            MyStorage['simple_data_str']            ?? ""
             this.full_data_str =              MyStorage['full_data_str']              ?? ""
