@@ -746,7 +746,7 @@ const app = Vue.createApp({
     },
     created() {
         if (MyStorage[this.starterString]) {
-            // this.overlay_color = MyStorage[this.starterString].overlay_color ?? "#000000";
+            this.overlay_color = MyStorage[this.starterString].overlay_color ?? this.default_colors[dexDataRubySapphireEmerald[this.starterString].type_1];
             this.imageXOffset = MyStorage[this.starterString].imageXOffset ?? 0;
             this.imageYOffset = MyStorage[this.starterString].imageYOffset ?? 0;
             this.imageScale = MyStorage[this.starterString].imageScale ?? 1;
@@ -759,8 +759,10 @@ const app = Vue.createApp({
             this.use_custom_background = MyStorage[this.starterString].use_custom_background ?? false
             this.backgroundXOffset = MyStorage[this.starterString].backgroundXOffset ?? 0
             this.backgroundYOffset = MyStorage[this.starterString].backgroundYOffset ?? 0
-            this.backgroundTexture = MyStorage[this.starterString].backgroundTexture ?? 0
+            this.backgroundTexture = MyStorage[this.starterString].backgroundTexture ?? `${this.dexDataRubySapphireEmerald[this.starterString].type_1}`
+            this.pkmn_ability = MyStorage[this.starterString]?.pkmn_ability ?? dexDataRubySapphireEmerald[this.starterString].abilities[0]
         }
+
         for (let i = 0; i < this.pokemon_settings.length; i++) {
             let propName = this.pokemon_settings[i];
             this.$watch(
@@ -792,8 +794,8 @@ const app = Vue.createApp({
     watch: {
         starterString(newValue, oldValue) {
             //background texture settings
-            this.overlay_color =         MyStorage[`${newValue}`]?.overlay_color ?? this.default_colors[`${dexDataRubySapphireEmerald[newValue].type1}`],
-            this.backgroundTexture =     MyStorage[`${newValue}`]?.backgroundTexture ?? `${this.dexDataRubySapphireEmerald[newValue].type_1.toLowerCase()}`
+            this.overlay_color =         MyStorage[`${newValue}`]?.overlay_color ?? this.default_colors[dexDataRubySapphireEmerald[newValue].type_1]
+            this.backgroundTexture =     MyStorage[`${newValue}`]?.backgroundTexture ?? `${this.dexDataRubySapphireEmerald[newValue].type_1}`
             this.backgroundBlur =        MyStorage[`${newValue}`]?.backgroundBlur ?? 0,
             this.backgroundScale =       MyStorage[`${newValue}`]?.backgroundScale ?? 100,
             this.backgroundUrl =         MyStorage[`${newValue}`]?.backgroundUrl ?? "",
@@ -809,8 +811,8 @@ const app = Vue.createApp({
             this.finished_run_count =    MyStorage[`${newValue}`]?.finished_run_count ?? 0,
             //main pokemon settings
             MyStorage['starterString'] = newValue
-            this.pkmnNature =            MyStorage[`${newValue}`]?.pkmnNature ?? "Adamant",
-            this.pkmn_ability =          MyStorage[`${newValue}`]?.pkmn_ability ?? "Pressure",
+            this.pkmnNature =            MyStorage[`${newValue}`]?.pkmnNature ?? "Hardy",
+            this.pkmn_ability =          MyStorage[`${newValue}`]?.pkmn_ability ?? dexDataRubySapphireEmerald[newValue].abilities[0],
             this.hidden_power_type =     MyStorage[`${newValue}`]?.hidden_power_type ?? "Dark",
             this.pkmn_gender =           MyStorage[`${newValue}`]?.pkmn_gender ?? "Female"
             this.movepoolResize();
@@ -1252,7 +1254,7 @@ const app = Vue.createApp({
             this.use_custom_background = MyStorage[this.starterString]?.use_custom_background ?? false
             this.backgroundXOffset =     MyStorage[this.starterString]?.backgroundXOffset ?? 0
             this.backgroundYOffset =     MyStorage[this.starterString]?.backgroundYOffset ?? 0
-            this.backgroundTexture =     MyStorage[this.starterString]?.backgroundTexture ?? `${this.dexDataRubySapphireEmerald[this.starterString].type_1.toLowerCase()}`
+            this.backgroundTexture =     MyStorage[this.starterString]?.backgroundTexture ?? `${this.dexDataRubySapphireEmerald[this.starterString].type_1}`
             this.backgroundBrightness =  MyStorage[this.starterString]?.backgroundBrightness ?? 100
             this.backgroundContrast =    MyStorage[this.starterString]?.backgroundContrast ?? 100
             this.backgroundSaturation =  MyStorage[this.starterString]?.backgroundSaturation ?? 100
@@ -1268,6 +1270,14 @@ const app = Vue.createApp({
             this.backgroundBrightness =  100,
             this.backgroundContrast =    100,
             this.backgroundSaturation =  100
+        },
+        resetPokemon() {
+            this.imageXOffset =  0
+            this.imageYOffset =  0
+            this.imageScale =    1
+            this.imageFlip =     false
+            this.imageSat =      100
+            this.imageRotation = 0
         },
         increment(property) {
             this[property]++;
@@ -2021,12 +2031,12 @@ const app = Vue.createApp({
         getStarterType1() {
             if (this.pick == true)
                 var type = this.dexDataRubySapphireEmerald[this.starterString].type_1
-                return `images/elements/types/${type}.png`
+                return `images/elements/types/${type}.png`.toLowerCase();
         },
         getStarterType2() {
             if (this.pick == true)
                 var type = this.dexDataRubySapphireEmerald[this.starterString].type_2
-                return `images/elements/types/${type}.png`
+                return `images/elements/types/${type}.png`.toLowerCase();
         },
         
         //GAMETIME
