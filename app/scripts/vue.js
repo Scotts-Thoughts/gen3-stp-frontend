@@ -3404,18 +3404,18 @@ const app = Vue.createApp({
                     };
                     this.stopTime()
                     //use then so that logCopy doesn't touch any files until logData finishes
-                    logData(gameName, this.simple_data_str, this.attempt_number, this.starter, "Simple", this.testRun, this.scott_mode)
+                    logData(gameName, this.simple_data_str, this.attempt_number, this.starterString, "Simple", this.testRun, this.scott_mode)
                     .then(() => {
                             console.log("Run complete - moving attempt files to finished folder.")
-                            logCopy(gameName, this.attempt_number, this.starter, this.finished_run_count);
+                            logCopy(gameName, this.attempt_number, this.starterString, this.finished_run_count);
                         })
                         .catch(error => {
                             console.error("Error:", error);
                         });
                     this.split_data.push(this.simple_data)
                     MyStorage["split_data"] = this.split_data
-                    MyStorage[this.starter] = {
-                        ...MyStorage[this.starter],
+                    MyStorage[this.starterString] = {
+                        ...MyStorage[this.starterString],
                         split_data: this.split_data
                     }
                     console.log("Data transfer finished.")
