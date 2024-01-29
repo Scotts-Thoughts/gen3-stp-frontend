@@ -2736,7 +2736,7 @@ const app = Vue.createApp({
         // set initial gamestate value when the layout is loaded
         if (this.mapper.properties.player.team[0].level.value == 0) 
             this.g3stateVariable = "Base Stats"
-        else if (this.mapper.properties.pointers.callback1.value == null)
+        else if (this.mapper.properties.pointers.callback1.value == 0)
             this.g3stateVariable = "Base Stats"
         else if (this.mapper.properties.pointers.callback1.value == 134765285)
             this.g3stateVariable = "Overworld"
