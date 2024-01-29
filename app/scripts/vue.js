@@ -677,7 +677,7 @@ const app = Vue.createApp({
             split_logStr: "",
             attempt_number:     0,
             finished_run_count: 0,
-            split_data: "",
+            split_data: MyStorage["split_data"] ?? [],
             simple_data_str:     MyStorage["simple_data_str"]     ?? "",
             full_data_str:       MyStorage["full_data_str"]       ?? "",
             deprecated_data_str: MyStorage["deprecated_data_str"] ?? "",
