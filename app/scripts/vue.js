@@ -2693,13 +2693,6 @@ const app = Vue.createApp({
                 return "height: 1080px;"
             }
         },
-        trackResets() {
-            this.mapper.properties.pointers.callback2.change((newProp, oldProp) => {
-                if(newProp=="Owners" && oldProp != "Title Screen") {
-                    this.playerResets++;
-                }
-            })
-        },
         newGame() {
             this.mapper.properties.misc.palette5.change((newProp, oldProp) => {
                 if(newProp.value=="NEW GAME" && oldProp.value == "MAIN MENU"){
@@ -2745,10 +2738,10 @@ const app = Vue.createApp({
             this.g3stateVariable = "Base Stats"
         else if (this.mapper.properties.pointers.callback1.value == null)
             this.g3stateVariable = "Base Stats"
-        else if (this.mapper.properties.pointers.callback1.value == "Overworld")
+        else if (this.mapper.properties.pointers.callback1.value == 134765285)
             this.g3stateVariable = "Overworld"
-        else if (this.mapper.properties.pointers.callback1.value == "Battle") {
-            if (this.mapper.properties.pointers.callback1.value == "Battle Animation") {
+        else if (this.mapper.properties.pointers.callback1.value == 134455025) {
+            if (this.mapper.properties.pointers.callback2.value == 134442925) {
                 this.g3stateVariable = "To Battle"
             }
             else if (this.mapper.properties.pointers.callback1.value == "Battle") {
@@ -2760,7 +2753,7 @@ const app = Vue.createApp({
 
         // wait for events to change the state
         this.mapper.properties.pointers.callback1.change((prop) => {
-            if (prop.value == "Overworld") { this.g3stateVariable = "Overworld" } 
+            if (prop.value == 134765285) { this.g3stateVariable = "Overworld" } 
         });
 
         this.mapper.properties.battle.turnInfo.battleDialogue.change((prop) => {
@@ -2787,10 +2780,10 @@ const app = Vue.createApp({
         });
 
         this.mapper.properties.pointers.callback2.change((prop) => {
-            if (prop.value == "Owners") { 
+            if (prop.value == 135711589) { 
                 this.g3stateVariable = "Base Stats"
             }
-            else if (prop.value == "Battle Animation") { 
+            else if (prop.value == 134442925) { 
                 this.g3stateVariable = "To Battle"
             }
         });
@@ -2801,7 +2794,12 @@ const app = Vue.createApp({
             }
         });
 
-        this.trackResets();
+        this.mapper.properties.pointers.dma1.change((newProp, oldProp) => {
+            if(newProp.value == 0 && oldProp.value > 0) {
+                this.playerResets++;
+            }
+        })
+
         this.newGame();
         //ENEMY STATE
         //ENEMY STATE MANAGER
@@ -2824,7 +2822,7 @@ const app = Vue.createApp({
             this.enemyState = "Pokemon";
 
         this.mapper.properties.pointers.callback2.change((prop) => {
-            if (prop.value == "Battle Animation") { 
+            if (prop.value == 134442925) { 
                 this.enemyState = "Battle Starting"
             }
         });
@@ -3374,6 +3372,7 @@ const app = Vue.createApp({
                     case "ELITE_FOUR_GLACIA":
                     case "ELITE_FOUR_DRAKE":
                     case "CHAMPION_WALLACE":
+                    case "RIVAL_STEVEN":
                     case "MAGMA_LEADER_MAXIE_MAGMA_HIDEOUT":
                     case "MAGMA_LEADER_MAXIE_MT_CHIMNEY":
                     case "AQUA_LEADER_ARCHIE":

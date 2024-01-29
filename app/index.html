@@ -193,11 +193,13 @@
                     <br>
                     <div>Debugging:</div>
                     <br>
-                    <div>Timer Pause: {{timer_pause}}</div>
-                    <div>Zigzagoon Check: {{zigzagoon_check}}</div>
-                    <div>Battle Outcome: {{mapper.properties.battle.turnInfo.battleOutcome}}</div>
-                    <div>Battle Outcome: {{mapper.properties.battle.enemyPokemon.type1.value}}</div>
-                    <div>Battle Outcome: {{mapper.properties.battle.enemyPokemon.type2.value}}</div>
+                    <table style="font-size: 14px;">
+                        <tr><td>Timer Pause: </td><td>{{timer_pause}}</td></tr>
+                        <tr><td>Zigzagoon Check: </td><td>{{zigzagoon_check}}</td></tr>
+                        <tr><td>Battle Outcome: </td><td>{{mapper.properties.battle.turnInfo.battleOutcome}}</td></tr>
+                        <tr><td>Enemy Type 1: </td><td>{{mapper.properties.battle.enemyPokemon.type1.value}}</td></tr>
+                        <tr><td>Enemy Type 2: </td><td>{{mapper.properties.battle.enemyPokemon.type2.value}}</td></tr>
+                    </table>
                 </div>
             </div>
 
@@ -354,8 +356,8 @@
                 </div>
                 <div v-else key=2>
                     <div class="movepoolTitle">Movepool</div>
-                    <table class="movepoolDemo" cellspacing="0">
-                    <!-- <table class="movepoolDemo" cellspacing="0" :style="movepoolResize()"> -->
+                    <!-- <table class="movepoolDemo" cellspacing="0"> -->
+                    <table class="movepoolDemo" cellspacing="0" :style="movepoolResize()">
                         <tr :style="{'background-color': `var(--${typeHeaderColor?.toLowerCase()})`, 'outline': '2px solid #000'}">
                             <th class="movepool_header movepool_way">Way</th>
                             <th class="movepool_header movepool_move">Move</th>
