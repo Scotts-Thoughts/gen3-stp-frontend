@@ -369,7 +369,7 @@
                         </tr>
                         <tr v-for="x in getMovepool(dexDataRubySapphireEmerald, g3MoveData, g3tmhmMapping, s1dynamicReset.species.value).level">
                             <td class="movepool_way">{{x.Level}}</td>
-                            <td class="movepool_move">{{x.Move}}</td>
+                            <td class="movepool_move">{{move_name(x.Move)}}</td>
                             <td class="movepool_type" :style="{'background-color': `var(--${movepoolTypeColor(x)?.toLowerCase()})`}">{{movepoolType(x)}}</td>
                             <td class="movepool_tableC">{{x.Power}}</td>
                             <td class="movepool_tableC">{{x.Accuracy}}%</td>
@@ -377,7 +377,7 @@
                         </tr>
                         <tr v-for="x in getMovepool(dexDataRubySapphireEmerald, g3MoveData, g3tmhmMapping, s1dynamicReset.species.value).tmhm">
                             <td class="movepool_way">{{x.tmhm}}</td>
-                            <td class="movepool_move">{{x.Move}}</td>
+                            <td class="movepool_move">{{move_name(x.Move)}}</td>
                             <td class="movepool_type" :style="{'background-color': `var(--${movepoolTypeColor(x)?.toLowerCase()})`}">{{movepoolType(x)}}</td>
                             <td class="movepool_tableC">{{movepoolPower(x)}}</td>
                             <td class="movepool_tableC">{{x.Accuracy}}%</td>
@@ -385,7 +385,7 @@
                         </tr>
                         <tr v-for="x in getMovepool(dexDataRubySapphireEmerald, g3MoveData, g3tmhmMapping, s1dynamicReset.species.value).tutor">
                             <td v-if="tutor_moves" class="movepool_way">Tutor</td>
-                            <td v-if="tutor_moves" class="movepool_move">{{x.Move}}</td>
+                            <td v-if="tutor_moves" class="movepool_move">{{move_name(x.Move)}}</td>
                             <td v-if="tutor_moves" class="movepool_type" :style="{'background-color': `var(--${x.Type?.toLowerCase()})`}">{{x.Type}}</td>
                             <td v-if="tutor_moves" class="movepool_tableC">{{x.Power}}</td>
                             <td v-if="tutor_moves" class="movepool_tableC">{{x.Accuracy}}%</td>

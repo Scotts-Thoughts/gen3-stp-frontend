@@ -1306,15 +1306,18 @@ const app = Vue.createApp({
         move_name(move_string) { //converts move strings so that they are formatted correctly
             if (move_string != undefined) {
                 if (move_string.toLowerCase() == "vicegrip")     { return "ViceGrip" }
+                if (move_string.toLowerCase() == "vice grip")     { return "ViceGrip" }
                 if (move_string.toLowerCase() == "doubleslap")   { return "DoubleSlap" }
                 if (move_string.toLowerCase() == "double-edge")  { return "Double-Edge" }
                 if (move_string.toLowerCase() == "solarbeam")    { return "SolarBeam" }
                 if (move_string.toLowerCase() == "extremespeed") { return "ExtremeSpeed" }
+                if (move_string.toLowerCase() == "extreme speed") { return "ExtremeSpeed" }
                 if (move_string.toLowerCase() == "dynamicpunch") { return "DynamicPunch" }
                 if (move_string.toLowerCase() == "thunderpunch") { return "ThunderPunch" }
                 if (move_string.toLowerCase() == "bubblebeam")   { return "BubbleBeam" }
                 if (move_string.toLowerCase() == "grasswhistle") { return "GrassWhistle" }
                 if (move_string.toLowerCase() == "softboiled")   { return "Softboiled" }
+                if (move_string.toLowerCase() == "soft boiled")   { return "Softboiled" }
                 if (move_string.toLowerCase() == "sand-attack")  { return "Sand-Attack" }
                 if (move_string.toLowerCase() == "mud-slap")     { return "Mud-Slap" }
                 if (move_string.toLowerCase() == "featherdance") { return "FeatherDance" }
@@ -1325,6 +1328,9 @@ const app = Vue.createApp({
                 if (move_string.toLowerCase() == "selfdestruct") { return "Selfdestruct" }
                 if (move_string.toLowerCase() == "smokescreen")  { return "SmokeScreen" }
                 if (move_string.toLowerCase() == "sonicboom")    { return "SonicBoom" }
+                if (move_string.toLowerCase() == "lock on")    { return "Lock-on" }
+                if (move_string.toLowerCase() == "lock-on")    { return "Lock-on" }
+
                 else { return move_string }
             }
             else { return move_string }
@@ -1408,7 +1414,7 @@ const app = Vue.createApp({
         //AUTOMATION MOVEPOOL GRAPHIC
         dataSearch(dataObject, pointerValue) {
             if (!pointerValue) return ""
-            const key = Object.keys(dataObject).find(x => x.toLowerCase() == pointerValue.toLowerCase())
+            const key = Object.keys(dataObject).find(x => x.toLowerCase() == this.move_name(pointerValue).toLowerCase())
             return dataObject[key] || "ERROR"
         },
         getMovepool(gen3PkmnData, moveData, tmhmMapping, species) {
@@ -1483,11 +1489,20 @@ const app = Vue.createApp({
 
         // MOVE ACCURACY
         moveAccuracyStatic(move) {
-            var moveObject = this.gen1moves.find(x => x.Move.toLowerCase() === move.toLowerCase())
+            var moveObject = this.gen3moves.find(x => x.Move.toLowerCase() === this.move_name(move).toLowerCase())
+            if(!moveObject) {
+                console.error(" Move not found")
+                return `-`;
+            }
             return moveObject.Accuracy
         },
         moveAccuracyDynamic(move) {
-            var moveObject = this.gen3moves.find(x => x.Move.toLowerCase() === move.toLowerCase())
+            var moveObject = this.gen3moves.find(x => x.Move.toLowerCase() === this.move_name(move).toLowerCase())
+            if(!moveObject)
+            {
+                console.error(" Move not found")
+                return `-`;
+            }
             var moveAccuracy = moveObject.Accuracy
             var stageModsAcc = this.stageModifiersData.find(x => x.modType === "accuracy")
             var stageModsEva = this.stageModifiersData.find(x => x.modType === "evasion")
@@ -1499,6 +1514,7 @@ const app = Vue.createApp({
                 abilityMod = 1.3
             }
             if (moveAccuracy == `-`) {
+                console.error(" Move not found")
                 return `-`
             }
             else if (this.g3stateVariable == `Battle`) {
@@ -2299,9 +2315,10 @@ const app = Vue.createApp({
         
         // MOVE MANAGEMENT
         movePower(y) { //y = move1.value
+            if (y) { y = y.toUpperCase() }
             if (y) {
-                var move = this.gen3moves.find(x => x.Move.toLowerCase() === y.toLowerCase())
-                if (y == "Return") {
+                var move = this.gen3moves.find(x => x.Move.toLowerCase() === this.move_name(y).toLowerCase())
+                if (y == "RETURN") {
                     if (this.mapper.properties.player.team[0].friendship.value < 2.5)
                         var friendshipValue = 2.5 
                     else 
@@ -2309,7 +2326,7 @@ const app = Vue.createApp({
                     var specialMovePower = Math.floor(friendshipValue/2.5)
                     return specialMovePower
                 }
-                else if (y == "Flail" || y == "Reversal") {
+                else if (y == "FLAIL" || y == "REVERSAL") {
                     var hpPercentage = this.mapper.properties.player.team[0].hp.value / this.mapper.properties.player.team[0].maxHp.value
                     if (hpPercentage >= .6875) { return 20 }
                     else if (hpPercentage >= .3542 && hpPercentage < .6875) { return 40 }
@@ -2318,22 +2335,22 @@ const app = Vue.createApp({
                     else if (hpPercentage >= .0417 && hpPercentage < .1042) { return 150 }
                     else if (hpPercentage < .0417) { return 200 }
                 }
-                else if (y == "Water Spout" || y == "Eruption") {
+                else if (y == "WATER SPOUT" || y == "ERUPTION") {
                     var power = (150 * this.mapper.properties.player.team[0].hp.value) / this.mapper.properties.player.team[0].maxHp.value
                     if (power < 1) {
                         return 1
                     }
                     return Math.floor(power)
                 }
-                else if (y == "Frustration") {
+                else if (y == "FRUSTRATION") {
                     if (this.mapper.properties.player.team[0].friendship.value > 252.5)
                         var friendshipValue = 252.5 
                     else 
                         var friendshipValue = this.mapper.properties.player.team[0].friendship.value
-                    var specialMovePower = Math.floor(255-friendshipValue/2.5)
+                    var specialMovePower = Math.floor((255-friendshipValue)/2.5)
                     return specialMovePower
                 }
-                else if (y == "Low Kick") {
+                else if (y == "LOW KICK") {
                     if (this.dexDataRubySapphireEmerald[this.batt.enemyPokemon.species.value]?.weight < 10) { return 20 }
                     if (this.dexDataRubySapphireEmerald[this.batt.enemyPokemon.species.value]?.weight < 25) { return 40 }
                     if (this.dexDataRubySapphireEmerald[this.batt.enemyPokemon.species.value]?.weight < 50) { return 60 }
@@ -2341,10 +2358,10 @@ const app = Vue.createApp({
                     if (this.dexDataRubySapphireEmerald[this.batt.enemyPokemon.species.value]?.weight < 200) { return 100 }
                     if (this.dexDataRubySapphireEmerald[this.batt.enemyPokemon.species.value]?.weight >= 200) { return 120 }
                 }
-                else if (y == "Hidden Power") {
+                else if (y == "HIDDEN POWER") {
                     return this.hiddenPowerPowerCalc(this.mapper.properties.player.team[0])
                 }
-                else if (y == "Facade" && (this.s1.statusCondition.value == "Paralyzed" || this.s1.statusCondition.value == "Poisoned" || this.s1.statusCondition.value == "Burned")) {
+                else if (y == "FACADE" && (this.s1.statusCondition.value == "Paralyzed" || this.s1.statusCondition.value == "Poisoned" || this.s1.statusCondition.value == "Burned")) {
                     return move.Power * 2
                 }
                 else
@@ -2353,16 +2370,16 @@ const app = Vue.createApp({
             return null
         },
         movepoolPower(moveObject) {
-            if (moveObject.Move == `Hidden Power`) {
+            if (moveObject.Move == `HIDDEN POWER`) {
                 return this.hiddenPowerPowerCalc(this.mapper.properties.player.team[0])
             }
-            if (moveObject.Move == `Return`) {
+            if (moveObject.Move == `RETURN`) {
                 if (this.mapper.properties.player.teamCount.value == 0) {
                     return "-"
                 }
                 return this.g3ReturnPowerCalc(this.mapper.properties.player.team[0])
             }
-            if (moveObject.Move == `Frustration`) {
+            if (moveObject.Move == `FRUSTRATION`) {
                 if (this.mapper.properties.player.teamCount.value == 0) {
                     return "-"
                 }
@@ -2374,7 +2391,7 @@ const app = Vue.createApp({
             if (moveObject.Type == `Curse`) {
                 return "Curse"
             }
-            if (moveObject.Move == `Hidden Power`) {
+            if (moveObject.Move == `HIDDEN POWER`) {
                 return this.hidden_power_type
             }
             return moveObject.Type
@@ -2383,7 +2400,7 @@ const app = Vue.createApp({
             if (moveObject.Type == `Curse`) {
                 return "???"
             }
-            if (moveObject.Move == `Hidden Power`) {
+            if (moveObject.Move == `HIDDEN POWER`) {
                 return this.hidden_power_type
             }
             return moveObject.Type
@@ -2426,22 +2443,26 @@ const app = Vue.createApp({
             }
         },
         moveType(y) { //y = move1.value
-            if (y == "Hidden Power") {
+            if (y == "HIDDEN POWER") {
                 var move = this.hiddenPowerTypeCalc(this.mapper.properties.player.team[0])
                 return move
             }
             else if (y) {
-                var move = this.gen3moves.find(x => x.Move.toLowerCase() === y.toLowerCase())
+                var move = this.gen3moves.find(x => x.Move.toLowerCase() === this.move_name(y).toLowerCase())
                 if (move) return move.Type
             }
             return null
         },
         moveTypeIcon(y) { //y = move1.value
-            if (y != null && y != undefined && y == "Hidden Power") {
+            if (y != null && y != undefined && y == "HIDDEN POWER") {
                 return `images/elements/type-icons/${this.hiddenPowerTypeCalc(this.mapper.properties.player.team[0])}.png`
             }
             else if (y != null && y != undefined) {
-                var move = this.gen3moves.find(x => x.Move.toLowerCase() === y.toLowerCase())
+                var move = this.gen3moves.find(x => x.Move.toLowerCase() === this.move_name(y).toLowerCase())
+                if(!move) {
+                    console.error(" Move not found")
+                    return null
+                }
                 var moveType = move[`Type`]?.toLowerCase()
                 return `images/elements/type-icons/${moveType}.png`
             }
@@ -2587,6 +2608,7 @@ const app = Vue.createApp({
             var itemBoost = this.determineItemBoost(x)
             var weatherBoost = this.weatherModifier(this.mapper.properties.battle.turnInfo.battleWeather.value, x, this.moveType(x))
             var burnModifier = this.burnModifier(x)
+            if (x == "FUTURE SIGHT") { return 80 }
             //IN BATTLE
             if (this.batt.trainer.opponentA.value == `LEADER_TATE_AND_LIZA_1` || this.batt.trainer.opponentA.value == `MAGMA_LEADER_MAXIE_MOSSDEEP`) {
                 return power
