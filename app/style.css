@@ -1519,8 +1519,8 @@ body {
     position: absolute;
     line-height: 61.5px;
     z-index: 1000;
-    top: 476px;
-    left: -114px;
+    top: 936px;
+    left: -60px;
     width: 200px;
     text-align: center;
     font-family: play;
@@ -2703,7 +2703,7 @@ body {
     border: 1px solid #ff000000;
     width: 240px;
     height: 51px;
-    top: 660px;
+    top: 646px;
     left: 11px;
     text-align: center;
     font-family: play;
@@ -2714,6 +2714,7 @@ body {
     font-size: 16px;
     opacity: .6;
     text-decoration: underline;
+
 }
 .field_effect {
     font-size: 26px;
