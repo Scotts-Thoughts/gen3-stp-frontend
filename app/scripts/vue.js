@@ -693,6 +693,9 @@ const app = Vue.createApp({
             route_101: MyStorage['route_101'] ?? true,
             route_102: MyStorage['route_102'] ?? true,
             route_103: MyStorage['route_103'] ?? true,
+            hm_102_zigzagoon: MyStorage['hm_102_zigzagoon'] ?? true,
+            hm_104_marill:    MyStorage['hm_104_marill']    ?? true,
+            hm_104_taillow:    MyStorage['hm_104_taillow']    ?? true,
 
             auto_save: [
                 "graphicOverlay",
@@ -792,6 +795,33 @@ const app = Vue.createApp({
         }
     },
     watch: {
+        hm_102_zigzagoon(newValue) {
+            if (newValue == false) {
+                this.mapper.properties.overworld.encounter.zigzagoon.set(false, false)
+            }
+            if (newValue == true) {
+                this.mapper.properties.overworld.encounter.zigzagoon.set(true, false)
+            }
+            MyStorage['hm_102_zigzagoon'] = newValue
+        },
+        hm_104_marill(newValue) {
+            if (newValue == false) {
+                this.mapper.properties.overworld.encounter.marill.set(false, false)
+            }
+            if (newValue == true) {
+                this.mapper.properties.overworld.encounter.marill.set(true, false)
+            }
+            MyStorage['hm_104_marill'] = newValue
+        },
+        hm_104_taillow(newValue) {
+            if (newValue == false) {
+                this.mapper.properties.overworld.encounter.taillow.set(false, false)
+            }
+            if (newValue == true) {
+                this.mapper.properties.overworld.encounter.taillow.set(true, false)
+            }
+            MyStorage['hm_104_taillow'] = newValue
+        },
         starterString(newValue, oldValue) {
             //background texture settings
             this.overlay_color =         MyStorage[`${newValue}`]?.overlay_color ?? this.default_colors[dexDataRubySapphireEmerald[newValue].type_1]
@@ -1221,6 +1251,9 @@ const app = Vue.createApp({
             this.route_101 =                  MyStorage['route_101']                  ?? true
             this.route_102 =                  MyStorage['route_102']                  ?? true
             this.route_103 =                  MyStorage['route_103']                  ?? true
+            this.hm_102_zigzagoon =           MyStorage['hm_102_zigzagoon']           ?? true
+            this.hm_104_marill =              MyStorage['hm_104_marill']              ?? true
+            this.hm_104_taillow =              MyStorage['hm_104_taillow']              ?? true
             this.testRun =                    MyStorage['testRun']                    ?? false
             this.simple_data_str =            MyStorage['simple_data_str']            ?? ""
             this.full_data_str =              MyStorage['full_data_str']              ?? ""
@@ -2736,6 +2769,9 @@ const app = Vue.createApp({
         },
         freezeEncounters() {
             this.mapper.properties.overworld.mapName.change((newProp) => {
+                if (this.hm_102_zigzagoon == true && newProp.value == "ROUTE 102" && this.route_102 == true) {
+                    return
+                }
                 if((newProp.value == "ROUTE 101" && ! this.route_101) ||
                 (newProp.value == "ROUTE 102" && ! this.route_102) ||
                 (newProp.value == "ROUTE 103" && ! this.route_103)) {
