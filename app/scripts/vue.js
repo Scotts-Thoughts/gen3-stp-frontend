@@ -1533,7 +1533,7 @@ const app = Vue.createApp({
             var moveObject = this.gen3moves.find(x => x.Move.toLowerCase() === this.move_name(move).toLowerCase())
             if(!moveObject)
             {
-                console.error(" Move not found")
+                console.error(" Move not found: "+move)
                 return `-`;
             }
             var moveAccuracy = moveObject.Accuracy
@@ -1547,7 +1547,6 @@ const app = Vue.createApp({
                 abilityMod = 1.3
             }
             if (moveAccuracy == `-`) {
-                console.error(" Move not found")
                 return `-`
             }
             else if (this.g3stateVariable == `Battle`) {
@@ -2488,7 +2487,7 @@ const app = Vue.createApp({
         },
         moveTypeIcon(y) { //y = move1.value
             if (y != null && y != undefined && y == "HIDDEN POWER") {
-                return `images/elements/type-icons/${this.hiddenPowerTypeCalc(this.mapper.properties.player.team[0])}.png`
+                return `images/elements/type-icons/${this.hiddenPowerTypeCalc(this.mapper.properties.player.team[0]).toLowerCase()}.png`
             }
             else if (y != null && y != undefined) {
                 var move = this.gen3moves.find(x => x.Move.toLowerCase() === this.move_name(y).toLowerCase())
