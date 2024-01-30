@@ -672,6 +672,7 @@ const app = Vue.createApp({
             blackout_counter: MyStorage["blackout_counter"] ?? 0,
             resetCounter: true,
             game_over: false,
+            hallOfFameReset: false,
             finished_logs: false,
             pb_time: "None",
             split_logStr: "",
@@ -2861,7 +2862,10 @@ const app = Vue.createApp({
         });
 
         this.mapper.properties.pointers.dma1.change((newProp, oldProp) => {
-            if(newProp.value == 0 && oldProp.value > 0) {
+            if (this.hallOfFameReset == true) {
+                this.hallOfFameReset = false;
+            }
+            else if(newProp.value == 0 && oldProp.value > 0) {
                 this.playerResets++;
             }
         });
@@ -3460,6 +3464,9 @@ const app = Vue.createApp({
                     case "RIVAL_MAY_ROUTE_103_TORCHIC":
                     case "RIVAL_MAY_ROUTE_110_TORCHIC":
                     case "RIVAL_MAY_ROUTE_119_TORCHIC": { simpleSplit() }
+                }
+                if (trainer == "CHAMPION_WALLACE") {
+                    this.hallOfFameReset = true;
                 }
 
                 //stop timer
