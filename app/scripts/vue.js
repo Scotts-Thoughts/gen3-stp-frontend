@@ -909,7 +909,7 @@ const app = Vue.createApp({
             const zigzagoon = this.mapper.properties.player.team[0].species.value
             const map = this.mapper.properties.overworld.mapName.value
             const starter = this.starterString
-            if (starter != "Zigzagoon" && map == "ROUTE 102" && zigzagoon == "Zigzagoon") {
+            if (starter != "Zigzagoon" && (map == "ROUTE 102"|| map == "PETALBURG_CITY") && zigzagoon == "Zigzagoon") {
                 return true
             }
             else { 
