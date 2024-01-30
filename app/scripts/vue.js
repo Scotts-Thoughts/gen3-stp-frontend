@@ -2829,10 +2829,9 @@ const app = Vue.createApp({
                 return;
             }
             if (prop.value == "Player Control") { 
-            this.g3stateVariable = "Battle"
-        }
-
-        })
+                this.g3stateVariable = "Battle"
+            }
+        });
 
         this.mapper.properties.battle.turnInfo.battleOutcome.change((prop) => {
             if (prop.value == "WON") { this.g3stateVariable = "From Battle"}
@@ -2866,7 +2865,7 @@ const app = Vue.createApp({
             if(newProp.value == 0 && oldProp.value > 0) {
                 this.playerResets++;
             }
-        })
+        });
 
         this.newGame();
         //ENEMY STATE
