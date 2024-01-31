@@ -1181,7 +1181,7 @@ const app = Vue.createApp({
         },
         starter() {
             return this.dexDataRubySapphireEmerald[this.starterString].dex_number
-        }
+        },
     },
 
     methods: { 
@@ -1604,9 +1604,7 @@ const app = Vue.createApp({
                 return `-`;
             }
             var moveAccuracy = moveObject.Accuracy
-            // console.log(move + this.mapper.properties.battle.field.weather.value)
             if(move.toUpperCase() == "THUNDER") {
-                console.log("yes")
                 if(this.mapper.properties.battle.field.weather.value == "Sun") {
                     moveAccuracy = 50;
                 }
@@ -2668,7 +2666,6 @@ const app = Vue.createApp({
         abilityModifier(ability, attackingType) {
             var healthPercentage = this.s1.hp.value / this.s1.maxHp.value
             if (healthPercentage <= .3) {
-                // console.log("ability: "+ability +" attacking Type: " + attackingType)
                 if (ability == `Torrent` && attackingType == `Water`) {
                     return 1.5
                 }
@@ -2858,6 +2855,51 @@ const app = Vue.createApp({
                     this.mapper.properties.overworld.disabledEncounters.set(0x00,false);
                 }
             })
+        },
+        natureBuffs(nature) {
+            let output = nature;
+            let pad = 7 - nature.length;
+            output+="-".repeat(pad) + ": "
+            switch(this.natures[nature].raises) {
+                case "Attack":
+                    output+= "+Attack";
+                    break;
+                case "Defense":
+                    output+= "+Defense";
+                    break;
+                case "Special Attack":
+                    output+= "+Sp. Atk";
+                    break;
+                case "Special Defense":
+                    output+= "+Sp. Def";
+                    break;
+                case "Speed":
+                    output+= "+Speed";
+                    break;
+                default:
+                    output+= "Neutral";
+                    break;
+            }
+            switch(this.natures[nature].lowers) {
+                case "Attack":
+                    output+= " | -Attack";
+                    break;
+                case "Defense":
+                    output+= " | -Defense";
+                    break;
+                case "Special Attack":
+                    output+= " | -Sp. Atk";
+                    break;
+                case "Special Defense":
+                    output+= " | -Sp. Def";
+                    break;
+                case "Speed":
+                    output+= " | -Speed";
+                    break;
+                default:
+                    break;
+            }
+            return output;
         }
     },
     
