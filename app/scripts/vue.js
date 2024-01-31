@@ -23,6 +23,63 @@ function openFolder(folderName) {
     require('child_process').exec(`start .\\${folderName}\\`);
 }
 
+class RetroArchHook {
+    client = undefined
+    connected = false
+    resolve = () => {}
+    
+    constructor() {
+        if (!require) {
+            console.error('RetroArchHook: require is not defined')
+            return
+        }
+
+        this.client = require('dgram').createSocket('udp4');
+
+        this.client.on('message', (msg, info) => {
+            const s = String.fromCharCode(...msg).split(" ")
+            if (s[0] === 'GET_STATUS') {
+                this.resolve(s[1])
+            }
+        });
+        
+        this.client.connect(55355, '127.0.0.1', (err) => {
+            // console.log(err)
+            if (!err) {
+                this.connected = true
+            }
+        });
+    }
+
+    async get_status() {
+        // returns 'CONTENTLESS' | 'PLAYING' | 'PAUSED'
+        return new Promise((resolve, reject) => {
+            this.resolve = resolve
+            this.client.send('GET_STATUS');
+        })
+    }
+    
+    async pause() {
+        const status = await this.get_status()
+        if (status === 'PLAYING') {
+            this.client.send('PAUSE_TOGGLE');
+        }
+    }
+
+    async resume() {
+        const status = await this.get_status()
+        if (status === 'PAUSED') {
+            this.client.send('PAUSE_TOGGLE');
+        }
+    }
+
+    async fastForward() {
+        this.client.send('FAST_FORWARD');
+    }
+}
+
+const retro = new RetroArchHook()
+
 const Keys = {
     "ESCAPE":         0x1B,
     "BACKSPACE":      0x08,
@@ -874,7 +931,7 @@ const app = Vue.createApp({
             if (this.playerResets < 0) {
                 this.playerResets = 0;
             }
-            this.blackout == false
+            // this.blackout == false
             MyStorage["playerResets"] = this.playerResets
         },
         blackout_counter(newProp) {
@@ -977,14 +1034,23 @@ const app = Vue.createApp({
             }
             else if (this.g3stateVariable == `Battle`) {
                 let specArr = this.mapper.properties.battle.yourPokemon.speciesArray.value;
-                let indexStart = specArr.indexOf("\'");
-                let indexEnd = specArr.indexOf("\'",indexStart+1);
-                let speciesValue = specArr.substring(indexStart+1,indexEnd);
-                return {
-                    species: {
-                        value: speciesValue
-                    }
-                };
+                try {
+                    let indexStart = specArr.indexOf("\'");
+                    let indexEnd = specArr.indexOf("\'",indexStart+1);
+                    let speciesValue = specArr.substring(indexStart+1,indexEnd);
+                    return {
+                        species: {
+                            value: speciesValue
+                        }
+                    };
+                }
+                catch {
+                    return {
+                        species: {
+                            value: this.starterString
+                        }
+                    };
+                }
                 // return this.mapper?.properties?.battle?.yourPokemon
             }
             else if (this.g3stateVariable == `Base Stats` || this.mapper?.properties?.player?.team[0].species.value == null) {
@@ -1194,12 +1260,12 @@ const app = Vue.createApp({
                 this.timer_pause = false
                 this.timer_startTime += Date.now() - this.timer_pause_time
                 this.updateTime()
-                // retro.resume()
+                retro.resume()
             }
             else {
                 this.timer_pause = true
                 this.timer_pause_time = Date.now()
-                // retro.pause()
+                retro.pause()
             }
         },
         // resetTime() {
@@ -1254,7 +1320,7 @@ const app = Vue.createApp({
             this.route_103 =                  MyStorage['route_103']                  ?? true
             this.hm_102_zigzagoon =           MyStorage['hm_102_zigzagoon']           ?? true
             this.hm_104_marill =              MyStorage['hm_104_marill']              ?? true
-            this.hm_104_taillow =              MyStorage['hm_104_taillow']              ?? true
+            this.hm_104_taillow =             MyStorage['hm_104_taillow']             ?? true
             this.testRun =                    MyStorage['testRun']                    ?? false
             this.simple_data_str =            MyStorage['simple_data_str']            ?? ""
             this.full_data_str =              MyStorage['full_data_str']              ?? ""
@@ -1538,13 +1604,23 @@ const app = Vue.createApp({
                 return `-`;
             }
             var moveAccuracy = moveObject.Accuracy
+            // console.log(move + this.mapper.properties.battle.field.weather.value)
+            if(move.toUpperCase() == "THUNDER") {
+                console.log("yes")
+                if(this.mapper.properties.battle.field.weather.value == "Sun") {
+                    moveAccuracy = 50;
+                }
+                if(this.mapper.properties.battle.field.weather.value == "Rain") {
+                    return `-`;
+                }
+            }
             var stageModsAcc = this.stageModifiersData.find(x => x.modType === "accuracy")
             var stageModsEva = this.stageModifiersData.find(x => x.modType === "evasion")
             var currentModStageAcc = this.batt.yourPokemon.modStageAccuracy.value
             var currentModStageEva = this.batt.enemyPokemon.modStageEvasion.value
             var abilityMod = 1
             // debugger
-            if (this.pkmnAbility == "Compound Eyes") {
+            if (this.pkmn_ability == "Compound Eyes") {
                 abilityMod = 1.3
             }
             if (moveAccuracy == `-`) {
@@ -1828,7 +1904,7 @@ const app = Vue.createApp({
                 string = "No Pokemon"
                 gamestate = 2
                 return this.setGamestate(string, gamestate)
-            }      
+            }   
             // OVERWORLD
             else if (
                 this.mapper.properties.player.name.bytes > 0 &&
@@ -1902,7 +1978,7 @@ const app = Vue.createApp({
                 string = "Double-Battle"
                 gamestate = 6
                 return this.setGamestate(string, gamestate)
-            } 
+            }
             // FROM BATTLE
             else if (
                 this.mapper.properties.battle.turnInfo.battleOutcome.bytes > 0 && 
@@ -2391,7 +2467,7 @@ const app = Vue.createApp({
                     if (this.dexDataRubySapphireEmerald[this.batt.enemyPokemon.species.value]?.weight < 200) { return 100 }
                     if (this.dexDataRubySapphireEmerald[this.batt.enemyPokemon.species.value]?.weight >= 200) { return 120 }
                 }
-                else if (y == "HIDDEN POWER") {
+                else if (y.toUpperCase() == "HIDDEN POWER") {
                     return this.hiddenPowerPowerCalc(this.mapper.properties.player.team[0])
                 }
                 else if (y == "FACADE" && (this.s1.statusCondition.value == "Paralyzed" || this.s1.statusCondition.value == "Poisoned" || this.s1.statusCondition.value == "Burned")) {
@@ -2403,16 +2479,16 @@ const app = Vue.createApp({
             return null
         },
         movepoolPower(moveObject) {
-            if (moveObject.Move == `HIDDEN POWER`) {
+            if (moveObject.Move.toUpperCase() == `HIDDEN POWER`) {
                 return this.hiddenPowerPowerCalc(this.mapper.properties.player.team[0])
             }
-            if (moveObject.Move == `RETURN`) {
+            if (moveObject.Move.toUpperCase() == `RETURN`) {
                 if (this.mapper.properties.player.teamCount.value == 0) {
                     return "-"
                 }
                 return this.g3ReturnPowerCalc(this.mapper.properties.player.team[0])
             }
-            if (moveObject.Move == `FRUSTRATION`) {
+            if (moveObject.Move.toUpperCase() == `FRUSTRATION`) {
                 if (this.mapper.properties.player.teamCount.value == 0) {
                     return "-"
                 }
@@ -2424,7 +2500,7 @@ const app = Vue.createApp({
             if (moveObject.Type == `Curse`) {
                 return "Curse"
             }
-            if (moveObject.Move == `HIDDEN POWER`) {
+            if (moveObject.Move.toUpperCase() == `HIDDEN POWER`) {
                 return this.hidden_power_type
             }
             return moveObject.Type
@@ -2433,7 +2509,7 @@ const app = Vue.createApp({
             if (moveObject.Type == `Curse`) {
                 return "???"
             }
-            if (moveObject.Move == `HIDDEN POWER`) {
+            if (moveObject.Move.toUpperCase() == `HIDDEN POWER`) {
                 return this.hidden_power_type
             }
             return moveObject.Type
@@ -2465,7 +2541,7 @@ const app = Vue.createApp({
             else if (weather == "Rain" && moveType == "Fire") {
                 return .5
             }
-            else if (weather == "Rain" && move == "SolarBeam") {
+            else if (weather == "Rain" && move == "SOLARBEAM") {
                 return .5
             }
             else if (weather == "Sandstorm") {
@@ -2476,7 +2552,7 @@ const app = Vue.createApp({
             }
         },
         moveType(y) { //y = move1.value
-            if (y == "HIDDEN POWER") {
+            if (y.toUpperCase() == "HIDDEN POWER") {
                 var move = this.hiddenPowerTypeCalc(this.mapper.properties.player.team[0])
                 return move
             }
@@ -2487,7 +2563,7 @@ const app = Vue.createApp({
             return null
         },
         moveTypeIcon(y) { //y = move1.value
-            if (y != null && y != undefined && y == "HIDDEN POWER") {
+            if (y != null && y != undefined && y.toUpperCase() == "HIDDEN POWER") {
                 return `images/elements/type-icons/${this.hiddenPowerTypeCalc(this.mapper.properties.player.team[0]).toLowerCase()}.png`
             }
             else if (y != null && y != undefined) {
@@ -2592,6 +2668,7 @@ const app = Vue.createApp({
         abilityModifier(ability, attackingType) {
             var healthPercentage = this.s1.hp.value / this.s1.maxHp.value
             if (healthPercentage <= .3) {
+                // console.log("ability: "+ability +" attacking Type: " + attackingType)
                 if (ability == `Torrent` && attackingType == `Water`) {
                     return 1.5
                 }
@@ -2614,7 +2691,7 @@ const app = Vue.createApp({
         },
         burnModifier(x) {
             var attackingType = this.moveType(x)
-            if (this.s1.statusCondition.value == `Burned` && this.pkmnAbility != `Guts`) {
+            if (this.s1.statusCondition.value == `Burned` && this.pkmn_ability != `Guts`) {
                 if (attackingType == "Ground" || attackingType == "Rock" || attackingType == "Fighting" || attackingType == "Bug" || attackingType == "Ghost" ||
                 attackingType == "Normal" || attackingType == "Steel" || attackingType == "Flying" || attackingType == "Poison") {
                     return 0.5
@@ -2637,7 +2714,7 @@ const app = Vue.createApp({
             var defendingType2 = this.mapper.properties.battle.enemyPokemon.type2.value
             var multipliers = this.typeData.find(x => x.moveType === attackingType)
             var stabModifier = this.determineSTAB(x)
-            var ability = this.abilityModifier(this.pkmnAbility, attackingType)
+            var ability = this.abilityModifier(this.pkmn_ability, attackingType)
             var itemBoost = this.determineItemBoost(x)
             var weatherBoost = this.weatherModifier(this.mapper.properties.battle.turnInfo.battleWeather.value, x, this.moveType(x))
             var burnModifier = this.burnModifier(x)
@@ -2806,22 +2883,24 @@ const app = Vue.createApp({
             this.g3stateVariable = "Base Stats"
         else if (this.mapper.properties.pointers.callback1.value == 0)
             this.g3stateVariable = "Base Stats"
-        else if (this.mapper.properties.pointers.callback1.value == 134765285)
+        else if (this.mapper.properties.pointers.callback1.value == 134765285 || this.mapper.properties.pointers.callback1.value == "Overworld" || this.mapper.properties.pointers.callback1.value == 134765313)
             this.g3stateVariable = "Overworld"
         else if (this.mapper.properties.pointers.callback1.value == 134455025) {
             if (this.mapper.properties.pointers.callback2.value == 134442925) {
                 this.g3stateVariable = "To Battle"
             }
-            else if (this.mapper.properties.pointers.callback1.value == "Battle") {
+            else {
                 this.g3stateVariable = "Battle"
             }
         }
-        else
+        else 
             this.g3stateVariable = "Battle"
 
         // wait for events to change the state
         this.mapper.properties.pointers.callback1.change((prop) => {
-            if (prop.value == 134765285) { this.g3stateVariable = "Overworld" } 
+            if (prop.value == 134765285 || prop.value == "Overworld" || prop.value == 134765313) {
+                this.g3stateVariable = "Overworld"
+            }
         });
 
         this.mapper.properties.battle.turnInfo.battleDialogue.change((prop) => {
@@ -3493,7 +3572,7 @@ const app = Vue.createApp({
                     }
                     console.log("Data transfer finished.")
                 }
-            }   
+            }
         });
 
         //EXP BAR ANIMATION FUNCTION
@@ -3530,7 +3609,7 @@ const app = Vue.createApp({
                     this.prevSpecies = currSpecies; 
                     // dont animate, just set newExpStats.percent
                     this.$refs.expBar.style.width = (newExpStats.percent * 100) + "%";
-                } 
+                }
                 // same pokemon but exp changed
                 else {
                     if (oldExpStats.level == newExpStats.level) {
