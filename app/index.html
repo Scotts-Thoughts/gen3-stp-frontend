@@ -178,7 +178,7 @@
                     <div>Nature:</div>
                     <select v-model="pkmnNature" class="dropdownMenu">
                         <option disabled value="">Select a Nature</option>
-                        <option v-for="key in values_function(simple_natures)" :value="`${key}`">{{natureBuffs(`${key}`)}}</option>
+                        <option v-for="key in values_function(simple_natures)" :value="`${key}`">{{key}}</option>
                     </select><br>
                     <table style="font-size: 12px;">
                         <tr><td>Raises:</td><td>{{natures[pkmnNature].raises}}</td></tr>

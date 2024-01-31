@@ -2856,51 +2856,51 @@ const app = Vue.createApp({
                 }
             })
         },
-        natureBuffs(nature) {
-            let output = nature;
-            let pad = 7 - nature.length;
-            output+="-".repeat(pad) + ": "
-            switch(this.natures[nature].raises) {
-                case "Attack":
-                    output+= "+Attack";
-                    break;
-                case "Defense":
-                    output+= "+Defense";
-                    break;
-                case "Special Attack":
-                    output+= "+Sp. Atk";
-                    break;
-                case "Special Defense":
-                    output+= "+Sp. Def";
-                    break;
-                case "Speed":
-                    output+= "+Speed";
-                    break;
-                default:
-                    output+= "Neutral";
-                    break;
-            }
-            switch(this.natures[nature].lowers) {
-                case "Attack":
-                    output+= " | -Attack";
-                    break;
-                case "Defense":
-                    output+= " | -Defense";
-                    break;
-                case "Special Attack":
-                    output+= " | -Sp. Atk";
-                    break;
-                case "Special Defense":
-                    output+= " | -Sp. Def";
-                    break;
-                case "Speed":
-                    output+= " | -Speed";
-                    break;
-                default:
-                    break;
-            }
-            return output;
-        }
+        // natureBuffs(nature) {
+        //     let output = nature;
+        //     let pad = 7 - nature.length;
+        //     output+="-".repeat(pad) + ": "
+        //     switch(this.natures[nature].raises) {
+        //         case "Attack":
+        //             output+= "+Attack";
+        //             break;
+        //         case "Defense":
+        //             output+= "+Defense";
+        //             break;
+        //         case "Special Attack":
+        //             output+= "+Sp. Atk";
+        //             break;
+        //         case "Special Defense":
+        //             output+= "+Sp. Def";
+        //             break;
+        //         case "Speed":
+        //             output+= "+Speed";
+        //             break;
+        //         default:
+        //             output+= "Neutral";
+        //             break;
+        //     }
+        //     switch(this.natures[nature].lowers) {
+        //         case "Attack":
+        //             output+= " | -Attack";
+        //             break;
+        //         case "Defense":
+        //             output+= " | -Defense";
+        //             break;
+        //         case "Special Attack":
+        //             output+= " | -Sp. Atk";
+        //             break;
+        //         case "Special Defense":
+        //             output+= " | -Sp. Def";
+        //             break;
+        //         case "Speed":
+        //             output+= " | -Speed";
+        //             break;
+        //         default:
+        //             break;
+        //     }
+        //     return output;
+        // }
     },
     
 
