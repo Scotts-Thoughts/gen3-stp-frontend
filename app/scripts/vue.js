@@ -2843,18 +2843,25 @@ const app = Vue.createApp({
         },
         freezeEncounters() {
             this.mapper.properties.overworld.mapName.change((newProp) => {
-                if (this.hm_102_zigzagoon == true && newProp.value == "ROUTE 102" && this.route_102 == true) {
-                    return
-                }
-                if((newProp.value == "ROUTE 101" && ! this.route_101) ||
-                (newProp.value == "ROUTE 102" && ! this.route_102) ||
-                (newProp.value == "ROUTE 103" && ! this.route_103)) {
-                    this.mapper.properties.overworld.disabledEncounters.set(0x01,false);
+                if (this.hm_102_zigzagoon == true && newProp.value == "ROUTE 102" && this.route_102 == false && this.mapper.properties.player.team[1].species.value != "Zigzagoon") {
+                    this.mapper.properties.player.team[1].species.change((newerProp) => {
+                        if(newerProp = "Zigzagoon" && this.hm_102_zigzagoon == true && newProp.value == "ROUTE 102" && this.route_102 == false) {
+                            this.mapper.properties.overworld.disabledEncounters.set(0x01,false);
+                        }
+                    });
                 }
                 else {
-                    this.mapper.properties.overworld.disabledEncounters.set(0x00,false);
+                    if((newProp.value == "ROUTE 101" && ! this.route_101) ||
+                        (newProp.value == "ROUTE 102" && ! this.route_102) ||
+                        (newProp.value == "ROUTE 103" && ! this.route_103)) {
+                        this.mapper.properties.overworld.disabledEncounters.set(0x01,false);
+                    }
+                    else {
+                        this.mapper.properties.overworld.disabledEncounters.set(0x00,false);
+                    }
+                
                 }
-            })
+            });
         },
         // natureBuffs(nature) {
         //     let output = nature;
