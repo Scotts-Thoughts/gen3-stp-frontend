@@ -2935,7 +2935,7 @@ const app = Vue.createApp({
         else if (this.mapper.properties.pointers.callback1.value == 134765285 || this.mapper.properties.pointers.callback1.value == "Overworld" || this.mapper.properties.pointers.callback1.value == 134765313)
             this.g3stateVariable = "Overworld"
         else if (this.mapper.properties.pointers.callback1.value == 134455025) {
-            if (this.mapper.properties.pointers.callback2.value == 134442925) {
+            if (this.mapper.properties.pointers.callback2.value == 134765389) {
                 this.g3stateVariable = "To Battle"
             }
             else {
