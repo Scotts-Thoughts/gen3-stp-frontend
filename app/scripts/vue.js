@@ -502,6 +502,20 @@ function logCopy(gameName, file_name, starterName, finished_run_count) {
                 console.error(err);
             }
         });
+        fs.copyFile(
+            path.join(dirPathAttempts, `${starterName}-${file_name}-full.csv`), 
+            path.join(dirPathFinishes, `${starterName}-${finished_run_count}-full.csv`), (err) => {
+            if (err) {
+                console.error(err);
+            }
+        });
+        fs.copyFile(
+            path.join(dirPathAttempts, `${starterName}-${file_name}-deprecated.csv`), 
+            path.join(dirPathFinishes, `${starterName}-${finished_run_count}-deprecated.csv`), (err) => {
+            if (err) {
+                console.error(err);
+            }
+        });
     });
 }
 
@@ -693,7 +707,6 @@ const app = Vue.createApp({
                 "backgroundUrl",
                 "use_custom_background",
                 "attempt_number",
-                "finished_run_count",
                 "pb_time",
                 "backgroundXOffset",
                 "backgroundYOffset",
@@ -863,6 +876,42 @@ const app = Vue.createApp({
                 this.battle_start = Date.now()
                 this.time_split_start = this.padTime(this.time_h) + ":" + this.padTime(this.time_m) + ":" + this.padTime(this.time_s) + "." + this.padTime(this.time_ms)
                 log_start()
+            }
+        },
+        route_101(newValue) {
+            if (this.mapper.properties.overworld.mapName.value == "ROUTE 101") {
+                switch (newValue) {
+                    case true:
+                        this.mapper.properties.overworld.disabledEncounters.set(1, false)
+                        break;
+                    case false:
+                        this.mapper.properties.overworld.disabledEncounters.set(0, false)
+                        break;
+                }
+            }
+        },
+        route_102(newValue) {
+            if (this.mapper.properties.overworld.mapName.value == "ROUTE 102") {
+                switch (newValue) {
+                    case true:
+                        this.mapper.properties.overworld.disabledEncounters.set(1, false)
+                        break;
+                    case false:
+                        this.mapper.properties.overworld.disabledEncounters.set(0, false)
+                        break;
+                }
+            }
+        },
+        route_103(newValue) {
+            if (this.mapper.properties.overworld.mapName.value == "ROUTE 103") {
+                switch (newValue) {
+                    case true:
+                        this.mapper.properties.overworld.disabledEncounters.set(1, false)
+                        break;
+                    case false:
+                        this.mapper.properties.overworld.disabledEncounters.set(0, false)
+                        break;
+                }
             }
         },
         hm_102_zigzagoon(newValue) {
@@ -1293,6 +1342,7 @@ const app = Vue.createApp({
             this.timer_formatted_time = [ "0", ".00" ]
             this.playerResets = 0
             this.finished_logs = false
+            this.finished_run_count = 0
             this.blackout_counter = 0
             this.playerId = 0
             // this.playerName = "NINTEN"
@@ -2855,7 +2905,13 @@ const app = Vue.createApp({
         },
         freezeEncounters() {
             this.mapper.properties.overworld.mapName.change((newProp) => {
-                if (this.mapper.properties.player.badges.badge1.value == false) {
+                if (this.mapper.properties.player.badges.badge1.value == false && this.route_101 == false && newProp.value == "ROUTE 101") {
+                    this.mapper.properties.overworld.disabledEncounters.set(0x01,false);
+                }
+                if (this.mapper.properties.player.badges.badge1.value == false && this.route_102 == false && newProp.value == "ROUTE 102") {
+                    this.mapper.properties.overworld.disabledEncounters.set(0x01,false);
+                }
+                if (this.mapper.properties.player.badges.badge1.value == false && this.route_103 == false && newProp.value == "ROUTE 103") {
                     this.mapper.properties.overworld.disabledEncounters.set(0x01,false);
                 }
                 else if (this.hm_102_zigzagoon == true && newProp.value == "ROUTE 102" && this.route_102 == false && this.mapper.properties.player.team[1].species.value != "Zigzagoon") {
