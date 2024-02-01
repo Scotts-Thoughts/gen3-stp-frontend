@@ -1294,7 +1294,6 @@ const app = Vue.createApp({
             this.playerResets = 0
             this.finished_logs = false
             this.blackout_counter = 0
-            if (this.testRun) { this.attempt_number++ }
             this.playerId = 0
             // this.playerName = "NINTEN"
         },
@@ -2848,6 +2847,7 @@ const app = Vue.createApp({
             this.mapper.properties.misc.palette5.change((newProp, oldProp) => {
                 if(newProp.value=="NEW GAME" && oldProp.value == "MAIN MENU"){
                     // console.log("new game started")
+                    if (!this.testRun) { this.attempt_number++ }
                     this.newRun();
                     this.startTime();
                 }
@@ -2855,7 +2855,10 @@ const app = Vue.createApp({
         },
         freezeEncounters() {
             this.mapper.properties.overworld.mapName.change((newProp) => {
-                if (this.hm_102_zigzagoon == true && newProp.value == "ROUTE 102" && this.route_102 == false && this.mapper.properties.player.team[1].species.value != "Zigzagoon") {
+                if (this.mapper.properties.player.badges.badge1.value == false) {
+                    this.mapper.properties.overworld.disabledEncounters.set(0x01,false);
+                }
+                else if (this.hm_102_zigzagoon == true && newProp.value == "ROUTE 102" && this.route_102 == false && this.mapper.properties.player.team[1].species.value != "Zigzagoon") {
                     this.mapper.properties.player.team[1].species.change((newerProp) => {
                         if(newerProp = "Zigzagoon" && this.hm_102_zigzagoon == true && newProp.value == "ROUTE 102" && this.route_102 == false) {
                             this.mapper.properties.overworld.disabledEncounters.set(0x01,false);
@@ -2871,7 +2874,6 @@ const app = Vue.createApp({
                     else {
                         this.mapper.properties.overworld.disabledEncounters.set(0x00,false);
                     }
-                
                 }
             });
         },
