@@ -853,6 +853,18 @@ const app = Vue.createApp({
         }
     },
     watch: {
+        //*Autosplitter
+        //log the start of a battle
+        g3stateVariable(newProp) {
+            var logStr = `Autosplitter - Battle Started: ${this.mapper.properties.battle.trainer.opponentA.value} started at ${this.timer_formatted_time[0]}${this.timer_formatted_time[1]} (Gametime: ${this.gametimeSplit})`
+            var log_start = (x) => console.log(logStr)
+            if (newProp.value == "Battle" && this.mapper.properties.battle.type.trainer) {
+                this.split_logStr = logStr
+                this.battle_start = Date.now()
+                this.time_split_start = this.padTime(this.time_h) + ":" + this.padTime(this.time_m) + ":" + this.padTime(this.time_s) + "." + this.padTime(this.time_ms)
+                log_start()
+            }
+        },
         hm_102_zigzagoon(newValue) {
             if (newValue == false) {
                 this.mapper.properties.overworld.encounter.zigzagoon.set(false, false)
@@ -3239,18 +3251,6 @@ const app = Vue.createApp({
         })
 
         //*Autosplitter
-        //log the start of a battle
-        this.mapper.properties.meta.state.change((newProp) => {
-            var logStr = `Autosplitter - Battle Started: ${this.mapper.properties.battle.trainer.opponentA.value} started at ${this.timer_formatted_time[0]}${this.timer_formatted_time[1]} (Gametime: ${this.gametimeSplit})`
-            var log_start = (x) => console.log(logStr)
-            if (newProp.value == "Battle" && this.mapper.properties.battle.type.trainer) {
-                this.split_logStr = logStr
-                this.battle_start = Date.now()
-                this.time_split_start = this.padTime(this.time_h) + ":" + this.padTime(this.time_m) + ":" + this.padTime(this.time_s) + "." + this.padTime(this.time_ms)
-                log_start()
-            }
-        });
-
         const log_split = (x) => console.log(`Autosplitter - Battle Ended: Split: ${this.mapper.properties.battle.trainer.opponentA.value} at ${this.timer_formatted_time[0]}${this.timer_formatted_time[1]} (Gametime: ${this.gametimeSplit})`)
         const autosplitter_process = () => {
             console.log("Checking if autosplitter is on...")
