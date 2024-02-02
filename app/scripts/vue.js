@@ -1469,7 +1469,9 @@ const app = Vue.createApp({
                 if (move_string.toLowerCase() == "vicegrip")     { return "ViceGrip" }
                 if (move_string.toLowerCase() == "vice grip")     { return "ViceGrip" }
                 if (move_string.toLowerCase() == "doubleslap")   { return "DoubleSlap" }
+                if (move_string.toLowerCase() == "double slap")   { return "DoubleSlap" }
                 if (move_string.toLowerCase() == "double-edge")  { return "Double-Edge" }
+                if (move_string.toLowerCase() == "double edge")  { return "Double-Edge" }
                 if (move_string.toLowerCase() == "solarbeam")    { return "SolarBeam" }
                 if (move_string.toLowerCase() == "extremespeed") { return "ExtremeSpeed" }
                 if (move_string.toLowerCase() == "extreme speed") { return "ExtremeSpeed" }
@@ -1492,6 +1494,8 @@ const app = Vue.createApp({
                 if (move_string.toLowerCase() == "sonicboom")    { return "SonicBoom" }
                 if (move_string.toLowerCase() == "lock on")    { return "Lock-on" }
                 if (move_string.toLowerCase() == "lock-on")    { return "Lock-on" }
+                if (move_string.toLowerCase() == "will o wisp")  { return "Will-O-Wisp" }
+
 
                 else { return move_string }
             }
