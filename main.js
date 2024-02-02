@@ -31,7 +31,9 @@ function createWindow() {
     else {
       zoomFactor = horizontalZoomFactor;
     }
-    mainWindow.webContents.setZoomFactor(zoomFactor);
+    if(zoomFactor > 0) {
+      mainWindow.webContents.setZoomFactor(zoomFactor);
+    }
   })
 
   mainWindow.on('ready-to-show', () => {

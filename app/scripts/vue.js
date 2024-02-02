@@ -882,10 +882,10 @@ const app = Vue.createApp({
             if (this.mapper.properties.overworld.mapName.value == "ROUTE 101") {
                 switch (newValue) {
                     case true:
-                        this.mapper.properties.overworld.disabledEncounters.set(1, false)
+                        this.mapper.properties.overworld.disabledEncounters.set(0, false)
                         break;
                     case false:
-                        this.mapper.properties.overworld.disabledEncounters.set(0, false)
+                        this.mapper.properties.overworld.disabledEncounters.set(1, false)
                         break;
                 }
             }
@@ -894,10 +894,10 @@ const app = Vue.createApp({
             if (this.mapper.properties.overworld.mapName.value == "ROUTE 102") {
                 switch (newValue) {
                     case true:
-                        this.mapper.properties.overworld.disabledEncounters.set(1, false)
+                        this.mapper.properties.overworld.disabledEncounters.set(0, false)
                         break;
                     case false:
-                        this.mapper.properties.overworld.disabledEncounters.set(0, false)
+                        this.mapper.properties.overworld.disabledEncounters.set(1, false)
                         break;
                 }
             }
@@ -906,10 +906,10 @@ const app = Vue.createApp({
             if (this.mapper.properties.overworld.mapName.value == "ROUTE 103") {
                 switch (newValue) {
                     case true:
-                        this.mapper.properties.overworld.disabledEncounters.set(1, false)
+                        this.mapper.properties.overworld.disabledEncounters.set(0, false)
                         break;
                     case false:
-                        this.mapper.properties.overworld.disabledEncounters.set(0, false)
+                        this.mapper.properties.overworld.disabledEncounters.set(1, false)
                         break;
                 }
             }
@@ -1477,6 +1477,7 @@ const app = Vue.createApp({
                 if (move_string.toLowerCase() == "thunderpunch") { return "ThunderPunch" }
                 if (move_string.toLowerCase() == "bubblebeam")   { return "BubbleBeam" }
                 if (move_string.toLowerCase() == "grasswhistle") { return "GrassWhistle" }
+                if (move_string.toLowerCase() == "grass whistle") { return "GrassWhistle" }
                 if (move_string.toLowerCase() == "softboiled")   { return "Softboiled" }
                 if (move_string.toLowerCase() == "soft boiled")   { return "Softboiled" }
                 if (move_string.toLowerCase() == "sand-attack")  { return "Sand-Attack" }
