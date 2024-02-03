@@ -330,7 +330,7 @@
 <!--------- MOVEPOOL ------------------------------------------------------------------------------------------------------------------------------------->
             <transition name="fadeBattle" style="position: absolute;">
                 <div v-if="(g3stateVariable == `Battle` || g3stateVariable == `To Battle`) && mapper.properties.battle.type.trainer.value == true">
-                    <div class="movepoolTitle">{{ enemyTrainer.trainer_name }}</div>
+                    <div class="movepoolTitle">{{ enemyTrainerName }}</div>
                     <div class="colored-image ds" :style="battlePokemonCrop()" style="--url: url(images/ui/enemy.svg)"></div>
                     <div class="colored-image ds" :style="battlePokemonCrop()" style="--url: url(images/ui/abilities.svg)"></div>
                     <div v-for="x in pkmnSlots" class="enemyGraphic">
@@ -407,7 +407,7 @@
                 </div>
             </transition>
             <transition name="fadeDelayed">
-                <div v-if="((g3stateVariable == `Battle` || g3stateVariable == `To Battle`) && g3trainerEnemySelector(batt.trainer[this.game.opponent].value) == 1) && showSpecialTrainerGraphics == true && batt.type.trainer.value == true" style="position: absolute;" key=1>
+                <div v-if="((g3stateVariable == `Battle` || g3stateVariable == `To Battle`) && g3trainerEnemySelector(this.opponent) == 1) && showSpecialTrainerGraphics == true && batt.type.trainer.value == true" style="position: absolute;" key=1>
                     <img class="canvas" :src="specialTrainerGraphics()"/>
                 </div>
             </transition>
@@ -461,6 +461,7 @@
     <script src="data/gen3abilities.js"></script>
     <script src="data/dexDataRubySapphireEmerald.js"></script>
     <script src="lib/emerald_trainers.js"></script>
+    <script src="lib/firered_leafgreen_trainers.js"></script>
     <script src="lib/hiddenPowerTypeSelector.js"></script>
     <script src="data/gen3moves.js"></script>
     <script src="data/type-effectiveness.js"></script>

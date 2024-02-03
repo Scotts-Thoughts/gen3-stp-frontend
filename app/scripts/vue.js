@@ -541,6 +541,7 @@ const app = Vue.createApp({
             mapper: null,
             scott_mode: true,
             gameVariables: null,
+            // game: null,
             // POKEMON CONFIG (components) ---------------------------------------------------------------------//
             starterString: "Rayquaza",
             pkmnNature: "Adamant",
@@ -602,7 +603,10 @@ const app = Vue.createApp({
             default_colors:             default_colors,
             hp_ivs:                     hp_ivs,
             autosplitter:               autosplitter,
-
+            trainerLists: {
+                "emeraldTrainers" : emeraldTrainers,
+                "remakeTrainers" : remakeTrainers,  
+            },
             genders: {
                 "false": "Male",
                 "true": "Female",
@@ -821,6 +825,12 @@ const app = Vue.createApp({
         }
     },
     created() {
+        import('../lib/gameVariables.js').then((gameVariables) => {
+            this.gameVariables = gameVariables.default;
+            
+            // Bind the newGame function to the Vue component
+            // this.gameVariables.newGame = this.gameVariables.newGame.bind(this);
+        })
         if (MyStorage[this.starterString]) {
             this.overlay_color = MyStorage[this.starterString].overlay_color ?? this.default_colors[dexDataRubySapphireEmerald[this.starterString].type_1];
             this.imageXOffset = MyStorage[this.starterString].imageXOffset ?? 0;
@@ -866,16 +876,20 @@ const app = Vue.createApp({
                 }
             );
         }
-        import('../lib/gameVariables.js').then((gameVariables) => {
-            this.gameVariables = gameVariables.default;
-        })
+        
 
     },
     watch: {
         //*Autosplitter
         //log the start of a battle
         g3stateVariable(newProp) {
-            var logStr = `Autosplitter - Battle Started: ${this.batt.trainer[this.game.opponent].value} started at ${this.timer_formatted_time[0]}${this.timer_formatted_time[1]} (Gametime: ${this.gametimeSplit})`
+            console.log(newProp)
+            try {
+                var logStr = `Autosplitter - Battle Started: ${this.batt.trainer[this.game.opponent].value} started at ${this.timer_formatted_time[0]}${this.timer_formatted_time[1]} (Gametime: ${this.gametimeSplit})`
+            }
+            catch {
+                
+            }
             var log_start = (x) => console.log(logStr)
             if (newProp.value == "Battle" && this.mapper.properties.battle.type.trainer) {
                 this.split_logStr = logStr
@@ -1060,13 +1074,18 @@ const app = Vue.createApp({
             }
         },
         enemyTrainerName() {
-            return this.emeraldTrainers[this.mapper.properties.battle.trainer.opponentAId.value]?.trainer_name
+            try {
+                // return this.trainerLists[this.game?.trainerList][this.opponentId?.value]?.trainer_name
+                return this.enemyTrainer.trainer_name
+            } catch (error) {
+                return "";
+            }
         },
         enemyTrainerPokemon() {
-            return this.emeraldTrainers[this.mapper.properties.battle.trainer.opponentAId.value]?.pokemon
+            return this.emeraldTrainers[this.opponentId]?.pokemon
         },
         enemyTrainer() {
-            return this.emeraldTrainers[this.mapper.properties.battle.trainer.opponentAId.value]
+            return this.enemyTrainerList[this.opponentId]
         },
         enemyTeam() {
             return this.mapper.properties.battle.trainer.team
@@ -1082,6 +1101,12 @@ const app = Vue.createApp({
         },
         battEn() {
             return this.mapper?.properties?.battle?.enemyPokemon
+        },
+        opponent() {
+            return this.mapper?.properties?.battle.trainer[this.game.opponent]?.value
+        },
+        opponentId() {
+            return this.mapper?.properties?.battle.trainer[this.game?.opponentId]?.value
         },
         s1dynamic() {
             if (this.g3stateVariable == `Battle`) {
@@ -1142,11 +1167,11 @@ const app = Vue.createApp({
         //BATTLE FADE
         battle_fade() {
             if (
-            (this.batt.trainer.opponentA.value == "ELITE_FOUR_SIDNEY" ||
-            this.batt.trainer.opponentA.value == "ELITE_FOUR_PHOEBE" ||
-            this.batt.trainer.opponentA.value == "ELITE_FOUR_GLACIA" ||
-            this.batt.trainer.opponentA.value == "ELITE_FOUR_DRAKE" ||
-            this.batt.trainer.opponentA.value == "CHAMPION_WALLACE") &&
+            (this.opponent == "ELITE_FOUR_SIDNEY" ||
+            this.opponent == "ELITE_FOUR_PHOEBE" ||
+            this.opponent == "ELITE_FOUR_GLACIA" ||
+            this.opponent == "ELITE_FOUR_DRAKE" ||
+            this.opponent == "CHAMPION_WALLACE") &&
             (this.g3stateVariable == "To Battle" ||
             this.g3stateVariable == "Battle" ||
             this.g3stateVariable == "From Battle")
@@ -1250,7 +1275,15 @@ const app = Vue.createApp({
             return this.dexDataRubySapphireEmerald[this.starterString].dex_number
         },
         game() {
-            return this.gameVariables[this.mapper.properties.meta.gameName];
+            // console.log("game")
+            // console.log(this.mapper)
+            // console.log(this.mapper.meta.gameName)
+            return this.gameVariables[this.mapper?.properties?.meta?.gameName];
+        // return "FireRed and LeafGreen";
+            // return(this.mapper?.properties.meta.gameName);
+        },
+        enemyTrainerList() {
+            return this.trainerLists[this.game?.trainerList]
         }
     },
 
@@ -1766,51 +1799,51 @@ const app = Vue.createApp({
         },
         specialTrainerGraphics() {
             if (this.showSpecialTrainerGraphics == true) {
-                if (this.batt.trainer.opponentA.value == "YOUNGSTER_CALVIN_1") return `images/trainers/${this.batt.trainer.opponentA.value}.png`
-                if (this.batt.trainer.opponentA.value == "LEADER_ROXANNE_1") return `images/trainers/${this.batt.trainer.opponentA.value}.png`
-                if (this.batt.trainer.opponentA.value == "LEADER_BRAWLY_1") return `images/trainers/${this.batt.trainer.opponentA.value}.png`
-                if (this.batt.trainer.opponentA.value == "LEADER_WATTSON_1") return `images/trainers/${this.batt.trainer.opponentA.value}.png`
-                if (this.batt.trainer.opponentA.value == "LEADER_FLANNERY_1") return `images/trainers/${this.batt.trainer.opponentA.value}.png`
-                if (this.batt.trainer.opponentA.value == "LEADER_NORMAN_1") return `images/trainers/${this.batt.trainer.opponentA.value}.png`
-                if (this.batt.trainer.opponentA.value == "LEADER_WINONA_1") return `images/trainers/${this.batt.trainer.opponentA.value}.png`
-                if (this.batt.trainer.opponentA.value == "LEADER_TATE_AND_LIZA_1") return `images/trainers/${this.batt.trainer.opponentA.value}.png`
-                if (this.batt.trainer.opponentA.value == "LEADER_JUAN_1") return `images/trainers/${this.batt.trainer.opponentA.value}.png`
+                if (this.opponent == "YOUNGSTER_CALVIN_1") return `images/trainers/${this.opponent}.png`
+                if (this.opponent == "LEADER_ROXANNE_1") return `images/trainers/${this.opponent}.png`
+                if (this.opponent == "LEADER_BRAWLY_1") return `images/trainers/${this.opponent}.png`
+                if (this.opponent == "LEADER_WATTSON_1") return `images/trainers/${this.opponent}.png`
+                if (this.opponent == "LEADER_FLANNERY_1") return `images/trainers/${this.opponent}.png`
+                if (this.opponent == "LEADER_NORMAN_1") return `images/trainers/${this.opponent}.png`
+                if (this.opponent == "LEADER_WINONA_1") return `images/trainers/${this.opponent}.png`
+                if (this.opponent == "LEADER_TATE_AND_LIZA_1") return `images/trainers/${this.opponent}.png`
+                if (this.opponent == "LEADER_JUAN_1") return `images/trainers/${this.opponent}.png`
                 
-                // if (this.batt.trainer.opponentA.value == "ELITE_FOUR_SIDNEY") return `images/trainers/${this.batt.trainer.opponentA.value}.png`
-                // if (this.batt.trainer.opponentA.value == "ELITE_FOUR_PHOEBE") return `images/trainers/${this.batt.trainer.opponentA.value}.png`
-                // if (this.batt.trainer.opponentA.value == "ELITE_FOUR_GLACIA") return `images/trainers/${this.batt.trainer.opponentA.value}.png`
-                // if (this.batt.trainer.opponentA.value == "ELITE_FOUR_DRAKE") return `images/trainers/${this.batt.trainer.opponentA.value}.png`
-                // if (this.batt.trainer.opponentA.value == "CHAMPION_WALLACE") return `images/trainers/${this.batt.trainer.opponentA.value}.png`
-                // if (this.batt.trainer.opponentA.value == "RIVAL_STEVEN") return `images/trainers/${this.batt.trainer.opponentA.value}.png`
+                // if (this.opponent == "ELITE_FOUR_SIDNEY") return `images/trainers/${this.opponent}.png`
+                // if (this.opponent == "ELITE_FOUR_PHOEBE") return `images/trainers/${this.opponent}.png`
+                // if (this.opponent == "ELITE_FOUR_GLACIA") return `images/trainers/${this.opponent}.png`
+                // if (this.opponent == "ELITE_FOUR_DRAKE") return `images/trainers/${this.opponent}.png`
+                // if (this.opponent == "CHAMPION_WALLACE") return `images/trainers/${this.opponent}.png`
+                // if (this.opponent == "RIVAL_STEVEN") return `images/trainers/${this.opponent}.png`
 
-                if (this.batt.trainer.opponentA.value == "RIVAL_WALLY_MAUVILLE") return `images/trainers/RIVAL_WALLY.png`
-                // if (this.batt.trainer.opponentA.value == "RIVAL_WALLY_VR_1") return `images/trainers/RIVAL_WALLY.png`
+                if (this.opponent == "RIVAL_WALLY_MAUVILLE") return `images/trainers/RIVAL_WALLY.png`
+                // if (this.opponent == "RIVAL_WALLY_VR_1") return `images/trainers/RIVAL_WALLY.png`
 
-                if (this.batt.trainer.opponentA.value == "RIVAL_MAY_RUSTBORO_TREECKO") return `images/trainers/RIVAL_MAY.png`
-                if (this.batt.trainer.opponentA.value == "RIVAL_MAY_RUSTBORO_TORCHIC") return `images/trainers/RIVAL_MAY.png`
-                if (this.batt.trainer.opponentA.value == "RIVAL_MAY_RUSTBORO_MUDKIP") return `images/trainers/RIVAL_MAY.png`
-                if (this.batt.trainer.opponentA.value == "RIVAL_MAY_ROUTE_103_MUDKIP") return `images/trainers/RIVAL_MAY.png`
-                if (this.batt.trainer.opponentA.value == "RIVAL_MAY_ROUTE_110_MUDKIP") return `images/trainers/RIVAL_MAY.png`
-                if (this.batt.trainer.opponentA.value == "RIVAL_MAY_ROUTE_119_MUDKIP") return `images/trainers/RIVAL_MAY.png`
-                if (this.batt.trainer.opponentA.value == "RIVAL_MAY_ROUTE_103_TREECKO") return `images/trainers/RIVAL_MAY.png`
-                if (this.batt.trainer.opponentA.value == "RIVAL_MAY_ROUTE_110_TREECKO") return `images/trainers/RIVAL_MAY.png`
-                if (this.batt.trainer.opponentA.value == "RIVAL_MAY_ROUTE_119_TREECKO") return `images/trainers/RIVAL_MAY.png`
-                if (this.batt.trainer.opponentA.value == "RIVAL_MAY_ROUTE_103_TORCHIC") return `images/trainers/RIVAL_MAY.png`
-                if (this.batt.trainer.opponentA.value == "RIVAL_MAY_ROUTE_110_TORCHIC") return `images/trainers/RIVAL_MAY.png`
-                if (this.batt.trainer.opponentA.value == "RIVAL_MAY_ROUTE_119_TORCHIC") return `images/trainers/RIVAL_MAY.png`
+                if (this.opponent == "RIVAL_MAY_RUSTBORO_TREECKO") return `images/trainers/RIVAL_MAY.png`
+                if (this.opponent == "RIVAL_MAY_RUSTBORO_TORCHIC") return `images/trainers/RIVAL_MAY.png`
+                if (this.opponent == "RIVAL_MAY_RUSTBORO_MUDKIP") return `images/trainers/RIVAL_MAY.png`
+                if (this.opponent == "RIVAL_MAY_ROUTE_103_MUDKIP") return `images/trainers/RIVAL_MAY.png`
+                if (this.opponent == "RIVAL_MAY_ROUTE_110_MUDKIP") return `images/trainers/RIVAL_MAY.png`
+                if (this.opponent == "RIVAL_MAY_ROUTE_119_MUDKIP") return `images/trainers/RIVAL_MAY.png`
+                if (this.opponent == "RIVAL_MAY_ROUTE_103_TREECKO") return `images/trainers/RIVAL_MAY.png`
+                if (this.opponent == "RIVAL_MAY_ROUTE_110_TREECKO") return `images/trainers/RIVAL_MAY.png`
+                if (this.opponent == "RIVAL_MAY_ROUTE_119_TREECKO") return `images/trainers/RIVAL_MAY.png`
+                if (this.opponent == "RIVAL_MAY_ROUTE_103_TORCHIC") return `images/trainers/RIVAL_MAY.png`
+                if (this.opponent == "RIVAL_MAY_ROUTE_110_TORCHIC") return `images/trainers/RIVAL_MAY.png`
+                if (this.opponent == "RIVAL_MAY_ROUTE_119_TORCHIC") return `images/trainers/RIVAL_MAY.png`
 
-                if (this.batt.trainer.opponentA.value == "RIVAL_BRENDAN_RUSTBORO_TREECKO") return `images/trainers/RIVAL_BRENDAN.png`
-                if (this.batt.trainer.opponentA.value == "RIVAL_BRENDAN_RUSTBORO_MUDKIP") return `images/trainers/RIVAL_BRENDAN.png`
-                if (this.batt.trainer.opponentA.value == "RIVAL_BRENDAN_RUSTBORO_TORCHIC") return `images/trainers/RIVAL_BRENDAN.png`
-                if (this.batt.trainer.opponentA.value == "RIVAL_BRENDAN_ROUTE_103_MUDKIP") return `images/trainers/RIVAL_BRENDAN.png`
-                if (this.batt.trainer.opponentA.value == "RIVAL_BRENDAN_ROUTE_110_MUDKIP") return `images/trainers/RIVAL_BRENDAN.png`
-                if (this.batt.trainer.opponentA.value == "RIVAL_BRENDAN_ROUTE_119_MUDKIP") return `images/trainers/RIVAL_BRENDAN.png`
-                if (this.batt.trainer.opponentA.value == "RIVAL_BRENDAN_ROUTE_103_TREECKO") return `images/trainers/RIVAL_BRENDAN.png`
-                if (this.batt.trainer.opponentA.value == "RIVAL_BRENDAN_ROUTE_110_TREECKO") return `images/trainers/RIVAL_BRENDAN.png`
-                if (this.batt.trainer.opponentA.value == "RIVAL_BRENDAN_ROUTE_119_TREECKO") return `images/trainers/RIVAL_BRENDAN.png`
-                if (this.batt.trainer.opponentA.value == "RIVAL_BRENDAN_ROUTE_103_TORCHIC") return `images/trainers/RIVAL_BRENDAN.png`
-                if (this.batt.trainer.opponentA.value == "RIVAL_BRENDAN_ROUTE_110_TORCHIC") return `images/trainers/RIVAL_BRENDAN.png`
-                if (this.batt.trainer.opponentA.value == "RIVAL_BRENDAN_ROUTE_119_TORCHIC") return `images/trainers/RIVAL_BRENDAN.png`
+                if (this.opponent == "RIVAL_BRENDAN_RUSTBORO_TREECKO") return `images/trainers/RIVAL_BRENDAN.png`
+                if (this.opponent == "RIVAL_BRENDAN_RUSTBORO_MUDKIP") return `images/trainers/RIVAL_BRENDAN.png`
+                if (this.opponent == "RIVAL_BRENDAN_RUSTBORO_TORCHIC") return `images/trainers/RIVAL_BRENDAN.png`
+                if (this.opponent == "RIVAL_BRENDAN_ROUTE_103_MUDKIP") return `images/trainers/RIVAL_BRENDAN.png`
+                if (this.opponent == "RIVAL_BRENDAN_ROUTE_110_MUDKIP") return `images/trainers/RIVAL_BRENDAN.png`
+                if (this.opponent == "RIVAL_BRENDAN_ROUTE_119_MUDKIP") return `images/trainers/RIVAL_BRENDAN.png`
+                if (this.opponent == "RIVAL_BRENDAN_ROUTE_103_TREECKO") return `images/trainers/RIVAL_BRENDAN.png`
+                if (this.opponent == "RIVAL_BRENDAN_ROUTE_110_TREECKO") return `images/trainers/RIVAL_BRENDAN.png`
+                if (this.opponent == "RIVAL_BRENDAN_ROUTE_119_TREECKO") return `images/trainers/RIVAL_BRENDAN.png`
+                if (this.opponent == "RIVAL_BRENDAN_ROUTE_103_TORCHIC") return `images/trainers/RIVAL_BRENDAN.png`
+                if (this.opponent == "RIVAL_BRENDAN_ROUTE_110_TORCHIC") return `images/trainers/RIVAL_BRENDAN.png`
+                if (this.opponent == "RIVAL_BRENDAN_ROUTE_119_TORCHIC") return `images/trainers/RIVAL_BRENDAN.png`
                 else return null;
             }
         },
@@ -2792,9 +2825,15 @@ const app = Vue.createApp({
             var burnModifier = this.burnModifier(x)
             if (x == "FUTURE SIGHT") { return 80 }
             //IN BATTLE
-            if (this.batt.trainer[this.game.opponent].value == `LEADER_TATE_AND_LIZA_1` || this.batt.trainer[this.game.opponent].value == `MAGMA_LEADER_MAXIE_MOSSDEEP`) {
-                return power
+            try{ 
+                if (this.batt.trainer[this.game.opponent].value == `LEADER_TATE_AND_LIZA_1` || this.batt.trainer[this.game.opponent].value == `MAGMA_LEADER_MAXIE_MOSSDEEP`) {
+                    return power
+                }
             }
+            catch {
+                // console.log("null opponent, no double battle power")
+            }
+            
             if (this.typeCalcs == true && this.g3stateVariable == "Battle") {
                 //STATUS MOVE
                 if (power == "-") { return power }
@@ -2888,29 +2927,30 @@ const app = Vue.createApp({
         },
 
         battlePokemonCrop() {
-            if (this.emeraldTrainers[this.mapper.properties.battle.trainer.opponentAId]["pokemon"].length == 1) {
+            if (this.enemyTrainerList[this.opponentId]["pokemon"].length == 1) {
                 return "height: 234px;"
             }
-            else if (this.emeraldTrainers[this.mapper.properties.battle.trainer.opponentAId]["pokemon"].length == 2) {
+            else if (this.trainerLists[this.game?.trainerList][this.opponentId]["pokemon"].length == 2) {
                 return "height: 402px;"
             }
-            else if (this.emeraldTrainers[this.mapper.properties.battle.trainer.opponentAId]["pokemon"].length == 3) {
+            else if (this.trainerLists[this.game?.trainerList][this.opponentId]["pokemon"].length == 3) {
                 return "height: 566px;"
             }
-            else if (this.emeraldTrainers[this.mapper.properties.battle.trainer.opponentAId]["pokemon"].length == 4) {
+            else if (this.trainerLists[this.game?.trainerList][this.opponentId]["pokemon"].length == 4) {
                 return "height: 736px;"
             }
-            else if (this.emeraldTrainers[this.mapper.properties.battle.trainer.opponentAId]["pokemon"].length == 5) {
+            else if (this.trainerLists[this.game?.trainerList][this.opponentId]["pokemon"].length == 5) {
                 return "height: 902px;"
             }
-            else if (this.emeraldTrainers[this.mapper.properties.battle.trainer.opponentAId]["pokemon"].length == 6) {
+            else if (this.trainerLists[this.game?.trainerList][this.opponentId]["pokemon"].length == 6) {
                 return "height: 1080px;"
             }
         },
         newGame() {
-            this.mapper.properties.misc.palette5.change((newProp, oldProp) => {
-                if(newProp.value=="NEW GAME" && oldProp.value == "MAIN MENU"){
-                    // console.log("new game started")
+            console.log("watching for new game")
+            this.mapper.properties[this.game.newGameFlagContainer][this.game.newGameFlag].change((newProp, oldProp) => {
+                if(newProp.value==this.game.newGameValueNew && oldProp.value == this.game.newGameValueOld){
+                    console.log("new game started")
                     if (!this.testRun) { this.attempt_number++ }
                     this.newRun();
                     this.startTime();
@@ -3002,6 +3042,7 @@ const app = Vue.createApp({
         this.mapper.onConnected = (x) => this.ready = true
         this.mapper.onDisconnected = (x) => this.ready = false
         await this.mapper.connect()
+        console.log("mapper set")
         this.updateTime()
         this.load_all_settings()
 
@@ -3012,9 +3053,10 @@ const app = Vue.createApp({
 
         //GAMESTATE MANAGEMENT
         // set initial gamestate value when the layout is loaded
+
         if (this.mapper.properties.player.team[0].level.value == 0) 
             this.g3stateVariable = "Base Stats"
-        else if (this.mapper.properties.pointers.callback1.value == 0)
+        else if (this.mapper.properties.pointers.callback1.value == 0 || this.mapper.properties.pointers.callback1.value == null)
             this.g3stateVariable = "Base Stats"
         else if (this.mapper.properties.pointers.callback1.value == 134765285 || this.mapper.properties.pointers.callback1.value == "Overworld" || this.mapper.properties.pointers.callback1.value == 134765313)
             this.g3stateVariable = "Overworld"
@@ -3040,7 +3082,7 @@ const app = Vue.createApp({
             if(prop == " " || prop == null || prop == undefined ) {
                 return;
             }
-            if (prop.value == "Player Control") { 
+            if (prop.value == "Player Control" || prop.bytes == 6) { 
                 this.g3stateVariable = "Battle"
             }
         });
@@ -3062,7 +3104,7 @@ const app = Vue.createApp({
             if (prop.value == 135711589) { 
                 this.g3stateVariable = "Base Stats"
             }
-            else if (prop.value == 134442925) { 
+            else if (prop.value == 134442925 || prop.value == "Battle Animation") { 
                 this.g3stateVariable = "To Battle"
             }
         });
@@ -3082,7 +3124,6 @@ const app = Vue.createApp({
             }
         });
 
-        this.game.newGame();
         //ENEMY STATE
         //ENEMY STATE MANAGER
         //"Pokemon", "Fainted"
@@ -3092,7 +3133,7 @@ const app = Vue.createApp({
         // })
         if (this.mapper.properties.player.team[0].level.value == 0) 
             this.enemyState = "Not In Battle";
-        else if (this.mapper.properties.battle.turnInfo.battleDialogue.value ==  6)
+        else if (this.mapper.properties.battle.turnInfo.battleDialogue.value ==  6 ||this.mapper.properties.battle.turnInfo.battleDialogue.bytes ==  6)
             this.enemyState = "Pokemon";
         else if (this.mapper.properties.battle.type.is_battle.value == true)
             this.enemyState = "Not In Battle";
@@ -3302,21 +3343,21 @@ const app = Vue.createApp({
         // console.log(this.mapper.properties)
         // console.log(this.mapper.properties[this.game.newGameFlagContainer])
         // console.log(this.mapper.properties["pointers"])
-        console.log(this.game["newGameFlagContainer"])
-        this.mapper.properties[this.game.newGameFlagContainer][this.game.newGameFlag].change(async (newProp, oldProp) => {
-            if (newProp.value == `MAIN MENU` || newProp.value == `NEW GAME`) {
-                //forcefully update the adresses to match dmaB, since the mapper seems to be doing this incorrectly sometimes
-                //no dma updates on the main menu or new game screens, so this is safe
-                let dmaB = this.mapper.properties.pointers.dma2.value; 
-                this.mapper.properties.options.textSpeed.address = dmaB + 20;
-                //speed and frame style share a byte. The frame style increments the byte by multiples of 8 depending on the user's pick
-                //this line takes the nearest multiple of 8 and adds 2 to ensure fast text with the chosen frame
-                let speedWithFrame = Math.floor(this.mapper.properties.options.textSpeed.bytes[0]/8)*8+2;
-                this.mapper.properties.options.textSpeed.set(speedWithFrame, false)
-                this.mapper.properties.options.battleAnim.address = dmaB + 21;
-                this.mapper.properties.options.battleAnim.setBytes([0x06],false)
-            }
-        })
+        // console.log(this.game["newGameFlagContainer"])
+        // this.mapper.properties[this.game.newGameFlagContainer][this.game.newGameFlag].change(async (newProp, oldProp) => {
+        //     if (newProp.value == `MAIN MENU` || newProp.value == `NEW GAME`) {
+        //         //forcefully update the adresses to match dmaB, since the mapper seems to be doing this incorrectly sometimes
+        //         //no dma updates on the main menu or new game screens, so this is safe
+        //         let dmaB = this.mapper.properties.pointers.dma2.value; 
+        //         this.mapper.properties.options.textSpeed.address = dmaB + 20;
+        //         //speed and frame style share a byte. The frame style increments the byte by multiples of 8 depending on the user's pick
+        //         //this line takes the nearest multiple of 8 and adds 2 to ensure fast text with the chosen frame
+        //         let speedWithFrame = Math.floor(this.mapper.properties.options.textSpeed.bytes[0]/8)*8+2;
+        //         this.mapper.properties.options.textSpeed.set(speedWithFrame, false)
+        //         this.mapper.properties.options.battleAnim.address = dmaB + 21;
+        //         this.mapper.properties.options.battleAnim.setBytes([0x06],false)
+        //     }
+        // })
         //FIX OF ENEMY BATTLE STATS
         this.mapper.properties.battle.enemyPokemon.partyPos.change(async (newProp) => {
             if (newProp == 0 || newProp == 255) { return }
@@ -3326,7 +3367,8 @@ const app = Vue.createApp({
         })
 
         //*Autosplitter
-        const log_split = (x) => console.log(`Autosplitter - Battle Ended: Split: ${this.mapper.properties.battle.trainer.opponentA.value} at ${this.timer_formatted_time[0]}${this.timer_formatted_time[1]} (Gametime: ${this.gametimeSplit})`)
+        
+        const log_split = (x) => console.log(`Autosplitter - Battle Ended: Split: ${this.opponent} at ${this.timer_formatted_time[0]}${this.timer_formatted_time[1]} (Gametime: ${this.gametimeSplit})`)
         const autosplitter_process = () => {
             console.log("Checking if autosplitter is on...")
             if (this.autosplitter_toggle == true) {
@@ -3344,9 +3386,10 @@ const app = Vue.createApp({
                 let time_string = d.getHours().toString().padStart(2, "0") + ":" + d.getMinutes().toString().padStart(2, "0") + ":" + d.getSeconds().toString().padStart(2, "0")
                 let player_name = this.mapper.properties.player.name.value
                 let pokemon = this.starterString
-                let trainer_name = this.mapper.properties.battle.trainer.opponentA.value
+                console.log("opponent info: "+ this.opponent)
+                let trainer_name = this.opponent
                 // let trainer_name = this.format_trainer_name(this.mapper.properties.battle.trainer.class.value, this.mapper.properties.battle.trainer.number.value)
-                let trainer_id = this.mapper.properties.battle.trainer.opponentAId
+                let trainer_id = this.opponentId
                 let location = this.mapper.properties.overworld.mapName.value
                 let total_pokemon = this.mapper.properties.battle.trainer.totalPokemon
                 let real_time_total = this.timer_formatted_time[0] + this.timer_formatted_time[1]
@@ -3388,7 +3431,7 @@ const app = Vue.createApp({
                 
                 //deprecated properties
                 let runIdentifier = this.starterString.toString() + this.attempt_number.toString()
-                let trainerName = this.mapper.properties.battle.trainer.opponentA.value
+                let trainerName = this.opponent
                 let RTHours = this.time_h
                 let RTMinutes = this.time_m
                 let RTSeconds = this.time_s
@@ -3607,8 +3650,8 @@ const app = Vue.createApp({
             console.log('Autosplitter Attempted to Run by Battle Outcome Change')
             if (prop.value == "WON") {
                 console.log('Starting log process')
-                let trainer = this.mapper.properties.battle.trainer.opponentA.value
-                let id = this.mapper.properties.battle.trainer.opponentAId.value
+                let trainer = this.opponent
+                let id = this.opponentId
                 let gameName = "Emerald"
                 
                 //write full split data
