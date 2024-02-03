@@ -12,8 +12,10 @@ const gameVariables =
     "Emerald": {
         "opponent": "opponentA",
         "opponentAId" : "opponentAId",
-
-        "newGameFlag" : "misc.palette5",
+        "newGameFlagContainer" : "misc",
+        "newGameFlag" : "palette5",
+        "newGameValueNew" : "NEW GAME",
+        "newGameValueOld" : "MAIN MENU",
         "trainerList" : "emeraldTrainers",
 
     },
