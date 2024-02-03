@@ -407,7 +407,7 @@
                 </div>
             </transition>
             <transition name="fadeDelayed">
-                <div v-if="((g3stateVariable == `Battle` || g3stateVariable == `To Battle`) && g3trainerEnemySelector(batt.trainer.opponentA.value) == 1) && showSpecialTrainerGraphics == true && batt.type.trainer.value == true" style="position: absolute;" key=1>
+                <div v-if="((g3stateVariable == `Battle` || g3stateVariable == `To Battle`) && g3trainerEnemySelector(batt.trainer[this.game.opponent].value) == 1) && showSpecialTrainerGraphics == true && batt.type.trainer.value == true" style="position: absolute;" key=1>
                     <img class="canvas" :src="specialTrainerGraphics()"/>
                 </div>
             </transition>
@@ -469,6 +469,7 @@
     <script src="lib/default_colors.js"></script>
     <script src="lib/hp_ivs.js"></script>
     <script src="data/autosplitter.js"></script>
+    <!-- <script src="lib/gameVariables.js"></script> -->
     <!-- VUE APP -->
     <script type="text/javascript" src="scripts/vue.js"></script>
 </body>

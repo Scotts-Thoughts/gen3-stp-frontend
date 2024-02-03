@@ -532,13 +532,15 @@ function transition(fn, ms) {
     })
 }
 
+// import gameVariables from '../lib/gameVariables.js';
+
 const app = Vue.createApp({
     data() {
         return {
             ready: false,
             mapper: null,
             scott_mode: true,
-
+            gameVariables: null,
             // POKEMON CONFIG (components) ---------------------------------------------------------------------//
             starterString: "Rayquaza",
             pkmnNature: "Adamant",
@@ -864,12 +866,16 @@ const app = Vue.createApp({
                 }
             );
         }
+        import('../lib/gameVariables.js').then((gameVariables) => {
+            this.gameVariables = gameVariables.default;
+        })
+
     },
     watch: {
         //*Autosplitter
         //log the start of a battle
         g3stateVariable(newProp) {
-            var logStr = `Autosplitter - Battle Started: ${this.mapper.properties.battle.trainer.opponentA.value} started at ${this.timer_formatted_time[0]}${this.timer_formatted_time[1]} (Gametime: ${this.gametimeSplit})`
+            var logStr = `Autosplitter - Battle Started: ${this.batt.trainer[this.game.opponent].value} started at ${this.timer_formatted_time[0]}${this.timer_formatted_time[1]} (Gametime: ${this.gametimeSplit})`
             var log_start = (x) => console.log(logStr)
             if (newProp.value == "Battle" && this.mapper.properties.battle.type.trainer) {
                 this.split_logStr = logStr
@@ -1243,6 +1249,9 @@ const app = Vue.createApp({
         starter() {
             return this.dexDataRubySapphireEmerald[this.starterString].dex_number
         },
+        game() {
+            return this.gameVariables[this.mapper.properties.meta.gameName];
+        }
     },
 
     methods: { 
@@ -2783,7 +2792,7 @@ const app = Vue.createApp({
             var burnModifier = this.burnModifier(x)
             if (x == "FUTURE SIGHT") { return 80 }
             //IN BATTLE
-            if (this.batt.trainer.opponentA.value == `LEADER_TATE_AND_LIZA_1` || this.batt.trainer.opponentA.value == `MAGMA_LEADER_MAXIE_MOSSDEEP`) {
+            if (this.batt.trainer[this.game.opponent].value == `LEADER_TATE_AND_LIZA_1` || this.batt.trainer[this.game.opponent].value == `MAGMA_LEADER_MAXIE_MOSSDEEP`) {
                 return power
             }
             if (this.typeCalcs == true && this.g3stateVariable == "Battle") {
@@ -3073,7 +3082,7 @@ const app = Vue.createApp({
             }
         });
 
-        this.newGame();
+        this.game.newGame();
         //ENEMY STATE
         //ENEMY STATE MANAGER
         //"Pokemon", "Fainted"
@@ -3289,8 +3298,12 @@ const app = Vue.createApp({
         //         this.mapper.properties.options.battleStyle.set(true, false)
         //     }
         // })
-
-        this.mapper.properties.misc.palette5.change(async (newProp, oldProp) => {
+        // console.log(this.game.newGameFlag)
+        // console.log(this.mapper.properties)
+        // console.log(this.mapper.properties[this.game.newGameFlagContainer])
+        // console.log(this.mapper.properties["pointers"])
+        console.log(this.game["newGameFlagContainer"])
+        this.mapper.properties[this.game.newGameFlagContainer][this.game.newGameFlag].change(async (newProp, oldProp) => {
             if (newProp.value == `MAIN MENU` || newProp.value == `NEW GAME`) {
                 //forcefully update the adresses to match dmaB, since the mapper seems to be doing this incorrectly sometimes
                 //no dma updates on the main menu or new game screens, so this is safe
@@ -3304,7 +3317,6 @@ const app = Vue.createApp({
                 this.mapper.properties.options.battleAnim.setBytes([0x06],false)
             }
         })
-
         //FIX OF ENEMY BATTLE STATS
         this.mapper.properties.battle.enemyPokemon.partyPos.change(async (newProp) => {
             if (newProp == 0 || newProp == 255) { return }
