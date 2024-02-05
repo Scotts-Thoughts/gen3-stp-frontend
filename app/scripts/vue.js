@@ -2573,6 +2573,9 @@ const app = Vue.createApp({
             if (moveObject.Type == `Curse`) {
                 return "???"
             }
+            if (moveObject.Type == `curse`) {
+                return "???"
+            }
             if (moveObject.Move.toUpperCase() == `HIDDEN POWER`) {
                 return this.hidden_power_type
             }
