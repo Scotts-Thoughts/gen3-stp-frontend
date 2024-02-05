@@ -3632,7 +3632,6 @@ const app = Vue.createApp({
                     case "ELITE_FOUR_GLACIA":
                     case "ELITE_FOUR_DRAKE":
                     case "CHAMPION_WALLACE":
-                    case "RIVAL_STEVEN":
                     case "MAGMA_LEADER_MAXIE_MAGMA_HIDEOUT":
                     case "MAGMA_LEADER_MAXIE_MT_CHIMNEY":
                     case "AQUA_LEADER_ARCHIE":
