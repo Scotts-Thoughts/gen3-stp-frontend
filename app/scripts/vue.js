@@ -3229,6 +3229,7 @@ const app = Vue.createApp({
             const pkmnData = this.dexDataRubySapphireEmerald[this.starterString]
             const level = 5
             const natures = this.natures[this.pkmnNature]
+            const species = this.mapper.properties.player.team[0].species.value
 
             var ivHp = this.mapper.properties.player.team[0].ivHp.value
             var ivAtk = this.mapper.properties.player.team[0].ivAttack.value
@@ -3256,18 +3257,36 @@ const app = Vue.createApp({
                     await this.mapper.properties.player.team[0].specialDefense.set(specialDefense, false), 
                     await this.mapper.properties.player.team[0].speed.set(speed, false), 
                 ])
+                if (species == 'Regirock' || species == 'Regice' || species == 'Registeel') {
+                    await Promise.all([
+                        await this.mapper.properties.player.team[0].move1pp.set(0, false),
+                    ])
+                }
             }
         }
+        this.mapper.properties.player.team[0].move1pp.change(async (newProp) => {
+            const species = this.mapper.properties.player.team[0].species.value
+            const pp = newProp.value
+            const move1 = this.mapper.properties.player.team[0].move1.value
+            const move2 = this.mapper.properties.player.team[0].move2.value
+            if (species == 'Regirock' || species == 'Regice' || species == 'Registeel') {
+                if (move1 == 'EXPLOSION' && move2 == null) {
+                    await Promise.all([
+                        await this.mapper.properties.player.team[0].move1pp.set(0, false),
+                    ])
+                }   
+            }
+        });
         this.mapper.properties.player.team[0].level.change(async (newProp) => {
             if (newProp == 5 && this.mapper.properties.overworld.mapName.value == "ROUTE 101") {
                 await setStartingAttributes()
             }
-        })
+        });
         this.mapper.properties.battle.type.first_battle.change(async (newProp, oldProp) => {
             if (newProp.value == true && oldProp.value == false && this.mapper.properties.overworld.mapName.value == "ROUTE 101" && this.mapper.properties.player.team[0].level.value == 5) {
                 await setStartingStats()
             }
-        })
+        });
 
         this.freezeEncounters();
 
