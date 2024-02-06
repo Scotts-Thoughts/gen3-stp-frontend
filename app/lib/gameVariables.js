@@ -1,12 +1,14 @@
 const gameVariables = 
 {
     "FireRed and LeafGreen": {
+        "gameName" : "FireRed and LeafGreen",
+        "region" : "Kanto",
         "opponent": "opponent",
         "opponentId" : "opponentId",
         "newGameFlagContainer" : "pointers",
         "newGameFlag" : "callback2",
-        "newGameValueNew" : "New Game",
-        "newGameValueOld" : "Main Menu",
+        "newGameValueNew" : ["New Game", 135456953],
+        "newGameValueOld" : ["Main Menu",134267625,134711521],
         "trainerList" : "remakeTrainers",
         "opponentImageMap" : {
             "LEADER_BROCK": "images/trainers/LEADER_BROCK.png",
@@ -21,26 +23,70 @@ const gameVariables =
             "RIVAL_OAKS_LAB_CHARMANDER" : "images/trainers/RIVAL1.png",
             "RIVAL_OAKS_LAB_SQUIRTLE" : "images/trainers/RIVAL1.png",
         },
+        "splits" : [
+            "RIVAL_OAKS_LAB_BULBASAUR",
+            "RIVAL_OAKS_LAB_CHARMANDER",
+            "RIVAL_OAKS_LAB_SQUIRTLE",
+            "LEADER_BROCK",
+            "LEADER_MISTY",
+            "LEADER_LT_SURGE",
+            "LEADER_ERIKA",
+            "LEADER_KOGA",
+            "LEADER_BLAINE",
+            "LEADER_SABRINA",
+            "LEADER_GIOVANNI",
+            "ELITE_FOUR_LORELEI",
+            "ELITE_FOUR_BRUNO",
+            "ELITE_FOUR_AGATHA",
+            "ELITE_FOUR_LANCE",
+            "RIVAL_SS_ANNE_SQUIRTLE",
+            "RIVAL_SS_ANNE_BULBASAUR",
+            "RIVAL_SS_ANNE_CHARMANDER",
+            "RIVAL_POKENON_TOWER_SQUIRTLE",//these typos are in the mapper
+            "RIVAL_POKENON_TOWER_BULBASAUR",
+            "RIVAL_POKENON_TOWER_CHARMANDER",
+            "RIVAL_POKEMON_TOWER_SQUIRTLE",//including fixed ones so an update won't break it
+            "RIVAL_POKEMON_TOWER_BULBASAUR",
+            "RIVAL_POKEMON_TOWER_CHARMANDER",
+            "RIVAL_SILPH_SQUIRTLE",
+            "RIVAL_SILPH_BULBASAUR",
+            "RIVAL_SILPH_CHARMANDER",
+            "RIVAL_ROUTE22_LATE_SQUIRTLE",
+            "RIVAL_ROUTE22_LATE_BULBASAUR",
+            "RIVAL_ROUTE22_LATE_CHARMANDER",
+            "CHAMPION_FIRST_SQUIRTLE",
+            "CHAMPION_FIRST_BULBASAUR",
+            "CHAMPION_FIRST_CHARMANDER"
+        ],
+        "champion" : [
+            "CHAMPION_FIRST_SQUIRTLE",
+            "CHAMPION_FIRST_BULBASAUR",
+            "CHAMPION_FIRST_CHARMANDER"
+        ],
+        "finalBattle" : [
+            "CHAMPION_FIRST_SQUIRTLE",
+            "CHAMPION_FIRST_BULBASAUR",
+            "CHAMPION_FIRST_CHARMANDER"
+        ],
         "encountersMap" : {
             "ROUTE 1": false,
             "ROUTE 2": false,
             "ROUTE 22": false,
             "VIRIDIAN_FOREST": false,
-          }
-        // encountersData: [
-        //     { route: "ROUTE 1", isChecked: false, formattedName: "Route 1", },
-        //     { route: "ROUTE 2", isChecked: false, formattedName: "Route 2" },
-        //     { route: "ROUTE 22", isChecked: false, formattedName: "Route 22" },
-        //     { route: "VIRIDIAN_FOREST", isChecked: false, formattedName: "Viridian Forest" },
-        // ],
-        //  encountersData: {
-        //     "ROUTE 1": { isChecked: false, formattedName: "Route 1", },
-        //     "ROUTE 2": { isChecked: false, formattedName: "Route 2" },
-        //     "ROUTE 22" : { isChecked: false, formattedName: "Route 22" },
-        //     "VIRIDIAN_FOREST" : { isChecked: false, formattedName: "Viridian Forest" },
-        //  },
+        },
+        "starterLocation" : "PALLET_TOWN - PROFESSOR_OAKS_LAB",
+        "callback1" : {
+            "overworld" : ["Overworld", 134570549],
+            "toBattle" : [134292473]
+        },
+        "callback2" : {
+            "toBattle" : [134287637, "Battle Animation"],
+            "baseStats" : [135711589] //copied from emerald, what should this be??
+        },
     },
     "Emerald": {
+        "gameName" : "Emerald",
+        "region" : "Hoenn",
         "opponent": "opponentA",
         "opponentId" : "opponentAId",
         "newGameFlagContainer" : "misc",
@@ -84,11 +130,64 @@ const gameVariables =
             "RIVAL_BRENDAN_ROUTE_110_TORCHIC": "images/trainers/RIVAL_BRENDAN.png",
             "RIVAL_BRENDAN_ROUTE_119_TORCHIC": "images/trainers/RIVAL_BRENDAN.png",
         },
+        "splits" : [
+            "LEADER_ROXANNE_1",
+            "LEADER_BRAWLY_1",
+            "LEADER_WATTSON_1",
+            "LEADER_FLANNERY_1",
+            "LEADER_NORMAN_1",
+            "LEADER_WINONA_1",
+            "LEADER_TATE_AND_LIZA_1",
+            "LEADER_JUAN_1",
+            "ELITE_FOUR_SIDNEY",
+            "ELITE_FOUR_PHOEBE",
+            "ELITE_FOUR_GLACIA",
+            "ELITE_FOUR_DRAKE",
+            "CHAMPION_WALLACE",
+            "RIVAL_STEVEN",
+            "MAGMA_LEADER_MAXIE_MAGMA_HIDEOUT",
+            "MAGMA_LEADER_MAXIE_MT_CHIMNEY",
+            "AQUA_LEADER_ARCHIE",
+            "RIVAL_WALLY_VR_1",
+            "RIVAL_BRENDAN_ROUTE_103_MUDKIP",
+            "RIVAL_BRENDAN_ROUTE_110_MUDKIP",
+            "RIVAL_BRENDAN_ROUTE_119_MUDKIP",
+            "RIVAL_BRENDAN_ROUTE_103_TREECKO",
+            "RIVAL_BRENDAN_ROUTE_110_TREECKO",
+            "RIVAL_BRENDAN_ROUTE_119_TREECKO",
+            "RIVAL_BRENDAN_ROUTE_103_TORCHIC",
+            "RIVAL_BRENDAN_ROUTE_110_TORCHIC",
+            "RIVAL_BRENDAN_ROUTE_119_TORCHIC",
+            "RIVAL_MAY_ROUTE_103_MUDKIP",
+            "RIVAL_MAY_ROUTE_110_MUDKIP",
+            "RIVAL_MAY_ROUTE_119_MUDKIP",
+            "RIVAL_MAY_ROUTE_103_TREECKO",
+            "RIVAL_MAY_ROUTE_110_TREECKO",
+            "RIVAL_MAY_ROUTE_119_TREECKO",
+            "RIVAL_MAY_ROUTE_103_TORCHIC",
+            "RIVAL_MAY_ROUTE_110_TORCHIC",
+            "RIVAL_MAY_ROUTE_119_TORCHIC"
+        ],
+        "champion" : [
+            "CHAMPION_WALLACE",
+        ],
+        "finalBattle" : [
+            "RIVAL_STEVEN"
+        ],
         "encountersMap" : {
             "ROUTE 101": false,
             "ROUTE 102": false,
             "ROUTE 103": false,
-          }
+        },
+        "starterLocation" : "ROUTE 101",
+        "callback1" : {
+            "overworld" : [134765285, "Overworld", 134765313],
+            "toBattle" : [134455025]
+        },
+        "callback2" : {
+            "toBattle" : [134765389, 134442925, "Battle Animation"],
+            "baseStats" : [135711589]
+        },
     },
     "Ruby and Sapphire": {
 

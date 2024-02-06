@@ -39,7 +39,7 @@
                 <div class="colored-image ds" style="--url: url(images/ui/moveset.svg)"></div>
                 <div class="colored-image ds" style="--url: url(images/ui/resets.svg)"></div>
                 <div class="colored-image ds" style="--url: url(images/ui/badges.svg)"></div>
-                <img class="canvas" src="images/elements/hoenn_badges_unobtained.png" />
+                <img class="canvas" :src="`images/elements/${this.game.region.toLowerCase()}_badges_unobtained.png`" />
                 <img class="canvas" src="images/elements/moveset.png" />
                 <!-- <img class="canvas" 
                     v-if="mapper.properties.meta.gameName == 'Emerald' || mapper.properties.meta.gameName == 'Ruby and Sapphire'" 
@@ -147,7 +147,7 @@
                     <div>Encounters:</div>
                     <table>
                     <tr v-for="(isChecked, route) in this.game.encountersMap" :key="route">
-                        <td>{{ route }}:</td>
+                        <td>{{ this.titleCaseNoUnderscores(route) }}:</td>
                         <td><input class="checkBoxStyle" type="checkbox" v-model="this.game.encountersMap[route]" /><br></td>
                     </tr>
                     </table>
@@ -233,7 +233,7 @@
 <!--------- BADGE ICONS ---------------------------------------------------------------------------------------------------------------------->
             <div v-for="x in badges">
                 <div v-if="mapper.properties.player.badges[x].value == true && g3stateVariable != `Base Stats`">
-                    <img class="badge" :src="`images/badges/${x}.png`"/>
+                    <img class="badge" :src="`images/badges/positioned/${this.game.region}/${x}.png`"/>
                 </div>
             </div>
 
@@ -251,7 +251,7 @@
                 <!--------- BADGE BOOST ICONS ---------------------------------------------------------------------------------------------------------------------->
                 <div v-for="x in badgeBoosts">
                     <div v-if="mapper.properties.player.badges[x].value == true">
-                        <img class="badgeBoost" :src="`images/badges/badge_boosts/${x}.png`"/>
+                        <img class="badgeBoost" :src="`images/badges/badge_boosts/${this.game.region}/${x}.png`"/>
                     </div>
                 </div>
 

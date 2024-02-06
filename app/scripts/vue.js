@@ -332,7 +332,7 @@ const path = require("path");
 const { finished } = require('stream');
 function logData(gameName, str, file_name, starter, log_type, testStatus, toggle) {
         return new Promise((resolve, reject) => {
-        const dirPath = `./splits/Emerald/${starter}/attempts/`;
+        const dirPath = `./splits/${app.game.gameName}/${starter}/attempts/`;
         const testStatusText = testStatus ? "test_run_" : "";
         let filePath = path.join(dirPath, `${testStatusText}${starter}-${file_name}-simple.csv`);
         let header = "player_name" +
@@ -891,9 +891,12 @@ const app = Vue.createApp({
                 
             }
             var log_start = (x) => console.log(logStr)
-            if (newProp.value == "Battle" && this.mapper.properties.battle.type.trainer) {
+            console.log("checking - newprop: "+ newProp)
+            console.log("this.mapper.properties.battle.type.trainer: "+this.mapper.properties.battle.type.trainer)
+            if (newProp == "Battle" && this.mapper.properties.battle.type.trainer) {
                 this.split_logStr = logStr
                 this.battle_start = Date.now()
+                console.log("just set battlestart")
                 this.time_split_start = this.padTime(this.time_h) + ":" + this.padTime(this.time_m) + ":" + this.padTime(this.time_s) + "." + this.padTime(this.time_ms)
                 log_start()
             }
@@ -1287,7 +1290,7 @@ const app = Vue.createApp({
         },
         enemyTrainerList() {
             return this.trainerLists[this.game?.trainerList]
-        }
+        },
     },
 
     methods: { 
@@ -2193,6 +2196,10 @@ const app = Vue.createApp({
             }
             return words.join(' ');
         },
+        titleCaseNoUnderscores(str) { //VIRIDIAN_FOREST -> Viridian Forest
+            let formattedStr = str.replace(/_/g, ' ');
+            return formattedStr.charAt(0).toUpperCase() + formattedStr.substr(1).toLowerCase();
+        },
         getPokemonImageUrl: function (x) {
             if (x != null)
                 return `images/overlay/${x.pokedexNumber}.png`
@@ -2910,11 +2917,11 @@ const app = Vue.createApp({
             }
         },
         newGame() {
-            console.log("watching for new game")
-            console.log(this.mapper.properties[this.game.newGameFlagContainer][this.game.newGameFlag])
+            // console.log("watching for new game")
+            // console.log(this.mapper.properties[this.game.newGameFlagContainer][this.game.newGameFlag])
             this.mapper.properties[this.game.newGameFlagContainer][this.game.newGameFlag].change((newProp, oldProp) => {
-                console.log("new game? new: "+newProp + " old: "+oldProp)
-                if(newProp.value==this.game.newGameValueNew && oldProp.value == this.game.newGameValueOld){
+                // console.log("new game? new: "+newProp + " old: "+oldProp)
+                if(this.game.newGameValueNew.includes(newProp.value) && this.game.newGameValueOld.includes(oldProp.value)){
                     console.log("new game started")
                     if (!this.testRun) { this.attempt_number++ }
                     this.newRun();
@@ -2923,7 +2930,6 @@ const app = Vue.createApp({
             })
         },
         freezeEncounters() {
-            console.log("checking freeze")
             this.mapper.properties.overworld.mapName.change((newProp) => {
                 if (this.mapper.properties.player.badges.badge1.value == false && this.route_101 == false && newProp.value == "ROUTE 101") {
                     this.mapper.properties.overworld.disabledEncounters.set(true,false);
@@ -2996,7 +3002,7 @@ const app = Vue.createApp({
                     break;
             }
             return output;
-        }
+        },
     },
     
 
@@ -3023,10 +3029,10 @@ const app = Vue.createApp({
             this.g3stateVariable = "Base Stats"
         else if (this.mapper.properties.pointers.callback1.value == 0 || this.mapper.properties.pointers.callback1.value == null)
             this.g3stateVariable = "Base Stats"
-        else if (this.mapper.properties.pointers.callback1.value == 134765285 || this.mapper.properties.pointers.callback1.value == "Overworld" || this.mapper.properties.pointers.callback1.value == 134765313)
+        else if (this.game.callback1.overworld.includes(this.mapper.properties.pointers.callback1.value))
             this.g3stateVariable = "Overworld"
-        else if (this.mapper.properties.pointers.callback1.value == 134455025) {
-            if (this.mapper.properties.pointers.callback2.value == 134765389) {
+        else if (this.game.callback1.toBattle.includes(this.mapper.properties.pointers.callback1.value)) {
+            if (this.game.callback2.toBattle.includes(this.mapper.properties.pointers.callback2.value)) {
                 this.g3stateVariable = "To Battle"
             }
             else {
@@ -3038,7 +3044,7 @@ const app = Vue.createApp({
 
         // wait for events to change the state
         this.mapper.properties.pointers.callback1.change((prop) => {
-            if (prop.value == 134765285 || prop.value == "Overworld" || prop.value == 134765313) {
+            if (this.game.callback1.overworld.includes(prop.value)) {
                 this.g3stateVariable = "Overworld"
             }
         });
@@ -3066,10 +3072,10 @@ const app = Vue.createApp({
         });
 
         this.mapper.properties.pointers.callback2.change((prop) => {
-            if (prop.value == 135711589) { 
+            if (this.game.callback2.baseStats.includes(prop.value)) { 
                 this.g3stateVariable = "Base Stats"
             }
-            else if (prop.value == 134442925 || prop.value == "Battle Animation") { 
+            else if (this.game.callback2.toBattle.includes(prop.value)) { 
                 this.g3stateVariable = "To Battle"
             }
         });
@@ -3080,7 +3086,9 @@ const app = Vue.createApp({
             }
         });
 
-        this.mapper.properties.pointers.dma1.change((newProp, oldProp) => {
+        //track resets
+        //callback2 seems more reliable to track than dma1 in firered no encryption
+        this.mapper.properties.pointers.callback2.change((newProp, oldProp) => {
             if (this.hallOfFameReset == true) {
                 this.hallOfFameReset = false;
             }
@@ -3229,7 +3237,7 @@ const app = Vue.createApp({
             }
 
             // only recalculate stats when IVs when your starter is received
-            if (this.mapper.properties.overworld.mapName.value == "ROUTE 101" && this.mapper.properties.player.team[0].level.value == 5) {
+            if (this.mapper.properties.overworld.mapName.value == this.game.starterLocation && this.mapper.properties.player.team[0].level.value == 5) {
                 await Promise.all([
                     await this.mapper.properties.player.team[0].personalityValue.set(personalityValue, false), 
                     await this.mapper.properties.player.team[0].ivEggAbilityBlock.set(iv_block, false), 
@@ -3258,7 +3266,7 @@ const app = Vue.createApp({
             var speed = Math.floor(Math.floor(((((2 * pkmnData.base_spd + ivSpe + 0) * level)/100) + 5)) * natures["nature_speed"])
 
             // only recalculate stats when IVs when your starter is received
-            if (this.mapper.properties.overworld.mapName.value == "ROUTE 101" && this.mapper.properties.player.team[0].level.value == 5) {
+            if (this.mapper.properties.overworld.mapName.value == this.game.starterLocation && this.mapper.properties.player.team[0].level.value == 5) {
                 await Promise.all([
                     await this.mapper.properties.player.team[0].hp.set(hitpoints, false), 
                     await this.mapper.properties.player.team[0].maxHp.set(hitpoints, false), 
@@ -3271,12 +3279,12 @@ const app = Vue.createApp({
             }
         }
         this.mapper.properties.player.team[0].level.change(async (newProp) => {
-            if (newProp == 5 && this.mapper.properties.overworld.mapName.value == "ROUTE 101") {
+            if (newProp == 5 && this.mapper.properties.overworld.mapName.value == this.game.starterLocation) {
                 await setStartingAttributes()
             }
         })
         this.mapper.properties.battle.type.first_battle.change(async (newProp, oldProp) => {
-            if (newProp.value == true && oldProp.value == false && this.mapper.properties.overworld.mapName.value == "ROUTE 101" && this.mapper.properties.player.team[0].level.value == 5) {
+            if (newProp.value == true && oldProp.value == false && this.mapper.properties.overworld.mapName.value == this.game.starterLocation && this.mapper.properties.player.team[0].level.value == 5) {
                 await setStartingStats()
             }
         })
@@ -3617,7 +3625,7 @@ const app = Vue.createApp({
                 console.log('Starting log process')
                 let trainer = this.opponent
                 let id = this.opponentId
-                let gameName = "Emerald"
+                let gameName = this.game.gameName;
                 
                 //write full split data
                 logData(gameName, this.full_data_str, this.attempt_number, this.starterString, "Full", this.testRun, this.scott_mode)
@@ -3638,50 +3646,53 @@ const app = Vue.createApp({
                         split_data: this.split_data
                     }
                 }
-                switch (trainer) {
-                    case "LEADER_ROXANNE_1":
-                    case "LEADER_BRAWLY_1":
-                    case "LEADER_WATTSON_1":
-                    case "LEADER_FLANNERY_1":
-                    case "LEADER_NORMAN_1":
-                    case "LEADER_WINONA_1":
-                    case "LEADER_TATE_AND_LIZA_1":
-                    case "LEADER_JUAN_1":
-                    case "ELITE_FOUR_SIDNEY":
-                    case "ELITE_FOUR_PHOEBE":
-                    case "ELITE_FOUR_GLACIA":
-                    case "ELITE_FOUR_DRAKE":
-                    case "CHAMPION_WALLACE":
-                    case "RIVAL_STEVEN":
-                    case "MAGMA_LEADER_MAXIE_MAGMA_HIDEOUT":
-                    case "MAGMA_LEADER_MAXIE_MT_CHIMNEY":
-                    case "AQUA_LEADER_ARCHIE":
-                    case "RIVAL_WALLY_VR_1":
-                    case "RIVAL_BRENDAN_ROUTE_103_MUDKIP":
-                    case "RIVAL_BRENDAN_ROUTE_110_MUDKIP":
-                    case "RIVAL_BRENDAN_ROUTE_119_MUDKIP":
-                    case "RIVAL_BRENDAN_ROUTE_103_TREECKO":
-                    case "RIVAL_BRENDAN_ROUTE_110_TREECKO":
-                    case "RIVAL_BRENDAN_ROUTE_119_TREECKO":
-                    case "RIVAL_BRENDAN_ROUTE_103_TORCHIC":
-                    case "RIVAL_BRENDAN_ROUTE_110_TORCHIC":
-                    case "RIVAL_BRENDAN_ROUTE_119_TORCHIC":
-                    case "RIVAL_MAY_ROUTE_103_MUDKIP":
-                    case "RIVAL_MAY_ROUTE_110_MUDKIP":
-                    case "RIVAL_MAY_ROUTE_119_MUDKIP":
-                    case "RIVAL_MAY_ROUTE_103_TREECKO":
-                    case "RIVAL_MAY_ROUTE_110_TREECKO":
-                    case "RIVAL_MAY_ROUTE_119_TREECKO":
-                    case "RIVAL_MAY_ROUTE_103_TORCHIC":
-                    case "RIVAL_MAY_ROUTE_110_TORCHIC":
-                    case "RIVAL_MAY_ROUTE_119_TORCHIC": { simpleSplit() }
+                if(this.game.splits.includes(trainer)) {
+                    simpleSplit();
                 }
-                if (trainer == "CHAMPION_WALLACE") {
+                // switch (trainer) {
+                //     case "LEADER_ROXANNE_1":
+                //     case "LEADER_BRAWLY_1":
+                //     case "LEADER_WATTSON_1":
+                //     case "LEADER_FLANNERY_1":
+                //     case "LEADER_NORMAN_1":
+                //     case "LEADER_WINONA_1":
+                //     case "LEADER_TATE_AND_LIZA_1":
+                //     case "LEADER_JUAN_1":
+                //     case "ELITE_FOUR_SIDNEY":
+                //     case "ELITE_FOUR_PHOEBE":
+                //     case "ELITE_FOUR_GLACIA":
+                //     case "ELITE_FOUR_DRAKE":
+                //     case "CHAMPION_WALLACE":
+                //     case "RIVAL_STEVEN":
+                //     case "MAGMA_LEADER_MAXIE_MAGMA_HIDEOUT":
+                //     case "MAGMA_LEADER_MAXIE_MT_CHIMNEY":
+                //     case "AQUA_LEADER_ARCHIE":
+                //     case "RIVAL_WALLY_VR_1":
+                //     case "RIVAL_BRENDAN_ROUTE_103_MUDKIP":
+                //     case "RIVAL_BRENDAN_ROUTE_110_MUDKIP":
+                //     case "RIVAL_BRENDAN_ROUTE_119_MUDKIP":
+                //     case "RIVAL_BRENDAN_ROUTE_103_TREECKO":
+                //     case "RIVAL_BRENDAN_ROUTE_110_TREECKO":
+                //     case "RIVAL_BRENDAN_ROUTE_119_TREECKO":
+                //     case "RIVAL_BRENDAN_ROUTE_103_TORCHIC":
+                //     case "RIVAL_BRENDAN_ROUTE_110_TORCHIC":
+                //     case "RIVAL_BRENDAN_ROUTE_119_TORCHIC":
+                //     case "RIVAL_MAY_ROUTE_103_MUDKIP":
+                //     case "RIVAL_MAY_ROUTE_110_MUDKIP":
+                //     case "RIVAL_MAY_ROUTE_119_MUDKIP":
+                //     case "RIVAL_MAY_ROUTE_103_TREECKO":
+                //     case "RIVAL_MAY_ROUTE_110_TREECKO":
+                //     case "RIVAL_MAY_ROUTE_119_TREECKO":
+                //     case "RIVAL_MAY_ROUTE_103_TORCHIC":
+                //     case "RIVAL_MAY_ROUTE_110_TORCHIC":
+                //     case "RIVAL_MAY_ROUTE_119_TORCHIC": { simpleSplit() }
+                // }
+                if (this.game.champion.includes(trainer)) {
                     this.hallOfFameReset = true;
                 }
 
                 //stop timer
-                if (trainer == "RIVAL_STEVEN") {
+                if (this.game.finalBattle.includes(trainer)) {
                     log_split()
                     if (this.testRun == false) {
                         this.finished_run_count++
