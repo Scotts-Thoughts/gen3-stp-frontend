@@ -138,11 +138,18 @@
                 <div class="ui2">
                     <div style="font-size: 24px;">Advanced Settings:</div>
                     <br>
-                    <div>Encounters:</div>
+                    <!-- <div>Encounters:</div>
                     <table>
                         <tr><td>Route 101:</td><td><input class="checkBoxStyle" type="checkbox" v-model="route_101"/><br></td></tr>
                         <tr><td>Route 102:</td><td><input class="checkBoxStyle" type="checkbox" v-model="route_102"/><br></td></tr>
                         <tr><td>Route 103:</td><td><input class="checkBoxStyle" type="checkbox" v-model="route_103"/><br></td></tr>
+                    </table> -->
+                    <div>Encounters:</div>
+                    <table>
+                    <tr v-for="(isChecked, route) in this.game.encountersMap" :key="route">
+                        <td>{{ route }}:</td>
+                        <td><input class="checkBoxStyle" type="checkbox" v-model="this.game.encountersMap[route]" /><br></td>
+                    </tr>
                     </table>
                     <br>
                     <div>Force HM Users Until Caught:</div>

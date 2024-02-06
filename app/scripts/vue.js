@@ -1103,7 +1103,7 @@ const app = Vue.createApp({
             return this.mapper?.properties?.battle?.enemyPokemon
         },
         opponent() {
-            return this.mapper?.properties?.battle.trainer[this.game.opponent]?.value
+            return this.mapper?.properties?.battle.trainer[this.game?.opponent]?.value
         },
         opponentId() {
             return this.mapper?.properties?.battle.trainer[this.game?.opponentId]?.value
@@ -1281,6 +1281,9 @@ const app = Vue.createApp({
             return this.gameVariables[this.mapper?.properties?.meta?.gameName];
         // return "FireRed and LeafGreen";
             // return(this.mapper?.properties.meta.gameName);
+        },
+        gameName() {
+            return this.mapper?.properties?.meta?.gameName;
         },
         enemyTrainerList() {
             return this.trainerLists[this.game?.trainerList]
@@ -1750,48 +1753,7 @@ const app = Vue.createApp({
 
         // ENEMY TRAINER GRAPHIC
         g3trainerEnemySelector(trainerClass) {
-            if (
-                trainerClass == "YOUNGSTER_CALVIN_1" ||
-                trainerClass == "LEADER_ROXANNE_1" ||
-                trainerClass == "LEADER_BRAWLY_1" ||
-                trainerClass == "LEADER_WATTSON_1" ||
-                trainerClass == "LEADER_FLANNERY_1" ||
-                trainerClass == "LEADER_NORMAN_1" ||
-                trainerClass == "LEADER_WINONA_1" ||
-                trainerClass == "LEADER_TATE_AND_LIZA_1" ||
-                trainerClass == "LEADER_JUAN_1" ||
-                trainerClass == "RIVAL_BRENDAN_RUSTBORO_TREECKO" ||
-                trainerClass == "RIVAL_BRENDAN_RUSTBORO_MUDKIP" ||
-                trainerClass == "RIVAL_BRENDAN_RUSTBORO_TORCHIC" ||
-                trainerClass == "RIVAL_BRENDAN_ROUTE_103_MUDKIP" ||
-                trainerClass == "RIVAL_BRENDAN_ROUTE_110_MUDKIP" ||
-                trainerClass == "RIVAL_BRENDAN_ROUTE_119_MUDKIP" ||
-                trainerClass == "RIVAL_BRENDAN_ROUTE_103_TREECKO" ||
-                trainerClass == "RIVAL_BRENDAN_ROUTE_110_TREECKO" ||
-                trainerClass == "RIVAL_BRENDAN_ROUTE_119_TREECKO" ||
-                trainerClass == "RIVAL_BRENDAN_ROUTE_103_TORCHIC" ||
-                trainerClass == "RIVAL_BRENDAN_ROUTE_110_TORCHIC" ||
-                trainerClass == "RIVAL_BRENDAN_ROUTE_119_TORCHIC" ||
-                trainerClass == "RIVAL_MAY_RUSTBORO_TREECKO" ||
-                trainerClass == "RIVAL_MAY_RUSTBORO_TORCHIC" ||
-                trainerClass == "RIVAL_MAY_RUSTBORO_MUDKIP" ||
-                trainerClass == "RIVAL_MAY_ROUTE_103_MUDKIP" ||
-                trainerClass == "RIVAL_MAY_ROUTE_110_MUDKIP" ||
-                trainerClass == "RIVAL_MAY_ROUTE_119_MUDKIP" ||
-                trainerClass == "RIVAL_MAY_ROUTE_103_TREECKO" ||
-                trainerClass == "RIVAL_MAY_ROUTE_110_TREECKO" ||
-                trainerClass == "RIVAL_MAY_ROUTE_119_TREECKO" ||
-                trainerClass == "RIVAL_MAY_ROUTE_103_TORCHIC" ||
-                trainerClass == "RIVAL_MAY_ROUTE_110_TORCHIC" ||
-                trainerClass == "RIVAL_MAY_ROUTE_119_TORCHIC" ||
-                trainerClass == "RIVAL_WALLY_MAUVILLE"
-                // trainerClass == "ELITE_FOUR_SIDNEY"
-                // trainerClass == "ELITE_FOUR_PHOEBE"
-                // trainerClass == "ELITE_FOUR_GLACIA"
-                // trainerClass == "ELITE_FOUR_DRAKE"
-                // trainerClass == "CHAMPION_WALLACE"
-                // trainerClass == "RIVAL_STEVEN"
-                ) {
+            if (this.game.opponentImageMap[trainerClass]) {
                     return 1
                 }
             else
@@ -1799,6 +1761,7 @@ const app = Vue.createApp({
         },
         specialTrainerGraphics() {
             if (this.showSpecialTrainerGraphics == true) {
+                return this.game.opponentImageMap[this.opponent];
                 if (this.opponent == "YOUNGSTER_CALVIN_1") return `images/trainers/${this.opponent}.png`
                 if (this.opponent == "LEADER_ROXANNE_1") return `images/trainers/${this.opponent}.png`
                 if (this.opponent == "LEADER_BRAWLY_1") return `images/trainers/${this.opponent}.png`
@@ -2948,7 +2911,9 @@ const app = Vue.createApp({
         },
         newGame() {
             console.log("watching for new game")
+            console.log(this.mapper.properties[this.game.newGameFlagContainer][this.game.newGameFlag])
             this.mapper.properties[this.game.newGameFlagContainer][this.game.newGameFlag].change((newProp, oldProp) => {
+                console.log("new game? new: "+newProp + " old: "+oldProp)
                 if(newProp.value==this.game.newGameValueNew && oldProp.value == this.game.newGameValueOld){
                     console.log("new game started")
                     if (!this.testRun) { this.attempt_number++ }
@@ -2958,31 +2923,31 @@ const app = Vue.createApp({
             })
         },
         freezeEncounters() {
+            console.log("checking freeze")
             this.mapper.properties.overworld.mapName.change((newProp) => {
                 if (this.mapper.properties.player.badges.badge1.value == false && this.route_101 == false && newProp.value == "ROUTE 101") {
-                    this.mapper.properties.overworld.disabledEncounters.set(0x01,false);
+                    this.mapper.properties.overworld.disabledEncounters.set(true,false);
                 }
                 if (this.mapper.properties.player.badges.badge1.value == false && this.route_102 == false && newProp.value == "ROUTE 102") {
-                    this.mapper.properties.overworld.disabledEncounters.set(0x01,false);
+                    this.mapper.properties.overworld.disabledEncounters.set(true,false);
                 }
-                if (this.mapper.properties.player.badges.badge1.value == false && this.route_103 == false && newProp.value == "ROUTE 103") {
-                    this.mapper.properties.overworld.disabledEncounters.set(0x01,false);
+                if (this.mapper.properties.player.badges.badge1.value == false && this.game.encountersMap["ROUTE 103"] == false && newProp.value == "ROUTE 103") {
+                    this.mapper.properties.overworld.disabledEncounters.set(true,false);
                 }
                 else if (this.hm_102_zigzagoon == true && newProp.value == "ROUTE 102" && this.route_102 == false && this.mapper.properties.player.team[1].species.value != "Zigzagoon") {
                     this.mapper.properties.player.team[1].species.change((newerProp) => {
                         if(newerProp = "Zigzagoon" && this.hm_102_zigzagoon == true && newProp.value == "ROUTE 102" && this.route_102 == false) {
-                            this.mapper.properties.overworld.disabledEncounters.set(0x01,false);
+                            this.mapper.properties.overworld.disabledEncounters.set(true,false);
                         }
                     });
                 }
                 else {
-                    if((newProp.value == "ROUTE 101" && ! this.route_101) ||
-                        (newProp.value == "ROUTE 102" && ! this.route_102) ||
-                        (newProp.value == "ROUTE 103" && ! this.route_103)) {
-                        this.mapper.properties.overworld.disabledEncounters.set(0x01,false);
+                    // console.log(this.game.encountersMap[newProp]);
+                    if(this.game.encountersMap[newProp]==false) {
+                        this.mapper.properties.overworld.disabledEncounters.set(true,false);
                     }
                     else {
-                        this.mapper.properties.overworld.disabledEncounters.set(0x00,false);
+                        this.mapper.properties.overworld.disabledEncounters.set(false,false);
                     }
                 }
             });
@@ -3045,12 +3010,12 @@ const app = Vue.createApp({
         console.log("mapper set")
         this.updateTime()
         this.load_all_settings()
-
         for (var species of Object.keys(dexDataRubySapphireEmerald)) {
             var image = new Image();
             image.src = `images/pokemon/${species}.png`;
         }
 
+        this.newGame();
         //GAMESTATE MANAGEMENT
         // set initial gamestate value when the layout is loaded
 
