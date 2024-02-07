@@ -3648,7 +3648,7 @@ const app = Vue.createApp({
                 logData(gameName, this.full_data_str, this.attempt_number, this.starterString, "Full", this.testRun, this.scott_mode)
                 
                 //write deprecated split data
-                if (this.autosplitter["Emerald"][trainer]) {
+                if (this.autosplitter[this.game.gameName][trainer]) {
                     logData(gameName, this.deprecated_data_str, this.attempt_number, this.starterString, "Deprecated", this.testRun, this.scott_mode)
                 }
                 
@@ -3666,44 +3666,7 @@ const app = Vue.createApp({
                 if(this.game.splits.includes(trainer)) {
                     simpleSplit();
                 }
-                // switch (trainer) {
-                //     case "LEADER_ROXANNE_1":
-                //     case "LEADER_BRAWLY_1":
-                //     case "LEADER_WATTSON_1":
-                //     case "LEADER_FLANNERY_1":
-                //     case "LEADER_NORMAN_1":
-                //     case "LEADER_WINONA_1":
-                //     case "LEADER_TATE_AND_LIZA_1":
-                //     case "LEADER_JUAN_1":
-                //     case "ELITE_FOUR_SIDNEY":
-                //     case "ELITE_FOUR_PHOEBE":
-                //     case "ELITE_FOUR_GLACIA":
-                //     case "ELITE_FOUR_DRAKE":
-                //     case "CHAMPION_WALLACE":
-                //     case "RIVAL_STEVEN":
-                //     case "MAGMA_LEADER_MAXIE_MAGMA_HIDEOUT":
-                //     case "MAGMA_LEADER_MAXIE_MT_CHIMNEY":
-                //     case "AQUA_LEADER_ARCHIE":
-                //     case "RIVAL_WALLY_VR_1":
-                //     case "RIVAL_BRENDAN_ROUTE_103_MUDKIP":
-                //     case "RIVAL_BRENDAN_ROUTE_110_MUDKIP":
-                //     case "RIVAL_BRENDAN_ROUTE_119_MUDKIP":
-                //     case "RIVAL_BRENDAN_ROUTE_103_TREECKO":
-                //     case "RIVAL_BRENDAN_ROUTE_110_TREECKO":
-                //     case "RIVAL_BRENDAN_ROUTE_119_TREECKO":
-                //     case "RIVAL_BRENDAN_ROUTE_103_TORCHIC":
-                //     case "RIVAL_BRENDAN_ROUTE_110_TORCHIC":
-                //     case "RIVAL_BRENDAN_ROUTE_119_TORCHIC":
-                //     case "RIVAL_MAY_ROUTE_103_MUDKIP":
-                //     case "RIVAL_MAY_ROUTE_110_MUDKIP":
-                //     case "RIVAL_MAY_ROUTE_119_MUDKIP":
-                //     case "RIVAL_MAY_ROUTE_103_TREECKO":
-                //     case "RIVAL_MAY_ROUTE_110_TREECKO":
-                //     case "RIVAL_MAY_ROUTE_119_TREECKO":
-                //     case "RIVAL_MAY_ROUTE_103_TORCHIC":
-                //     case "RIVAL_MAY_ROUTE_110_TORCHIC":
-                //     case "RIVAL_MAY_ROUTE_119_TORCHIC": { simpleSplit() }
-                // }
+           
                 if (this.game.champion.includes(trainer)) {
                     this.hallOfFameReset = true;
                 }
