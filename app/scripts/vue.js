@@ -883,7 +883,7 @@ const app = Vue.createApp({
         //*Autosplitter
         //log the start of a battle
         g3stateVariable(newProp) {
-            console.log(newProp)
+            // console.log(newProp)
             try {
                 var logStr = `Autosplitter - Battle Started: ${this.batt.trainer[this.game.opponent].value} started at ${this.timer_formatted_time[0]}${this.timer_formatted_time[1]} (Gametime: ${this.gametimeSplit})`
             }
@@ -891,12 +891,11 @@ const app = Vue.createApp({
                 
             }
             var log_start = (x) => console.log(logStr)
-            console.log("checking - newprop: "+ newProp)
-            console.log("this.mapper.properties.battle.type.trainer: "+this.mapper.properties.battle.type.trainer)
+            // console.log("checking - newprop: "+ newProp)
+            // console.log("this.mapper.properties.battle.type.trainer: "+this.mapper.properties.battle.type.trainer)
             if (newProp == "Battle" && this.mapper.properties.battle.type.trainer) {
                 this.split_logStr = logStr
                 this.battle_start = Date.now()
-                console.log("just set battlestart")
                 this.time_split_start = this.padTime(this.time_h) + ":" + this.padTime(this.time_m) + ":" + this.padTime(this.time_s) + "." + this.padTime(this.time_ms)
                 log_start()
             }
@@ -1085,10 +1084,17 @@ const app = Vue.createApp({
             }
         },
         enemyTrainerPokemon() {
-            return this.emeraldTrainers[this.opponentId]?.pokemon
+            return this.enemyTrainer.pokemon;
         },
         enemyTrainer() {
-            return this.enemyTrainerList[this.opponentId]
+            if(this.opponentId ==0 || !this.opponentId) {
+                this.opponentId.change((newProp) => {
+                    return this.enemyTrainerList[this.opponentId];    
+                })
+            }
+            else {
+                return this.enemyTrainerList[this.opponentId]    
+            }
         },
         enemyTeam() {
             return this.mapper.properties.battle.trainer.team
@@ -2900,22 +2906,22 @@ const app = Vue.createApp({
         },
 
         battlePokemonCrop() {
-            if (this.enemyTrainerList[this.opponentId]["pokemon"].length == 1) {
+            if (this.enemyTrainerList?.[this.opponentId]?.pokemon?.length === 1) {
                 return "height: 234px;"
             }
-            else if (this.trainerLists[this.game?.trainerList][this.opponentId]["pokemon"].length == 2) {
+            else if (this.enemyTrainerList?.[this.opponentId]?.["pokemon"]?.length == 2) {
                 return "height: 402px;"
             }
-            else if (this.trainerLists[this.game?.trainerList][this.opponentId]["pokemon"].length == 3) {
+            else if (this.enemyTrainerList?.[this.opponentId]?.["pokemon"]?.length == 3) {
                 return "height: 566px;"
             }
-            else if (this.trainerLists[this.game?.trainerList][this.opponentId]["pokemon"].length == 4) {
+            else if (this.enemyTrainerList?.[this.opponentId]?.[this.opponentId]?.["pokemon"]?.length == 4) {
                 return "height: 736px;"
             }
-            else if (this.trainerLists[this.game?.trainerList][this.opponentId]["pokemon"].length == 5) {
+            else if (this.enemyTrainerList?.[this.opponentId]?.[this.opponentId]?.["pokemon"]?.length == 5) {
                 return "height: 902px;"
             }
-            else if (this.trainerLists[this.game?.trainerList][this.opponentId]["pokemon"].length == 6) {
+            else if (this.enemyTrainerList?.[this.opponentId]?.[this.opponentId]?.["pokemon"]?.length == 6) {
                 return "height: 1080px;"
             }
         },
@@ -3663,7 +3669,7 @@ const app = Vue.createApp({
                         split_data: this.split_data
                     }
                 }
-                if(this.game.splits.includes(trainer)) {
+                if(this.game.splits.includes(trainer)&& !this.game.finalBattle.includes(trainer)) {
                     simpleSplit();
                 }
            
@@ -3724,7 +3730,7 @@ const app = Vue.createApp({
                 // there is still a bug here. what if we changed to the same species?
                 if (this.g3stateVariable == `Overworld` || this.g3stateVariable == "Base Stats") {
                     this.$refs.expBar.style.width = (newExpStats.percent * 100) + "%";
-                    console.log((newExpStats.percent * 100) + "%")
+                    // console.log((newExpStats.percent * 100) + "%")
                 }
                 else if (this.prevSpecies != currSpecies) {
                     // update prevSpecies
