@@ -2,6 +2,7 @@ const gameVariables =
 {
     "FireRed and LeafGreen": {
         "gameName" : "FireRed and LeafGreen",
+        "dexData" : dexDataFireRedLeafGreen,
         "region" : "Kanto",
         "opponent": "opponent",
         "opponentId" : "opponentId",
@@ -86,6 +87,7 @@ const gameVariables =
     },
     "Emerald": {
         "gameName" : "Emerald",
+        "dexData" : dexDataRubySapphireEmerald,
         "region" : "Hoenn",
         "opponent": "opponentA",
         "opponentId" : "opponentAId",

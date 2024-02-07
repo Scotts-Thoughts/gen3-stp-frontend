@@ -385,7 +385,7 @@
                             <th class="movepool_header movepool_tableC">Acc.</th>
                             <th class="movepool_header movepool_tableC">PP</th>
                         </tr>
-                        <tr v-for="x in getMovepool(dexDataRubySapphireEmerald, g3MoveData, g3tmhmMapping, s1dynamicReset.species.value).level">
+                        <tr v-for="x in getMovepool(dexData, g3MoveData, g3tmhmMapping, s1dynamicReset.species.value).level">
                             <td class="movepool_way">{{x.Level}}</td>
                             <td class="movepool_move">{{move_name(x.Move)}}</td>
                             <td class="movepool_type" :style="{'background-color': `var(--${movepoolTypeColor(x)?.toLowerCase()})`}">{{movepoolType(x)}}</td>
@@ -393,7 +393,7 @@
                             <td class="movepool_tableC">{{x.Accuracy}}%</td>
                             <td class="movepool_tableC">{{x.PP}}</td>
                         </tr>
-                        <tr v-for="x in getMovepool(dexDataRubySapphireEmerald, g3MoveData, g3tmhmMapping, s1dynamicReset.species.value).tmhm">
+                        <tr v-for="x in getMovepool(dexData, g3MoveData, g3tmhmMapping, s1dynamicReset.species.value).tmhm">
                             <td class="movepool_way">{{x.tmhm}}</td>
                             <td class="movepool_move">{{move_name(x.Move)}}</td>
                             <td class="movepool_type" :style="{'background-color': `var(--${movepoolTypeColor(x)?.toLowerCase()})`}">{{movepoolType(x)}}</td>
@@ -401,7 +401,7 @@
                             <td class="movepool_tableC">{{x.Accuracy}}%</td>
                             <td class="movepool_tableC">{{x.PP}}</td>
                         </tr>
-                        <tr v-for="x in getMovepool(dexDataRubySapphireEmerald, g3MoveData, g3tmhmMapping, s1dynamicReset.species.value).tutor">
+                        <tr v-for="x in getMovepool(dexData, g3MoveData, g3tmhmMapping, s1dynamicReset.species.value).tutor">
                             <td v-if="tutor_moves" class="movepool_way">Tutor</td>
                             <td v-if="tutor_moves" class="movepool_move">{{move_name(x.Move)}}</td>
                             <td v-if="tutor_moves" class="movepool_type" :style="{'background-color': `var(--${x.Type?.toLowerCase()})`}">{{x.Type}}</td>
@@ -459,6 +459,7 @@
     <!-- DATA -->
     <script src="data/gen1data.js"></script>
     <script src="data/g3MovesData.js"></script>
+    <script src="data/dexDataFireRedLeafGreen.js"></script>
     <script src="data/g3tmhmmapping.js"></script>
     <script src="data/gen1dataGrowthMovepool.js"></script>
     <script src="data/gen1moves.js"></script>

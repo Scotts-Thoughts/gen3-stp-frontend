@@ -845,7 +845,7 @@ const app = Vue.createApp({
             this.use_custom_background = MyStorage[this.starterString].use_custom_background ?? false
             this.backgroundXOffset = MyStorage[this.starterString].backgroundXOffset ?? 0
             this.backgroundYOffset = MyStorage[this.starterString].backgroundYOffset ?? 0
-            this.backgroundTexture = MyStorage[this.starterString].backgroundTexture ?? `${this.dexDataRubySapphireEmerald[this.starterString].type_1}`
+            this.backgroundTexture = MyStorage[this.starterString].backgroundTexture ?? `${this.dexData[this.starterString].type_1}`
             this.pkmn_ability = MyStorage[this.starterString]?.pkmn_ability ?? dexDataRubySapphireEmerald[this.starterString].abilities[0]
         }
 
@@ -967,7 +967,7 @@ const app = Vue.createApp({
         starterString(newValue, oldValue) {
             //background texture settings
             this.overlay_color =         MyStorage[`${newValue}`]?.overlay_color ?? this.default_colors[dexDataRubySapphireEmerald[newValue].type_1]
-            this.backgroundTexture =     MyStorage[`${newValue}`]?.backgroundTexture ?? `${this.dexDataRubySapphireEmerald[newValue].type_1}`
+            this.backgroundTexture =     MyStorage[`${newValue}`]?.backgroundTexture ?? `${this.dexData[newValue].type_1}`
             this.backgroundBlur =        MyStorage[`${newValue}`]?.backgroundBlur ?? 0,
             this.backgroundScale =       MyStorage[`${newValue}`]?.backgroundScale ?? 100,
             this.backgroundUrl =         MyStorage[`${newValue}`]?.backgroundUrl ?? "",
@@ -1070,10 +1070,10 @@ const app = Vue.createApp({
         },
         pkmnAbility() {
             if (this.pkmn_ability == false) {
-                return this.dexDataRubySapphireEmerald[this.starterString]["abilities"][0]
+                return this.dexData[this.starterString]["abilities"][0]
             }
             if (this.pkmn_ability == true) {
-                return this.dexDataRubySapphireEmerald[this.starterString]["abilities"][1]
+                return this.dexData[this.starterString]["abilities"][1]
             }
         },
         enemyTrainerName() {
@@ -1121,7 +1121,7 @@ const app = Vue.createApp({
         },
         s1dynamicReset() {
             if (this.zigzagoon_check == true) {
-                var data = this.dexDataRubySapphireEmerald[this.starterString]
+                var data = this.dexData[this.starterString]
                 return {
                     species: { value: data["name"] },
                     ...data
@@ -1149,7 +1149,7 @@ const app = Vue.createApp({
                 // return this.mapper?.properties?.battle?.yourPokemon
             }
             else if (this.g3stateVariable == `Base Stats` || this.mapper?.properties?.player?.team[0].species.value == null) {
-                var data = this.dexDataRubySapphireEmerald[this.starterString]
+                var data = this.dexData[this.starterString]
                 return {
                     species: { value: data["name"] },
                     ...data
@@ -1160,12 +1160,12 @@ const app = Vue.createApp({
             }
         },
         typeHeaderColor() {
-            if (this.zigzagoon_check == `Base Stats`) { return this.dexDataRubySapphireEmerald[this.starterString]?.type_2}
+            if (this.zigzagoon_check == `Base Stats`) { return this.dexData[this.starterString]?.type_2}
             if (this.g3stateVariable == `Battle`) { return this.mapper.properties.battle.yourPokemon.type2.value }
-            if (this.g3stateVariable == `Overworld` && this.mapper.properties.player.team[0].species.value == null) { return this.dexDataRubySapphireEmerald[this.starterString]?.type_2 }
-            if (this.g3stateVariable == `Overworld`) { return this.dexDataRubySapphireEmerald[this.mapper.properties.player.team[0].species.value]?.type_2 }
-            if (this.g3stateVariable == `Base Stats`) { return this.dexDataRubySapphireEmerald[this.starterString]?.type_2}
-            else { return this.dexDataRubySapphireEmerald[this.starterString].type_2}
+            if (this.g3stateVariable == `Overworld` && this.mapper.properties.player.team[0].species.value == null) { return this.dexData[this.starterString]?.type_2 }
+            if (this.g3stateVariable == `Overworld`) { return this.dexData[this.mapper.properties.player.team[0].species.value]?.type_2 }
+            if (this.g3stateVariable == `Base Stats`) { return this.dexData[this.starterString]?.type_2}
+            else { return this.dexData[this.starterString].type_2}
         },
         //BATTLE FADE
         battle_fade() {
@@ -1236,12 +1236,12 @@ const app = Vue.createApp({
             }
         },
         pkmnGrowthRate() {
-            if (this.dexDataRubySapphireEmerald[this.starterString].growth_rate == `GROWTH_MEDIUM_SLOW`) { return "Medium Slow" }
-            if (this.dexDataRubySapphireEmerald[this.starterString].growth_rate == `GROWTH_MEDIUM_FAST`) { return "Medium Fast" }
-            if (this.dexDataRubySapphireEmerald[this.starterString].growth_rate == `GROWTH_SLOW`) { return "Slow" }
-            if (this.dexDataRubySapphireEmerald[this.starterString].growth_rate == `GROWTH_FAST`) { return "Fast" }
-            if (this.dexDataRubySapphireEmerald[this.starterString].growth_rate == `GROWTH_FLUCTUATING`) { return "Fluctuating" }
-            if (this.dexDataRubySapphireEmerald[this.starterString].growth_rate == `GROWTH_ERRATIC`) { return "Erratic" }
+            if (this.dexData[this.starterString].growth_rate == `GROWTH_MEDIUM_SLOW`) { return "Medium Slow" }
+            if (this.dexData[this.starterString].growth_rate == `GROWTH_MEDIUM_FAST`) { return "Medium Fast" }
+            if (this.dexData[this.starterString].growth_rate == `GROWTH_SLOW`) { return "Slow" }
+            if (this.dexData[this.starterString].growth_rate == `GROWTH_FAST`) { return "Fast" }
+            if (this.dexData[this.starterString].growth_rate == `GROWTH_FLUCTUATING`) { return "Fluctuating" }
+            if (this.dexData[this.starterString].growth_rate == `GROWTH_ERRATIC`) { return "Erratic" }
         },
         field_effect_array() {
             var effect_array = [
@@ -1275,7 +1275,7 @@ const app = Vue.createApp({
             return field_effect_most_recent_array
         },
         starter() {
-            return this.dexDataRubySapphireEmerald[this.starterString].dex_number
+            return this.dexData[this.starterString].dex_number
         },
         game() {
             // console.log("game")
@@ -1291,14 +1291,17 @@ const app = Vue.createApp({
         enemyTrainerList() {
             return this.trainerLists[this.game?.trainerList]
         },
+        dexData() {
+            return this.game.dexData;
+        }
     },
 
     methods: { 
         enemyType(slotNumber) {
-            return this.dexDataRubySapphireEmerald[this.enemyTeam[slotNumber].species.value].type_1
+            return this.dexData[this.enemyTeam[slotNumber].species.value].type_1
         },
         clear_overlay_color() {
-            starterType = this.dexDataRubySapphireEmerald[this.starterString].type_1;
+            starterType = this.dexData[this.starterString].type_1;
             newColor = getComputedStyle(document.documentElement).getPropertyValue("--"+starterType.toLowerCase());
             this.set_pokemon_prop("overlay_color", newColor)
             this.overlay_color = newColor;
@@ -1463,7 +1466,7 @@ const app = Vue.createApp({
             this.use_custom_background = MyStorage[this.starterString]?.use_custom_background ?? false
             this.backgroundXOffset =     MyStorage[this.starterString]?.backgroundXOffset ?? 0
             this.backgroundYOffset =     MyStorage[this.starterString]?.backgroundYOffset ?? 0
-            this.backgroundTexture =     MyStorage[this.starterString]?.backgroundTexture ?? `${this.dexDataRubySapphireEmerald[this.starterString].type_1}`
+            this.backgroundTexture =     MyStorage[this.starterString]?.backgroundTexture ?? `${this.dexData[this.starterString].type_1}`
             this.backgroundBrightness =  MyStorage[this.starterString]?.backgroundBrightness ?? 100
             this.backgroundContrast =    MyStorage[this.starterString]?.backgroundContrast ?? 100
             this.backgroundSaturation =  MyStorage[this.starterString]?.backgroundSaturation ?? 100
@@ -1475,7 +1478,7 @@ const app = Vue.createApp({
             this.use_custom_background = false,
             this.backgroundXOffset =     0,
             this.backgroundYOffset =     0,
-            this.backgroundTexture =     this.dexDataRubySapphireEmerald[this.starterString]?.type_1?.toLowerCase(),
+            this.backgroundTexture =     this.dexData[this.starterString]?.type_1?.toLowerCase(),
             this.backgroundBrightness =  100,
             this.backgroundContrast =    100,
             this.backgroundSaturation =  100
@@ -1663,7 +1666,7 @@ const app = Vue.createApp({
             return out;
         },
         movepoolResizeCalc() {
-            if(!dexDataRubySapphireEmerald){ 
+            if(!this.dexData){ 
                 return;
             }
             //retrieve the default sizing from the .css
@@ -1689,9 +1692,9 @@ const app = Vue.createApp({
                     currentStarter = this.starterString;
                 }
             }
-            let movepoolSize = dexDataRubySapphireEmerald[currentStarter].tm_hm_learnset.length + dexDataRubySapphireEmerald[currentStarter].levelup_moveset.length;
+            let movepoolSize = this.dexData[currentStarter].tm_hm_learnset.length + this.dexData[currentStarter].levelup_moveset.length;
             if (this.tutor_moves) {
-                movepoolSize = movepoolSize + dexDataRubySapphireEmerald[currentStarter].tutor_learnset.length;
+                movepoolSize = movepoolSize + this.dexData[currentStarter].tutor_learnset.length;
             }
             let maxSize = this.movepoolDefaultContainerHeight / this.movepoolDefaultLineHeight;
             let correctedLineHeight = this.movepoolDefaultContainerHeight / movepoolSize;
@@ -2083,7 +2086,7 @@ const app = Vue.createApp({
         },
 
         growthRate() {
-            var growthRate = this.dexDataRubySapphireEmerald[this.starterString].growth_rate
+            var growthRate = this.dexData[this.starterString].growth_rate
             if (growthRate == "GROWTH_MEDIUM_SLOW") {
                 return "Medium Slow"
             }
@@ -2103,7 +2106,7 @@ const app = Vue.createApp({
                 return "Erratic"
             }
             else {
-                return this.dexDataRubySapphireEmerald[starterString].growth_rate
+                return this.dexData[starterString].growth_rate
             }
         },
 
@@ -2231,12 +2234,12 @@ const app = Vue.createApp({
         },
         getStarterType1() {
             if (this.pick == true)
-                var type = this.dexDataRubySapphireEmerald[this.starterString].type_1
+                var type = this.dexData[this.starterString].type_1
                 return `images/elements/types/${type}.png`.toLowerCase();
         },
         getStarterType2() {
             if (this.pick == true)
-                var type = this.dexDataRubySapphireEmerald[this.starterString].type_2
+                var type = this.dexData[this.starterString].type_2
                 return `images/elements/types/${type}.png`.toLowerCase();
         },
         
@@ -2536,12 +2539,12 @@ const app = Vue.createApp({
                     return specialMovePower
                 }
                 else if (y == "LOW KICK") {
-                    if (this.dexDataRubySapphireEmerald[this.batt.enemyPokemon.species.value]?.weight < 10) { return 20 }
-                    if (this.dexDataRubySapphireEmerald[this.batt.enemyPokemon.species.value]?.weight < 25) { return 40 }
-                    if (this.dexDataRubySapphireEmerald[this.batt.enemyPokemon.species.value]?.weight < 50) { return 60 }
-                    if (this.dexDataRubySapphireEmerald[this.batt.enemyPokemon.species.value]?.weight < 100) { return 80 }
-                    if (this.dexDataRubySapphireEmerald[this.batt.enemyPokemon.species.value]?.weight < 200) { return 100 }
-                    if (this.dexDataRubySapphireEmerald[this.batt.enemyPokemon.species.value]?.weight >= 200) { return 120 }
+                    if (this.dexData[this.batt.enemyPokemon.species.value]?.weight < 10) { return 20 }
+                    if (this.dexData[this.batt.enemyPokemon.species.value]?.weight < 25) { return 40 }
+                    if (this.dexData[this.batt.enemyPokemon.species.value]?.weight < 50) { return 60 }
+                    if (this.dexData[this.batt.enemyPokemon.species.value]?.weight < 100) { return 80 }
+                    if (this.dexData[this.batt.enemyPokemon.species.value]?.weight < 200) { return 100 }
+                    if (this.dexData[this.batt.enemyPokemon.species.value]?.weight >= 200) { return 120 }
                 }
                 else if (y.toUpperCase() == "HIDDEN POWER") {
                     return this.hiddenPowerPowerCalc(this.mapper.properties.player.team[0])
@@ -2723,8 +2726,8 @@ const app = Vue.createApp({
         determineSTAB(x) { //x = move1.value
             // var pkmnType1 = this.mapper.properties.battle.yourPokemon.type1.value
             // var pkmnType2 = this.mapper.properties.battle.yourPokemon.type2.value
-            var pkmnType1 = this.dexDataRubySapphireEmerald[this.starterString].type_1
-            var pkmnType2 = this.dexDataRubySapphireEmerald[this.starterString].type_2
+            var pkmnType1 = this.dexData[this.starterString].type_1
+            var pkmnType2 = this.dexData[this.starterString].type_2
             if (pkmnType1 == this.moveType(x) || pkmnType2 == this.moveType(x)) {
                 return 1.5
             }
@@ -3003,6 +3006,20 @@ const app = Vue.createApp({
             }
             return output;
         },
+        trashCans() {
+            //TRASH CAN PUZZLE
+            //This functions solves the trash can puzzle automatically for the player.
+            const trashCanPuzzle = async () => {
+                if (this.mapper.properties.events.trashCanPuzzle.value == false) {//check to see if the Puzzle is solved yet, if it's not proceeds to solve it
+                    await Promise.all([
+                        await this.mapper.properties.events.trashCanPuzzle.setBytes([0x10], false), //sets bit 4 to true solving the puzzle - only works if you re-enter the gym
+                    ])
+                }
+            }	
+            this.mapper.properties.gameTime.minutes.change(async (x) => { //check the trash can puzzle everytime the player levels up
+                await trashCanPuzzle()
+            })
+        }
     },
     
 
@@ -3246,7 +3263,7 @@ const app = Vue.createApp({
         }
         
         const setStartingStats = async () => {
-            const pkmnData = this.dexDataRubySapphireEmerald[this.starterString]
+            const pkmnData = this.dexData[this.starterString]
             const level = 5
             const natures = this.natures[this.pkmnNature]
 
@@ -3398,8 +3415,8 @@ const app = Vue.createApp({
                 let money = 0
                 let rivalTeam = 0
                 let statusCondition = this.mapper.properties.player.team[0].statusCondition.value
-                let type1 = this.dexDataRubySapphireEmerald[this.starterString].type_1
-                let type2 = this.dexDataRubySapphireEmerald[this.starterString].type_2
+                let type1 = this.dexData[this.starterString].type_1
+                let type2 = this.dexData[this.starterString].type_2
                 let experience = this.mapper.properties.player.team[0].expPoints.value
                 
                 //deprecated properties
@@ -3720,10 +3737,10 @@ const app = Vue.createApp({
 
         //EXP BAR ANIMATION FUNCTION
         var species = this.mapper.properties.player.team[0].species.value??this.starterString;
-        if(this.dexDataRubySapphireEmerald[species]==null){
+        if(this.dexData[species]==null){
             return;
         }
-        var growthRate = this.dexDataRubySapphireEmerald[species].growth_rate
+        var growthRate = this.dexData[species].growth_rate
         var expStats = this.calcExpStats(growthRate, this.mapper.properties.player.team[0].expPoints.value);
         this.$refs.expBar.style.width = (expStats.percent * 100) + "%";
         this.prevSpecies = species
@@ -3734,7 +3751,7 @@ const app = Vue.createApp({
                     return;
                 }
                 const currSpecies = this.mapper.properties.player.team[0].species.value;
-                const growthRate = this.dexDataRubySapphireEmerald[currSpecies]?.growth_rate ?? this.dexDataRubySapphireEmerald[this.starterString].growth_rate
+                const growthRate = this.dexData[currSpecies]?.growth_rate ?? this.dexData[this.starterString].growth_rate
                 const oldExpStats = this.calcExpStats(growthRate, oldProp.value);
                 const newExpStats = this.calcExpStats(growthRate, newProp.value);
                 const animationMaxDuration = 650
@@ -3788,5 +3805,8 @@ const app = Vue.createApp({
         keyhook.registerShortCut('F24', async () => {
             this.pauseUnpauseTime()
         });
+        if(this.game.gameName=="FireRed and LeafGreen") {
+            this.trashCans;
+        }
     },
 }).mount('#app')
