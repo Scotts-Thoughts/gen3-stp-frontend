@@ -2906,22 +2906,23 @@ const app = Vue.createApp({
         },
 
         battlePokemonCrop() {
-            if (this.enemyTrainerList?.[this.opponentId]?.pokemon?.length === 1) {
+            let len = this.enemyTrainerList?.[this.opponentId]?.pokemon?.length;
+            if (len == 1) {
                 return "height: 234px;"
             }
-            else if (this.enemyTrainerList?.[this.opponentId]?.["pokemon"]?.length == 2) {
+            else if (len == 2) {
                 return "height: 402px;"
             }
-            else if (this.enemyTrainerList?.[this.opponentId]?.["pokemon"]?.length == 3) {
+            else if (len == 3) {
                 return "height: 566px;"
             }
-            else if (this.enemyTrainerList?.[this.opponentId]?.[this.opponentId]?.["pokemon"]?.length == 4) {
+            else if (len == 4) {
                 return "height: 736px;"
             }
-            else if (this.enemyTrainerList?.[this.opponentId]?.[this.opponentId]?.["pokemon"]?.length == 5) {
+            else if (len == 5) {
                 return "height: 902px;"
             }
-            else if (this.enemyTrainerList?.[this.opponentId]?.[this.opponentId]?.["pokemon"]?.length == 6) {
+            else if (len == 6) {
                 return "height: 1080px;"
             }
         },
