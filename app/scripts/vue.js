@@ -1762,10 +1762,10 @@ const app = Vue.createApp({
             }
             var moveAccuracy = moveObject.Accuracy
             if(move.toUpperCase() == "THUNDER") {
-                if(this.mapper.properties.battle.field.weather.value == "Sun" && !this.weatherDenial) {
+                if(this.mapper.properties.battle.field.weather.value == "Sun" && !this.weatherDenial && this.g3stateVariable == "Battle") {
                     moveAccuracy = 50;
                 }
-                if(this.mapper.properties.battle.field.weather.value == "Rain" && !this.weatherDenial) {
+                if(this.mapper.properties.battle.field.weather.value == "Rain" && !this.weatherDenial && this.g3stateVariable == "Battle") {
                     return `-`;
                 }
             }
@@ -1775,13 +1775,17 @@ const app = Vue.createApp({
             var currentModStageEva = this.batt.enemyPokemon.modStageEvasion.value
             var abilityMod = 1
             // debugger
+            let soundProof = ["GRASSWHISTLE","GROWL","METAL SOUND","PERISH SONG","ROAR","SCREECH","SING","SUPERSONIC"]
+            if (this.mapper.properties.battle.enemyPokemon.ability.value == "SOUNDPROOF" && soundProof.includes(move) && this.g3stateVariable=="Battle") {
+                return 0;
+            }
             if (this.pkmn_ability == "Compound Eyes") {
                 abilityMod *= 1.3
             }
             if (this.pkmn_ability == "Hustle") {
                 abilityMod *= 0.8;
             }
-            if (this.mapper.properties.battle.enemyPokemon.ability.value == "SAND VEIL" && this.mapper.properties.battle.field.weather.value == "Sandstorm" && !this.weatherDenial) {
+            if (this.mapper.properties.battle.enemyPokemon.ability.value == "SAND VEIL" && this.mapper.properties.battle.field.weather.value == "Sandstorm" && !this.weatherDenial && this.g3stateVariable == "Battle") {
                 abilityMod *= 0.8;
             }
             if (moveAccuracy == `-`) {
@@ -2863,12 +2867,16 @@ const app = Vue.createApp({
                     "WATER ABSORB" : "Water",
                     "FLASH FIRE" : "Fire" 
                 }
+                let soundProofMoves = ["HYPER VOICE", "SNORE", "UPROAR"];
+                if(this.mapper.properties.battle.enemyPokemon.ability.value == "SOUNDPROOF" && soundProofMoves.includes(x)) {
+                    return 0;
+                }
                 //STATUS MOVE
                 if (power == "-") { return power }
                 //LEVITATE INTERACTION
                 
                 else if (abilityImmunities[this.mapper.properties.battle.enemyPokemon.ability.value]?.[1] == attackingType) {
-                    return 0
+                    return 0;
                 }
                 //NO ENEMY DATA (HAVEN'T BATTLED SINCE RELOADING ROM OR SAVE)
                 else if (this.mapper.properties.battle.enemyPokemon.type1 == null) {
