@@ -148,7 +148,7 @@
                     <table>
                     <tr v-for="(isChecked, route) in this.game.encountersMap" :key="route">
                         <td>{{ this.titleCaseNoUnderscores(route) }}:</td>
-                        <td><input class="checkBoxStyle" type="checkbox" v-model="this.game.encountersMap[route]" /><br></td>
+                        <td><input class="checkBoxStyle" type="checkbox" v-model="this.game.encountersMap[route]" @click="this.checkedEncounters(route)" /><br></td>
                     </tr>
                     </table>
                     <br>

@@ -1693,6 +1693,9 @@ const app = Vue.createApp({
         }, 
         movepoolResize() {
             let out = this.movepoolResizeCalc();
+            if(this.g3stateVariable == "From Battle") {
+                return out;
+            }
             this.mapper.properties.player.team[0].species.change((newProp, oldProp) => {
                 out = this.movepoolResizeCalc();
             })
@@ -1704,17 +1707,21 @@ const app = Vue.createApp({
             }
             //retrieve the default sizing from the .css
             var element = document.getElementById('movepoolMoveTable')
-            var moveElement = document.querySelector('.movepoolDemo');
-            if (!moveElement) {
-                return;
-            }
+            //********The next few lines were dynamic to support different css sizes */
+            //********This is useful if you want to reuse the code in other overlays */
+            //********However it had bugs with resizing after battles, so I'm commenting it for now */
+            // var moveElement = document.querySelector('.movepoolDemo');
+            // if (!moveElement) {
+            //     console.log("nope")
+            //     return;
+            // }
             //store the default sizes so we can access them after overwriting them
-            var computedStyle = window.getComputedStyle(moveElement);
-            if(this.movepoolDefaultFontSize==-1) {
-                this.movepoolDefaultFontSize = parseInt(computedStyle.getPropertyValue('font-size'),10);
-                this.movepoolDefaultLineHeight = parseInt(computedStyle.getPropertyValue('line-height'),10);
-                this.movepoolDefaultContainerHeight = parseInt(computedStyle.getPropertyValue('height'),10)-this.movepoolDefaultLineHeight+1;
-            }
+            //var computedStyle = window.getComputedStyle(moveElement);
+            //if(this.movepoolDefaultFontSize==-1) {
+                this.movepoolDefaultFontSize = 15;//parseInt(computedStyle.getPropertyValue('font-size'),10);
+                this.movepoolDefaultLineHeight = 18;//parseInt(computedStyle.getPropertyValue('line-height'),10);
+                this.movepoolDefaultContainerHeight = 1001-(this.movepoolDefaultLineHeight+0);// parseInt(computedStyle.getPropertyValue('height'),10)-this.movepoolDefaultLineHeight+1;
+            //}
             //calculate new sizes
             let currentStarter = this.s1dynamicReset.name;
             if(currentStarter == undefined || currentStarter == null) {
@@ -1769,11 +1776,14 @@ const app = Vue.createApp({
             var abilityMod = 1
             // debugger
             if (this.pkmn_ability == "Compound Eyes") {
-                abilityMod = 1.3
+                abilityMod *= 1.3
             }
-            // if (this.pkmn_ability == "Hustle") {
-            //     abilityMod = 1/1.2
-            // }
+            if (this.pkmn_ability == "Hustle") {
+                abilityMod *= 0.8;
+            }
+            if (this.mapper.properties.battle.enemyPokemon.ability.value == "SAND VEIL" && this.mapper.properties.battle.field.weather.value == "Sandstorm" && !this.weatherDenial) {
+                abilityMod *= 0.8;
+            }
             if (moveAccuracy == `-`) {
                 return `-`
             }
@@ -2981,18 +2991,18 @@ const app = Vue.createApp({
         },
         freezeEncounters() {
             this.mapper.properties.overworld.mapName.change((newProp) => {
-                if (this.mapper.properties.player.badges.badge1.value == false && this.route_101 == false && newProp.value == "ROUTE 101") {
-                    this.mapper.properties.overworld.disabledEncounters.set(true,false);
-                }
-                if (this.mapper.properties.player.badges.badge1.value == false && this.route_102 == false && newProp.value == "ROUTE 102") {
-                    this.mapper.properties.overworld.disabledEncounters.set(true,false);
-                }
-                if (this.mapper.properties.player.badges.badge1.value == false && this.game.encountersMap["ROUTE 103"] == false && newProp.value == "ROUTE 103") {
-                    this.mapper.properties.overworld.disabledEncounters.set(true,false);
-                }
-                else if (this.hm_102_zigzagoon == true && newProp.value == "ROUTE 102" && this.route_102 == false && this.mapper.properties.player.team[1].species.value != "Zigzagoon") {
+                // if (this.mapper.properties.player.badges.badge1.value == false && this.route_101 == false && newProp.value == "ROUTE 101") {
+                //     this.mapper.properties.overworld.disabledEncounters.set(true,false);
+                // }
+                // if (this.mapper.properties.player.badges.badge1.value == false && this.route_102 == false && newProp.value == "ROUTE 102") {
+                //     this.mapper.properties.overworld.disabledEncounters.set(true,false);
+                // }
+                // if (this.mapper.properties.player.badges.badge1.value == false && this.game.encountersMap["ROUTE 103"] == false && newProp.value == "ROUTE 103") {
+                //     this.mapper.properties.overworld.disabledEncounters.set(true,false);
+                // }
+                /*else*/ if (this.mapper.properties.player.badges.badge1.value && this.hm_102_zigzagoon == true && newProp.value == "ROUTE 102" && this.game.encountersMap["ROUTE 102"] == false && this.mapper.properties.player.team[1].species.value != "Zigzagoon") {
                     this.mapper.properties.player.team[1].species.change((newerProp) => {
-                        if(newerProp = "Zigzagoon" && this.hm_102_zigzagoon == true && newProp.value == "ROUTE 102" && this.route_102 == false) {
+                        if(newerProp = "Zigzagoon" && this.hm_102_zigzagoon == true && newProp.value == "ROUTE 102" && this.game.encountersMap["ROUTE 102"] == false) {
                             this.mapper.properties.overworld.disabledEncounters.set(true,false);
                         }
                     });
@@ -3054,18 +3064,29 @@ const app = Vue.createApp({
             return output;
         },
         trashCans() {
+            if(this.game.gameName != "FireRed and LeafGreen") {
+                return;
+            }
             //TRASH CAN PUZZLE
             //This functions solves the trash can puzzle automatically for the player.
             const trashCanPuzzle = async () => {
                 if (this.mapper.properties.events.trashCanPuzzle.value == false) {//check to see if the Puzzle is solved yet, if it's not proceeds to solve it
                     await Promise.all([
-                        await this.mapper.properties.events.trashCanPuzzle.setBytes([0x10], false), //sets bit 4 to true solving the puzzle - only works if you re-enter the gym
+                        await this.mapper.properties.events.trashCanPuzzle.set(true, false), 
                     ])
                 }
             }	
-            this.mapper.properties.gameTime.minutes.change(async (x) => { //check the trash can puzzle everytime the player levels up
-                await trashCanPuzzle()
+            this.mapper.properties.overworld.mapName.change(async (newMap) => {
+                if(newMap == "VERMILION_CITY") {
+                    await trashCanPuzzle();
+                }
             })
+        },
+        checkedEncounters(route) {
+            console.log("checkbox " + route,this.game.encountersMap[route])
+            if(this.mapper.properties.overworld.mapName.value == route) {
+                this.mapper.properties.overworld.disabledEncounters.set(this.game.encountersMap[route],false);
+            }
         }
     },
     
@@ -3815,8 +3836,8 @@ const app = Vue.createApp({
         keyhook.registerShortCut('F24', async () => {
             this.pauseUnpauseTime()
         });
-        if(this.game.gameName=="FireRed and LeafGreen") {
-            this.trashCans;
+        if(this.game.gameName== "FireRed and LeafGreen") {
+            this.trashCans();
         }
     },
 }).mount('#app')
