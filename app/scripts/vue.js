@@ -1299,6 +1299,19 @@ const app = Vue.createApp({
         },
         dexData() {
             return this.game.dexData;
+        },
+        weatherDenial() {
+            let output = false;
+            if(this.pkmn_ability == "Air Lock" || this.pkmn_ability == "Cloud Nine") {
+                output = true;
+            }
+            if(this.mapper.properties.battle.yourPokemon.ability?.value == "Air Lock" || this.mapper.properties.battle.yourPokemon.ability?.value == "Cloud Nine") {
+                output = true;
+            }
+            if(this.mapper.properties.battle.enemyPokemon.ability?.value == "Air Lock" || this.mapper.properties.battle.enemyPokemon.ability?.value == "Cloud Nine") {
+                output = true;
+            }
+            return output;
         }
     },
 
@@ -1728,10 +1741,10 @@ const app = Vue.createApp({
             }
             var moveAccuracy = moveObject.Accuracy
             if(move.toUpperCase() == "THUNDER") {
-                if(this.mapper.properties.battle.field.weather.value == "Sun") {
+                if(this.mapper.properties.battle.field.weather.value == "Sun" && !this.weatherDenial) {
                     moveAccuracy = 50;
                 }
-                if(this.mapper.properties.battle.field.weather.value == "Rain") {
+                if(this.mapper.properties.battle.field.weather.value == "Rain" && !this.weatherDenial) {
                     return `-`;
                 }
             }
@@ -1744,6 +1757,9 @@ const app = Vue.createApp({
             if (this.pkmn_ability == "Compound Eyes") {
                 abilityMod = 1.3
             }
+            // if (this.pkmn_ability == "Hustle") {
+            //     abilityMod = 1/1.2
+            // }
             if (moveAccuracy == `-`) {
                 return `-`
             }
@@ -1907,11 +1923,11 @@ const app = Vue.createApp({
                 mod_ability = 1.5 
             }
             //Chlorophyll
-            if (ability == "chlorophyll" && statLabel == "speed" && this.mapper.properties.battle.field.weather.value == "Sun") {
+            if (ability == "chlorophyll" && statLabel == "speed" && this.mapper.properties.battle.field.weather.value == "Sun" && !this.weatherDenial) {
                 mod_weather = 2 
             }
             //Swift Swim
-            if (ability == "swift swim" && statLabel == "speed" && this.mapper.properties.battle.field.weather.value == "Rain") {
+            if (ability == "swift swim" && statLabel == "speed" && this.mapper.properties.battle.field.weather.value == "Rain"&& !this.weatherDenial) {
                 mod_weather = 2 
             }
             //THESE ABILITIES DON'T MODIFY STATS UNTIL GENERATION 5
@@ -2426,10 +2442,10 @@ const app = Vue.createApp({
             else if (ability == `Marvel Scale` && this.s1.statusCondition.value != null && statname == `defense`) {
                 return Math.floor(statValue * 1.5)
             }
-            else if (ability == `Chlorophyll` && this.batt.turnInfo.battleWeather.value == `Sun` && statname == `speed`) {
+            else if (ability == `Chlorophyll` && this.batt.turnInfo.battleWeather.value == `Sun` && statname == `speed`&& !this.weatherDenial) {
                 return Math.floor(statValue * 1.5)
             }
-            else if (ability == `Swift Swin` && this.batt.turnInfo.battleWeather.value == `Rain` && statname == `speed`) {
+            else if (ability == `Swift Swim` && this.batt.turnInfo.battleWeather.value == `Rain` && statname == `speed`&& !this.weatherDenial) {
                 return Math.floor(statValue * 1.5)
             }
             else if (ability == `Guts` && statname == `attack` && (this.s1.statusCondition.value == "Paralyzed" || this.s1.statusCondition.value == "Poisoned" || this.s1.statusCondition.value == "Burned")) {
@@ -2614,6 +2630,9 @@ const app = Vue.createApp({
             return specialMovePower
         },
         weatherModifier(weather, move, moveType) {
+            if(this.weatherDenial) {
+                return 1;
+            }
             if (weather == "Sun" && moveType == "Water") {
                 return .5
             }
