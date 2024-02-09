@@ -1068,12 +1068,26 @@ const app = Vue.createApp({
             }
         },
         pkmnAbility() {
-            if (this.pkmn_ability == false) {
-                return this.dexData[this.starterString]["abilities"][0]
-            }
-            if (this.pkmn_ability == true) {
-                return this.dexData[this.starterString]["abilities"][1]
-            }
+            // if (this.pkmn_ability == false) {
+            //     return this.dexData[this.starterString]["abilities"][0]
+            // }
+            // if (this.pkmn_ability == true) {
+            //     return this.dexData[this.starterString]["abilities"][1]
+            // }
+
+            //this code requires a mapper update to set the nature at the start for multinature pokemon
+            //leaving it commented until then
+            // if(this.g3stateVariable=="Battle") {
+            //     let ability = this.pascalCaseSpace(this.mapper.properties.battle.yourPokemon.ability?.value.toLowerCase());
+            //     if(ability=="Natural Care") {
+            //         return "Natural Cure"; //typo in mapper
+            //     }
+            //     return ability;
+            // }
+            // else {
+
+                return this.pkmn_ability;
+            // }
         },
         enemyTrainerName() {
             try {
@@ -1302,7 +1316,7 @@ const app = Vue.createApp({
         },
         weatherDenial() {
             let output = false;
-            if(this.pkmn_ability == "Air Lock" || this.pkmn_ability == "Cloud Nine") {
+            if(this.pkmnAbility == "Air Lock" || this.pkmnAbility == "Cloud Nine") {
                 output = true;
             }
             if(this.mapper.properties.battle.yourPokemon.ability?.value == "Air Lock" || this.mapper.properties.battle.yourPokemon.ability?.value == "Cloud Nine") {
@@ -2833,10 +2847,17 @@ const app = Vue.createApp({
             }
             
             if (this.typeCalcs == true && this.g3stateVariable == "Battle") {
+                let abilityImmunities = {
+                    "LEVITATE" : "Ground",
+                    "VOLT ABSORB" : "Electric",
+                    "WATER ABSORB" : "Water",
+                    "FLASH FIRE" : "Fire" 
+                }
                 //STATUS MOVE
                 if (power == "-") { return power }
                 //LEVITATE INTERACTION
-                else if (this.mapper.properties.battle.enemyPokemon.ability.value == "LEVITATE" && attackingType == "Ground") {
+                
+                else if (abilityImmunities[this.mapper.properties.battle.enemyPokemon.ability.value]?.[1] == attackingType) {
                     return 0
                 }
                 //NO ENEMY DATA (HAVEN'T BATTLED SINCE RELOADING ROM OR SAVE)
