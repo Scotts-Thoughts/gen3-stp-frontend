@@ -938,25 +938,25 @@ const app = Vue.createApp({
         },
         hm_102_zigzagoon(newValue) {
             if (newValue == false) {
-                this.mapper.properties.overworld.encounter.zigzagoon.set(false, false)
+                this.mapper.properties.overworld.encounter?.zigzagoon?.set(false, false)
             }
             if (newValue == true) {
-                this.mapper.properties.overworld.encounter.zigzagoon.set(true, false)
+                this.mapper.properties.overworld.encounter?.zigzagoon?.set(true, false)
             }
             MyStorage['hm_102_zigzagoon'] = newValue
         },
         hm_104_marill(newValue) {
             if (newValue == false) {
-                this.mapper.properties.overworld.encounter.marill.set(false, false)
+                this.mapper.properties.overworld.encounter?.marill?.set(false, false)
             }
             if (newValue == true) {
-                this.mapper.properties.overworld.encounter.marill.set(true, false)
+                this.mapper.properties.overworld.encounter?.marill?.set(true, false)
             }
             MyStorage['hm_104_marill'] = newValue
         },
         hm_104_taillow(newValue) {
             if (newValue == false) {
-                this.mapper.properties.overworld.encounter.taillow.set(false, false)
+                this.mapper.properties.overworld.encounter?.taillow?.set(false, false)
             }
             if (newValue == true) {
                 this.mapper.properties.overworld.encounter.taillow.set(true, false)
