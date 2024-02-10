@@ -19,7 +19,7 @@ const gameVariables =
             "LEADER_KOGA": "images/trainers/LEADER_KOGA.png",
             "LEADER_BLAINE": "images/trainers/LEADER_BLAINE.png",
             "LEADER_SABRINA": "images/trainers/LEADER_SABRINA.png",
-            "LEADER_GIOVANNI": "images/trainers/LEADER_GIOVANNI.png",
+            // "LEADER_GIOVANNI": "images/trainers/LEADER_GIOVANNI.png",
             "RIVAL_OAKS_LAB_BULBASAUR" : "images/trainers/RIVAL1.png",
             "RIVAL_OAKS_LAB_CHARMANDER" : "images/trainers/RIVAL1.png",
             "RIVAL_OAKS_LAB_SQUIRTLE" : "images/trainers/RIVAL1.png",
