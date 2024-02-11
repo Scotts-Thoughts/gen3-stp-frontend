@@ -543,6 +543,7 @@ const app = Vue.createApp({
             starterString: "Rayquaza",
             pkmnNature: "Adamant",
             pkmn_ability: "Pressure", // false = ability 1, true = ability 2
+            ability_bool: true, // false = ability 1, true = ability 2
             hidden_power_type: "Electric",
             pkmn_gender: "Female",
             
@@ -3212,7 +3213,7 @@ const app = Vue.createApp({
         const setStartingAttributes = async () => {
             const personalityValue = this.natures[this.pkmnNature][`personality_value_${this.pkmn_gender.toLowerCase()}`]
             var iv_block = this.g3hiddenPowerTypeSelector[this.hidden_power_type]
-            if (this.pkmn_ability == true) {
+            if (this.ability_bool == true) {
                 iv_block = iv_block + 2147483648
             }
 
