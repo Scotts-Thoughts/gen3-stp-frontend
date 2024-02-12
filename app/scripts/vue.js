@@ -543,11 +543,12 @@ const app = Vue.createApp({
             gameVariables: null,
             // game: null,
             // POKEMON CONFIG (components) ---------------------------------------------------------------------//
-            starterString: "Rayquaza",
+            starterString: "Beedrill",
             pkmnNature: "Adamant",
             pkmn_ability: "Pressure", // false = ability 1, true = ability 2
             hidden_power_type: "Electric",
             pkmn_gender: "Female",
+            gameSelection: "FireRed and LeafGreen",
             
             // USER CONFIG (components) ------------------------------------------------------------------------// 
             graphicOverlay: MyStorage['graphicOverlay'] ?? true, //places a single image as the overlay  //MVP
@@ -725,7 +726,6 @@ const app = Vue.createApp({
                 "pkmn_ability",
                 "hidden_power_type",
                 "pkmn_gender",
-                "attempt_number",
                 "finished_run_count",
             ],
             //timer variables
@@ -847,6 +847,8 @@ const app = Vue.createApp({
             this.backgroundYOffset = MyStorage[this.starterString].backgroundYOffset ?? 0
             this.backgroundTexture = MyStorage[this.starterString].backgroundTexture ?? `${this.dexData[this.starterString].type_1}`
             this.pkmn_ability = MyStorage[this.starterString]?.pkmn_ability ?? dexDataRubySapphireEmerald[this.starterString].abilities[0]
+            this.attempt_number = MyStorage[this.starterString]?.attempt_number ?? 0
+            this.finished_run_count = MyStorage[this.starterString]?.finished_run_count ?? 0
         }
 
         for (let i = 0; i < this.pokemon_settings.length; i++) {
@@ -1301,7 +1303,8 @@ const app = Vue.createApp({
             // console.log("game")
             // console.log(this.mapper)
             // console.log(this.mapper.meta.gameName)
-            return this.gameVariables[this.mapper?.properties?.meta?.gameName];
+            return this.gameVariables[this.gameSelection];
+            // return this.gameVariables[this.mapper?.properties?.meta?.gameName];
         // return "FireRed and LeafGreen";
             // return(this.mapper?.properties.meta.gameName);
         },
