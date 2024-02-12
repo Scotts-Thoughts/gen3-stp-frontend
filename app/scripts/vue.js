@@ -3331,8 +3331,9 @@ const app = Vue.createApp({
         const setStartingAttributes = async () => {
             const personalityValue = this.natures[this.pkmnNature][`personality_value_${this.pkmn_gender.toLowerCase()}`]
             var iv_block = this.g3hiddenPowerTypeSelector[this.hidden_power_type]
-            if (this.pkmn_ability == true) {
-                iv_block = iv_block + 2147483648
+            console.log("Ability: " +this.pkmn_ability)
+            if (this.pkmn_ability == this.game.dexData[this.starterString].abilities[1]) {
+                iv_block = iv_block -2147483648;
             }
 
             // only recalculate stats when IVs when your starter is received
