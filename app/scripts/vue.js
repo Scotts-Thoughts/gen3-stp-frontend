@@ -1429,7 +1429,6 @@ const app = Vue.createApp({
             this.timer_formatted_time = [ "0", ".00" ]
             this.playerResets = 0
             this.finished_logs = false
-            this.finished_run_count = 0
             this.blackout_counter = 0
             this.playerId = 0
             // this.playerName = "NINTEN"
@@ -3329,15 +3328,41 @@ const app = Vue.createApp({
 
         // SETTING THE STARTER POKEMON'S STATS ----------------------------------------------------------------------------------------------//
         const setStartingAttributes = async () => {
-            const personalityValue = this.natures[this.pkmnNature][`personality_value_${this.pkmn_gender.toLowerCase()}`]
+            // const personalityValue = this.natures[this.pkmnNature][`personality_value_${this.pkmn_gender.toLowerCase()}`]
+            //256 * 25 * 10 = 70400, gives a clean starting point where modulo 25 and modulo 256 are both 0
+            //this can really be anything divisble by 256 and 25 though
+            var personalityValue = 70400 + this.natures[this.pkmnNature]["modulo_value"];
+            if(this.pkmn_gender == "Male") {
+                //31 and 225 are the breakpoints for 87% gender ratio pokemon
+                personalityValue += 225;
+            }
             var iv_block = this.g3hiddenPowerTypeSelector[this.hidden_power_type]
-            console.log("Ability: " +this.pkmn_ability)
             if (this.pkmn_ability == this.game.dexData[this.starterString].abilities[1]) {
                 iv_block = iv_block -2147483648;
             }
-
+            //the odd/evenness may need to be flipped according to the selected ability
+            //if this were going to break, it would probably be when evolving
+            if((personalityValue % 2 == 0 && this.pkmn_ability == this.game.dexData[this.starterString].abilities[1]) ||
+            (personalityValue % 2 == 1 && this.pkmn_ability == this.game.dexData[this.starterString].abilities[0])) {
+                //these checks are trying to flip the odd/even by adding an odd number multiple of 25
+                //in order to not disturb the nature calc. It's trying to maintain the gender calc too.
+                if(personalityValue % 256 <= 11 && this.pkmn_gender != "Male") {
+                    personalityValue += 275; //adding 275 won't make the modulo exceed 31
+                }
+                if(personalityValue % 256 > 11 && this.pkmn_gender != "Male") {
+                    personalityValue += 1525; //1525 keeps the modulo between 0 and 31
+                }
+                if(personalityValue % 256 <= 236 && this.pkmn_gender == "Male") {
+                    personalityValue += 275; //adding 275 keeps the modulo between 225 and 255
+                }
+                if(personalityValue % 256 > 236 && this.pkmn_gender == "Male") {
+                    personalityValue += 1525; //1525 keeps the modulo between 225 and 255
+                }
+            }
+        
             // only recalculate stats when IVs when your starter is received
-            if (this.mapper.properties.overworld.mapName.value == this.game.starterLocation && this.mapper.properties.player.team[0].level.value == 5) {
+            if (this.game.starterLocation.includes(this.mapper.properties.overworld.mapName.value)  && this.mapper.properties.player.team[0].level.value == 5) {
+                console.log("Setting stuff: ")
                 await Promise.all([
                     await this.mapper.properties.player.team[0].personalityValue.set(personalityValue, false), 
                     await this.mapper.properties.player.team[0].ivEggAbilityBlock.set(iv_block, false), 
@@ -3367,7 +3392,7 @@ const app = Vue.createApp({
             var speed = Math.floor(Math.floor(((((2 * pkmnData.base_spd + ivSpe + 0) * level)/100) + 5)) * natures["nature_speed"])
 
             // only recalculate stats when IVs when your starter is received
-            if (this.mapper.properties.overworld.mapName.value == this.game.starterLocation && this.mapper.properties.player.team[0].level.value == 5) {
+            if (this.game.starterLocation.includes(this.mapper.properties.overworld.mapName?.value) && this.mapper.properties.player.team[0].level.value == 5) {
                 await Promise.all([
                     await this.mapper.properties.player.team[0].hp.set(hitpoints, false), 
                     await this.mapper.properties.player.team[0].maxHp.set(hitpoints, false), 
@@ -3398,12 +3423,12 @@ const app = Vue.createApp({
             }
         });
         this.mapper.properties.player.team[0].level.change(async (newProp) => {
-            if (newProp == 5 && this.mapper.properties.overworld.mapName.value == this.game.starterLocation) {
+            if (newProp == 5 && this.game.starterLocation.includes(this.mapper.properties.overworld.mapName?.value) ) {
                 await setStartingAttributes()
             }
         });
         this.mapper.properties.battle.type.first_battle.change(async (newProp, oldProp) => {
-            if (newProp.value == true && oldProp.value == false && this.mapper.properties.overworld.mapName.value == this.game.starterLocation && this.mapper.properties.player.team[0].level.value == 5) {
+            if (newProp.value == true && oldProp.value == false && this.game.starterLocation.includes(this.mapper.properties.overworld.mapName?.value) && this.mapper.properties.player.team[0].level.value == 5) {
                 await setStartingStats()
             }
         });

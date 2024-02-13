@@ -75,7 +75,7 @@ const gameVariables =
             "ROUTE 22": false,
             "VIRIDIAN_FOREST": false,
         },
-        "starterLocation" : "PALLET_TOWN",
+        "starterLocation" : ["PALLET_TOWN","PALLET_TOWN - PROFESSOR_OAKS_LAB"],
         "callback1" : {
             "overworld" : ["Overworld", 134570549],
             "toBattle" : [134292473]
@@ -181,7 +181,7 @@ const gameVariables =
             "ROUTE 102": false,
             "ROUTE 103": false,
         },
-        "starterLocation" : "ROUTE 101",
+        "starterLocation" : ["ROUTE 101"],
         "callback1" : {
             "overworld" : [134765285, "Overworld", 134765313],
             "toBattle" : [134455025]
