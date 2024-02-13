@@ -902,42 +902,42 @@ const app = Vue.createApp({
                 log_start()
             }
         },
-        route_101(newValue) {
-            if (this.mapper.properties.overworld.mapName.value == "ROUTE 101") {
-                switch (newValue) {
-                    case true:
-                        this.mapper.properties.overworld.disabledEncounters.set(0, false)
-                        break;
-                    case false:
-                        this.mapper.properties.overworld.disabledEncounters.set(1, false)
-                        break;
-                }
-            }
-        },
-        route_102(newValue) {
-            if (this.mapper.properties.overworld.mapName.value == "ROUTE 102") {
-                switch (newValue) {
-                    case true:
-                        this.mapper.properties.overworld.disabledEncounters.set(0, false)
-                        break;
-                    case false:
-                        this.mapper.properties.overworld.disabledEncounters.set(1, false)
-                        break;
-                }
-            }
-        },
-        route_103(newValue) {
-            if (this.mapper.properties.overworld.mapName.value == "ROUTE 103") {
-                switch (newValue) {
-                    case true:
-                        this.mapper.properties.overworld.disabledEncounters.set(0, false)
-                        break;
-                    case false:
-                        this.mapper.properties.overworld.disabledEncounters.set(1, false)
-                        break;
-                }
-            }
-        },
+        // route_101(newValue) {
+        //     if (this.mapper.properties.overworld.mapName.value == "ROUTE 101") {
+        //         switch (newValue) {
+        //             case true:
+        //                 this.mapper.properties.overworld.disabledEncounters.set(0, false)
+        //                 break;
+        //             case false:
+        //                 this.mapper.properties.overworld.disabledEncounters.set(1, false)
+        //                 break;
+        //         }
+        //     }
+        // },
+        // route_102(newValue) {
+        //     if (this.mapper.properties.overworld.mapName.value == "ROUTE 102") {
+        //         switch (newValue) {
+        //             case true:
+        //                 this.mapper.properties.overworld.disabledEncounters.set(0, false)
+        //                 break;
+        //             case false:
+        //                 this.mapper.properties.overworld.disabledEncounters.set(1, false)
+        //                 break;
+        //         }
+        //     }
+        // },
+        // route_103(newValue) {
+        //     if (this.mapper.properties.overworld.mapName.value == "ROUTE 103") {
+        //         switch (newValue) {
+        //             case true:
+        //                 this.mapper.properties.overworld.disabledEncounters.set(0, false)
+        //                 break;
+        //             case false:
+        //                 this.mapper.properties.overworld.disabledEncounters.set(1, false)
+        //                 break;
+        //         }
+        //     }
+        // },
         hm_102_zigzagoon(newValue) {
             if (newValue == false) {
                 this.mapper.properties.overworld.encounter?.zigzagoon?.set(false, false)
@@ -3004,6 +3004,12 @@ const app = Vue.createApp({
         },
         freezeEncounters() {
             this.mapper.properties.overworld.mapName.change((newProp) => {
+                let yes = true;
+                let no = false;
+                if(typeof this.mapper.properties.overworld.disabledEncounters.value == 'number') {
+                    yes = 1;
+                    no = 0;
+                }
                 // if (this.mapper.properties.player.badges.badge1.value == false && this.route_101 == false && newProp.value == "ROUTE 101") {
                 //     this.mapper.properties.overworld.disabledEncounters.set(true,false);
                 // }
@@ -3016,17 +3022,16 @@ const app = Vue.createApp({
                 /*else*/ if (this.mapper.properties.player.badges.badge1.value && this.hm_102_zigzagoon == true && newProp.value == "ROUTE 102" && this.game.encountersMap["ROUTE 102"] == false && this.mapper.properties.player.team[1].species.value != "Zigzagoon") {
                     this.mapper.properties.player.team[1].species.change((newerProp) => {
                         if(newerProp = "Zigzagoon" && this.hm_102_zigzagoon == true && newProp.value == "ROUTE 102" && this.game.encountersMap["ROUTE 102"] == false) {
-                            this.mapper.properties.overworld.disabledEncounters.set(true,false);
+                            this.mapper.properties.overworld.disabledEncounters.set(yes,false);
                         }
                     });
                 }
                 else {
-                    // console.log(this.game.encountersMap[newProp]);
                     if(this.game.encountersMap[newProp]==false) {
-                        this.mapper.properties.overworld.disabledEncounters.set(true,false);
+                        this.mapper.properties.overworld.disabledEncounters.set(yes,false);
                     }
                     else {
-                        this.mapper.properties.overworld.disabledEncounters.set(false,false);
+                        this.mapper.properties.overworld.disabledEncounters.set(no,false);
                     }
                 }
             });
@@ -3096,9 +3101,17 @@ const app = Vue.createApp({
             })
         },
         checkedEncounters(route) {
-            console.log("checkbox " + route,this.game.encountersMap[route])
+            let newValue = this.game.encountersMap[route];
+            if(typeof this.mapper.properties.overworld.disabledEncounters.value == 'number') {
+                if(newValue) {
+                    newValue = 1;
+                }
+                else {
+                    newValue = 0;
+                }
+            }
             if(this.mapper.properties.overworld.mapName.value == route) {
-                this.mapper.properties.overworld.disabledEncounters.set(this.game.encountersMap[route],false);
+                this.mapper.properties.overworld.disabledEncounters.set(newValue,false);
             }
         }
     },
@@ -3330,7 +3343,7 @@ const app = Vue.createApp({
         const setStartingAttributes = async () => {
             // const personalityValue = this.natures[this.pkmnNature][`personality_value_${this.pkmn_gender.toLowerCase()}`]
             //256 * 25 * 10 = 70400, gives a clean starting point where modulo 25 and modulo 256 are both 0
-            //this can really be anything divisble by 256 and 25 though
+            //this can really be anything divisible by 256 though
             var personalityValue = 70400 + this.natures[this.pkmnNature]["modulo_value"];
             if(this.pkmn_gender == "Male") {
                 //31 and 225 are the breakpoints for 87% gender ratio pokemon
@@ -3362,7 +3375,6 @@ const app = Vue.createApp({
         
             // only recalculate stats when IVs when your starter is received
             if (this.game.starterLocation.includes(this.mapper.properties.overworld.mapName.value)  && this.mapper.properties.player.team[0].level.value == 5) {
-                console.log("Setting stuff: ")
                 await Promise.all([
                     await this.mapper.properties.player.team[0].personalityValue.set(personalityValue, false), 
                     await this.mapper.properties.player.team[0].ivEggAbilityBlock.set(iv_block, false), 
