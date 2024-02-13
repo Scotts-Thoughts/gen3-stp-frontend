@@ -3775,11 +3775,12 @@ const app = Vue.createApp({
 
                 //stop timer
                 if (this.game.finalBattle.includes(trainer)) {
-                    log_split()
+                    this.stopTime()
                     if (this.testRun == false) {
                         this.finished_run_count++
                     };
-                    this.stopTime()
+                    log_split();
+                    
                     //use then so that logCopy doesn't touch any files until logData finishes
                     logData(gameName, this.simple_data_str, this.attempt_number, this.starterString, "Simple", this.testRun, this.scott_mode)
                     .then(() => {
