@@ -71,7 +71,7 @@ const gameVariables =
         ],
         "encountersMap" : {
             "ROUTE 1": false,
-            "ROUTE 2": false,
+            "ROUTE 2": true,
             "ROUTE 22": false,
             "VIRIDIAN_FOREST": false,
         },
@@ -187,7 +187,7 @@ const gameVariables =
             "toBattle" : [134455025]
         },
         "callback2" : {
-            "toBattle" : [134765389, 134442925, "Battle Animation"],
+            "toBattle" : [134765389, 134442925, "Battle Animation",134448161],
             "baseStats" : [135711589]
         },
     },

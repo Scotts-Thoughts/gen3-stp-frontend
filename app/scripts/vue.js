@@ -548,7 +548,7 @@ const app = Vue.createApp({
             pkmn_ability: "Pressure", // false = ability 1, true = ability 2
             hidden_power_type: "Electric",
             pkmn_gender: "Female",
-            gameSelection: "FireRed and LeafGreen",
+            gameSelection: MyStorage['gameSelection'] ?? "FireRed and LeafGreen",
             
             // USER CONFIG (components) ------------------------------------------------------------------------// 
             graphicOverlay: MyStorage['graphicOverlay'] ?? true, //places a single image as the overlay  //MVP
@@ -821,6 +821,7 @@ const app = Vue.createApp({
                 "battle_start",
                 "testStatus",
                 "autosplitter_toggle",
+                "gameSelection"
             ],
         }
     },
@@ -1079,17 +1080,17 @@ const app = Vue.createApp({
 
             //this code requires a mapper update to set the nature at the start for multinature pokemon
             //leaving it commented until then
-            // if(this.g3stateVariable=="Battle") {
-            //     let ability = this.pascalCaseSpace(this.mapper.properties.battle.yourPokemon.ability?.value.toLowerCase());
-            //     if(ability=="Natural Care") {
-            //         return "Natural Cure"; //typo in mapper
-            //     }
-            //     return ability;
-            // }
-            // else {
+            if(this.g3stateVariable=="Battle") {
+                let ability = this.pascalCaseSpace(this.mapper.properties.battle.yourPokemon.ability?.value.toLowerCase());
+                if(ability=="Natural Care") {
+                    return "Natural Cure"; //typo in mapper
+                }
+                return ability;
+            }
+            else {
 
                 return this.pkmn_ability;
-            // }
+            }
         },
         enemyTrainerName() {
             try {
@@ -1329,7 +1330,52 @@ const app = Vue.createApp({
                 output = true;
             }
             return output;
-        }
+        },
+        //TYPE ICONS FOR THE STARTER SELECTION
+        starterTypeCheck() {
+            if (this.pick == true)
+                var starterType1 = this.gen3data.find(y => y.dexNumber === this.starterString)
+                var starterType2 = this.gen3data.find(y => y.dexNumber === this.starterString)
+                if (starterType2.type2 == null)
+                    return true
+                else   
+                    return false
+        },
+        getStarterType1() {
+            if (this.pick == true)
+                var type = this.dexData[this.starterString].type_1
+                if(this.dynamicTypeAvailable) {
+                    type = this.mapper.properties.battle.yourPokemon.type1;
+                }
+                return `images/elements/types/${type}.png`.toLowerCase();
+        },
+        getStarterType2() {
+            if (this.pick == true)
+                var type = this.dexData[this.starterString].type_2
+                if(this.dynamicTypeAvailable) {
+                    type = this.mapper.properties.battle.yourPokemon.type2;
+                }
+                return `images/elements/types/${type}.png`.toLowerCase();
+        },
+        dynamicTypeAvailable() {
+            if(this.g3stateVariable != "Battle")
+                return false;
+            /* this is all to check if you have abilities or moves that can change your type */
+            /* after thinking about it, I don't think it's needed, unless bugs arise from */
+            /* dynamic typing. It can stay here just in case. */
+            // let dynamicTypeAbilities = ["COLOR CHANGE","FORECAST"];
+            // let dynamicTypeMoves = ["CONVERSION","CONVERSION 2","TRANSFORM","CAMOUFLAGE","METRONOME"];
+            // let yourPoke = this.mapper.properties.battle.yourPokemon;
+            // let yourMoves = [yourPoke.move1.value,yourPoke.move2.value,yourPoke.move3.value,yourPoke.move4.value];
+            // console.log(dynamicTypeAbilities.includes(this.mapper.properties.battle.yourPokemon.ability.value),this.mapper.properties.battle.yourPokemon.ability.value)
+            // if (dynamicTypeAbilities.includes(this.mapper.properties.battle.yourPokemon.ability.value))
+            //     return true;
+            // let hasTypeChangeMove = yourMoves.some(move => dynamicTypeMoves.includes(move));
+            // if (hasTypeChangeMove)
+            //     return true;
+            // return false;
+            return true;
+        },
     },
 
     methods: { 
@@ -2274,26 +2320,7 @@ const app = Vue.createApp({
                 return `images/elements/textures/normal.png`
         },
         
-        //TYPE ICONS FOR THE STARTER SELECTION
-        starterTypeCheck() {
-            if (this.pick == true)
-                var starterType1 = this.gen3data.find(y => y.dexNumber === this.starterString)
-                var starterType2 = this.gen3data.find(y => y.dexNumber === this.starterString)
-                if (starterType2.type2 == null)
-                    return true
-                else   
-                    return false
-        },
-        getStarterType1() {
-            if (this.pick == true)
-                var type = this.dexData[this.starterString].type_1
-                return `images/elements/types/${type}.png`.toLowerCase();
-        },
-        getStarterType2() {
-            if (this.pick == true)
-                var type = this.dexData[this.starterString].type_2
-                return `images/elements/types/${type}.png`.toLowerCase();
-        },
+        
         
         //GAMETIME
         gameTimeHM(h, m) {
@@ -2663,35 +2690,56 @@ const app = Vue.createApp({
             return specialMovePower
         },
         weatherModifier(weather, move, moveType) {
+            let mod = 1;
             if(this.weatherDenial) {
-                return 1;
+                return mod;
+            }
+            if(move == "WEATHER BALL" && !(weather == null || weather =="" || weather == undefined)) {
+                mod *= 2;
             }
             if (weather == "Sun" && moveType == "Water") {
-                return .5
+                return mod * .5;
             }
             else if (weather == "Sun" && moveType == "Fire") {
-                return 1.5
+                return mod * 1.5
             }
             else if (weather == "Rain" && moveType == "Water") {
-                return 1.5
+                return mod * 1.5
             }
             else if (weather == "Rain" && moveType == "Fire") {
-                return .5
+                return mod * .5
             }
             else if (weather == "Rain" && move == "SOLARBEAM") {
-                return .5
+                return mod * .5
             }
             else if (weather == "Sandstorm") {
-                return 1
+                return mod * 1
             }
             else {
-                return 1
+                return mod * 1
             }
         },
         moveType(y) { //y = move1.value
             if (y.toUpperCase() == "HIDDEN POWER") {
                 var move = this.hiddenPowerTypeCalc(this.mapper.properties.player.team[0])
                 return move
+            }
+            if(y.toUpperCase() == "WEATHER BALL") {
+                // let weatherType = {
+                //     "Sun" : "Fire",
+                //     "Hail" : "Ice",
+                //     "Rain" : "Water",
+                //     "Sandstorm" : "Rock",
+                //     "" : "Normal",
+                //     null : "Normal",
+                //     undefined : "Normal",
+                // }
+                // console.log(y);
+                // console.log(this.mapper.properties.battle.turnInfo.battleWeather.value)
+                // var moveType = weatherType[this.mapper.properties.battle.turnInfo.battleWeather.value];
+                // console.log(moveType);
+                // return moveType;
+                return this.weatherBallTypeCalc();
             }
             else if (y) {
                 var move = this.gen3moves.find(x => x.Move.toLowerCase() === this.move_name(y).toLowerCase())
@@ -2702,6 +2750,9 @@ const app = Vue.createApp({
         moveTypeIcon(y) { //y = move1.value
             if (y != null && y != undefined && y.toUpperCase() == "HIDDEN POWER") {
                 return `images/elements/type-icons/${this.hiddenPowerTypeCalc(this.mapper.properties.player.team[0]).toLowerCase()}.png`
+            }
+            if (y != null && y != undefined && y.toUpperCase() == "WEATHER BALL" && this.g3stateVariable=="Battle") {
+                return `images/elements/type-icons/${this.weatherBallTypeCalc().toLowerCase()}.png`
             }
             else if (y != null && y != undefined) {
                 var move = this.gen3moves.find(x => x.Move.toLowerCase() === this.move_name(y).toLowerCase())
@@ -2781,11 +2832,34 @@ const app = Vue.createApp({
             ivSpcDBit = ((x.ivSpecialDefense & 2) >> 1)
             return Math.floor((((ivHpBit + (2 * ivAtkBit) + (4 * ivDefBit) + (8 * ivSpdBit) + (16 * ivSpcABit) + (32 * ivSpcDBit)) * 40)/63) + 30 )
         },
+        weatherBallTypeCalc() {
+            if(this.g3stateVariable!="Battle") {
+                return "Normal";
+            }
+            let weatherType = {
+                "Sun" : "Fire",
+                "Hail" : "Ice",
+                "Rain" : "Water",
+                "Sandstorm" : "Rock",
+                "" : "Normal",
+                null : "Normal",
+                undefined : "Normal",
+            }
+            console.log();
+            console.log(this.mapper.properties.battle.turnInfo.battleWeather.value)
+            var moveType = weatherType[this.mapper.properties.battle.turnInfo.battleWeather.value];
+            console.log(moveType);
+            return moveType;
+        },
         determineSTAB(x) { //x = move1.value
-            // var pkmnType1 = this.mapper.properties.battle.yourPokemon.type1.value
-            // var pkmnType2 = this.mapper.properties.battle.yourPokemon.type2.value
             var pkmnType1 = this.dexData[this.starterString].type_1
             var pkmnType2 = this.dexData[this.starterString].type_2
+            if (this.g3stateVariable == `Battle`) {
+                //suport transform or conversion
+                var pkmnType1 = this.mapper.properties.battle.yourPokemon.type1.value
+                var pkmnType2 = this.mapper.properties.battle.yourPokemon.type2.value
+            }
+
             if (pkmnType1 == this.moveType(x) || pkmnType2 == this.moveType(x)) {
                 return 1.5
             }
@@ -3113,7 +3187,7 @@ const app = Vue.createApp({
             if(this.mapper.properties.overworld.mapName.value == route) {
                 this.mapper.properties.overworld.disabledEncounters.set(newValue,false);
             }
-        }
+        },
     },
     
 
@@ -3143,7 +3217,7 @@ const app = Vue.createApp({
         else if (this.game.callback1.overworld.includes(this.mapper.properties.pointers.callback1.value))
             this.g3stateVariable = "Overworld"
         else if (this.game.callback1.toBattle.includes(this.mapper.properties.pointers.callback1.value)) {
-            if (this.game.callback2.toBattle.includes(this.mapper.properties.pointers.callback2.value)) {
+            if (this.game.callback2.toBattle.includes(this.mapper.properties.pointers.callback2.value) && this.mapper.properties.battle.turnInfo.battleDialogue.value == null) {
                 this.g3stateVariable = "To Battle"
             }
             else {
