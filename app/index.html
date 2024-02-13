@@ -336,14 +336,8 @@
                     <div v-for="x in pkmnSlots" class="enemyGraphic">
                         <div v-show="enemyTrainer.pokemon[x] != undefined" :class="`ePkmn${x + 1}`">
                             <img v-show="enemyTrainer.pokemon[x]?.species != undefined" class="ePkmnSprite" :style="enemyPkmnFaint(batt.trainer.team[x])" :src="`images/pokemon/${enemyTrainer.pokemon[x]?.species}.png`"/>
-                            <!-- <img 
-                                v-show="enemyTrainer.pokemon[x]?.species != undefined && (dexDataRubySapphireEmerald[enemyTeam[x].species.value].type_1 != dexDataRubySapphireEmerald[enemyTeam[x].species.value].type_2)" 
-                                class="ePkmnType_1" :style="enemyPkmnFaint(batt.trainer.team[x])" 
-                                :src="`images/elements/type-icons/${enemyType(x)}.png`"/>
-                            <img 
-                                v-show="enemyTrainer.pokemon[x]?.species != undefined && (dexDataRubySapphireEmerald[enemyTeam[x].species.value].type_1 != dexDataRubySapphireEmerald[enemyTeam[x].species.value].type_2)" 
-                                class="ePkmnType_1" :style="enemyPkmnFaint(batt.trainer.team[x])" 
-                                :src="`images/elements/type-icons/${enemyType(x)}.png`"/> -->
+                            <img class="ePkmnTypeIcons ePkmnType_1 ds" :style="enemyPkmnFaintTypes(batt.trainer.team[x])" :src="`images/elements/type-icons/${enemyType1(x).toLowerCase()}.png`"/>
+                            <img v-show="enemyType1(x) != enemyType2(x)" :style="enemyPkmnFaintTypes(batt.trainer.team[x])" class="ePkmnTypeIcons ePkmnType_2 ds" :src="`images/elements/type-icons/${enemyType2(x).toLowerCase()}.png`"/>
                             <div class="ePkmnSpecies opacityTransition" :style="enemyPkmnSpecies(batt.trainer.team[x])">{{ enemyTrainer.pokemon[x]?.species }}</div>
                             <img class="enemyStatsArea" :style="enemyPkmnFaintStats(batt.trainer.team[x])" :src="`images/enemy_area/stats/${x}.png`"/>
                             <div class="ePkmnMove1 opacityTransition" :style="enemyPkmnText(batt.trainer.team[x])">{{ enemyTrainer.pokemon[x]?.moves[0] }}</div>

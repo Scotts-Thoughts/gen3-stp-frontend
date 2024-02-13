@@ -335,131 +335,131 @@ function logData(gameName, str, file_name, starter, log_type, testStatus, toggle
         const dirPath = `./splits/Emerald/${starter}/attempts/`;
         const testStatusText = testStatus ? "test_run_" : "";
         let filePath = path.join(dirPath, `${testStatusText}${starter}-${file_name}-simple.csv`);
-        let header = "player_name" +
-                    "pokemon" +
-                    "trainer_name" +
-                    "real_time_hmmss" +
-                    "resets" +
-                    "blackouts" +
-                    "failures" +
-                    "level" +
-                    "game_time" +
-                    "battle_duration" +
-                    "move1" +
-                    "move2" +
-                    "move3" +
+        let header = "player_name," +
+                    "pokemon," +
+                    "trainer_name," +
+                    "real_time_hmmss," +
+                    "resets," +
+                    "blackouts," +
+                    "failures," +
+                    "level," +
+                    "game_time," +
+                    "battle_duration," +
+                    "move1," +
+                    "move2," +
+                    "move3," +
                     "move4,\n"
         if (log_type == "Deprecated" && toggle == true) {
             filePath = path.join(dirPath, `${testStatusText}${starter}-${file_name}-deprecated.csv`);
             header = "ROM" +
-                "Species" +
-                "Trainer" +
-                "Start Time" +
-                "Real Time" +
-                "Game Time" +
-                "Level" +
-                "Resets" +
-                "RTHours" +
-                "RTMinutes" +
-                "RTSeconds" +
-                "RTMilliseconds" +
-                "Move 1" +
-                "Move 2" +
-                "Move 3" +
-                "Move 4" +
-                "Attack" +
-                "Defense" +
-                "Sp. Attack" +
-                "Sp. Defense" +
-                "Speed" +
-                "Attack Stage" +
-                "Defense Stage" +
-                "Sp. Attack Stage" +
-                "Sp. Defense Stage" +
-                "Speed Stage" +
-                "Accuracy Stage" +
-                "Evasion Stage" +
-                "Battle Attack" +
-                "Battle Defense" +
-                "Battle Sp. Attack" +
-                "Battle Sp. Defense" +
-                "Battle Speed" +
-                "Frame Count" +
-                "Overworld Frame Count" +
-                "Battle Frame Count" +
-                "Menu Frame Count" +
-                "Intro Frame Count" +
-                "Save Count" +
-                "Reload Count" +
-                "Clock Reset Count" +
-                "Steps Count" +
-                "Steps Count Walk" +
-                "Steps Count Bike" +
-                "Steps Count Surf" +
-                "Bonks" +
-                "Battles" +
-                "Trainer Battles" +
-                "Wild Battles" +
-                "Battles Fled" +
-                "Failed Runs" +
-                "Total Damage Dealt" +
-                "Actual Damage Dealt" +
-                "Total Damage Taken" +
-                "Actual Damage Taken" +
-                "Own Moves Hit" +
-                "Own Moves Missed" +
-                "Enemy Moves Hit" +
-                "Enemy Moves Missed" +
-                "Own Moves Super Effective" +
-                "Own Moves Not Very Effective" +
-                "Enemy Moves Super Effective" +
-                "Enemy Moves Not Very Effective" +
-                "Criticals Dealt" +
-                "OHKOs Dealt" +
-                "Criticals Taken" +
-                "OHKOs Taken" +
-                "Was Confused" +
-                "Enemy Became Confused" +
-                "Was Paralyzed" +
-                "Enemy Was Paralyzed" +
-                "Was Burned" +
-                "Enemy Was Burned" +
-                "Was Frozen" +
-                "Enemy Was Frozen" +
-                "Was Poisoned" +
-                "Enemy Was Poisoned" +
-                "Was Badly Poisoned" +
-                "Enemy Was Badly Poisoned" +
-                "Fell Asleep" +
-                "Enemy Fell Asleep" +
-                "Player Turns Confused" +
-                "Player Turns Confused Hit Self" +
-                "Player Turns Paralyzed" +
-                "Player Turns Paralyzed Fully" +
-                "Enemy Turns Confused" +
-                "Enemy Turns Confused Hit Self" +
-                "Enemy Turns Paralyzed" +
-                "Enemy Turns Paralyzed Fully" +
-                "Player HP Healed" +
-                "Enemy HP Healed" +
-                "Player Pokemon Fainted" +
-                "Enemy Pokemon Fainted" +
-                "Experience Gained" +
-                "Switchouts" +
-                "Money Made" +
-                "Money Spent" +
-                "Money Lost" +
-                "Items Picked Up" +
-                "Items Bought" +
-                "Items Sold" +
-                "Balls Thrown" +
-                "Pokemon Caught In Balls" +
-                "Moves Learnt" +
+                "Species," +
+                "Trainer," +
+                "Start Time," +
+                "Real Time," +
+                "Game Time," +
+                "Level," +
+                "Resets," +
+                "RTHours," +
+                "RTMinutes," +
+                "RTSeconds," +
+                "RTMilliseconds," +
+                "Move 1," +
+                "Move 2," +
+                "Move 3," +
+                "Move 4," +
+                "Attack," +
+                "Defense," +
+                "Sp. Attack," +
+                "Sp. Defense," +
+                "Speed," +
+                "Attack Stage," +
+                "Defense Stage," +
+                "Sp. Attack Stage," +
+                "Sp. Defense Stage," +
+                "Speed Stage," +
+                "Accuracy Stage," +
+                "Evasion Stage," +
+                "Battle Attack," +
+                "Battle Defense," +
+                "Battle Sp. Attack," +
+                "Battle Sp. Defense," +
+                "Battle Speed," +
+                "Frame Count," +
+                "Overworld Frame Count," +
+                "Battle Frame Count," +
+                "Menu Frame Count," +
+                "Intro Frame Count," +
+                "Save Count," +
+                "Reload Count," +
+                "Clock Reset Count," +
+                "Steps Count," +
+                "Steps Count Walk," +
+                "Steps Count Bike," +
+                "Steps Count Surf," +
+                "Bonks," +
+                "Battles," +
+                "Trainer Battles," +
+                "Wild Battles," +
+                "Battles Fled," +
+                "Failed Runs," +
+                "Total Damage Dealt," +
+                "Actual Damage Dealt," +
+                "Total Damage Taken," +
+                "Actual Damage Taken," +
+                "Own Moves Hit," +
+                "Own Moves Missed," +
+                "Enemy Moves Hit," +
+                "Enemy Moves Missed," +
+                "Own Moves Super Effective," +
+                "Own Moves Not Very Effective," +
+                "Enemy Moves Super Effective," +
+                "Enemy Moves Not Very Effective," +
+                "Criticals Dealt," +
+                "OHKOs Dealt," +
+                "Criticals Taken," +
+                "OHKOs Taken," +
+                "Was Confused," +
+                "Enemy Became Confused," +
+                "Was Paralyzed," +
+                "Enemy Was Paralyzed," +
+                "Was Burned," +
+                "Enemy Was Burned," +
+                "Was Frozen," +
+                "Enemy Was Frozen," +
+                "Was Poisoned," +
+                "Enemy Was Poisoned," +
+                "Was Badly Poisoned," +
+                "Enemy Was Badly Poisoned," +
+                "Fell Asleep," +
+                "Enemy Fell Asleep," +
+                "Player Turns Confused," +
+                "Player Turns Confused Hit Self," +
+                "Player Turns Paralyzed," +
+                "Player Turns Paralyzed Fully," +
+                "Enemy Turns Confused," +
+                "Enemy Turns Confused Hit Self," +
+                "Enemy Turns Paralyzed," +
+                "Enemy Turns Paralyzed Fully," +
+                "Player HP Healed," +
+                "Enemy HP Healed," +
+                "Player Pokemon Fainted," +
+                "Enemy Pokemon Fainted," +
+                "Experience Gained," +
+                "Switchouts," +
+                "Money Made," +
+                "Money Spent," +
+                "Money Lost," +
+                "Items Picked Up," +
+                "Items Bought," +
+                "Items Sold," +
+                "Balls Thrown," +
+                "Pokemon Caught In Balls," +
+                "Moves Learnt," +
                 //new properties" +
-                "Blackouts" +
-                "Attempt Number" +
-                "Failures" +
-                "Rival's Team\n"
+                "Blackouts," +
+                "Attempt Number," +
+                "Failures," +
+                "Rival's Team,\n"
         }
         if (log_type == "Full" && toggle == true) {
             filePath = path.join(dirPath, `${testStatusText}${starter}-${file_name}-full.csv`);
@@ -542,8 +542,8 @@ const app = Vue.createApp({
             // POKEMON CONFIG (components) ---------------------------------------------------------------------//
             starterString: "Rayquaza",
             pkmnNature: "Adamant",
-            pkmn_ability: "Pressure", // false = ability 1, true = ability 2
-            ability_bool: true, // false = ability 1, true = ability 2
+            pkmn_ability: "Levitate", // false = ability 1, true = ability 2
+            ability_bool: false, // false = ability 1, true = ability 2
             hidden_power_type: "Electric",
             pkmn_gender: "Female",
             
@@ -1247,8 +1247,21 @@ const app = Vue.createApp({
     },
 
     methods: { 
-        enemyType(slotNumber) {
+        enemyType1(slotNumber) {
+            console.log(this.enemyTeam[slotNumber].species.value)
+            if (this.enemyTeam[slotNumber].species.value == null) { 
+                return "Normal"
+            }
+            console.log(this.dexDataRubySapphireEmerald[this.enemyTeam[slotNumber].species.value].type_1)
             return this.dexDataRubySapphireEmerald[this.enemyTeam[slotNumber].species.value].type_1
+        },
+        enemyType2(slotNumber) {
+            console.log(this.enemyTeam[slotNumber].species.value)
+            if (this.enemyTeam[slotNumber].species.value == null) { 
+                return "Normal"
+            }
+            console.log(this.dexDataRubySapphireEmerald[this.enemyTeam[slotNumber].species.value].type_2)
+            return this.dexDataRubySapphireEmerald[this.enemyTeam[slotNumber].species.value].type_2
         },
         clear_overlay_color() {
             starterType = this.dexDataRubySapphireEmerald[this.starterString].type_1;
@@ -1860,10 +1873,21 @@ const app = Vue.createApp({
                 return "filter: grayscale(0%);"
             }
             else if (pkmnData.hp == 0 || this.g3stateVariable == `From Battle`) {
-                return "filter: grayscale(100%); opacity: .5;"
+                return "filter: grayscale(100%); opacity: .5; "
             }
             else {
                 return "filter: grayscale(0%);"
+            }
+        },
+        enemyPkmnFaintTypes(pkmnData) {
+            if (this.g3stateVariable == `To Battle`) {
+                return "filter: grayscale(0%) drop-shadow(0px 0px 1px #000000c5);"
+            }
+            else if (pkmnData.hp == 0 || this.g3stateVariable == `From Battle`) {
+                return "filter: grayscale(100%) drop-shadow(0px 0px 1px #000000c5); opacity: .5; "
+            }
+            else {
+                return "filter: grayscale(0%) drop-shadow(0px 0px 1px #000000c5);"
             }
         },
 
@@ -3685,9 +3709,7 @@ const app = Vue.createApp({
                 //stop timer
                 if (trainer == "RIVAL_STEVEN") {
                     log_split()
-                    if (this.testRun == false) {
-                        this.finished_run_count++
-                    };
+                    this.finished_run_count++
                     this.stopTime()
                     //use then so that logCopy doesn't touch any files until logData finishes
                     logData(gameName, this.simple_data_str, this.attempt_number, this.starterString, "Simple", this.testRun, this.scott_mode)

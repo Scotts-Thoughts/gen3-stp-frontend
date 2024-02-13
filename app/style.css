@@ -1042,8 +1042,9 @@ body {
     width: 340px;
     text-align: center; /* need a fix */
     position: absolute;
-    top: 26px;
+    top: 28px;
     left: 1570px;
+    line-height: 34px;
     font-family: titan;
     z-index: 600;
 }
@@ -2315,6 +2316,19 @@ body {
     border: 1px solid #000;
     border-radius: 5px;
     filter: drop-shadow(0px 0px 5px)
+}
+.ePkmnTypeIcons {
+    position: absolute;
+    border: 1px solid rgba(255, 0, 0, 0);
+    width: 22px;
+    height: 22px;
+    top: 104px;
+}
+.ePkmnType_1 {
+    left: 6px;
+}
+.ePkmnType_2 {
+    left: 30px;
 }
 .ePkmnSprite {
     position: absolute;
