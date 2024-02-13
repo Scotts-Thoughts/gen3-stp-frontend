@@ -1302,8 +1302,12 @@ const app = Vue.createApp({
         },
         game() {
             // console.log("game")
-            // console.log(this.mapper)
-            // console.log(this.mapper.meta.gameName)
+            // console.log(this.mapper.meta)
+            // console.log(this.mapper?.properties?.meta.gameName.value)
+            if(this.mapper && this.mapper.properties.meta?.gameName) {
+                if(this.gameVariables[this.mapper.properties.meta.gameName?.value]!=null)
+                    this.gameSelection = this.mapper.properties.meta.gameName.value;
+            }
             return this.gameVariables[this.gameSelection];
             // return this.gameVariables[this.mapper?.properties?.meta?.gameName];
         // return "FireRed and LeafGreen";
