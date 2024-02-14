@@ -1045,6 +1045,7 @@ body {
     top: 26px;
     left: 1570px;
     font-family: titan;
+    line-height: 34px;
     z-index: 600;
 }
 .bagLineLabel {
