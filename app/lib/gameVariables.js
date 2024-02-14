@@ -79,13 +79,14 @@ const gameVariables =
         "starterLocation" : ["PALLET_TOWN","PALLET_TOWN - PROFESSOR_OAKS_LAB"],
         "callback1" : {
             "overworld" : ["Overworld", 134570549],
-            "toBattle" : [134292473]
+            "toBattle" : [134292473],
+            "blackout" : [134570917],//test further //134570549 overworld? after
         },
         "callback2" : {
             "toBattle" : [134287637, "Battle Animation"],
             "baseStats" : [135711589], //copied from emerald, what should this be??
-            "reset" : ["Owners", 0]
-
+            "reset" : ["Owners", 0],
+            "blackout" : [134570917],//test further //134570677 overworld after
         },
     },
     "Emerald": {
@@ -192,7 +193,8 @@ const gameVariables =
         "callback2" : {
             "toBattle" : [134765389, 134442925, "Battle Animation",134448161,"Battle"],
             "baseStats" : [135711589],
-            "reset" : ["Owners",0]
+            "reset" : ["Owners",0],
+            "blackout" : [134765653],
         },
     },
     "Ruby and Sapphire": {

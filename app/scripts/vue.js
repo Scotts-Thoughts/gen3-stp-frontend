@@ -1080,8 +1080,8 @@ const app = Vue.createApp({
 
             //this code requires a mapper update to set the nature at the start for multinature pokemon
             //leaving it commented until then
-            if(this.g3stateVariable=="Battle") {
-                let ability = this.pascalCaseSpace(this.mapper.properties.battle.yourPokemon.ability?.value.toLowerCase());
+            if(this.g3stateVariable=="Battle" && this.mapper.properties.battle.yourPokemon.ability?.value != null) {
+                let ability = this.pascalCaseSpace(this.mapper.properties.battle.yourPokemon?.ability?.value.toLowerCase());
                 if(ability=="Natural Care") {
                     return "Natural Cure"; //typo in mapper
                 }
@@ -2920,15 +2920,17 @@ const app = Vue.createApp({
         typeEffectiveness(x) { //x = move1.value
             var attackingType = this.moveType(x)
             var power = this.movePower(x)
-            var defendingTypeMono = this.mapper.properties.battle.enemyPokemon.type1.value
-            var defendingType1 = this.mapper.properties.battle.enemyPokemon.type1.value
-            var defendingType2 = this.mapper.properties.battle.enemyPokemon.type2.value
+            const enemyPokemon = this.mapper.properties.battle.enemyPokemon;
+            var defendingTypeMono = enemyPokemon.type1.value
+            var defendingType1 = defendingTypeMono;
+            var defendingType2 = enemyPokemon.type2.value
             var multipliers = this.typeData.find(x => x.moveType === attackingType)
             var stabModifier = this.determineSTAB(x)
             var ability = this.abilityModifier(this.pkmn_ability, attackingType)
             var itemBoost = this.determineItemBoost(x)
             var weatherBoost = this.weatherModifier(this.mapper.properties.battle.turnInfo.battleWeather.value, x, this.moveType(x))
             var burnModifier = this.burnModifier(x)
+            const enemyAbility = this.mapper.properties.battle.enemyPokemon.ability.value;
             if (x == "FUTURE SIGHT") { return 80 }
             //IN BATTLE
             try{ 
@@ -2939,8 +2941,14 @@ const app = Vue.createApp({
             catch {
                 // console.log("null opponent, no double battle power")
             }
+
+            //NOT IN BATTLE
+            if(this.g3stateVariable != "Battle") {
+                if (power == "-") { return power }
+                return Math.floor(power * stabModifier * itemBoost * ability * burnModifier);
+            }
             
-            if (this.typeCalcs == true && this.g3stateVariable == "Battle") {
+            if (this.typeCalcs && this.g3stateVariable == "Battle") {
                 let abilityImmunities = {
                     "LEVITATE" : "Ground",
                     "VOLT ABSORB" : "Electric",
@@ -2948,31 +2956,31 @@ const app = Vue.createApp({
                     "FLASH FIRE" : "Fire" 
                 }
                 let soundProofMoves = ["HYPER VOICE", "SNORE", "UPROAR"];
-                if(this.mapper.properties.battle.enemyPokemon.ability.value == "SOUNDPROOF" && soundProofMoves.includes(x)) {
+                if(enemyAbility == "SOUNDPROOF" && soundProofMoves.includes(x)) {
                     return 0;
                 }
                 //STATUS MOVE
                 if (power == "-") { return power }
                 //LEVITATE INTERACTION
                 
-                else if (abilityImmunities[this.mapper.properties.battle.enemyPokemon.ability.value]?.[1] == attackingType) {
+                else if (abilityImmunities[enemyAbility]?.[1] == attackingType) {
                     return 0;
                 }
                 //NO ENEMY DATA (HAVEN'T BATTLED SINCE RELOADING ROM OR SAVE)
-                else if (this.mapper.properties.battle.enemyPokemon.type1 == null) {
+                else if (defendingType1 == null) {
                     return Math.floor(power * stabModifier * itemBoost * ability * burnModifier)
                 }
                 //ATTACKING A MONO-TYPE POKEMON
-                else if (this.mapper.properties.battle.enemyPokemon.type1.value === this.mapper.properties.battle.enemyPokemon.type2.value) {
+                else if (defendingType1.value === defendingType2.value) {
                     var multiplier1 = multipliers[defendingTypeMono]
                     var thickFat = 1
-                    if (this.mapper.properties.battle.enemyPokemon.ability.value == "THICK FAT" && attackingType == "Ice" || this.mapper.properties.battle.enemyPokemon.ability.value == "THICK FAT" && attackingType == "Fire") {
+                    if (enemyAbility == "THICK FAT" && (attackingType == "Ice" || attackingType == "Fire")) {
                         thickFat = .5 
                     }
                     return Math.floor(power * multiplier1 * stabModifier * itemBoost * weatherBoost * ability * burnModifier * thickFat)
                 }
                 //ATTACKING A DUAL-TYPE POKEMON
-                else if (this.mapper.properties.battle.enemyPokemon.type1 != this.mapper.properties.battle.enemyPokemon.type2) {
+                else if (defendingType1 != defendingType2) {
                     var multipliers = this.typeData.find(x => x.moveType == attackingType)
                     var multiplier1 = multipliers[defendingType1]
                     var multiplier2 = multipliers[defendingType2]
@@ -2983,10 +2991,7 @@ const app = Vue.createApp({
                     return Math.floor(power * stabModifier * burnModifier)
                 }
             }
-            //NOT IN BATTLE
-            else   
-                if (power == "-") { return power }
-                else { return Math.floor(power * stabModifier * itemBoost * ability * burnModifier) }
+                
         },
 
         ////This needs to be updated
@@ -3286,6 +3291,9 @@ const app = Vue.createApp({
                 else {
                     this.playerResets++;
                 }
+            }
+            if(this.game.callback2.blackout.includes(newProp.value) /*&& !this.game.callback2.reset.includes(newProp.value)*/) {
+                    this.blackout_counter++;
             }
         });
 
@@ -3858,6 +3866,7 @@ const app = Vue.createApp({
             console.log('Battle Outcome Changed')
             autosplitter_process()
             console.log('Autosplitter Attempted to Run by Battle Outcome Change')
+            console.log("Battle outcome: " + prop.value)
             if (prop.value == "WON") {
                 console.log('Starting log process')
                 let trainer = this.opponent
