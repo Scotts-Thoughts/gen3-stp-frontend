@@ -74,6 +74,7 @@ const gameVariables =
             "ROUTE 2": true,
             "ROUTE 22": false,
             "VIRIDIAN_FOREST": false,
+            "ROUTE 6" : false,
         },
         "starterLocation" : ["PALLET_TOWN","PALLET_TOWN - PROFESSOR_OAKS_LAB"],
         "callback1" : {
@@ -82,7 +83,9 @@ const gameVariables =
         },
         "callback2" : {
             "toBattle" : [134287637, "Battle Animation"],
-            "baseStats" : [135711589] //copied from emerald, what should this be??
+            "baseStats" : [135711589], //copied from emerald, what should this be??
+            "reset" : ["Owners", 0]
+
         },
     },
     "Emerald": {
@@ -184,11 +187,12 @@ const gameVariables =
         "starterLocation" : ["ROUTE 101"],
         "callback1" : {
             "overworld" : [134765285, "Overworld", 134765313],
-            "toBattle" : [134455025]
+            "toBattle" : [134455025,"Battle"]
         },
         "callback2" : {
-            "toBattle" : [134765389, 134442925, "Battle Animation",134448161],
-            "baseStats" : [135711589]
+            "toBattle" : [134765389, 134442925, "Battle Animation",134448161,"Battle"],
+            "baseStats" : [135711589],
+            "reset" : ["Owners",0]
         },
     },
     "Ruby and Sapphire": {

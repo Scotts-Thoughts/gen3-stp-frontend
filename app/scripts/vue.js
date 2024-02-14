@@ -2849,10 +2849,7 @@ const app = Vue.createApp({
                 null : "Normal",
                 undefined : "Normal",
             }
-            console.log();
-            console.log(this.mapper.properties.battle.turnInfo.battleWeather.value)
             var moveType = weatherType[this.mapper.properties.battle.turnInfo.battleWeather.value];
-            console.log(moveType);
             return moveType;
         },
         determineSTAB(x) { //x = move1.value
@@ -3071,10 +3068,10 @@ const app = Vue.createApp({
             // console.log("watching for new game")
             // console.log(this.mapper.properties[this.game.newGameFlagContainer][this.game.newGameFlag])
             this.mapper.properties[this.game.newGameFlagContainer][this.game.newGameFlag].change((newProp, oldProp) => {
-                // console.log("new game? new: "+newProp + " old: "+oldProp)
                 if(this.game.newGameValueNew.includes(newProp.value) && this.game.newGameValueOld.includes(oldProp.value)){
                     console.log("new game started")
                     if (!this.testRun) { this.attempt_number++ }
+                    this.hallOfFameReset = false;
                     this.newRun();
                     this.startTime();
                 }
@@ -3278,11 +3275,17 @@ const app = Vue.createApp({
         //track resets
         //callback2 seems more reliable to track than dma1 in firered no encryption
         this.mapper.properties.pointers.callback2.change((newProp, oldProp) => {
-            if (this.hallOfFameReset == true) {
-                this.hallOfFameReset = false;
-            }
-            else if(newProp.value == 0 && oldProp.value > 0) {
-                this.playerResets++;
+            // console.log(newProp.value,oldProp.value);
+            // console.log("array: " + this.game.callback2.reset)
+            // console.log("includes: "+ this.game.callback2.reset.includes(newProp.value)+ " old : " + this.game.callback2.reset.includes(newProp.value));
+            
+            if(this.game.callback2.reset.includes(newProp.value) /*&& !this.game.callback2.reset.includes(newProp.value)*/) {
+                if (this.hallOfFameReset == true) {
+                    this.hallOfFameReset = false;
+                }
+                else {
+                    this.playerResets++;
+                }
             }
         });
 
@@ -3319,7 +3322,7 @@ const app = Vue.createApp({
         this.mapper.properties.battle.enemyPokemon.hp.change(async (newProp, oldProp) => {
             if (newProp == 0 && this.enemyState == "Pokemon") {
                 this.enemyState = "Fainting"
-                await this.sleep(200)
+                await this.sleep(200) 
                 this.enemyState = "Fainted"
             }
             if (newProp > 0 && this.enemyState == "Fainted") {
