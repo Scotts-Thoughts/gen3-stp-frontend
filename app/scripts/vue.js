@@ -3867,7 +3867,7 @@ const app = Vue.createApp({
             autosplitter_process()
             console.log('Autosplitter Attempted to Run by Battle Outcome Change')
             console.log("Battle outcome: " + prop.value)
-            if (prop.value == "WON") {
+            if (prop.value == "WON" && this.mapper.properties.battle.trainer.value) {
                 console.log('Starting log process')
                 let trainer = this.opponent
                 let id = this.opponentId
