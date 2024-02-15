@@ -2927,6 +2927,7 @@ const app = Vue.createApp({
             var multipliers = this.typeData.find(x => x.moveType === attackingType)
             var stabModifier = this.determineSTAB(x)
             var ability = this.abilityModifier(this.pkmn_ability, attackingType)
+            var defenseAbility = 1;
             var itemBoost = this.determineItemBoost(x)
             var weatherBoost = this.weatherModifier(this.mapper.properties.battle.turnInfo.battleWeather.value, x, this.moveType(x))
             var burnModifier = this.burnModifier(x)
@@ -2947,7 +2948,8 @@ const app = Vue.createApp({
                 if (power == "-") { return power }
                 return Math.floor(power * stabModifier * itemBoost * ability * burnModifier);
             }
-            
+            console.log(multiplier1,multiplier2,attackingType,defendingType1,defendingType2)
+
             if (this.typeCalcs && this.g3stateVariable == "Battle") {
                 let abilityImmunities = {
                     "LEVITATE" : "Ground",
@@ -2959,6 +2961,10 @@ const app = Vue.createApp({
                 if(enemyAbility == "SOUNDPROOF" && soundProofMoves.includes(x)) {
                     return 0;
                 }
+                if (enemyAbility == "THICK FAT" && (attackingType == "Ice" || attackingType == "Fire")) {
+                    defenseAbility = .5;
+                }
+
                 //STATUS MOVE
                 if (power == "-") { return power }
                 //LEVITATE INTERACTION
@@ -2971,20 +2977,17 @@ const app = Vue.createApp({
                     return Math.floor(power * stabModifier * itemBoost * ability * burnModifier)
                 }
                 //ATTACKING A MONO-TYPE POKEMON
-                else if (defendingType1.value === defendingType2.value) {
+                else if (defendingType1 === defendingType2) {
                     var multiplier1 = multipliers[defendingTypeMono]
-                    var thickFat = 1
-                    if (enemyAbility == "THICK FAT" && (attackingType == "Ice" || attackingType == "Fire")) {
-                        thickFat = .5 
-                    }
-                    return Math.floor(power * multiplier1 * stabModifier * itemBoost * weatherBoost * ability * burnModifier * thickFat)
+                    return Math.floor(power * multiplier1 * stabModifier * itemBoost * weatherBoost * ability * burnModifier * defenseAbility)
                 }
                 //ATTACKING A DUAL-TYPE POKEMON
                 else if (defendingType1 != defendingType2) {
                     var multipliers = this.typeData.find(x => x.moveType == attackingType)
                     var multiplier1 = multipliers[defendingType1]
                     var multiplier2 = multipliers[defendingType2]
-                    return Math.floor(power * multiplier1 * multiplier2 * stabModifier * itemBoost * weatherBoost * ability * burnModifier)
+                    console.log(multiplier1,multiplier2,attackingType,defendingType1,defendingType2)
+                    return Math.floor(power * multiplier1 * multiplier2 * stabModifier * itemBoost * weatherBoost * ability * burnModifier * defenseAbility)
                 }
                 //RETURN THE MOVES POWER IF NOTHING ELSE WORKS
                 else {
