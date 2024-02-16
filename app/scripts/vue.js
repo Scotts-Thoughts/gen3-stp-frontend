@@ -331,9 +331,11 @@ const fs = require("fs");
 const path = require("path");
 const { finished } = require('stream');
 
-if (!fs.existsSync('splits')) { fs.mkdirSync('splits'); }
-if (!fs.mkdirSync('splits/Emerald')) { fs.mkdirSync('splits/Emerald'); }
-if (!fs.mkdirSync('splits/FireRed')) { fs.mkdirSync('splits/FireRed'); }
+for (folder in folders = ['splits', 'splits/Emerald', 'splits/FireRed']) {
+    if (!fs.existsSync(folder)) {
+        fs.mkdirSync(folder);
+    }
+}
 
 function logData(gameName, str, file_name, starter, log_type, testStatus, toggle) {
         return new Promise((resolve, reject) => {
