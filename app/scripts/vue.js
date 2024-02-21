@@ -1,4 +1,4 @@
-const MyStorage = new Proxy({}, {value
+const MyStorage = new Proxy({}, {
     set: (_, prop, value) => {
         if (value === undefined || value === null)
             localStorage.removeItem(prop);
@@ -857,7 +857,7 @@ const app = Vue.createApp({
             this.pkmn_ability           = MyStorage[this.starterString]?.pkmn_ability         ?? dexDataRubySapphireEmerald[this.starterString].abilities[0]
             this.attempt_number         = MyStorage[this.starterString]?.attempt_number       ?? 0
             this.finished_run_count     = MyStorage[this.starterString]?.finished_run_count   ?? 0
-        }s
+        }
 
         for (let i = 0; i < this.pokemon_settings.length; i++) {
             let propName = this.pokemon_settings[i];
@@ -2938,7 +2938,7 @@ const app = Vue.createApp({
                 if (power == "-") { return power }
                 //LEVITATE INTERACTION
                 
-                else if (abilityImmunities[enemyAbility]?.[1] == attackingType) {
+                else if (abilityImmunities[enemyAbility] == attackingType) {
                     return 0;
                 }
                 //NO ENEMY DATA (HAVEN'T BATTLED SINCE RELOADING ROM OR SAVE)
