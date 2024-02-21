@@ -669,43 +669,43 @@ const app = Vue.createApp({
             pkmnSlots: [0, 1, 2, 3, 4, 5],
 
             //STATE MANAGEMENT ---------------------------------------------------------------------------------//
-            gamestateLogging: false,
-            gameStarted:  true, //tracks if the player has a save game or not
-            currentGameStateNew: "",
-            playerID: 999,
-            g3stateVariable: "Base Stats",
-            prevSpecies: undefined,
-            prevExpPoints: 0,
+            gamestateLogging:     false,
+            gameStarted:          true, //tracks if the player has a save game or not
+            currentGameStateNew:  "",
+            playerID:             999,
+            g3stateVariable:      "Base Stats",
+            prevSpecies:          undefined,
+            prevExpPoints:        0,
             expDebounceTimeoutId: -1,
-            expBarAnimation: true,
-            slotTimingFix: false,
-            showAllTrainers: true,
-            enemyModColour: ["0", "background: #d84444;"],
-            enemyState: "Pokemon",
-            field_array: ["Reflect", 0],
+            expBarAnimation:      true,
+            slotTimingFix:        false,
+            showAllTrainers:      true,
+            enemyModColour:       ["0", "background: #d84444;"],
+            enemyState:           "Pokemon",
+            field_array:          ["Reflect", 0],
             last_initiated_field_effect: "Reflect",
 
             //Pokemon settings for local storage
             overlay_color: MyStorage["overlay_color"] ?? "#000000",
-            imageXOffset:  MyStorage["imageXOffset"] ?? 0,
-            imageYOffset:  MyStorage["imageYOffset"] ?? 0,
-            imageScale:    MyStorage["imageScale"] ?? 1,
-            imageFlip:     MyStorage["imageFlip"] ?? false,
-            imageSat:      MyStorage["imageSat"] ?? 100,
+            imageXOffset:  MyStorage["imageXOffset"]  ?? 0,
+            imageYOffset:  MyStorage["imageYOffset"]  ?? 0,
+            imageScale:    MyStorage["imageScale"]    ?? 1,
+            imageFlip:     MyStorage["imageFlip"]     ?? false,
+            imageSat:      MyStorage["imageSat"]      ?? 100,
             imageRotation: MyStorage["imageRotation"] ?? 0,
 
             //background texture settings
-            backgroundBlur:        MyStorage["backgroundBlur"] ?? 0,
-            backgroundScale:       MyStorage["backgroundScale"] ?? 100,
-            backgroundUrl:         MyStorage["backgroundUrl"] ?? "",
-            backgroundFlip:        MyStorage["backgroundFlip"] ?? false,
+            backgroundBlur:        MyStorage["backgroundBlur"]        ?? 0,
+            backgroundScale:       MyStorage["backgroundScale"]       ?? 100,
+            backgroundUrl:         MyStorage["backgroundUrl"]         ?? "",
+            backgroundFlip:        MyStorage["backgroundFlip"]        ?? false,
             use_custom_background: MyStorage["use_custom_background"] ?? false,
-            backgroundXOffset:     MyStorage["backgroundXOffset"] ?? 0,
-            backgroundYOffset:     MyStorage["backgroundYOffset"] ?? 0,
-            backgroundTexture:     MyStorage["backgroundTexture"] ?? 'Bug 1',
-            backgroundBrightness:  MyStorage["backgroundBrightness"] ?? 100,
-            backgroundContrast:    MyStorage["backgroundContrast"] ?? 100,
-            backgroundSaturation:  MyStorage["backgroundSaturation"] ?? 100,
+            backgroundXOffset:     MyStorage["backgroundXOffset"]     ?? 0,
+            backgroundYOffset:     MyStorage["backgroundYOffset"]     ?? 0,
+            backgroundTexture:     MyStorage["backgroundTexture"]     ?? 'Bug 1',
+            backgroundBrightness:  MyStorage["backgroundBrightness"]  ?? 100,
+            backgroundContrast:    MyStorage["backgroundContrast"]    ?? 100,
+            backgroundSaturation:  MyStorage["backgroundSaturation"]  ?? 100,
 
             //backed up pokemon specific settings
             pokemon_settings: [
@@ -748,20 +748,20 @@ const app = Vue.createApp({
             battle_start:         MyStorage['battle_start']         ?? 0,
 
             //resets
-            playerId: MyStorage["playerId"] ?? 0,
-            playerName: "",
-            resetCatcher: "NINTEN",
-            playerResets: MyStorage["playerResets"] ?? 0,
-            blackout_counter: MyStorage["blackout_counter"] ?? 0,
-            resetCounter: true,
-            game_over: false,
-            hallOfFameReset: false,
-            finished_logs: false,
-            pb_time: "None",
-            split_logStr: "",
-            attempt_number:     0,
-            finished_run_count: 0,
-            split_data: MyStorage["split_data"] ?? [],
+            playerId:            MyStorage["playerId"]         ?? 0,
+            playerName:          "",
+            resetCatcher:        "NINTEN",
+            playerResets:        MyStorage["playerResets"]     ?? 0,
+            blackout_counter:    MyStorage["blackout_counter"] ?? 0,
+            resetCounter:        true,
+            game_over:           false,
+            hallOfFameReset:     false,
+            finished_logs:       false,
+            pb_time:             "None",
+            split_logStr:        "",
+            attempt_number:      0,
+            finished_run_count:  0,
+            split_data:          MyStorage["split_data"]          ?? [],
             simple_data_str:     MyStorage["simple_data_str"]     ?? "",
             full_data_str:       MyStorage["full_data_str"]       ?? "",
             deprecated_data_str: MyStorage["deprecated_data_str"] ?? "",
@@ -779,7 +779,7 @@ const app = Vue.createApp({
             route_103: MyStorage['route_103'] ?? true,
             hm_102_zigzagoon: MyStorage['hm_102_zigzagoon'] ?? true,
             hm_104_marill:    MyStorage['hm_104_marill']    ?? true,
-            hm_104_taillow:    MyStorage['hm_104_taillow']    ?? true,
+            hm_104_taillow:   MyStorage['hm_104_taillow']   ?? true,
 
             auto_save: [
                 "graphicOverlay",
@@ -840,24 +840,24 @@ const app = Vue.createApp({
             // this.gameVariables.newGame = this.gameVariables.newGame.bind(this);
         })
         if (MyStorage[this.starterString]) {
-            this.overlay_color = MyStorage[this.starterString].overlay_color ?? this.default_colors[dexDataRubySapphireEmerald[this.starterString].type_1];
-            this.imageXOffset = MyStorage[this.starterString].imageXOffset ?? 0;
-            this.imageYOffset = MyStorage[this.starterString].imageYOffset ?? 0;
-            this.imageScale = MyStorage[this.starterString].imageScale ?? 1;
-            this.imageFlip = MyStorage[this.starterString].imageFlip ?? false;
-            this.imageSat = MyStorage[this.starterString].imageSat ?? 100
-            this.imageRotation = MyStorage[this.starterString].imageRotation ?? 0
-            this.backgroundBlur = MyStorage[this.starterString].backgroundBlur ?? 0
-            this.backgroundScale = MyStorage[this.starterString].backgroundScale ?? 100
-            this.backgroundUrl = MyStorage[this.starterString].backgroundUrl ?? ""
-            this.use_custom_background = MyStorage[this.starterString].use_custom_background ?? false
-            this.backgroundXOffset = MyStorage[this.starterString].backgroundXOffset ?? 0
-            this.backgroundYOffset = MyStorage[this.starterString].backgroundYOffset ?? 0
-            this.backgroundTexture = MyStorage[this.starterString].backgroundTexture ?? `${this.dexData[this.starterString].type_1}`
-            this.pkmn_ability = MyStorage[this.starterString]?.pkmn_ability ?? dexDataRubySapphireEmerald[this.starterString].abilities[0]
-            this.attempt_number = MyStorage[this.starterString]?.attempt_number ?? 0
-            this.finished_run_count = MyStorage[this.starterString]?.finished_run_count ?? 0
-        }
+            this.overlay_color          = MyStorage[this.starterString].overlay_color         ?? this.default_colors[dexDataRubySapphireEmerald[this.starterString].type_1];
+            this.imageXOffset           = MyStorage[this.starterString].imageXOffset          ?? 0;
+            this.imageYOffset           = MyStorage[this.starterString].imageYOffset          ?? 0;
+            this.imageScale             = MyStorage[this.starterString].imageScale            ?? 1;
+            this.imageFlip              = MyStorage[this.starterString].imageFlip             ?? false;
+            this.imageSat               = MyStorage[this.starterString].imageSat              ?? 100
+            this.imageRotation          = MyStorage[this.starterString].imageRotation         ?? 0
+            this.backgroundBlur         = MyStorage[this.starterString].backgroundBlur        ?? 0
+            this.backgroundScale        = MyStorage[this.starterString].backgroundScale       ?? 100
+            this.backgroundUrl          = MyStorage[this.starterString].backgroundUrl         ?? ""
+            this.use_custom_background  = MyStorage[this.starterString].use_custom_background ?? false
+            this.backgroundXOffset      = MyStorage[this.starterString].backgroundXOffset     ?? 0
+            this.backgroundYOffset      = MyStorage[this.starterString].backgroundYOffset     ?? 0
+            this.backgroundTexture      = MyStorage[this.starterString].backgroundTexture     ?? `${this.dexData[this.starterString].type_1}`
+            this.pkmn_ability           = MyStorage[this.starterString]?.pkmn_ability         ?? dexDataRubySapphireEmerald[this.starterString].abilities[0]
+            this.attempt_number         = MyStorage[this.starterString]?.attempt_number       ?? 0
+            this.finished_run_count     = MyStorage[this.starterString]?.finished_run_count   ?? 0
+        }s
 
         for (let i = 0; i < this.pokemon_settings.length; i++) {
             let propName = this.pokemon_settings[i];
@@ -886,8 +886,6 @@ const app = Vue.createApp({
                 }
             );
         }
-        
-
     },
     watch: {
         //*Autosplitter
@@ -910,42 +908,6 @@ const app = Vue.createApp({
                 log_start()
             }
         },
-        // route_101(newValue) {
-        //     if (this.mapper.properties.overworld.mapName.value == "ROUTE 101") {
-        //         switch (newValue) {
-        //             case true:
-        //                 this.mapper.properties.overworld.disabledEncounters.set(0, false)
-        //                 break;
-        //             case false:
-        //                 this.mapper.properties.overworld.disabledEncounters.set(1, false)
-        //                 break;
-        //         }
-        //     }
-        // },
-        // route_102(newValue) {
-        //     if (this.mapper.properties.overworld.mapName.value == "ROUTE 102") {
-        //         switch (newValue) {
-        //             case true:
-        //                 this.mapper.properties.overworld.disabledEncounters.set(0, false)
-        //                 break;
-        //             case false:
-        //                 this.mapper.properties.overworld.disabledEncounters.set(1, false)
-        //                 break;
-        //         }
-        //     }
-        // },
-        // route_103(newValue) {
-        //     if (this.mapper.properties.overworld.mapName.value == "ROUTE 103") {
-        //         switch (newValue) {
-        //             case true:
-        //                 this.mapper.properties.overworld.disabledEncounters.set(0, false)
-        //                 break;
-        //             case false:
-        //                 this.mapper.properties.overworld.disabledEncounters.set(1, false)
-        //                 break;
-        //         }
-        //     }
-        // },
         hm_102_zigzagoon(newValue) {
             if (newValue == false) {
                 this.mapper.properties.overworld.encounter?.zigzagoon?.set(false, false)
