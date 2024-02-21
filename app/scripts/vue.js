@@ -2920,7 +2920,7 @@ const app = Vue.createApp({
             // console.log(multiplier1,multiplier2,attackingType,defendingType1,defendingType2)
 
             //Handle double battles
-            if(this.g3stateVariable == "Battle" && this.batt.type?.double) {
+            if(this.g3stateVariable == "Battle" && this.batt.type?.double.value) {
                 if (power == "-") { return power }
                 return Math.floor(power * stabModifier * itemBoost * ability * burnModifier);
             }
