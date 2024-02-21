@@ -2903,22 +2903,27 @@ const app = Vue.createApp({
             const enemyAbility = this.mapper.properties.battle.enemyPokemon.ability.value;
             if (x == "FUTURE SIGHT") { return 80 }
             //IN BATTLE
-            try{ 
-                if (this.batt.trainer[this.game.opponent].value == `LEADER_TATE_AND_LIZA_1` || this.batt.trainer[this.game.opponent].value == `MAGMA_LEADER_MAXIE_MOSSDEEP`) {
-                    return power
-                }
-            }
-            catch {
-                // console.log("null opponent, no double battle power")
-            }
+            // try{ 
+            //     if (this.batt.trainer[this.game.opponent].value == `LEADER_TATE_AND_LIZA_1` || this.batt.trainer[this.game.opponent].value == `MAGMA_LEADER_MAXIE_MOSSDEEP`) {
+            //         return power
+            //     }
+            // }
+            // catch {
+            //     // console.log("null opponent, no double battle power")
+            // }
 
             //NOT IN BATTLE
             if(this.g3stateVariable != "Battle") {
                 if (power == "-") { return power }
                 return Math.floor(power * stabModifier * itemBoost * ability * burnModifier);
             }
-            console.log(multiplier1,multiplier2,attackingType,defendingType1,defendingType2)
+            // console.log(multiplier1,multiplier2,attackingType,defendingType1,defendingType2)
 
+            //Handle double battles
+            if(this.g3stateVariable == "Battle" && this.batt.type?.double) {
+                if (power == "-") { return power }
+                return Math.floor(power * stabModifier * itemBoost * ability * burnModifier);
+            }
             if (this.typeCalcs && this.g3stateVariable == "Battle") {
                 let abilityImmunities = {
                     "LEVITATE" : "Ground",
