@@ -1356,7 +1356,6 @@ const app = Vue.createApp({
             this.timer_formatted_time = [ "0", ".00" ]
             this.playerResets = 0
             this.finished_logs = false
-            this.finished_run_count = 0
             this.blackout_counter = 0
             this.playerId = 0
             // this.playerName = "NINTEN"
