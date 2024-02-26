@@ -1352,6 +1352,22 @@ const app = Vue.createApp({
     },
 
     methods: { 
+        enemyType1(slotNumber) {
+            console.log(this.enemyTeam[slotNumber].species.value)
+            if (this.enemyTeam[slotNumber].species.value == null) { 
+                return "Normal"
+            }
+            console.log(this.dexDataRubySapphireEmerald[this.enemyTeam[slotNumber].species.value].type_1)
+            return this.dexDataRubySapphireEmerald[this.enemyTeam[slotNumber].species.value].type_1
+        },
+        enemyType2(slotNumber) {
+            console.log(this.enemyTeam[slotNumber].species.value)
+            if (this.enemyTeam[slotNumber].species.value == null) { 
+                return "Normal"
+            }
+            console.log(this.dexDataRubySapphireEmerald[this.enemyTeam[slotNumber].species.value].type_2)
+            return this.dexDataRubySapphireEmerald[this.enemyTeam[slotNumber].species.value].type_2
+        },
         enemyType(slotNumber) {
             return this.dexData[this.enemyTeam[slotNumber].species.value].type_1
         },
@@ -1945,6 +1961,17 @@ const app = Vue.createApp({
             }
             else {
                 return "filter: grayscale(0%);"
+            }
+        },
+        enemyPkmnFaintTypes(pkmnData) {
+            if (this.g3stateVariable == `To Battle`) {
+                return "filter: grayscale(0%) drop-shadow(0px 0px 1px #000000c5);"
+            }
+            else if (pkmnData.hp == 0 || this.g3stateVariable == `From Battle`) {
+                return "filter: grayscale(100%) drop-shadow(0px 0px 1px #000000c5); opacity: .5; "
+            }
+            else {
+                return "filter: grayscale(0%) drop-shadow(0px 0px 1px #000000c5);"
             }
         },
 
