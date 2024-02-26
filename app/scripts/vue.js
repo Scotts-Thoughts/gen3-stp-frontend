@@ -3300,7 +3300,7 @@ const app = Vue.createApp({
             }
         });
         this.mapper.properties.battle.turnInfo.battleDialogue.change((prop) => {
-            if (prop.value == `Player Control` && this.enemyState == "Battle Starting") {
+            if ((prop.value == `Player Control` || prop.value == 6) && this.enemyState == "Battle Starting") {
                 this.enemyState = "Pokemon";
             }
         });
