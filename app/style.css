@@ -178,6 +178,19 @@ body {
 .posAbs {
     position: absolute;
 }
+.ePkmnTypeIcons {
+    position: absolute;
+    border: 1px solid rgba(255, 0, 0, 0);
+    width: 22px;
+    height: 22px;
+    top: 104px;
+}
+.ePkmnType_1 {
+    left: 6px;
+}
+.ePkmnType_2 {
+    left: 30px;
+}
 .override {
 	display: block;
     max-width:1920px;
