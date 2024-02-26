@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg id="Individual_Areas" data-name="Individual Areas" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1920 1080">
   <defs>
-    <linearGradient id="New_Gradient_Swatch_copy_2" data-name="New Gradient Swatch copy 2" x1="362" y1="977" x2="1558" y2="977" gradientUnits="userSpaceOnUse">
+    <linearGradient id="linear-gradient" x1="362" y1="977" x2="1558" y2="977" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#999"/>
       <stop offset=".04" stop-color="#a0a0a0"/>
       <stop offset=".21" stop-color="#b8b8b8"/>
@@ -21,12 +21,12 @@
     </filter>
   </defs>
   <g id="Main_Elements" data-name="Main Elements">
-    <g id="Layer_21" data-name="Layer 21">
-      <g id="Moveset" style="opacity: .95;">
-        <path d="m368,1064c-3.31,0-6-2.69-6-6v-141.82c0-1.56.6-3.04,1.68-4.16l19.43-20.18c1.12-1.17,2.7-1.84,4.32-1.84h1164.57c3.31,0,6,2.69,6,6v162c0,3.31-2.69,6-6,6H368Z" style="fill: url(#New_Gradient_Swatch_copy_2); stroke-width: 0px;"/>
-        <path d="m1552,892c2.21,0,4,1.79,4,4v162c0,2.21-1.79,4-4,4H368c-2.21,0-4-1.79-4-4v-141.82c0-1.04.4-2.03,1.12-2.77l19.43-20.18c.75-.78,1.8-1.23,2.88-1.23h1164.57m0-4H387.43c-2.17,0-4.26.89-5.76,2.45l-19.43,20.18c-1.44,1.49-2.24,3.48-2.24,5.55v141.82c0,4.42,3.58,8,8,8h1184c4.42,0,8-3.58,8-8v-162c0-4.42-3.58-8-8-8h0Z" style="fill: #808285; stroke-width: 0px;"/>
-        <path d="m1552,890c3.31,0,6,2.69,6,6v162c0,3.31-2.69,6-6,6H368c-3.31,0-6-2.69-6-6v-141.82c0-1.56.6-3.04,1.68-4.16l19.43-20.18c1.13-1.17,2.7-1.84,4.32-1.84h1164.57m0-2H387.43c-2.17,0-4.25.89-5.76,2.45l-19.43,20.18c-1.44,1.49-2.24,3.48-2.24,5.55v141.82c0,4.42,3.58,8,8,8h1184c4.42,0,8-3.58,8-8v-162c0-4.42-3.58-8-8-8h0Z" style="fill: #4d4d4d; stroke-width: 0px;"/>
-        <path d="m1552,888c4.42,0,8,3.58,8,8v162c0,4.42-3.58,8-8,8H368c-4.42,0-8-3.58-8-8v-141.82c0-2.07.8-4.06,2.24-5.55l19.43-20.18c1.51-1.57,3.59-2.45,5.76-2.45h1164.57m0-1H387.43c-2.43,0-4.8,1.01-6.48,2.76l-19.43,20.18c-1.62,1.69-2.52,3.9-2.52,6.24v141.82c0,4.96,4.04,9,9,9h1184c4.96,0,9-4.04,9-9v-162c0-4.96-4.04-9-9-9h0Z" style="stroke-width: 0px;"/>
+    <g id="Moveset">
+      <g id="Moveset-2" data-name="Moveset" style="opacity: .95;">
+        <rect x="362" y="890" width="1196" height="174" rx="6" ry="6" style="fill: url(#linear-gradient); stroke-width: 0px;"/>
+        <path d="m1552,892c2.21,0,4,1.79,4,4v162c0,2.21-1.79,4-4,4H368c-2.21,0-4-1.79-4-4v-162c0-2.21,1.79-4,4-4h1184m0-4H368c-4.42,0-8,3.58-8,8v162c0,4.42,3.58,8,8,8h1184c4.42,0,8-3.58,8-8v-162c0-4.42-3.58-8-8-8h0Z" style="fill: gray; stroke-width: 0px;"/>
+        <path d="m1552,890c3.31,0,6,2.69,6,6v162c0,3.31-2.69,6-6,6H368c-3.31,0-6-2.69-6-6v-162c0-3.31,2.69-6,6-6h1184m0-2H368c-4.42,0-8,3.58-8,8v162c0,4.42,3.58,8,8,8h1184c4.42,0,8-3.58,8-8v-162c0-4.42-3.58-8-8-8h0Z" style="fill: #4d4d4d; stroke-width: 0px;"/>
+        <path d="m1552,888c4.42,0,8,3.58,8,8v162c0,4.42-3.58,8-8,8H368c-4.42,0-8-3.58-8-8v-162c0-4.42,3.58-8,8-8h1184m0-1H368c-4.96,0-9,4.04-9,9v162c0,4.96,4.04,9,9,9h1184c4.96,0,9-4.04,9-9v-162c0-4.96-4.04-9-9-9h0Z" style="stroke-width: 0px;"/>
       </g>
       <path d="m364,1042l11.5,11.5h1180.5v4.5h0c0,2.21-1.79,4-4,4H368c-2.21,0-4-1.79-4-4h0v-16Z" style="fill: #939598; filter: url(#drop-shadow-1); opacity: .5; stroke-width: 0px;"/>
     </g>

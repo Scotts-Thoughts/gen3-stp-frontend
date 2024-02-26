@@ -316,12 +316,16 @@
             </div>
 
 <!--------- MOVESET (MOVES, POWER, PP) -------------------------------------------------------------------------------------------------------------------->
-            <div class="movesetLabel movesetLabelColumn1">pwr.</div>
-            <div class="movesetLabel movesetLabelColumn2">acc.</div>
-            <div class="movesetLabel movesetLabelColumn3">pp</div>
-            <div class="movesetLabel movesetLabelColumn4">pwr.</div>
-            <div class="movesetLabel movesetLabelColumn5">acc.</div>
-            <div class="movesetLabel movesetLabelColumn6">pp</div>
+            <div class="movesetLabel movesetLabelColumn1">type</div>
+            <div class="movesetLabel movesetLabelColumn2">move</div>
+            <div class="movesetLabel movesetLabelColumn3">pwr.</div>
+            <div class="movesetLabel movesetLabelColumn4">acc.</div>
+            <div class="movesetLabel movesetLabelColumn5">pp</div>
+            <div class="movesetLabel movesetLabelColumn6">type</div>
+            <div class="movesetLabel movesetLabelColumn7">move</div>
+            <div class="movesetLabel movesetLabelColumn8">pwr.</div>
+            <div class="movesetLabel movesetLabelColumn9">acc.</div>
+            <div class="movesetLabel movesetLabelColumn10">pp</div>
             <div v-show="moveset == true" id="moveset">
                 <div v-for="x in pkmnMoves">
                     <div v-if="mapper.properties.player.team[0].level.value > 0 && mapper.properties.player.team[0][x].value != null">
