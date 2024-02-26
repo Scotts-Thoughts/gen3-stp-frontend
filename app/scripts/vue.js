@@ -2960,7 +2960,7 @@ const app = Vue.createApp({
                     var multipliers = this.typeData.find(x => x.moveType == attackingType)
                     var multiplier1 = multipliers[defendingType1]
                     var multiplier2 = multipliers[defendingType2]
-                    console.log(multiplier1,multiplier2,attackingType,defendingType1,defendingType2)
+                    // console.log(multiplier1,multiplier2,attackingType,defendingType1,defendingType2)
                     return Math.floor(power * multiplier1 * multiplier2 * stabModifier * itemBoost * weatherBoost * ability * burnModifier * defenseAbility)
                 }
                 //RETURN THE MOVES POWER IF NOTHING ELSE WORKS
@@ -3243,7 +3243,7 @@ const app = Vue.createApp({
             if (this.game.callback2.baseStats.includes(prop.value)) { 
                 this.g3stateVariable = "Base Stats"
             }
-            else if (this.game.callback2.toBattle.includes(prop.value)) { 
+            else if (this.game.callback2.toBattle.includes(prop.value) && this.g3stateVariable != "Battle") { 
                 this.g3stateVariable = "To Battle"
             }
         });
