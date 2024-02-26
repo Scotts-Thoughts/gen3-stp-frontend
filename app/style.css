@@ -382,13 +382,16 @@ body {
 } */
 
 .abilityHeldItemLabelStyle {
-    font-size: 36px;
+    font-size: 28px;
     position: fixed;
     opacity: .6;
     text-align: center;
+    line-height: 44px;
     z-index: 30000;
     font-family: osb;
-    top: 832px;
+    top: 830px;
+    width: 180px;
+    border: 2px solid #ff000000;
 }
 .heldItemStyle {
     font-size: 36px;
@@ -399,7 +402,7 @@ body {
     top: 832px;
 }
 .labelAbility {
-    left: 398px;
+    left: 369px;
 }
 .labelHeldItem {
     left: 970px;
@@ -462,7 +465,7 @@ body {
     z-index: 0;
 }
 .statsheader {
-    font-size: 38px;
+    font-size: 32px;
     line-height: 40px;
     font-family: play;
     font-weight: 700;
@@ -1700,9 +1703,9 @@ body {
     font-weight: 700
 }
 .ability {
-    font-size: 40px;
+    font-size: 32px;
     position: fixed;
-    border: 1px solid #ff000000;
+    border: 1px solid #ff00000000;
     width: 367px;
     height: 40px;
     left: 550px;
@@ -1736,7 +1739,7 @@ body {
 
 /* STATS AREA */
 .heldItem {
-    font-size: 40px;
+    font-size: 32px;
     position: fixed;
     left: 804px;
     top: 836px;
