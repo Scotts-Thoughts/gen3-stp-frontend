@@ -592,7 +592,7 @@ const app = Vue.createApp({
             pkmnMoves: ["move1", "move2", "move3", "move4"],
 
             //CSS styling values
-            statLabelOpacityValue: 0, //used when a stage modifier is applied
+            statLabelOpacityValue: 0.1, //used when a stage modifier is applied
 
             //DATA ---------------------------------------------------------------------------------------------//
             gen3data:                   gen3data,
@@ -611,6 +611,8 @@ const app = Vue.createApp({
             default_colors:             default_colors,
             hp_ivs:                     hp_ivs,
             autosplitter:               autosplitter,
+            generation_3_moves:         generation_3_moves,
+
             trainerLists: {
                 "emeraldTrainers" : emeraldTrainers,
                 "remakeTrainers" : remakeTrainers,  
@@ -1352,20 +1354,133 @@ const app = Vue.createApp({
     },
 
     methods: { 
+        special_trainer_names(trainer_name) {
+            switch (trainer_name) {
+                case "Rival Brendan 1":  return "Rival Brendan 1";
+                case "Rival Brendan 2":  return "Rival Brendan 1";
+                case "Rival Brendan 3":  return "Rival Brendan 1";
+                case "Rival Brendan 4":  return "Rival Brendan 2";
+                case "Rival Brendan 5":  return "Rival Brendan 2";
+                case "Rival Brendan 6":  return "Rival Brendan 2";
+                case "Rival Brendan 7":  return "Rival Brendan 3";
+                case "Rival Brendan 8":  return "Rival Brendan 3";
+                case "Rival Brendan 9":  return "Rival Brendan 3";
+                case "Rival Brendan 10": return "Rival Brendan (Optional)";
+                case "Rival Brendan 11": return "Rival Brendan (Optional)";
+                case "Rival Brendan 12": return "Rival Brendan (Optional)";
+                case "Rival Brendan 13": return "Rival Brendan 4";
+                case "Rival Brendan 14": return "Rival Brendan 4";
+                case "Rival Brendan 15": return "Rival Brendan 4";
+                case "Rival May 1":      return "Rival May 1";
+                case "Rival May 2":      return "Rival May 1";
+                case "Rival May 3":      return "Rival May 1";
+                case "Rival May 4":      return "Rival May 2";
+                case "Rival May 5":      return "Rival May 2";
+                case "Rival May 6":      return "Rival May 2";
+                case "Rival May 7":      return "Rival May 3";
+                case "Rival May 8":      return "Rival May 3";
+                case "Rival May 9":      return "Rival May 3";
+                case "Rival May 10":     return "Rival May (Optional";
+                case "Rival May 11":     return "Rival May (Optional";
+                case "Rival May 12":     return "Rival May (Optional";
+                case "Rival May 13":     return "Rival May 4";
+                case "Rival May 14":     return "Rival May 4";
+                case "Rival May 15":     return "Rival May 4";
+                case "Rival Wally":           return "Rival Wally";
+                case "Rival Wally Rematch 1": return "Rival Wally";
+                case "Rival Wally Rematch 2": return "Rival Wally";
+                case "Rival Wally Rematch 3": return "Rival Wally";
+                case "Magma Leader Maxie":   return "Magma Leader Maxie";
+                case "Magma Leader Maxie 2": return "Magma Leader Maxie";
+                case "Magma Leader Maxie 3": return "Magma Leader Maxie";
+                case "Rival Early Terry":   return "Rival 1";
+                case "Rival Early Terry 2": return "Rival 1";
+                case "Rival Early Terry 3": return "Rival 1";
+                case "Rival Early Terry 4": return "Rival 1A";
+                case "Rival Early Terry 5": return "Rival 1A";
+                case "Rival Early Terry 6": return "Rival 1A";
+                case "Rival Early Terry 7": return "Rival 2";
+                case "Rival Early Terry 8": return "Rival 2";
+                case "Rival Early Terry 9": return "Rival 2";
+                case "Rival Late Terry":    return "Rival 3";
+                case "Rival Late Terry 2":  return "Rival 3";
+                case "Rival Late Terry 3":  return "Rival 3";
+                case "Rival Late Terry 4":  return "Rival 4";
+                case "Rival Late Terry 5":  return "Rival 4";
+                case "Rival Late Terry 6":  return "Rival 4";
+                case "Rival Late Terry 7":  return "Rival 5";
+                case "Rival Late Terry 8":  return "Rival 5";
+                case "Rival Late Terry 9":  return "Rival 5";
+                case "Rival Late Terry 10": return "Rival 6";
+                case "Rival Late Terry 11": return "Rival 6";
+                case "Rival Late Terry 12": return "Rival 6";
+                case "Champion Terry":      return "Champion";
+                case "Champion Terry 2":    return "Champion";
+                case "Champion Terry 3":    return "Champion";
+                default: return this.capitalization_format(trainer_name);
+            }
+        },
+        stat_mod(modifer) {
+            mod = parseInt(modifer)
+            if (mod > 0) {
+                return `+${mod}`
+            }
+            else return mod
+        },
+        enemyFaint(slotIndex) {
+            let fainted = false
+            if (this.mapper.properties.battle.trainer.team[slotIndex].hp.value == 0) {
+                fainted = true
+            }
+            if (fainted == true) {
+                return "opacity: .35; filter: grayscale(100%);"
+            }
+            else {
+                return
+            }
+        },
+        enemyStatLabelOpacity(modifier, slot) {
+            console.log(modifier, slot)
+            if (this.mapper.properties.battle.trainer.team[slot].hp.value == 0) {
+                return `opacity: .3;`
+            }
+            if (this.mapper.properties.battle.enemyPokemon.partyPos.value == slot) {
+                if (this.mapper.properties.battle.trainer.team[0].personalityValue == null)
+                    return
+                else if (this.g3stateVariable == "Battle") {
+                    if (modifier != 0)
+                        return `opacity: ${this.statLabelOpacityValue};`
+                }
+            }
+            else
+                return
+        },
+        enemyMove(slot, moveNumber) {
+            if (this.g3stateVariable == `Battle`) {
+                return this.mapper.properties.battle.trainer.team[slot][`move${moveNumber}`]?.value?.toLowerCase()
+            }
+            else {
+                return
+            }
+        },
+        eHPType(valueToReturn, moveValue, slotIndex) {
+            if (moveValue == "Hidden Power") {
+                return this.hiddenPowerTypeCalc(this.mapper.properties.battle.trainer.team[slotIndex])
+            }
+            else {
+                return valueToReturn
+            }
+        },
         enemyType1(slotNumber) {
-            console.log(this.enemyTeam[slotNumber].species.value)
             if (this.enemyTeam[slotNumber].species.value == null) { 
                 return "Normal"
             }
-            console.log(this.dexDataRubySapphireEmerald[this.enemyTeam[slotNumber].species.value].type_1)
             return this.dexDataRubySapphireEmerald[this.enemyTeam[slotNumber].species.value].type_1
         },
         enemyType2(slotNumber) {
-            console.log(this.enemyTeam[slotNumber].species.value)
             if (this.enemyTeam[slotNumber].species.value == null) { 
                 return "Normal"
             }
-            console.log(this.dexDataRubySapphireEmerald[this.enemyTeam[slotNumber].species.value].type_2)
             return this.dexDataRubySapphireEmerald[this.enemyTeam[slotNumber].species.value].type_2
         },
         enemyType(slotNumber) {
@@ -1943,6 +2058,15 @@ const app = Vue.createApp({
                 return "opacity: 1"
             }
         },
+        enemyPkmnHP(pkmnData) {
+            if (this.g3stateVariable != `Battle` && this.g3stateVariable != `From Battle`) { return "opacity: 1" }
+            if (pkmnData.hp == 0 || this.g3stateVariable == `From Battle`) {
+                return "opacity: .3"
+            }
+            else {
+                return "opacity: .7"
+            }
+        },
         enemyPkmnSpecies(pkmnData) {
             if (this.g3stateVariable != `Battle` && this.g3stateVariable != `From Battle`) { return "opacity: .7" }
             if (pkmnData.hp == 0 || this.g3stateVariable == `From Battle`) {
@@ -2282,6 +2406,12 @@ const app = Vue.createApp({
             return str.toString().replace(/(?:^\w|[A-Z]|\b\w)/g, function (word, index) {
                 return index == 0 ? word.toUpperCase() : word.toLowerCase();
             })
+        },
+        capitalization_format(str) {
+            if (str == null) { return "" }
+            return str.toLowerCase().replace(/(^|\s|\-|\.)(\w)/g, function(match, p1, p2) {
+              return p1 + p2.toUpperCase();
+            });
         },
         pascalCaseSpace(str) {
             let words = str.split(' ');
@@ -2873,8 +3003,12 @@ const app = Vue.createApp({
             else   
                 return 1
         },
-        abilityModifier(ability, attackingType) {
-            var healthPercentage = this.s1.hp.value / this.s1.maxHp.value
+        abilityModifier(ability, attackingType, controller) {
+            var healthPercentage = 0
+            switch (controller) {
+                case "player": healthPercentage = this.s1.hp.value / this.s1.maxHp.value; break;
+                case "opponent": healthPercentage = this.mapper.properties.battle.enemyPokemon.hp.value / this.mapper.properties.battle.enemyPokemon.maxHp.value; break;
+            }
             if (healthPercentage <= .3) {
                 if (ability == `Torrent` && attackingType == `Water`) {
                     return 1.5
@@ -2912,6 +3046,53 @@ const app = Vue.createApp({
             }
         },
 
+        enemy_move_power(move_name) {
+            var move_power = this.generation_3_moves[move_name].power ?? 0
+            if (move_power == 0) { return "—" }
+            if (move_power == 1) { return "—" }
+            else return move_power
+        },
+        enemy_effective_power(move_name, enemy_mon, slot) {
+            const state = this.g3stateVariable
+            const enemy_state = this.enemyState
+            if (state == 'Battle' || state == 'From Battle') { 
+                const species = enemy_mon.species.value
+                const move_data = this.generation_3_moves[move_name]
+                const move_type = move_data.type
+                const move_base_power = this.enemy_move_power(move_name) ?? move_data.power
+                const move_category = move_data.category
+                const user_type_1 = this.game.dexData[species].type_1
+                const user_type_2 = this.game.dexData[species].type_2
+                const target_type_1 = this.mapper.properties.battle.yourPokemon.type1.value
+                const target_type_2 = this.mapper.properties.battle.yourPokemon.type2.value
+                if (move_base_power == "—" || move_base_power == "-") { return "—" }
+                var move_effective_power = move_base_power
+                var modifier_effectiveness_1 = this.typeData.find(x => x.moveType == move_type)[target_type_1]
+                var modifier_effectiveness_2 = target_type_2 && move_type && (target_type_1 != target_type_2) ? this.typeData.find(x => x.moveType == move_type)[target_type_2]
+                    : 1
+                var modifier_stab = move_type == user_type_1 ? 1.5 
+                    : move_type == user_type_2 ? 1.5 
+                    : 1
+    
+                var modifier_ability = this.abilityModifier(this.mapper.properties.battle.enemyPokemon, move_type, 'opponent')
+                if (this.mapper.properties.battle.yourPokemon.ability.value == 'Levitate' && move_type == 'Ground') {
+                    modifier_ability = 0 
+                }
+                var modifier_item = 1
+                var modifier_weather = this.weatherModifier(this.mapper.properties.battle.field.weather.value, move_name, move_type)
+                var modifier_burn = 1
+                if (move_category == "Physical" && enemy_mon.status_condition?.value == `Burned` && enemy_mon.ability?.value != `Guts`) {
+                    modifier_burn = 0.5
+                    }
+                else {
+                    modifier_burn = 1
+                }
+                //Calculate effective power
+                if (this.typeCalcs == true) { //Handles type effectiveness calculations in battle
+                    return Math.floor(move_base_power * modifier_stab * modifier_effectiveness_1 * modifier_effectiveness_2 * modifier_ability * modifier_item * modifier_weather * modifier_burn)
+                }
+            }
+        },
 
         typeEffectiveness(x) { //x = move1.value
             var attackingType = this.moveType(x)
@@ -2922,7 +3103,7 @@ const app = Vue.createApp({
             var defendingType2 = enemyPokemon.type2.value
             var multipliers = this.typeData.find(x => x.moveType === attackingType)
             var stabModifier = this.determineSTAB(x)
-            var ability = this.abilityModifier(this.pkmn_ability, attackingType)
+            var ability = this.abilityModifier(this.pkmn_ability, attackingType, 'player')
             var defenseAbility = 1;
             var itemBoost = this.determineItemBoost(x)
             var weatherBoost = this.weatherModifier(this.mapper.properties.battle.turnInfo.battleWeather.value, x, this.moveType(x))
