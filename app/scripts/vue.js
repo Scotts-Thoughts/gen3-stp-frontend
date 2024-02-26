@@ -3227,6 +3227,9 @@ const app = Vue.createApp({
         });
 
         this.mapper.properties.battle.turnInfo.battleOutcome.change((prop) => {
+            let endConditions = ["WON", "LOST", "DRAW", "RAN", "CAUGHT",
+                 "PLAYER_TELEPORTED", "POKEMON_FLED", "NO_SAFARI_BALLS", "FORFEITED", "POKEMON_TELEPORTED",1,2,3,4,5,6,7,8,9,10];
+            if (endConditions.includes(prop.value)) {this.g3stateVariable = "From Battle"}
             if (prop.value == "WON") { this.g3stateVariable = "From Battle"}
             if (prop.value == "LOST") { this.g3stateVariable = "From Battle"}
             if (prop.value == "DRAW") { this.g3stateVariable = "From Battle"}
@@ -3844,7 +3847,7 @@ const app = Vue.createApp({
             autosplitter_process()
             console.log('Autosplitter Attempted to Run by Battle Outcome Change')
             console.log("Battle outcome: " + prop.value)
-            if (prop.value == "WON" && this.mapper.properties.battle.type.trainer.value) {
+            if ((prop.value == "WON" || prop.value == 1) && this.mapper.properties.battle.type.trainer.value) {
                 console.log('Starting log process')
                 let trainer = this.opponent
                 let id = this.opponentId
