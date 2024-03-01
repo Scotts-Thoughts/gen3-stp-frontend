@@ -1659,9 +1659,9 @@ const generation_3_moves = {
         "affected_by_kings_rock": true,
         "description": "Traps the foe in a ring of fire for 2 to 5 turns."
     },
-    "ThunderShock": {
+    "Thundershock": {
         "rom_id": 84,
-        "move": "ThunderShock",
+        "move": "Thundershock",
         "type": "Electric",
         "category": "Special",
         "pp": 30,

@@ -360,10 +360,10 @@
                             <!-- <img class="enemyStatsArea" :style="enemyPkmnFaintStats(batt.trainer.team[x])" :src="`images/enemy_area/stats/${x}.png`"/> -->
                             <img class="enemyStatsArea" :style="enemyPkmnFaintStats(batt.trainer.team[x])" :src="`images/enemy_area/stats/${x}.svg`"/>
 
-                            <img class="ds eMoveIconStyle moveIcon1 opacityTransition" :style="enemyPkmnFaintTypes(batt.trainer.team[x])" :src="`images/elements/type-icons/${generation_3_moves[enemyTrainer.pokemon[x]?.moves[0]]?.type?.toLowerCase()}.png`" />
-                            <img class="ds eMoveIconStyle moveIcon2 opacityTransition" :style="enemyPkmnFaintTypes(batt.trainer.team[x])" :src="`images/elements/type-icons/${generation_3_moves[enemyTrainer.pokemon[x]?.moves[1]]?.type?.toLowerCase()}.png`" />
-                            <img class="ds eMoveIconStyle moveIcon3 opacityTransition" :style="enemyPkmnFaintTypes(batt.trainer.team[x])" :src="`images/elements/type-icons/${generation_3_moves[enemyTrainer.pokemon[x]?.moves[2]]?.type?.toLowerCase()}.png`" />
-                            <img class="ds eMoveIconStyle moveIcon4 opacityTransition" :style="enemyPkmnFaintTypes(batt.trainer.team[x])" :src="`images/elements/type-icons/${generation_3_moves[enemyTrainer.pokemon[x]?.moves[3]]?.type?.toLowerCase()}.png`" />
+                            <img v-if="enemyTrainer.pokemon[x]?.moves[0]" class="ds eMoveIconStyle moveIcon1 opacityTransition" :style="enemyPkmnFaintTypes(batt.trainer.team[x])" :src="`images/elements/type-icons/${generation_3_moves[enemyTrainer.pokemon[x]?.moves[0]]?.type?.toLowerCase()}.png`" />
+                            <img v-if="enemyTrainer.pokemon[x]?.moves[1]" class="ds eMoveIconStyle moveIcon2 opacityTransition" :style="enemyPkmnFaintTypes(batt.trainer.team[x])" :src="`images/elements/type-icons/${generation_3_moves[enemyTrainer.pokemon[x]?.moves[1]]?.type?.toLowerCase()}.png`" />
+                            <img v-if="enemyTrainer.pokemon[x]?.moves[2]" class="ds eMoveIconStyle moveIcon3 opacityTransition" :style="enemyPkmnFaintTypes(batt.trainer.team[x])" :src="`images/elements/type-icons/${generation_3_moves[enemyTrainer.pokemon[x]?.moves[2]]?.type?.toLowerCase()}.png`" />
+                            <img v-if="enemyTrainer.pokemon[x]?.moves[3]" class="ds eMoveIconStyle moveIcon4 opacityTransition" :style="enemyPkmnFaintTypes(batt.trainer.team[x])" :src="`images/elements/type-icons/${generation_3_moves[enemyTrainer.pokemon[x]?.moves[3]]?.type?.toLowerCase()}.png`" />
 
                             <div class="ePkmnMoveStyle ePkmnMove1 opacityTransition" :style="enemyPkmnText(batt.trainer.team[x])">{{ enemyTrainer.pokemon[x]?.moves[0] }}</div>
                             <div class="ePkmnMoveStyle ePkmnMove2 opacityTransition" :style="enemyPkmnText(batt.trainer.team[x])">{{ enemyTrainer.pokemon[x]?.moves[1] }}</div>

@@ -2352,22 +2352,22 @@ body {
     position: absolute;
     border: 1px solid rgba(47, 0, 255, 0);
     width: 146px;
-    font-size: 14px;
+    font-size: 13px;
     line-height: 27px;
     text-align: left;
     left: 221px;
 }
 .ePkmnMove1 {
-    top: 28px;
+    top: 29px;
 }
 .ePkmnMove2 {
-    top: 59px;
+    top: 60px;
 }
 .ePkmnMove3 {
-    top: 90px;
+    top: 91px;
 }
 .ePkmnMove4 {
-    top: 121px;
+    top: 122px;
 }
 .ePkmnMovePowerStyle {
     position: absolute;

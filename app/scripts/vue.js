@@ -1472,16 +1472,22 @@ const app = Vue.createApp({
             }
         },
         enemyType1(slotNumber) {
-            if (this.enemyTeam[slotNumber].species.value == null) { 
-                return "Normal"
-            }
-            return this.dexDataRubySapphireEmerald[this.enemyTeam[slotNumber].species.value].type_1
+            const opponent_id = this.mapper.properties.battle.trainer.opponentAId.value
+            const species = this.emeraldTrainers[opponent_id].pokemon[slotNumber].species
+            return this.dexDataRubySapphireEmerald[species].type_1
+            // if (this.enemyTeam[slotNumber].species.value == null) { 
+            //     return "Normal"
+            // }
+            // return this.dexDataRubySapphireEmerald[this.enemyTeam[slotNumber].species.value].type_1
         },
         enemyType2(slotNumber) {
-            if (this.enemyTeam[slotNumber].species.value == null) { 
-                return "Normal"
-            }
-            return this.dexDataRubySapphireEmerald[this.enemyTeam[slotNumber].species.value].type_2
+            const opponent_id = this.mapper.properties.battle.trainer.opponentAId.value
+            const species = this.emeraldTrainers[opponent_id].pokemon[slotNumber].species
+            return this.dexDataRubySapphireEmerald[species].type_2
+            // if (this.enemyTeam[slotNumber].species.value == null) { 
+            //     return "Normal"
+            // }
+            // return this.dexDataRubySapphireEmerald[this.enemyTeam[slotNumber].species.value].type_2
         },
         enemyType(slotNumber) {
             return this.dexData[this.enemyTeam[slotNumber].species.value].type_1
@@ -3055,9 +3061,10 @@ const app = Vue.createApp({
         enemy_effective_power(move_name, enemy_mon, slot) {
             const state = this.g3stateVariable
             const enemy_state = this.enemyState
-            if (state == 'Battle' || state == 'From Battle') { 
+            if (state == 'To Battle' || state == 'Battle' || state == 'From Battle') { 
                 const species = enemy_mon.species.value
                 const move_data = this.generation_3_moves[move_name]
+                if (move_data == undefined) { return }
                 const move_type = move_data.type
                 const move_base_power = this.enemy_move_power(move_name) ?? move_data.power
                 const move_category = move_data.category
