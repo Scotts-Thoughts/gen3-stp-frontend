@@ -708,6 +708,7 @@ const app = Vue.createApp({
             backgroundBrightness:  MyStorage["backgroundBrightness"]  ?? 100,
             backgroundContrast:    MyStorage["backgroundContrast"]    ?? 100,
             backgroundSaturation:  MyStorage["backgroundSaturation"]  ?? 100,
+            backgroundHue:         MyStorage["backgroundHue"]         ?? 0,
 
             //backed up pokemon specific settings
             pokemon_settings: [
@@ -736,6 +737,7 @@ const app = Vue.createApp({
                 "hidden_power_type",
                 "pkmn_gender",
                 "finished_run_count",
+                "backgroundHue",
             ],
             //timer variables
             timer_startTimeOffset: MyStorage["timer_startTimeOffset"] ?? "00:00:00.00",
@@ -852,6 +854,7 @@ const app = Vue.createApp({
             this.imageSat               = MyStorage[this.starterString].imageSat              ?? 100
             this.imageRotation          = MyStorage[this.starterString].imageRotation         ?? 0
             this.backgroundBlur         = MyStorage[this.starterString].backgroundBlur        ?? 0
+            this.backgroundHue          = MyStorage[this.starterString].backgroundHue         ?? 0
             this.backgroundScale        = MyStorage[this.starterString].backgroundScale       ?? 100
             this.backgroundUrl          = MyStorage[this.starterString].backgroundUrl         ?? ""
             this.use_custom_background  = MyStorage[this.starterString].use_custom_background ?? false
@@ -944,6 +947,7 @@ const app = Vue.createApp({
             this.overlay_color =         MyStorage[`${newValue}`]?.overlay_color ?? this.default_colors[dexDataRubySapphireEmerald[newValue].type_1]
             this.backgroundTexture =     MyStorage[`${newValue}`]?.backgroundTexture ?? `${this.dexData[newValue].type_1}`
             this.backgroundBlur =        MyStorage[`${newValue}`]?.backgroundBlur ?? 0,
+            this.backgroundHue =         MyStorage[`${newValue}`]?.backgroundHue ?? 0,
             this.backgroundScale =       MyStorage[`${newValue}`]?.backgroundScale ?? 100,
             this.backgroundUrl =         MyStorage[`${newValue}`]?.backgroundUrl ?? "",
             this.backgroundFlip =        MyStorage[`${newValue}`]?.backgroundFlip ?? false,
@@ -1502,14 +1506,15 @@ const app = Vue.createApp({
             // this.load_pokemon_sprite_settings()
         },
         load_pokemon_sprite_settings(pokemon_species) {
-            this.imageXOffset = MyStorage[pokemon_species]?.imageXOffset ?? 0
-            this.imageYOffset = MyStorage[pokemon_species]?.imageYOffset ?? 0
-            this.imageScale = MyStorage[pokemon_species]?.imageScale ?? 1
-            this.imageFlip = MyStorage[pokemon_species]?.imageFlip ?? false
-            this.imageSat = MyStorage[pokemon_species]?.imageSat ?? 100
-            this.backgroundBlur = MyStorage[pokemon_species]?.backgroundBlur ?? 0
+            this.imageXOffset    = MyStorage[pokemon_species]?.imageXOffset    ?? 0
+            this.imageYOffset    = MyStorage[pokemon_species]?.imageYOffset    ?? 0
+            this.imageScale      = MyStorage[pokemon_species]?.imageScale      ?? 1
+            this.imageFlip       = MyStorage[pokemon_species]?.imageFlip       ?? false
+            this.imageSat        = MyStorage[pokemon_species]?.imageSat        ?? 100
+            this.backgroundBlur  = MyStorage[pokemon_species]?.backgroundBlur  ?? 0
+            this.backgroundHue   = MyStorage[pokemon_species]?.backgroundHue   ?? 0
             this.backgroundScale = MyStorage[pokemon_species]?.backgroundScale ?? 100
-            this.backgroundUrl = MyStorage[pokemon_species]?.backgroundUrl ?? false
+            this.backgroundUrl   = MyStorage[pokemon_species]?.backgroundUrl   ?? false
         },
         keys_function(object) {
             return Object.keys(object)
@@ -1687,9 +1692,11 @@ const app = Vue.createApp({
             this.backgroundBrightness =  MyStorage[this.starterString]?.backgroundBrightness ?? 100
             this.backgroundContrast =    MyStorage[this.starterString]?.backgroundContrast ?? 100
             this.backgroundSaturation =  MyStorage[this.starterString]?.backgroundSaturation ?? 100
+            this.backgroundHue =         MyStorage[this.starterString]?.backgroundHue ?? 0
         },
         reset() {
             this.backgroundBlur =        0,
+            this.backgroundHue =         0,
             this.backgroundScale =       100,
             this.backgroundUrl =         "",
             this.use_custom_background = false,

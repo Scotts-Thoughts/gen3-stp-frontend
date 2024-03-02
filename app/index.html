@@ -15,7 +15,7 @@
             <div>
                 <img class="canvas" ref="background_texture" :src="textures[backgroundTexture]" 
                 :style="{ 
-                    'filter': `blur(${backgroundBlur}px) brightness(${backgroundBrightness}%) contrast(${backgroundContrast}%) saturate(${backgroundSaturation}%)` ,
+                    'filter': `blur(${backgroundBlur}px) hue-rotate(${backgroundHue}deg) brightness(${backgroundBrightness}%) contrast(${backgroundContrast}%) saturate(${backgroundSaturation}%)` ,
                     'transform': `scale(${backgroundScale}%) ${backgroundFlip ? 'rotateY(180deg)' : ''} translate(${backgroundXOffset}px, ${-backgroundYOffset}px)`
                 }"/>
                 <img class="canvas" src="images/elements/overlay/gen1&2/frame.png" />
@@ -172,6 +172,7 @@
                     Contrast: <input type="range" min="0" max="200" v-model="backgroundContrast"/><br>
                     Saturation: <input type="range" min="0" max="200" v-model="backgroundSaturation"/><br>
                     Blur: <input type="range" min="0" max="10" v-model="backgroundBlur"/><br>
+                    Hue: <input type="range" min="0" max="358" v-model="backgroundHue"/><br>
                     Flip: <input class="checkBoxStyle" type="checkbox" v-model="backgroundFlip"/><br>
                 </div>
                 <div class="ui3">
@@ -219,17 +220,13 @@
                         <tr><td>SpD:</td><td>{{hp_ivs[hidden_power_type][5]}}</td></tr>
                     </table>
                     <br>
+                    <!-- 
                     <div>Debugging:</div>
                     <br>
                     <table style="font-size: 14px;">
                         <tr><td>Timer Pause: </td><td>{{timer_pause}}</td></tr>
-                        <tr><td>Zigzagoon Check: </td><td>{{zigzagoon_check}}</td></tr>
-                        <tr><td>Battle Outcome: </td><td>{{mapper.properties.battle.turnInfo.battleOutcome}}</td></tr>
-                        <tr><td>Enemy Type 1: </td><td>{{mapper.properties.battle.enemyPokemon.type1.value}}</td></tr>
-                        <tr><td>Enemy Type 2: </td><td>{{mapper.properties.battle.enemyPokemon.type2.value}}</td></tr>
-                        <tr><td>Game State: </td><td>{{this.g3stateVariable}}</td></tr>
-                        <tr><td>pkmn_ability: </td><td>{{this.pkmn_ability}}</td></tr>
-                    </table>
+                    </table> 
+                    -->
                 </div>
             </div>
 
