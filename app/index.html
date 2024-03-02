@@ -75,6 +75,8 @@
                     <br>
                     <button class="buttonStyle" @click="newRun">New Run</button><br>
                     <button @click="pauseUnpauseTime()" class="buttonStyle" style="background-color: rgb(201, 199, 100);">Toggle Pause Timer</button>
+                    <button class="buttonStyle" @click="set_timer">Set Timer</button><br>
+                    Start Time Offset: <input type="text" v-model="timer_startTimeOffset" placeholder="00:00:00.00"/><br>
                     <br>
                     <table>
                         <tr>
@@ -118,20 +120,6 @@
                     <button @click="color_picker" class="buttonStyle">Color Picker</button><br>
                     <button @click="clear_overlay_color" class="buttonStyle">Reset Overlay Color</button><br>
                     <br>
-                    <div>Background Texture:</div>
-                    <select v-model="backgroundTexture" class="dropdownMenu">
-                        <option v-for="key in dropdownDownMenuKeys.textures" :key="key" :value="key">
-                            {{ key }}
-                        </option>
-                    </select><br>
-                    X-Offset: <input type="range" min="-125" max="125" v-model="backgroundXOffset"/><br>
-                    Y-Offset: <input type="range" min="-125" max="125"v-model="backgroundYOffset"/><br>
-                    Scale: <input type="range" min="100" max="200" v-model="backgroundScale"/><br>
-                    Brightness: <input type="range" min="0" max="200" v-model="backgroundBrightness"/><br>
-                    Contrast: <input type="range" min="0" max="200" v-model="backgroundContrast"/><br>
-                    Saturation: <input type="range" min="0" max="200" v-model="backgroundSaturation"/><br>
-                    Blur: <input type="range" min="0" max="10" v-model="backgroundBlur"/><br>
-                    Flip: <input class="checkBoxStyle" type="checkbox" v-model="backgroundFlip"/><br>
                     <button @click="reset()" class="buttonStyle">Reset Texture Settings</button><br>
                     <button class="buttonStyle" onClick="openFolder('splits')">Open Splits Folder</button><br>
                 </div>
@@ -170,6 +158,21 @@
                     <div style="font-size: 12px;">If encounters are turned off, HM users will only appear after Roxanne's badge is obtained.</div>
                     <br>
                     Show Tutor Moves: <input class="checkBoxStyle" type="checkbox" v-model="tutor_moves"/><br>
+                    <br>
+                    <div>Background Texture:</div>
+                    <select v-model="backgroundTexture" class="dropdownMenu">
+                        <option v-for="key in dropdownDownMenuKeys.textures" :key="key" :value="key">
+                            {{ key }}
+                        </option>
+                    </select><br>
+                    X-Offset: <input type="range" min="-125" max="125" v-model="backgroundXOffset"/><br>
+                    Y-Offset: <input type="range" min="-125" max="125"v-model="backgroundYOffset"/><br>
+                    Scale: <input type="range" min="100" max="200" v-model="backgroundScale"/><br>
+                    Brightness: <input type="range" min="0" max="200" v-model="backgroundBrightness"/><br>
+                    Contrast: <input type="range" min="0" max="200" v-model="backgroundContrast"/><br>
+                    Saturation: <input type="range" min="0" max="200" v-model="backgroundSaturation"/><br>
+                    Blur: <input type="range" min="0" max="10" v-model="backgroundBlur"/><br>
+                    Flip: <input class="checkBoxStyle" type="checkbox" v-model="backgroundFlip"/><br>
                 </div>
                 <div class="ui3">
                     <div style="font-size: 24px;">Scott Mode:</div>

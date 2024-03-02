@@ -738,16 +738,17 @@ const app = Vue.createApp({
                 "finished_run_count",
             ],
             //timer variables
-            timer_startTime:      MyStorage["timer_startTime"]      ?? 0,
-            timer_pause:          MyStorage["timer_pause"]          ?? true,
-            timer_formatted_time: MyStorage["timer_formatted_time"] ?? ["0", ".00"],
-            timer_pause_time:     MyStorage["timer_pause_time"]     ?? 0,
-            time_h:               MyStorage['time_h']               ?? 0,
-            time_m:               MyStorage['time_m']               ?? 0,
-            time_s:               MyStorage['time_s']               ?? 0,
-            time_ms:              MyStorage['time_ms']              ?? 0,
-            time_split_start:     MyStorage['time_split_start']     ?? "00:00:00:00",
-            battle_start:         MyStorage['battle_start']         ?? 0,
+            timer_startTimeOffset: MyStorage["timer_startTimeOffset"] ?? "00:00:00.00",
+            timer_startTime:       MyStorage["timer_startTime"]      ?? 0,
+            timer_pause:           MyStorage["timer_pause"]          ?? true,
+            timer_formatted_time:  MyStorage["timer_formatted_time"] ?? ["0", ".00"],
+            timer_pause_time:      MyStorage["timer_pause_time"]     ?? 0,
+            time_h:                MyStorage['time_h']               ?? 0,
+            time_m:                MyStorage['time_m']               ?? 0,
+            time_s:                MyStorage['time_s']               ?? 0,
+            time_ms:               MyStorage['time_ms']              ?? 0,
+            time_split_start:      MyStorage['time_split_start']     ?? "00:00:00:00",
+            battle_start:          MyStorage['battle_start']         ?? 0,
 
             //resets
             playerId:            MyStorage["playerId"]         ?? 0,
@@ -830,7 +831,8 @@ const app = Vue.createApp({
                 "battle_start",
                 "testStatus",
                 "autosplitter_toggle",
-                "gameSelection"
+                "gameSelection",
+                "timer_startTimeOffset",
             ],
         }
     },
@@ -1518,7 +1520,14 @@ const app = Vue.createApp({
         //*timer methods
         //start the timer
         startTime() {
-            this.timer_startTime = Date.now()
+            if (this.timer_pause == false) {
+                return
+            }
+            const timeRegex = /(\d+):(\d{2}):(\d{2})\.(\d{2})/;
+            const timeOffsetArray = this.timer_startTimeOffset.match(timeRegex)?.slice(1,5).map(x => parseInt(x)) ?? [0,0,0,0];
+            const timeOffset = timeOffsetArray[0] * 3600000 + timeOffsetArray[1] * 60000 + timeOffsetArray[2] * 1000 + timeOffsetArray[3] * 10;
+
+            this.timer_startTime = Date.now() - timeOffset
             this.timer_pause = false
             this.updateTime()
         },
@@ -1578,10 +1587,27 @@ const app = Vue.createApp({
         //     this.timer_pause_time = 0
         //     this.timer_formatted_time = [ "0", ".00" ]
         // },
-        newRun() {
+        set_timer() {
+            const timeRegex = /(\d+):(\d{2}):(\d{2})\.(\d{2})/;
+            const timeOffsetArray = this.timer_startTimeOffset.match(timeRegex)?.slice(1,5).map(x => parseInt(x)) ?? [0,0,0,0];
+            const timeOffset = timeOffsetArray[0] * 3600000 + timeOffsetArray[1] * 60000 + timeOffsetArray[2] * 1000 + timeOffsetArray[3] * 10;
+
             this.timer_pause = true
-            this.timer_startTime = 0
-            this.timer_pause_time = 0
+            this.timer_startTime = Date.now() - timeOffset
+            this.timer_pause_time = Date.now()
+            this.timer_formatted_time = [ "0", ".00" ]
+            this.finished_logs = false
+
+            this.updateTime()
+        },
+        newRun() {
+            const timeRegex = /(\d+):(\d{2}):(\d{2})\.(\d{2})/;
+            const timeOffsetArray = this.timer_startTimeOffset.match(timeRegex)?.slice(1,5).map(x => parseInt(x)) ?? [0,0,0,0];
+            const timeOffset = timeOffsetArray[0] * 3600000 + timeOffsetArray[1] * 60000 + timeOffsetArray[2] * 1000 + timeOffsetArray[3] * 10;
+
+            this.timer_pause = true
+            this.timer_startTime = Date.now() - timeOffset
+            this.timer_pause_time = Date.now()
             this.timer_formatted_time = [ "0", ".00" ]
             this.playerResets = 0
             this.finished_logs = false
