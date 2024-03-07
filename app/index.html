@@ -283,7 +283,7 @@
 
                 <!-- STATS -------------------------------------------------------------------------------->  
                 <div style="z-index: 200;">
-                    <div v-if="(mapper.properties.events.hide_route_101_birch_zigzagoon_battle.value == true && mapper.properties.events.received_running_shoes.value == false) && (g3stateVariable == `Overworld` || g3stateVariable == `To Battle`)">
+                    <div v-if="(mapper.properties.events.hide_route_101_birch_zigzagoon_battle.value == true && mapper.properties.events.menu.pokedex.value == false) && g3stateVariable == `Overworld`">
                         <div class="statsheader">{{ mapper.properties.player.team[0].species.value }}'s IVs</div>
                         <div class="heldItemStyle heldItem">{{ nullToSpace(camelCase(mapper.properties.player.team[0].itemHeld.value)) }}</div>
 
