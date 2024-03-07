@@ -283,7 +283,23 @@
 
                 <!-- STATS -------------------------------------------------------------------------------->  
                 <div style="z-index: 200;">
-                    <div v-if="(g3stateVariable == `Overworld` || g3stateVariable == `Battle` || g3stateVariable == `To Battle` || g3stateVariable == `From Battle`) && mapper.properties.player.team[0].species.value != null && zigzagoon_check == false">
+                    <div v-if="(mapper.properties.events.hide_route_101_birch_zigzagoon_battle.value == true && mapper.properties.events.received_running_shoes.value == false) && (g3stateVariable == `Overworld` || g3stateVariable == `To Battle`)">
+                        <div class="statsheader">{{ mapper.properties.player.team[0].species.value }}'s IVs</div>
+                        <div class="heldItemStyle heldItem">{{ nullToSpace(camelCase(mapper.properties.player.team[0].itemHeld.value)) }}</div>
+
+                        <div class="statsIvsColumn1">
+                            {{ mapper.properties.player.team[0].ivHp.value }}/31<br>
+                            {{ mapper.properties.player.team[0].ivAttack.value }}/31<br>
+                            {{ mapper.properties.player.team[0].ivDefense.value }}/31<br>
+                        </div>
+                        <div class="statsIvsColumn2">
+                            {{  mapper.properties.player.team[0].ivSpecialAttack.value }}/31<br>
+                            {{  mapper.properties.player.team[0].ivSpecialDefense.value }}/31<br>
+                            {{  mapper.properties.player.team[0].ivSpeed.value }}/31<br>
+                        </div>
+                    </div>
+
+                    <div v-else-if="(g3stateVariable == `Overworld` || g3stateVariable == `Battle` || g3stateVariable == `To Battle` || g3stateVariable == `From Battle`) && mapper.properties.player.team[0].species.value != null && zigzagoon_check == false">
                         <div class="statsheader">Level {{ mapper.properties.player.team[0].level.value }}</div>
                         <div class="heldItemStyle heldItem">{{ nullToSpace(camelCase(mapper.properties.player.team[0].itemHeld.value)) }}</div>
 

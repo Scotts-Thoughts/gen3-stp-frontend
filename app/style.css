@@ -581,6 +581,30 @@ body {
     font-family: osb;
     font-weight: 500
 }
+.statsIvsColumn1 {
+    display: block;
+    font-size: 33px;
+    position: absolute;
+    line-height: 62px;
+    top: 874px;
+    right: 1751px;
+    z-index: 4;
+    text-align: right;
+    font-family: osb;
+    font-weight: 500
+}
+.statsIvsColumn2 {
+    display: block;
+    font-size: 33px;
+    position: absolute;
+    line-height: 62px;
+    top: 874px;
+    right: 1583px;
+    z-index: 4;
+    text-align: right;
+    font-family: osb;
+    font-weight: 500
+}
 /* BACKUP STATS POSITIONS */
 /* .statsColumn1 {
     font-size: 56px;
