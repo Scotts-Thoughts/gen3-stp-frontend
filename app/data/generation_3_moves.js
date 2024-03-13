@@ -3462,7 +3462,7 @@ const generation_3_moves = {
     "Curse": {
         "rom_id": 174,
         "move": "Curse",
-        "type": "Mystery",
+        "type": "Curse",
         "category": "Status",
         "pp": 10,
         "power": null,

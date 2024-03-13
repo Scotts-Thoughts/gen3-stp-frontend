@@ -584,8 +584,11 @@ const app = Vue.createApp({
             labels:         MyStorage['labels']         ?? true, //shows the current gamestate in the place of the timer
             tutor_moves:    MyStorage['tutor_moves']    ?? false,
             testStatus:     MyStorage['testStatus']     ?? false,
+            repel_counter:  MyStorage['repel_counter']  ?? true,
+            vs_seeker:      MyStorage['vs_seeker']      ?? false,
             autosplitter_toggle:         MyStorage["autosplitter_toggle"]        ?? true,
             showSpecialTrainerGraphics:  MyStorage['showSpecialTrainerGraphics'] ?? true, 
+            league_rematches:            MyStorage['league_rematches']           ?? false,
 
             badges: ["badge1", "badge2", "badge3", "badge4", "badge5", "badge6", "badge7", "badge8"],
             badgeBoosts: ["badge1", "badge3", "badge5", "badge7"],
@@ -603,6 +606,7 @@ const app = Vue.createApp({
             typeData:                   typeData,
             typeBoostingItems:          typeBoostingItems,
             dexDataRubySapphireEmerald: dexDataRubySapphireEmerald,
+            dexDataFireRedLeafGreen:    dexDataFireRedLeafGreen,
             emeraldTrainers:            emeraldTrainers,
             g3MoveData:                 g3MoveData,
             g3tmhmMapping:              g3tmhmMapping,
@@ -612,6 +616,8 @@ const app = Vue.createApp({
             hp_ivs:                     hp_ivs,
             autosplitter:               autosplitter,
             generation_3_moves:         generation_3_moves,
+            remakeTrainers:             remakeTrainers,
+            emeraldTrainers:            emeraldTrainers,
 
             trainerLists: {
                 "emeraldTrainers" : emeraldTrainers,
@@ -779,12 +785,39 @@ const app = Vue.createApp({
             movepoolDefaultContainerHeight: -1,
 
             //encounters
-            route_101: MyStorage['route_101'] ?? true,
-            route_102: MyStorage['route_102'] ?? true,
-            route_103: MyStorage['route_103'] ?? true,
+            route_101:        MyStorage['route_101']        ?? true,
+            route_102:        MyStorage['route_102']        ?? true,
+            route_103:        MyStorage['route_103']        ?? true,
+
+            route_1:          MyStorage['route_1']          ?? true,
+            route_2:          MyStorage['route_2']          ?? true,
+            route_22:         MyStorage['route_22']         ?? true,
+            viridian_forest:  MyStorage['viridian_forest']  ?? true,
+            route_6:          MyStorage['route_6']          ?? true,
+
+            encounter_settings: [
+                "route_101",
+                "route_102",
+                "route_103",
+                "route_1",
+                "route_2",
+                "route_22",
+                "viridian_forest",
+                "route_6",
+            ],
+
+            //HM flags
             hm_102_zigzagoon: MyStorage['hm_102_zigzagoon'] ?? true,
             hm_104_marill:    MyStorage['hm_104_marill']    ?? true,
             hm_104_taillow:   MyStorage['hm_104_taillow']   ?? true,
+
+            hm_1_pidgey:      MyStorage['hm_101_pidgey']    ?? true,
+            hm_1_rattata:     MyStorage['hm_101_rattata']   ?? true,
+
+            // UI
+            ui_saturation:          MyStorage['ui_saturation']          ?? .6,
+            ui_type_colors:         MyStorage['ui_type_colors']         ?? "Bulbapedia Current",
+            ui_type_color_modifier: MyStorage['ui_type_color_modifier'] ?? "current_",
 
             auto_save: [
                 "graphicOverlay",
@@ -813,9 +846,6 @@ const app = Vue.createApp({
                 "labels",
                 "tutor_moves",
                 "showSpecialTrainerGraphics",
-                "route_101",
-                "route_102",
-                "route_103",
                 "testRun",
                 "simple_data_str",
                 "full_data_str",
@@ -835,7 +865,18 @@ const app = Vue.createApp({
                 "autosplitter_toggle",
                 "gameSelection",
                 "timer_startTimeOffset",
+                "hm_1_pidgey",
+                "hm_1_rattata",
+                "ui_saturation",
+                "ui_type_colors",
+                "ui_type_color_modifier",
+                "repel_counter",
+                "vs_seeker",
+                "league_rematches",
+                "right_panel",
             ],
+
+            right_panel: 'Movepool',
         }
     },
     created() {
@@ -893,8 +934,27 @@ const app = Vue.createApp({
                 }
             );
         }
+        for (let i = 0; i < this.encounter_settings.length; i++) {
+            let propName = this.encounter_settings[i];
+            this.$watch(
+                () => this[propName], // Using a function to return the property's value
+                (newValue) => {
+                    MyStorage[`${propName}`] = newValue;
+                    this.freezeEncounters();
+                }
+            );
+            
+        }
     },
     watch: {
+        ui_type_colors(newValue) {
+            if (newValue == 'Bulbapedia Current') {
+                this.ui_type_color_modifier = "current_"
+            }
+            if (newValue == 'Bulbapedia Legacy') {
+                this.ui_type_color_modifier = "legacy_"
+            }
+        },
         //*Autosplitter
         //log the start of a battle
         g3stateVariable(newProp) {
@@ -908,7 +968,7 @@ const app = Vue.createApp({
             var log_start = (x) => console.log(logStr)
             // console.log("checking - newprop: "+ newProp)
             // console.log("this.mapper.properties.battle.type.trainer: "+this.mapper.properties.battle.type.trainer)
-            if (newProp == "Battle" && this.mapper.properties.battle.type.trainer) {
+            if (newProp == "Battle" && this.mapper.properties.battle.type.trainer.value == true) {
                 this.split_logStr = logStr
                 this.battle_start = Date.now()
                 this.time_split_start = this.padTime(this.time_h) + ":" + this.padTime(this.time_m) + ":" + this.padTime(this.time_s) + "." + this.padTime(this.time_ms)
@@ -1446,7 +1506,7 @@ const app = Vue.createApp({
             }
         },
         enemyStatLabelOpacity(modifier, slot) {
-            console.log(modifier, slot)
+            // console.log(modifier, slot)
             if (this.mapper.properties.battle.trainer.team[slot].hp.value == 0) {
                 return `opacity: .3;`
             }
@@ -1478,22 +1538,24 @@ const app = Vue.createApp({
             }
         },
         enemyType1(slotNumber) {
-            const opponent_id = this.mapper.properties.battle.trainer.opponentAId.value
-            const species = this.emeraldTrainers[opponent_id].pokemon[slotNumber].species
-            return this.dexDataRubySapphireEmerald[species].type_1
-            // if (this.enemyTeam[slotNumber].species.value == null) { 
-            //     return "Normal"
-            // }
-            // return this.dexDataRubySapphireEmerald[this.enemyTeam[slotNumber].species.value].type_1
+            if (this.g3stateVariable == "Overworld" || this.g3stateVariable == "From Battle" || this.g3stateVariable == "No Pokemon") { return }
+            const opponent_id = this.mapper.properties.battle.trainer.opponentAId?.value ?? this.mapper.properties.battle.trainer.opponentId?.value
+            const species = this.gameSelection == 'Emerald' ? this.emeraldTrainers[opponent_id].pokemon[slotNumber].species : this.remakeTrainers[opponent_id].pokemon[slotNumber].species
+            const type1 = this.gameSelection == 'Emerald' ? this.dexDataRubySapphireEmerald[species].type_1 : this.dexDataFireRedLeafGreen[species].type_1
+            // console.log(opponent_id)
+            // console.log(species)
+            // console.log(type1)
+            return type1
         },
         enemyType2(slotNumber) {
-            const opponent_id = this.mapper.properties.battle.trainer.opponentAId.value
-            const species = this.emeraldTrainers[opponent_id].pokemon[slotNumber].species
-            return this.dexDataRubySapphireEmerald[species].type_2
-            // if (this.enemyTeam[slotNumber].species.value == null) { 
-            //     return "Normal"
-            // }
-            // return this.dexDataRubySapphireEmerald[this.enemyTeam[slotNumber].species.value].type_2
+            if (this.g3stateVariable == "Overworld" || this.g3stateVariable == "From Battle" || this.g3stateVariable == "No Pokemon") { return }
+            const opponent_id = this.mapper.properties.battle.trainer.opponentAId?.value ?? this.mapper.properties.battle.trainer.opponentId?.value
+            const species = this.gameSelection == 'Emerald' ? this.emeraldTrainers[opponent_id].pokemon[slotNumber].species : this.remakeTrainers[opponent_id].pokemon[slotNumber].species
+            const type2 = this.gameSelection == 'Emerald' ? this.dexDataRubySapphireEmerald[species].type_2 : this.dexDataFireRedLeafGreen[species].type_2
+            // console.log(opponent_id)
+            // console.log(species)
+            // console.log(type2)
+            return type2
         },
         enemyType(slotNumber) {
             return this.dexData[this.enemyTeam[slotNumber].species.value].type_1
@@ -2683,26 +2745,41 @@ const app = Vue.createApp({
         },
         
         //EXPERIENCE FUNCTIONS
-        expPercent(x) {
-            return this.expPercentMediumFast(x)
-        },
         calcExpStats(growthRate, exp) {
+            if (growthRate == "GROWTH_MEDIUM_SLOW") {
+                growthRate = "Medium Slow"
+            }
+            else if (growthRate == "GROWTH_MEDIUM_FAST") {
+                growthRate = "Medium Fast"
+            }
+            else if (growthRate == "GROWTH_FAST") {
+                growthRate = "Fast"
+            }
+            else if (growthRate == "GROWTH_SLOW") {
+                growthRate = "Slow"
+            }
+            else if (growthRate == "GROWTH_FLUCTUATING") {
+                growthRate = "Fluctuating"
+            }
+            else if (growthRate == "GROWTH_ERRATIC") {
+                growthRate = "Erratic"
+            }
             const expTable = {
-                "GROWTH_ERRATIC":     [0,15,52,122,237,406,637,942,1326,1800,2369,3041,3822,4719,5737,6881,8155,9564,11111,12800,14632,16610,18737,21012,23437,26012,28737,31610,34632,37800,41111,44564,48155,51881,55737,59719,63822,68041,72369,76800,81326,85942,90637,95406,100237,105122,110052,115015,120001,125000,131324,137795,144410,151165,158056,165079,172229,179503,186894,194400,202013,209728,217540,225443,233431,241496,249633,257834,267406,276458,286328,296358,305767,316074,326531,336255,346965,357812,367807,378880,390077,400293,411686,423190,433572,445239,457001,467489,479378,491346,501878,513934,526049,536557,548720,560922,571333,583539,591882,600000],
-                "GROWTH_FAST":        [0,6,21,51,100,172,274,409,583,800,1064,1382,1757,2195,2700,3276,3930,4665,5487,6400,7408,8518,9733,11059,12500,14060,15746,17561,19511,21600,23832,26214,28749,31443,34300,37324,40522,43897,47455,51200,55136,59270,63605,68147,72900,77868,83058,88473,94119,100000,106120,112486,119101,125971,133100,140492,148154,156089,164303,172800,181584,190662,200037,209715,219700,229996,240610,251545,262807,274400,286328,298598,311213,324179,337500,351180,365226,379641,394431,409600,425152,441094,457429,474163,491300,508844,526802,545177,563975,583200,602856,622950,643485,664467,685900,707788,730138,752953,776239,800000],
-                "GROWTH_MEDIUM_FAST": [0,8,27,64,125,216,343,512,729,1000,1331,1728,2197,2744,3375,4096,4913,5832,6859,8000,9261,10648,12167,13824,15625,17576,19683,21952,24389,27000,29791,32768,35937,39304,42875,46656,50653,54872,59319,64000,68921,74088,79507,85184,91125,97336,103823,110592,117649,125000,132651,140608,148877,157464,166375,175616,185193,195112,205379,216000,226981,238328,250047,262144,274625,287496,300763,314432,328509,343000,357911,373248,389017,405224,421875,438976,456533,474552,493039,512000,531441,551368,571787,592704,614125,636056,658503,681472,704969,729000,753571,778688,804357,830584,857375,884736,912673,941192,970299,1000000],
-                "GROWTH_MEDIUM_SLOW": [0,9,57,96,135,179,236,314,419,560,742,973,1261,1612,2035,2535,3120,3798,4575,5460,6458,7577,8825,10208,11735,13411,15244,17242,19411,21760,24294,27021,29949,33084,36435,40007,43808,47846,52127,56660,61450,66505,71833,77440,83335,89523,96012,102810,109923,117360,125126,133229,141677,150476,159635,169159,179056,189334,199999,211060,222522,234393,246681,259392,272535,286115,300140,314618,329555,344960,360838,377197,394045,411388,429235,447591,466464,485862,505791,526260,547274,568841,590969,613664,636935,660787,685228,710266,735907,762160,789030,816525,844653,873420,902835,932903,963632,995030,1027103,1059860],
-                "GROWTH_SLOW":        [0,10,33,80,156,270,428,640,911,1250,1663,2160,2746,3430,4218,5120,6141,7290,8573,10000,11576,13310,15208,17280,19531,21970,24603,27440,30486,33750,37238,40960,44921,49130,53593,58320,63316,68590,74148,80000,86151,92610,99383,106480,113906,121670,129778,138240,147061,156250,165813,175760,186096,196830,207968,219520,231491,243890,256723,270000,283726,297910,312558,327680,343281,359370,375953,393040,410636,428750,447388,466560,486271,506530,527343,548720,570666,593190,616298,640000,664301,689210,714733,740880,767656,795070,823128,851840,881211,911250,941963,973360,1005446,1038230,1071718,1105920,1140841,1176490,1212873,1250000],
-                "GROWTH_FLUCTUATING": [0,4,13,32,65,112,178,276,393,540,745,967,1230,1591,1957,2457,3046,3732,4526,5440,6482,7666,9003,10506,12187,14060,16140,18439,20974,23760,26811,30146,33780,37731,42017,46656,50653,55969,60505,66560,71677,78533,84277,91998,98415,107069,114205,123863,131766,142500,151222,163105,172697,185807,196322,210739,222231,238036,250562,267840,281456,300293,315059,335544,351520,373744,390991,415050,433631,459620,479600,507617,529063,559209,582187,614566,639146,673863,700115,737280,765275,804997,834809,877201,908905,954084,987754,1035837,1071552,1122660,1160499,1214753,1254796,1312322,1354652,1415577,1460276,1524731,1571884,1640000]
+                "Erratic":     [0,15,52,122,237,406,637,942,1326,1800,2369,3041,3822,4719,5737,6881,8155,9564,11111,12800,14632,16610,18737,21012,23437,26012,28737,31610,34632,37800,41111,44564,48155,51881,55737,59719,63822,68041,72369,76800,81326,85942,90637,95406,100237,105122,110052,115015,120001,125000,131324,137795,144410,151165,158056,165079,172229,179503,186894,194400,202013,209728,217540,225443,233431,241496,249633,257834,267406,276458,286328,296358,305767,316074,326531,336255,346965,357812,367807,378880,390077,400293,411686,423190,433572,445239,457001,467489,479378,491346,501878,513934,526049,536557,548720,560922,571333,583539,591882,600000],
+                "Fast":        [0,6,21,51,100,172,274,409,583,800,1064,1382,1757,2195,2700,3276,3930,4665,5487,6400,7408,8518,9733,11059,12500,14060,15746,17561,19511,21600,23832,26214,28749,31443,34300,37324,40522,43897,47455,51200,55136,59270,63605,68147,72900,77868,83058,88473,94119,100000,106120,112486,119101,125971,133100,140492,148154,156089,164303,172800,181584,190662,200037,209715,219700,229996,240610,251545,262807,274400,286328,298598,311213,324179,337500,351180,365226,379641,394431,409600,425152,441094,457429,474163,491300,508844,526802,545177,563975,583200,602856,622950,643485,664467,685900,707788,730138,752953,776239,800000],
+                "Medium Fast": [0,8,27,64,125,216,343,512,729,1000,1331,1728,2197,2744,3375,4096,4913,5832,6859,8000,9261,10648,12167,13824,15625,17576,19683,21952,24389,27000,29791,32768,35937,39304,42875,46656,50653,54872,59319,64000,68921,74088,79507,85184,91125,97336,103823,110592,117649,125000,132651,140608,148877,157464,166375,175616,185193,195112,205379,216000,226981,238328,250047,262144,274625,287496,300763,314432,328509,343000,357911,373248,389017,405224,421875,438976,456533,474552,493039,512000,531441,551368,571787,592704,614125,636056,658503,681472,704969,729000,753571,778688,804357,830584,857375,884736,912673,941192,970299,1000000],
+                "Medium Slow": [0,9,57,96,135,179,236,314,419,560,742,973,1261,1612,2035,2535,3120,3798,4575,5460,6458,7577,8825,10208,11735,13411,15244,17242,19411,21760,24294,27021,29949,33084,36435,40007,43808,47846,52127,56660,61450,66505,71833,77440,83335,89523,96012,102810,109923,117360,125126,133229,141677,150476,159635,169159,179056,189334,199999,211060,222522,234393,246681,259392,272535,286115,300140,314618,329555,344960,360838,377197,394045,411388,429235,447591,466464,485862,505791,526260,547274,568841,590969,613664,636935,660787,685228,710266,735907,762160,789030,816525,844653,873420,902835,932903,963632,995030,1027103,1059860],
+                "Slow":        [0,10,33,80,156,270,428,640,911,1250,1663,2160,2746,3430,4218,5120,6141,7290,8573,10000,11576,13310,15208,17280,19531,21970,24603,27440,30486,33750,37238,40960,44921,49130,53593,58320,63316,68590,74148,80000,86151,92610,99383,106480,113906,121670,129778,138240,147061,156250,165813,175760,186096,196830,207968,219520,231491,243890,256723,270000,283726,297910,312558,327680,343281,359370,375953,393040,410636,428750,447388,466560,486271,506530,527343,548720,570666,593190,616298,640000,664301,689210,714733,740880,767656,795070,823128,851840,881211,911250,941963,973360,1005446,1038230,1071718,1105920,1140841,1176490,1212873,1250000],
+                "Fluctuating": [0,4,13,32,65,112,178,276,393,540,745,967,1230,1591,1957,2457,3046,3732,4526,5440,6482,7666,9003,10506,12187,14060,16140,18439,20974,23760,26811,30146,33780,37731,42017,46656,50653,55969,60505,66560,71677,78533,84277,91998,98415,107069,114205,123863,131766,142500,151222,163105,172697,185807,196322,210739,222231,238036,250562,267840,281456,300293,315059,335544,351520,373744,390991,415050,433631,459620,479600,507617,529063,559209,582187,614566,639146,673863,700115,737280,765275,804997,834809,877201,908905,954084,987754,1035837,1071552,1122660,1160499,1214753,1254796,1312322,1354652,1415577,1460276,1524731,1571884,1640000]
             };
 
             // makes searching a bit easiser
-            expTable["GROWTH_ERRATIC"][100]     = expTable["GROWTH_ERRATIC"][99] + 1;
-            expTable["GROWTH_FAST"][100]        = expTable["GROWTH_FAST"][99] + 1;
-            expTable["GROWTH_MEDIUM_FAST"][100] = expTable["GROWTH_MEDIUM_FAST"][99] + 1;
-            expTable["GROWTH_MEDIUM_SLOW"][100] = expTable["GROWTH_MEDIUM_SLOW"][99] + 1;
-            expTable["GROWTH_SLOW"][100]        = expTable["GROWTH_SLOW"][99] + 1;
-            expTable["GROWTH_FLUCTUATING"][100] = expTable["GROWTH_FLUCTUATING"][99] + 1;
+            expTable["Erratic"][100]     = expTable["Erratic"][99] + 1;
+            expTable["Fast"][100]        = expTable["Fast"][99] + 1;
+            expTable["Medium Fast"][100] = expTable["Medium Fast"][99] + 1;
+            expTable["Medium Slow"][100] = expTable["Medium Slow"][99] + 1;
+            expTable["Slow"][100]        = expTable["Slow"][99] + 1;
+            expTable["Fluctuating"][100] = expTable["Fluctuating"][99] + 1;
         
             const index = expTable[growthRate].findIndex(x => x > exp);
             const currLvlExp = expTable[growthRate][index - 1];
@@ -2712,43 +2789,10 @@ const app = Vue.createApp({
                 percent: (exp - currLvlExp) / (nextLvlExp - currLvlExp),
             };
         }, 
-        expPercentFast(x) {
-            expBar = ((x.expPoints.value) - ((4 * (Math.pow(x.level.value, 3))) / 5)) / (((4 * (Math.pow(x.level.value + 1, 3))) / 5) - ((4 * (Math.pow(x.level.value, 3))) / 5)) // errors could lurk here
-            if (expBar > 1)
-                return 100
-            else if (expBar < 0)
-                return 0
-            else
-                return expBar * 100
+        decimalToPercentage(decimal) {
+            return Math.round(decimal * 100);
         },
-        expPercentMediumFast(x) {
-            expBar = (((x.expPoints.value) - (Math.pow(x.level.value, 3))) / ((Math.pow(x.level.value + 1, 3)) - (Math.pow(x.level.value, 3))))
-            if (expBar > 1)
-                return 100
-            else if (expBar < 0)
-                return 0
-            else
-                return expBar * 100
-        },
-        expPercentMediumSlow(x) { //this formula may be incorrect
-            expBar = (((x.expPoints.value) - (((6 / 5) * (Math.pow(x, 3))) - (15 * (Math.pow(x, 2))) + (100 * x) - 140)) / ((((6 / 5) * (Math.pow(x.level.value + 1, 3))) - (15 * (Math.pow(x.level.value, 2))) + (100 * (x.level.value + 1)) - 140) - (Math.pow(x.level.value, 3)))) // errors could lurk here
-            if (expBar > 1)
-                return 100
-            else if (expBar < 0)
-                return 0
-            else
-                return expBar * 100
-        },
-        expPercentSlow(x) {
-            expBar = (((x.expPoints.value) - (Math.floor((5 * (Math.pow(x.level.value, 3))) / 4))) / ((Math.floor((5 * (Math.pow(x.level.value + 1, 3))) / 4)) - (Math.floor((5 * (Math.pow(x.level.value, 3))) / 4)))) // errors could lurk here
-            if (expBar > 100)
-                return 100
-            else if (expBar < 0)
-                return 0
-            else
-                return expBar * 100
-        },
-        
+
         // MOVE MANAGEMENT
         movePower(y) { //y = move1.value
             if (y) { y = y.toUpperCase() }
@@ -3274,25 +3318,16 @@ const app = Vue.createApp({
         },
 
         battlePokemonCrop() {
-            let len = this.enemyTrainerList?.[this.opponentId]?.pokemon?.length;
-            if (len == 1) {
-                return "height: 234px;"
-            }
-            else if (len == 2) {
-                return "height: 402px;"
-            }
-            else if (len == 3) {
-                return "height: 566px;"
-            }
-            else if (len == 4) {
-                return "height: 736px;"
-            }
-            else if (len == 5) {
-                return "height: 902px;"
-            }
-            else if (len == 6) {
-                return "height: 1080px;"
-            }
+            const totalPokemon = this.enemyTrainerList?.[this.opponentId]?.pokemon?.length;
+            const heights = {
+              1: "234px",
+              2: "402px",
+              3: "566px",
+              4: "736px",
+              5: "902px",
+              6: "1080px"
+            };
+            return `height: ${heights[totalPokemon]}; filter: saturate(${this.ui_saturation}) drop-shadow(0px 0px 1px #000000)`;
         },
         newGame() {
             // console.log("watching for new game")
@@ -3307,39 +3342,90 @@ const app = Vue.createApp({
                 }
             })
         },
+        // async freezeEncounters() {
+        //     console.log("freezeEncounters() called...")
+        //     const map_name = this.mapper.properties.overworld.mapName.value;
+        //     let yes = true;
+        //     let no = false;
+        //     if (this.gameSelection == 'Emerald') {
+        //         if (this.mapper.properties.player.badges.badge1.value && this.hm_102_zigzagoon == true && map_name == "ROUTE 102" && this.game.encountersMap["ROUTE 102"] == false && this.mapper.properties.player.team[1].species.value != "Zigzagoon") {
+        //             this.mapper.properties.player.team[1].species.change((newerProp) => {
+        //                 if(newerProp = "Zigzagoon" && this.hm_102_zigzagoon == true && newProp.value == "ROUTE 102" && this.game.encountersMap["ROUTE 102"] == false) {
+        //                     this.mapper.properties.overworld.disabledEncounters.set(yes,false);
+        //                 }
+        //             });
+        //         }
+        //         else if (this.gameSelection == 'Emerald') {
+        //             if (this.game.encountersMap[newProp]==false) {
+        //                 this.mapper.properties.overworld.disabledEncounters.set(yes,false);
+        //             }
+        //             else {
+        //                 this.mapper.properties.overworld.disabledEncounters.set(no,false);
+        //             }
+        //         }
+        //     }
+        //     if (this.gameSelection == 'FireRed and LeafGreen') {
+        //         await this.sleep(50)
+        //         if (this.route_1 == false && map_name == "ROUTE 1") {
+        //             this.mapper.properties.overworld.disabledEncounters.set(true,false);
+        //         }
+        //         if (this.route_2 == false && map_name == "ROUTE 2") {
+        //             this.mapper.properties.overworld.disabledEncounters.set(true,false);
+        //         }
+        //         if (this.route_22 == false && map_name == "ROUTE 22") {
+        //             this.mapper.properties.overworld.disabledEncounters.set(true,false);
+        //         }
+        //         if (this.viridian_forest == false && map_name == "VIRIDIAN_FOREST") {
+        //             this.mapper.properties.overworld.disabledEncounters.set(true,false);
+        //         }
+        //         if (this.route_6 == false && map_name == "ROUTE 6") {
+        //             this.mapper.properties.overworld.disabledEncounters.set(true,false);
+        //         }
+        //         else {
+        //             this.mapper.properties.overworld.disabledEncounters.set(false,false);
+        //         }
+        //     }
+        // },
         freezeEncounters() {
-            this.mapper.properties.overworld.mapName.change((newProp) => {
-                let yes = true;
-                let no = false;
-                if(typeof this.mapper.properties.overworld.disabledEncounters.value == 'number') {
-                    yes = 1;
-                    no = 0;
-                }
-                // if (this.mapper.properties.player.badges.badge1.value == false && this.route_101 == false && newProp.value == "ROUTE 101") {
-                //     this.mapper.properties.overworld.disabledEncounters.set(true,false);
-                // }
-                // if (this.mapper.properties.player.badges.badge1.value == false && this.route_102 == false && newProp.value == "ROUTE 102") {
-                //     this.mapper.properties.overworld.disabledEncounters.set(true,false);
-                // }
-                // if (this.mapper.properties.player.badges.badge1.value == false && this.game.encountersMap["ROUTE 103"] == false && newProp.value == "ROUTE 103") {
-                //     this.mapper.properties.overworld.disabledEncounters.set(true,false);
-                // }
-                /*else*/ if (this.mapper.properties.player.badges.badge1.value && this.hm_102_zigzagoon == true && newProp.value == "ROUTE 102" && this.game.encountersMap["ROUTE 102"] == false && this.mapper.properties.player.team[1].species.value != "Zigzagoon") {
-                    this.mapper.properties.player.team[1].species.change((newerProp) => {
-                        if(newerProp = "Zigzagoon" && this.hm_102_zigzagoon == true && newProp.value == "ROUTE 102" && this.game.encountersMap["ROUTE 102"] == false) {
-                            this.mapper.properties.overworld.disabledEncounters.set(yes,false);
+            const map_name = this.mapper.properties.overworld.mapName.value;
+            if (this.gameSelection == 'Emerald') {
+
+            }
+            if (this.gameSelection == 'FireRed and LeafGreen') {
+                switch (map_name) {
+                    case "ROUTE 1": 
+                        if (this.mapper.properties.events.menu.pokedex.value == false) {
+                            if (this.route_1 == false && this.mapper.properties.events.stp_pidgey_on_route_1.value == true && this.mapper.properties.events.stp_rattata_on_route_1.value == true) {
+                                this.mapper.properties.overworld.disabledEncounters.set(true,false);
+                            }
                         }
-                    });
+                        else if (this.route_1 == false && this.mapper.properties.events.stp_pidgey_on_route_1.value == false && this.mapper.properties.events.stp_rattata_on_route_1.value == false) {
+                            this.mapper.properties.overworld.disabledEncounters.set(true,false);
+                        }
+                        break;
+                    case "ROUTE 2": 
+                        if (this.route_2 == false) {
+                            this.mapper.properties.overworld.disabledEncounters.set(true,false);
+                        }
+                        break;
+                    case "ROUTE 22": 
+                        if (this.route_22 == false) {
+                            this.mapper.properties.overworld.disabledEncounters.set(true,false);
+                        }
+                        break;
+                    case "VIRIDIAN_FOREST": 
+                        if (this.viridian_forest == false) {
+                            this.mapper.properties.overworld.disabledEncounters.set(true,false);
+                        }
+                        break;
+                    case "ROUTE 6": 
+                        if (this.route_6 == false) {
+                            this.mapper.properties.overworld.disabledEncounters.set(true,false);
+                        }
+                        break;
+                    default: this.mapper.properties.overworld.disabledEncounters.set(false,false);
                 }
-                else {
-                    if(this.game.encountersMap[newProp]==false) {
-                        this.mapper.properties.overworld.disabledEncounters.set(yes,false);
-                    }
-                    else {
-                        this.mapper.properties.overworld.disabledEncounters.set(no,false);
-                    }
-                }
-            });
+            }
         },
         natureLabels(nature) {
             let output = nature + ": ";
@@ -3429,7 +3515,7 @@ const app = Vue.createApp({
         this.mapper.onConnected = (x) => this.ready = true
         this.mapper.onDisconnected = (x) => this.ready = false
         await this.mapper.connect()
-        console.log("mapper set")
+        // console.log("mapper set")
         this.updateTime()
         this.load_all_settings()
         for (var species of Object.keys(dexDataRubySapphireEmerald)) {
@@ -3758,8 +3844,12 @@ const app = Vue.createApp({
                 await setStartingStats()
             }
         });
-
-        this.freezeEncounters();
+        this.mapper.properties.overworld.mapName.change(async (newProp) => {
+            this.freezeEncounters();
+        });
+        this.mapper.properties.overworld.disabledEncounters.change(async (newProp) => {
+            console.log("disabled encounters: " + newProp.value)
+        });
 
         
         //SET OPTIONS
@@ -3813,8 +3903,8 @@ const app = Vue.createApp({
         
         const log_split = (x) => console.log(`Autosplitter - Battle Ended: Split: ${this.opponent} at ${this.timer_formatted_time[0]}${this.timer_formatted_time[1]} (Gametime: ${this.gametimeSplit})`)
         const autosplitter_process = () => {
-            console.log("Checking if autosplitter is on...")
-            if (this.autosplitter_toggle == true) {
+            // console.log("Checking if autosplitter is on...")
+            if (this.autosplitter_toggle == true && this.mapper.properties.battle.type.trainer.value == true) {
                 console.log("Began Autosplitter Process")
                 d = new Date()
                 battle_end = Date.now()
@@ -4088,10 +4178,10 @@ const app = Vue.createApp({
 
         //write to file at the end of a key battle
         this.mapper.properties.battle.turnInfo.battleOutcome.change(async (prop) => {
-            console.log('Battle Outcome Changed')
+            // console.log('Battle Outcome Changed')
             autosplitter_process()
-            console.log('Autosplitter Attempted to Run by Battle Outcome Change')
-            console.log("Battle outcome: " + prop.value)
+            // console.log('Autosplitter Attempted to Run by Battle Outcome Change')
+            // console.log("Battle outcome: " + prop.value)
             if (prop.value == "WON" && this.mapper.properties.battle.type.trainer.value) {
                 console.log('Starting log process')
                 let trainer = this.opponent
@@ -4127,6 +4217,12 @@ const app = Vue.createApp({
 
                 //stop timer
                 if (this.game.finalBattle.includes(trainer)) {
+                    if ((this.mapper.properties.battle.trainer.opponent.value == "CHAMPION_FIRST_CHARMANDER" 
+                        || this.mapper.properties.battle.trainer.opponent.value == "CHAMPION_FIRST_SQUIRTLE" 
+                        || this.mapper.properties.battle.trainer.opponent.value == "CHAMPION_FIRST_BULBASAUR") 
+                        && this.league_rematches == true) {
+                            return
+                    }
                     this.stopTime()
                     if (this.testRun == false) {
                         this.finished_run_count++

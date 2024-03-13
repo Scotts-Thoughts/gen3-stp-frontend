@@ -4634,7 +4634,7 @@ const remakeTrainers = {
                     "Roar",
                     "Ember",
                     "Odor Sleuth",
-                    "Extreme Speed"
+                    "ExtremeSpeed"
                 ],
                 "ability": "Intimidate",
                 "xp": 2464,
@@ -5291,7 +5291,7 @@ const remakeTrainers = {
                 "moves": [
                     "Encore",
                     "Sing",
-                    "Double Slap",
+                    "DoubleSlap",
                     "Follow Me"
                 ],
                 "ability": "Cute Charm",
@@ -6375,7 +6375,7 @@ const remakeTrainers = {
                 "held_item": null,
                 "moves": [
                     "Sing",
-                    "Double Slap",
+                    "DoubleSlap",
                     "Follow Me",
                     "Minimize"
                 ],
@@ -6396,7 +6396,7 @@ const remakeTrainers = {
                 "held_item": null,
                 "moves": [
                     "Sing",
-                    "Double Slap",
+                    "DoubleSlap",
                     "Follow Me",
                     "Minimize"
                 ],
@@ -6720,7 +6720,7 @@ const remakeTrainers = {
                     "Bubble",
                     "Hypnosis",
                     "Water Gun",
-                    "Double Slap"
+                    "DoubleSlap"
                 ],
                 "ability": "Water Absorb",
                 "xp": 363,
@@ -6741,7 +6741,7 @@ const remakeTrainers = {
                     "Bubble",
                     "Hypnosis",
                     "Water Gun",
-                    "Double Slap"
+                    "DoubleSlap"
                 ],
                 "ability": "Water Absorb",
                 "xp": 363,
@@ -6762,7 +6762,7 @@ const remakeTrainers = {
                     "Bubble",
                     "Hypnosis",
                     "Water Gun",
-                    "Double Slap"
+                    "DoubleSlap"
                 ],
                 "ability": "Water Absorb",
                 "xp": 616,
@@ -6907,7 +6907,7 @@ const remakeTrainers = {
                 "held_item": null,
                 "moves": [
                     "Sing",
-                    "Double Slap",
+                    "DoubleSlap",
                     "Follow Me",
                     "Minimize"
                 ],
@@ -6962,7 +6962,7 @@ const remakeTrainers = {
                 "spd": 47,
                 "held_item": null,
                 "moves": [
-                    "Double Slap",
+                    "DoubleSlap",
                     "Follow Me",
                     "Minimize",
                     "Defense Curl"
@@ -6986,7 +6986,7 @@ const remakeTrainers = {
                     "Pound",
                     "Disable",
                     "Rollout",
-                    "Double Slap"
+                    "DoubleSlap"
                 ],
                 "ability": "Cute Charm",
                 "xp": 456,
@@ -7231,7 +7231,7 @@ const remakeTrainers = {
                     "Bubble",
                     "Hypnosis",
                     "Water Gun",
-                    "Double Slap"
+                    "DoubleSlap"
                 ],
                 "ability": "Water Absorb",
                 "xp": 363,
@@ -7378,7 +7378,7 @@ const remakeTrainers = {
                     "Bubble",
                     "Hypnosis",
                     "Water Gun",
-                    "Double Slap"
+                    "DoubleSlap"
                 ],
                 "ability": "Water Absorb",
                 "xp": 346,
@@ -7474,7 +7474,7 @@ const remakeTrainers = {
                 "moves": [
                     "Hypnosis",
                     "Water Gun",
-                    "Double Slap",
+                    "DoubleSlap",
                     "Rain Dance"
                 ],
                 "ability": "Water Absorb",
@@ -8716,7 +8716,7 @@ const remakeTrainers = {
                 "moves": [
                     "Hypnosis",
                     "Water Gun",
-                    "Double Slap",
+                    "DoubleSlap",
                     "Rain Dance"
                 ],
                 "ability": "Water Absorb",
@@ -9248,7 +9248,7 @@ const remakeTrainers = {
                 "moves": [
                     "Hypnosis",
                     "Water Gun",
-                    "Double Slap",
+                    "DoubleSlap",
                     "Rain Dance"
                 ],
                 "ability": "Water Absorb",
@@ -9269,7 +9269,7 @@ const remakeTrainers = {
                 "moves": [
                     "Hypnosis",
                     "Water Gun",
-                    "Double Slap",
+                    "DoubleSlap",
                     "Rain Dance"
                 ],
                 "ability": "Water Absorb",
@@ -10726,7 +10726,7 @@ const remakeTrainers = {
                     "Sing",
                     "Disable",
                     "Defense Curl",
-                    "Double Slap"
+                    "DoubleSlap"
                 ],
                 "ability": "Cute Charm",
                 "xp": 676,
@@ -10782,7 +10782,7 @@ const remakeTrainers = {
                     "Sing",
                     "Disable",
                     "Defense Curl",
-                    "Double Slap"
+                    "DoubleSlap"
                 ],
                 "ability": "Cute Charm",
                 "xp": 1144,
@@ -13714,7 +13714,7 @@ const remakeTrainers = {
                 "moves": [
                     "Hypnosis",
                     "Water Gun",
-                    "Double Slap",
+                    "DoubleSlap",
                     "Rain Dance"
                 ],
                 "ability": "Water Absorb",
@@ -13735,7 +13735,7 @@ const remakeTrainers = {
                 "moves": [
                     "Hypnosis",
                     "Water Gun",
-                    "Double Slap",
+                    "DoubleSlap",
                     "Rain Dance"
                 ],
                 "ability": "Water Absorb",
@@ -13768,7 +13768,7 @@ const remakeTrainers = {
                 "spd": 52,
                 "held_item": null,
                 "moves": [
-                    "Double Slap",
+                    "DoubleSlap",
                     "Rain Dance",
                     "Body Slam",
                     "Belly Drum"
@@ -13791,7 +13791,7 @@ const remakeTrainers = {
                 "moves": [
                     "Water Gun",
                     "Hypnosis",
-                    "Double Slap",
+                    "DoubleSlap",
                     "Submission"
                 ],
                 "ability": "Water Absorb",
@@ -14232,7 +14232,7 @@ const remakeTrainers = {
                 "moves": [
                     "Hypnosis",
                     "Water Gun",
-                    "Double Slap",
+                    "DoubleSlap",
                     "Rain Dance"
                 ],
                 "ability": "Water Absorb",
@@ -14316,7 +14316,7 @@ const remakeTrainers = {
                 "moves": [
                     "Hypnosis",
                     "Water Gun",
-                    "Double Slap",
+                    "DoubleSlap",
                     "Rain Dance"
                 ],
                 "ability": "Water Absorb",
@@ -14994,7 +14994,7 @@ const remakeTrainers = {
                 "held_item": null,
                 "moves": [
                     "Water Gun",
-                    "Double Slap",
+                    "DoubleSlap",
                     "Rain Dance",
                     "Body Slam"
                 ],
@@ -15049,7 +15049,7 @@ const remakeTrainers = {
                 "spd": 58,
                 "held_item": null,
                 "moves": [
-                    "Double Slap",
+                    "DoubleSlap",
                     "Rain Dance",
                     "Body Slam",
                     "Belly Drum"
@@ -16160,7 +16160,7 @@ const remakeTrainers = {
                 "moves": [
                     "Hypnosis",
                     "Water Gun",
-                    "Double Slap",
+                    "DoubleSlap",
                     "Rain Dance"
                 ],
                 "ability": "Water Absorb",
@@ -18028,7 +18028,7 @@ const remakeTrainers = {
                 "held_item": null,
                 "moves": [
                     "Water Gun",
-                    "Double Slap",
+                    "DoubleSlap",
                     "Rain Dance",
                     "Body Slam"
                 ],
@@ -18049,7 +18049,7 @@ const remakeTrainers = {
                 "held_item": null,
                 "moves": [
                     "Water Gun",
-                    "Double Slap",
+                    "DoubleSlap",
                     "Rain Dance",
                     "Body Slam"
                 ],
@@ -18070,7 +18070,7 @@ const remakeTrainers = {
                 "held_item": null,
                 "moves": [
                     "Water Gun",
-                    "Double Slap",
+                    "DoubleSlap",
                     "Rain Dance",
                     "Body Slam"
                 ],
@@ -18104,7 +18104,7 @@ const remakeTrainers = {
                 "spd": 50,
                 "held_item": null,
                 "moves": [
-                    "Double Slap",
+                    "DoubleSlap",
                     "Rain Dance",
                     "Body Slam",
                     "Belly Drum"
@@ -18125,7 +18125,7 @@ const remakeTrainers = {
                 "spd": 56,
                 "held_item": null,
                 "moves": [
-                    "Double Slap",
+                    "DoubleSlap",
                     "Rain Dance",
                     "Body Slam",
                     "Belly Drum"
@@ -18146,7 +18146,7 @@ const remakeTrainers = {
                 "spd": 56,
                 "held_item": null,
                 "moves": [
-                    "Double Slap",
+                    "DoubleSlap",
                     "Rain Dance",
                     "Body Slam",
                     "Belly Drum"
@@ -18815,7 +18815,7 @@ const remakeTrainers = {
                 "spd": 58,
                 "held_item": null,
                 "moves": [
-                    "Double Slap",
+                    "DoubleSlap",
                     "Rain Dance",
                     "Body Slam",
                     "Belly Drum"
@@ -19564,7 +19564,7 @@ const remakeTrainers = {
                 "spd": 60,
                 "held_item": null,
                 "moves": [
-                    "Double Slap",
+                    "DoubleSlap",
                     "Rain Dance",
                     "Body Slam",
                     "Belly Drum"
@@ -22612,7 +22612,7 @@ const remakeTrainers = {
                 "held_item": null,
                 "moves": [
                     "Fake Out",
-                    "Extreme Speed",
+                    "ExtremeSpeed",
                     "Protect",
                     "Quick Attack"
                 ],
@@ -23214,7 +23214,7 @@ const remakeTrainers = {
                     "Growl",
                     "Encore",
                     "Sing",
-                    "Double Slap"
+                    "DoubleSlap"
                 ],
                 "ability": "Cute Charm",
                 "xp": 204,
@@ -27565,7 +27565,7 @@ const remakeTrainers = {
                 "moves": [
                     "Psychic",
                     "Role Play",
-                    "Double Slap",
+                    "DoubleSlap",
                     "Encore"
                 ],
                 "ability": "Soundproof",
@@ -33664,7 +33664,7 @@ const remakeTrainers = {
                 "held_item": null,
                 "moves": [
                     "Body Slam",
-                    "Double Slap",
+                    "DoubleSlap",
                     "Water Gun",
                     "Hypnosis"
                 ],
@@ -34854,7 +34854,7 @@ const remakeTrainers = {
                 "moves": [
                     "Light Screen",
                     "Cosmic Power",
-                    "Double Slap",
+                    "DoubleSlap",
                     "Encore"
                 ],
                 "ability": "Cute Charm",
@@ -35643,7 +35643,7 @@ const remakeTrainers = {
                 "held_item": null,
                 "moves": [
                     "Ice Punch",
-                    "Double Slap",
+                    "DoubleSlap",
                     "Lovely Kiss",
                     "Attract"
                 ],
@@ -38374,7 +38374,7 @@ const remakeTrainers = {
                 "spd": 117,
                 "held_item": null,
                 "moves": [
-                    "Extreme Speed",
+                    "ExtremeSpeed",
                     "Flamethrower",
                     "Roar",
                     "Bite"
@@ -38540,7 +38540,7 @@ const remakeTrainers = {
                 "spd": 108,
                 "held_item": null,
                 "moves": [
-                    "Extreme Speed",
+                    "ExtremeSpeed",
                     "Flamethrower",
                     "Roar",
                     "Bite"
@@ -39946,7 +39946,7 @@ const remakeTrainers = {
                 "held_item": null,
                 "moves": [
                     "Sing",
-                    "Double Slap",
+                    "DoubleSlap",
                     "Follow Me",
                     "Minimize"
                 ],
@@ -41918,7 +41918,7 @@ const remakeTrainers = {
                 "held_item": null,
                 "moves": [
                     "Sing",
-                    "Double Slap",
+                    "DoubleSlap",
                     "Minimize",
                     "Metronome"
                 ],
@@ -43173,7 +43173,7 @@ const remakeTrainers = {
                 "spd": 144,
                 "held_item": null,
                 "moves": [
-                    "Extreme Speed",
+                    "ExtremeSpeed",
                     "Overheat",
                     "Aerial Ace",
                     "Iron Tail"
@@ -43339,7 +43339,7 @@ const remakeTrainers = {
                 "spd": 144,
                 "held_item": null,
                 "moves": [
-                    "Extreme Speed",
+                    "ExtremeSpeed",
                     "Overheat",
                     "Aerial Ace",
                     "Iron Tail"

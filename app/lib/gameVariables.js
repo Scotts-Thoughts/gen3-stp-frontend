@@ -8,8 +8,8 @@ const gameVariables =
         "opponentId" : "opponentId",
         "newGameFlagContainer" : "pointers",
         "newGameFlag" : "callback2",
-        "newGameValueNew" : ["New Game", 135456953],
-        "newGameValueOld" : ["Main Menu",134267625,134711521],
+        "newGameValueNew" : ["New Game", 135456953, 135456965],
+        "newGameValueOld" : ["Main Menu", 134267625, 134711521, 134267605, 134711553],
         "trainerList" : "remakeTrainers",
         "opponentImageMap" : {
             "LEADER_BROCK": "images/trainers/LEADER_BROCK.png",
@@ -20,8 +20,8 @@ const gameVariables =
             "LEADER_BLAINE": "images/trainers/LEADER_BLAINE.png",
             "LEADER_SABRINA": "images/trainers/LEADER_SABRINA.png",
             // "LEADER_GIOVANNI": "images/trainers/LEADER_GIOVANNI.png",
-            "BOSS_GIOVANNI": "images/trainers/LEADER_GIOVANNI.png",
-            "BOSS_GIOVANNI_2": "images/trainers/LEADER_GIOVANNI.png",
+            "BOSS_GIOVANNI": "images/trainers/GIOVANNI_1.png",
+            "BOSS_GIOVANNI_2": "images/trainers/GIOVANNI_2.png",
             // "RIVAL_OAKS_LAB_BULBASAUR" : "images/trainers/RIVAL1.png",
             // "RIVAL_OAKS_LAB_CHARMANDER" : "images/trainers/RIVAL1.png",
             // "RIVAL_OAKS_LAB_SQUIRTLE" : "images/trainers/RIVAL1.png",
@@ -77,7 +77,14 @@ const gameVariables =
             "RIVAL_ROUTE22_LATE_CHARMANDER",
             "CHAMPION_FIRST_SQUIRTLE",
             "CHAMPION_FIRST_BULBASAUR",
-            "CHAMPION_FIRST_CHARMANDER"
+            "CHAMPION_FIRST_CHARMANDER",
+            "ELITE_FOUR_LORELEI_2",
+            "ELITE_FOUR_BRUNO_2",
+            "ELITE_FOUR_AGATHA_2",
+            "ELITE_FOUR_LANCE_2",
+            "CHAMPION_REMATCH_CHARMANDER",
+            "CHAMPION_REMATCH_CHARMANDER",
+            "CHAMPION_REMATCH_CHARMANDER"
         ],
         "champion" : [
             "CHAMPION_FIRST_SQUIRTLE",
@@ -87,7 +94,10 @@ const gameVariables =
         "finalBattle" : [
             "CHAMPION_FIRST_SQUIRTLE",
             "CHAMPION_FIRST_BULBASAUR",
-            "CHAMPION_FIRST_CHARMANDER"
+            "CHAMPION_FIRST_CHARMANDER",
+            "CHAMPION_REMATCH_CHARMANDER",
+            "CHAMPION_REMATCH_CHARMANDER",
+            "CHAMPION_REMATCH_CHARMANDER"
         ],
         "encountersMap" : {
             "ROUTE 1": false,
@@ -96,14 +106,15 @@ const gameVariables =
             "VIRIDIAN_FOREST": false,
             "ROUTE 6" : false,
         },
+        // stp-temporary yml patch
         "starterLocation" : ["PALLET_TOWN","PALLET_TOWN - PROFESSOR_OAKS_LAB"],
         "callback1" : {
-            "overworld" : ["Overworld", 134570549],
-            "toBattle" : [134292473],
+            "overworld" : ["Overworld", 134570549, 134570581],
+            "toBattle" : [134292473, 134292453],
             "blackout" : [134570917],//test further //134570549 overworld? after
         },
         "callback2" : {
-            "toBattle" : [134287637, "Battle Animation"],
+            "toBattle" : [134287637, 134282653, "Battle Animation"],
             "baseStats" : [135711589], //copied from emerald, what should this be??
             "reset" : ["Owners", 0],
             "blackout" : [134570917],//test further //134570677 overworld after

@@ -25,25 +25,43 @@
     --outline3: #000000;
 
     /* Movepool Type Colours */
-    --normal:   #a8a878;
-    --fighting: #c03028;
-    --grass:    #78c850;
-    --fire:     #f08030;
-    --water:    #6890f0;
-    --electric: #f3d230;
-    --ground:   #e0c068;
-    --rock:     #b8a038;
-    --psychic:  #f85888;
-    --poison:   #a040a0;
-    --flying:   #a890f0;
-    --bug:      #a8b820;
-    --ice:      #98d8d8;
-    --ghost:    #705898;
-    --dragon:   #7038f8;
-    --steel:    #b8b8d0;
-    --dark:     #705848;
-    --fairy:    #ee99ac;
-    --curse:    #2e9fa3;
+    --current_normal:   #9fa19f;
+    --current_fighting: #ff8000;
+    --current_grass:    #3fa129;
+    --current_fire:     #e62829;
+    --current_water:    #2980ef;
+    --current_electric: #fac000;
+    --current_ground:   #915121;
+    --current_rock:     #afa981;
+    --current_psychic:  #ef4179;
+    --current_poison:   #9141cb;
+    --current_flying:   #81b9ef;
+    --current_bug:      #91a119;
+    --current_ice:      #3dcef3;
+    --current_ghost:    #704170;
+    --current_dragon:   #5060e1;
+    --current_steel:    #60a1b8;
+    --current_dark:     #624d4e;
+    --current_fairy:    #ef70ef;
+        
+    --legacy_normal:   #a8a878;
+    --legacy_fighting: #c03028;
+    --legacy_grass:    #78c850;
+    --legacy_fire:     #f08030;
+    --legacy_water:    #6890f0;
+    --legacy_electric: #f3d230;
+    --legacy_ground:   #e0c068;
+    --legacy_rock:     #b8a038;
+    --legacy_psychic:  #f85888;
+    --legacy_poison:   #a040a0;
+    --legacy_flying:   #a890f0;
+    --legacy_bug:      #a8b820;
+    --legacy_ice:      #98d8d8;
+    --legacy_ghost:    #705898;
+    --legacy_dragon:   #7038f8;
+    --legacy_steel:    #b8b8d0;
+    --legacy_dark:     #705848;
+    --legacy_fairy:    #ee99ac; 
 
     /* Stat Colours */
     --hp:     #ff5959;
@@ -212,7 +230,7 @@ body {
     font-family: play;
     font-size: 24px;
     line-height: 26px;
-    top: 360px;
+    top: 390px;
     left: -10px;
     width: 420px;
     height: 420px;
@@ -350,7 +368,7 @@ body {
     grid-row-end: 22;
     border: 1px solid #ff000000;
     display: flex; 
-    top: -75px;
+    top: -55px;
     justify-content: center; 
     align-items: center;
     align-content: center;
@@ -408,10 +426,10 @@ body {
     left: 970px;
 }
 .labelNature {
-    font-size: 18px;
+    font-size: 14px;
     position: absolute;
     line-height: 37.3px;
-    top: 837.5px;
+    top: 839px;
     left: 21px;
     opacity: .6;
     z-index: 30001;
@@ -420,10 +438,10 @@ body {
     font-weight: 500
 }
 .labelFriendship {
-    font-size: 18px;
+    font-size: 14px;
     position: absolute;
     line-height: 37.3px;
-    top: 837.5px;
+    top: 839px;
     left: 188px;
     opacity: .6;
     z-index: 30001;
@@ -444,18 +462,19 @@ body {
     font-weight: 500
 }
 .labelEXP {
-    font-size: 19px;
+    font-size: 14px;
     position: fixed;
-    line-height: 37.3px;
-    top: 808px;
-    left: 20.5px;
+    line-height: 16px;
+    text-align: center;
+    top: 824px;
+    left: 14px;
     opacity: .7;
     z-index: 30002;
-    text-align: left;
     font-family: osb;
-    font-weight: 500
+    font-weight: 500;
+    width: 42px;
+    border: 1px solid #ff000000;
 }
-
 
 /* STATS (INDEX 0 to 10) */
 .statsGraphic {
@@ -473,7 +492,7 @@ body {
     text-align: center;
     width: 344px;
     left: 8px;
-    top: 770px;
+    top: 782px;
     z-index: 1;
     border: 1px solid #ff000000;
     /* filter: drop-shadow(1px 1px 0px rgb(0, 0, 0)); */
@@ -481,12 +500,29 @@ body {
 .expMeterOuter {
     position: absolute;
     border-radius: 4px;
-    background: linear-gradient(rgb(239, 239, 239), rgb(157, 157, 157));
-    width: 284px;
-    height: 11px;
-    top: 828px;
-    left: 61px;
+    /* background: #000; */
+    width: 288px;
+    height: 15px;
+    top: 827px;
+    left: 58px;
     z-index: 0;
+}
+.expMeterInner {
+    position: relative;
+    border-radius: 4px;
+    background: linear-gradient(90deg,hsl(189, 92%, 45%), hsl(187, 100%, 69%));
+    width: 284px;
+    top: -1px;
+    height: 15px;
+    border: 1px solid #00000028;
+    /* background:rgb(0, 217, 255); */
+}
+.inputContainer {
+    font-size: 18px; 
+    text-align: right;
+    background: #72fd4f; 
+    font-family: Play;
+    width: 130px;
 }
 .timerTitle {
     position: absolute;
@@ -525,16 +561,7 @@ body {
     font-weight: 700;
     /* filter: drop-shadow(1px 1px 1px #000000) */
 }
-.expMeterInner {
-    position: relative;
-    border-radius: 4px;
-    background: linear-gradient(90deg,hsl(189, 92%, 45%), hsl(187, 100%, 69%));
-    width: 284px;
-    top: -1px;
-    height: 12px;
-    border: 1px solid #0000007a;
-    /* background:rgb(0, 217, 255); */
-}
+
 .statsLabelsColumn1 {
     font-size: 30px;
     position: absolute;
@@ -1079,19 +1106,7 @@ body {
 }
 
 /* BAG OVERLAY */
-.movepoolTitle {
-    display: block;
-    border: 1px solid rgba(255, 0, 0, 0);
-    font-size: 24px;
-    width: 340px;
-    text-align: center; /* need a fix */
-    position: absolute;
-    top: 26px;
-    left: 1570px;
-    font-family: titan;
-    line-height: 34px;
-    z-index: 600;
-}
+
 .bagLineLabel {
     font-size: 38px;
     position: absolute;
@@ -1667,22 +1682,44 @@ body {
     font-size: 16px; 
     background: #72fd4f; 
     font-family: Play;
-    border-radius: 10px;
+    border-radius: 12px;
     padding-left: 4px;
     padding-right: 4px;
-    /* filter: drop-shadow(0px 0px 1px #000000c5); */
+    width: 24px;
+    height: 24px;
+}
+.smallButtonStyle2 {
+    pointer-events: auto; 
+    position: relative; 
+    font-size: 16px; 
+    background: #cc5353; 
+    font-family: Play;
+    border-radius: 12px;
+    padding-left: 4px;
+    padding-right: 4px;
+    width: 24px;
+    height: 24px;
+}
+.increment {
+    background: #29c702;
+}
+.decrement {
+    background: #cc5353;
 }
 .smallButtonStyle:hover {
     background: #14d61a; 
 }
+.smallButtonStyle2:hover {
+    background: #fd6e6e; 
+}
 .nature {
-    font-size: 15px;
+    font-size: 18px;
     position: absolute;
-    left: 91px;
-    width: 87px;
+    left: 70px;
+    width: 110px;
     height: 32px;
     border: 1px solid #ff000000;
-    top: 839px;
+    top: 840px;
     bottom: 0px;
     right: 0px;
     z-index: 5;
@@ -1693,13 +1730,13 @@ body {
     font-weight: 700
 }
 .friendship {
-    font-size: 15px;
+    font-size: 18px;
     position: absolute;
-    left: 285px;
-    width: 59px;
+    left: 262px;
+    width: 85px;
     height: 32px;
     border: 1px solid #ff000000;
-    top: 839px;
+    top: 840px;
     bottom: 0px;
     right: 0px;
     z-index: 5;
@@ -1716,7 +1753,7 @@ body {
     width: 344px;
     height: 14px;
     border: 1px solid #ff000000;
-    top: 803px;
+    top: 815px;
     bottom: 0px;
     right: 0px;
     z-index: 5;
@@ -1823,6 +1860,19 @@ body {
     border: 1px solid #ff000000;
 }
 .movepoolTitle {
+    display: block;
+    border: 1px solid rgba(255, 0, 0, 0);
+    font-size: 24px;
+    width: 338px;
+    text-align: center; /* need a fix */
+    position: absolute;
+    top: 26px;
+    left: 1570px;
+    font-family: titan;
+    line-height: 34px;
+    z-index: 600;
+}
+.movepoolTitle {
     position: absolute;
     display: block;
     padding-top: 1px;
@@ -1831,7 +1881,7 @@ body {
     text-align: center;
     font-family: titan;
     left: 1570px;
-    top: 22px;
+    top: 19px;
     border: 1px solid #ff000000;
 }
 .move1 {
@@ -2659,6 +2709,51 @@ body {
     padding-left: 1px;
     padding-right: 1px;
 }
+.inventory_header {
+    background-color: #8d8d8d;
+    line-height: 17px;
+    border: 2px solid #00000000;
+}
+.inventory_demo {
+    display: block;
+    position: absolute;
+    /* border: 1px solid #00ff0d00; */
+    background-color: #ffffff;
+    font-size: 12px;
+    line-height: 20px;
+    line-height: 18px;
+    width: 328px;
+    height: 1001px;
+    font-family: play;
+    left: 1576px;
+    top: 57px;
+    opacity: .9;
+    border: none;
+}
+.inventory_demo th:nth-child(1) {
+    width: 42px;
+}
+.inventory_demo th:nth-child(2) {
+    width: 22px;
+}
+.inventory_demo th:nth-child(3) {
+    width: 156px;
+}
+.inventory_demo th:nth-child(4) {
+    width: 20px;
+    text-align: center;
+}
+.inventory_demo th:nth-child(5) {
+    width: 46px;
+    text-align: right;
+}
+.inventory_demo th:nth-child(6) {
+    width: 46px;
+    text-align: right;
+}
+.inventory_demo tr:nth-child(odd) {
+    background-color: #cfcfcf;
+}
 /* :nth-child(odd) {
     background-color: #7e7e7e;
 } */
@@ -2733,9 +2828,9 @@ body {
     width: 114px;
 }
 .accEvaLabel {
-    text-decoration: underline;
+    /* text-decoration: underline; */
     opacity: .6;
-    font-size: 16px;
+    font-size: 14px;
 }
 .accuracyLabel {
     left: 10px;
