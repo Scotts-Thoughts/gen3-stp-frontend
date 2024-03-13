@@ -177,11 +177,13 @@
                     <br>
                     <div v-if="gameSelection == 'FireRed and LeafGreen'" style="font-size: 12px;">If encounters are turned off, HM users will only appear after the Pokedex is obtained.</div>
                     <br>
-                    <div>League Rematches: <input class="checkBoxStyle" type="checkbox" v-model="league_rematches"/></div>
-                    <div>Autosplitter: <input class="checkBoxStyle" type="checkbox" v-model="autosplitter_toggle"/></div>
-                    <div>Show Tutor Moves: <input class="checkBoxStyle" type="checkbox" v-model="tutor_moves"/><br></div>
-                    <div v-if="gameSelection == 'FireRed and LeafGreen'">Repel Counter: <input class="checkBoxStyle" type="checkbox" v-model="repel_counter"/><br></div>
-                    <div v-if="gameSelection == 'FireRed and LeafGreen'">Vs. Seeker: <input class="checkBoxStyle" type="checkbox" v-model="vs_seeker"/><br></div>
+                    <table>
+                        <tr><td>League Rematches:</td><td><input class="checkBoxStyle" type="checkbox" v-model="league_rematches"/></td></tr>
+                        <tr><td>Autosplitter:</td>    <td><input class="checkBoxStyle" type="checkbox" v-model="autosplitter_toggle"/></td></tr>
+                        <tr><td>Show Tutor Moves:</td><td><input class="checkBoxStyle" type="checkbox" v-model="tutor_moves"/></td></tr>
+                        <tr v-if="gameSelection == 'FireRed and LeafGreen'"><td>Repel Counter:</td><td><input class="checkBoxStyle" type="checkbox" v-model="repel_counter"/></td></tr>
+                        <tr v-if="gameSelection == 'FireRed and LeafGreen'"><td>Vs. Seeker:</td>   <td><input class="checkBoxStyle" type="checkbox" v-model="vs_seeker"/></td></tr>
+                    </table>
                     <br>
                     <div>Background Texture:</div>
                     <select v-model="backgroundTexture" class="dropdownMenu">
