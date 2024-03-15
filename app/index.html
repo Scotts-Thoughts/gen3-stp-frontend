@@ -125,6 +125,11 @@
                         <option>Bulbapedia Current</option>
                         <option>Bulbapedia Legacy</option>
                     </select>
+                    Type Icons:<br>
+                    <select v-model="ui_type_icons" class="dropdownMenu">
+                        <option>2023</option>
+                        <option>2024</option>
+                    </select>
                     <br>
                     <br>
                     <!-- <button @click="reset()" class="buttonStyle">Reset Texture Settings</button><br> -->
@@ -380,7 +385,7 @@
 
 <!--------- MOVEPOOL ------------------------------------------------------------------------------------------------------------------------------------->
             <transition name="fadeBattle" style="position: absolute;">
-                <!-- <div v-if="(g3stateVariable == `Battle` || g3stateVariable == `To Battle`) && mapper.properties.battle.type.trainer.value == true">
+                <div v-if="(g3stateVariable == `Battle` || g3stateVariable == `To Battle`) && mapper.properties.battle.type.trainer.value == true">
                     <div class="movepoolTitle">{{ special_trainer_names(enemyTrainerName) }}</div>
                     <div class="colored-image ds" :style="battlePokemonCrop()" style="--url: url(images/ui/enemy.svg)"></div>
                     <div v-for="x in pkmnSlots" class="enemyGraphic">
@@ -443,20 +448,10 @@
                             <div class="ePkmnStatsStyle ePkmnAbility opacityTransition" :style="enemyPkmnText(batt.trainer.team[x])">{{ enemyTrainer.pokemon[x]?.ability }}</div>
                         </div>
                     </div> 
-                </div> -->
+                </div>
                 <!-- <div v-else-if="right_panel == 'Inventory'" key=3> -->
-                <div key=3>
+                <!-- <div key=3>
                     <div class="movepoolTitle">Inventory</div>
-                    <!-- <table class="inventory_demo" cellspacing="0" :style="movepoolResize()">
-                        <tr>
-                            <th>Money:</th>
-                            <th>Coins:</th>
-                        </tr>
-                        <tr>
-                            <th>{{}}</th>
-                            <th>{{}}</th>
-                        </tr>
-                    </table> -->
                     <table class="inventory_demo" cellspacing="0" :style="movepoolResize()">
                         <tr>
                             <th class="inventory_header movepool_way">Pocket</th>
@@ -526,8 +521,8 @@
                         </tr>
                     </table>
                     <div class="colored-image ds" :style="`filter: saturate(${ui_saturation})`" style="--url: url(images/ui/movepool.svg)"></div>
-                </div>
-                <!-- <div v-else-if="youtube_chat == true" key=3>
+                </div> -->
+                <div v-else-if="youtube_chat == true" key=3>
                     <div class="movepoolTitle">Chat</div>
                     <div class="colored-image ds" :style="`filter: saturate(${ui_saturation})`" style="--url: url(images/ui/movepool.svg)"></div>
                 </div>
@@ -568,7 +563,7 @@
                          </tr> 
                     </table>
                     <div class="colored-image ds" :style="`filter: saturate(${ui_saturation})`" style="--url: url(images/ui/movepool.svg)"></div>
-                </div> -->
+                </div>
             </transition>
             <transition name="fadeDelayed">
                 <div v-if="((g3stateVariable == `Battle` || g3stateVariable == `To Battle`) && g3trainerEnemySelector(this.opponent) == 1) && showSpecialTrainerGraphics == true && batt.type.trainer.value == true" style="position: absolute;" key=1>

@@ -815,9 +815,11 @@ const app = Vue.createApp({
             hm_1_rattata:     MyStorage['hm_101_rattata']   ?? true,
 
             // UI
-            ui_saturation:          MyStorage['ui_saturation']          ?? .6,
-            ui_type_colors:         MyStorage['ui_type_colors']         ?? "Bulbapedia Current",
-            ui_type_color_modifier: MyStorage['ui_type_color_modifier'] ?? "current_",
+            ui_saturation:          MyStorage['ui_saturation']              ?? .6,
+            ui_type_colors:         MyStorage['ui_type_colors']             ?? "Bulbapedia Current",
+            ui_type_color_modifier: MyStorage['ui_type_color_modifier']     ?? "current_",
+            ui_type_icons:          MyStorage['ui_type_icons']          ?? "2024",
+            ui_type_icons_modifier: MyStorage['ui_type_icons_modifier'] ?? "2024/",
 
             auto_save: [
                 "graphicOverlay",
@@ -874,6 +876,8 @@ const app = Vue.createApp({
                 "vs_seeker",
                 "league_rematches",
                 "right_panel",
+                "ui_type_icons",
+                "ui_type_icons_modifier",
             ],
 
             right_panel: 'Movepool',
@@ -947,6 +951,14 @@ const app = Vue.createApp({
         }
     },
     watch: {
+        ui_type_icons(newValue) {
+            if (newValue == '2024') {
+                this.ui_type_icons_modifier = "2024/"
+            }
+            if (newValue == '2023') {
+                this.ui_type_icons_modifier = ""
+            }
+        },
         ui_type_colors(newValue) {
             if (newValue == 'Bulbapedia Current') {
                 this.ui_type_color_modifier = "current_"
@@ -1388,7 +1400,7 @@ const app = Vue.createApp({
                 if(this.dynamicTypeAvailable) {
                     type = this.mapper.properties.battle.yourPokemon.type1;
                 }
-                return `images/elements/types/${type}.png`.toLowerCase();
+                return `images/elements/types/${this.ui_type_icons_modifier}${type}.png`.toLowerCase();
         },
         getStarterType2() {
             if (this.pick == true)
@@ -1396,7 +1408,7 @@ const app = Vue.createApp({
                 if(this.dynamicTypeAvailable) {
                     type = this.mapper.properties.battle.yourPokemon.type2;
                 }
-                return `images/elements/types/${type}.png`.toLowerCase();
+                return `images/elements/types/${this.ui_type_icons_modifier}${type}.png`.toLowerCase();
         },
         dynamicTypeAvailable() {
             if(this.g3stateVariable != "Battle")
@@ -3604,7 +3616,7 @@ const app = Vue.createApp({
                 }
             }
             if(this.game.callback2.blackout.includes(newProp.value) /*&& !this.game.callback2.reset.includes(newProp.value)*/) {
-                    this.blackout_counter++;
+                this.blackout_counter++;
             }
         });
 
