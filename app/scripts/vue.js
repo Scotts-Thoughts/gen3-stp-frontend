@@ -328,6 +328,7 @@ class KeyHook {
 const keyhook = new KeyHook();
 
 const fs = require("fs");
+const { existsSync } = require('original-fs');
 const path = require("path");
 const { finished } = require('stream');
 
@@ -878,9 +879,13 @@ const app = Vue.createApp({
                 "right_panel",
                 "ui_type_icons",
                 "ui_type_icons_modifier",
+                "copy_overlay_pokemon_from",
+                "copy_overlay_pokemon_to",
             ],
 
             right_panel: 'Movepool',
+            copy_overlay_pokemon_from: MyStorage['copy_overlay_pokemon_from'] ??  "",
+            copy_overlay_pokemon_to:   MyStorage['copy_overlay_pokemon_to']   ??  "",
         }
     },
     created() {
@@ -1016,28 +1021,28 @@ const app = Vue.createApp({
         },
         starterString(newValue, oldValue) {
             //background texture settings
-            this.overlay_color =         MyStorage[`${newValue}`]?.overlay_color ?? this.default_colors[dexDataRubySapphireEmerald[newValue].type_1]
-            this.backgroundTexture =     MyStorage[`${newValue}`]?.backgroundTexture ?? `${this.dexData[newValue].type_1}`
-            this.backgroundBlur =        MyStorage[`${newValue}`]?.backgroundBlur ?? 0,
-            this.backgroundHue =         MyStorage[`${newValue}`]?.backgroundHue ?? 0,
-            this.backgroundScale =       MyStorage[`${newValue}`]?.backgroundScale ?? 100,
-            this.backgroundUrl =         MyStorage[`${newValue}`]?.backgroundUrl ?? "",
-            this.backgroundFlip =        MyStorage[`${newValue}`]?.backgroundFlip ?? false,
+            this.overlay_color =         MyStorage[`${newValue}`]?.overlay_color         ?? this.default_colors[dexDataRubySapphireEmerald[newValue].type_1]
+            this.backgroundTexture =     MyStorage[`${newValue}`]?.backgroundTexture     ?? `${this.dexData[newValue].type_1}`
+            this.backgroundBlur =        MyStorage[`${newValue}`]?.backgroundBlur        ?? 0,
+            this.backgroundHue =         MyStorage[`${newValue}`]?.backgroundHue         ?? 0,
+            this.backgroundScale =       MyStorage[`${newValue}`]?.backgroundScale       ?? 100,
+            this.backgroundUrl =         MyStorage[`${newValue}`]?.backgroundUrl         ?? "",
+            this.backgroundFlip =        MyStorage[`${newValue}`]?.backgroundFlip        ?? false,
             this.use_custom_background = MyStorage[`${newValue}`]?.use_custom_background ?? false,
-            this.backgroundXOffset =     MyStorage[`${newValue}`]?.backgroundXOffset ?? 0,
-            this.backgroundYOffset =     MyStorage[`${newValue}`]?.backgroundYOffset ?? 0,
-            this.backgroundBrightness =  MyStorage[`${newValue}`]?.backgroundBrightness ?? 100,
-            this.backgroundContrast =    MyStorage[`${newValue}`]?.backgroundContrast ?? 100,
-            this.backgroundSaturation =  MyStorage[`${newValue}`]?.backgroundSaturation ?? 100,
+            this.backgroundXOffset =     MyStorage[`${newValue}`]?.backgroundXOffset     ?? 0,
+            this.backgroundYOffset =     MyStorage[`${newValue}`]?.backgroundYOffset     ?? 0,
+            this.backgroundBrightness =  MyStorage[`${newValue}`]?.backgroundBrightness  ?? 100,
+            this.backgroundContrast =    MyStorage[`${newValue}`]?.backgroundContrast    ?? 100,
+            this.backgroundSaturation =  MyStorage[`${newValue}`]?.backgroundSaturation  ?? 100,
             //Attempts and finishes
-            this.attempt_number =        MyStorage[`${newValue}`]?.attempt_number ?? 0,
+            this.attempt_number =        MyStorage[`${newValue}`]?.attempt_number     ?? 0,
             this.finished_run_count =    MyStorage[`${newValue}`]?.finished_run_count ?? 0,
             //main pokemon settings
             MyStorage['starterString'] = newValue
-            this.pkmnNature =            MyStorage[`${newValue}`]?.pkmnNature ?? "Hardy",
-            this.pkmn_ability =          MyStorage[`${newValue}`]?.pkmn_ability ?? dexDataRubySapphireEmerald[newValue].abilities[0],
+            this.pkmnNature =            MyStorage[`${newValue}`]?.pkmnNature        ?? "Hardy",
+            this.pkmn_ability =          MyStorage[`${newValue}`]?.pkmn_ability      ?? this.dexDataRubySapphireEmerald[newValue].abilities[0],
             this.hidden_power_type =     MyStorage[`${newValue}`]?.hidden_power_type ?? "Dark",
-            this.pkmn_gender =           MyStorage[`${newValue}`]?.pkmn_gender ?? "Female"
+            this.pkmn_gender =           MyStorage[`${newValue}`]?.pkmn_gender       ?? "Female"
             this.movepoolResize();
         },
         playerId(newValue) {
@@ -1694,6 +1699,99 @@ const app = Vue.createApp({
             this.playerId = 0
             // this.playerName = "NINTEN"
         },
+        // copy_overlay_properties() {
+        //     const copy_from = this.copy_overlay_pokemon_from
+        //     const copy_to   = this.copy_overlay_pokemon_to
+        //     // const game_name = this.mapper.properties.meta.game_name.value
+        //     const from      = `${copy_from}`
+        //     const to        = `${copy_to}`
+
+        //     if (!MyStorage[from]) {
+        //         console.log("The Pokemon you are trying to copy from does not have overlay data stored for it.")
+        //         return
+        //     }
+
+        //     console.log(MyStorage[from])
+        //     if (MyStorage[from]) {
+        //         if (!MyStorage[to]) {
+        //             MyStorage[to] = {};
+        //         }
+        //         const properties = [
+        //             'overlay_color', 'backgroundBlur', 'backgroundHue', 'backgroundScale', 'backgroundUrl', 
+        //             'backgroundFlip', 'use_custom_background', 'backgroundXOffset', 'backgroundYOffset', 
+        //             'backgroundTexture', 'backgroundBrightness', 'backgroundContrast', 'backgroundSaturation'
+        //         ];
+            
+        //         properties.forEach(property => {
+        //             if (property in MyStorage[from]) {
+        //                 MyStorage[to][property] = MyStorage[from][property];
+        //             }
+        //         });
+        //     }
+        //     console.log(MyStorage[to])
+
+        //     // this.overlay_color         = MyStorage[from]?.overlay_color
+        //     // this.backgroundBlur        = MyStorage[from]?.backgroundBlur        
+        //     // this.backgroundHue         = MyStorage[from]?.backgroundHue        
+        //     // this.backgroundScale       = MyStorage[from]?.backgroundScale       
+        //     // this.backgroundUrl         = MyStorage[from]?.backgroundUrl         
+        //     // this.backgroundFlip        = MyStorage[from]?.backgroundFlip        
+        //     // this.use_custom_background = MyStorage[from]?.use_custom_background 
+        //     // this.backgroundXOffset     = MyStorage[from]?.backgroundXOffset     
+        //     // this.backgroundYOffset     = MyStorage[from]?.backgroundYOffset     
+        //     // this.backgroundTexture     = MyStorage[from]?.backgroundTexture     
+        //     // this.backgroundBrightness  = MyStorage[from]?.backgroundBrightness  
+        //     // this.backgroundContrast    = MyStorage[from]?.backgroundContrast    
+        //     // this.backgroundSaturation  = MyStorage[from]?.backgroundSaturation  
+
+        //     // console.log(`Copying ${from}'s overlay_color (${MyStorage[from].overlay_color}) to ${to}'s overlay_color (Currently: ${MyStorage[to].overlay_color})`)
+        //     // MyStorage[to].overlay_color         = MyStorage[from].overlay_color
+        //     // console.log(`Resulting overlay_color for ${to}: ${MyStorage[to].overlay_color}`)
+        //     // MyStorage[to].backgroundBlur        = MyStorage[from].backgroundBlur       
+        //     // MyStorage[to].backgroundHue         = MyStorage[from].backgroundHue       
+        //     // MyStorage[to].backgroundScale       = MyStorage[from].backgroundScale      
+        //     // MyStorage[to].backgroundUrl         = MyStorage[from].backgroundUrl        
+        //     // MyStorage[to].use_custom_background = MyStorage[from].use_custom_background
+        //     // MyStorage[to].backgroundXOffset     = MyStorage[from].backgroundXOffset    
+        //     // MyStorage[to].backgroundYOffset     = MyStorage[from].backgroundYOffset    
+        //     // MyStorage[to].backgroundTexture     = MyStorage[from].backgroundTexture    
+        //     // MyStorage[to].backgroundBrightness  = MyStorage[from].backgroundBrightness 
+        //     // MyStorage[to].backgroundContrast    = MyStorage[from].backgroundContrast   
+        //     // MyStorage[to].backgroundSaturation  = MyStorage[from].backgroundSaturation 
+        //     // console.log(MyStorage[to])
+        // },
+        copy_overlay_properties() {
+            const copy_from = this.copy_overlay_pokemon_from
+            const copy_to   = this.copy_overlay_pokemon_to
+            const from      = `${copy_from}`
+            const to        = `${copy_to}`
+        
+            if (!MyStorage[from]) {
+                console.log("The Pokemon you are trying to copy from does not have overlay data stored for it.")
+                return
+            }
+        
+            console.log(MyStorage[from])
+            if (MyStorage[from]) {
+                const properties = [
+                    'overlay_color', 'backgroundBlur', 'backgroundHue', 'backgroundScale', 'backgroundUrl', 
+                    'backgroundFlip', 'use_custom_background', 'backgroundXOffset', 'backgroundYOffset', 
+                    'backgroundTexture', 'backgroundBrightness', 'backgroundContrast', 'backgroundSaturation'
+                ];
+        
+                // Create a new object and copy the properties
+                const newObject = {};
+                properties.forEach(property => {
+                    if (property in MyStorage[from]) {
+                        newObject[property] = MyStorage[from][property];
+                    }
+                });
+        
+                // Assign the new object to MyStorage[to]
+                MyStorage[to] = newObject;
+            }
+            console.log(MyStorage[to])
+        },
         load_all_settings() {
             this.starterString = MyStorage["starterString"] ?? "Rayquaza"
 
@@ -1747,26 +1845,32 @@ const app = Vue.createApp({
 
             //Pokemon settings for local storage
             this.overlay_color = MyStorage[this.starterString]?.overlay_color ?? this.default_colors[`${dexDataRubySapphireEmerald[this.starterString].type_1}`]
-            this.imageXOffset =  MyStorage[this.starterString]?.imageXOffset ?? 0
-            this.imageYOffset =  MyStorage[this.starterString]?.imageYOffset ?? 0
-            this.imageScale =    MyStorage[this.starterString]?.imageScale ?? 1
-            this.imageFlip =     MyStorage[this.starterString]?.imageFlip ?? false
-            this.imageSat =      MyStorage[this.starterString]?.imageSat ?? 100
+            this.imageXOffset =  MyStorage[this.starterString]?.imageXOffset  ?? 0
+            this.imageYOffset =  MyStorage[this.starterString]?.imageYOffset  ?? 0
+            this.imageScale =    MyStorage[this.starterString]?.imageScale    ?? 1
+            this.imageFlip =     MyStorage[this.starterString]?.imageFlip     ?? false
+            this.imageSat =      MyStorage[this.starterString]?.imageSat      ?? 100
             this.imageRotation = MyStorage[this.starterString]?.imageRotation ?? 0
 
             //background texture settings
-            this.backgroundBlur =        MyStorage[this.starterString]?.backgroundBlur ?? 0
-            this.backgroundScale =       MyStorage[this.starterString]?.backgroundScale ?? 100
-            this.backgroundUrl =         MyStorage[this.starterString]?.backgroundUrl ?? ""
-            this.backgroundFlip =        MyStorage[this.starterString]?.backgroundFlip ?? false
+            this.backgroundBlur =        MyStorage[this.starterString]?.backgroundBlur        ?? 0
+            this.backgroundScale =       MyStorage[this.starterString]?.backgroundScale       ?? 100
+            this.backgroundUrl =         MyStorage[this.starterString]?.backgroundUrl         ?? ""
+            this.backgroundFlip =        MyStorage[this.starterString]?.backgroundFlip        ?? false
             this.use_custom_background = MyStorage[this.starterString]?.use_custom_background ?? false
-            this.backgroundXOffset =     MyStorage[this.starterString]?.backgroundXOffset ?? 0
-            this.backgroundYOffset =     MyStorage[this.starterString]?.backgroundYOffset ?? 0
-            this.backgroundTexture =     MyStorage[this.starterString]?.backgroundTexture ?? `${this.dexData[this.starterString].type_1}`
-            this.backgroundBrightness =  MyStorage[this.starterString]?.backgroundBrightness ?? 100
-            this.backgroundContrast =    MyStorage[this.starterString]?.backgroundContrast ?? 100
-            this.backgroundSaturation =  MyStorage[this.starterString]?.backgroundSaturation ?? 100
-            this.backgroundHue =         MyStorage[this.starterString]?.backgroundHue ?? 0
+            this.backgroundXOffset =     MyStorage[this.starterString]?.backgroundXOffset     ?? 0
+            this.backgroundYOffset =     MyStorage[this.starterString]?.backgroundYOffset     ?? 0
+            this.backgroundTexture =     MyStorage[this.starterString]?.backgroundTexture     ?? `${this.dexData[this.starterString].type_1}`
+            this.backgroundBrightness =  MyStorage[this.starterString]?.backgroundBrightness  ?? 100
+            this.backgroundContrast =    MyStorage[this.starterString]?.backgroundContrast    ?? 100
+            this.backgroundSaturation =  MyStorage[this.starterString]?.backgroundSaturation  ?? 100
+            this.backgroundHue =         MyStorage[this.starterString]?.backgroundHue         ?? 0
+
+            // const evolution_family = this.g4PokemonData[this.starter]?.evolution_family ?? [ {species: null, method: null,}, {species: null, method: null,}, {species: null, method: null,}, ]
+            // this.evolution =               MyStorage[`${game_name}_${this.starter}`]?.evolution              ?? false
+            // this.evolution_splits_label =  MyStorage[`${game_name}_${this.starter}`]?.evolution_splits_label ?? `${evolution_family[evolution_family.length - 1]?.species}-line`
+            this.copy_overlay_pokemon_from = MyStorage['copy_overlay_pokemon_from'] ?? ""
+            this.copy_overlay_pokemon_to   = MyStorage['copy_overlay_pokemon_to']   ?? ""
         },
         reset() {
             this.backgroundBlur =        0,
@@ -3169,7 +3273,6 @@ const app = Vue.createApp({
                 var modifier_stab = move_type == user_type_1 ? 1.5 
                     : move_type == user_type_2 ? 1.5 
                     : 1
-    
                 var modifier_ability = this.abilityModifier(this.mapper.properties.battle.enemyPokemon, move_type, 'opponent')
                 if (this.mapper.properties.battle.yourPokemon.ability.value == 'Levitate' && move_type == 'Ground') {
                     modifier_ability = 0 

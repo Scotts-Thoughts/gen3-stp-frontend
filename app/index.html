@@ -72,6 +72,12 @@
                         <option disabled value="">Select a species</option>
                         <option v-for="key in keys_function(dexDataRubySapphireEmerald)" :value="`${key}`">{{key}}</option>
                     </select>
+                    <div>Game:</div>
+                    <select v-model="gameSelection" class="dropdownMenu">
+                        <option disabled value="">Select a species</option>
+                        <option>Emerald</option>
+                        <option>FireRed and LeafGreen</option>
+                    </select>
                     <br>
                     <button class="buttonStyle" @click="newRun">New Run</button><br>
                     <button @click="pauseUnpauseTime()" class="buttonStyle" style="background-color: rgb(201, 199, 100);">Toggle Pause Timer</button>
@@ -107,18 +113,15 @@
                     Test Run: <input class="checkBoxStyle" type="checkbox" v-model="testStatus"/>
                     <br>
                     <br>
-                    <div>Pokemon Image Settings</div>
-                    X-Offset:   <input type="range" min="-400" max="400" v-model="imageXOffset"/><br>
-                    Y-Offset:   <input type="range" min="-400" max="400"v-model="imageYOffset"/><br>
-                    Scale:      <input type="range" min="0.2" max="2.5" step="0.01" v-model="imageScale"/><br>
-                    Saturation: <input type="range" min="90" max="150" step="1" v-model="imageSat"/><br>
-                    Rotation:   <input type="range" min="-180" max="180" step=".25" v-model="imageRotation"/><br>
-                    Flip:       <input class="checkBoxStyle" type="checkbox" v-model="imageFlip"/><br>
-                    <button @click="resetPokemon()" class="buttonStyle">Reset Pokemon Settings</button><br>
-                    <br>
                     <div>Overlay Color Selector:</div>
                     <button @click="color_picker" class="buttonStyle">Color Picker</button><br>
                     Saturation: <input type="range" min="0" max="2" step="0.1" v-model="ui_saturation"/><br>
+                    <br>
+                    <div>Copy Overlay Settings:</div>
+                    <div>Enter Pokemon species here</div>
+                    Copy from: <input type="text" v-model="copy_overlay_pokemon_from"/><br>
+                    Copy to: <input type="text" v-model="copy_overlay_pokemon_to"/><br>
+                    <button @click="copy_overlay_properties()" class="buttonStyle">Copy Overlay Settings</button><br>
                     <br>
                     Type Colors:<br>
                     <select v-model="ui_type_colors" class="dropdownMenu">
@@ -137,14 +140,6 @@
                 </div>
                 <div class="ui2">
                     <div style="font-size: 24px;">Advanced Settings:</div>
-                    <br>
-                    <div>Game:</div>
-                    <select v-model="gameSelection" class="dropdownMenu">
-                        <option disabled value="">Select a species</option>
-                        <option>Emerald</option>
-                        <option>FireRed and LeafGreen</option>
-                    </select>
-                    <br>
                     <br>
                     <div>Encounters:</div>
                     <table v-if="gameSelection == 'Emerald'">
@@ -244,6 +239,15 @@
                         <tr><td>Atk:</td><td style="padding-right: 15px;">{{hp_ivs[hidden_power_type][1]}}</td><td>SpD:</td><td>{{hp_ivs[hidden_power_type][5]}}</td></tr>
                         <tr><td>Def:</td><td style="padding-right: 15px;">{{hp_ivs[hidden_power_type][2]}}</td><td>Spe:</td><td>{{hp_ivs[hidden_power_type][3]}}</td></tr>
                     </table>
+                    <br>
+                    <div>Pokemon Image Settings</div>
+                    X-Offset:   <input type="range" min="-400" max="400" v-model="imageXOffset"/><br>
+                    Y-Offset:   <input type="range" min="-400" max="400"v-model="imageYOffset"/><br>
+                    Scale:      <input type="range" min="0.2" max="2.5" step="0.01" v-model="imageScale"/><br>
+                    Saturation: <input type="range" min="90" max="150" step="1" v-model="imageSat"/><br>
+                    Rotation:   <input type="range" min="-180" max="180" step=".25" v-model="imageRotation"/><br>
+                    Flip:       <input class="checkBoxStyle" type="checkbox" v-model="imageFlip"/><br>
+                    <button @click="resetPokemon()" class="buttonStyle">Reset Pokemon Settings</button><br>
                     <br>
                     <br>
                     <div style="font-size: 24px;">Debugging:</div>
@@ -522,10 +526,10 @@
                     </table>
                     <div class="colored-image ds" :style="`filter: saturate(${ui_saturation})`" style="--url: url(images/ui/movepool.svg)"></div>
                 </div> -->
-                <div v-else-if="youtube_chat == true" key=3>
+                <!-- <div v-else-if="youtube_chat == true" key=3>
                     <div class="movepoolTitle">Chat</div>
                     <div class="colored-image ds" :style="`filter: saturate(${ui_saturation})`" style="--url: url(images/ui/movepool.svg)"></div>
-                </div>
+                </div> -->
                 <div v-else key=2>
                     <div class="movepoolTitle">Movepool</div>
                     <table class="movepoolDemo" cellspacing="0" :style="movepoolResize()">
