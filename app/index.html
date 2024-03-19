@@ -320,7 +320,7 @@
 
                 <!-- STATS -------------------------------------------------------------------------------->  
                 <div style="z-index: 200;">
-                    <div v-if="stats == 'IVs'">
+                    <div v-if="stats == 'IVs' && g3stateVariable != 'Base Stats'">
                         <div class="statsheader">{{ mapper.properties.player.team[0].species.value }}'s IVs</div>
                         <div class="heldItemStyle heldItem">{{ nullToSpace(camelCase(mapper.properties.player.team[0].itemHeld.value)) }}</div>
 
@@ -336,7 +336,7 @@
                         </div>
                     </div>
 
-                    <div v-else-if="stats == 'EVs'">
+                    <div v-else-if="stats == 'EVs' && g3stateVariable != 'Base Stats'">
                         <div class="statsheader">{{ mapper.properties.player.team[0].species.value }}'s EVs</div>
                         <div class="heldItemStyle heldItem">{{ nullToSpace(camelCase(mapper.properties.player.team[0].itemHeld.value)) }}</div>
 
