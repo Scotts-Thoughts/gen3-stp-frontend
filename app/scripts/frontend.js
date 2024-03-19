@@ -1,3 +1,103 @@
+// Setup the Storage Object
+function createWatchedObject(watcher) {
+    const root = {};
+    const handler = {
+        get(target, property, receiver) {
+            const value = Reflect.get(target, property, receiver);
+            if (typeof value === 'object' && value !== null) {
+                return new Proxy(value, handler);
+            }
+            return value;
+        },
+        set(target, property, value, receiver) {
+            const result = Reflect.set(target, property, value, receiver);
+            watcher(root, {target, property, value});
+            return result;
+        },
+        deleteProperty(target, property) {
+            if (property in target) {
+                delete target[property];
+                watcher(root, {target, property, value: undefined});  
+            }
+        },
+        //* Using the deleteProperty function:
+            // Storage.test = 10
+            // delete Storage.test
+            //
+            // OR
+            //
+            // Storage["test"] = 20
+            // delete Storage["test"]
+    };
+    return new Proxy(root, handler);
+}
+
+/**
+ * @param {string} path                                  path to the file
+ * @param {string} file_name                             name of the file to save the data
+ * @param {object?} options
+ * @param {number?} options.saveTimeout                  time in milliseconds to wait before saving the file
+ * @param {((data:string) => void)?} options.onSave      called after the file is saved
+ */
+function createStoredObject(path, file_name, { saveTimeout, onSave } = {}) {
+    saveTimeout = saveTimeout || 250;
+    onSave = onSave || (() => {});
+
+    const fs = require("fs");
+    
+    const loadFromFile = () => {
+        try {
+            const data = fs.readFileSync(`${path}/${file_name}`, 'utf8');
+            return JSON.parse(data);
+        } catch (err) {
+            console.warn('[StoredObject] loadFromFile:', err.message);
+            return {};
+        }
+    };
+
+    const saveToFile = (root) => {
+        const data = JSON.stringify(root, null, 4);
+        if (!fs.existsSync(path)) {
+            fs.mkdirSync(path, { recursive: true });
+        }
+        fs.writeFile(`${path}/${file_name}`, data, (err) => {
+            if (err) console.error('[StoredObject] saveToFile:', err.message);
+            else onSave(data);
+        });
+    };
+
+    // after the watcher receives the first change it will wait 
+    // for "saveTimeout" milliseconds before saving the file.
+    // then it will reset the timer and wait for the next change.
+    // this is done to avoid saving the file too often when
+    // multiple changes are made in a short period of time.
+    let timeoutId = null;
+    const watcher = (root) => {
+        if (timeoutId == null) {
+            timeoutId = setTimeout(() => {
+                saveToFile(root);
+                timeoutId = null;
+            }, saveTimeout);
+        }
+    };
+
+    const obj = createWatchedObject(watcher);
+    Object.assign(obj, loadFromFile());
+    return obj;
+}
+
+
+const Storage = createStoredObject('./storage', 'Storage.json', {
+    saveTimeout: 250,
+    onSave: (data) => {
+        // console.log('[Storage] saved:', data);
+        // do something after the file is saved
+        // like creating a backup somewhere else
+    }
+});
+
+
+// Setup the MyStorage Object
 const MyStorage = new Proxy({}, {
     set: (_, prop, value) => {
         if (value === undefined || value === null)
@@ -332,7 +432,7 @@ const { existsSync } = require('original-fs');
 const path = require("path");
 const { finished } = require('stream');
 
-for (folder in folders = ['splits', 'splits/Emerald', 'splits/FireRed']) {
+for (folder of folders = ['storage', 'splits', 'splits/Emerald', 'splits/FireRed']) {
     if (!fs.existsSync(folder)) {
         fs.mkdirSync(folder);
     }
@@ -545,18 +645,18 @@ function transition(fn, ms) {
 const app = Vue.createApp({
     data() {
         return {
-            ready: false,
-            mapper: null,
-            scott_mode: true,
+            ready:         false,
+            mapper:        null,
+            scott_mode:    true,
             gameVariables: null,
             // game: null,
             // POKEMON CONFIG (components) ---------------------------------------------------------------------//
-            starterString: "Beedrill",
-            pkmnNature: "Adamant",
-            pkmn_ability: "Pressure", // false = ability 1, true = ability 2
+            starterString:     "Beedrill",
+            pkmnNature:        "Adamant",
+            pkmn_ability:      "Pressure", // false = ability 1, true = ability 2
             hidden_power_type: "Electric",
-            pkmn_gender: "Female",
-            gameSelection: MyStorage['gameSelection'] ?? "FireRed and LeafGreen",
+            pkmn_gender:       "Female",
+            gameSelection:     MyStorage['gameSelection'] ?? "FireRed and LeafGreen",
             
             // USER CONFIG (components) ------------------------------------------------------------------------// 
             graphicOverlay: MyStorage['graphicOverlay'] ?? true, //places a single image as the overlay  //MVP
@@ -954,6 +1054,127 @@ const app = Vue.createApp({
             );
             
         }
+
+        // //!Setup the new Storage object
+        //         // Initialize the Storage object
+        // // This creates all of the objects that will then be filled
+        // const debug_mode = false; // This enables the printing of storage related console logs
+        // const clear_storage = false; // Use this to test functionality. It resets all the data blocks within the Storage.json file to their default values
+        // if (debug_mode) { console.log(`Initializing the Storage Object...`) }
+        // if (!Storage['global_variables'] || clear_storage == true) { //If the global variables don't exist, create them
+        //     // Assigns the global variables to the Storage object
+        //     Storage['global_variables'] = {
+        //         starter: this.starterName,
+        //         game: this.gameSelection,
+        //     }
+        // }
+        // if (!Storage['application_settings'] || clear_storage == true) {
+        //     //Assigns the application settings to the Storage object, these persist when the user changes the starter Pokemon
+        //     Storage['application_settings'] = {}
+        //     this.application_settings.forEach(setting => {
+        //         Storage['application_settings'][setting[0]] = setting[1];
+        //     });
+        // }
+        // if (!Storage['games'] || clear_storage == true) {
+        //     // Assigns the game data to the Storage object, these properties will be switched between depending on the game and starter currently selected
+        //     Storage['games'] = { //If the games object doesn't exist, create it; everything will be stored within here
+        //         "Ruby and Sapphire":    {},
+        //         "Emerald":              {},
+        //         "FireRed and Sapphire": {},
+        //     }
+        // }
+        // if (debug_mode) { 
+        //     console.log(`Success!`) 
+        //     console.log(`Initializing Starter Storage Object...`)
+        // }
+        // if (!Storage['games'][this.gameSelection][this.starterName] || clear_storage == true) {
+        //     Storage['games'][this.gameSelection][this.starterName] = {
+        //         style:    {},
+        //         settings: {},
+        //         splits:   {},
+        //         data:     {},
+        //     };
+        //     this.pokemon_settings.forEach(setting => {
+        //         Storage['games'][this.gameSelection][this.starterName].style[setting[0]] = setting[1];
+        //     });
+        // }
+        // if (debug_mode) { console.log(`Success!`) }
+
+        // // Initialize watchers for all of the style properties. 
+        // // These are game and Pokemon specific saved within: Storage.games[game][starter]
+        // // Define variables
+        // if (debug_mode) { 
+        //     console.log(`Stored Starter: ${this.starterName}`) 
+        //     console.log(`Stored Game: ${this.gameSelection}`)
+        // }
+        // //Loop through application settings and create watchers
+        // for (let i = 0; i < this.application_settings.length; i++) {
+        //     let [prop_name, value] = this.application_settings[i];
+        //     this.$watch(
+        //         () => this[prop_name],
+        //         (new_value) => {
+        //             if (!Storage.application_settings) {
+        //                 Storage.application_settings = {};
+        //             }
+        //             Storage.application_settings = {
+        //                 ...Storage.application_settings,
+        //                 [prop_name]: new_value
+        //             };
+        //         }
+        //     );
+        // }
+        // //Loop through style settings that will be saved within a game and specific Pokemon
+        // for (let i = 0; i < this.pokemon_settings.length; i++) {
+        //     let [prop_name, value] = this.pokemon_settings[i];
+        //     this.$watch(
+        //         () => this[prop_name],
+        //         (new_value) => {
+        //             if (!Storage.games[this.gameSelection][this.starterName].style) {
+        //                 Storage.games[this.gameSelection][this.starterName].style = {};
+        //             }
+        //             Storage.games[this.gameSelection][this.starterName].style = {
+        //                 ...Storage.games[this.gameSelection][this.starterName].style,
+        //                 [prop_name]: new_value
+        //             };
+        //         }
+        //     );
+        // }
+        // if (debug_mode) { 
+        //     console.log(`Storage finished initialization. Printing Storage object to console...`) 
+        //     console.log(Storage) 
+        //     console.log(`Loading settings from the Storage object into the application...`) 
+        //     console.log(Storage['global_variables'].starter) 
+        //     console.log(Storage['global_variables'].game) 
+        // }
+        // // Load Settings from the Storage object
+        // // Load Starter and Game
+        // this.starterName   = Storage['global_variables'].starter;
+        // this.gameSelection = Storage['global_variables'].game;
+        // // // Application Settings
+        // for (let key in Storage.application_settings) {
+        //     if (debug_mode) { 
+        //         console.log(`Application Setting Key: ${key}`) 
+        //     }
+        //     let application_settings = Object.entries(Storage.application_settings); // Assign the Pokemon's style settings to an array
+        //     for (let i = 0; i < application_settings.length; i++) { // Iterate through the array
+        //         this[key] = Storage.application_settings[key]; // Assign the values for each setting to the data() properties
+        //     }
+        // }
+        // // Pokemon Style Settings
+        // for (let key in Storage.games[this.gameSelection][this.starterName].style) {
+        //     if (debug_mode) { 
+        //         console.log(`Pokemon Style Key: ${key}`) 
+        //         console.log(Storage.games[this.gameSelection][this.starterName].style[key])
+        //     }
+        //     let style_settings = Object.entries(Storage.games[this.gameSelection][this.starterName].style); // Assign the Pokemon's style settings to an array
+        //     for (let i = 0; i < style_settings.length; i++) { // Iterate through the array
+        //         this[key] = Storage.games[this.gameSelection][this.starterName].style[key]; // Assign the values for each setting to the data() properties
+        //     }
+        // }
+        // if (debug_mode) { 
+        //     console.log(`Success!`) 
+        //     console.log(`Loaded all settings from Storage.`) 
+        // }
     },
     watch: {
         ui_type_icons(newValue) {
@@ -1046,13 +1267,13 @@ const app = Vue.createApp({
             this.movepoolResize();
         },
         playerId(newValue) {
-            MyStorage["playerId"] = newValue
-            this.game_over = false;
-            MyStorage["playerResets"] = 0
-            this.playerResets = 0;
-            this.finished_logs == false;
+            MyStorage["playerId"]         = newValue
+            this.game_over                = false;
+            MyStorage["playerResets"]     = 0
+            this.playerResets             = 0;
+            this.finished_logs            = false;
             MyStorage["blackout_counter"] = 0
-            this.blackout_counter = 0;
+            this.blackout_counter         = 0;
         },    
         overlay_color(newColor) {
             document.documentElement.style.setProperty('--overlay-color', newColor);
@@ -1437,6 +1658,7 @@ const app = Vue.createApp({
     },
 
     methods: { 
+        //methods
         special_trainer_names(trainer_name) {
             switch (trainer_name) {
                 case "Rival Brendan 1":  return "Rival Brendan 1";
@@ -1601,89 +1823,7 @@ const app = Vue.createApp({
         values_function(object) {
             return Object.values(object)
         },
-        //*timer methods
-        //start the timer
-        startTime() {
-            if (this.timer_pause == false) {
-                return
-            }
-            const timeRegex = /(\d+):(\d{2}):(\d{2})\.(\d{2})/;
-            const timeOffsetArray = this.timer_startTimeOffset.match(timeRegex)?.slice(1,5).map(x => parseInt(x)) ?? [0,0,0,0];
-            const timeOffset = timeOffsetArray[0] * 3600000 + timeOffsetArray[1] * 60000 + timeOffsetArray[2] * 1000 + timeOffsetArray[3] * 10;
 
-            this.timer_startTime = Date.now() - timeOffset
-            this.timer_pause = false
-            this.updateTime()
-        },
-        //stop the timer
-        stopTime() {
-            this.timer_pause_time = Date.now()
-            this.timer_pause = true
-        },
-        padTime(time) {
-            return time.toString().padStart(2, "0")
-        },
-        //animate the timer
-        updateTime() {
-            var time = Date.now() - this.timer_startTime
-            if (this.timer_pause == true) {
-                time = this.timer_pause_time - this.timer_startTime
-            }
-            var f = (x) => x.toString().padStart(2, "0")
-            var c = (Math.floor(time / 10) % 100)
-            var s = (Math.floor(time / 1000) % 60)
-            var m = (Math.floor(time / 60000) % 60)
-            var h = (Math.floor(time / 3600000))
-            this.time_h = h
-            this.time_m = m
-            this.time_s = s
-            this.time_ms = c
-            if (h != 0) {
-                this.timer_formatted_time = [ h + ":" + f(m) + ":" + f(s), "." + f(c), h + "h" + m + "m" + s + "s", ]
-            }
-            else if (m != 0) {
-                this.timer_formatted_time = [ m + ":" + f(s), "." + f(c), h + "h" + m + "m" + s + "s", ]
-            }
-            else {
-                this.timer_formatted_time = [ s, "." + f(c), h + "h" + m + "m" + s + "s", ]
-            }
-            if (this.timer_pause == false) {
-                requestAnimationFrame(this.updateTime)
-            }
-        },
-        //pause the timer
-        pauseUnpauseTime() {
-            if (this.timer_pause == true) {
-                this.timer_pause = false
-                this.timer_startTime += Date.now() - this.timer_pause_time
-                this.updateTime()
-                retro.resume()
-            }
-            else {
-                this.timer_pause = true
-                this.timer_pause_time = Date.now()
-                retro.pause()
-            }
-        },
-        // resetTime() {
-        //     this.timer_pause = true
-        //     this.timer_startTime = 0
-        //     this.timer_pause_time = 0
-        //     this.timer_formatted_time = [ "0", ".00" ]
-        // },
-        set_timer() {
-            const timeRegex = /(\d+):(\d{2}):(\d{2})\.(\d{2})/;
-            const timeOffsetArray = this.timer_startTimeOffset.match(timeRegex)?.slice(1,5).map(x => parseInt(x)) ?? [0,0,0,0];
-            const timeOffset = timeOffsetArray[0] * 3600000 + timeOffsetArray[1] * 60000 + timeOffsetArray[2] * 1000 + timeOffsetArray[3] * 10;
-
-            this.timer_pause = true
-            this.timer_startTime = Date.now() - timeOffset
-            this.timer_pause_time = Date.now()
-            this.timer_formatted_time = [ "0", ".00" ]
-            this.finished_logs = false
-
-            this.updateTime()
-        },
         newRun() {
             const timeRegex = /(\d+):(\d{2}):(\d{2})\.(\d{2})/;
             const timeOffsetArray = this.timer_startTimeOffset.match(timeRegex)?.slice(1,5).map(x => parseInt(x)) ?? [0,0,0,0];
@@ -1699,67 +1839,6 @@ const app = Vue.createApp({
             this.playerId = 0
             // this.playerName = "NINTEN"
         },
-        // copy_overlay_properties() {
-        //     const copy_from = this.copy_overlay_pokemon_from
-        //     const copy_to   = this.copy_overlay_pokemon_to
-        //     // const game_name = this.mapper.properties.meta.game_name.value
-        //     const from      = `${copy_from}`
-        //     const to        = `${copy_to}`
-
-        //     if (!MyStorage[from]) {
-        //         console.log("The Pokemon you are trying to copy from does not have overlay data stored for it.")
-        //         return
-        //     }
-
-        //     console.log(MyStorage[from])
-        //     if (MyStorage[from]) {
-        //         if (!MyStorage[to]) {
-        //             MyStorage[to] = {};
-        //         }
-        //         const properties = [
-        //             'overlay_color', 'backgroundBlur', 'backgroundHue', 'backgroundScale', 'backgroundUrl', 
-        //             'backgroundFlip', 'use_custom_background', 'backgroundXOffset', 'backgroundYOffset', 
-        //             'backgroundTexture', 'backgroundBrightness', 'backgroundContrast', 'backgroundSaturation'
-        //         ];
-            
-        //         properties.forEach(property => {
-        //             if (property in MyStorage[from]) {
-        //                 MyStorage[to][property] = MyStorage[from][property];
-        //             }
-        //         });
-        //     }
-        //     console.log(MyStorage[to])
-
-        //     // this.overlay_color         = MyStorage[from]?.overlay_color
-        //     // this.backgroundBlur        = MyStorage[from]?.backgroundBlur        
-        //     // this.backgroundHue         = MyStorage[from]?.backgroundHue        
-        //     // this.backgroundScale       = MyStorage[from]?.backgroundScale       
-        //     // this.backgroundUrl         = MyStorage[from]?.backgroundUrl         
-        //     // this.backgroundFlip        = MyStorage[from]?.backgroundFlip        
-        //     // this.use_custom_background = MyStorage[from]?.use_custom_background 
-        //     // this.backgroundXOffset     = MyStorage[from]?.backgroundXOffset     
-        //     // this.backgroundYOffset     = MyStorage[from]?.backgroundYOffset     
-        //     // this.backgroundTexture     = MyStorage[from]?.backgroundTexture     
-        //     // this.backgroundBrightness  = MyStorage[from]?.backgroundBrightness  
-        //     // this.backgroundContrast    = MyStorage[from]?.backgroundContrast    
-        //     // this.backgroundSaturation  = MyStorage[from]?.backgroundSaturation  
-
-        //     // console.log(`Copying ${from}'s overlay_color (${MyStorage[from].overlay_color}) to ${to}'s overlay_color (Currently: ${MyStorage[to].overlay_color})`)
-        //     // MyStorage[to].overlay_color         = MyStorage[from].overlay_color
-        //     // console.log(`Resulting overlay_color for ${to}: ${MyStorage[to].overlay_color}`)
-        //     // MyStorage[to].backgroundBlur        = MyStorage[from].backgroundBlur       
-        //     // MyStorage[to].backgroundHue         = MyStorage[from].backgroundHue       
-        //     // MyStorage[to].backgroundScale       = MyStorage[from].backgroundScale      
-        //     // MyStorage[to].backgroundUrl         = MyStorage[from].backgroundUrl        
-        //     // MyStorage[to].use_custom_background = MyStorage[from].use_custom_background
-        //     // MyStorage[to].backgroundXOffset     = MyStorage[from].backgroundXOffset    
-        //     // MyStorage[to].backgroundYOffset     = MyStorage[from].backgroundYOffset    
-        //     // MyStorage[to].backgroundTexture     = MyStorage[from].backgroundTexture    
-        //     // MyStorage[to].backgroundBrightness  = MyStorage[from].backgroundBrightness 
-        //     // MyStorage[to].backgroundContrast    = MyStorage[from].backgroundContrast   
-        //     // MyStorage[to].backgroundSaturation  = MyStorage[from].backgroundSaturation 
-        //     // console.log(MyStorage[to])
-        // },
         copy_overlay_properties() {
             const copy_from = this.copy_overlay_pokemon_from
             const copy_to   = this.copy_overlay_pokemon_to
@@ -1917,43 +1996,7 @@ const app = Vue.createApp({
                 [property_name]: value,
             }
         },
-        move_name(move_string) { //converts move strings so that they are formatted correctly
-            if (move_string != undefined) {
-                if (move_string.toLowerCase() == "vicegrip")     { return "ViceGrip" }
-                if (move_string.toLowerCase() == "vice grip")     { return "ViceGrip" }
-                if (move_string.toLowerCase() == "doubleslap")   { return "DoubleSlap" }
-                if (move_string.toLowerCase() == "double slap")   { return "DoubleSlap" }
-                if (move_string.toLowerCase() == "double-edge")  { return "Double-Edge" }
-                if (move_string.toLowerCase() == "double edge")  { return "Double-Edge" }
-                if (move_string.toLowerCase() == "solarbeam")    { return "SolarBeam" }
-                if (move_string.toLowerCase() == "extremespeed") { return "ExtremeSpeed" }
-                if (move_string.toLowerCase() == "extreme speed") { return "ExtremeSpeed" }
-                if (move_string.toLowerCase() == "dynamicpunch") { return "DynamicPunch" }
-                if (move_string.toLowerCase() == "thunderpunch") { return "ThunderPunch" }
-                if (move_string.toLowerCase() == "bubblebeam")   { return "BubbleBeam" }
-                if (move_string.toLowerCase() == "grasswhistle") { return "GrassWhistle" }
-                if (move_string.toLowerCase() == "grass whistle") { return "GrassWhistle" }
-                if (move_string.toLowerCase() == "softboiled")   { return "Softboiled" }
-                if (move_string.toLowerCase() == "soft boiled")   { return "Softboiled" }
-                if (move_string.toLowerCase() == "sand-attack")  { return "Sand-Attack" }
-                if (move_string.toLowerCase() == "mud-slap")     { return "Mud-Slap" }
-                if (move_string.toLowerCase() == "featherdance") { return "FeatherDance" }
-                if (move_string.toLowerCase() == "poisonpowder") { return "PoisonPowder" }
-                if (move_string.toLowerCase() == "dragonbreath") { return "DragonBreath" }
-                if (move_string.toLowerCase() == "ancientpower") { return "AncientPower" }
-                if (move_string.toLowerCase() == "smellingsalt") { return "SmellingSalt" }
-                if (move_string.toLowerCase() == "selfdestruct") { return "Selfdestruct" }
-                if (move_string.toLowerCase() == "smokescreen")  { return "SmokeScreen" }
-                if (move_string.toLowerCase() == "sonicboom")    { return "SonicBoom" }
-                if (move_string.toLowerCase() == "lock on")    { return "Lock-on" }
-                if (move_string.toLowerCase() == "lock-on")    { return "Lock-on" }
-                if (move_string.toLowerCase() == "will o wisp")  { return "Will-O-Wisp" }
 
-
-                else { return move_string }
-            }
-            else { return move_string }
-        },
         paralysis(speed) {
             if (this.s1.statusCondition.value == `Paralyzed`) {
                 return Math.floor(speed * 0.25)
@@ -2005,16 +2048,7 @@ const app = Vue.createApp({
             var split = splitData[splitNumber]["realtime.end"]
             return this.formatDuration(split)
         },
-        formatDuration(x) {
-            if (x.startsWith("00:")) {
-                x = x.substring(3)
-            }
-            if (x.startsWith(0)) {
-                x = x.substring(1)
-            }
-            x = x.substring(0, x.length-4)
-            return x
-        },
+
         split(splitName, splits) {
             console.log(splits)
             var split = splits.find(x => x.trainer_name === splitName)
@@ -2550,104 +2584,36 @@ const app = Vue.createApp({
         },
 
 
-        //BADGE BOOSTS
-        bbAttack(x) {
-            if (this.mapper.properties.player.badges.badge1.value == true) {
-                statValue = Math.floor(x * 1.1)
-                if (statValue > 999) {
-                    return 999
-                }
-                else {
-                    return statValue
-                }
-            }
-            else
-                return x
-        },
-        bbSpeed(x) {
-            if (this.mapper.properties.player.badges.badge3.value == true) {
-                statValue = Math.floor(x * 1.1)
-                if (statValue > 999) {
-                    return 999
-                }
-                else {
-                    return statValue
-                }
-            }
-            else
-                return x
-        },
-        bbDefense(x) {
-            if (this.mapper.properties.player.badges.badge5.value == true) {
-                statValue = Math.floor(x * 1.1)
-                if (statValue > 999) {
-                    return 999
-                }
-                else {
-                    return statValue
-                }
-            }
-            else
-                return x
-        },
-        bbSpecialAttack(x) {
-            if (this.mapper.properties.player.badges.badge7.value == true) {
-                statValue = Math.floor(x * 1.1)
-                if (statValue > 999) {
-                    return 999
-                }
-                else {
-                    return statValue
-                }
-            }
-            else
-                return x
-        },
-        bbSpecialDefense(x) {
-            if (this.mapper.properties.player.badges.badge7.value == true) {
-                statValue = Math.floor(x * 1.1)
-                if (statValue > 999) {
-                    return 999
-                }
-                else {
-                    return statValue
-                }
-            }
-            else
-                return x
+        // Badge boosts
+        badge_boost(badge, stat) {
+            return badge ? Math.floor(stat * 1.1) : stat;
         },
 
-        //REMOVES CAPITALIZATION (TACKLE -> Tackle) OR (Tail Whip -> Tail whip)
-        camelCase: function (str) {
-            if (!str || !str.toString()) { return '' }
-            return str.toString().replace(/(?:^\w|[A-Z]|\b\w)/g, function (word, index) {
-                return index == 0 ? word.toUpperCase() : word.toLowerCase();
-            })
-        },
-        capitalization_format(str) {
-            if (str == null) { return "" }
-            return str.toLowerCase().replace(/(^|\s|\-|\.)(\w)/g, function(match, p1, p2) {
-              return p1 + p2.toUpperCase();
-            });
-        },
-        pascalCaseSpace(str) {
-            let words = str.split(' ');
-            for (let char of words) {
-                words[words.indexOf(char)] = char.charAt(0).toUpperCase() + char.slice(1);
-            }
-            return words.join(' ');
-        },
-        pascalCaseDot(str) {
-            let words = str.split('.');
-            for (let char of words) {
-                words[words.indexOf(char)] = char.charAt(0).toUpperCase() + char.slice(1);
-            }
-            return words.join(' ');
-        },
-        titleCaseNoUnderscores(str) { //VIRIDIAN_FOREST -> Viridian Forest
-            let formattedStr = str.replace(/_/g, ' ');
-            return formattedStr.charAt(0).toUpperCase() + formattedStr.substr(1).toLowerCase();
-        },
+        // text_functions.js
+        move_name,
+        camelCase,
+        capitalization_format,
+        pascalCaseSpace,
+        pascalCaseDot,
+        titleCaseNoUnderscores,
+        itemCheck,
+        ifZero,
+        nullToNone,
+        nullToSpace,
+
+        // time_functions.js
+        startTime,
+        stopTime,
+        updateTime,
+        pauseUnpauseTime,
+        set_timer,
+        gameTimeHM,
+        gameTimeHM,
+        gameTimeM,
+        gameTimeHMS,
+        leadZero,
+        formatDuration,
+
         getPokemonImageUrl: function (x) {
             if (x != null)
                 return `images/overlay/${x.pokedexNumber}.png`
@@ -2665,19 +2631,6 @@ const app = Vue.createApp({
             }
             else
                 return `images/elements/textures/normal.png`
-        },
-        
-        
-        
-        //GAMETIME
-        gameTimeHM(h, m) {
-            if (m < 10) m = "0" + m.toString();
-            return `${h}:`+m;
-        },
-        gameTimeM(m) {
-            if (m < 10) 
-                m = "0" + m.toString();
-            return m
         },
 
         //BADGE GRAPHIC RECALL
@@ -2788,48 +2741,7 @@ const app = Vue.createApp({
             damageMin = ((((((2 * level / 5) + 2) * power * attack) / defense) / 50) + 2) * stab * type1 * type2 * randomMin
             return damageMin.toString() + "-" + damageMax.toString()
         },
-        
-        //GAMETIME FUNCTIONS
-        gameTimeHM(h, m) {
-            if (h <= 0) return m;
-            if (m < 10) 
-                m = "0" + m.toString();
-            return `${h}:${m}`;
-        },
-        gameTimeHMS(h, m) {
-            if (h <= 0) {
-                if (m <= 0) return `${s}`;
-                if (s < 10) s = "0" + s.toString();
-                return `${m}:${s}`;
-            }
-            if (s < 10) s = "0" + s.toString();
-            if (m < 10) m = "0" + m.toString();
-            return `${h}:${m}:${s}`;
-        },
-        leadZero(y) {
-            if (y < 10) return "0" + y.toString();
-            return y;
-        },
-        
-        //INVENTORY FUNCTIONS
-        itemCheck(y) {
-            if (y == "--End of list--") return " ";
-            return y;
-        },
-        ifZero(y) {
-            if (y != 0) return y;
-            return " ";
-        },
-        nullToNone(y) {
-            if (y == 0) 
-                return "None"
-            return y
-        },
-        nullToSpace(y) {
-            if (y == 0) 
-                return " "
-            return y
-        },
+    
         sleep(ms) {
             return new Promise((res) => setTimeout(res, ms))
         },
@@ -2910,61 +2822,6 @@ const app = Vue.createApp({
         },
 
         // MOVE MANAGEMENT
-        movePower(y) { //y = move1.value
-            if (y) { y = y.toUpperCase() }
-            if (y) {
-                var move = this.gen3moves.find(x => x.Move.toLowerCase() === this.move_name(y).toLowerCase())
-                if (y == "RETURN") {
-                    if (this.mapper.properties.player.team[0].friendship.value < 2.5)
-                        var friendshipValue = 2.5 
-                    else 
-                        var friendshipValue = this.mapper.properties.player.team[0].friendship.value
-                    var specialMovePower = Math.floor(friendshipValue/2.5)
-                    return specialMovePower
-                }
-                else if (y == "FLAIL" || y == "REVERSAL") {
-                    var hpPercentage = this.mapper.properties.player.team[0].hp.value / this.mapper.properties.player.team[0].maxHp.value
-                    if (hpPercentage >= .6875) { return 20 }
-                    else if (hpPercentage >= .3542 && hpPercentage < .6875) { return 40 }
-                    else if (hpPercentage >= .2083 && hpPercentage < .3542) { return 80 }
-                    else if (hpPercentage >= .1042 && hpPercentage < .2083) { return 100 }
-                    else if (hpPercentage >= .0417 && hpPercentage < .1042) { return 150 }
-                    else if (hpPercentage < .0417) { return 200 }
-                }
-                else if (y == "WATER SPOUT" || y == "ERUPTION") {
-                    var power = (150 * this.mapper.properties.player.team[0].hp.value) / this.mapper.properties.player.team[0].maxHp.value
-                    if (power < 1) {
-                        return 1
-                    }
-                    return Math.floor(power)
-                }
-                else if (y == "FRUSTRATION") {
-                    if (this.mapper.properties.player.team[0].friendship.value > 252.5)
-                        var friendshipValue = 252.5 
-                    else 
-                        var friendshipValue = this.mapper.properties.player.team[0].friendship.value
-                    var specialMovePower = Math.floor((255-friendshipValue)/2.5)
-                    return specialMovePower
-                }
-                else if (y == "LOW KICK") {
-                    if (this.dexData[this.batt.enemyPokemon.species.value]?.weight < 10) { return 20 }
-                    if (this.dexData[this.batt.enemyPokemon.species.value]?.weight < 25) { return 40 }
-                    if (this.dexData[this.batt.enemyPokemon.species.value]?.weight < 50) { return 60 }
-                    if (this.dexData[this.batt.enemyPokemon.species.value]?.weight < 100) { return 80 }
-                    if (this.dexData[this.batt.enemyPokemon.species.value]?.weight < 200) { return 100 }
-                    if (this.dexData[this.batt.enemyPokemon.species.value]?.weight >= 200) { return 120 }
-                }
-                else if (y.toUpperCase() == "HIDDEN POWER") {
-                    return this.hiddenPowerPowerCalc(this.mapper.properties.player.team[0])
-                }
-                else if (y == "FACADE" && (this.s1.statusCondition.value == "Paralyzed" || this.s1.statusCondition.value == "Poisoned" || this.s1.statusCondition.value == "Burned")) {
-                    return move.Power * 2
-                }
-                else
-                    if (move) return move.Power
-            }
-            return null
-        },
         movepoolPower(moveObject) {
             if (moveObject.Move.toUpperCase() == `HIDDEN POWER`) {
                 return this.hiddenPowerPowerCalc(this.mapper.properties.player.team[0])
@@ -3004,50 +2861,8 @@ const app = Vue.createApp({
             }
             return moveObject.Type
         },
-        g3ReturnPowerCalc(slotNumber) {
-            if (slotNumber.friendship.value < 2.5) { var friendshipValue = 2.5 }
-            else { var friendshipValue = slotNumber.friendship.value }
-            var specialMovePower = Math.floor(friendshipValue/2.5)
-            return specialMovePower
-        },
-        g3FrustrationPowerCalc(slotNumber) {
-            var friendshipValue = slotNumber.friendship.value
-            var specialMovePower = Math.floor((255 - friendshipValue)/2.5)
-            if (specialMovePower == 0) {
-                specialMovePower = 1
-            }
-            return specialMovePower
-        },
-        weatherModifier(weather, move, moveType) {
-            let mod = 1;
-            if(this.weatherDenial) {
-                return mod;
-            }
-            if(move == "WEATHER BALL" && !(weather == null || weather =="" || weather == undefined)) {
-                mod *= 2;
-            }
-            if (weather == "Sun" && moveType == "Water") {
-                return mod * .5;
-            }
-            else if (weather == "Sun" && moveType == "Fire") {
-                return mod * 1.5
-            }
-            else if (weather == "Rain" && moveType == "Water") {
-                return mod * 1.5
-            }
-            else if (weather == "Rain" && moveType == "Fire") {
-                return mod * .5
-            }
-            else if (weather == "Rain" && move == "SOLARBEAM") {
-                return mod * .5
-            }
-            else if (weather == "Sandstorm") {
-                return mod * 1
-            }
-            else {
-                return mod * 1
-            }
-        },
+
+
         moveType(y) { //y = move1.value
             if (y.toUpperCase() == "HIDDEN POWER") {
                 var move = this.hiddenPowerTypeCalc(this.mapper.properties.player.team[0])
@@ -3113,21 +2928,7 @@ const app = Vue.createApp({
                 return "rgb(0, 66, 14);"
         },
 
-        //y = mod stage, x = stat value
-        stageMultiplier(y,x) { 
-            // if (this.mapper.properties.battle.turnInfo.battleOutcome.bytes == 0 && y != 0 && y != null && y != undefined && this.mapper.properties.battle.yourPokemon.species != null) {
-            if (this.g3stateVariable == "Battle") {
-                var multiplier = this.stageModifiersData.find(x => x.modType === "stat")
-                var statValue = Math.floor(x * multiplier[y.toString()])
-                if (statValue > 999) {
-                    return 999
-                }
-                else
-                    return statValue
-            }
-            else
-                return x
-        },
+
         
         //x = stat modifier property (not the value of the property. [ex. battle.modStageAttack])
         statLabelOpacity(x) {
@@ -3141,296 +2942,32 @@ const app = Vue.createApp({
             else
                 return 1
         },
-        hiddenPowerTypeCalc(x) { //x = slot number
-            ivHpBit = x.ivHp % 2
-            ivAtkBit = x.ivAttack % 2
-            ivDefBit = x.ivDefense % 2
-            ivSpdBit = x.ivSpeed % 2
-            ivSpcABit = x.ivSpecialAttack % 2
-            ivSpcDBit = x.ivSpecialDefense % 2
-            type = this.hiddenPowerTypes[(Math.floor(((ivHpBit + (2 * ivAtkBit) + (4 * ivDefBit) + (8 * ivSpdBit) + (16 * ivSpcABit) + (32 * ivSpcDBit)) * 5)/21))]
-            return type
-        },
-        hiddenPowerPowerCalc(x) { //x = slot number
-            if (this.mapper.properties.player.teamCount.value == 0) { return 70 }
-            ivHpBit = ((x.ivHp & 2) >> 1)
-            ivAtkBit = ((x.ivAttack & 2) >> 1)
-            ivDefBit = ((x.ivDefense & 2) >> 1)
-            ivSpdBit = ((x.ivSpeed & 2) >> 1)
-            ivSpcABit = ((x.ivSpecialAttack & 2) >> 1)
-            ivSpcDBit = ((x.ivSpecialDefense & 2) >> 1)
-            return Math.floor((((ivHpBit + (2 * ivAtkBit) + (4 * ivDefBit) + (8 * ivSpdBit) + (16 * ivSpcABit) + (32 * ivSpcDBit)) * 40)/63) + 30 )
-        },
-        weatherBallTypeCalc() {
-            if(this.g3stateVariable!="Battle") {
-                return "Normal";
-            }
-            let weatherType = {
-                "Sun" : "Fire",
-                "Hail" : "Ice",
-                "Rain" : "Water",
-                "Sandstorm" : "Rock",
-                "" : "Normal",
-                null : "Normal",
-                undefined : "Normal",
-            }
-            var moveType = weatherType[this.mapper.properties.battle.turnInfo.battleWeather.value];
-            return moveType;
-        },
-        determineSTAB(x) { //x = move1.value
-            var pkmnType1 = this.dexData[this.starterString].type_1
-            var pkmnType2 = this.dexData[this.starterString].type_2
-            if (this.g3stateVariable == `Battle`) {
-                //suport transform or conversion
-                var pkmnType1 = this.mapper.properties.battle.yourPokemon.type1.value
-                var pkmnType2 = this.mapper.properties.battle.yourPokemon.type2.value
-            }
-
-            if (pkmnType1 == this.moveType(x) || pkmnType2 == this.moveType(x)) {
-                return 1.5
-            }
-            else { 
-                return 1 
-            }
-        }, 
-        determineItemBoost(x) { //x - move1.value
-            var heldItemValue = this.mapper.properties.player.team[0].itemHeld.value
-            var itemType = this.typeBoostingItems[heldItemValue]
-            if (itemType == this.moveType(x)) {
-                return 1.1
-            }
-            else   
-                return 1
-        },
-        abilityModifier(ability, attackingType, controller) {
-            var healthPercentage = 0
-            switch (controller) {
-                case "player": healthPercentage = this.s1.hp.value / this.s1.maxHp.value; break;
-                case "opponent": healthPercentage = this.mapper.properties.battle.enemyPokemon.hp.value / this.mapper.properties.battle.enemyPokemon.maxHp.value; break;
-            }
-            if (healthPercentage <= .3) {
-                if (ability == `Torrent` && attackingType == `Water`) {
-                    return 1.5
-                }
-                else if (ability == `Blaze` && attackingType == `Fire`) {
-                    return 1.5
-                }
-                else if (ability == `Overgrow` && attackingType == `Grass`) {
-                    return 1.5
-                }
-                else if (ability == `Swarm` && attackingType == `Bug`) {
-                    return 1.5
-                }
-                else {
-                    return 1
-                }
-            }
-            else {
-                return 1
-            }
-        },
-        burnModifier(x) {
-            var attackingType = this.moveType(x)
-            if (this.s1.statusCondition.value == `Burned` && this.pkmn_ability != `Guts`) {
-                if (attackingType == "Ground" || attackingType == "Rock" || attackingType == "Fighting" || attackingType == "Bug" || attackingType == "Ghost" ||
-                attackingType == "Normal" || attackingType == "Steel" || attackingType == "Flying" || attackingType == "Poison") {
-                    return 0.5
-                }
-                else {
-                    return 1
-                }
-            }
-            else {
-                return 1
-            }
-        },
-
-        enemy_move_power(move_name) {
-            var move_power = this.generation_3_moves[move_name].power ?? 0
-            if (move_power == 0) { return "—" }
-            if (move_power == 1) { return "—" }
-            else return move_power
-        },
-        enemy_effective_power(move_name, enemy_mon, slot) {
-            const state = this.g3stateVariable
-            const enemy_state = this.enemyState
-            if (state == 'To Battle' || state == 'Battle' || state == 'From Battle') { 
-                const species = enemy_mon.species.value
-                const move_data = this.generation_3_moves[move_name]
-                if (move_data == undefined) { return }
-                const move_type = move_data.type
-                const move_base_power = this.enemy_move_power(move_name) ?? move_data.power
-                const move_category = move_data.category
-                const user_type_1 = this.game.dexData[species].type_1
-                const user_type_2 = this.game.dexData[species].type_2
-                const target_type_1 = this.mapper.properties.battle.yourPokemon.type1.value
-                const target_type_2 = this.mapper.properties.battle.yourPokemon.type2.value
-                if (move_base_power == "—" || move_base_power == "-") { return "—" }
-                var move_effective_power = move_base_power
-                var modifier_effectiveness_1 = this.typeData.find(x => x.moveType == move_type)[target_type_1]
-                var modifier_effectiveness_2 = target_type_2 && move_type && (target_type_1 != target_type_2) ? this.typeData.find(x => x.moveType == move_type)[target_type_2]
-                    : 1
-                var modifier_stab = move_type == user_type_1 ? 1.5 
-                    : move_type == user_type_2 ? 1.5 
-                    : 1
-                var modifier_ability = this.abilityModifier(this.mapper.properties.battle.enemyPokemon, move_type, 'opponent')
-                if (this.mapper.properties.battle.yourPokemon.ability.value == 'Levitate' && move_type == 'Ground') {
-                    modifier_ability = 0 
-                }
-                var modifier_item = 1
-                var modifier_weather = this.weatherModifier(this.mapper.properties.battle.field.weather.value, move_name, move_type)
-                var modifier_burn = 1
-                if (move_category == "Physical" && enemy_mon.status_condition?.value == `Burned` && enemy_mon.ability?.value != `Guts`) {
-                    modifier_burn = 0.5
-                    }
-                else {
-                    modifier_burn = 1
-                }
-                //Calculate effective power
-                if (this.typeCalcs == true) { //Handles type effectiveness calculations in battle
-                    return Math.floor(move_base_power * modifier_stab * modifier_effectiveness_1 * modifier_effectiveness_2 * modifier_ability * modifier_item * modifier_weather * modifier_burn)
-                }
-            }
-        },
-
-        typeEffectiveness(x) { //x = move1.value
-            var attackingType = this.moveType(x)
-            var power = this.movePower(x)
-            const enemyPokemon = this.mapper.properties.battle.enemyPokemon;
-            var defendingTypeMono = enemyPokemon.type1.value
-            var defendingType1 = defendingTypeMono;
-            var defendingType2 = enemyPokemon.type2.value
-            var multipliers = this.typeData.find(x => x.moveType === attackingType)
-            var stabModifier = this.determineSTAB(x)
-            var ability = this.abilityModifier(this.pkmn_ability, attackingType, 'player')
-            var defenseAbility = 1;
-            var itemBoost = this.determineItemBoost(x)
-            var weatherBoost = this.weatherModifier(this.mapper.properties.battle.turnInfo.battleWeather.value, x, this.moveType(x))
-            var burnModifier = this.burnModifier(x)
-            const enemyAbility = this.mapper.properties.battle.enemyPokemon.ability.value;
-            if (x == "FUTURE SIGHT") { return 80 }
-            //IN BATTLE
-            // try{ 
-            //     if (this.batt.trainer[this.game.opponent].value == `LEADER_TATE_AND_LIZA_1` || this.batt.trainer[this.game.opponent].value == `MAGMA_LEADER_MAXIE_MOSSDEEP`) {
-            //         return power
-            //     }
-            // }
-            // catch {
-            //     // console.log("null opponent, no double battle power")
-            // }
-
-            //NOT IN BATTLE
-            if(this.g3stateVariable != "Battle") {
-                if (power == "-") { return power }
-                return Math.floor(power * stabModifier * itemBoost * ability * burnModifier);
-            }
-            // console.log(multiplier1,multiplier2,attackingType,defendingType1,defendingType2)
-
-            //Handle double battles
-            if(this.g3stateVariable == "Battle" && this.batt.type?.double.value) {
-                if (power == "-") { return power }
-                return Math.floor(power * stabModifier * itemBoost * ability * burnModifier);
-            }
-            if (this.typeCalcs && this.g3stateVariable == "Battle") {
-                let abilityImmunities = {
-                    "LEVITATE" : "Ground",
-                    "VOLT ABSORB" : "Electric",
-                    "WATER ABSORB" : "Water",
-                    "FLASH FIRE" : "Fire" 
-                }
-                let soundProofMoves = ["HYPER VOICE", "SNORE", "UPROAR"];
-                if(enemyAbility == "SOUNDPROOF" && soundProofMoves.includes(x)) {
-                    return 0;
-                }
-                if (enemyAbility == "THICK FAT" && (attackingType == "Ice" || attackingType == "Fire")) {
-                    defenseAbility = .5;
-                }
-
-                //STATUS MOVE
-                if (power == "-") { return power }
-                //LEVITATE INTERACTION
-                
-                else if (abilityImmunities[enemyAbility] == attackingType) {
-                    return 0;
-                }
-                //NO ENEMY DATA (HAVEN'T BATTLED SINCE RELOADING ROM OR SAVE)
-                else if (defendingType1 == null) {
-                    return Math.floor(power * stabModifier * itemBoost * ability * burnModifier)
-                }
-                //ATTACKING A MONO-TYPE POKEMON
-                else if (defendingType1 === defendingType2) {
-                    var multiplier1 = multipliers[defendingTypeMono]
-                    return Math.floor(power * multiplier1 * stabModifier * itemBoost * weatherBoost * ability * burnModifier * defenseAbility)
-                }
-                //ATTACKING A DUAL-TYPE POKEMON
-                else if (defendingType1 != defendingType2) {
-                    var multipliers = this.typeData.find(x => x.moveType == attackingType)
-                    var multiplier1 = multipliers[defendingType1]
-                    var multiplier2 = multipliers[defendingType2]
-                    // console.log(multiplier1,multiplier2,attackingType,defendingType1,defendingType2)
-                    return Math.floor(power * multiplier1 * multiplier2 * stabModifier * itemBoost * weatherBoost * ability * burnModifier * defenseAbility)
-                }
-                //RETURN THE MOVES POWER IF NOTHING ELSE WORKS
-                else {
-                    return Math.floor(power * stabModifier * burnModifier)
-                }
-            }
-                
-        },
-
-        ////This needs to be updated
-        type_effectiveness(pkmnData, moveNumber, enemyData) { //pkmnData = team[0] etc
-            if (this.typeCalcs == true) {
-                var move_name          = pkmnData["move" + moveNumber].value
-                if (move_name == null) { return "" } //stop the function if there is no move in that slot
-                
-                var move_type          = this.g2MoveData[move_name].Type
-                var move_info          = this.typeData.find(x => x.moveType === move_type)
-                var move_power         = this.movePower(move_name)
-                var move_category      = "Status"
-                var attacker_type1     = pkmnData.type1.value
-                var attacker_type2     = pkmnData.type2.value
-                var defender_type1     = enemyData.type1.value
-                var defender_type2     = enemyData.type2.value
-                var multiplier_stab    = 1
-                var multiplier_type1   = move_info[defender_type1]
-                var multiplier_type2   = 1
-                var screen_reflect     = 1
-                var screen_lightscreen = 1
-                var held_item          = this.determineItemBoost(move_name)
-                var field_weather      = this.weatherModifier(this.mapper.properties.battle.weather.weatherType.value, move_name, this.moveType(move_name))
-                var type_boost         = this.badgeBoostType(move_name)
-                
-                //update variables
-                if (move_type == attacker_type1 || move_type == attacker_type2)                { multiplier_stab = 1.5 }
-                if (defender_type1 != defender_type2)                                          { multiplier_type2 = this.typeData.find(x => x.moveType === move_type)[defender_type2] }
-                if (move_type == "Normal" || move_type == "Fighting" || move_type == "Flying" || move_type == "Bug" || move_type == "Poison" || move_type == "Ghost" || move_type == "Ground" || move_type == "Rock" || move_type == "Steel") {
-                    move_category = "Physical" }
-                if (move_type == "Fire" || move_type == "Water" || move_type == "Grass" || move_type == "Electric" || move_type == "Psychic" || move_type == "Ice" || move_type == "Dragon" || move_type == "Dark") {
-                    move_category = "Special" }
-                if (enemyData.effects.reflect.value == true && move_category == "Physical")    { screen_reflect = 0.5 }
-                if (enemyData.effects.lightScreen.value == true && move_category == "Special") { screen_lightscreen = 0.5 }
-
-                //return if further updates aren't required
-                if (move_power == "-")                { return move_power } //returns "-" if the move has no power
-                if (this.g1stateVariable != `Battle`) { return Math.floor(move_power * multiplier_stab * held_item * type_boost) } //returns the move's base power if not in battle
-
-                //calculate the move's effective power
-                return Math.floor(move_power * multiplier_stab * multiplier_type1 * multiplier_type2 * screen_reflect * screen_lightscreen * held_item * field_weather * type_boost)
-            }
-            else { return this.movePower(pkmnData[moveNumber].value) }
-        },
 
 
-        //BADGE BOOSTS
-        //  x = badge required
-        //  y = stat to be boosted
-        badgeBoost(x, y) {
-            if (x == true)
-                return Math.floor(y * 1.1)
-            else
-                return y
-        },
+
+        //move_functions.js
+        movePower,
+        hiddenPowerTypeCalc,
+        hiddenPowerPowerCalc,
+        weatherBallTypeCalc,
+        g3ReturnPowerCalc,
+        g3FrustrationPowerCalc,
+
+        //modifier_functions.js
+        determineSTAB,
+        determineItemBoost,
+        abilityModifier,
+        burnModifier,
+        stageMultiplier,
+        weatherModifier,
+
+        //attacking_functions.js
+        enemy_move_power,
+        enemy_effective_power,
+        typeEffectiveness,
+        type_effectiveness,
+        g3ReturnPowerCalc,
+        g3FrustrationPowerCalc,
 
         battlePokemonCrop() {
             const totalPokemon = this.enemyTrainerList?.[this.opponentId]?.pokemon?.length;
@@ -3457,50 +2994,6 @@ const app = Vue.createApp({
                 }
             })
         },
-        // async freezeEncounters() {
-        //     console.log("freezeEncounters() called...")
-        //     const map_name = this.mapper.properties.overworld.mapName.value;
-        //     let yes = true;
-        //     let no = false;
-        //     if (this.gameSelection == 'Emerald') {
-        //         if (this.mapper.properties.player.badges.badge1.value && this.hm_102_zigzagoon == true && map_name == "ROUTE 102" && this.game.encountersMap["ROUTE 102"] == false && this.mapper.properties.player.team[1].species.value != "Zigzagoon") {
-        //             this.mapper.properties.player.team[1].species.change((newerProp) => {
-        //                 if(newerProp = "Zigzagoon" && this.hm_102_zigzagoon == true && newProp.value == "ROUTE 102" && this.game.encountersMap["ROUTE 102"] == false) {
-        //                     this.mapper.properties.overworld.disabledEncounters.set(yes,false);
-        //                 }
-        //             });
-        //         }
-        //         else if (this.gameSelection == 'Emerald') {
-        //             if (this.game.encountersMap[newProp]==false) {
-        //                 this.mapper.properties.overworld.disabledEncounters.set(yes,false);
-        //             }
-        //             else {
-        //                 this.mapper.properties.overworld.disabledEncounters.set(no,false);
-        //             }
-        //         }
-        //     }
-        //     if (this.gameSelection == 'FireRed and LeafGreen') {
-        //         await this.sleep(50)
-        //         if (this.route_1 == false && map_name == "ROUTE 1") {
-        //             this.mapper.properties.overworld.disabledEncounters.set(true,false);
-        //         }
-        //         if (this.route_2 == false && map_name == "ROUTE 2") {
-        //             this.mapper.properties.overworld.disabledEncounters.set(true,false);
-        //         }
-        //         if (this.route_22 == false && map_name == "ROUTE 22") {
-        //             this.mapper.properties.overworld.disabledEncounters.set(true,false);
-        //         }
-        //         if (this.viridian_forest == false && map_name == "VIRIDIAN_FOREST") {
-        //             this.mapper.properties.overworld.disabledEncounters.set(true,false);
-        //         }
-        //         if (this.route_6 == false && map_name == "ROUTE 6") {
-        //             this.mapper.properties.overworld.disabledEncounters.set(true,false);
-        //         }
-        //         else {
-        //             this.mapper.properties.overworld.disabledEncounters.set(false,false);
-        //         }
-        //     }
-        // },
         freezeEncounters() {
             const map_name = this.mapper.properties.overworld.mapName.value;
             if (this.gameSelection == 'Emerald') {
@@ -3969,46 +3462,6 @@ const app = Vue.createApp({
             console.log("disabled encounters: " + newProp.value)
         });
 
-        
-        //SET OPTIONS
-        //! ERROR: THIS IS NOT WORKING
-        // this.mapper.properties.overworld.mapName.change(async (prop) => {
-        //     console.log("Check " + (this.mapper.properties.options.textSpeed.address-this.mapper.properties.pointers.dma2.value));
-        //     if((this.mapper.properties.options.textSpeed.address-this.mapper.properties.pointers.dma2.value)!= 20) {
-        //         return;
-        //     }
-        //     this.mapper.properties.options.textSpeed.set(2, false)
-        //     this.mapper.properties.options.battleAnim.set(true, false)
-        //     await this.sleep(100)
-        //     this.mapper.properties.options.battleStyle.set(true, false)
-        // })
-        // this.mapper.properties.pointers.callback2.change(async (newProp, oldProp) => {
-        //     if (newProp.value == `Main Menu`) {
-        //         this.mapper.properties.options.textSpeed.set(2, false)
-        //         this.mapper.properties.options.battleAnim.set(true, false)
-        //         await this.sleep(100)
-        //         this.mapper.properties.options.battleStyle.set(true, false)
-        //     }
-        // })
-        // console.log(this.game.newGameFlag)
-        // console.log(this.mapper.properties)
-        // console.log(this.mapper.properties[this.game.newGameFlagContainer])
-        // console.log(this.mapper.properties["pointers"])
-        // console.log(this.game["newGameFlagContainer"])
-        // this.mapper.properties[this.game.newGameFlagContainer][this.game.newGameFlag].change(async (newProp, oldProp) => {
-        //     if (newProp.value == `MAIN MENU` || newProp.value == `NEW GAME`) {
-        //         //forcefully update the adresses to match dmaB, since the mapper seems to be doing this incorrectly sometimes
-        //         //no dma updates on the main menu or new game screens, so this is safe
-        //         let dmaB = this.mapper.properties.pointers.dma2.value; 
-        //         this.mapper.properties.options.textSpeed.address = dmaB + 20;
-        //         //speed and frame style share a byte. The frame style increments the byte by multiples of 8 depending on the user's pick
-        //         //this line takes the nearest multiple of 8 and adds 2 to ensure fast text with the chosen frame
-        //         let speedWithFrame = Math.floor(this.mapper.properties.options.textSpeed.bytes[0]/8)*8+2;
-        //         this.mapper.properties.options.textSpeed.set(speedWithFrame, false)
-        //         this.mapper.properties.options.battleAnim.address = dmaB + 21;
-        //         this.mapper.properties.options.battleAnim.setBytes([0x06],false)
-        //     }
-        // })
         //FIX OF ENEMY BATTLE STATS
         this.mapper.properties.battle.enemyPokemon.partyPos.change(async (newProp) => {
             if (newProp == 0 || newProp == 255) { return }
@@ -4018,282 +3471,8 @@ const app = Vue.createApp({
         })
 
         //*Autosplitter
-        
-        const log_split = (x) => console.log(`Autosplitter - Battle Ended: Split: ${this.opponent} at ${this.timer_formatted_time[0]}${this.timer_formatted_time[1]} (Gametime: ${this.gametimeSplit})`)
-        const autosplitter_process = () => {
-            // console.log("Checking if autosplitter is on...")
-            if (this.autosplitter_toggle == true && this.mapper.properties.battle.type.trainer.value == true) {
-                console.log("Began Autosplitter Process")
-                d = new Date()
-                battle_end = Date.now()
-                //values
-                let gameTimeH = this.mapper.properties.gameTime?.hours?.value
-                let gameTimeM = this.mapper.properties.gameTime?.minutes?.value
-                let gameTimeS = this.mapper.properties.gameTime?.seconds?.value
-                let gameTimeF = this.mapper.properties.gameTime?.frames?.value
-                
-                //data to be collected with the autosplitter
-                let date_string = (d.getMonth() + 1) + "-" + d.getDate().toString().padStart(2, "0")
-                let time_string = d.getHours().toString().padStart(2, "0") + ":" + d.getMinutes().toString().padStart(2, "0") + ":" + d.getSeconds().toString().padStart(2, "0")
-                let player_name = this.mapper.properties.player.name.value
-                let pokemon = this.starterString
-                console.log("opponent info: "+ this.opponent)
-                let trainer_name = this.opponent
-                // let trainer_name = this.format_trainer_name(this.mapper.properties.battle.trainer.class.value, this.mapper.properties.battle.trainer.number.value)
-                let trainer_id = this.opponentId
-                let location = this.mapper.properties.overworld.mapName.value
-                let total_pokemon = this.mapper.properties.battle.trainer.totalPokemon
-                let real_time_total = this.timer_formatted_time[0] + this.timer_formatted_time[1]
-                let real_time_hmmss = this.timer_formatted_time[0]
-                let real_time_file_label = this.timer_formatted_time[2]
-                let resets = this.playerResets.toString()
-                let blackouts = this.blackout_counter.toString()
-                let failures = this.playerResets + this.blackout_counter
-                let level = this.mapper.properties.player.team[0].level.value.toString()
-                let game_time = this.gametimeSplit.toString()
-                let battle_duration = (battle_end - this.battle_start)/1000 
-                let move1 = this.mapper.properties.player.team[0].move1.value
-                let move2 = this.mapper.properties.player.team[0].move2.value
-                let move3 = this.mapper.properties.player.team[0].move3.value
-                let move4 = this.mapper.properties.player.team[0].move4.value
-                let move1pp = this.mapper.properties.player.team[0].move1pp.value
-                let move2pp = this.mapper.properties.player.team[0].move2pp.value
-                let move3pp = this.mapper.properties.player.team[0].move3pp.value
-                let move4pp = this.mapper.properties.player.team[0].move4pp.value
-                let move1ppUp = this.mapper.properties.player.team[0].move1ppUp.value
-                let move2ppUp = this.mapper.properties.player.team[0].move2ppUp.value
-                let move3ppUp = this.mapper.properties.player.team[0].move3ppUp.value
-                let move4ppUp = this.mapper.properties.player.team[0].move4ppUp.value
-                let saves = 0
-                let steps = 0
-                let bonks = 0
-                let trainerBattles = 0
-                let wildBattles = 0
-                let battleTurns = 0
-                let playerTurns = 0
-                let enemyTurns = 0
-                let itemsInBag = 0
-                let money = 0
-                let rivalTeam = 0
-                let statusCondition = this.mapper.properties.player.team[0].statusCondition.value
-                let type1 = this.dexData[this.starterString].type_1
-                let type2 = this.dexData[this.starterString].type_2
-                let experience = this.mapper.properties.player.team[0].expPoints.value
-                
-                //deprecated properties
-                let runIdentifier = this.starterString.toString() + this.attempt_number.toString()
-                let trainerName = this.opponent
-                let RTHours = this.time_h
-                let RTMinutes = this.time_m
-                let RTSeconds = this.time_s
-                let RTMilliseconds = this.time_ms
-                let startTime = this.time_split_start
-                let realTime = this.padTime(this.time_h) + ":" + this.padTime(this.time_m) + ":" + this.padTime(this.time_s) + "." + this.padTime(this.time_ms)
-                let gameTime = this.padTime(gameTimeH) + ":" + this.padTime(gameTimeM) + ":" + this.padTime(gameTimeS) + "." + this.padTime(gameTimeF)
-                let hp = this.mapper.properties.player.team[0].hp.value
-                let maxHp = this.mapper.properties.player.team[0].maxHp.value
-                let atk = this.mapper.properties.player.team[0].attack.value
-                let def = this.mapper.properties.player.team[0].defense.value
-                let spA = this.mapper.properties.player.team[0].specialAttack.value
-                let spD = this.mapper.properties.player.team[0].specialDefense.value
-                let spe = this.mapper.properties.player.team[0].speed.value
-                let statExp_hp = this.mapper.properties.player.team[0].ivHp.value
-                let statExp_atk = this.mapper.properties.player.team[0].ivAttack.value
-                let statExp_def = this.mapper.properties.player.team[0].ivDefense.value
-                let statExp_spA = this.mapper.properties.player.team[0].ivSpecialAttack.value
-                let statExp_spD = this.mapper.properties.player.team[0].ivSpecialDefense.value
-                let statExp_spe = this.mapper.properties.player.team[0].ivSpeed.value
-                let dvAttack = this.mapper.properties.player.team[0].ivAttack.value
-                let dvDefense = this.mapper.properties.player.team[0].ivDefense.value
-                let dvSpeed = this.mapper.properties.player.team[0].ivSpeed.value
-                let dvSpecial = this.mapper.properties.player.team[0].ivSpecialAttack.value
-                let mod_atk = this.mapper.properties.battle.yourPokemon.modStageAttack.value
-                let mod_def = this.mapper.properties.battle.yourPokemon.modStageDefense.value
-                let mod_spA = this.mapper.properties.battle.yourPokemon.modStageSpecialAttack.value
-                let mod_spD = this.mapper.properties.battle.yourPokemon.modStageSpecialDefense.value
-                let mod_spe = this.mapper.properties.battle.yourPokemon.modStageSpeed.value
-                let mod_acc = this.mapper.properties.battle.yourPokemon.modStageAccuracy.value
-                let mod_eva = this.mapper.properties.battle.yourPokemon.modStageEvasion.value
-                let battle_atk = this.mapper.properties.battle.yourPokemon.attack.value
-                let battle_def = this.mapper.properties.battle.yourPokemon.defense.value
-                let battle_spA = this.mapper.properties.battle.yourPokemon.specialAttack.value
-                let battle_spD = this.mapper.properties.battle.yourPokemon.specialDefense.value
-                let battle_spe = this.mapper.properties.battle.yourPokemon.speed.value
-                
-                //patch properties
-                let patch_frameCount                 = 0
-                let patch_oWFrameCount               = 0
-                let patch_battleFrameCount           = 0
-                let patch_menuFrameCount             = 0
-                let patch_introsFrameCount           = 0
-                let patch_saveCount                  = 0
-                let patch_reloadCount                = 0
-                let patch_clockResetCount            = 0
-                let patch_stepsCount                 = 0
-                let patch_stepsCountWalk             = 0
-                let patch_stepsCountBike             = 0
-                let patch_stepsCountSurf             = 0
-                let patch_bonks                      = 0
-                let patch_battles                    = 0
-                let patch_trainerBattles             = 0
-                let patch_wildBattles                = 0
-                let patch_battlesFled                = 0
-                let patch_failedRuns                 = 0
-                let patch_totalDamageDealt           = 0
-                let patch_actualDamageDealt          = 0
-                let patch_totalDamageTaken           = 0
-                let patch_actualDamageTaken          = 0
-                let patch_ownMovesHit                = 0
-                let patch_ownMovesMissed             = 0
-                let patch_enemyMovesHit              = 0
-                let patch_enemyMovesMissed           = 0
-                let patch_ownMovesSE                 = 0
-                let patch_ownMovesNVE                = 0
-                let patch_enemyMovesSE               = 0
-                let patch_enemyMovesNVE              = 0
-                let patch_criticalsDealt             = 0
-                let patch_oHKOsDealt                 = 0
-                let patch_criticalsTaken             = 0
-                let patch_oHKOsTaken                 = 0
-                let patch_wasConfused                = 0
-                let patch_enemyBecameConfused        = 0
-                let patch_wasParalyzed               = 0
-                let patch_enemyWasParalyzed          = 0
-                let patch_wasBurned                  = 0
-                let patch_enemyWasBurned             = 0
-                let patch_wasFrozen                  = 0
-                let patch_enemyWasFrozen             = 0
-                let patch_wasPoisoned                = 0
-                let patch_enemyWasPoisoned           = 0
-                let patch_wasPoisonedBadly           = 0
-                let patch_enemyWasPoisonedBadly      = 0
-                let patch_fellAsleep                 = 0
-                let patch_enemyFellAsleep            = 0
-                let patch_playerTurnsConfused        = 0
-                let patch_enemyTurnsConfused         = 0
-                let patch_playerTurnsConfusedHitSelf = 0
-                let patch_enemyTurnsConfusedHitSelf  = 0
-                let patch_playerTurnsParalyzed       = 0
-                let patch_enemyTurnsParalyzed        = 0
-                let patch_playerTurnsParalyzedFully  = 0
-                let patch_enemyTurnsParalyzedFully   = 0
-                let patch_PlayerTurnsAsleep          = 0
-                let patch_EnemyTurnsAsleep           = 0
-                let patch_playerHpHealed             = 0
-                let patch_enemyHpHealed              = 0
-                let patch_playerPokemonFainted       = 0
-                let patch_enemyPokemonFainted        = 0
-                let patch_experienceGained           = 0
-                let patch_switchout                  = 0
-                let patch_moneyMade                  = 0
-                let patch_moneySpent                 = 0
-                let patch_moneyLost                  = 0
-                let patch_itemsPickedUp              = 0
-                let patch_itemsBought                = 0
-                let patch_itemsSold                  = 0
-                let patch_ballsThrown                = 0
-                let patch_pokemonCaughtInBalls       = 0
-                let patch_movesLearnt                = 0
-
-                //definitions for what split data is logged to file
-                let simple_data = [
-                    player_name, pokemon, trainer_name, real_time_hmmss, 
-                    resets, blackouts, level, game_time, battle_duration, 
-                    move1, move2, move3, move4
-                ]
-                let full_data = simple_data
-                if (this.scott_mode == true) {
-                    full_data = [
-                        date_string, time_string, player_name, pokemon, trainer_name, 
-                        trainer_id, location, total_pokemon, real_time_total, 
-                        real_time_hmmss, real_time_file_label, resets, blackouts, failures, 
-                        level, game_time, battle_duration, move1, move2, move3, move4, 
-                        saves, steps, bonks, trainerBattles, wildBattles, battleTurns, 
-                        playerTurns, enemyTurns, itemsInBag, money, rivalTeam,
-                        statusCondition, type1, type2, experience,
-                        runIdentifier, this.starter, trainerName,
-                        startTime, realTime, gameTime, level, this.playerResets,
-                        RTHours, RTMinutes, RTSeconds, RTMilliseconds,
-                        move1, move2, move3, move4, move1pp, move2pp, move3pp, move4pp, move1ppUp, move2ppUp, move3ppUp, move4ppUp,
-                        hp, maxHp, atk, def, spA, spD, spe,
-                        statExp_hp, statExp_atk, statExp_def, statExp_spA, statExp_spD, statExp_spe,
-                        dvAttack, dvDefense, dvSpeed, dvSpecial,
-                        mod_atk, mod_def, mod_spA, mod_spD, mod_spe, mod_acc, mod_eva,
-                        battle_atk, battle_def, battle_spA, battle_spD, battle_spe,
-                        patch_frameCount, patch_oWFrameCount, patch_battleFrameCount, patch_menuFrameCount, patch_introsFrameCount,
-                        patch_saveCount, patch_reloadCount, patch_clockResetCount,
-                        patch_stepsCount, patch_stepsCountWalk, patch_stepsCountBike, patch_stepsCountSurf, patch_bonks,
-                        patch_battles, patch_trainerBattles, patch_wildBattles, patch_battlesFled, patch_failedRuns,
-                        patch_totalDamageDealt, patch_actualDamageDealt, patch_totalDamageTaken, patch_actualDamageTaken,
-                        patch_ownMovesHit, patch_ownMovesMissed, patch_enemyMovesHit, patch_enemyMovesMissed, 
-                        patch_ownMovesSE, patch_ownMovesNVE, patch_enemyMovesSE, patch_enemyMovesNVE, 
-                        patch_criticalsDealt, patch_oHKOsDealt, patch_criticalsTaken, patch_oHKOsTaken,
-                        patch_wasConfused, patch_enemyBecameConfused, patch_wasParalyzed, patch_enemyWasParalyzed, 
-                        patch_wasBurned, patch_enemyWasBurned, patch_wasFrozen, patch_enemyWasFrozen,
-                        patch_wasPoisoned, patch_enemyWasPoisoned, patch_wasPoisonedBadly, patch_enemyWasPoisonedBadly,
-                        patch_fellAsleep, patch_enemyFellAsleep, patch_playerTurnsConfused, patch_playerTurnsConfusedHitSelf, 
-                        patch_playerTurnsParalyzed, patch_playerTurnsParalyzedFully, patch_enemyTurnsConfused, patch_enemyTurnsConfusedHitSelf, 
-                        patch_enemyTurnsParalyzed, patch_enemyTurnsParalyzedFully, patch_PlayerTurnsAsleep, patch_EnemyTurnsAsleep,
-                        patch_playerHpHealed, patch_enemyHpHealed, 
-                        patch_playerPokemonFainted, patch_enemyPokemonFainted, patch_experienceGained, patch_switchout,
-                        patch_moneyMade, patch_moneySpent, patch_moneyLost,
-                        patch_itemsPickedUp, patch_itemsBought, patch_itemsSold,
-                        patch_ballsThrown, patch_pokemonCaughtInBalls,
-                        patch_movesLearnt,
-                        //new properties
-                        blackouts, this.attempt_number, failures, rivalTeam
-                    ]
-                }
-
-                let deprecated_data = []
-                if (this.scott_mode == true) {
-                    deprecated_data = [
-                        runIdentifier, this.starter, trainerName,
-                        startTime, realTime, gameTime, level, this.playerResets,
-                        RTHours, RTMinutes, RTSeconds, RTMilliseconds,
-                        move1, move2, move3, move4,
-                        atk, def, spA, spD, spe,
-                        mod_atk, mod_def, mod_spA, mod_spD, mod_spe, mod_acc, mod_eva,
-                        battle_atk, battle_def, battle_spA, battle_spD, battle_spe,
-                        patch_frameCount, patch_oWFrameCount, patch_battleFrameCount, patch_menuFrameCount, patch_introsFrameCount,
-                        patch_saveCount, patch_reloadCount, patch_clockResetCount,
-                        patch_stepsCount, patch_stepsCountWalk, patch_stepsCountBike, patch_stepsCountSurf, patch_bonks,
-                        patch_battles, patch_trainerBattles, patch_wildBattles, patch_battlesFled, patch_failedRuns,
-                        patch_totalDamageDealt, patch_actualDamageDealt, patch_totalDamageTaken, patch_actualDamageTaken,
-                        patch_ownMovesHit, patch_ownMovesMissed, patch_enemyMovesHit, patch_enemyMovesMissed, 
-                        patch_ownMovesSE, patch_ownMovesNVE, patch_enemyMovesSE, patch_enemyMovesNVE, 
-                        patch_criticalsDealt, patch_oHKOsDealt, patch_criticalsTaken, patch_oHKOsTaken,
-                        patch_wasConfused, patch_enemyBecameConfused, patch_wasParalyzed, patch_enemyWasParalyzed, 
-                        patch_wasBurned, patch_enemyWasBurned, patch_wasFrozen, patch_enemyWasFrozen,
-                        patch_wasPoisoned, patch_enemyWasPoisoned, patch_wasPoisonedBadly, patch_enemyWasPoisonedBadly,
-                        patch_fellAsleep, patch_enemyFellAsleep, patch_playerTurnsConfused, patch_playerTurnsConfusedHitSelf, 
-                        patch_playerTurnsParalyzed, patch_playerTurnsParalyzedFully, patch_enemyTurnsConfused, patch_enemyTurnsConfusedHitSelf, 
-                        patch_enemyTurnsParalyzed, patch_enemyTurnsParalyzedFully,
-                        patch_playerHpHealed, patch_enemyHpHealed, 
-                        patch_playerPokemonFainted, patch_enemyPokemonFainted, patch_experienceGained, patch_switchout,
-                        patch_moneyMade, patch_moneySpent, patch_moneyLost,
-                        patch_itemsPickedUp, patch_itemsBought, patch_itemsSold,
-                        patch_ballsThrown, patch_pokemonCaughtInBalls,
-                        patch_movesLearnt,
-                        //new properties
-                        blackouts, this.attempt_number, failures, rivalTeam
-                    ]
-                }
-                
-                let simple_data_str = simple_data.join(",") + "\n";
-                let full_data_str = full_data.join(",") + "\n";
-                let deprecated_data_str = deprecated_data.join(",") + "\n";
-                MyStorage["simple_data_str"] = simple_data_str
-                MyStorage["full_data_str"] = full_data_str
-                MyStorage["simple_data"] = simple_data
-                MyStorage["deprecated_data_str"] = deprecated_data_str
-                this.simple_data_str = simple_data_str
-                this.full_data_str = full_data_str
-                this.simple_data = simple_data
-                this.deprecated_data_str = deprecated_data_str
-            }
-        }
-
+        log_split,
+        autosplitter_process,
         //write to file at the end of a key battle
         this.mapper.properties.battle.turnInfo.battleOutcome.change(async (prop) => {
             // console.log('Battle Outcome Changed')

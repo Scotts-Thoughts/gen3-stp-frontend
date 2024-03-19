@@ -329,13 +329,13 @@
 
                         <div class="statsColumn1">
                             {{ mapper.properties.player.team[0].maxHp }}<br>
-                            {{ ability(this.pkmn_ability,"attack",bbAttack(stageMultiplier(mapper.properties.battle.yourPokemon.modStageAttack.value, mapper.properties.player.team[0].attack))) }}<br>
-                            {{ ability(this.pkmn_ability,"defense",bbDefense(stageMultiplier(mapper.properties.battle.yourPokemon.modStageDefense.value, mapper.properties.player.team[0].defense))) }}<br>
+                            {{ ability(this.pkmn_ability,"attack",badge_boost(this.mapper.properties.player.badges.badge1.value, stageMultiplier(mapper.properties.battle.yourPokemon.modStageAttack.value, mapper.properties.player.team[0].attack))) }}<br>
+                            {{ ability(this.pkmn_ability,"defense",badge_boost(this.mapper.properties.player.badges.badge5.value, stageMultiplier(mapper.properties.battle.yourPokemon.modStageDefense.value, mapper.properties.player.team[0].defense))) }}<br>
                         </div>
                         <div class="statsColumn2">
-                            {{ bbSpecialAttack(stageMultiplier(mapper.properties.battle.yourPokemon.modStageSpecialAttack.value, mapper.properties.player.team[0].specialAttack)) }}<br>
-                            {{ bbSpecialDefense(stageMultiplier(mapper.properties.battle.yourPokemon.modStageSpecialDefense.value, mapper.properties.player.team[0].specialDefense)) }}<br>
-                            {{ ability(this.pkmn_ability,"speed",paralysis(bbSpeed(stageMultiplier(mapper.properties.battle.yourPokemon.modStageSpeed.value, mapper.properties.player.team[0].speed)))) }}<br>
+                            {{ badge_boost(this.mapper.properties.player.badges.badge7.value, stageMultiplier(mapper.properties.battle.yourPokemon.modStageSpecialAttack.value, mapper.properties.player.team[0].specialAttack)) }}<br>
+                            {{ badge_boost(this.mapper.properties.player.badges.badge7.value, stageMultiplier(mapper.properties.battle.yourPokemon.modStageSpecialDefense.value, mapper.properties.player.team[0].specialDefense)) }}<br>
+                            {{ ability(this.pkmn_ability,"speed",paralysis(badge_boost(this.mapper.properties.player.badges.badge3.value, stageMultiplier(mapper.properties.battle.yourPokemon.modStageSpeed.value, mapper.properties.player.team[0].speed)))) }}<br>
                         </div>
                     </div>
                     
@@ -644,18 +644,30 @@
     <script src="data/natures.js"></script>
     <script src="data/gen3abilities.js"></script>
     <script src="data/dexDataRubySapphireEmerald.js"></script>
-    <script src="lib/emerald_trainers.js"></script>
-    <script src="lib/firered_leafgreen_trainers.js"></script>
-    <script src="lib/hiddenPowerTypeSelector.js"></script>
     <script src="data/gen3moves.js"></script>
     <script src="data/type-effectiveness.js"></script>
     <script src="data/typeBoostingItems.js"></script>
+
+    <script src="lib/emerald_trainers.js"></script>
+    <script src="lib/firered_leafgreen_trainers.js"></script>
+    <script src="lib/hiddenPowerTypeSelector.js"></script>
     <script src="lib/textures.js"></script>
     <script src="lib/default_colors.js"></script>
     <script src="lib/hp_ivs.js"></script>
+
     <script src="data/autosplitter.js"></script>
     <script src="data/generation_3_moves.js"></script>
-    <!-- <script src="lib/gameVariables.js"></script> -->
+
+    <script src="settings/application_settings.js"></script>
+    <script src="settings/pokemon_settings.js"></script>
+
+    <script src="autosplitter/autosplitter_functions.js"></script>
+
+    <script src="methods/attacking_functions.js"></script>
+    <script src="methods/move_power_functions.js"></script>
+    <script src="methods/modifier_functions.js"></script>
+    <script src="methods/text_functions.js"></script>
+    <script src="methods/time_functions.js"></script>
     <!-- VUE APP -->
-    <script type="text/javascript" src="scripts/vue.js"></script>
+    <script type="text/javascript" src="scripts/frontend.js"></script>
 </body>
