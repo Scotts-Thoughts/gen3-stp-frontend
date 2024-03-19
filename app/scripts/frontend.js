@@ -658,6 +658,16 @@ const app = Vue.createApp({
             pkmn_gender:       "Female",
             gameSelection:     MyStorage['gameSelection'] ?? "FireRed and LeafGreen",
             
+            stats:              MyStorage['stats']   ?? "",
+            stat_exp_display:   MyStorage['stat_exp_display']   ?? true,
+            dv_display:         MyStorage['dv_display']         ?? true,
+            inventory_display:  MyStorage['inventory_display']  ?? true,
+            battleGraphic:      MyStorage['battleGraphic']      ?? true,
+            base_stats_display: MyStorage['base_stats_display'] ?? true,
+            stats_display:      MyStorage['stats_display']      ?? true,
+            automatic_ivs:      MyStorage['automatic_ivs']      ?? true,
+            automatic_evs:      MyStorage['automatic_evs']      ?? true,
+
             // USER CONFIG (components) ------------------------------------------------------------------------// 
             graphicOverlay: MyStorage['graphicOverlay'] ?? true, //places a single image as the overlay  //MVP
             frame:          MyStorage['frame']          ?? false, //shows overlay frame
@@ -670,7 +680,7 @@ const app = Vue.createApp({
             moveset:        MyStorage['moveset']        ?? true, //includes the moveset area and dynamic PP  //MVP
             dynamicPower:   MyStorage['dynamicPower']   ?? false, //dynamically calculates power based on type effectiveness
             resets:         MyStorage['resets']         ?? false, //includes the resets graphics
-            stats:          MyStorage['stats']          ?? true, //includes the dynamic stats  //MVP
+            stats_display:  MyStorage['stats_display']  ?? true, //includes the dynamic stats  //MVP
             movepool:       MyStorage['movepool']       ?? false, //includes the movepool graphic
             inventory:      MyStorage['inventory']      ?? false, //includes the inventory graphic when in marts
             battleStats:    MyStorage['battleStats']    ?? false, //calculates stats with stage modifiers  //MVP
@@ -934,7 +944,7 @@ const app = Vue.createApp({
                 "moveset",
                 "dynamicPower",
                 "resets",
-                "stats",
+                "stats_display",
                 "movepool",
                 "inventory",
                 "battleStats",
@@ -981,9 +991,23 @@ const app = Vue.createApp({
                 "ui_type_icons_modifier",
                 "copy_overlay_pokemon_from",
                 "copy_overlay_pokemon_to",
+                "stats",
+                "automatic_ivs",
+                "automatic_evs",
             ],
 
-            right_panel: 'Movepool',
+            stats_toggle_settings: [
+                "stat_exp_display",
+                "dv_display",
+                "base_stats_display",
+                "stats_display",
+            ],
+            right_panel_toggle: [
+                "battleGraphic",
+                "inventory_display",
+            ],
+
+            right_panel: 'Battle Graphic',
             copy_overlay_pokemon_from: MyStorage['copy_overlay_pokemon_from'] ??  "",
             copy_overlay_pokemon_to:   MyStorage['copy_overlay_pokemon_to']   ??  "",
         }
@@ -1052,8 +1076,26 @@ const app = Vue.createApp({
                     this.freezeEncounters();
                 }
             );
-            
         }
+        // for (let i = 0; i < this.stats_toggle_settings.length; i++) {
+        //     let propName = this.stats_toggle_settings[i];
+        //     this.$watch(
+        //         () => this[propName], // Using a function to return the property's value
+        //         (newValue) => {
+        //             MyStorage[`${propName}`] = newValue;
+        //         }
+        //     );
+        // }
+        // for (let i = 0; i < this.right_panel_toggle.length; i++) {
+        //     let propName = this.right_panel_toggle[i];
+        //     this.$watch(
+        //         () => this[propName], // Using a function to return the property's value
+        //         (newValue) => {
+        //             MyStorage[`${propName}`] = newValue;
+        //             //!TODO: this needs to call a function to toggle the display on the right side of the screen
+        //         }
+        //     );
+        // }
 
         // //!Setup the new Storage object
         //         // Initialize the Storage object
@@ -1874,6 +1916,13 @@ const app = Vue.createApp({
         load_all_settings() {
             this.starterString = MyStorage["starterString"] ?? "Rayquaza"
 
+            this.stat_exp_display =   MyStorage['stat_exp_display']   ?? true,
+            this.dv_display =         MyStorage['dv_display']         ?? true,
+            this.inventory_display =  MyStorage['inventory_display']  ?? true,
+            this.battleGraphic =      MyStorage['battleGraphic']      ?? true,
+            this.base_stats_display = MyStorage['base_stats_display'] ?? true,
+            this.stats_display =      MyStorage['stats_display']      ?? true,
+
             this.graphicOverlay =             MyStorage['graphicOverlay']             ?? true
             this.frame =                      MyStorage['frame']                      ?? false
             this.gameArea =                   MyStorage['gameArea']                   ?? false
@@ -1885,7 +1934,7 @@ const app = Vue.createApp({
             this.moveset =                    MyStorage['moveset']                    ?? true
             this.dynamicPower =               MyStorage['dynamicPower']               ?? false
             this.resets =                     MyStorage['resets']                     ?? false
-            this.stats =                      MyStorage['stats']                      ?? true
+            this.stats_display  =             MyStorage['stats_display']              ?? true
             this.movepool =                   MyStorage['movepool']                   ?? false
             this.inventory =                  MyStorage['inventory']                  ?? false
             this.battleStats =                MyStorage['battleStats']                ?? false
@@ -3450,6 +3499,56 @@ const app = Vue.createApp({
         });
         this.mapper.properties.overworld.mapName.change(async (newProp) => {
             this.freezeEncounters();
+            if (this.automatic_evs = true) { 
+                const locations = [
+                    "VIRIDIAN_CITY - MART",
+                    "CELADON_CITY - DEPARTMENT_STORE_1F",      
+                    "CELADON_CITY - DEPARTMENT_STORE_2F",      
+                    "CELADON_CITY - DEPARTMENT_STORE_3F",      
+                    "CELADON_CITY - DEPARTMENT_STORE_4F",      
+                    "CELADON_CITY - DEPARTMENT_STORE_5F",      
+                    "CELADON_CITY - DEPARTMENT_STORE_ROOF",    
+                    "CELADON_CITY - DEPARTMENT_STORE_ELEVATOR",
+                    "SILPH_CO - 1F",       
+                    "SILPH_CO - 2F",       
+                    "SILPH_CO - 3F",       
+                    "SILPH_CO - 4F",       
+                    "SILPH_CO - 5F",       
+                    "SILPH_CO - 6F",       
+                    "SILPH_CO - 7F",       
+                    "SILPH_CO - 8F",       
+                    "SILPH_CO - 9F",       
+                    "SILPH_CO - 10F",      
+                    "SILPH_CO - 11F",      
+                    "SILPH_CO - ELEVATOR", 
+                    "POKEMON_MANSION - 1F",
+                    "POKEMON_MANSION - 2F",
+                    "POKEMON_MANSION - 3F",
+                    "POKEMON_MANSION - B1F",
+                    "SAFARI_ZONE - CENTER",
+                    "SAFARI_ZONE - EAST",  
+                    "SAFARI_ZONE - NORTH", 
+                    "SAFARI_ZONE - WEST",  
+                    "ROCKET_HIDEOUT - B1F",     
+                    "ROCKET_HIDEOUT - B2F",     
+                    "ROCKET_HIDEOUT - B3F",     
+                    "ROCKET_HIDEOUT - B4F",     
+                    "ROCKET_HIDEOUT - ELEVATOR",
+                    "SAFARI_ZONE - CENTER_REST_HOUSE",
+                    "SAFARI_ZONE - EAST_REST_HOUSE",  
+                    "SAFARI_ZONE - NORTH_REST_HOUSE", 
+                    "SAFARI_ZONE - WEST_REST_HOUSE",  
+                    "SAFARI_ZONE - SECRET_HOUSE",     
+                    "INDIGO_PLATEAU - POKEMON_CENTER_1F",
+                    "INDIGO_PLATEAU - POKEMON_CENTER_2F",
+                ]
+                if (locations.includes(newProp.value)) {
+                    this.stats = "EVs"
+                }
+                else {
+                    this.stats = "Automatic"
+                }
+            }
         });
         this.mapper.properties.overworld.disabledEncounters.change(async (newProp) => {
             console.log("disabled encounters: " + newProp.value)
@@ -3597,18 +3696,46 @@ const app = Vue.createApp({
                 this.$refs.expBar.style.transition = null;
             }
         })
-        // keybinds
-        keyhook.registerShortCut('F23', async () => {
-            this.newRun()
-        });
-        keyhook.registerShortCut('F12', async () => {
-            this.pauseUnpauseTime()
-        });
-        keyhook.registerShortCut('F24', async () => {
-            this.pauseUnpauseTime()
-        });
         if(this.game.gameName== "FireRed and LeafGreen") {
             this.trashCans();
         }
+
+        //keybinds
+        keyhook.registerShortCut('F13', async () => { // Show IVs
+            console.log("Key: F13 pressed: EVs displayed.")
+            this.stats = "IVs";
+        });
+        keyhook.registerShortCut('F14', async () => { // Show EVs
+            console.log("Key: F14 pressed: IVs displayed.")
+            this.stats = "EVs";
+        });
+        keyhook.registerShortCut('F15', async () => { // Show Base Stats
+            console.log("Key: F15 pressed. Base Stats displayed.")
+            this.stats = "Base Stats";
+        });
+        keyhook.registerShortCut('F16', async () => { // Automatic
+            console.log("Key: F16 pressed. Stats are displaying automatically now.")
+            this.stats = "Automatic";
+        });
+
+        keyhook.registerShortCut('F17', async () => { // Inventory
+            console.log("Key: F17 pressed. Automatic battle graphics will be displayed.")
+            this.right_panel = "Battle Graphic";
+        });
+        keyhook.registerShortCut('F18', async () => { // Trainer Graphic during Battle
+            console.log("Key: F18 pressed. Inventory displayed.")
+            this.right_panel = "Inventory";
+        });
+        keyhook.registerShortCut('F19', async () => { // Trainer Graphic during Battle
+            console.log("Key: F19 pressed. Movepool displayed.")
+            this.right_panel = "Movepool";
+        });
+
+        keyhook.registerShortCut('F23', async () => { // Clear Timer and Metrics
+            this.newRun()
+        });
+        keyhook.registerShortCut('F24', async () => { // Pause
+            this.pauseUnpauseTime()
+        });
     },
 }).mount('#app')

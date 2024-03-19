@@ -632,6 +632,30 @@ body {
     font-family: osb;
     font-weight: 500
 }
+.statsEvsColumn1 {
+    display: block;
+    font-size: 25px;
+    position: absolute;
+    line-height: 61.9px;
+    top: 873.5px;
+    right: 1751px;
+    z-index: 4;
+    text-align: right;
+    font-family: osb;
+    font-weight: 500
+}
+.statsEvsColumn2 {
+    display: block;
+    font-size: 25px;
+    position: absolute;
+    line-height: 61.9px;
+    top: 873.5px;
+    right: 1583px;
+    z-index: 4;
+    text-align: right;
+    font-family: osb;
+    font-weight: 500
+}
 /* BACKUP STATS POSITIONS */
 /* .statsColumn1 {
     font-size: 56px;
@@ -1629,14 +1653,14 @@ body {
 
 
 .ui1 {
-    font-size: 16px;
+    font-size: 15px;
     position: fixed;
     left: 372px;
     top: 30px;
     width: 350px;
     z-index: 5;
     height: 780px;
-    line-height: 18px;
+    line-height: 16px;
     text-transform: capitalize;
     text-align: left;
     font-family: osb;
@@ -1645,14 +1669,14 @@ body {
     border: 1px solid #ff000000;
 }
 .ui2 {
-    font-size: 16px;
+    font-size: 15px;
     position: fixed;
     left: 742px;
     top: 30px;
     width: 350px;
     z-index: 5;
     height: 780px;
-    line-height: 18px;
+    line-height: 16px;
     text-transform: capitalize;
     text-align: left;
     font-family: osb;
@@ -1661,14 +1685,14 @@ body {
     border: 1px solid #ff000000;
 }
 .ui3 {
-    font-size: 16px;
+    font-size: 15px;
     position: fixed;
     left: 1112px;
     top: 30px;
     width: 435px;
     z-index: 5;
     height: 780px;
-    line-height: 18px;
+    line-height: 16px;
     text-transform: capitalize;
     text-align: left;
     font-family: osb;
@@ -2737,7 +2761,7 @@ body {
     width: 22px;
 }
 .inventory_demo th:nth-child(3) {
-    width: 156px;
+    width: 126px;
 }
 .inventory_demo th:nth-child(4) {
     width: 20px;
