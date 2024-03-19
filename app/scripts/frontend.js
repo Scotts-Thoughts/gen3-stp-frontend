@@ -658,7 +658,7 @@ const app = Vue.createApp({
             pkmn_gender:       "Female",
             gameSelection:     MyStorage['gameSelection'] ?? "FireRed and LeafGreen",
             
-            stats:              MyStorage['stats']   ?? "",
+            stats:              MyStorage['stats']              ?? "Automatic",
             stat_exp_display:   MyStorage['stat_exp_display']   ?? true,
             dv_display:         MyStorage['dv_display']         ?? true,
             inventory_display:  MyStorage['inventory_display']  ?? true,
@@ -1007,9 +1007,9 @@ const app = Vue.createApp({
                 "inventory_display",
             ],
 
-            right_panel: 'Battle Graphic',
-            copy_overlay_pokemon_from: MyStorage['copy_overlay_pokemon_from'] ??  "",
-            copy_overlay_pokemon_to:   MyStorage['copy_overlay_pokemon_to']   ??  "",
+            right_panel:               MyStorage['right_panel']               ?? 'Battle Graphic',
+            copy_overlay_pokemon_from: MyStorage['copy_overlay_pokemon_from'] ?? "",
+            copy_overlay_pokemon_to:   MyStorage['copy_overlay_pokemon_to']   ?? "",
         }
     },
     created() {
