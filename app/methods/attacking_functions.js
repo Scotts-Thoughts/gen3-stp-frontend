@@ -15,8 +15,8 @@ function enemy_effective_power(move_name, enemy_mon, slot) {
         const move_type = move_data.type
         const move_base_power = this.enemy_move_power(move_name) ?? move_data.power
         const move_category = move_data.category
-        const user_type_1 = this.game.dexData[species].type_1
-        const user_type_2 = this.game.dexData[species].type_2
+        const user_type_1 = this.game.dexData[species]?.type_1
+        const user_type_2 = this.game.dexData[species]?.type_2
         const target_type_1 = this.mapper.properties.battle.yourPokemon.type1.value
         const target_type_2 = this.mapper.properties.battle.yourPokemon.type2.value
         if (move_base_power == "—" || move_base_power == "-") { return "—" }

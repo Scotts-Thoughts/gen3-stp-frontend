@@ -1,5 +1,9 @@
-const log_split = (x) => console.log(`Autosplitter - Battle Ended: Split: ${this.opponent} at ${this.timer_formatted_time[0]}${this.timer_formatted_time[1]} (Gametime: ${this.gametimeSplit})`)
-const autosplitter_process = () => {
+function log_split(x) {
+    // console.log(this)
+    // console.log(this.timer_formatted_time)
+    console.log(`Autosplitter - Battle Ended: Split: ${this.opponent} at ${this.timer_formatted_time[0]}${this.timer_formatted_time[1]} (Gametime: ${this.gametimeSplit})`)
+} 
+function autosplitter_process() {
     // console.log("Checking if autosplitter is on...")
     if (this.autosplitter_toggle == true && this.mapper.properties.battle.type.trainer.value == true) {
         console.log("Began Autosplitter Process")

@@ -2589,6 +2589,10 @@ const app = Vue.createApp({
             return badge ? Math.floor(stat * 1.1) : stat;
         },
 
+        //autosplitter_functions.js
+        log_split,
+        autosplitter_process,
+
         // text_functions.js
         move_name,
         camelCase,
@@ -2607,6 +2611,7 @@ const app = Vue.createApp({
         updateTime,
         pauseUnpauseTime,
         set_timer,
+        padTime,
         gameTimeHM,
         gameTimeHM,
         gameTimeM,
@@ -3259,18 +3264,6 @@ const app = Vue.createApp({
                 this.enemyState = "Pokemon"
             }
         });
-        // this.mapper.properties.screen.tiles.column1.tile7.change((prop) => {
-        //     if (prop == 127 && 
-        //         this.mapper.properties.screen.tiles.column1.tile6 == 127 && 
-        //         this.mapper.properties.screen.tiles.column1.tile5 == 127 && 
-        //         this.mapper.properties.screen.tiles.column1.tile4 == 127 && 
-        //         this.mapper.properties.screen.tiles.column1.tile3 == 127 && 
-        //         this.mapper.properties.screen.tiles.column1.tile2 == 127 && 
-        //         this.mapper.properties.screen.tiles.column1.tile1 == 127 &&
-        //         this.enemyState == "Fainting") {
-        //             this.enemyState = "Fainted"
-        //         }
-        // });
         this.mapper.properties.battle.outcome.change(async (prop) => {
             if (prop.value != null) {
                 this.enemyState = "Battle Finished"
@@ -3471,12 +3464,10 @@ const app = Vue.createApp({
         })
 
         //*Autosplitter
-        log_split,
-        autosplitter_process,
         //write to file at the end of a key battle
         this.mapper.properties.battle.turnInfo.battleOutcome.change(async (prop) => {
             // console.log('Battle Outcome Changed')
-            autosplitter_process()
+            this.autosplitter_process()
             // console.log('Autosplitter Attempted to Run by Battle Outcome Change')
             // console.log("Battle outcome: " + prop.value)
             if ((prop.value == "WON" || prop.value == 1) && this.mapper.properties.battle.type.trainer.value) {
@@ -3495,7 +3486,7 @@ const app = Vue.createApp({
                 
                 //write simple split data
                 const simpleSplit = () => {
-                    log_split()
+                    this.log_split()
                     logData(gameName, this.simple_data_str, this.attempt_number, this.starterString, "Simple", this.testRun, this.scott_mode)
                     this.split_data.push(this.simple_data)
                     MyStorage["split_data"] = this.split_data
@@ -3514,7 +3505,7 @@ const app = Vue.createApp({
 
                 //stop timer
                 if (this.game.finalBattle.includes(trainer)) {
-                    if ((this.mapper.properties.battle.trainer.opponent.value == "CHAMPION_FIRST_CHARMANDER" 
+                    if ((this.mapper.properties.battle.trainer.opponent.value   == "CHAMPION_FIRST_CHARMANDER" 
                         || this.mapper.properties.battle.trainer.opponent.value == "CHAMPION_FIRST_SQUIRTLE" 
                         || this.mapper.properties.battle.trainer.opponent.value == "CHAMPION_FIRST_BULBASAUR") 
                         && this.league_rematches == true) {
@@ -3524,7 +3515,7 @@ const app = Vue.createApp({
                     if (this.testRun == false) {
                         this.finished_run_count++
                     };
-                    log_split();
+                    this.log_split();
                     
                     //use then so that logCopy doesn't touch any files until logData finishes
                     logData(gameName, this.simple_data_str, this.attempt_number, this.starterString, "Simple", this.testRun, this.scott_mode)
