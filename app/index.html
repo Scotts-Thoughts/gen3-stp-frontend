@@ -320,6 +320,7 @@
 
                 <!-- STATS -------------------------------------------------------------------------------->  
                 <div style="z-index: 200;">
+                    <!-- IVs -->
                     <div v-if="stats == 'IVs' && g3stateVariable != 'Base Stats'">
                         <div class="statsheader">{{ mapper.properties.player.team[0].species.value }}'s IVs</div>
                         <div class="heldItemStyle heldItem">{{ nullToSpace(camelCase(mapper.properties.player.team[0].itemHeld.value)) }}</div>
@@ -335,7 +336,7 @@
                             {{  mapper.properties.player.team[0].ivSpeed.value }}/31<br>
                         </div>
                     </div>
-
+                    <!-- EVs -->
                     <div v-else-if="stats == 'EVs' && g3stateVariable != 'Base Stats'">
                         <div class="statsheader">{{ mapper.properties.player.team[0].species.value }}'s EVs</div>
                         <div class="heldItemStyle heldItem">{{ nullToSpace(camelCase(mapper.properties.player.team[0].itemHeld.value)) }}</div>
@@ -352,6 +353,7 @@
                         </div>
                     </div>
                     
+                    <!-- Stats -->
                     <div v-else-if="stats == 'Automatic' && mapper.properties.events.enable_dv_display.value == false && (g3stateVariable == 'To Battle' || g3stateVariable == 'Battle' || g3stateVariable == 'From Battle')">
                         <div class="statsheader">Level {{ mapper.properties.player.team[0].level.value }}</div>
                         <div class="heldItemStyle heldItem">{{ nullToSpace(camelCase(mapper.properties.player.team[0].itemHeld.value)) }}</div>
@@ -367,7 +369,8 @@
                             {{ ability(this.pkmn_ability,"speed",paralysis(badge_boost(this.mapper.properties.player.badges.badge3.value, stageMultiplier(mapper.properties.battle.yourPokemon.modStageSpeed.value, mapper.properties.player.team[0].speed)))) }}<br>
                         </div>
                     </div>
-
+                    
+                    <!-- Base Stats -->
                     <div v-else-if="stats == 'Base Stats' || (stats == 'Automatic' && mapper.properties.events.enable_dv_display.value == false)">
                         <div class="statsheader">Base Stats</div>
                         <div class="statsColumn1">
@@ -382,6 +385,7 @@
                         </div>
                     </div>
 
+                    <!-- IVs -->
                     <div v-else-if="(stats == 'Automatic' && ((mapper.properties.events?.hide_route_101_birch_zigzagoon_battle?.value == true || mapper.properties.player.team[0].species.value != null) && mapper.properties.events?.menu.pokedex?.value == false) && g3stateVariable == `Overworld`)">
                         <div class="statsheader">{{ mapper.properties.player.team[0].species.value }}'s IVs</div>
                         <div class="heldItemStyle heldItem">{{ nullToSpace(camelCase(mapper.properties.player.team[0].itemHeld.value)) }}</div>
@@ -397,7 +401,8 @@
                             {{  mapper.properties.player.team[0].ivSpeed.value }}/31<br>
                         </div>
                     </div>
-
+                    
+                    <!-- Battle -->
                     <div v-else-if="stats == 'Automatic'">
                         <div class="statsheader">Level {{ mapper.properties.player.team[0].level.value }}</div>
                         <div class="heldItemStyle heldItem">{{ nullToSpace(camelCase(mapper.properties.player.team[0].itemHeld.value)) }}</div>
@@ -414,6 +419,7 @@
                         </div>
                     </div>
 
+                    <!-- Base Stats -->
                     <div v-else>
                         <div class="statsheader">Base Stats</div>
                         <div class="statsColumn1">
