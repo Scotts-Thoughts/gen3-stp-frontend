@@ -277,11 +277,13 @@
             </div>
 
 <!--------- BADGE ICONS ---------------------------------------------------------------------------------------------------------------------->
-            <div v-for="x in badges">
-                <div v-if="mapper.properties.player.badges[x].value == true && g3stateVariable != `Base Stats`">
-                    <img class="badge" :src="`images/badges/positioned/${this.game.region}/${x}.png`"/>
+            <div v-if="display_badge_boosts == true">
+                <div v-for="x in badges">
+                    <div v-if="mapper.properties.player.badges[x].value == true && g3stateVariable != `Base Stats`">
+                        <img class="badge" :src="`images/badges/positioned/${this.game.region}/${x}.png`"/>
+                    </div>
                 </div>
-            </div>
+            </div>            
 
 <!--------- STATS ---------------------------------------------------------------------------------------------------------------------------->
             <!-- STATS OVERLAY GRAPHIC  -->

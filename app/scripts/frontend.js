@@ -700,11 +700,12 @@ const app = Vue.createApp({
             autosplitter_toggle:         MyStorage["autosplitter_toggle"]        ?? true,
             showSpecialTrainerGraphics:  MyStorage['showSpecialTrainerGraphics'] ?? true, 
             league_rematches:            MyStorage['league_rematches']           ?? false,
+            display_badge_boosts:        MyStorage['display_badge_boosts']       ?? true,
 
             badges: ["badge1", "badge2", "badge3", "badge4", "badge5", "badge6", "badge7", "badge8"],
             badgeBoosts: ["badge1", "badge3", "badge5", "badge7"],
             pkmnMoves: ["move1", "move2", "move3", "move4"],
-
+            
             //CSS styling values
             statLabelOpacityValue: 0.1, //used when a stage modifier is applied
 
@@ -994,6 +995,7 @@ const app = Vue.createApp({
                 "stats",
                 "automatic_ivs",
                 "automatic_evs",
+                "display_badge_boosts",
             ],
 
             stats_toggle_settings: [
@@ -2635,6 +2637,7 @@ const app = Vue.createApp({
 
         // Badge boosts
         badge_boost(badge, stat) {
+            if (this.display_badge_boosts == false) { return stat }
             return badge ? Math.floor(stat * 1.1) : stat;
         },
 
