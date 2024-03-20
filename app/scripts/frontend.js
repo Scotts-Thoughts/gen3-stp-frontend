@@ -3499,7 +3499,7 @@ const app = Vue.createApp({
         });
         this.mapper.properties.overworld.mapName.change(async (newProp) => {
             this.freezeEncounters();
-            if (this.automatic_evs = true) { 
+            if (this.automatic_evs == true) { 
                 const locations = [
                     "VIRIDIAN_CITY - MART",
                     "CELADON_CITY - DEPARTMENT_STORE_1F",      
