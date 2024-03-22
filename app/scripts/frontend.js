@@ -3054,41 +3054,64 @@ const app = Vue.createApp({
         freezeEncounters() {
             const map_name = this.mapper.properties.overworld.mapName.value;
             if (this.gameSelection == 'Emerald') {
-
+                switch (map_name) {
+                    case "ROUTE 101": 
+                        if (this.route_101 == false) {
+                            this.mapper.properties.overworld.disabledEncounters.set(0x01,false);
+                        }
+                        break;
+                    case "ROUTE 102": 
+                        if (this.route_102 == false && this.mapper.properties.player.badges.badge1.value == false) {
+                            this.mapper.properties.overworld.disabledEncounters.set(0x01,false);
+                        }
+                        else if (this.route_102 == false && this.mapper.properties.player.badges.badge1.value == true && this.mapper.properties.overworld.encounters.zigzagoon.value == false) {
+                            this.mapper.properties.overworld.disabledEncounters.set(0x00,false);
+                        }
+                        else if (this.route_102 == false && this.mapper.properties.player.badges.badge1.value == true) {
+                            this.mapper.properties.overworld.disabledEncounters.set(0x01,false);
+                        }
+                        break;
+                    case "ROUTE 103": 
+                        if (this.route_103 == false) {
+                            this.mapper.properties.overworld.disabledEncounters.set(0x01,false);
+                        }
+                        break;
+                    default: this.mapper.properties.overworld.disabledEncounters.set(0x00,false);
+                }
             }
             if (this.gameSelection == 'FireRed and LeafGreen') {
                 switch (map_name) {
                     case "ROUTE 1": 
                         if (this.mapper.properties.events.menu.pokedex.value == false) {
                             if (this.route_1 == false && this.mapper.properties.events.stp_pidgey_on_route_1.value == true && this.mapper.properties.events.stp_rattata_on_route_1.value == true) {
-                                this.mapper.properties.overworld.disabledEncounters.set(true,false);
+                                this.mapper.properties.overworld.disabledEncounters.set(0x01,false);
                             }
                         }
                         else if (this.route_1 == false && this.mapper.properties.events.stp_pidgey_on_route_1.value == false && this.mapper.properties.events.stp_rattata_on_route_1.value == false) {
-                            this.mapper.properties.overworld.disabledEncounters.set(true,false);
+                            this.mapper.properties.overworld.disabledEncounters.set(0x01,false);
                         }
                         break;
                     case "ROUTE 2": 
                         if (this.route_2 == false) {
-                            this.mapper.properties.overworld.disabledEncounters.set(true,false);
+                            this.mapper.properties.overworld.disabledEncounters.set(0x01,false);
                         }
                         break;
                     case "ROUTE 22": 
                         if (this.route_22 == false) {
-                            this.mapper.properties.overworld.disabledEncounters.set(true,false);
+                            this.mapper.properties.overworld.disabledEncounters.set(0x01,false);
                         }
                         break;
                     case "VIRIDIAN_FOREST": 
                         if (this.viridian_forest == false) {
-                            this.mapper.properties.overworld.disabledEncounters.set(true,false);
+                            this.mapper.properties.overworld.disabledEncounters.set(0x01,false);
                         }
                         break;
                     case "ROUTE 6": 
                         if (this.route_6 == false) {
-                            this.mapper.properties.overworld.disabledEncounters.set(true,false);
+                            this.mapper.properties.overworld.disabledEncounters.set(0x01,false);
                         }
                         break;
-                    default: this.mapper.properties.overworld.disabledEncounters.set(false,false);
+                    default: this.mapper.properties.overworld.disabledEncounters.set(0x00,false);
                 }
             }
         },
@@ -3607,9 +3630,9 @@ const app = Vue.createApp({
 
                 //stop timer
                 if (this.game.finalBattle.includes(trainer)) {
-                    if ((this.mapper.properties.battle.trainer.opponent.value   == "CHAMPION_FIRST_CHARMANDER" 
-                        || this.mapper.properties.battle.trainer.opponent.value == "CHAMPION_FIRST_SQUIRTLE" 
-                        || this.mapper.properties.battle.trainer.opponent.value == "CHAMPION_FIRST_BULBASAUR") 
+                    if ((this.mapper.properties.battle.trainer.opponent?.value   == "CHAMPION_FIRST_CHARMANDER" 
+                        || this.mapper.properties.battle.trainer.opponent?.value == "CHAMPION_FIRST_SQUIRTLE" 
+                        || this.mapper.properties.battle.trainer.opponent?.value == "CHAMPION_FIRST_BULBASAUR") 
                         && this.league_rematches == true) {
                             return
                     }

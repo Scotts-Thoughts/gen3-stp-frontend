@@ -10,6 +10,12 @@
     <div id="app" class="mainContainer">
         <div v-if="ready == false">
             Loading... (Connect GameHook)
+            <div>Game:</div>
+            <select v-model="gameSelection" class="dropdownMenu">
+                <option disabled value="">Select a species</option>
+                <option>Emerald</option>
+                <option>FireRed and LeafGreen</option>
+            </select>
         </div>
         <div v-else>
             <div>
@@ -122,12 +128,14 @@
                     Copy to: <input type="text" v-model="copy_overlay_pokemon_to"/><br>
                     <button @click="copy_overlay_properties()" class="buttonStyle">Copy Overlay Settings</button><br>
                     <br>
-                    Type Colors:<br>
+                    <div>Type Colors:</div>
                     <select v-model="ui_type_colors" class="dropdownMenu">
                         <option>Bulbapedia Current</option>
                         <option>Bulbapedia Legacy</option>
                     </select>
-                    Type Icons:<br>
+                    <br>
+                    <br>
+                    <div>Type Icons:</div>
                     <select v-model="ui_type_icons" class="dropdownMenu">
                         <option>2023</option>
                         <option>2024</option>
@@ -356,7 +364,7 @@
                     </div>
                     
                     <!-- Stats -->
-                    <div v-else-if="stats == 'Automatic' && mapper.properties.events.enable_dv_display.value == false && (g3stateVariable == 'To Battle' || g3stateVariable == 'Battle' || g3stateVariable == 'From Battle')">
+                    <div v-else-if="stats == 'Automatic' && mapper.properties.events.enable_dv_display?.value == false && (g3stateVariable == 'To Battle' || g3stateVariable == 'Battle' || g3stateVariable == 'From Battle')">
                         <div class="statsheader">Level {{ mapper.properties.player.team[0].level.value }}</div>
                         <div class="heldItemStyle heldItem">{{ nullToSpace(camelCase(mapper.properties.player.team[0].itemHeld.value)) }}</div>
 
@@ -373,7 +381,7 @@
                     </div>
                     
                     <!-- Base Stats -->
-                    <div v-else-if="stats == 'Base Stats' || (stats == 'Automatic' && mapper.properties.events.enable_dv_display.value == false)">
+                    <div v-else-if="stats == 'Base Stats' || (stats == 'Automatic' && (mapper.properties.events.enable_dv_display?.value == false || mapper.properties.events.menu.pokedex.value == false))">
                         <div class="statsheader">Base Stats</div>
                         <div class="statsColumn1">
                             {{ pokemon(starter,`baseHp`) }}<br>
@@ -726,10 +734,10 @@
             <!-- REPEL COUNTER -->
             <div v-if="repel_counter == true">
                 <transition name="fadeBattle">
-                    <div v-show="g3stateVariable == 'Overworld' && mapper.properties.overworld.repelCount.value > 0">
+                    <div v-show="g3stateVariable == 'Overworld' && mapper.properties.overworld.repelCount?.value > 0">
                         <div class="colored-image" :style="`filter: saturate(${ui_saturation})`" style="--url: url(images/ui/accuracy.svg)"></div>
                         <div class="accEvaStyle accEvaLabel accuracyLabel" style="font-size: 14px;">Repel Steps:</div>
-                        <div class="accEvaStyle accEvaMod accuracyMod">{{ mapper.properties.overworld.repelCount.value }}</div>
+                        <div class="accEvaStyle accEvaMod accuracyMod">{{ mapper.properties.overworld.repelCount?.value }}</div>
                     </div>
                 </transition>
             </div>
