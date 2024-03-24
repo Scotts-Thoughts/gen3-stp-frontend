@@ -3475,12 +3475,12 @@ const app = Vue.createApp({
             var ivSpe = this.mapper.properties.player.team[0].ivSpeed.value
 
             //calculates the Pokemon's starting stats with the desired DVs
-            var hitpoints = Math.floor((((2 * pkmnData.base_hp + ivHp + 0) * level)/100) + level + 10)
-            var attack = Math.floor(Math.floor(((((2 * pkmnData.base_atk + ivAtk + 0) * level)/100) + 5)) * natures["nature_attack"])
-            var defense = Math.floor(Math.floor(((((2 * pkmnData.base_def + ivDef + 0) * level)/100) + 5)) * natures["nature_defense"])
-            var specialAttack = Math.floor(Math.floor(((((2 * pkmnData.base_spc_atk + ivSpA + 0) * level)/100) + 5)) * natures["nature_specialAttack"])
+            var hitpoints      = Math.floor((((2 * pkmnData.base_hp + ivHp + 0) * level)/100) + level + 10)
+            var attack         = Math.floor(Math.floor(((((2 * pkmnData.base_atk + ivAtk + 0) * level)/100) + 5)) * natures["nature_attack"])
+            var defense        = Math.floor(Math.floor(((((2 * pkmnData.base_def + ivDef + 0) * level)/100) + 5)) * natures["nature_defense"])
+            var specialAttack  = Math.floor(Math.floor(((((2 * pkmnData.base_spc_atk + ivSpA + 0) * level)/100) + 5)) * natures["nature_specialAttack"])
             var specialDefense = Math.floor(Math.floor(((((2 * pkmnData.base_spc_def + ivSpD + 0) * level)/100) + 5)) * natures["nature_specialDefense"])
-            var speed = Math.floor(Math.floor(((((2 * pkmnData.base_spd + ivSpe + 0) * level)/100) + 5)) * natures["nature_speed"])
+            var speed          = Math.floor(Math.floor(((((2 * pkmnData.base_spd + ivSpe + 0) * level)/100) + 5)) * natures["nature_speed"])
 
             // only recalculate stats when IVs when your starter is received
             if (this.game.starterLocation.includes(this.mapper.properties.overworld.mapName?.value) && this.mapper.properties.player.team[0].level.value == 5) {
@@ -3502,7 +3502,7 @@ const app = Vue.createApp({
         }
         this.mapper.properties.player.team[0].move1pp.change(async (newProp) => {
             const species = this.mapper.properties.player.team[0].species.value
-            const pp = newProp.value
+            const pp    = newProp.value
             const move1 = this.mapper.properties.player.team[0].move1.value
             const move2 = this.mapper.properties.player.team[0].move2.value
             if (species == 'Regirock' || species == 'Regice' || species == 'Registeel') {
