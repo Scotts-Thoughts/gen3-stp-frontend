@@ -249,6 +249,16 @@
                         <tr><td>Lowers:</td><td>{{natures[pkmnNature].lowers}}</td></tr>
                     </table>
                     <br>
+                    <div>Approximate  Adjusted Stats:<br>
+                        <div style="font-size: 12px;">
+                        Atk: {{ Math.floor((natures[pkmnNature].raises == "Attack") ? pokemon(starter, 'baseAtk') * 1.1 : ((natures[pkmnNature].lowers == "Attack") ? pokemon(starter, 'baseAtk') * .9 : pokemon(starter, 'baseAtk'))) }}
+                        Def: {{ Math.floor((natures[pkmnNature].raises == "Defense") ? pokemon(starter, 'baseDef') * 1.1 : ((natures[pkmnNature].lowers == "Defense") ? pokemon(starter, 'baseDef') * .9 : pokemon(starter, 'baseDef'))) }}
+                        SpA: {{ Math.floor((natures[pkmnNature].raises == "Special Attack") ? pokemon(starter, 'baseSpcA') * 1.1 : ((natures[pkmnNature].lowers == "Special Attack") ? pokemon(starter, 'baseSpcA') * .9 : pokemon(starter, 'baseSpcA'))) }}
+                        SpD: {{ Math.floor((natures[pkmnNature].raises == "Special Defense") ? pokemon(starter, 'baseSpcD') * 1.1 : ((natures[pkmnNature].lowers == "Special Defense") ? pokemon(starter, 'baseSpcD') * .9 : pokemon(starter, 'baseSpcD'))) }}
+                        Spe: {{ Math.floor((natures[pkmnNature].raises == "Speed") ? pokemon(starter, 'baseSpd') * 1.1 : ((natures[pkmnNature].lowers == "Speed") ? pokemon(starter, 'baseSpd') * .9 : pokemon(starter, 'baseSpd'))) }}
+                        </div>
+                    </div>
+                    <br>
                     <div>Hidden Power:</div>
                     <select v-model="hidden_power_type" class="dropdownMenu">
                         <option disabled value="">Select a Hidden Power type</option>
