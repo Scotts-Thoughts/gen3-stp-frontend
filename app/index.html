@@ -429,13 +429,13 @@
 
                         <div class="statsColumn1">
                             {{ mapper.properties.player.team[0].maxHp }}<br>
-                            {{ ability(this.pkmn_ability,"attack",badge_boost(this.mapper.properties.player.badges.badge1.value, stageMultiplier(mapper.properties.battle.yourPokemon.modStageAttack.value, mapper.properties.player.team[0].attack))) }}<br>
-                            {{ ability(this.pkmn_ability,"defense",badge_boost(this.mapper.properties.player.badges.badge5.value, stageMultiplier(mapper.properties.battle.yourPokemon.modStageDefense.value, mapper.properties.player.team[0].defense))) }}<br>
+                            <span :class="getNumberClass(battle_stat_atk)">{{ battle_stat_atk }}<br></span>
+                            <span :class="getNumberClass(battle_stat_def)">{{ battle_stat_def }}<br></span>
                         </div>
                         <div class="statsColumn2">
-                            {{ badge_boost(this.mapper.properties.player.badges.badge7.value, stageMultiplier(mapper.properties.battle.yourPokemon.modStageSpecialAttack.value, mapper.properties.player.team[0].specialAttack)) }}<br>
-                            {{ badge_boost(this.mapper.properties.player.badges.badge7.value, stageMultiplier(mapper.properties.battle.yourPokemon.modStageSpecialDefense.value, mapper.properties.player.team[0].specialDefense)) }}<br>
-                            {{ ability(this.pkmn_ability,"speed",paralysis(badge_boost(this.mapper.properties.player.badges.badge3.value, stageMultiplier(mapper.properties.battle.yourPokemon.modStageSpeed.value, mapper.properties.player.team[0].speed)))) }}<br>
+                            <span >{{ badge_boost(this.mapper.properties.player.badges.badge7.value, stageMultiplier(mapper.properties.battle.yourPokemon.modStageSpecialAttack.value, mapper.properties.player.team[0].specialAttack)) }}<br></span>
+                            <span >{{ badge_boost(this.mapper.properties.player.badges.badge7.value, stageMultiplier(mapper.properties.battle.yourPokemon.modStageSpecialDefense.value, mapper.properties.player.team[0].specialDefense)) }}<br></span>
+                            <span >{{ ability(this.pkmn_ability,"speed",paralysis(badge_boost(this.mapper.properties.player.badges.badge3.value, stageMultiplier(mapper.properties.battle.yourPokemon.modStageSpeed.value, mapper.properties.player.team[0].speed)))) }}<br></span>
                         </div>
                     </div>
 

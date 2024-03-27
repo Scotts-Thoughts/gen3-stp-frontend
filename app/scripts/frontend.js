@@ -1366,6 +1366,12 @@ const app = Vue.createApp({
         }
     },
     computed: {
+        battle_stat_atk() {
+            return this.ability(this.pkmn_ability,"attack",this.badge_boost(this.mapper.properties.player.badges.badge1.value, this.stageMultiplier(this.mapper.properties.battle.yourPokemon.modStageAttack.value, this.mapper.properties.player.team[0].attack)))
+        },
+        battle_stat_def() {
+            return this.ability(this.pkmn_ability,"defense",this.badge_boost(this.mapper.properties.player.badges.badge5.value, this.stageMultiplier(this.mapper.properties.battle.yourPokemon.modStageDefense.value, this.mapper.properties.player.team[0].defense)))
+        },
         //boolean to check for the tutorial catching battle with wally
         zigzagoon_check() {
             const zigzagoon = this.mapper.properties.player.team[0].species.value
@@ -1702,6 +1708,11 @@ const app = Vue.createApp({
     },
 
     methods: { 
+        getNumberClass(number) {
+            console.log(number)
+            console.log(number.toString().length)
+            return number.toString().length >= 4 ? 'small_number' : 'large_number' ;
+        },
         //methods
         special_trainer_names(trainer_name) {
             switch (trainer_name) {
