@@ -330,6 +330,22 @@
 
                 <!-- STATS -------------------------------------------------------------------------------->  
                 <div style="z-index: 200;">
+                    <!--  New Stats -->
+                    <div v-if="ui_stats_styling_modifier == '2024'" class="statsContainer"> 
+                        <div>
+                            <div class="statsheader">{{stats_header}}</div>
+                            <div class="expLabelGen1">Exp:</div>
+                            <div v-for="stat in stat_object">
+                                <div :class="`stat_label_style stat_row_${stat.label_row} stat_column_${stat.label_column}`">{{stat.label}}</div>
+                            </div>
+                            <div v-for="stat in stat_object">
+                                <div v-if="stats_display == 'Base Stats'" :class="`stat_value_style stat_row_${stat.value_row} stat_column_${stat.value_column}`">{{pokedex_yellow[starterName].base_stats[stat.base_stat_path]}}</div>
+                                <div v-if="stats_display == 'IVs'"        :class="`stat_value_style stat_row_${stat.value_row} stat_column_${stat.value_column} dv`">{{get_dv(`${stat.name}`)}}/31</div>
+                                <div v-if="stats_display == 'EVs'"        :class="`stat_value_style stat_row_${stat.value_row} stat_column_${stat.value_column} stat_exp`">{{mapper.properties.player.team[0][`statExp${stat.name}`].value}}</div>
+                                <div v-if="stats_display == 'Automatic'"  :class="`stat_value_style stat_row_${stat.value_row} stat_column_${stat.value_column}`">{{get_stat(`${stat.name}`)}}</div>
+                            </div>
+                        </div>
+                    </div>
                     <!-- IVs -->
                     <div v-if="stats == 'IVs' && g3stateVariable != 'Base Stats'">
                         <div class="statsheader">{{ mapper.properties.player.team[0].species.value }}'s IVs</div>
