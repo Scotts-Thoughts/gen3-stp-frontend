@@ -1528,6 +1528,53 @@ body {
 
 }
 
+.stats_container {
+    border: 3px solid #0000ff00;
+    top: 814px;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    position: relative;
+}
+.stat_value_style {
+    position: absolute;
+    padding-left: 1px;
+    text-align: right; 
+    line-height: 58px;
+    width: 28px;
+    min-width: 120px;
+    max-width: 120px;
+    border: 1px solid #00000000;
+    font-size: 50px;
+    font-family: osb;
+}
+.stat_label_style {
+    font-size: 24px;
+    position: absolute;
+    line-height: 58px;
+    z-index: 3;
+    opacity: .63;
+    text-align: left;
+    color: rgb(0, 0, 0);
+    font-family: osb;
+    font-weight: 500;
+    width: 65px;
+    border: 1px solid #00000000;
+}
+.stat_row_1 { top: 56px; }
+.stat_row_2 { top: 118px; }
+.stat_row_3 { top: 180px; }
+.stat_column_1 { left: 16px; padding-top: 1px; padding-left: 1px; }
+.stat_column_2 { left: 46px; }
+.stat_column_3 { left: 184px; padding-top: 1px; padding-left: 1px; }
+.stat_column_4 { left: 215px; }
+.dv {
+    font-size: 33px;
+}
+.stat_exp {
+    font-size: 25px;
+}
+
+
 .atkMod {
     font-size: 28px;
     color: rgb(0, 0, 0);

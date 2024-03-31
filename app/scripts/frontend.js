@@ -680,7 +680,6 @@ const app = Vue.createApp({
             moveset:        MyStorage['moveset']        ?? true, //includes the moveset area and dynamic PP  //MVP
             dynamicPower:   MyStorage['dynamicPower']   ?? false, //dynamically calculates power based on type effectiveness
             resets:         MyStorage['resets']         ?? false, //includes the resets graphics
-            stats_display:  MyStorage['stats_display']  ?? true, //includes the dynamic stats  //MVP
             movepool:       MyStorage['movepool']       ?? false, //includes the movepool graphic
             inventory:      MyStorage['inventory']      ?? false, //includes the inventory graphic when in marts
             battleStats:    MyStorage['battleStats']    ?? false, //calculates stats with stage modifiers  //MVP
@@ -707,13 +706,12 @@ const app = Vue.createApp({
             badgeBoosts: ["badge1", "badge3", "badge5", "badge7"],
             pkmnMoves: ["move1", "move2", "move3", "move4"],
             stat_object:     [
-                {abrv: "HP",  name: "Hp",              label: "HP",   path: "maxHp",          base_stat_path: "hp",              label_row: 1, label_column: 1, value_row: 1, value_column: 2,}, 
-                {abrv: "Atk", name: "Attack",          label: "Atk.", path: "attack",         base_stat_path: "attack",          label_row: 2, label_column: 1, value_row: 2, value_column: 2,}, 
-                {abrv: "Def", name: "Defense",         label: "Def.", path: "defense",        base_stat_path: "defense",         label_row: 3, label_column: 1, value_row: 3, value_column: 2,}, 
-                {abrv: "Spc", name: "Special",         label: "Spc.", path: "special",        base_stat_path: "special_attack",  label_row: 2, label_column: 3, value_row: 2, value_column: 4,}, 
-                {abrv: "SpA", name: "Special Attack",  label: "Spc.", path: "specialAttack",  base_stat_path: "special_attack",  label_row: 1, label_column: 3, value_row: 1, value_column: 4,}, 
-                {abrv: "SpD", name: "Special Defense", label: "Spc.", path: "specialDefense", base_stat_path: "special_defense", label_row: 2, label_column: 3, value_row: 2, value_column: 4,}, 
-                {abrv: "Spe", name: "Speed",           label: "Spe.", path: "speed",          base_stat_path: "speed",           label_row: 3, label_column: 3, value_row: 3, value_column: 4,}, 
+                {abrv: "HP",  name: "Hp",              label: "HP",   path: "maxHp",          base_stat_path: "hp",              label_row: 1, label_column: 1, hp_spe_value_row: 1, hp_spd_value_row: 1, value_column: 2,}, 
+                {abrv: "Atk", name: "Attack",          label: "Atk.", path: "attack",         base_stat_path: "attack",          label_row: 2, label_column: 1, hp_spe_value_row: 2, hp_spd_value_row: 2, value_column: 2,}, 
+                {abrv: "Def", name: "Defense",         label: "Def.", path: "defense",        base_stat_path: "defense",         label_row: 3, label_column: 1, hp_spe_value_row: 3, hp_spd_value_row: 3, value_column: 2,}, 
+                {abrv: "SpA", name: "Special Attack",  label: "SpA.", path: "specialAttack",  base_stat_path: "special_attack",  label_row: 1, label_column: 3, hp_spe_value_row: 1, hp_spd_value_row: 2, value_column: 4,}, 
+                {abrv: "SpD", name: "Special Defense", label: "SpD.", path: "specialDefense", base_stat_path: "special_defense", label_row: 2, label_column: 3, hp_spe_value_row: 2, hp_spd_value_row: 3, value_column: 4,}, 
+                {abrv: "Spe", name: "Speed",           label: "Spe.", path: "speed",          base_stat_path: "speed",           label_row: 3, label_column: 3, hp_spe_value_row: 3, hp_spd_value_row: 1, value_column: 4,}, 
             ],
 
             //CSS styling values
@@ -937,13 +935,14 @@ const app = Vue.createApp({
             hm_1_rattata:     MyStorage['hm_101_rattata']   ?? true,
 
             // UI
-            ui_saturation:                MyStorage['ui_saturation']              ?? .6,
-            ui_type_colors:               MyStorage['ui_type_colors']             ?? "Current",
-            ui_type_color_modifier:       MyStorage['ui_type_color_modifier']     ?? "current_",
-            ui_type_icons:                MyStorage['ui_type_icons']              ?? "2024",
-            ui_type_icons_modifier:       MyStorage['ui_type_icons_modifier']     ?? "2024/",
-            ui_stat_arrangement:          MyStorage['ui_stat_arrangement']        ?? "HP, Atk, Def, Spe, SpA, SpD",
+            ui_saturation:                MyStorage['ui_saturation']                ?? .6,
+            ui_type_colors:               MyStorage['ui_type_colors']               ?? "Current",
+            ui_type_color_modifier:       MyStorage['ui_type_color_modifier']       ?? "current_",
+            ui_type_icons:                MyStorage['ui_type_icons']                ?? "2024",
+            ui_type_icons_modifier:       MyStorage['ui_type_icons_modifier']       ?? "2024/",
+            ui_stat_arrangement:          MyStorage['ui_stat_arrangement']          ?? "HP, Atk, Def, Spe, SpA, SpD",
             ui_stat_arrangement_modifier: MyStorage['ui_stat_arrangement_modifier'] ?? "hp_spe_",
+            ui_stats_styling_modifier:    MyStorage['ui_stats_styling_modifier']    ?? "2024",
 
             auto_save: [
                 "graphicOverlay",
@@ -1389,42 +1388,42 @@ const app = Vue.createApp({
         }
     },
     computed: {
-        // stats_header() {
-        //     const toggle    = this.automatic_stats
-        //     const stat_type = this.stats_display
-        //     const year      = this.ui_stats_styling_modifier
-        //     const state     = this.state
-        //     if (year == '2023') {
-        //         if (this.mapper.properties.events.got_pokedex.value == false && this.mapper.properties.events.battled_rival_in_oaks_lab.value == true) {
-        //             return `${this.starterName}'s DVs`
-        //         }
-        //         switch (state) {
-        //             case "Base Stats":  return `Base Stats`
-        //             case "Overworld":   return `Level ${this.mapper.properties.player.team[0].level.value}`
-        //             case "To Battle":   return `Level ${this.mapper.properties.player.team[0].level.value}`
-        //             case "From Battle": return `Level ${this.mapper.properties.battle.yourPokemon.level.value}`
-        //             case "Battle":      return `Level ${this.mapper.properties.battle.yourPokemon.level.value}`
-        //         }
-        //     }
-        //     else {
-        //         if (toggle) {
-        //             switch (stat_type) {
-        //                 case "Base Stats": return `Base Stats`
-        //                 case "DVs":        return `${this.starterName}'s DVs`
-        //                 case "EVs":        return `${this.starterName}'s Stat Exp`
-        //                 case "Automatic":  return `Level ${this.mapper.properties.battle.yourPokemon.level.value}`
-        //             }
-        //         }
-        //         else {
-        //             switch (stat_type) {
-        //                 case "Base Stats": return `Base Stats`
-        //                 case "DVs":        return `${this.starterName}'s DVs`
-        //                 case "EVs":        return `${this.starterName}'s Stat Exp`
-        //                 case "Automatic":  return `Level ${this.mapper.properties.battle.yourPokemon.level.value}`
-        //             }
-        //         }
-        //     }
-        // },
+        stats_header() {
+            const toggle    = true
+            const stat_type = this.stats
+            const year      = this.ui_stats_styling_modifier
+            const state     = this.g3stateVariable
+            if (year == '2023') {
+                if (this.mapper.properties.events.menu.pokedex.value == false) {
+                    return `${this.starterString}'s IVs`
+                }
+                switch (state) {
+                    case "Base Stats":  return `Base Stats`
+                    case "Overworld":   return `Level ${this.mapper.properties.player.team[0].level.value}`
+                    case "To Battle":   return `Level ${this.mapper.properties.player.team[0].level.value}`
+                    case "From Battle": return `Level ${this.mapper.properties.battle.yourPokemon.level.value}`
+                    case "Battle":      return `Level ${this.mapper.properties.battle.yourPokemon.level.value}`
+                }
+            }
+            else {
+                if (toggle) {
+                    switch (stat_type) {
+                        case "Base Stats": return `Base Stats`
+                        case "IVs":        return `${this.starterString}'s IVs`
+                        case "EVs":        return `${this.starterString}'s EVs`
+                        case "Automatic":  return `Level ${this.mapper.properties.battle.yourPokemon.level.value}`
+                    }
+                }
+                else {
+                    switch (stat_type) {
+                        case "Base Stats": return `Base Stats`
+                        case "IVs":        return `${this.starterString}'s IVs`
+                        case "EVs":        return `${this.starterString}'s EVs`
+                        case "Automatic":  return `Level ${this.mapper.properties.battle.yourPokemon.level.value}`
+                    }
+                }
+            }
+        },
         //boolean to check for the tutorial catching battle with wally
         zigzagoon_check() {
             const zigzagoon = this.mapper.properties.player.team[0].species.value
@@ -1761,6 +1760,39 @@ const app = Vue.createApp({
     },
 
     methods: { 
+        get_stat(stat_name) {
+            const state = this.g3stateVariable
+            if (state == `Overworld` || state == `To Battle`) {
+                switch (stat_name) {
+                    case "Hp":              return this.mapper.properties.player.team[0].maxHp.value
+                    case "Attack":          return this.badge_boost(this.mapper.properties.player.badges.badge1.value, this.mapper.properties.player.team[0].attack.value)
+                    case "Defense":         return this.badge_boost(this.mapper.properties.player.badges.badge3.value, this.mapper.properties.player.team[0].defense.value)
+                    case "Special Attack":  return this.badge_boost(this.mapper.properties.player.badges.badge7.value, this.mapper.properties.player.team[0].specialAttack.value)
+                    case "Special Defense": return this.badge_boost(this.mapper.properties.player.badges.badge7.value, this.mapper.properties.player.team[0].specialDefense.value)
+                    case "Speed":           return this.badge_boost(this.mapper.properties.player.badges.badge5.value, this.mapper.properties.player.team[0].speed.value)
+                }
+            }
+            if (state == `Battle` || state == `From Battle`) {
+                switch (stat_name) {
+                    case "Hp":              return this.mapper.properties.battle.yourPokemon.maxHp.value
+                    case "Attack":          return this.mapper.properties.battle.yourPokemon.attack.value
+                    case "Defense":         return this.mapper.properties.battle.yourPokemon.defense.value
+                    case "Special Attack":  return this.mapper.properties.battle.yourPokemon.specialAttack.value
+                    case "Special Defense": return this.mapper.properties.battle.yourPokemon.specialDefense.value
+                    case "Speed":           return this.mapper.properties.battle.yourPokemon.speed.value
+                }
+            }
+            if (state == `Base Stats`) {
+                switch (stat_name) {
+                    case "Hp":              return this.game.dexData[this.starterString].base_hp
+                    case "Attack":          return this.game.dexData[this.starterString].base_atk
+                    case "Defense":         return this.game.dexData[this.starterString].base_def
+                    case "Special Attack":  return this.game.dexData[this.starterString].base_spc_atk
+                    case "Special Defense": return this.game.dexData[this.starterString].base_spc_def
+                    case "Speed":           return this.game.dexData[this.starterString].base_spd
+                }
+            }
+        },
         //methods
         special_trainer_names(trainer_name) {
             switch (trainer_name) {
