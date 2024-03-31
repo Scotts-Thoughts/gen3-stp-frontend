@@ -474,7 +474,7 @@
                                  {{stat_mod(batt.enemyPokemon.modStageSpeed.value)}}
                             </div>
 
-                            <div class="ePkmnStatsLabelsStyle ePkmnHpLabel  opacityTransition" :style="enemyStatLabelOpacity(batt.trainer.team[x], x)">Hp:</div>
+                            <div class="ePkmnStatsLabelsStyle ePkmnHpLabel  opacityTransition" :style="enemyHpOpacity(batt.trainer.team[x], x)">Hp:</div>
                             <div class="ePkmnStatsLabelsStyle ePkmnAtkLabel opacityTransition" :style="enemyStatLabelOpacity(mapper.properties.battle.enemyPokemon.modStageAttack.value, x)">Atk:</div>
                             <div class="ePkmnStatsLabelsStyle ePkmnDefLabel opacityTransition" :style="enemyStatLabelOpacity(mapper.properties.battle.enemyPokemon.modStageDefense.value, x)">Def:</div>
                             <div class="ePkmnStatsLabelsStyle ePkmnSpaLabel opacityTransition" :style="enemyStatLabelOpacity(mapper.properties.battle.enemyPokemon.modStageSpecialAttack.value, x)">SpA:</div>

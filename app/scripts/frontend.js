@@ -1794,11 +1794,11 @@ const app = Vue.createApp({
             if (state == `Battle` || state == `From Battle`) {
                 switch (stat_name) {
                     case "Hp":              return this.mapper.properties.battle.yourPokemon.maxHp.value
-                    case "Attack":          return this.mapper.properties.battle.yourPokemon.attack.value
-                    case "Defense":         return this.mapper.properties.battle.yourPokemon.defense.value
-                    case "Special Attack":  return this.mapper.properties.battle.yourPokemon.specialAttack.value
-                    case "Special Defense": return this.mapper.properties.battle.yourPokemon.specialDefense.value
-                    case "Speed":           return this.mapper.properties.battle.yourPokemon.speed.value
+                    case "Attack":          return this.ability(this.pkmn_ability, "attack",  this.badge_boost(this.mapper.properties.player.badges.badge1.value, this.stageMultiplier(this.mapper.properties.battle.yourPokemon.modStageAttack.value,  this.mapper.properties.battle.yourPokemon.attack.value)))
+                    case "Defense":         return this.ability(this.pkmn_ability, "defense", this.badge_boost(this.mapper.properties.player.badges.badge5.value, this.stageMultiplier(this.mapper.properties.battle.yourPokemon.modStageDefense.value, this.mapper.properties.battle.yourPokemon.defense.value)))
+                    case "Speed":           return this.ability(this.pkmn_ability, "speed",   this.badge_boost(this.mapper.properties.player.badges.badge3.value, this.stageMultiplier(this.mapper.properties.battle.yourPokemon.modStageSpeed.value,   this.mapper.properties.battle.yourPokemon.speed.value)))
+                    case "Special Attack":  return this.badge_boost(this.mapper.properties.player.badges.badge7.value, this.stageMultiplier(this.mapper.properties.battle.yourPokemon.modStageSpecialAttack.value,  this.mapper.properties.battle.yourPokemon.specialAttack.value))
+                    case "Special Defense": return this.badge_boost(this.mapper.properties.player.badges.badge7.value, this.stageMultiplier(this.mapper.properties.battle.yourPokemon.modStageSpecialDefense.value, this.mapper.properties.battle.yourPokemon.specialDefense.value))
                 }
             }
             if (state == `Base Stats`) {
@@ -1936,6 +1936,17 @@ const app = Vue.createApp({
                     if (modifier != 0)
                         return `opacity: ${this.statLabelOpacityValue};`
                 }
+            }
+            else
+                return
+        },
+        enemyHpOpacity(modifier, slot) {
+            // console.log(modifier, slot)
+            if (this.g3stateVariable == "To Battle") {
+                return
+            }
+            if (this.mapper.properties.battle.trainer.team[slot].hp.value == 0) {
+                return `opacity: .3;`
             }
             else
                 return
