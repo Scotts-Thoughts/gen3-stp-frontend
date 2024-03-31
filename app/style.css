@@ -225,6 +225,7 @@ body {
 }
 .pokemon_art {
     display: block;
+    image-rendering: optimizeQuality;
     border: 4px solid #ff000000;
     padding: 8px;
     position: absolute;
@@ -2512,6 +2513,7 @@ body {
 }
 .ePkmnSprite {
     position: absolute;
+    image-rendering: optimizeQuality;
     border: 1px solid rgba(255, 0, 0, 0);
     max-width: 102px;
     max-height: 102px;
