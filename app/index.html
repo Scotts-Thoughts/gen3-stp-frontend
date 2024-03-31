@@ -317,9 +317,7 @@
             <div class="friendship">{{mapper.properties.player.team[0].friendship}}/255</div>
             <div class="ability">{{ pkmnAbility }}</div>
             <div class="statsContainer" id="stats">
-                <!-- STATS LABELS ------------------------------------------------------------------------------>
                 <div class="growthRate">{{pkmnGrowthRate}}</div>
-
                 <!--------- BADGE BOOST ICONS ---------------------------------------------------------------------------------------------------------------------->
                 <div v-for="x in badgeBoosts">
                     <div v-if="mapper.properties.player.badges[x].value == true">
@@ -327,8 +325,6 @@
                     </div>
                 </div>
 
-                <!-- <div class="gameTime">{{ mapper.properties.gameTime.hours }}:{{ gameTimeM(mapper.properties.gameTime.minutes) }}</div> -->
-                    
                 <div v-show="g3stateVariable == `Battle`" class="aDMods">
                     {{ stageModifiers(mapper.properties.battle.yourPokemon.modStageAttack.value) }}<br>
                     {{ stageModifiers(mapper.properties.battle.yourPokemon.modStageDefense.value) }}<br>
@@ -338,153 +334,24 @@
                     {{ stageModifiers(mapper.properties.battle.yourPokemon.modStageSpecialDefense.value) }}<br>
                     {{ stageModifiers(mapper.properties.battle.yourPokemon.modStageSpeed.value) }}<br>
                 </div>
-                <!-- <div v-if="ui_stat_arrangement_modifier == 'hp_spe_'">
-                    <div :style="{'z-index': 20, opacity: statLabelOpacity(mapper.properties.battle.yourPokemon.modStageAttack)}" class="labelAtk">Atk.</div>
-                    <div :style="{'z-index': 20, opacity: statLabelOpacity(mapper.properties.battle.yourPokemon.modStageDefense)}" class="labelDef">Def.</div>
-                    <div :style="{'z-index': 20, opacity: statLabelOpacity(mapper.properties.battle.yourPokemon.modStageSpeed)}" class="labelSpd">Spe.</div>
-                    <div :style="{'z-index': 20, opacity: statLabelOpacity(mapper.properties.battle.yourPokemon.modStageSpecialAttack)}" class="labelSpcAtk2">SpA.</div>
-                    <div :style="{'z-index': 20, opacity: statLabelOpacity(mapper.properties.battle.yourPokemon.modStageSpecialDefense)}" class="labelSpcDef2">SpD.</div>
-                </div>
-                <div v-if="ui_stat_arrangement_modifier == 'hp_spd_'">
-                    <div :style="{'z-index': 20, opacity: statLabelOpacity(mapper.properties.battle.yourPokemon.modStageAttack)}" class="labelAtk">Atk.</div>
-                    <div :style="{'z-index': 20, opacity: statLabelOpacity(mapper.properties.battle.yourPokemon.modStageDefense)}" class="labelDef">Def.</div>
-                    <div :style="{'z-index': 20, opacity: statLabelOpacity(mapper.properties.battle.yourPokemon.modStageSpeed)}" class="labelSpd">SpD.</div>
-                    <div :style="{'z-index': 20, opacity: statLabelOpacity(mapper.properties.battle.yourPokemon.modStageSpecialAttack)}" class="labelSpcAtk2">Spe.</div>
-                    <div :style="{'z-index': 20, opacity: statLabelOpacity(mapper.properties.battle.yourPokemon.modStageSpecialDefense)}" class="labelSpcDef2">SpA.</div>
-                </div> -->
-
 
                 <!-- STATS -------------------------------------------------------------------------------->  
                 <div style="z-index: 200;">
                     <!--  New Stats -->
                     <div v-if="ui_stats_styling_modifier == '2024'" class="stats_container"> 
                         <div>
-                            <div class="statsheader">{{stats_header}}</div>
+                            <div class="stats_header">{{stats_header}}</div>
                             <div v-for="stat in stat_object">
                                 <div :class="`stat_label_style stat_row_${stat.label_row} stat_column_${stat.label_column}`">{{stat.label}}</div>
                             </div>
                             <div v-for="stat in stat_object">
-                                <div v-if="stats_display == 'Base Stats'" :class="`stat_value_style stat_row_${stat[`${ui_stat_arrangement_modifier}value_row`]} stat_column_${stat.value_column}`">{{pokedex_yellow[starterName].base_stats[stat.base_stat_path]}}</div>
-                                <div v-if="stats_display == 'IVs'"        :class="`stat_value_style stat_row_${stat[`${ui_stat_arrangement_modifier}value_row`]} stat_column_${stat.value_column} dv`">{{get_dv(`${stat.name}`)}}/31</div>
-                                <div v-if="stats_display == 'EVs'"        :class="`stat_value_style stat_row_${stat[`${ui_stat_arrangement_modifier}value_row`]} stat_column_${stat.value_column} stat_exp`">{{mapper.properties.player.team[0][`statExp${stat.name}`].value}}</div>
-                                <div v-if="stats_display == 'Automatic'"  :class="`stat_value_style stat_row_${stat[`${ui_stat_arrangement_modifier}value_row`]} stat_column_${stat.value_column}`">{{get_stat(`${stat.name}`)}}</div>
+                                <div v-if="stats == 'Base Stats'" :class="`stat_value_style stat_row_${stat[`${ui_stat_arrangement_modifier}value_row`]} stat_column_${stat.value_column}`">{{game.dexData[starterString][stat.base_stat_path]}}</div>
+                                <div v-if="stats == 'IVs'"        :class="`stat_value_style stat_row_${stat[`${ui_stat_arrangement_modifier}value_row`]} stat_column_${stat.value_column} dv`">{{get_iv(`${stat.name}`)}}/31</div>
+                                <div v-if="stats == 'EVs'"        :class="`stat_value_style stat_row_${stat[`${ui_stat_arrangement_modifier}value_row`]} stat_column_${stat.value_column} stat_exp`">{{mapper.properties.player.team[0][`ev${stat.name_ev}`].value}}</div>
+                                <div v-if="stats == 'Automatic'"  :class="`stat_value_style stat_row_${stat[`${ui_stat_arrangement_modifier}value_row`]} stat_column_${stat.value_column}`">{{get_stat(`${stat.name}`)}}</div>
                             </div>
                         </div>
                     </div> 
-                   
-                    <!-- IVs -->
-                    <!-- <div v-if="stats == 'IVs' && g3stateVariable != 'Base Stats'">
-                        <div class="statsheader">{{ mapper.properties.player.team[0].species.value }}'s IVs</div>
-                        <div class="heldItemStyle heldItem">{{ nullToSpace(camelCase(mapper.properties.player.team[0].itemHeld.value)) }}</div>
-
-                        <div class="statsIvsColumn1">
-                            {{ mapper.properties.player.team[0].ivHp.value }}/31<br>
-                            {{ mapper.properties.player.team[0].ivAttack.value }}/31<br>
-                            {{ mapper.properties.player.team[0].ivDefense.value }}/31<br>
-                        </div>
-                        <div class="statsIvsColumn2">
-                            {{  mapper.properties.player.team[0].ivSpecialAttack.value }}/31<br>
-                            {{  mapper.properties.player.team[0].ivSpecialDefense.value }}/31<br>
-                            {{  mapper.properties.player.team[0].ivSpeed.value }}/31<br>
-                        </div>
-                    </div> -->
-                    <!-- EVs -->
-                    <!-- <div v-else-if="stats == 'EVs' && g3stateVariable != 'Base Stats'">
-                        <div class="statsheader">{{ mapper.properties.player.team[0].species.value }}'s EVs</div>
-                        <div class="heldItemStyle heldItem">{{ nullToSpace(camelCase(mapper.properties.player.team[0].itemHeld.value)) }}</div>
-
-                        <div class="statsEvsColumn1">
-                            {{ mapper.properties.player.team[0].evHp.value }}/255<br>
-                            {{ mapper.properties.player.team[0].evAttack.value }}/255<br>
-                            {{ mapper.properties.player.team[0].evDefense.value }}/255<br>
-                        </div>
-                        <div class="statsEvsColumn2">
-                            {{  mapper.properties.player.team[0].evSpecialAttack.value }}/255<br>
-                            {{  mapper.properties.player.team[0].evSpecialDefense.value }}/255<br>
-                            {{  mapper.properties.player.team[0].evSpeed.value }}/255<br>
-                        </div>
-                    </div> -->
-                    
-                    <!-- Stats -->
-                    <!-- <div v-else-if="stats == 'Automatic' && mapper.properties.events.enable_dv_display?.value == false && (g3stateVariable == 'To Battle' || g3stateVariable == 'Battle' || g3stateVariable == 'From Battle')">
-                        <div class="statsheader">Level {{ mapper.properties.player.team[0].level.value }}</div>
-                        <div class="heldItemStyle heldItem">{{ nullToSpace(camelCase(mapper.properties.player.team[0].itemHeld.value)) }}</div>
-
-                        <div class="statsColumn1">
-                            {{ mapper.properties.player.team[0].maxHp }}<br>
-                            {{ ability(this.pkmn_ability,"attack",badge_boost(this.mapper.properties.player.badges.badge1.value, stageMultiplier(mapper.properties.battle.yourPokemon.modStageAttack.value, mapper.properties.player.team[0].attack))) }}<br>
-                            {{ ability(this.pkmn_ability,"defense",badge_boost(this.mapper.properties.player.badges.badge5.value, stageMultiplier(mapper.properties.battle.yourPokemon.modStageDefense.value, mapper.properties.player.team[0].defense))) }}<br>
-                        </div>
-                        <div class="statsColumn2">
-                            {{ badge_boost(this.mapper.properties.player.badges.badge7.value, stageMultiplier(mapper.properties.battle.yourPokemon.modStageSpecialAttack.value, mapper.properties.player.team[0].specialAttack)) }}<br>
-                            {{ badge_boost(this.mapper.properties.player.badges.badge7.value, stageMultiplier(mapper.properties.battle.yourPokemon.modStageSpecialDefense.value, mapper.properties.player.team[0].specialDefense)) }}<br>
-                            {{ ability(this.pkmn_ability,"speed",paralysis(badge_boost(this.mapper.properties.player.badges.badge3.value, stageMultiplier(mapper.properties.battle.yourPokemon.modStageSpeed.value, mapper.properties.player.team[0].speed)))) }}<br>
-                        </div>
-                    </div> -->
-                    
-                    <!-- Base Stats -->
-                    <!-- <div v-else-if="stats == 'Base Stats' || (stats == 'Automatic' && (mapper.properties.events.enable_dv_display?.value == false || mapper.properties.events.menu.pokedex.value == false))">
-                        <div class="statsheader">Base Stats</div>
-                        <div class="statsColumn1">
-                            {{ pokemon(starter,`baseHp`) }}<br>
-                            {{ pokemon(starter,`baseAtk`) }}<br>
-                            {{ pokemon(starter,`baseDef`) }}<br>
-                        </div>
-                        <div class="statsColumn2">
-                            {{ pokemon(starter,`baseSpcA`) }}<br>
-                            {{ pokemon(starter,`baseSpcD`) }}<br>
-                            {{ pokemon(starter,`baseSpd`) }}<br>
-                        </div>
-                    </div> -->
-
-                    <!-- IVs -->
-                    <!-- <div v-else-if="(stats == 'Automatic' && ((mapper.properties.events?.hide_route_101_birch_zigzagoon_battle?.value == true || mapper.properties.player.team[0].species.value != null) && mapper.properties.events?.menu.pokedex?.value == false) && g3stateVariable == `Overworld`)">
-                        <div class="statsheader">{{ mapper.properties.player.team[0].species.value }}'s IVs</div>
-                        <div class="heldItemStyle heldItem">{{ nullToSpace(camelCase(mapper.properties.player.team[0].itemHeld.value)) }}</div>
-
-                        <div class="statsIvsColumn1">
-                            {{ mapper.properties.player.team[0].ivHp.value }}/31<br>
-                            {{ mapper.properties.player.team[0].ivAttack.value }}/31<br>
-                            {{ mapper.properties.player.team[0].ivDefense.value }}/31<br>
-                        </div>
-                        <div class="statsIvsColumn2">
-                            {{  mapper.properties.player.team[0].ivSpecialAttack.value }}/31<br>
-                            {{  mapper.properties.player.team[0].ivSpecialDefense.value }}/31<br>
-                            {{  mapper.properties.player.team[0].ivSpeed.value }}/31<br>
-                        </div>
-                    </div> -->
-                    
-                    <!-- Battle -->
-                    <!-- <div v-else-if="stats == 'Automatic'">
-                        <div class="statsheader">Level {{ mapper.properties.player.team[0].level.value }}</div>
-                        <div class="heldItemStyle heldItem">{{ nullToSpace(camelCase(mapper.properties.player.team[0].itemHeld.value)) }}</div>
-
-                        <div class="statsColumn1">
-                            {{ mapper.properties.player.team[0].maxHp }}<br>
-                            {{ ability(this.pkmn_ability,"attack",badge_boost(this.mapper.properties.player.badges.badge1.value, stageMultiplier(mapper.properties.battle.yourPokemon.modStageAttack.value, mapper.properties.player.team[0].attack))) }}<br>
-                            {{ ability(this.pkmn_ability,"defense",badge_boost(this.mapper.properties.player.badges.badge5.value, stageMultiplier(mapper.properties.battle.yourPokemon.modStageDefense.value, mapper.properties.player.team[0].defense))) }}<br>
-                        </div>
-                        <div class="statsColumn2">
-                            {{ badge_boost(this.mapper.properties.player.badges.badge7.value, stageMultiplier(mapper.properties.battle.yourPokemon.modStageSpecialAttack.value, mapper.properties.player.team[0].specialAttack)) }}<br>
-                            {{ badge_boost(this.mapper.properties.player.badges.badge7.value, stageMultiplier(mapper.properties.battle.yourPokemon.modStageSpecialDefense.value, mapper.properties.player.team[0].specialDefense)) }}<br>
-                            {{ ability(this.pkmn_ability,"speed",paralysis(badge_boost(this.mapper.properties.player.badges.badge3.value, stageMultiplier(mapper.properties.battle.yourPokemon.modStageSpeed.value, mapper.properties.player.team[0].speed)))) }}<br>
-                        </div>
-                    </div> -->
-
-                    <!-- Base Stats -->
-                    <!-- <div v-else>
-                        <div class="statsheader">Base Stats</div>
-                        <div class="statsColumn1">
-                            {{ pokemon(starter,`baseHp`) }}<br>
-                            {{ pokemon(starter,`baseAtk`) }}<br>
-                            {{ pokemon(starter,`baseDef`) }}<br>
-                        </div>
-                        <div class="statsColumn2">
-                            {{ pokemon(starter,`baseSpcA`) }}<br>
-                            {{ pokemon(starter,`baseSpcD`) }}<br>
-                            {{ pokemon(starter,`baseSpd`) }}<br>
-                        </div>
-                    </div> -->
                 </div>
             </div>
 

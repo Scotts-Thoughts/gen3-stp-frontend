@@ -484,7 +484,7 @@ body {
     left: 0px;
     z-index: 0;
 }
-.statsheader {
+.stats_header {
     font-size: 32px;
     line-height: 40px;
     font-family: play;
@@ -493,8 +493,8 @@ body {
     text-align: center;
     width: 344px;
     left: 8px;
-    top: 782px;
-    z-index: 1;
+    top: -35px;
+    z-index: 500;
     border: 1px solid #ff000000;
     /* filter: drop-shadow(1px 1px 0px rgb(0, 0, 0)); */
 }
@@ -1551,7 +1551,7 @@ body {
     font-size: 24px;
     position: absolute;
     line-height: 58px;
-    z-index: 3;
+    z-index: 50;
     opacity: .63;
     text-align: left;
     color: rgb(0, 0, 0);
