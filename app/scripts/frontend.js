@@ -1411,15 +1411,18 @@ const app = Vue.createApp({
                     switch (stat_type) {
                         case "Base Stats": return `Base Stats`
                         case "IVs":        return `IVs`
-                        case "EVs":        {
-                            ev_hp  = this.mapper.properties.player.team[0].evHp.value
-                            ev_atk = this.mapper.properties.player.team[0].evAttack.value
-                            ev_def = this.mapper.properties.player.team[0].evDefense.value
-                            ev_spa = this.mapper.properties.player.team[0].evSpecialAttack.value
-                            ev_spd = this.mapper.properties.player.team[0].evSpecialDefense.value
-                            ev_spe = this.mapper.properties.player.team[0].evSpeed.value
-                            total = ev_hp + ev_atk + ev_def + ev_spa + ev_spd + ev_spe
-                            return `EVs: ${total}/510`
+                        case "EVs": {
+                            return `EVs:`
+                        }
+                        case "Detailed EVs": {
+                            let ev_hp  = this.mapper.properties.player.team[0].evHp.value
+                            let ev_atk = this.mapper.properties.player.team[0].evAttack.value
+                            let ev_def = this.mapper.properties.player.team[0].evDefense.value
+                            let ev_spa = this.mapper.properties.player.team[0].evSpecialAttack.value
+                            let ev_spd = this.mapper.properties.player.team[0].evSpecialDefense.value
+                            let ev_spe = this.mapper.properties.player.team[0].evSpeed.value
+                            let total = ev_hp + ev_atk + ev_def + ev_spa + ev_spd + ev_spe
+                            return `${total}/510`
                         }
                         case "Automatic":  return `Level ${this.mapper.properties.player.team[0].level.value}`
                     }
@@ -1428,7 +1431,7 @@ const app = Vue.createApp({
                     switch (stat_type) {
                         case "Base Stats": return `Base Stats`
                         case "IVs":        return `IVs`
-                        case "EVs":        {
+                        case "EVs": {
                             ev_hp  = this.mapper.properties.player.team[0].evHp.value
                             ev_atk = this.mapper.properties.player.team[0].evAttack.value
                             ev_def = this.mapper.properties.player.team[0].evDefense.value
@@ -3879,7 +3882,11 @@ const app = Vue.createApp({
             this.stats = "IVs";
         });
         keyhook.registerShortCut('F14', async () => { // Show EVs
-            console.log("Key: F14 pressed: IVs displayed.")
+            console.log("Key: F14 pressed: Stat experience displayed.")
+            if (this.stats == "EVs") { 
+                this.stats = "Detailed EVs"
+                return
+            };
             this.stats = "EVs";
         });
         keyhook.registerShortCut('F15', async () => { // Show Base Stats

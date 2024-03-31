@@ -1571,8 +1571,23 @@ body {
 .dv {
     font-size: 33px;
 }
+.detailed_ev_stat_row_1 { top: 39px; }
+.detailed_ev_stat_row_2 { top: 101px; }
+.detailed_ev_stat_row_3 { top: 163px; }
 .evs {
     font-size: 36px;
+}
+.devs {
+    padding-top: 0px;
+    font-size: 18px;
+}
+.percentage_evs {
+    padding-top: 18px;
+    font-size: 18px;
+}
+.ev_stats_gained {
+    padding-top: 36px;
+    font-size: 18px;
 }
 
 
