@@ -701,6 +701,7 @@ const app = Vue.createApp({
             showSpecialTrainerGraphics:  MyStorage['showSpecialTrainerGraphics'] ?? true, 
             league_rematches:            MyStorage['league_rematches']           ?? false,
             display_badge_boosts:        MyStorage['display_badge_boosts']       ?? true,
+            show_nature_changes:         MyStorage['show_nature_changes']        ?? true,
 
             badges: ["badge1", "badge2", "badge3", "badge4", "badge5", "badge6", "badge7", "badge8"],
             badgeBoosts: ["badge1", "badge3", "badge5", "badge7"],
@@ -936,11 +937,13 @@ const app = Vue.createApp({
             hm_1_rattata:     MyStorage['hm_101_rattata']   ?? true,
 
             // UI
-            ui_saturation:          MyStorage['ui_saturation']              ?? .6,
-            ui_type_colors:         MyStorage['ui_type_colors']             ?? "Bulbapedia Current",
-            ui_type_color_modifier: MyStorage['ui_type_color_modifier']     ?? "current_",
-            ui_type_icons:          MyStorage['ui_type_icons']          ?? "2024",
-            ui_type_icons_modifier: MyStorage['ui_type_icons_modifier'] ?? "2024/",
+            ui_saturation:                MyStorage['ui_saturation']              ?? .6,
+            ui_type_colors:               MyStorage['ui_type_colors']             ?? "Current",
+            ui_type_color_modifier:       MyStorage['ui_type_color_modifier']     ?? "current_",
+            ui_type_icons:                MyStorage['ui_type_icons']              ?? "2024",
+            ui_type_icons_modifier:       MyStorage['ui_type_icons_modifier']     ?? "2024/",
+            ui_stat_arrangement:          MyStorage['ui_stat_arrangement']        ?? "HP, Atk, Def, Spe, SpA, SpD",
+            ui_stat_arrangement_modifier: MyStorage['ui_stat_arrangement_modifier'] ?? "hp_spe_",
 
             auto_save: [
                 "graphicOverlay",
@@ -993,6 +996,8 @@ const app = Vue.createApp({
                 "ui_saturation",
                 "ui_type_colors",
                 "ui_type_color_modifier",
+                "ui_stat_arrangement",
+                "ui_stat_arrangement_modifier",
                 "repel_counter",
                 "vs_seeker",
                 "league_rematches",
@@ -1005,6 +1010,7 @@ const app = Vue.createApp({
                 "automatic_ivs",
                 "automatic_evs",
                 "display_badge_boosts",
+                "show_nature_changes",
             ],
 
             stats_toggle_settings: [
@@ -1230,6 +1236,14 @@ const app = Vue.createApp({
         // }
     },
     watch: {
+        ui_stat_arrangement(newValue) {
+            if (newValue == 'HP, Atk, Def, SpA, SpD, Spe') {
+                this.ui_stat_arrangement_modifier = "hp_spe_"
+            }
+            if (newValue == 'HP, Atk, Def, Spe, SpA, SpD') {
+                this.ui_stat_arrangement_modifier = "hp_spd_"
+            }
+        },
         ui_type_icons(newValue) {
             if (newValue == '2024') {
                 this.ui_type_icons_modifier = "2024/"
@@ -1239,10 +1253,10 @@ const app = Vue.createApp({
             }
         },
         ui_type_colors(newValue) {
-            if (newValue == 'Bulbapedia Current') {
+            if (newValue == 'Current') {
                 this.ui_type_color_modifier = "current_"
             }
-            if (newValue == 'Bulbapedia Legacy') {
+            if (newValue == 'Legacy') {
                 this.ui_type_color_modifier = "legacy_"
             }
         },
@@ -1835,6 +1849,9 @@ const app = Vue.createApp({
         },
         enemyStatLabelOpacity(modifier, slot) {
             // console.log(modifier, slot)
+            if (this.g3stateVariable == "To Battle") {
+                return
+            }
             if (this.mapper.properties.battle.trainer.team[slot].hp.value == 0) {
                 return `opacity: .3;`
             }

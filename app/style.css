@@ -1417,7 +1417,7 @@ body {
     position: fixed;
     line-height: 37.3px;
     color:rgb(68, 68, 68);
-    top: 886px;
+    top: 885px;
     left: 20px;
     opacity: 1;
     text-align: left;
@@ -1430,7 +1430,7 @@ body {
     position: fixed;
     line-height: 37.3px;
     color:rgb(68, 68, 68);
-    top: 948px;
+    top: 947px;
     left: 20px;
     opacity: 1;
     text-align: left;
@@ -1459,7 +1459,7 @@ body {
     position: fixed;
     line-height: 27px;
     color:rgb(68, 68, 68);
-    top: 877px;
+    top: 876px;
     left: 187px;
     opacity: 1;
     text-align: left;
@@ -1474,7 +1474,7 @@ body {
     position: fixed;
     line-height: 27px;
     color:rgb(68, 68, 68);
-    top: 939px;
+    top: 937px;
     left: 187px;
     opacity: 1;
     text-align: left;
@@ -1488,7 +1488,7 @@ body {
     position: fixed;
     line-height: 27px;
     color:rgb(68, 68, 68);
-    top: 891px;
+    top: 890px;
     left: 187px;
     opacity: 1;
     text-align: left;
@@ -1503,7 +1503,7 @@ body {
     position: fixed;
     line-height: 27px;
     color:rgb(68, 68, 68);
-    top: 953px;
+    top: 952px;
     left: 187px;
     opacity: 1;
     text-align: left;
@@ -1907,6 +1907,31 @@ body {
     font-family: titan;
     left: 1570px;
     top: 19px;
+    border: 1px solid #ff000000;
+}
+.enemy_trainer_name {
+    display: block;
+    border: 1px solid rgba(255, 0, 0, 0);
+    font-size: 24px;
+    width: 338px;
+    text-align: center; /* need a fix */
+    position: absolute;
+    top: 26px;
+    left: 1570px;
+    font-family: titan;
+    line-height: 34px;
+    z-index: 600;
+}
+.enemy_trainer_name {
+    position: absolute;
+    display: block;
+    padding-top: 1px;
+    height: 40px;
+    font-size: 24px;
+    text-align: center;
+    font-family: titan;
+    left: 1570px;
+    top: 23px;
     border: 1px solid #ff000000;
 }
 .move1 {
@@ -2533,7 +2558,7 @@ body {
     top: 104.5px;
 }
 .ePkmnSpe {
-    top: 127.5px;
+    top: 128px;
 }
 .ePkmnStatsLabelsStyle {
     position: absolute;
@@ -2546,13 +2571,13 @@ body {
     border: 1px solid rgba(255, 0, 0, 0);
 }
 .ePkmnHpLabel {
-    top: 9.5px;
+    top: 9px;
 }
 .ePkmnAtkLabel {
-    top: 32px;
+    top: 33px;
 }
 .ePkmnDefLabel {
-    top: 56px;
+    top: 57px;
 }
 .ePkmnSpaLabel {
     top: 80.5px;
@@ -2561,7 +2586,7 @@ body {
     top: 104.5px;
 }
 .ePkmnSpeLabel {
-    top: 127.5px;
+    top: 129px;
 }
 .ePkmnAbility {
     position: absolute;

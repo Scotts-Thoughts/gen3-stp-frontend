@@ -57,7 +57,11 @@
                 <div class="colored-image ds" :style="`filter: saturate(${ui_saturation}) drop-shadow(0px 0px 1px #000000)`" style="--url: url(images/ui/ability.svg)"></div>
                 <div class="colored-image ds" :style="`filter: saturate(${ui_saturation}) drop-shadow(0px 0px 1px #000000)`" style="--url: url(images/ui/heldItem.svg)"></div>
                 <!-- <img class="canvas colored-image ds" src="images/ui/exp_bar.svg" /> -->
-                <img class="canvas colored-image ds" src="images/ui/stat_value_backgrounds.svg" />
+                <img class="canvas colored-image ds" :src="`images/ui/${ui_type_color_modifier}${ui_stat_arrangement_modifier}stat_value_backgrounds.svg`" />
+                <div v-if="show_nature_changes == true">
+                    <img class="canvas colored-image ds" :src="`images/ui/nature arrows/${ui_stat_arrangement_modifier}/raises/${natures[pkmnNature].raises}.svg`" />
+                    <img class="canvas colored-image ds" :src="`images/ui/nature arrows/${ui_stat_arrangement_modifier}/lowers/${natures[pkmnNature].lowers}.svg`" />
+                </div>
                 <div v-show="labels == true" class="labelNature">Nature:</div>
                 <div v-show="labels == true" class="labelFriendship">Friendship:</div>
                 <div v-show="labels == true" class="abilityHeldItemLabelStyle labelAbility">Ability:</div>
@@ -128,10 +132,10 @@
                     Copy to: <input type="text" v-model="copy_overlay_pokemon_to"/><br>
                     <button @click="copy_overlay_properties()" class="buttonStyle">Copy Overlay Settings</button><br>
                     <br>
-                    <div>Type Colors:</div>
+                    <div>Bulbapedia Colors:</div>
                     <select v-model="ui_type_colors" class="dropdownMenu">
-                        <option>Bulbapedia Current</option>
-                        <option>Bulbapedia Legacy</option>
+                        <option>Current</option>
+                        <option>Legacy</option>
                     </select>
                     <br>
                     <br>
@@ -139,6 +143,12 @@
                     <select v-model="ui_type_icons" class="dropdownMenu">
                         <option>2023</option>
                         <option>2024</option>
+                    </select>
+                    <br><br>
+                    <div>Stat Arrangement:</div>
+                    <select v-model="ui_stat_arrangement" class="dropdownMenu">
+                        <option>HP, Atk, Def, SpA, SpD, Spe</option>
+                        <option>HP, Atk, Def, Spe, SpA, SpD</option>
                     </select>
                     <br>
                     <br>
@@ -200,9 +210,10 @@
                         <tr><td>Automatic IVs:</td>          <td><input class="checkBoxStyle" type="checkbox" v-model="automatic_ivs"/></td></tr>
                         <tr><td>Automatic EVs:</td>          <td><input class="checkBoxStyle" type="checkbox" v-model="automatic_evs"/></td></tr>
                         <tr><td></td><td></td></tr>
-                        <tr><td>Show Tutor Moves:</td><td><input class="checkBoxStyle" type="checkbox" v-model="tutor_moves"/></td></tr>
+                        <tr><td>Show Tutor Moves:</td>    <td><input class="checkBoxStyle" type="checkbox" v-model="tutor_moves"/></td></tr>
                         <tr><td>Show Battle Graphics:</td><td><input class="checkBoxStyle" type="checkbox" v-model="battleGraphic"/></td></tr>
-                        <tr><td>Show Inventory:</td><td><input class="checkBoxStyle" type="checkbox" v-model="inventory_display"/></td></tr>
+                        <tr><td>Show Inventory:</td>      <td><input class="checkBoxStyle" type="checkbox" v-model="inventory_display"/></td></tr>
+                        <tr><td>Show Nature Changes with Arrows:</td><td><input class="checkBoxStyle" type="checkbox" v-model="show_nature_changes"/></td></tr>
                         <tr v-if="gameSelection == 'FireRed and LeafGreen'"><td>Repel Counter:</td><td><input class="checkBoxStyle" type="checkbox" v-model="repel_counter"/></td></tr>
                         <tr v-if="gameSelection == 'FireRed and LeafGreen'"><td>Vs. Seeker:</td>   <td><input class="checkBoxStyle" type="checkbox" v-model="vs_seeker"/></td></tr>
                     </table>
@@ -306,7 +317,7 @@
                 <!--------- BADGE BOOST ICONS ---------------------------------------------------------------------------------------------------------------------->
                 <div v-for="x in badgeBoosts">
                     <div v-if="mapper.properties.player.badges[x].value == true">
-                        <img class="badgeBoost" :src="`images/badges/badge_boosts/${this.game.region}/${x}.png`"/>
+                        <img class="badgeBoost" :src="`images/badges/badge_boosts/${this.game.region}/${ui_stat_arrangement_modifier}/${x}.png`"/>
                     </div>
                 </div>
 
@@ -321,16 +332,26 @@
                     {{ stageModifiers(mapper.properties.battle.yourPokemon.modStageSpecialDefense.value) }}<br>
                     {{ stageModifiers(mapper.properties.battle.yourPokemon.modStageSpeed.value) }}<br>
                 </div>
+                <div v-if="ui_stat_arrangement_modifier == 'hp_spe_'">
+                    <div :style="{'z-index': 20, opacity: statLabelOpacity(mapper.properties.battle.yourPokemon.modStageAttack)}" class="labelAtk">Atk.</div>
+                    <div :style="{'z-index': 20, opacity: statLabelOpacity(mapper.properties.battle.yourPokemon.modStageDefense)}" class="labelDef">Def.</div>
+                    <div :style="{'z-index': 20, opacity: statLabelOpacity(mapper.properties.battle.yourPokemon.modStageSpeed)}" class="labelSpd">Spe.</div>
+                    <div :style="{'z-index': 20, opacity: statLabelOpacity(mapper.properties.battle.yourPokemon.modStageSpecialAttack)}" class="labelSpcAtk2">SpA.</div>
+                    <div :style="{'z-index': 20, opacity: statLabelOpacity(mapper.properties.battle.yourPokemon.modStageSpecialDefense)}" class="labelSpcDef2">SpD.</div>
+                </div>
+                <div v-if="ui_stat_arrangement_modifier == 'hp_spd_'">
+                    <div :style="{'z-index': 20, opacity: statLabelOpacity(mapper.properties.battle.yourPokemon.modStageAttack)}" class="labelAtk">Atk.</div>
+                    <div :style="{'z-index': 20, opacity: statLabelOpacity(mapper.properties.battle.yourPokemon.modStageDefense)}" class="labelDef">Def.</div>
+                    <div :style="{'z-index': 20, opacity: statLabelOpacity(mapper.properties.battle.yourPokemon.modStageSpeed)}" class="labelSpd">SpD.</div>
+                    <div :style="{'z-index': 20, opacity: statLabelOpacity(mapper.properties.battle.yourPokemon.modStageSpecialAttack)}" class="labelSpcAtk2">Spe.</div>
+                    <div :style="{'z-index': 20, opacity: statLabelOpacity(mapper.properties.battle.yourPokemon.modStageSpecialDefense)}" class="labelSpcDef2">SpA.</div>
+                </div>
 
-                <div :style="{'z-index': 20, opacity: statLabelOpacity(mapper.properties.battle.yourPokemon.modStageAttack)}" class="labelAtk">Atk.</div>
-                <div :style="{'z-index': 20, opacity: statLabelOpacity(mapper.properties.battle.yourPokemon.modStageDefense)}" class="labelDef">Def.</div>
-                <div :style="{'z-index': 20, opacity: statLabelOpacity(mapper.properties.battle.yourPokemon.modStageSpeed)}" class="labelSpd">Spe.</div>
-                <div :style="{'z-index': 20, opacity: statLabelOpacity(mapper.properties.battle.yourPokemon.modStageSpecialAttack)}" class="labelSpcAtk2">SpA.</div>
-                <div :style="{'z-index': 20, opacity: statLabelOpacity(mapper.properties.battle.yourPokemon.modStageSpecialDefense)}" class="labelSpcDef2">SpD.</div>
 
                 <!-- STATS -------------------------------------------------------------------------------->  
                 <div style="z-index: 200;">
                     <!--  New Stats -->
+                    <!-- 
                     <div v-if="ui_stats_styling_modifier == '2024'" class="statsContainer"> 
                         <div>
                             <div class="statsheader">{{stats_header}}</div>
@@ -345,7 +366,8 @@
                                 <div v-if="stats_display == 'Automatic'"  :class="`stat_value_style stat_row_${stat.value_row} stat_column_${stat.value_column}`">{{get_stat(`${stat.name}`)}}</div>
                             </div>
                         </div>
-                    </div>
+                    </div> 
+                    -->
                     <!-- IVs -->
                     <div v-if="stats == 'IVs' && g3stateVariable != 'Base Stats'">
                         <div class="statsheader">{{ mapper.properties.player.team[0].species.value }}'s IVs</div>
@@ -535,7 +557,7 @@
                     <div class="colored-image ds" :style="`filter: saturate(${ui_saturation})`" style="--url: url(images/ui/movepool.svg)"></div>
                 </div>
                 <div v-else-if="right_panel == 'Battle Graphic' && ((g3stateVariable == `Battle` || g3stateVariable == `To Battle`) && mapper.properties.battle.type.trainer.value == true)">
-                    <div class="movepoolTitle">{{ special_trainer_names(enemyTrainerName) }}</div>
+                    <div class="enemy_trainer_name">{{ special_trainer_names(enemyTrainerName) }}</div>
                     <div class="colored-image ds" :style="battlePokemonCrop()" style="--url: url(images/ui/enemy.svg)"></div>
                     <div v-for="x in pkmnSlots" class="enemyGraphic">
                         <div v-if="enemyTrainer.pokemon[x] != undefined" :class="`ePkmn${x + 1}`">
@@ -543,7 +565,7 @@
                             <img class="ePkmnTypeIcons ePkmnType_1 ds opacityTransition" :style="enemyPkmnFaintTypes(batt.trainer.team[x])" :src="`images/elements/type-icons/${enemyType1(x)?.toLowerCase()}.png`"/>
                             <img v-if="enemyType1(x) != enemyType2(x)" :style="enemyPkmnFaintTypes(batt.trainer.team[x])" class="ePkmnTypeIcons ePkmnType_2 ds opacityTransition" :src="`images/elements/type-icons/${enemyType2(x)?.toLowerCase()}.png`"/>
                             <div class="ePkmnSpecies opacityTransition" :style="enemyPkmnSpecies(batt.trainer.team[x])">{{ enemyTrainer.pokemon[x]?.species }}</div>
-                            <img class="enemyStatsArea" :style="enemyPkmnFaintStats(batt.trainer.team[x])" :src="`images/enemy_area/stats/${x}.svg`"/>
+                            <img class="enemyStatsArea" :style="enemyPkmnFaintStats(batt.trainer.team[x])" :src="`images/enemy_area/${ui_type_color_modifier}stats/${x}.svg`"/>
 
                             <img v-if="enemyTrainer.pokemon[x]?.moves[0]" class="ds eMoveIconStyle moveIcon1 opacityTransition" :style="enemyPkmnFaintTypes(batt.trainer.team[x])" :src="`images/elements/type-icons/${generation_3_moves[enemyTrainer.pokemon[x]?.moves[0]]?.type?.toLowerCase()}.png`" />
                             <img v-if="enemyTrainer.pokemon[x]?.moves[1]" class="ds eMoveIconStyle moveIcon2 opacityTransition" :style="enemyPkmnFaintTypes(batt.trainer.team[x])" :src="`images/elements/type-icons/${generation_3_moves[enemyTrainer.pokemon[x]?.moves[1]]?.type?.toLowerCase()}.png`" />
@@ -581,19 +603,19 @@
                                  {{stat_mod(batt.enemyPokemon.modStageSpeed.value)}}
                             </div>
 
-                            <div class="ePkmnStatsLabelsStyle ePkmnHpLabel opacityTransition"  :style="enemyPkmnHP(batt.trainer.team[x])">Hp:</div>
+                            <div class="ePkmnStatsLabelsStyle ePkmnHpLabel  opacityTransition" :style="enemyStatLabelOpacity(batt.trainer.team[x], x)">Hp:</div>
                             <div class="ePkmnStatsLabelsStyle ePkmnAtkLabel opacityTransition" :style="enemyStatLabelOpacity(mapper.properties.battle.enemyPokemon.modStageAttack.value, x)">Atk:</div>
                             <div class="ePkmnStatsLabelsStyle ePkmnDefLabel opacityTransition" :style="enemyStatLabelOpacity(mapper.properties.battle.enemyPokemon.modStageDefense.value, x)">Def:</div>
                             <div class="ePkmnStatsLabelsStyle ePkmnSpaLabel opacityTransition" :style="enemyStatLabelOpacity(mapper.properties.battle.enemyPokemon.modStageSpecialAttack.value, x)">SpA:</div>
                             <div class="ePkmnStatsLabelsStyle ePkmnSpdLabel opacityTransition" :style="enemyStatLabelOpacity(mapper.properties.battle.enemyPokemon.modStageSpecialDefense.value, x)">SpD:</div>
                             <div class="ePkmnStatsLabelsStyle ePkmnSpeLabel opacityTransition" :style="enemyStatLabelOpacity(mapper.properties.battle.enemyPokemon.modStageSpeed.value, x)">Spe:</div>
 
-                            <div class="ePkmnStatsStyle ePkmnHp opacityTransition"  :style="enemyPkmnText(batt.trainer.team[x])">{{  enemyTrainer.pokemon[x]?.hp }}</div>
-                            <div class="ePkmnStatsStyle ePkmnAtk opacityTransition" :style="enemyPkmnText(batt.trainer.team[x])">{{ enemyStatModification(x, batt.enemyPokemon.partyPos.value, "attack", enemyTrainer.pokemon[x]?.atk, batt.enemyPokemon.modStageAttack.value, mapper.properties.battle.enemyPokemon) }}</div>
-                            <div class="ePkmnStatsStyle ePkmnDef opacityTransition" :style="enemyPkmnText(batt.trainer.team[x])">{{ enemyStatModification(x, batt.enemyPokemon.partyPos.value, "defense", enemyTrainer.pokemon[x]?.def, batt.enemyPokemon.modStageDefense.value, mapper.properties.battle.enemyPokemon) }}</div>
-                            <div class="ePkmnStatsStyle ePkmnSpa opacityTransition" :style="enemyPkmnText(batt.trainer.team[x])">{{ enemyStatModification(x, batt.enemyPokemon.partyPos.value, "specialAttack", enemyTrainer.pokemon[x]?.spa, batt.enemyPokemon.modStageSpecialAttack.value, mapper.properties.battle.enemyPokemon) }}</div>
-                            <div class="ePkmnStatsStyle ePkmnSpd opacityTransition" :style="enemyPkmnText(batt.trainer.team[x])">{{ enemyStatModification(x, batt.enemyPokemon.partyPos.value, "specialDefense", enemyTrainer.pokemon[x]?.spd, batt.enemyPokemon.modStageSpecialDefense.value, mapper.properties.battle.enemyPokemon) }}</div>
-                            <div class="ePkmnStatsStyle ePkmnSpe opacityTransition" :style="enemyPkmnText(batt.trainer.team[x])">{{ enemyStatModification(x, batt.enemyPokemon.partyPos.value, "speed", enemyTrainer.pokemon[x]?.spe, batt.enemyPokemon.modStageSpeed.value, mapper.properties.battle.enemyPokemon) }}</div>
+                            <div class="ePkmnStatsStyle ePkmnHp  opacityTransition"     :style="enemyPkmnText(batt.trainer.team[x])">{{ enemyTrainer.pokemon[x]?.hp }}</div>
+                            <div class="ePkmnStatsStyle ePkmnAtk opacityTransition"     :style="enemyPkmnText(batt.trainer.team[x])">{{ enemyStatModification(x, batt.enemyPokemon.partyPos.value, "attack", enemyTrainer.pokemon[x]?.atk, batt.enemyPokemon.modStageAttack.value, mapper.properties.battle.enemyPokemon) }}</div>
+                            <div class="ePkmnStatsStyle ePkmnDef opacityTransition"     :style="enemyPkmnText(batt.trainer.team[x])">{{ enemyStatModification(x, batt.enemyPokemon.partyPos.value, "defense", enemyTrainer.pokemon[x]?.def, batt.enemyPokemon.modStageDefense.value, mapper.properties.battle.enemyPokemon) }}</div>
+                            <div class="ePkmnStatsStyle ePkmnSpa opacityTransition"     :style="enemyPkmnText(batt.trainer.team[x])">{{ enemyStatModification(x, batt.enemyPokemon.partyPos.value, "specialAttack", enemyTrainer.pokemon[x]?.spa, batt.enemyPokemon.modStageSpecialAttack.value, mapper.properties.battle.enemyPokemon) }}</div>
+                            <div class="ePkmnStatsStyle ePkmnSpd opacityTransition"     :style="enemyPkmnText(batt.trainer.team[x])">{{ enemyStatModification(x, batt.enemyPokemon.partyPos.value, "specialDefense", enemyTrainer.pokemon[x]?.spd, batt.enemyPokemon.modStageSpecialDefense.value, mapper.properties.battle.enemyPokemon) }}</div>
+                            <div class="ePkmnStatsStyle ePkmnSpe opacityTransition"     :style="enemyPkmnText(batt.trainer.team[x])">{{ enemyStatModification(x, batt.enemyPokemon.partyPos.value, "speed", enemyTrainer.pokemon[x]?.spe, batt.enemyPokemon.modStageSpeed.value, mapper.properties.battle.enemyPokemon) }}</div>
                             <div class="ePkmnStatsStyle ePkmnAbility opacityTransition" :style="enemyPkmnText(batt.trainer.team[x])">{{ enemyTrainer.pokemon[x]?.ability }}</div>
                         </div>
                     </div> 
