@@ -1412,7 +1412,7 @@ const app = Vue.createApp({
                         case "Base Stats": return `Base Stats`
                         case "IVs":        return `IVs`
                         case "EVs": {
-                            return `EVs:`
+                            return `EVs`
                         }
                         case "Detailed EVs": {
                             let ev_hp  = this.mapper.properties.player.team[0].evHp.value
@@ -1424,7 +1424,8 @@ const app = Vue.createApp({
                             let total = ev_hp + ev_atk + ev_def + ev_spa + ev_spd + ev_spe
                             return `${total}/510`
                         }
-                        case "Automatic":  return `Level ${this.mapper.properties.player.team[0].level.value}`
+                        case "Automatic": return `Level ${this.mapper.properties.player.team[0].level.value}`
+                        case "Badge Boosts": return `Level ${this.mapper.properties.player.team[0].level.value}`
                     }
                 }
                 else {
@@ -1441,7 +1442,8 @@ const app = Vue.createApp({
                             total = ev_hp + ev_atk + ev_def + ev_spa + ev_spd + ev_spe
                             return `EVs: ${total}/510`
                         }
-                        case "Automatic":  return `Level ${this.mapper.properties.player.team[0].level.value}`
+                        case "Automatic": return `Level ${this.mapper.properties.player.team[0].level.value}`
+                        case "Badge Boosts": return `Level ${this.mapper.properties.player.team[0].level.value}`
                     }
                 }
             }
@@ -1812,6 +1814,62 @@ const app = Vue.createApp({
                     case "Special Attack":  return this.game.dexData[this.starterString].base_spc_atk
                     case "Special Defense": return this.game.dexData[this.starterString].base_spc_def
                     case "Speed":           return this.game.dexData[this.starterString].base_spd
+                }
+            }
+        },
+        get_bb_stat(stat_name) {
+            const state = this.g3stateVariable
+            let boosting_badge = false
+            let badge_boost_modifier = 0.1
+            //assign stats and badges
+            if (state != `Base Stats`) {
+                switch (stat_name) {
+                    case "Hp":              return 'N/A';
+                    case "Attack":          { 
+                        boosting_badge = this.mapper.properties.player.badges.badge1.value
+                        switch (boosting_badge) {
+                            case true: return Math.floor(this.mapper.properties.player.team[0].attack.value * badge_boost_modifier)
+                            case false: return 0
+                        }
+                    }
+                    case "Defense":         { 
+                        boosting_badge = this.mapper.properties.player.badges.badge5.value
+                        switch (boosting_badge) {
+                            case true: return Math.floor(this.mapper.properties.player.team[0].defense.value * badge_boost_modifier)
+                            case false: return 0
+                        }
+                    }
+                    case "Speed":           { 
+                        boosting_badge = this.mapper.properties.player.badges.badge3.value
+                        switch (boosting_badge) {
+                            case true: return Math.floor(this.mapper.properties.player.team[0].speed.value * badge_boost_modifier)
+                            case false: return 0
+                        }
+                    }
+                    case "Special Attack":  { 
+                        boosting_badge = this.mapper.properties.player.badges.badge7.value
+                        switch (boosting_badge) {
+                            case true: return Math.floor(this.mapper.properties.player.team[0].specialAttack.value * badge_boost_modifier)
+                            case false: return 0
+                        }
+                    }
+                    case "Special Defense": { 
+                        boosting_badge = this.mapper.properties.player.badges.badge7.value
+                        switch (boosting_badge) {
+                            case true: return Math.floor(this.mapper.properties.player.team[0].specialDefense.value * badge_boost_modifier)
+                            case false: return 0
+                        }
+                    }
+                }
+            }
+            if (state == `Base Stats`) {
+                switch (stat_name) {
+                    case "Hp":              return 0
+                    case "Attack":          return 0
+                    case "Defense":         return 0
+                    case "Special Attack":  return 0
+                    case "Special Defense": return 0
+                    case "Speed":           return 0
                 }
             }
         },
@@ -3895,6 +3953,10 @@ const app = Vue.createApp({
         });
         keyhook.registerShortCut('F16', async () => { // Automatic
             console.log("Key: F16 pressed. Stats are displaying automatically now.")
+            if (this.stats == "Automatic") { 
+                this.stats = "Badge Boosts"
+                return
+            };
             this.stats = "Automatic";
         });
 

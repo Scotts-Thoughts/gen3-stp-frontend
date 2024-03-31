@@ -198,16 +198,18 @@
                     <div v-if="gameSelection == 'FireRed and LeafGreen'" style="font-size: 12px;">If encounters are turned off, HM users will only appear after the Pokedex is obtained.</div>
                     <br>
                     <table>
-                        <tr><td>League Rematches:</td><td><input class="checkBoxStyle" type="checkbox" v-model="league_rematches"/></td></tr>
+                        <tr v-if="gameSelection == 'FireRed and LeafGreen'"><td>League Rematches:</td><td><input class="checkBoxStyle" type="checkbox" v-model="league_rematches"/></td></tr>
                         <tr><td>Autosplitter:</td><td><input class="checkBoxStyle" type="checkbox" v-model="autosplitter_toggle"/></td></tr>
                         Stats:<br>
                         <select v-model="stats" class="dropdownMenu">
                             <option>Automatic</option>
+                            <option>Badge Boosts</option>
                             <option>Base Stats</option>
                             <option>IVs</option>
                             <option>EVs</option>
                             <option>Detailed EVs</option>
                         </select>
+                        <br>
                         Right Panel:<br>
                         <select v-model="right_panel" class="dropdownMenu">
                             <option>Battle Graphic</option>
@@ -352,6 +354,9 @@
                                 <div v-if="stats == 'Detailed EVs'" :class="`stat_value_style detailed_ev_stat_row_${stat[`${ui_stat_arrangement_modifier}value_row`]} stat_column_${stat.value_column} devs`">{{mapper.properties.player.team[0][`ev${stat.name_ev}`].value}}/255</div>
                                 <div v-if="stats == 'Detailed EVs'" :class="`stat_value_style detailed_ev_stat_row_${stat[`${ui_stat_arrangement_modifier}value_row`]} stat_column_${stat.value_column} percentage_evs`">{{decimalToPercentage(mapper.properties.player.team[0][`ev${stat.name_ev}`].value / 255) }}%</div>
                                 <div v-if="stats == 'Detailed EVs'" :class="`stat_value_style detailed_ev_stat_row_${stat[`${ui_stat_arrangement_modifier}value_row`]} stat_column_${stat.value_column} ev_stats_gained`">Stats: {{Math.floor(mapper.properties.player.team[0][`ev${stat.name_ev}`].value / 4)}}</div>
+                                <div v-if="stats == 'Badge Boosts'" :class="`stat_value_style detailed_ev_stat_row_${stat[`${ui_stat_arrangement_modifier}value_row`]} stat_column_${stat.value_column} devs`">Stat: {{mapper.properties.player.team[0][stat.path].value}}</div>
+                                <div v-if="stats == 'Badge Boosts'" :class="`stat_value_style detailed_ev_stat_row_${stat[`${ui_stat_arrangement_modifier}value_row`]} stat_column_${stat.value_column} percentage_evs`">Boost: {{get_bb_stat(`${stat.name}`)}}</div>
+                                <div v-if="stats == 'Badge Boosts'" :class="`stat_value_style detailed_ev_stat_row_${stat[`${ui_stat_arrangement_modifier}value_row`]} stat_column_${stat.value_column} ev_stats_gained`">Result: {{get_stat(`${stat.name}`)}}</div>
                                 <div v-if="stats == 'Automatic'"    :class="`stat_value_style stat_row_${stat[`${ui_stat_arrangement_modifier}value_row`]} stat_column_${stat.value_column}`">{{get_stat(`${stat.name}`)}}</div>
                             </div>
                         </div>
@@ -478,19 +483,36 @@
                                  {{stat_mod(batt.enemyPokemon.modStageSpeed.value)}}
                             </div>
 
-                            <div class="ePkmnStatsLabelsStyle ePkmnHpLabel  opacityTransition" :style="enemyHpOpacity(batt.trainer.team[x], x)">Hp:</div>
-                            <div class="ePkmnStatsLabelsStyle ePkmnAtkLabel opacityTransition" :style="enemyStatLabelOpacity(mapper.properties.battle.enemyPokemon.modStageAttack.value, x)">Atk:</div>
-                            <div class="ePkmnStatsLabelsStyle ePkmnDefLabel opacityTransition" :style="enemyStatLabelOpacity(mapper.properties.battle.enemyPokemon.modStageDefense.value, x)">Def:</div>
-                            <div class="ePkmnStatsLabelsStyle ePkmnSpaLabel opacityTransition" :style="enemyStatLabelOpacity(mapper.properties.battle.enemyPokemon.modStageSpecialAttack.value, x)">SpA:</div>
-                            <div class="ePkmnStatsLabelsStyle ePkmnSpdLabel opacityTransition" :style="enemyStatLabelOpacity(mapper.properties.battle.enemyPokemon.modStageSpecialDefense.value, x)">SpD:</div>
-                            <div class="ePkmnStatsLabelsStyle ePkmnSpeLabel opacityTransition" :style="enemyStatLabelOpacity(mapper.properties.battle.enemyPokemon.modStageSpeed.value, x)">Spe:</div>
+                            <div v-if="stats == 'EVs' || stats == 'Detailed EVs'">
+                                <div class="ePkmnStatsLabelsStyle ePkmnHpLabel  opacityTransition" :style="enemyHpOpacity(batt.trainer.team[x], x)"                                                     >EV Hp:</div>
+                                <div class="ePkmnStatsLabelsStyle ePkmnAtkLabel opacityTransition" :style="enemyStatLabelOpacity(mapper.properties.battle.enemyPokemon.modStageAttack.value, x)"        >EV Atk:</div>
+                                <div class="ePkmnStatsLabelsStyle ePkmnDefLabel opacityTransition" :style="enemyStatLabelOpacity(mapper.properties.battle.enemyPokemon.modStageDefense.value, x)"       >EV Def:</div>
+                                <div class="ePkmnStatsLabelsStyle ePkmnSpaLabel opacityTransition" :style="enemyStatLabelOpacity(mapper.properties.battle.enemyPokemon.modStageSpecialAttack.value, x)" >EV SpA:</div>
+                                <div class="ePkmnStatsLabelsStyle ePkmnSpdLabel opacityTransition" :style="enemyStatLabelOpacity(mapper.properties.battle.enemyPokemon.modStageSpecialDefense.value, x)">EV SpD:</div>
+                                <div class="ePkmnStatsLabelsStyle ePkmnSpeLabel opacityTransition" :style="enemyStatLabelOpacity(mapper.properties.battle.enemyPokemon.modStageSpeed.value, x)"         >EV Spe:</div>
 
-                            <div class="ePkmnStatsStyle ePkmnHp  opacityTransition"     :style="enemyPkmnText(batt.trainer.team[x])">{{ enemyTrainer.pokemon[x]?.hp }}</div>
-                            <div class="ePkmnStatsStyle ePkmnAtk opacityTransition"     :style="enemyPkmnText(batt.trainer.team[x])">{{ enemyStatModification(x, batt.enemyPokemon.partyPos.value, "attack", enemyTrainer.pokemon[x]?.atk, batt.enemyPokemon.modStageAttack.value, mapper.properties.battle.enemyPokemon) }}</div>
-                            <div class="ePkmnStatsStyle ePkmnDef opacityTransition"     :style="enemyPkmnText(batt.trainer.team[x])">{{ enemyStatModification(x, batt.enemyPokemon.partyPos.value, "defense", enemyTrainer.pokemon[x]?.def, batt.enemyPokemon.modStageDefense.value, mapper.properties.battle.enemyPokemon) }}</div>
-                            <div class="ePkmnStatsStyle ePkmnSpa opacityTransition"     :style="enemyPkmnText(batt.trainer.team[x])">{{ enemyStatModification(x, batt.enemyPokemon.partyPos.value, "specialAttack", enemyTrainer.pokemon[x]?.spa, batt.enemyPokemon.modStageSpecialAttack.value, mapper.properties.battle.enemyPokemon) }}</div>
-                            <div class="ePkmnStatsStyle ePkmnSpd opacityTransition"     :style="enemyPkmnText(batt.trainer.team[x])">{{ enemyStatModification(x, batt.enemyPokemon.partyPos.value, "specialDefense", enemyTrainer.pokemon[x]?.spd, batt.enemyPokemon.modStageSpecialDefense.value, mapper.properties.battle.enemyPokemon) }}</div>
-                            <div class="ePkmnStatsStyle ePkmnSpe opacityTransition"     :style="enemyPkmnText(batt.trainer.team[x])">{{ enemyStatModification(x, batt.enemyPokemon.partyPos.value, "speed", enemyTrainer.pokemon[x]?.spe, batt.enemyPokemon.modStageSpeed.value, mapper.properties.battle.enemyPokemon) }}</div>
+                                <div class="ePkmnStatsStyle ePkmnHp  opacityTransition"     :style="enemyPkmnText(batt.trainer.team[x])">{{ game.dexData[enemyTrainer.pokemon[x]?.species].ev_yield_hp }}</div>
+                                <div class="ePkmnStatsStyle ePkmnAtk opacityTransition"     :style="enemyPkmnText(batt.trainer.team[x])">{{ game.dexData[enemyTrainer.pokemon[x]?.species].ev_yield_atk }}</div>
+                                <div class="ePkmnStatsStyle ePkmnDef opacityTransition"     :style="enemyPkmnText(batt.trainer.team[x])">{{ game.dexData[enemyTrainer.pokemon[x]?.species].ev_yield_def }}</div>
+                                <div class="ePkmnStatsStyle ePkmnSpa opacityTransition"     :style="enemyPkmnText(batt.trainer.team[x])">{{ game.dexData[enemyTrainer.pokemon[x]?.species].ev_yield_spc_atk }}</div>
+                                <div class="ePkmnStatsStyle ePkmnSpd opacityTransition"     :style="enemyPkmnText(batt.trainer.team[x])">{{ game.dexData[enemyTrainer.pokemon[x]?.species].ev_yield_spc_def }}</div>
+                                <div class="ePkmnStatsStyle ePkmnSpe opacityTransition"     :style="enemyPkmnText(batt.trainer.team[x])">{{ game.dexData[enemyTrainer.pokemon[x]?.species].ev_yield_spd }}</div>
+                            </div>
+                            <div v-else>
+                                <div class="ePkmnStatsLabelsStyle ePkmnHpLabel  opacityTransition" :style="enemyHpOpacity(batt.trainer.team[x], x)"                                                     >Hp:</div>
+                                <div class="ePkmnStatsLabelsStyle ePkmnAtkLabel opacityTransition" :style="enemyStatLabelOpacity(mapper.properties.battle.enemyPokemon.modStageAttack.value, x)"        >Atk:</div>
+                                <div class="ePkmnStatsLabelsStyle ePkmnDefLabel opacityTransition" :style="enemyStatLabelOpacity(mapper.properties.battle.enemyPokemon.modStageDefense.value, x)"       >Def:</div>
+                                <div class="ePkmnStatsLabelsStyle ePkmnSpaLabel opacityTransition" :style="enemyStatLabelOpacity(mapper.properties.battle.enemyPokemon.modStageSpecialAttack.value, x)" >SpA:</div>
+                                <div class="ePkmnStatsLabelsStyle ePkmnSpdLabel opacityTransition" :style="enemyStatLabelOpacity(mapper.properties.battle.enemyPokemon.modStageSpecialDefense.value, x)">SpD:</div>
+                                <div class="ePkmnStatsLabelsStyle ePkmnSpeLabel opacityTransition" :style="enemyStatLabelOpacity(mapper.properties.battle.enemyPokemon.modStageSpeed.value, x)"         >Spe:</div>
+
+                                <div class="ePkmnStatsStyle ePkmnHp  opacityTransition"     :style="enemyPkmnText(batt.trainer.team[x])">{{ enemyTrainer.pokemon[x]?.hp }}</div>
+                                <div class="ePkmnStatsStyle ePkmnAtk opacityTransition"     :style="enemyPkmnText(batt.trainer.team[x])">{{ enemyStatModification(x, batt.enemyPokemon.partyPos.value, "attack", enemyTrainer.pokemon[x]?.atk, batt.enemyPokemon.modStageAttack.value, mapper.properties.battle.enemyPokemon) }}</div>
+                                <div class="ePkmnStatsStyle ePkmnDef opacityTransition"     :style="enemyPkmnText(batt.trainer.team[x])">{{ enemyStatModification(x, batt.enemyPokemon.partyPos.value, "defense", enemyTrainer.pokemon[x]?.def, batt.enemyPokemon.modStageDefense.value, mapper.properties.battle.enemyPokemon) }}</div>
+                                <div class="ePkmnStatsStyle ePkmnSpa opacityTransition"     :style="enemyPkmnText(batt.trainer.team[x])">{{ enemyStatModification(x, batt.enemyPokemon.partyPos.value, "specialAttack", enemyTrainer.pokemon[x]?.spa, batt.enemyPokemon.modStageSpecialAttack.value, mapper.properties.battle.enemyPokemon) }}</div>
+                                <div class="ePkmnStatsStyle ePkmnSpd opacityTransition"     :style="enemyPkmnText(batt.trainer.team[x])">{{ enemyStatModification(x, batt.enemyPokemon.partyPos.value, "specialDefense", enemyTrainer.pokemon[x]?.spd, batt.enemyPokemon.modStageSpecialDefense.value, mapper.properties.battle.enemyPokemon) }}</div>
+                                <div class="ePkmnStatsStyle ePkmnSpe opacityTransition"     :style="enemyPkmnText(batt.trainer.team[x])">{{ enemyStatModification(x, batt.enemyPokemon.partyPos.value, "speed", enemyTrainer.pokemon[x]?.spe, batt.enemyPokemon.modStageSpeed.value, mapper.properties.battle.enemyPokemon) }}</div>
+                            </div>
                             <div class="ePkmnStatsStyle ePkmnAbility opacityTransition" :style="enemyPkmnText(batt.trainer.team[x])">{{ enemyTrainer.pokemon[x]?.ability }}</div>
                         </div>
                     </div> 
