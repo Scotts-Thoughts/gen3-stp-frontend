@@ -706,12 +706,12 @@ const app = Vue.createApp({
             badgeBoosts: ["badge1", "badge3", "badge5", "badge7"],
             pkmnMoves: ["move1", "move2", "move3", "move4"],
             stat_object:     [
-                {abrv: "HP",  name: "Hp",              name_ev: "Hp",              label: "HP",   path: "maxHp",          base_stat_path: "base_hp",      label_row: 1, label_column: 1, hp_spe_value_row: 1, hp_spd_value_row: 1, value_column: 2,}, 
-                {abrv: "Atk", name: "Attack",          name_ev: "Attack",          label: "Atk.", path: "attack",         base_stat_path: "base_atk",     label_row: 2, label_column: 1, hp_spe_value_row: 2, hp_spd_value_row: 2, value_column: 2,}, 
-                {abrv: "Def", name: "Defense",         name_ev: "Defense",         label: "Def.", path: "defense",        base_stat_path: "base_def",     label_row: 3, label_column: 1, hp_spe_value_row: 3, hp_spd_value_row: 3, value_column: 2,}, 
-                {abrv: "SpA", name: "Special Attack",  name_ev: "SpecialAttack",  label: "SpA.", path: "specialAttack",  base_stat_path: "base_spc_atk", label_row: 1, label_column: 3, hp_spe_value_row: 1, hp_spd_value_row: 2, value_column: 4,}, 
-                {abrv: "SpD", name: "Special Defense", name_ev: "SpecialDefense", label: "SpD.", path: "specialDefense", base_stat_path: "base_spc_def", label_row: 2, label_column: 3, hp_spe_value_row: 2, hp_spd_value_row: 3, value_column: 4,}, 
-                {abrv: "Spe", name: "Speed",           name_ev: "Speed",           label: "Spe.", path: "speed",          base_stat_path: "base_spd",     label_row: 3, label_column: 3, hp_spe_value_row: 3, hp_spd_value_row: 1, value_column: 4,}, 
+                {abrv: "HP",  name: "Hp",              name_ev: "Hp",             label: "HP",   path: "maxHp",          base_stat_path: "base_hp",      hp_spe_label_row: 1, hp_spd_label_row: 1, label_column: 1, hp_spe_value_row: 1, hp_spd_value_row: 1, value_column: 2,}, 
+                {abrv: "Atk", name: "Attack",          name_ev: "Attack",         label: "Atk.", path: "attack",         base_stat_path: "base_atk",     hp_spe_label_row: 2, hp_spd_label_row: 2, label_column: 1, hp_spe_value_row: 2, hp_spd_value_row: 2, value_column: 2,}, 
+                {abrv: "Def", name: "Defense",         name_ev: "Defense",        label: "Def.", path: "defense",        base_stat_path: "base_def",     hp_spe_label_row: 3, hp_spd_label_row: 3, label_column: 1, hp_spe_value_row: 3, hp_spd_value_row: 3, value_column: 2,}, 
+                {abrv: "SpA", name: "Special Attack",  name_ev: "SpecialAttack",  label: "SpA.", path: "specialAttack",  base_stat_path: "base_spc_atk", hp_spe_label_row: 1, hp_spd_label_row: 2, label_column: 3, hp_spe_value_row: 1, hp_spd_value_row: 2, value_column: 4,}, 
+                {abrv: "SpD", name: "Special Defense", name_ev: "SpecialDefense", label: "SpD.", path: "specialDefense", base_stat_path: "base_spc_def", hp_spe_label_row: 2, hp_spd_label_row: 3, label_column: 3, hp_spe_value_row: 2, hp_spd_value_row: 3, value_column: 4,}, 
+                {abrv: "Spe", name: "Speed",           name_ev: "Speed",          label: "Spe.", path: "speed",          base_stat_path: "base_spd",     hp_spe_label_row: 3, hp_spd_label_row: 1, label_column: 3, hp_spe_value_row: 3, hp_spd_value_row: 1, value_column: 4,}, 
             ],
 
             //CSS styling values
@@ -1396,7 +1396,7 @@ const app = Vue.createApp({
             console.log(toggle, stat_type, year, state)
             if (year == '2023') {
                 if (this.mapper.properties.events.menu.pokedex.value == false) {
-                    return `${this.starterString}'s IVs`
+                    return `IVs`
                 }
                 switch (state) {
                     case "Base Stats":  return `Base Stats`
@@ -1410,7 +1410,7 @@ const app = Vue.createApp({
                 if (toggle) {
                     switch (stat_type) {
                         case "Base Stats": return `Base Stats`
-                        case "IVs":        return `${this.starterString}'s IVs`
+                        case "IVs":        return `IVs`
                         case "EVs":        {
                             ev_hp  = this.mapper.properties.player.team[0].evHp.value
                             ev_atk = this.mapper.properties.player.team[0].evAttack.value
@@ -1427,8 +1427,17 @@ const app = Vue.createApp({
                 else {
                     switch (stat_type) {
                         case "Base Stats": return `Base Stats`
-                        case "IVs":        return `${this.starterString}'s IVs`
-                        case "EVs":        return `${this.starterString}'s EVs`
+                        case "IVs":        return `IVs`
+                        case "EVs":        {
+                            ev_hp  = this.mapper.properties.player.team[0].evHp.value
+                            ev_atk = this.mapper.properties.player.team[0].evAttack.value
+                            ev_def = this.mapper.properties.player.team[0].evDefense.value
+                            ev_spa = this.mapper.properties.player.team[0].evSpecialAttack.value
+                            ev_spd = this.mapper.properties.player.team[0].evSpecialDefense.value
+                            ev_spe = this.mapper.properties.player.team[0].evSpeed.value
+                            total = ev_hp + ev_atk + ev_def + ev_spa + ev_spd + ev_spe
+                            return `EVs: ${total}/510`
+                        }
                         case "Automatic":  return `Level ${this.mapper.properties.player.team[0].level.value}`
                     }
                 }

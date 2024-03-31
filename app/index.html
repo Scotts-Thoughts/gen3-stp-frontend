@@ -342,12 +342,12 @@
                         <div>
                             <div class="stats_header">{{stats_header}}</div>
                             <div v-for="stat in stat_object">
-                                <div :class="`stat_label_style stat_row_${stat.label_row} stat_column_${stat.label_column}`">{{stat.label}}</div>
+                                <div :class="`stat_label_style stat_row_${stat[`${ui_stat_arrangement_modifier}label_row`]} stat_column_${stat.label_column}`">{{stat.label}}</div>
                             </div>
                             <div v-for="stat in stat_object">
                                 <div v-if="stats == 'Base Stats'" :class="`stat_value_style stat_row_${stat[`${ui_stat_arrangement_modifier}value_row`]} stat_column_${stat.value_column}`">{{game.dexData[starterString][stat.base_stat_path]}}</div>
                                 <div v-if="stats == 'IVs'"        :class="`stat_value_style stat_row_${stat[`${ui_stat_arrangement_modifier}value_row`]} stat_column_${stat.value_column} dv`">{{get_iv(`${stat.name}`)}}/31</div>
-                                <div v-if="stats == 'EVs'"        :class="`stat_value_style stat_row_${stat[`${ui_stat_arrangement_modifier}value_row`]} stat_column_${stat.value_column} stat_exp`">{{mapper.properties.player.team[0][`ev${stat.name_ev}`].value}}</div>
+                                <div v-if="stats == 'EVs'"        :class="`stat_value_style stat_row_${stat[`${ui_stat_arrangement_modifier}value_row`]} stat_column_${stat.value_column} evs`">{{mapper.properties.player.team[0][`ev${stat.name_ev}`].value}}</div>
                                 <div v-if="stats == 'Automatic'"  :class="`stat_value_style stat_row_${stat[`${ui_stat_arrangement_modifier}value_row`]} stat_column_${stat.value_column}`">{{get_stat(`${stat.name}`)}}</div>
                             </div>
                         </div>
