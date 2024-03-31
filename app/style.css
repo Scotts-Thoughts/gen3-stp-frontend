@@ -1533,7 +1533,7 @@ body {
     top: 814px;
     grid-column-start: 2;
     grid-column-end: 3;
-    position: relative;
+    position: absolute;
 }
 .stat_value_style {
     position: absolute;
