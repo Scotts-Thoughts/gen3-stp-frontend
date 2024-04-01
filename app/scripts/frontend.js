@@ -1393,7 +1393,6 @@ const app = Vue.createApp({
             const stat_type = this.stats
             const year      = this.ui_stats_styling_modifier
             const state     = this.g3stateVariable
-            console.log(toggle, stat_type, year, state)
             if (year == '2023') {
                 if (this.mapper.properties.events.menu.pokedex.value == false) {
                     return `IVs`
