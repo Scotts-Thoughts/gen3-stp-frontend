@@ -3904,11 +3904,11 @@ const app = Vue.createApp({
 
         //keybinds
         keyhook.registerShortCut('F13', async () => { // Show IVs
-            console.log("Key: F13 pressed: EVs displayed.")
+            console.log("Key: F13 pressed: IVs displayed.")
             this.stats = "IVs";
         });
         keyhook.registerShortCut('F14', async () => { // Show EVs
-            console.log("Key: F14 pressed: Stat experience displayed.")
+            console.log("Key: F14 pressed: EVs displayed.")
             if (this.stats == "EVs") { 
                 this.stats = "Detailed EVs"
                 return
