@@ -1389,62 +1389,31 @@ const app = Vue.createApp({
     },
     computed: {
         stats_header() {
-            const toggle    = true
             const stat_type = this.stats
-            const year      = this.ui_stats_styling_modifier
             const state     = this.g3stateVariable
-            if (year == '2023') {
-                if (this.mapper.properties.events.menu.pokedex.value == false) {
-                    return `IVs`
+            switch (stat_type) {
+                case "Base Stats": return `Base Stats`
+                case "IVs":        return `IVs`
+                case "EVs": {
+                    return `EVs`
                 }
-                switch (state) {
-                    case "Base Stats":  return `Base Stats`
-                    case "Overworld":   return `Level ${this.mapper.properties.player.team[0].level.value}`
-                    case "To Battle":   return `Level ${this.mapper.properties.player.team[0].level.value}`
-                    case "From Battle": return `Level ${this.mapper.properties.battle.yourPokemon.level.value}`
-                    case "Battle":      return `Level ${this.mapper.properties.battle.yourPokemon.level.value}`
+                case "Detailed EVs": {
+                    let ev_hp  = this.mapper.properties.player.team[0].evHp.value
+                    let ev_atk = this.mapper.properties.player.team[0].evAttack.value
+                    let ev_def = this.mapper.properties.player.team[0].evDefense.value
+                    let ev_spa = this.mapper.properties.player.team[0].evSpecialAttack.value
+                    let ev_spd = this.mapper.properties.player.team[0].evSpecialDefense.value
+                    let ev_spe = this.mapper.properties.player.team[0].evSpeed.value
+                    let total = ev_hp + ev_atk + ev_def + ev_spa + ev_spd + ev_spe
+                    return `${total}/510`
                 }
-            }
-            else {
-                if (toggle) {
-                    switch (stat_type) {
-                        case "Base Stats": return `Base Stats`
-                        case "IVs":        return `IVs`
-                        case "EVs": {
-                            return `EVs`
-                        }
-                        case "Detailed EVs": {
-                            let ev_hp  = this.mapper.properties.player.team[0].evHp.value
-                            let ev_atk = this.mapper.properties.player.team[0].evAttack.value
-                            let ev_def = this.mapper.properties.player.team[0].evDefense.value
-                            let ev_spa = this.mapper.properties.player.team[0].evSpecialAttack.value
-                            let ev_spd = this.mapper.properties.player.team[0].evSpecialDefense.value
-                            let ev_spe = this.mapper.properties.player.team[0].evSpeed.value
-                            let total = ev_hp + ev_atk + ev_def + ev_spa + ev_spd + ev_spe
-                            return `${total}/510`
-                        }
-                        case "Automatic": return `Level ${this.mapper.properties.player.team[0].level.value}`
-                        case "Badge Boosts": return `Level ${this.mapper.properties.player.team[0].level.value}`
+                case "Automatic":    {
+                    if (state == 'Base Stats' || this.mapper.properties.player.team[0].species.value == null) {
+                        return `Base Stats`
                     }
+                    return `Level ${this.mapper.properties.player.team[0].level.value}`
                 }
-                else {
-                    switch (stat_type) {
-                        case "Base Stats": return `Base Stats`
-                        case "IVs":        return `IVs`
-                        case "EVs": {
-                            ev_hp  = this.mapper.properties.player.team[0].evHp.value
-                            ev_atk = this.mapper.properties.player.team[0].evAttack.value
-                            ev_def = this.mapper.properties.player.team[0].evDefense.value
-                            ev_spa = this.mapper.properties.player.team[0].evSpecialAttack.value
-                            ev_spd = this.mapper.properties.player.team[0].evSpecialDefense.value
-                            ev_spe = this.mapper.properties.player.team[0].evSpeed.value
-                            total = ev_hp + ev_atk + ev_def + ev_spa + ev_spd + ev_spe
-                            return `EVs: ${total}/510`
-                        }
-                        case "Automatic": return `Level ${this.mapper.properties.player.team[0].level.value}`
-                        case "Badge Boosts": return `Level ${this.mapper.properties.player.team[0].level.value}`
-                    }
-                }
+                case "Badge Boosts": return `Level ${this.mapper.properties.player.team[0].level.value}`
             }
         },
         //boolean to check for the tutorial catching battle with wally
@@ -1785,7 +1754,7 @@ const app = Vue.createApp({
     methods: { 
         get_stat(stat_name) {
             const state = this.g3stateVariable
-            if (state == `Overworld` || state == `To Battle`) {
+            if ((state == `Overworld` || state == `To Battle`) && this.mapper.properties.player.team[0].species.value != null) {
                 switch (stat_name) {
                     case "Hp":              return this.mapper.properties.player.team[0].maxHp.value
                     case "Attack":          return this.badge_boost(this.mapper.properties.player.badges.badge1.value, this.mapper.properties.player.team[0].attack.value)
@@ -1805,7 +1774,7 @@ const app = Vue.createApp({
                     case "Special Defense": return this.badge_boost(this.mapper.properties.player.badges.badge7.value, this.stageMultiplier(this.mapper.properties.battle.yourPokemon.modStageSpecialDefense.value, this.mapper.properties.battle.yourPokemon.specialDefense.value))
                 }
             }
-            if (state == `Base Stats`) {
+            if (state == `Base Stats` || this.mapper.properties.player.team[0].species.value == null) {
                 switch (stat_name) {
                     case "Hp":              return this.game.dexData[this.starterString].base_hp
                     case "Attack":          return this.game.dexData[this.starterString].base_atk
