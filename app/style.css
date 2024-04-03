@@ -415,7 +415,7 @@ body {
 }
 .heldItemStyle {
     font-size: 36px;
-    position: fixed;
+    position: absolute;
     text-align: center;
     z-index: 30000;
     font-family: osb;

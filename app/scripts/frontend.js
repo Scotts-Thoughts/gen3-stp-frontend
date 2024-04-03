@@ -1752,16 +1752,36 @@ const app = Vue.createApp({
     },
 
     methods: { 
+        stat_label_opacity() {
+            const state = this.g3stateVariable
+            if (state != `Battle`) { return }
+            let default_opacity = .63
+            let faded_opacity = .1
+            let mod_atk = this.mapper.properties.battle.yourPokemon.modStageAttack.value != '0'         ? faded_opacity : default_opacity
+            let mod_def = this.mapper.properties.battle.yourPokemon.modStageDefense.value != '0'        ? faded_opacity : default_opacity
+            let mod_spa = this.mapper.properties.battle.yourPokemon.modStageSpecialAttack.value != '0'  ? faded_opacity : default_opacity
+            let mod_spd = this.mapper.properties.battle.yourPokemon.modStageSpecialDefense.value != '0' ? faded_opacity : default_opacity
+            let mod_spe = this.mapper.properties.battle.yourPokemon.modStageSpeed.value != '0'          ? faded_opacity : default_opacity
+            let object = {
+                "Hp":              default_opacity,
+                "Attack":          mod_atk,
+                "Defense":         mod_def,
+                "Speed":           mod_spe,
+                "Special Attack":  mod_spa,
+                "Special Defense": mod_spd,
+            }
+            return object
+        },
         get_stat(stat_name) {
             const state = this.g3stateVariable
             if ((state == `Overworld` || state == `To Battle`) && this.mapper.properties.player.team[0].species.value != null) {
                 switch (stat_name) {
                     case "Hp":              return this.mapper.properties.player.team[0].maxHp.value
                     case "Attack":          return this.badge_boost(this.mapper.properties.player.badges.badge1.value, this.mapper.properties.player.team[0].attack.value)
-                    case "Defense":         return this.badge_boost(this.mapper.properties.player.badges.badge3.value, this.mapper.properties.player.team[0].defense.value)
+                    case "Defense":         return this.badge_boost(this.mapper.properties.player.badges.badge5.value, this.mapper.properties.player.team[0].defense.value)
                     case "Special Attack":  return this.badge_boost(this.mapper.properties.player.badges.badge7.value, this.mapper.properties.player.team[0].specialAttack.value)
                     case "Special Defense": return this.badge_boost(this.mapper.properties.player.badges.badge7.value, this.mapper.properties.player.team[0].specialDefense.value)
-                    case "Speed":           return this.badge_boost(this.mapper.properties.player.badges.badge5.value, this.mapper.properties.player.team[0].speed.value)
+                    case "Speed":           return this.badge_boost(this.mapper.properties.player.badges.badge3.value, this.mapper.properties.player.team[0].speed.value)
                 }
             }
             if (state == `Battle` || state == `From Battle`) {
@@ -3240,7 +3260,7 @@ const app = Vue.createApp({
                         if (this.route_102 == false && this.mapper.properties.player.badges.badge1.value == false) {
                             this.mapper.properties.overworld.disabledEncounters.set(0x01,false);
                         }
-                        else if (this.route_102 == false && this.mapper.properties.player.badges.badge1.value == true && this.mapper.properties.overworld.encounters.zigzagoon.value == false) {
+                        else if (this.route_102 == false && this.mapper.properties.player.badges.badge1.value == true && this.mapper.properties.overworld.encounters.zigzagoon.value == true) {
                             this.mapper.properties.overworld.disabledEncounters.set(0x00,false);
                         }
                         else if (this.route_102 == false && this.mapper.properties.player.badges.badge1.value == true) {

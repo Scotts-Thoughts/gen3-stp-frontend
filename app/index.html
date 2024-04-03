@@ -199,6 +199,7 @@
                         <tr><td>Show Battle Graphics:</td><td><input class="checkBoxStyle" type="checkbox" v-model="battleGraphic"/></td></tr>
                         <tr><td>Show Inventory:</td>      <td><input class="checkBoxStyle" type="checkbox" v-model="inventory_display"/></td></tr>
                         <tr><td>Show Nature Changes with Arrows:</td><td><input class="checkBoxStyle" type="checkbox" v-model="show_nature_changes"/></td></tr>
+                        <tr><td>Badge Boosts:</td><td><input class="checkBoxStyle" type="checkbox" v-model="display_badge_boosts"/></td></tr>
                         <tr v-if="gameSelection == 'FireRed and LeafGreen'"><td>Repel Counter:</td><td><input class="checkBoxStyle" type="checkbox" v-model="repel_counter"/></td></tr>
                         <tr v-if="gameSelection == 'FireRed and LeafGreen'"><td>Vs. Seeker:</td>   <td><input class="checkBoxStyle" type="checkbox" v-model="vs_seeker"/></td></tr>
                         <br>
@@ -282,7 +283,7 @@
             </div>
 
 <!--------- BADGE ICONS ---------------------------------------------------------------------------------------------------------------------->
-            <div v-if="display_badge_boosts == true">
+            <div>
                 <div v-for="x in badges">
                     <div v-if="mapper.properties.player.badges[x].value == true && g3stateVariable != `Base Stats`">
                         <img class="badge" :src="`images/badges/positioned/${this.game.region}/${x}.png`"/>
@@ -295,23 +296,37 @@
             <div class="nature">{{ pkmnNature }}</div>
             <div class="friendship">{{mapper.properties.player.team[0].friendship}}/255</div>
             <div class="ability">{{ pkmnAbility }}</div>
+            <div class="heldItemStyle heldItem">{{ nullToSpace(camelCase(mapper.properties.player.team[0].itemHeld.value)) }}</div>
             <div class="statsContainer" id="stats">
                 <div class="growthRate">{{pkmnGrowthRate}}</div>
                 <!--------- BADGE BOOST ICONS ---------------------------------------------------------------------------------------------------------------------->
                 <div v-for="x in badgeBoosts">
-                    <div v-if="mapper.properties.player.badges[x].value == true">
+                    <div v-if="mapper.properties.player.badges[x].value == true && display_badge_boosts == true">
                         <img class="badgeBoost" :src="`images/badges/badge_boosts/${this.game.region}/${ui_stat_arrangement_modifier}/${x}.png`"/>
                     </div>
                 </div>
 
-                <div v-show="g3stateVariable == `Battle`" class="aDMods">
-                    {{ stageModifiers(mapper.properties.battle.yourPokemon.modStageAttack.value) }}<br>
-                    {{ stageModifiers(mapper.properties.battle.yourPokemon.modStageDefense.value) }}<br>
+                <div v-if="ui_stat_arrangement_modifier == 'hp_spe_'">
+                    <div v-show="g3stateVariable == `Battle`" class="aDMods">
+                        {{ stageModifiers(mapper.properties.battle.yourPokemon.modStageAttack.value) }}<br>
+                        {{ stageModifiers(mapper.properties.battle.yourPokemon.modStageDefense.value) }}<br>
+                    </div>
+                    <div v-show="g3stateVariable == `Battle`" class="sSASDMods">
+                        {{ stageModifiers(mapper.properties.battle.yourPokemon.modStageSpecialAttack.value) }}<br>
+                        {{ stageModifiers(mapper.properties.battle.yourPokemon.modStageSpecialDefense.value) }}<br>
+                        {{ stageModifiers(mapper.properties.battle.yourPokemon.modStageSpeed.value) }}<br>
+                    </div>
                 </div>
-                <div v-show="g3stateVariable == `Battle`" class="sSASDMods">
-                    {{ stageModifiers(mapper.properties.battle.yourPokemon.modStageSpecialAttack.value) }}<br>
-                    {{ stageModifiers(mapper.properties.battle.yourPokemon.modStageSpecialDefense.value) }}<br>
-                    {{ stageModifiers(mapper.properties.battle.yourPokemon.modStageSpeed.value) }}<br>
+                <div v-if="ui_stat_arrangement_modifier == 'hp_spd_'">
+                    <div v-show="g3stateVariable == `Battle`" class="aDMods">
+                        {{ stageModifiers(mapper.properties.battle.yourPokemon.modStageAttack.value) }}<br>
+                        {{ stageModifiers(mapper.properties.battle.yourPokemon.modStageDefense.value) }}<br>
+                    </div>
+                    <div v-show="g3stateVariable == `Battle`" class="sSASDMods">
+                        {{ stageModifiers(mapper.properties.battle.yourPokemon.modStageSpeed.value) }}<br>
+                        {{ stageModifiers(mapper.properties.battle.yourPokemon.modStageSpecialAttack.value) }}<br>
+                        {{ stageModifiers(mapper.properties.battle.yourPokemon.modStageSpecialDefense.value) }}<br>
+                    </div>
                 </div>
 
                 <!-- STATS -------------------------------------------------------------------------------->  
@@ -321,7 +336,7 @@
                         <div>
                             <div class="stats_header">{{stats_header}}</div>
                             <div v-for="stat in stat_object">
-                                <div :class="`stat_label_style stat_row_${stat[`${ui_stat_arrangement_modifier}label_row`]} stat_column_${stat.label_column}`">{{stat.label}}</div>
+                                <div :style="{ opacity: stat_label_opacity()?.[stat.name]}" :class="`stat_label_style stat_row_${stat[`${ui_stat_arrangement_modifier}label_row`]} stat_column_${stat.label_column}`">{{stat.label}}</div>
                             </div>
                             <div v-for="stat in stat_object">
                                 <div v-if="stats == 'Base Stats'"   :class="`stat_value_style stat_row_${stat[`${ui_stat_arrangement_modifier}value_row`]} stat_column_${stat.value_column}`">{{game.dexData[starterString][stat.base_stat_path]}}</div>
