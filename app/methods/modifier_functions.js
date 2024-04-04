@@ -71,11 +71,7 @@ function stageMultiplier(y,x) {
     if (this.g3stateVariable == "Battle") {
         var multiplier = this.stageModifiersData.find(x => x.modType === "stat")
         var statValue = Math.floor(x * multiplier[y.toString()])
-        if (statValue > 999) {
-            return 999
-        }
-        else
-            return statValue
+        return statValue
     }
     else
         return x
