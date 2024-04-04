@@ -3784,6 +3784,40 @@ const app = Vue.createApp({
             this.slotTimingFix = false
         })
 
+        //Styling for stats in case they go above 999
+        const stat_size_3_digit = "50px"
+        const stat_size_4_digit = "43px"
+        if (this.get_stat('Attack').toString().length <= 3)          { document.getElementById("Atk").style.fontSize = stat_size_3_digit }
+        if (this.get_stat('Attack').toString().length >= 4)          { document.getElementById("Atk").style.fontSize = stat_size_4_digit }
+        if (this.get_stat('Defense').toString().length <= 3)         { document.getElementById("Def").style.fontSize = stat_size_3_digit }
+        if (this.get_stat('Defense').toString().length >= 4)         { document.getElementById("Def").style.fontSize = stat_size_4_digit }
+        if (this.get_stat('Special Attack').toString().length <= 3)  { document.getElementById("SpA").style.fontSize = stat_size_3_digit }
+        if (this.get_stat('Special Attack').toString().length >= 4)  { document.getElementById("SpA").style.fontSize = stat_size_4_digit }
+        if (this.get_stat('Special Defense').toString().length <= 3) { document.getElementById("SpD").style.fontSize = stat_size_3_digit }
+        if (this.get_stat('Special Defense').toString().length >= 4) { document.getElementById("SpD").style.fontSize = stat_size_4_digit }
+        if (this.get_stat('Speed').toString().length <= 3)           { document.getElementById("Spe").style.fontSize = stat_size_3_digit }
+        if (this.get_stat('Speed').toString().length >= 4)           { document.getElementById("Spe").style.fontSize = stat_size_4_digit }
+        this.mapper.properties.battle.yourPokemon.modStageAttack.change(async () => {
+            if (this.get_stat('Attack').toString().length <= 3) { document.getElementById("Atk").style.fontSize = stat_size_3_digit }
+            if (this.get_stat('Attack').toString().length >= 4) { document.getElementById("Atk").style.fontSize = stat_size_4_digit }
+        })
+        this.mapper.properties.battle.yourPokemon.modStageDefense.change(async () => {
+            if (this.get_stat('Defense').toString().length <= 3) { document.getElementById("Def").style.fontSize = stat_size_3_digit }
+            if (this.get_stat('Defense').toString().length >= 4) { document.getElementById("Def").style.fontSize = stat_size_4_digit }
+        })
+        this.mapper.properties.battle.yourPokemon.modStageSpecialAttack.change(async () => {
+            if (this.get_stat('SpecialAttack').toString().length <= 3) { document.getElementById("SpA").style.fontSize = stat_size_3_digit }
+            if (this.get_stat('SpecialAttack').toString().length >= 4) { document.getElementById("SpA").style.fontSize = stat_size_4_digit }
+        })
+        this.mapper.properties.battle.yourPokemon.modStageSpecialDefense.change(async () => {
+            if (this.get_stat('SpecialDefense').toString().length <= 3) { document.getElementById("SpD").style.fontSize = stat_size_3_digit }
+            if (this.get_stat('SpecialDefense').toString().length >= 4) { document.getElementById("SpD").style.fontSize = stat_size_4_digit }
+        })
+        this.mapper.properties.battle.yourPokemon.modStageSpeed.change(async () => {
+            if (this.get_stat('Speed').toString().length <= 3) { document.getElementById("Spe").style.fontSize = stat_size_3_digit }
+            if (this.get_stat('Speed').toString().length >= 4) { document.getElementById("Spe").style.fontSize = stat_size_4_digit }
+        })
+
         //*Autosplitter
         //write to file at the end of a key battle
         this.mapper.properties.battle.turnInfo.battleOutcome.change(async (prop) => {
