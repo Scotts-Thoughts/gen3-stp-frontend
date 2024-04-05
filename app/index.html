@@ -342,13 +342,15 @@
                                 <div v-if="stats == 'Base Stats'"   :class="`stat_value_style stat_row_${stat[`${ui_stat_arrangement_modifier}value_row`]} stat_column_${stat.value_column}`">{{game.dexData[starterString][stat.base_stat_path]}}</div>
                                 <div v-if="stats == 'IVs'"          :class="`stat_value_style stat_row_${stat[`${ui_stat_arrangement_modifier}value_row`]} stat_column_${stat.value_column} dv`">{{get_iv(`${stat.name}`)}}/31</div>
                                 <div v-if="stats == 'EVs'"          :class="`stat_value_style stat_row_${stat[`${ui_stat_arrangement_modifier}value_row`]} stat_column_${stat.value_column} evs`">{{mapper.properties.player.team[0][`ev${stat.name_ev}`].value}}</div>
+                                <div v-if="stats == 'Automatic'"    :class="`stat_value_style stat_row_${stat[`${ui_stat_arrangement_modifier}value_row`]} stat_column_${stat.value_column}`" :id="`${stat.abrv}`">{{get_stat(`${stat.name}`)}}</div>
+                                
                                 <div v-if="stats == 'Detailed EVs'" :class="`stat_value_style detailed_ev_stat_row_${stat[`${ui_stat_arrangement_modifier}value_row`]} stat_column_${stat.value_column} devs`">{{mapper.properties.player.team[0][`ev${stat.name_ev}`].value}}/255</div>
                                 <div v-if="stats == 'Detailed EVs'" :class="`stat_value_style detailed_ev_stat_row_${stat[`${ui_stat_arrangement_modifier}value_row`]} stat_column_${stat.value_column} percentage_evs`">{{decimalToPercentage(mapper.properties.player.team[0][`ev${stat.name_ev}`].value / 255) }}%</div>
                                 <div v-if="stats == 'Detailed EVs'" :class="`stat_value_style detailed_ev_stat_row_${stat[`${ui_stat_arrangement_modifier}value_row`]} stat_column_${stat.value_column} ev_stats_gained`">Stats: {{Math.floor(mapper.properties.player.team[0][`ev${stat.name_ev}`].value / 4)}}</div>
+                                
                                 <div v-if="stats == 'Badge Boosts'" :class="`stat_value_style detailed_ev_stat_row_${stat[`${ui_stat_arrangement_modifier}value_row`]} stat_column_${stat.value_column} devs`">Stat: {{mapper.properties.player.team[0][stat.path].value}}</div>
                                 <div v-if="stats == 'Badge Boosts'" :class="`stat_value_style detailed_ev_stat_row_${stat[`${ui_stat_arrangement_modifier}value_row`]} stat_column_${stat.value_column} percentage_evs`">Boost: {{get_bb_stat(`${stat.name}`)}}</div>
                                 <div v-if="stats == 'Badge Boosts'" :class="`stat_value_style detailed_ev_stat_row_${stat[`${ui_stat_arrangement_modifier}value_row`]} stat_column_${stat.value_column} ev_stats_gained`">Result: {{get_stat(`${stat.name}`)}}</div>
-                                <div v-if="stats == 'Automatic'"    :class="`stat_value_style stat_row_${stat[`${ui_stat_arrangement_modifier}value_row`]} stat_column_${stat.value_column}`" :id="`${stat.abrv}`">{{get_stat(`${stat.name}`)}}</div>
                             </div>
                         </div>
                     </div> 
