@@ -2828,6 +2828,25 @@ body {
     line-height: 17px;
     border: 2px solid #00000000;
 }
+.splits_table {
+    display: block;
+    position: absolute;
+    /* border: 1px solid #00ff0d00; */
+    background-color: #ffffff;
+    font-size: 12px;
+    line-height: 20px;
+    line-height: 18px;
+    width: 328px;
+    height: 1001px;
+    font-family: play;
+    left: 1576px;
+    top: 57px;
+    opacity: .9;
+    border: none;
+}
+.splits_table tr:nth-child(odd) {
+    background-color: #cfcfcf;
+}
 .inventory_demo {
     display: block;
     position: absolute;

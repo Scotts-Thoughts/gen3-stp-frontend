@@ -274,5 +274,10 @@ function autosplitter_process() {
         this.full_data_str = full_data_str
         this.simple_data = simple_data
         this.deprecated_data_str = deprecated_data_str
+
+        this.current_splits.push({
+                trainer: trainer_name, 
+                time:    real_time_hmmss,
+        })
     }
 }

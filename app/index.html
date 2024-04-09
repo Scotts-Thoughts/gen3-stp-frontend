@@ -85,6 +85,7 @@
                     <button @click="pauseUnpauseTime()" class="buttonStyle" style="background-color: rgb(201, 199, 100);">Toggle Pause Timer</button>
                     <button class="buttonStyle" @click="set_timer">Set Timer</button><br>
                     Start Time Offset: <input class="inputContainer" type="text" v-model="timer_startTimeOffset" placeholder="00:00:00.00"/><br>
+                    <button class="buttonStyle" @click="load_splits()">Open Split File</button><br>
                     <br>
                     <table>
                         <tr>
@@ -191,6 +192,7 @@
                             <option>Battle Graphic</option>
                             <option>Inventory</option>
                             <option>Movepool</option>
+                            <option>Splits</option>
                         </select>
                         <tr><td>Automatic IVs:</td>          <td><input class="checkBoxStyle" type="checkbox" v-model="automatic_ivs"/></td></tr>
                         <tr><td>Automatic EVs:</td>          <td><input class="checkBoxStyle" type="checkbox" v-model="automatic_evs"/></td></tr>
@@ -510,6 +512,26 @@
                         </div>
                     </div> 
                 </div>
+                <div v-else-if="right_panel == 'Splits'" key=5>
+                    <div key=3>
+                        <div class="movepoolTitle">Splits</div>
+                        <table class="splits_table" cellspacing="0">
+                            <tr>
+                                <td style="text-decoration: underline; font-size: 16px; width: 118px; text-align: left; padding-left: 3px;">Split</td>
+                                <td style="text-decoration: underline; font-size: 16px; width: 70px;  text-align: right;">Previous</td>
+                                <td style="text-decoration: underline; font-size: 16px; width: 70px;  text-align: right;">Current</td>
+                                <td style="text-decoration: underline; font-size: 16px; width: 70px;  text-align: right; padding-right: 3px;">Diff</td>
+                            </tr>
+                            <tr v-for="split in compare_splits">
+                                <td style="font-size: 16px; width: 118px; text-align: left; padding-left: 3px;">{{trainer_name_lookup[split.trainer].trainer}}</td>
+                                <td style="font-size: 16px; width: 70px;  text-align: right;">{{split.previous_time}}</td>
+                                <td style="font-size: 16px; width: 70px;  text-align: right;">{{split.current_time}}</td>
+                                <td style="font-size: 16px; width: 70px;  text-align: right; padding-right: 3px;" :style="split_diff_color(split.difference)">{{split.difference}}</td>
+                            </tr>
+                        </table>
+                        <div class="colored-image ds" :style="`filter: saturate(${ui_saturation})`" style="--url: url(images/ui/movepool.svg)"></div>
+                    </div>
+                </div>
                 <div v-else-if="right_panel == 'Inventory'" key=3>
                     <div key=3>
                         <div class="movepoolTitle">Inventory</div>
@@ -720,6 +742,7 @@
     <script src="settings/pokemon_settings.js"></script>
 
     <script src="autosplitter/autosplitter_functions.js"></script>
+    <script src="autosplitter/trainer_name_lookup.js"></script>
 
     <script src="methods/attacking_functions.js"></script>
     <script src="methods/move_power_functions.js"></script>

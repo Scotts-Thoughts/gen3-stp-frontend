@@ -118,6 +118,19 @@ const MyStorage = new Proxy({}, {
     }
 });
 
+async function loadCsvFile() {
+    const file = await window.showOpenFilePicker({
+        id: "SplitsFolder",
+        types: [{
+            description: "Split files",
+            accept: { "text/csv": [".csv"] }
+        }]
+    });
+    const contents = await file[0].getFile();
+    const text = await contents.text();
+    return text;
+}
+
 // Open the folder ./splits/ in the file explorer with node.js
 function openFolder(folderName) {
     require('child_process').exec(`start .\\${folderName}\\`);
@@ -696,11 +709,11 @@ const app = Vue.createApp({
             testStatus:     MyStorage['testStatus']     ?? false,
             repel_counter:  MyStorage['repel_counter']  ?? true,
             vs_seeker:      MyStorage['vs_seeker']      ?? false,
-            autosplitter_toggle:         MyStorage["autosplitter_toggle"]        ?? true,
-            showSpecialTrainerGraphics:  MyStorage['showSpecialTrainerGraphics'] ?? true, 
-            league_rematches:            MyStorage['league_rematches']           ?? false,
-            display_badge_boosts:        MyStorage['display_badge_boosts']       ?? true,
-            show_nature_changes:         MyStorage['show_nature_changes']        ?? true,
+            autosplitter_toggle:        MyStorage["autosplitter_toggle"]        ?? true,
+            showSpecialTrainerGraphics: MyStorage['showSpecialTrainerGraphics'] ?? true, 
+            league_rematches:           MyStorage['league_rematches']           ?? false,
+            display_badge_boosts:       MyStorage['display_badge_boosts']       ?? true,
+            show_nature_changes:        MyStorage['show_nature_changes']        ?? true,
 
             badges: ["badge1", "badge2", "badge3", "badge4", "badge5", "badge6", "badge7", "badge8"],
             badgeBoosts: ["badge1", "badge3", "badge5", "badge7"],
@@ -738,6 +751,7 @@ const app = Vue.createApp({
             generation_3_moves:         generation_3_moves,
             remakeTrainers:             remakeTrainers,
             emeraldTrainers:            emeraldTrainers,
+            trainer_name_lookup:        trainer_name_lookup,
 
             trainerLists: {
                 "emeraldTrainers" : emeraldTrainers,
@@ -899,6 +913,9 @@ const app = Vue.createApp({
             simple_data:         MyStorage["simple_data"]         ?? "",
             testRun:             MyStorage['testRun']             ?? false,
 
+            previous_splits: MyStorage['previous_splits'] ?? [],
+            current_splits:  MyStorage['current_splits']  ?? [],
+
             //movepool starting parameters. set to -1 if not initialized
             movepoolDefaultFontSize:        -1,
             movepoolDefaultLineHeight:      -1,
@@ -1010,6 +1027,8 @@ const app = Vue.createApp({
                 "automatic_evs",
                 "display_badge_boosts",
                 "show_nature_changes",
+                "previous_splits",
+                "current_splits",
             ],
 
             stats_toggle_settings: [
@@ -1388,6 +1407,34 @@ const app = Vue.createApp({
         }
     },
     computed: {
+        compare_splits() {
+            const result = []
+            for (const x of this.previous_splits) {
+                const default_string = "-"
+                const cur_split = this.current_splits.find(y => y.trainer === x.trainer)
+                const prev = this.convertDurationToSeconds(x.time)
+                if (cur_split == undefined) { 
+                    result.push({trainer: x.trainer, previous_time: x.time, current_time: default_string, difference: default_string}) 
+                    continue
+                }
+                const cur = this.convertDurationToSeconds(cur_split.time)
+                const diff = cur - prev;
+                const diff_abs = Math.abs(diff);
+                const diff_sign = Math.sign(diff);
+                const diff_m = Math.floor(diff_abs / 60);
+                const diff_s = diff_abs % 60;
+                const diff_str = `${diff_sign === -1 ? "-" : "+"}${diff_m}:${diff_s.toString().padStart(2, "0")}`;
+                result.push({trainer: x.trainer, previous_time: x.time, current_time: cur_split.time, difference: diff_str})
+            }
+            console.log(result)
+            return result
+            // "+543"[0]
+            // "+543".charAt(0)
+            // "+543".at(-1) // wraps around to last element
+            // "+543".startsWith("+") // Returns true
+            // "+543".endsWith("+") // Returns false
+            // "+543".includes("+") // Returns true
+        },
         stats_header() {
             const stat_type = this.stats
             const state     = this.g3stateVariable
@@ -1752,6 +1799,54 @@ const app = Vue.createApp({
     },
 
     methods: { 
+        split_diff_color(difference_string) {
+            if (difference_string.charAt(0) == "+") { return "color: red" }
+            if (difference_string.charAt(0) == "-") { return "color: green" }
+            if (difference_string === "-") { return "color: black" }
+        },
+        convertDurationToSeconds(duration) {
+            const parts = duration.split(':').map(part => parseInt(part, 10));
+            if (parts.length === 1) {
+                return parts[0];
+            } else if (parts.length === 2) {
+                return parts[0] * 60 + parts[1];
+            } else if (parts.length === 3) {
+                return parts[0] * 3600 + parts[1] * 60 + parts[2];
+            }
+        },
+        convertSecondsToDuration(seconds) {
+            const hours = Math.floor(seconds / 3600);
+            const minutes = Math.floor((seconds % 3600) / 60);
+            const remainingSeconds = seconds % 60;
+        
+            if (hours > 0) {
+                return `${hours}:${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
+            } else if (minutes > 0) {
+                return `${minutes}:${String(remainingSeconds).padStart(2, '0')}`;
+            } else {
+                return String(remainingSeconds);
+            }
+        },
+        async load_temp_splits() {
+            const text = await loadCsvFile();
+            const rows = text.split("\n").slice(1).filter(x => x !== '');
+            const results = []
+            for (const row of rows) {
+                const columns = row.split(",");
+                results.push({trainer: columns[2], time: columns[3]})
+            }
+            return results
+        },
+        async load_splits() {
+            const text = await loadCsvFile();
+            const rows = text.split("\n").slice(1).filter(x => x !== '');
+            const results = []
+            for (const row of rows) {
+                const columns = row.split(",");
+                results.push({trainer: columns[2], time: columns[3]})
+            }
+            this.previous_splits = results;
+        },
         stat_label_opacity() {
             const state = this.g3stateVariable
             if (state != `Battle`) { return }
@@ -2064,10 +2159,13 @@ const app = Vue.createApp({
             return Object.values(object)
         },
 
-        newRun() {
+        async newRun() {
             const timeRegex = /(\d+):(\d{2}):(\d{2})\.(\d{2})/;
             const timeOffsetArray = this.timer_startTimeOffset.match(timeRegex)?.slice(1,5).map(x => parseInt(x)) ?? [0,0,0,0];
             const timeOffset = timeOffsetArray[0] * 3600000 + timeOffsetArray[1] * 60000 + timeOffsetArray[2] * 1000 + timeOffsetArray[3] * 10;
+
+            this.current_splits = await this.load_temp_splits()
+            // this.current_splits = []
 
             this.timer_pause = true
             this.timer_startTime = Date.now() - timeOffset
