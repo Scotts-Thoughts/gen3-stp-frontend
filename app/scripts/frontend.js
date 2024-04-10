@@ -1800,9 +1800,10 @@ const app = Vue.createApp({
 
     methods: { 
         split_diff_color(difference_string) {
+            if (difference_string === "-")          { return "color: black" }
+            if (difference_string === "+0:00")      { return "color: black" }
             if (difference_string.charAt(0) == "+") { return "color: red" }
             if (difference_string.charAt(0) == "-") { return "color: green" }
-            if (difference_string === "-") { return "color: black" }
         },
         convertDurationToSeconds(duration) {
             const parts = duration.split(':').map(part => parseInt(part, 10));
@@ -1824,7 +1825,9 @@ const app = Vue.createApp({
             } else if (minutes > 0) {
                 return `${minutes}:${String(remainingSeconds).padStart(2, '0')}`;
             } else {
-                return String(remainingSeconds);
+                var seconds = remainingSeconds
+                if (remainingSeconds < 10) { seconds = "0" + remainingSeconds.toString() }
+                return `0:${String(seconds)}`
             }
         },
         async load_temp_splits() {
