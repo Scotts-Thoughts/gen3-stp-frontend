@@ -55,10 +55,11 @@
                     <img class="canvas colored-image ds" :src="`images/ui/nature arrows/${ui_stat_arrangement_modifier}/raises/${natures[pkmnNature].raises}.svg`" />
                     <img class="canvas colored-image ds" :src="`images/ui/nature arrows/${ui_stat_arrangement_modifier}/lowers/${natures[pkmnNature].lowers}.svg`" />
                 </div>
-                <div v-show="labels == true" class="labelNature">Nature:</div>
-                <div v-show="labels == true" class="labelFriendship">Friendship:</div>
-                <div v-show="labels == true" class="abilityHeldItemLabelStyle labelAbility">Ability:</div>
-                <div v-show="labels == true" class="abilityHeldItemLabelStyle labelHeldItem">Held Item:</div>
+                <div class="labelNature">Nature:</div>
+                <div v-if="labels == true && (stats == 'EVs' || stats == 'Detailed EVs')" class="labelFriendship">EVs:</div>
+                <div v-else class="labelFriendship">Friendship:</div>
+                <div class="abilityHeldItemLabelStyle labelAbility">Ability:</div>
+                <div class="abilityHeldItemLabelStyle labelHeldItem">Held Item:</div>
                 <div class="gametime">
                     <div class="timerTitle">time played at 4x game-speed</div>
                     <div class="gametimeClock">{{timer_formatted_time[0]}}</div>
@@ -134,6 +135,7 @@
                     <select v-model="ui_type_colors" class="dropdownMenu">
                         <option>Current</option>
                         <option>Legacy</option>
+                        <option>Legacy Stats & Current Type</option>
                     </select>
                     <br><br>
                     <div>Stat Arrangement:</div>
@@ -296,7 +298,8 @@
 <!--------- STATS ---------------------------------------------------------------------------------------------------------------------------->
             <!-- STATS OVERLAY GRAPHIC  -->
             <div class="nature">{{ pkmnNature }}</div>
-            <div class="friendship">{{mapper.properties.player.team[0].friendship}}/255</div>
+            <div v-if="stats == 'EVs' || stats == 'Detailed EVs'" class="friendship">{{ev_total}}/510</div>
+            <div v-else class="friendship">{{mapper.properties.player.team[0].friendship}}/255</div>
             <div class="ability">{{ pkmnAbility }}</div>
             <div class="heldItemStyle heldItem">{{ nullToSpace(camelCase(mapper.properties.player.team[0].itemHeld.value)) }}</div>
             <div class="statsContainer" id="stats">

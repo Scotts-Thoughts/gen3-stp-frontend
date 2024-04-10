@@ -1277,6 +1277,9 @@ const app = Vue.createApp({
             if (newValue == 'Legacy') {
                 this.ui_type_color_modifier = "legacy_"
             }
+            if (newValue == 'Legacy Stats & Current Type') {
+                this.ui_type_color_modifier = "blended_"
+            }
         },
         //*Autosplitter
         //log the start of a battle
@@ -1407,6 +1410,16 @@ const app = Vue.createApp({
         }
     },
     computed: {
+        ev_total() {
+            let ev_hp  = this.mapper.properties.player.team[0].evHp.value
+            let ev_atk = this.mapper.properties.player.team[0].evAttack.value
+            let ev_def = this.mapper.properties.player.team[0].evDefense.value
+            let ev_spa = this.mapper.properties.player.team[0].evSpecialAttack.value
+            let ev_spd = this.mapper.properties.player.team[0].evSpecialDefense.value
+            let ev_spe = this.mapper.properties.player.team[0].evSpeed.value
+            let total = ev_hp + ev_atk + ev_def + ev_spa + ev_spd + ev_spe
+            return total   
+        },
         compare_splits() {
             const result = []
             for (const x of this.previous_splits) {
@@ -1445,14 +1458,7 @@ const app = Vue.createApp({
                     return `EVs`
                 }
                 case "Detailed EVs": {
-                    let ev_hp  = this.mapper.properties.player.team[0].evHp.value
-                    let ev_atk = this.mapper.properties.player.team[0].evAttack.value
-                    let ev_def = this.mapper.properties.player.team[0].evDefense.value
-                    let ev_spa = this.mapper.properties.player.team[0].evSpecialAttack.value
-                    let ev_spd = this.mapper.properties.player.team[0].evSpecialDefense.value
-                    let ev_spe = this.mapper.properties.player.team[0].evSpeed.value
-                    let total = ev_hp + ev_atk + ev_def + ev_spa + ev_spd + ev_spe
-                    return `${total}/510`
+                    return `Detailed EVs`
                 }
                 case "Automatic":    {
                     if (state == 'Base Stats' || this.mapper.properties.player.team[0].species.value == null) {

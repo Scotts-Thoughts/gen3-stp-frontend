@@ -64,6 +64,26 @@
     --legacy_dark:     #705848;
     --legacy_fairy:    #ee99ac; 
 
+    --blended_normal:   #9fa19f;
+    --blended_fighting: #ff8000;
+    --blended_grass:    #3fa129;
+    --blended_fire:     #e62829;
+    --blended_water:    #2980ef;
+    --blended_electric: #fac000;
+    --blended_ground:   #915121;
+    --blended_rock:     #afa981;
+    --blended_psychic:  #ef4179;
+    --blended_poison:   #9141cb;
+    --blended_flying:   #81b9ef;
+    --blended_bug:      #91a119;
+    --blended_ice:      #3dcef3;
+    --blended_ghost:    #704170;
+    --blended_dragon:   #5060e1;
+    --blended_steel:    #60a1b8;
+    --blended_dark:     #624d4e;
+    --blended_fairy:    #ef70ef;
+    --blended_curse:    #68A090;
+
     /* Stat Colours */
     --hp:     #ff5959;
     --atk:    #f5ac78;
