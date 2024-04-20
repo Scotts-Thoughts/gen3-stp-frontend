@@ -2440,7 +2440,7 @@ body {
 .fadeBattle-enter-active { transition: opacity 300ms ease-in-out; }
 .fadeBattle-leave-from { opacity: 1; }
 .fadeBattle-leave-to { opacity: 0; }
-.fadeBattle-leave-active { transition: opacity 300ms ease-in-out; }
+.fadeBattle-leave-active { transition: opacity 200ms ease-in-out; }
 
 
 .fadeBattleEnemy-enter-from { opacity: 0; }

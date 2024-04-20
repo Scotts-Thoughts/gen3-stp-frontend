@@ -3609,7 +3609,7 @@ const app = Vue.createApp({
         //     await this.sleep(100)
         //     this.enemyState = "Pokemon"
         // })
-        if (this.mapper.properties.player.team[0].level.value == 0) 
+        if (this.mapper.properties.player.team[0].level.value == 0 || this.g3stateVariable == 'Overworld') 
             this.enemyState = "Not In Battle";
         else if (this.mapper.properties.battle.turnInfo.battleDialogue.value ==  6 ||this.mapper.properties.battle.turnInfo.battleDialogue.bytes ==  6)
             this.enemyState = "Pokemon";
@@ -3623,7 +3623,7 @@ const app = Vue.createApp({
             this.enemyState = "Pokemon";
 
         this.mapper.properties.pointers.callback2.change((prop) => {
-            if (prop.value == 134442925) { 
+            if (this.g3stateVariable == 'To Battle') { 
                 this.enemyState = "Battle Starting"
             }
         });
@@ -3957,7 +3957,7 @@ const app = Vue.createApp({
                         split_data: this.split_data
                     }
                 }
-                if(this.game.splits.includes(trainer)&& !this.game.finalBattle.includes(trainer)) {
+                if(this.game.splits.includes(trainer) && !this.game.finalBattle.includes(trainer)) {
                     simpleSplit();
                 }
            
@@ -3967,9 +3967,7 @@ const app = Vue.createApp({
 
                 //stop timer
                 if (this.game.finalBattle.includes(trainer)) {
-                    if ((this.mapper.properties.battle.trainer.opponent?.value   == "CHAMPION_FIRST_CHARMANDER" 
-                        || this.mapper.properties.battle.trainer.opponent?.value == "CHAMPION_FIRST_SQUIRTLE" 
-                        || this.mapper.properties.battle.trainer.opponent?.value == "CHAMPION_FIRST_BULBASAUR") 
+                    if ((this.mapper.properties.battle.trainer.opponent?.value == "CHAMPION_FIRST_CHARMANDER" || this.mapper.properties.battle.trainer.opponent?.value == "CHAMPION_FIRST_SQUIRTLE" || this.mapper.properties.battle.trainer.opponent?.value == "CHAMPION_FIRST_BULBASAUR") 
                         && this.league_rematches == true) {
                             return
                     }

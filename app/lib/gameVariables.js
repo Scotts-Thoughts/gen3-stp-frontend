@@ -95,8 +95,8 @@ const gameVariables =
             "CHAMPION_FIRST_SQUIRTLE",
             "CHAMPION_FIRST_BULBASAUR",
             "CHAMPION_FIRST_CHARMANDER",
-            "CHAMPION_REMATCH_CHARMANDER",
-            "CHAMPION_REMATCH_CHARMANDER",
+            "CHAMPION_REMATCH_SQUIRTLE",
+            "CHAMPION_REMATCH_BULBASAUR",
             "CHAMPION_REMATCH_CHARMANDER"
         ],
         "encountersMap" : {
