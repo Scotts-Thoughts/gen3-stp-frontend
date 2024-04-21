@@ -1303,10 +1303,10 @@ const app = Vue.createApp({
             this.movepoolResize();
         },
         ui_stat_arrangement(newValue) {
-            if (newValue == 'Speed: top right') {
+            if (newValue == 'Speed: bottom right') {
                 this.ui_stat_arrangement_modifier = "hp_spe_"
             }
-            if (newValue == 'Speed: bottom right') {
+            if (newValue == 'Speed: top right') {
                 this.ui_stat_arrangement_modifier = "hp_spd_"
             }
         },
