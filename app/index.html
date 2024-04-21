@@ -82,15 +82,15 @@
                         <tr><td>Autosplitter:</td><td><input class="checkBoxStyle" type="checkbox" v-model="autosplitter_toggle"/></td></tr>
                         <tr v-if="gameSelection == 'FireRed and LeafGreen'"><td>League Rematches:</td><td><input class="checkBoxStyle" type="checkbox" v-model="league_rematches"/></td></tr>
                     </table>
-                    <button @click="pauseUnpauseTime()" class="buttonStyle" style="background-color: rgb(201, 199, 100);">Play/Pause</button>
+                    <button @click="pauseUnpauseTime()" class="buttonStyle">Play/Pause</button>
                     <button class="buttonStyle" @click="set_timer">Set Timer</button><br>
                     Start Time Offset: <input class="inputContainer" type="text" v-model="timer_startTimeOffset" placeholder="00:00:00.00"/><br>
                     <br>
                     <br>
                     <button class="buttonStyle" onClick="openFolder('splits')">Splits Folder</button><br>
                     <br>
-                    <div style="font-size: 20px;">Debugging:</div>
                     <br>
+                    <div style="font-size: 20px;">Debugging:</div>
                     <br>
                     <table>
                         <tr><td>State:</td><td>{{g3stateVariable}}</td></tr>
