@@ -349,13 +349,19 @@ body {
 .dropdownMenu {
     pointer-events: auto; 
     position: relative; 
-    width: 300px; 
+    width: 280px; 
     height: 30px; 
-    font-size: 20px; 
+    font-size: 18px; 
     background: #72fd4f; 
     font-family: Play;
     border-radius: 10px;
     filter: drop-shadow(0px 0px 2px #000000c5);
+}
+.dropdown_menu_short {
+    width: 170px; 
+}
+.dropdown_menu_column3 {
+    width: 210px; 
 }
 .dropdownMenu:hover {
     background: #11ce18; 
@@ -371,14 +377,24 @@ body {
     border-radius: 10px;
     /* filter: drop-shadow(0px 0px 1px #000000c5); */
 }
+.buttonStyle_column3 {
+    width: 210px; 
+}
+.new_run_button {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    font-size: 24px;
+    width: 210px; 
+    height: 45px;
+}
+.comparison_button {
+    margin-bottom: 8px;
+    font-size: 20px;
+    width: 210px; 
+    height: 33px;
+}
 .buttonStyle:hover {
     background: #14d61a; 
-}
-.inputContainer {
-    font-size: 18px; 
-    background: #72fd4f; 
-    font-family: Play;
-    width: 130px;
 }
 
 /* TYPE ICON CLASSES */
@@ -542,7 +558,7 @@ body {
 .inputContainer {
     font-size: 18px; 
     text-align: right;
-    background: #72fd4f; 
+    background: #a3fc8b; 
     font-family: Play;
     width: 130px;
 }
@@ -1735,54 +1751,48 @@ body {
 
 /* INFO AREA */
 
-
-.ui1 {
+.ui_border {
+    border: 1px solid #ff000000;
+}
+.ui_style {
     font-size: 15px;
     position: fixed;
+    line-height: 16px;
+    text-transform: capitalize;
+    text-align: left;
+    font-family: osb;
+    font-weight: 700;
+    z-index: 20000;
+}
+.ui1 {
     left: 372px;
     top: 30px;
-    width: 350px;
-    z-index: 5;
+    width: 280px;
     height: 780px;
-    line-height: 16px;
-    text-transform: capitalize;
-    text-align: left;
-    font-family: osb;
-    font-weight: 700;
-    z-index: 20000;
-    border: 1px solid #ff000000;
 }
 .ui2 {
-    font-size: 15px;
-    position: fixed;
-    left: 742px;
+    left: 682px;
     top: 30px;
-    width: 350px;
-    z-index: 5;
+    width: 220px;
     height: 780px;
-    line-height: 16px;
-    text-transform: capitalize;
-    text-align: left;
-    font-family: osb;
-    font-weight: 700;
-    z-index: 20000;
-    border: 1px solid #ff000000;
 }
 .ui3 {
-    font-size: 15px;
-    position: fixed;
-    left: 1112px;
+    left: 1072px;
     top: 30px;
-    width: 435px;
-    z-index: 5;
+    width: 220px;
     height: 780px;
-    line-height: 16px;
-    text-transform: capitalize;
-    text-align: left;
-    font-family: osb;
-    font-weight: 700;
-    z-index: 20000;
-    border: 1px solid #ff000000;
+}
+.ui4 {
+    left: 1322px;
+    top: 30px;
+    width: 220px;
+    height: 780px;
+}
+.ui5 {
+    left: 1072px;
+    top: 560px;
+    width: 470px;
+    height: 250px;
 }
 .smallButtonStyle {
     pointer-events: auto; 

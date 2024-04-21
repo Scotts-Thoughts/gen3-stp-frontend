@@ -1255,10 +1255,10 @@ const app = Vue.createApp({
     },
     watch: {
         ui_stat_arrangement(newValue) {
-            if (newValue == 'HP, Atk, Def, SpA, SpD, Spe') {
+            if (newValue == 'Speed: top right') {
                 this.ui_stat_arrangement_modifier = "hp_spe_"
             }
-            if (newValue == 'HP, Atk, Def, Spe, SpA, SpD') {
+            if (newValue == 'Speed: bottom right') {
                 this.ui_stat_arrangement_modifier = "hp_spd_"
             }
         },

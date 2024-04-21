@@ -69,25 +69,43 @@
             </div>
 <!--------- DEBUGGING ----------------------------------------------------------------------------------------------------------------->
             <div v-if="gamestate == true">
-                <div class="ui1">
-                    <div>Solo Pokemon:</div>
-                    <select v-model="starterString" @change="load_pokemon_sprite_settings(s1dynamicReset.species.value)" class="dropdownMenu">
-                        <option disabled value="">Select a species</option>
-                        <option v-for="key in keys_function(dexDataRubySapphireEmerald)" :value="`${key}`">{{key}}</option>
-                    </select>
+                <div class="ui_style ui1 ui_border">
                     <div>Game:</div>
                     <select v-model="gameSelection" class="dropdownMenu">
                         <option disabled value="">Select a species</option>
                         <option>Emerald</option>
                         <option>FireRed and LeafGreen</option>
-                    </select>
+                    </select><br>
                     <br>
-                    <button class="buttonStyle" @click="newRun">New Run</button><br>
-                    <button @click="pauseUnpauseTime()" class="buttonStyle" style="background-color: rgb(201, 199, 100);">Toggle Pause Timer</button>
+                    <div>Timer:</div>
+                    <table>
+                        <tr><td>Autosplitter:</td><td><input class="checkBoxStyle" type="checkbox" v-model="autosplitter_toggle"/></td></tr>
+                        <tr v-if="gameSelection == 'FireRed and LeafGreen'"><td>League Rematches:</td><td><input class="checkBoxStyle" type="checkbox" v-model="league_rematches"/></td></tr>
+                    </table>
+                    <button @click="pauseUnpauseTime()" class="buttonStyle" style="background-color: rgb(201, 199, 100);">Play/Pause</button>
                     <button class="buttonStyle" @click="set_timer">Set Timer</button><br>
                     Start Time Offset: <input class="inputContainer" type="text" v-model="timer_startTimeOffset" placeholder="00:00:00.00"/><br>
-                    <button class="buttonStyle" @click="load_splits()">Open Split File</button><br>
                     <br>
+                    <br>
+                    <button class="buttonStyle" onClick="openFolder('splits')">Splits Folder</button><br>
+                    <br>
+                    <div style="font-size: 20px;">Debugging:</div>
+                    <br>
+                    <br>
+                    <table>
+                        <tr><td>State:</td><td>{{g3stateVariable}}</td></tr>
+                        <tr><td>Enemy State:</td><td>{{enemyState}}</td></tr>
+                        <tr><td>Stats Toggle:</td><td>{{stats}}</td></tr>
+                    </table>
+                </div>
+                <div class="ui_style ui2 ui_border">
+                    <div>Solo Pokemon:</div>
+                    <select v-model="starterString" @change="load_pokemon_sprite_settings(s1dynamicReset.species.value)" class="dropdownMenu dropdown_menu_column3" style="background-color: rgb(201, 199, 100)">
+                        <option disabled value="">Select a species</option>
+                        <option v-for="key in keys_function(dexDataRubySapphireEmerald)" :value="`${key}`">{{key}}</option>
+                    </select><br>
+                    <button class="buttonStyle new_run_button" @click="newRun">New Run</button><br>
+                    <button class="buttonStyle comparison_button" @click="load_splits()">Split Comparison</button><br>
                     <table>
                         <tr>
                             <td>Attempt Number:</td>
@@ -117,37 +135,36 @@
                             <td>Faults:</td>
                             <td>{{playerResets + blackout_counter}}</td>
                         </tr>
+                        <tr>
+                            <td style="height: 24px;">Test Run:</td>
+                            <td style="height: 24px;"><input class="checkBoxStyle" type="checkbox" v-model="testStatus"/></td>
+                        </tr>
                     </table>
-                    Test Run: <input class="checkBoxStyle" type="checkbox" v-model="testStatus"/>
                     <br>
+                    <div>Gender:</div>
+                    <select v-model="pkmn_gender" class="dropdownMenu dropdown_menu_column3">
+                        <option disabled value="">Select a gender</option>
+                        <option v-for="key in values_function(genders)" :value="`${key}`">{{key}}</option>
+                    </select><br>
                     <br>
-                    <div>Overlay Color Selector:</div>
-                    <button @click="color_picker" class="buttonStyle">Color Picker</button><br>
-                    Saturation: <input type="range" min="0" max="2" step="0.1" v-model="ui_saturation"/><br>
+                    <div>Abilities: ({{starterString}} has {{dexDataRubySapphireEmerald[starterString].abilities.length}})</div>
+                    <select v-model="pkmn_ability" class="dropdownMenu dropdown_menu_column3">
+                        <option disabled value="">Select an ability</option>
+                        <option v-for="key in values_function(dexDataRubySapphireEmerald[starterString].abilities)" :value="`${key}`">{{key}}</option>
+                    </select><br>
                     <br>
-                    <div>Copy Overlay Settings:</div>
-                    <div>Enter Pokemon species here</div>
-                    Copy from: <input type="text" v-model="copy_overlay_pokemon_from"/><br>
-                    Copy to: <input type="text" v-model="copy_overlay_pokemon_to"/><br>
-                    <button @click="copy_overlay_properties()" class="buttonStyle">Copy Overlay Settings</button><br>
+                    <div>Nature:</div>
+                    <select v-model="pkmnNature" class="dropdownMenu dropdown_menu_column3">
+                        <option disabled value="">Select a Nature</option>
+                        <option v-for="key in values_function(simple_natures)" :value="`${key}`">{{natureLabels(`${key}`)}}</option>
+                    </select><br>
                     <br>
-                    <div>Bulbapedia Colors:</div>
-                    <select v-model="ui_type_colors" class="dropdownMenu">
-                        <option>Current</option>
-                        <option>Legacy</option>
-                        <option>Legacy Stats & Current Type</option>
-                    </select>
-                    <br><br>
-                    <div>Stat Arrangement:</div>
-                    <select v-model="ui_stat_arrangement" class="dropdownMenu">
-                        <option>HP, Atk, Def, SpA, SpD, Spe</option>
-                        <option>HP, Atk, Def, Spe, SpA, SpD</option>
-                    </select>
+                    <div>Hidden Power:</div>
+                    <select v-model="hidden_power_type" class="dropdownMenu dropdown_menu_column3">
+                        <option disabled value="">Select a Hidden Power type</option>
+                        <option v-for="key in values_function(hiddenPowerTypes)" :value="`${key}`">{{key}}</option>
+                    </select><br>
                     <br>
-                    <br>
-                    <button class="buttonStyle" onClick="openFolder('splits')">Open Splits Folder</button><br>
-                </div>
-                <div class="ui2">
                     <div>Encounters:</div>
                     <table v-if="gameSelection == 'Emerald'">
                         <tr><td>Route 101:</td><td><input class="checkBoxStyle" type="checkbox" v-model="route_101"/><br></td></tr>
@@ -162,121 +179,105 @@
                         <tr><td>Route 6:</td><td><input         class="checkBoxStyle" type="checkbox" v-model="route_6"/><br></td></tr>
                     </table>
                     <br>
-                    <div>Force HM Users Until Caught:</div>
+                    <div v-if="gameSelection == 'Emerald'">Force HM Users:</div>
+                    <div v-if="gameSelection == 'FireRed and LeafGreen'">Force Route 1 HM Users:</div>
                     <table v-if="gameSelection == 'Emerald'">
                         <tr><td>Route 102 - Zigzagoon:</td><td><input class="checkBoxStyle" type="checkbox" v-model="hm_102_zigzagoon"/><br></td></tr>
                         <tr><td>Route 104 - Marill:</td><td><input class="checkBoxStyle" type="checkbox" v-model="hm_104_marill"/><br></td></tr>
                         <tr><td>Route 104 - Taillow:</td><td><input class="checkBoxStyle" type="checkbox" v-model="hm_104_taillow"/><br></td></tr>
                     </table>
-                    <br>
-                    <div v-if="gameSelection == 'Emerald'" style="font-size: 12px;">If encounters are turned off, HM users will only appear after Roxanne's badge is obtained.</div>
                     <table v-if="gameSelection == 'FireRed and LeafGreen'">
-                        <tr><td>Route 101 - Pidgey:</td><td><input  class="checkBoxStyle" type="checkbox" v-model="hm_102_zigzagoon"/><br></td></tr>
-                        <tr><td>Route 101 - Rattata:</td><td><input class="checkBoxStyle" type="checkbox" v-model="hm_104_marill"/><br></td></tr>
+                        <tr><td>Pidgey:</td><td><input  class="checkBoxStyle" type="checkbox" v-model="hm_102_zigzagoon"/><br></td></tr>
+                        <tr><td>Rattata:</td><td><input class="checkBoxStyle" type="checkbox" v-model="hm_104_marill"/><br></td></tr>
                     </table>
-                    <div v-if="gameSelection == 'FireRed and LeafGreen'" style="font-size: 12px;">If encounters are turned off, HM users will only appear after the Pokedex is obtained.</div>
+                </div>
+                <div class="ui_style ui3 ui_border">
+                    <div>UI Color:</div>
+                    <button @click="color_picker" class="buttonStyle buttonStyle_column3">Color Picker</button><br>
+                    Saturation: <input type="range" min="0" max="2" step="0.1" v-model="ui_saturation"/><br>
                     <br>
+                    <div>Pokemon Image Settings</div>
                     <table>
-                        <tr v-if="gameSelection == 'FireRed and LeafGreen'"><td>League Rematches:</td><td><input class="checkBoxStyle" type="checkbox" v-model="league_rematches"/></td></tr>
-                        <tr><td>Autosplitter:</td><td><input class="checkBoxStyle" type="checkbox" v-model="autosplitter_toggle"/></td></tr>
-                        Stats:<br>
-                        <select v-model="stats" class="dropdownMenu">
-                            <option>Automatic</option>
-                            <option>Badge Boosts</option>
-                            <option>Base Stats</option>
-                            <option>IVs</option>
-                            <option>EVs</option>
-                            <option>Detailed EVs</option>
-                        </select>
-                        <br>
-                        Right Panel:<br>
-                        <select v-model="right_panel" class="dropdownMenu">
-                            <option>Battle Graphic</option>
-                            <option>Inventory</option>
-                            <option>Movepool</option>
-                            <option>Splits</option>
-                        </select>
-                        <tr><td>Automatic IVs:</td>          <td><input class="checkBoxStyle" type="checkbox" v-model="automatic_ivs"/></td></tr>
-                        <tr><td>Automatic EVs:</td>          <td><input class="checkBoxStyle" type="checkbox" v-model="automatic_evs"/></td></tr>
-                        <tr><td></td><td></td></tr>
-                        <tr><td>Show Tutor Moves:</td>    <td><input class="checkBoxStyle" type="checkbox" v-model="tutor_moves"/></td></tr>
-                        <tr><td>Show Battle Graphics:</td><td><input class="checkBoxStyle" type="checkbox" v-model="battleGraphic"/></td></tr>
-                        <tr><td>Show Inventory:</td>      <td><input class="checkBoxStyle" type="checkbox" v-model="inventory_display"/></td></tr>
-                        <tr><td>Show Nature Changes with Arrows:</td><td><input class="checkBoxStyle" type="checkbox" v-model="show_nature_changes"/></td></tr>
-                        <tr><td>Badge Boosts:</td><td><input class="checkBoxStyle" type="checkbox" v-model="display_badge_boosts"/></td></tr>
-                        <tr v-if="gameSelection == 'FireRed and LeafGreen'"><td>Repel Counter:</td><td><input class="checkBoxStyle" type="checkbox" v-model="repel_counter"/></td></tr>
-                        <tr v-if="gameSelection == 'FireRed and LeafGreen'"><td>Vs. Seeker:</td>   <td><input class="checkBoxStyle" type="checkbox" v-model="vs_seeker"/></td></tr>
-                        <br>
+                        <tr><td>X-Offset:  </td><td><input type="range" min="-400" max="400" v-model="imageXOffset"/></td></tr>
+                        <tr><td>Y-Offset:  </td><td><input type="range" min="-400" max="400"v-model="imageYOffset"/></td></tr>
+                        <tr><td>Scale:     </td><td><input type="range" min="0.2" max="2.5" step="0.01" v-model="imageScale"/></td></tr>
+                        <tr><td>Saturation:</td><td><input type="range" min="90" max="150" step="1" v-model="imageSat"/></td></tr>
+                        <tr><td>Rotation:  </td><td><input type="range" min="-180" max="180" step=".25" v-model="imageRotation"/></td></tr>
+                        <tr><td>Flip:      </td><td><input class="checkBoxStyle" type="checkbox" v-model="imageFlip"/></td></tr>
                     </table>
+                    <button @click="resetPokemon()" class="buttonStyle buttonStyle_column3">Reset Pokemon Settings</button><br>
                     <br>
                     <div>Background Texture:</div>
-                    <select v-model="backgroundTexture" class="dropdownMenu">
+                    <select v-model="backgroundTexture" class="dropdownMenu dropdown_menu_column3">
                         <option v-for="key in dropdownDownMenuKeys.textures" :key="key" :value="key">
                             {{ key }}
                         </option>
                     </select><br>
-                    X-Offset:   <input type="range" min="-125" max="125" v-model="backgroundXOffset"/><br>
-                    Y-Offset:   <input type="range" min="-125" max="125" v-model="backgroundYOffset"/><br>
-                    Scale:      <input type="range" min="100"  max="200" v-model="backgroundScale"/><br>
-                    Brightness: <input type="range" min="0"    max="200" v-model="backgroundBrightness"/><br>
-                    Contrast:   <input type="range" min="0"    max="200" v-model="backgroundContrast"/><br>
-                    Saturation: <input type="range" min="0"    max="200" v-model="backgroundSaturation"/><br>
-                    Blur:       <input type="range" min="0"    max="10"  v-model="backgroundBlur"/><br>
-                    Hue:        <input type="range" min="0"    max="358" v-model="backgroundHue"/><br>
-                    Flip:       <input class="checkBoxStyle" type="checkbox" v-model="backgroundFlip"/><br>
+                    <table>
+                        <tr><td>X-Offset:  </td><td><input type="range" min="-125" max="125" v-model="backgroundXOffset"/></td></tr>
+                        <tr><td>Y-Offset:  </td><td><input type="range" min="-125" max="125" v-model="backgroundYOffset"/></td></tr>
+                        <tr><td>Scale:     </td><td><input type="range" min="100"  max="200" v-model="backgroundScale"/></td></tr>
+                        <tr><td>Brightness:</td><td><input type="range" min="0"    max="200" v-model="backgroundBrightness"/></td></tr>
+                        <tr><td>Contrast:  </td><td><input type="range" min="0"    max="200" v-model="backgroundContrast"/></td></tr>
+                        <tr><td>Saturation:</td><td><input type="range" min="0"    max="200" v-model="backgroundSaturation"/></td></tr>
+                        <tr><td>Blur:      </td><td><input type="range" min="0"    max="10"  v-model="backgroundBlur"/></td></tr>
+                        <tr><td>Hue:       </td><td><input type="range" min="0"    max="358" v-model="backgroundHue"/></td></tr>
+                        <tr><td>Flip:      </td><td><input class="checkBoxStyle" type="checkbox" v-model="backgroundFlip"/></td></tr>
+                    </table>
                 </div>
-                <div class="ui3">
-                    <div>Gender:</div>
-                    <select v-model="pkmn_gender" class="dropdownMenu">
-                        <option disabled value="">Select a gender</option>
-                        <option v-for="key in values_function(genders)" :value="`${key}`">{{key}}</option>
+                <div class="ui_style ui4 ui_border">
+                    <div>Bulbapedia Colors:</div>
+                    <select v-model="ui_type_colors" class="dropdownMenu dropdown_menu_column3">
+                        <option>Current</option>
+                        <option>Legacy</option>
+                        <option>Legacy Stats & Current Type</option>
+                    </select>
+                    <br><br>
+                    <div>Stat Arrangement:</div>
+                    <select v-model="ui_stat_arrangement" class="dropdownMenu dropdown_menu_column3">
+                        <option>Speed: bottom right</option>
+                        <option>Speed: top right</option>
                     </select><br>
                     <br>
-                    <div>Abilities:</div>
-                    <select v-model="pkmn_ability" class="dropdownMenu">
-                        <option disabled value="">Select an ability</option>
-                        <option v-for="key in values_function(dexDataRubySapphireEmerald[starterString].abilities)" :value="`${key}`">{{key}}</option>
+                    Stats:<br>
+                    <select v-model="stats" class="dropdownMenu dropdown_menu_column3">
+                        <option>Automatic</option>
+                        <option>Badge Boosts</option>
+                        <option>Base Stats</option>
+                        <option>IVs</option>
+                        <option>EVs</option>
+                        <option>Detailed EVs</option>
                     </select><br>
-                    <div>Number of abilities that {{starterString}} has: {{dexDataRubySapphireEmerald[starterString].abilities.length}}</div>
-                    <div v-if="dexDataRubySapphireEmerald[starterString].abilities[0]">- {{dexDataRubySapphireEmerald[starterString].abilities[0]}}</div>
-                    <div v-if="dexDataRubySapphireEmerald[starterString].abilities[1]">- {{dexDataRubySapphireEmerald[starterString].abilities[1]}}</div>
                     <br>
-                    <div>Nature:</div>
-                    <select v-model="pkmnNature" class="dropdownMenu">
-                        <option disabled value="">Select a Nature</option>
-                        <option v-for="key in values_function(simple_natures)" :value="`${key}`">{{natureLabels(`${key}`)}}</option>
+                    <div>Right Panel:</div>
+                    <select v-model="right_panel" class="dropdownMenu dropdown_menu_column3">
+                        <option>Battle Graphic</option>
+                        <option>Inventory</option>
+                        <option>Movepool</option>
+                        <option>Splits</option>
                     </select><br>
-                    <table style="font-size: 12px;">
-                        <tr><td>Raises:</td><td>{{natures[pkmnNature].raises}}</td></tr>
-                        <tr><td>Lowers:</td><td>{{natures[pkmnNature].lowers}}</td></tr>
+                    <br>
+                    <table>
+                        <tr>Toggles:</tr>
+                        <tr><td>Automatic IVs:</td>       <td><input class="checkBoxStyle" type="checkbox" v-model="automatic_ivs"/></td></tr>
+                        <tr><td>Automatic EVs:</td>       <td><input class="checkBoxStyle" type="checkbox" v-model="automatic_evs"/></td></tr>
+                        <tr><td>Show Tutor Moves:</td>    <td><input class="checkBoxStyle" type="checkbox" v-model="tutor_moves"/></td></tr>
+                        <tr><td>Show Battle Graphics:</td><td><input class="checkBoxStyle" type="checkbox" v-model="battleGraphic"/></td></tr>
+                        <tr><td>Show Inventory:</td>      <td><input class="checkBoxStyle" type="checkbox" v-model="inventory_display"/></td></tr>
+                        <tr><td>Show Nature Arrows:</td>  <td><input class="checkBoxStyle" type="checkbox" v-model="show_nature_changes"/></td></tr>
+                        <tr><td>Badge Boosts:</td>        <td><input class="checkBoxStyle" type="checkbox" v-model="display_badge_boosts"/></td></tr>
+                        <tr v-if="gameSelection == 'FireRed and LeafGreen'"><td>Repel Counter:</td><td><input class="checkBoxStyle" type="checkbox" v-model="repel_counter"/></td></tr>
+                        <tr v-if="gameSelection == 'FireRed and LeafGreen'"><td>Vs. Seeker:</td>   <td><input class="checkBoxStyle" type="checkbox" v-model="vs_seeker"/></td></tr>
+                        <br>
                     </table>
-                    <br>
-                    <div>Hidden Power:</div>
-                    <select v-model="hidden_power_type" class="dropdownMenu">
-                        <option disabled value="">Select a Hidden Power type</option>
-                        <option v-for="key in values_function(hiddenPowerTypes)" :value="`${key}`">{{key}}</option>
-                    </select><br>
-                    <table style="font-size: 12px;">
-                        <tr><td>Hp:</td> <td style="padding-right: 15px;">{{hp_ivs[hidden_power_type][0]}}</td><td>SpA:</td><td>{{hp_ivs[hidden_power_type][4]}}</td></tr>
-                        <tr><td>Atk:</td><td style="padding-right: 15px;">{{hp_ivs[hidden_power_type][1]}}</td><td>SpD:</td><td>{{hp_ivs[hidden_power_type][5]}}</td></tr>
-                        <tr><td>Def:</td><td style="padding-right: 15px;">{{hp_ivs[hidden_power_type][2]}}</td><td>Spe:</td><td>{{hp_ivs[hidden_power_type][3]}}</td></tr>
+                </div>
+                <div class="ui_style ui5 ui_border">
+                    <table>
+                        <tr><td>Copy from:</td><td><input class="inputContainer" style="width: 126px;" type="text" v-model="copy_overlay_pokemon_from"/></td></tr>
+                        <tr><td>Copy to:</td>  <td><input class="inputContainer" style="width: 126px;" type="text" v-model="copy_overlay_pokemon_to"/></td></tr>
                     </table>
+                    <button @click="copy_overlay_properties()" class="buttonStyle buttonStyle_column3">Copy Overlay Settings</button><br>
                     <br>
-                    <div>Pokemon Image Settings</div>
-                    X-Offset:   <input type="range" min="-400" max="400" v-model="imageXOffset"/><br>
-                    Y-Offset:   <input type="range" min="-400" max="400"v-model="imageYOffset"/><br>
-                    Scale:      <input type="range" min="0.2" max="2.5" step="0.01" v-model="imageScale"/><br>
-                    Saturation: <input type="range" min="90" max="150" step="1" v-model="imageSat"/><br>
-                    Rotation:   <input type="range" min="-180" max="180" step=".25" v-model="imageRotation"/><br>
-                    Flip:       <input class="checkBoxStyle" type="checkbox" v-model="imageFlip"/><br>
-                    <button @click="resetPokemon()" class="buttonStyle">Reset Pokemon Settings</button><br>
-                    <br>
-                    <br>
-                    <div style="font-size: 24px;">Debugging:</div>
-                    <br>
-                    <div>State: {{g3stateVariable}}</div>
-                    <div>Enemy State: {{enemyState}}</div>
-                    <div>Stats Toggle: {{stats}}</div>
                 </div>
             </div>
 

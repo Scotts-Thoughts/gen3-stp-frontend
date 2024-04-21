@@ -31,5 +31,6 @@ const textures = {
     'Volcano':       'images\\textures\\Volcano.jpg',
     'Cracked Magma': 'images\\textures\\Cracked Magma.jpg',
     'Spiral':        'images\\textures\\Spiral.jpg',
-    'Computer':        'images\\textures\\Computer.jpg',
+    'Computer':      'images\\textures\\Computer.jpg',
+    'Cave':          'images\\textures\\Cave.jpg',
 }
