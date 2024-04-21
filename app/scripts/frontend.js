@@ -453,11 +453,11 @@ for (folder of folders = ['storage', 'splits', 'splits/Emerald', 'splits/FireRed
 
 function logData(gameName, str, file_name, starter, log_type, testStatus, toggle, evolution, evolution_label) {
         return new Promise((resolve, reject) => {
-        const dirPath = `./splits/${app.game.gameName}/${starter}/attempts/`;
         const testStatusText = testStatus ? "test_run_" : "";
         if (evolution == true) {
             starter = evolution_label;
         }
+        const dirPath = `./splits/${app.game.gameName}/${starter}/attempts/`;
         let filePath = path.join(dirPath, `${testStatusText}${starter}-${file_name}-simple.csv`);
         let header = "player_name," +
                     "pokemon," +
