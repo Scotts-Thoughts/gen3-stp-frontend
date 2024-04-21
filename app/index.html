@@ -24,7 +24,7 @@
                     'filter': `blur(${backgroundBlur}px) hue-rotate(${backgroundHue}deg) brightness(${backgroundBrightness}%) contrast(${backgroundContrast}%) saturate(${backgroundSaturation}%)` ,
                     'transform': `scale(${backgroundScale}%) ${backgroundFlip ? 'rotateY(180deg)' : ''} translate(${backgroundXOffset}px, ${-backgroundYOffset}px)`
                 }"/>
-                <img class="canvas" src="images/elements/overlay/gen1&2/frame.png" />
+                <img v-if="frame == true" class="canvas" src="images/elements/overlay/gen1&2/frame.png" />
                 <img class="canvas" style="top: 30px;" :src="`images/elements/overlay/gen1&2/pokeball.png`" />
                 <img class="pokemon_art" ref="pokemon_art"
                 :style="{
@@ -265,6 +265,7 @@
                     <br>
                     <table>
                         <tr>Toggles:</tr>
+                        <tr><td>Frame:</td>               <td><input class="checkBoxStyle" type="checkbox" v-model="frame"/></td></tr>
                         <tr><td>Automatic IVs:</td>       <td><input class="checkBoxStyle" type="checkbox" v-model="automatic_ivs"/></td></tr>
                         <tr><td>Automatic EVs:</td>       <td><input class="checkBoxStyle" type="checkbox" v-model="automatic_evs"/></td></tr>
                         <tr><td>Show Tutor Moves:</td>    <td><input class="checkBoxStyle" type="checkbox" v-model="tutor_moves"/></td></tr>

@@ -688,7 +688,6 @@ const app = Vue.createApp({
 
             // USER CONFIG (components) ------------------------------------------------------------------------// 
             graphicOverlay: MyStorage['graphicOverlay'] ?? true, //places a single image as the overlay  //MVP
-            frame:          MyStorage['frame']          ?? false, //shows overlay frame
             gameArea:       MyStorage['gameArea']       ?? false, //shows green box to place game in
             pokeballFloor:  MyStorage['pokeballFloor']  ?? false, //shows floor for Pokemon to stand on
             dynamicOverlay: MyStorage['dynamicOverlay'] ?? false, //dynamically picks overlay graphics based on team slot 1
@@ -844,6 +843,7 @@ const app = Vue.createApp({
             imageRotation: MyStorage["imageRotation"] ?? 0,
 
             //background texture settings
+            frame:                 MyStorage["frame"]                 ?? true, //shows overlay frame
             backgroundBlur:        MyStorage["backgroundBlur"]        ?? 0,
             backgroundScale:       MyStorage["backgroundScale"]       ?? 100,
             backgroundUrl:         MyStorage["backgroundUrl"]         ?? "",
@@ -859,6 +859,7 @@ const app = Vue.createApp({
 
             //backed up pokemon specific settings
             pokemon_settings: [
+                "frame",
                 "overlay_color",
                 "imageXOffset",
                 "imageYOffset",
@@ -1271,7 +1272,8 @@ const app = Vue.createApp({
             this.overlay_color =          MyStorage[`${newValue}`]?.overlay_color          ?? this.default_colors[dexDataRubySapphireEmerald[newValue].type_1]
             this.evolution =              MyStorage[`${newValue}`]?.evolution              ?? false
             this.evolution_splits_label = MyStorage[`${newValue}`]?.evolution_splits_label ?? ""
-
+ 
+            this.frame =                  MyStorage[`${newValue}`]?.frame                  ?? true
             this.backgroundTexture =      MyStorage[`${newValue}`]?.backgroundTexture      ?? `${this.dexData[newValue].type_1}`
             this.backgroundBlur =         MyStorage[`${newValue}`]?.backgroundBlur         ?? 0,
             this.backgroundHue =          MyStorage[`${newValue}`]?.backgroundHue          ?? 0,
@@ -2251,7 +2253,6 @@ const app = Vue.createApp({
             this.stats_display =      MyStorage['stats_display']      ?? true,
 
             this.graphicOverlay =             MyStorage['graphicOverlay']             ?? true
-            this.frame =                      MyStorage['frame']                      ?? false
             this.gameArea =                   MyStorage['gameArea']                   ?? false
             this.pokeballFloor =              MyStorage['pokeballFloor']              ?? false
             this.dynamicOverlay =             MyStorage['dynamicOverlay']             ?? false
@@ -2308,6 +2309,7 @@ const app = Vue.createApp({
             this.imageRotation = MyStorage[this.starterString]?.imageRotation ?? 0
 
             //background texture settings
+            this.frame =                 MyStorage[this.starterString]?.frame                 ?? true
             this.backgroundBlur =        MyStorage[this.starterString]?.backgroundBlur        ?? 0
             this.backgroundScale =       MyStorage[this.starterString]?.backgroundScale       ?? 100
             this.backgroundUrl =         MyStorage[this.starterString]?.backgroundUrl         ?? ""

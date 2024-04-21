@@ -175,6 +175,9 @@ body {
     background-color: #ffffff;
 }
 
+.background_texture {  /* or some other selector */
+    position: absolute;
+}
 .canvas {  /* or some other selector */
     position: absolute;
     width: 1920px;
