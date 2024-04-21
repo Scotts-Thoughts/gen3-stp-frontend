@@ -93,9 +93,11 @@
                     <div style="font-size: 20px;">Debugging:</div>
                     <br>
                     <table>
-                        <tr><td>State:</td><td>{{g3stateVariable}}</td></tr>
-                        <tr><td>Enemy State:</td><td>{{enemyState}}</td></tr>
-                        <tr><td>Stats Toggle:</td><td>{{stats}}</td></tr>
+                        <tr><td>State:</td>          <td>{{g3stateVariable}}</td></tr>
+                        <tr><td>Enemy State:</td>    <td>{{enemyState}}</td></tr>
+                        <tr><td>Stats Toggle:</td>   <td>{{stats}}</td></tr>
+                        <tr><td>Evolution:</td>      <td>{{evolution}}</td></tr>
+                        <tr><td>Evo Split Label:</td><td>{{evolution_splits_label}}</td></tr>
                     </table>
                 </div>
                 <div class="ui_style ui2 ui_border">
@@ -164,6 +166,10 @@
                         <option disabled value="">Select a Hidden Power type</option>
                         <option v-for="key in values_function(hiddenPowerTypes)" :value="`${key}`">{{key}}</option>
                     </select><br>
+                    <br>
+                    <table>
+                        <tr><td>Evolution:</td><td><input class="checkBoxStyle" type="checkbox" v-model="evolution"/></td></tr>
+                    </table>
                     <br>
                     <div>Encounters:</div>
                     <table v-if="gameSelection == 'Emerald'">
@@ -754,6 +760,9 @@
     <script src="methods/modifier_functions.js"></script>
     <script src="methods/text_functions.js"></script>
     <script src="methods/time_functions.js"></script>
+
+    <script src="pokedex/emerald.js"></script>
+    <script src="pokedex/firered_leafgreen.js"></script>
     <!-- VUE APP -->
     <script type="text/javascript" src="scripts/frontend.js"></script>
 </body>

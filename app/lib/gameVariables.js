@@ -2,7 +2,8 @@ const gameVariables =
 {
     "FireRed and LeafGreen": {
         "gameName" : "FireRed and LeafGreen",
-        "dexData" : dexDataFireRedLeafGreen,
+        "dexData" :  dexDataFireRedLeafGreen,
+        "evolutions": pokedex_frlg,
         "region" : "Kanto",
         "opponent": "opponent",
         "opponentId" : "opponentId",
@@ -123,6 +124,7 @@ const gameVariables =
     "Emerald": {
         "gameName" : "Emerald",
         "dexData" : dexDataRubySapphireEmerald,
+        "evolutions": pokedex_emerald,
         "region" : "Hoenn",
         "opponent": "opponentA",
         "opponentId" : "opponentAId",

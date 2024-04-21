@@ -451,10 +451,13 @@ for (folder of folders = ['storage', 'splits', 'splits/Emerald', 'splits/FireRed
     }
 }
 
-function logData(gameName, str, file_name, starter, log_type, testStatus, toggle) {
+function logData(gameName, str, file_name, starter, log_type, testStatus, toggle, evolution, evolution_label) {
         return new Promise((resolve, reject) => {
         const dirPath = `./splits/${app.game.gameName}/${starter}/attempts/`;
         const testStatusText = testStatus ? "test_run_" : "";
+        if (evolution == true) {
+            starter = evolution_label;
+        }
         let filePath = path.join(dirPath, `${testStatusText}${starter}-${file_name}-simple.csv`);
         let header = "player_name," +
                     "pokemon," +
@@ -670,7 +673,9 @@ const app = Vue.createApp({
             hidden_power_type: "Electric",
             pkmn_gender:       "Female",
             gameSelection:     MyStorage['gameSelection'] ?? "FireRed and LeafGreen",
-            
+            evolution:         MyStorage['evolution'] ?? false,
+            evolution_splits_label: MyStorage['evolution_splits_label'] ?? "",
+
             stats:              MyStorage['stats']              ?? "Automatic",
             stat_exp_display:   MyStorage['stat_exp_display']   ?? true,
             dv_display:         MyStorage['dv_display']         ?? true,
@@ -752,14 +757,16 @@ const app = Vue.createApp({
             remakeTrainers:             remakeTrainers,
             emeraldTrainers:            emeraldTrainers,
             trainer_name_lookup:        trainer_name_lookup,
+            pokedex_emerald:            pokedex_emerald,
+            pokedex_frlg:               pokedex_frlg,
 
             trainerLists: {
                 "emeraldTrainers" : emeraldTrainers,
-                "remakeTrainers" : remakeTrainers,  
+                "remakeTrainers"  : remakeTrainers,  
             },
             genders: {
                 "false": "Male",
-                "true": "Female",
+                "true":  "Female",
             },
             simple_natures: {
                 "0": "Hardy",
@@ -878,6 +885,8 @@ const app = Vue.createApp({
                 "pkmn_gender",
                 "finished_run_count",
                 "backgroundHue",
+                "evolution",
+                "evolution_splits_label",
             ],
             //timer variables
             timer_startTimeOffset: MyStorage["timer_startTimeOffset"] ?? "00:00:00.00",
@@ -1047,32 +1056,34 @@ const app = Vue.createApp({
             copy_overlay_pokemon_to:   MyStorage['copy_overlay_pokemon_to']   ?? "",
         }
     },
+
     created() {
         import('../lib/gameVariables.js').then((gameVariables) => {
             this.gameVariables = gameVariables.default;
-            
             // Bind the newGame function to the Vue component
             // this.gameVariables.newGame = this.gameVariables.newGame.bind(this);
         })
         if (MyStorage[this.starterString]) {
-            this.overlay_color          = MyStorage[this.starterString].overlay_color         ?? this.default_colors[dexDataRubySapphireEmerald[this.starterString].type_1];
-            this.imageXOffset           = MyStorage[this.starterString].imageXOffset          ?? 0;
-            this.imageYOffset           = MyStorage[this.starterString].imageYOffset          ?? 0;
-            this.imageScale             = MyStorage[this.starterString].imageScale            ?? 1;
-            this.imageFlip              = MyStorage[this.starterString].imageFlip             ?? false;
-            this.imageSat               = MyStorage[this.starterString].imageSat              ?? 100
-            this.imageRotation          = MyStorage[this.starterString].imageRotation         ?? 0
-            this.backgroundBlur         = MyStorage[this.starterString].backgroundBlur        ?? 0
-            this.backgroundHue          = MyStorage[this.starterString].backgroundHue         ?? 0
-            this.backgroundScale        = MyStorage[this.starterString].backgroundScale       ?? 100
-            this.backgroundUrl          = MyStorage[this.starterString].backgroundUrl         ?? ""
-            this.use_custom_background  = MyStorage[this.starterString].use_custom_background ?? false
-            this.backgroundXOffset      = MyStorage[this.starterString].backgroundXOffset     ?? 0
-            this.backgroundYOffset      = MyStorage[this.starterString].backgroundYOffset     ?? 0
-            this.backgroundTexture      = MyStorage[this.starterString].backgroundTexture     ?? `${this.dexData[this.starterString].type_1}`
-            this.pkmn_ability           = MyStorage[this.starterString]?.pkmn_ability         ?? dexDataRubySapphireEmerald[this.starterString].abilities[0]
-            this.attempt_number         = MyStorage[this.starterString]?.attempt_number       ?? 0
-            this.finished_run_count     = MyStorage[this.starterString]?.finished_run_count   ?? 0
+            this.overlay_color          = MyStorage[this.starterString].overlay_color           ?? this.default_colors[dexDataRubySapphireEmerald[this.starterString].type_1];
+            this.imageXOffset           = MyStorage[this.starterString].imageXOffset            ?? 0;
+            this.imageYOffset           = MyStorage[this.starterString].imageYOffset            ?? 0;
+            this.imageScale             = MyStorage[this.starterString].imageScale              ?? 1;
+            this.imageFlip              = MyStorage[this.starterString].imageFlip               ?? false;
+            this.imageSat               = MyStorage[this.starterString].imageSat                ?? 100
+            this.imageRotation          = MyStorage[this.starterString].imageRotation           ?? 0
+            this.backgroundBlur         = MyStorage[this.starterString].backgroundBlur          ?? 0
+            this.backgroundHue          = MyStorage[this.starterString].backgroundHue           ?? 0
+            this.backgroundScale        = MyStorage[this.starterString].backgroundScale         ?? 100
+            this.backgroundUrl          = MyStorage[this.starterString].backgroundUrl           ?? ""
+            this.use_custom_background  = MyStorage[this.starterString].use_custom_background   ?? false
+            this.backgroundXOffset      = MyStorage[this.starterString].backgroundXOffset       ?? 0
+            this.backgroundYOffset      = MyStorage[this.starterString].backgroundYOffset       ?? 0
+            this.backgroundTexture      = MyStorage[this.starterString].backgroundTexture       ?? `${this.dexData[this.starterString].type_1}`
+            this.pkmn_ability           = MyStorage[this.starterString].pkmn_ability           ?? dexDataRubySapphireEmerald[this.starterString].abilities[0]
+            this.attempt_number         = MyStorage[this.starterString].attempt_number         ?? 0
+            this.finished_run_count     = MyStorage[this.starterString].finished_run_count     ?? 0
+            this.evolution              = MyStorage[this.starterString].evolution              ?? 0
+            this.evolution_splits_label = MyStorage[this.starterString].evolution_splits_label ?? 0
         }
 
         for (let i = 0; i < this.pokemon_settings.length; i++) {
@@ -1253,7 +1264,37 @@ const app = Vue.createApp({
         //     console.log(`Loaded all settings from Storage.`) 
         // }
     },
+
     watch: {
+        starterString(newValue, oldValue) {
+            //background texture settings
+            this.overlay_color =          MyStorage[`${newValue}`]?.overlay_color          ?? this.default_colors[dexDataRubySapphireEmerald[newValue].type_1]
+            this.evolution =              MyStorage[`${newValue}`]?.evolution              ?? false
+            this.evolution_splits_label = MyStorage[`${newValue}`]?.evolution_splits_label ?? ""
+
+            this.backgroundTexture =      MyStorage[`${newValue}`]?.backgroundTexture      ?? `${this.dexData[newValue].type_1}`
+            this.backgroundBlur =         MyStorage[`${newValue}`]?.backgroundBlur         ?? 0,
+            this.backgroundHue =          MyStorage[`${newValue}`]?.backgroundHue          ?? 0,
+            this.backgroundScale =        MyStorage[`${newValue}`]?.backgroundScale        ?? 100,
+            this.backgroundUrl =          MyStorage[`${newValue}`]?.backgroundUrl          ?? "",
+            this.backgroundFlip =         MyStorage[`${newValue}`]?.backgroundFlip         ?? false,
+            this.use_custom_background =  MyStorage[`${newValue}`]?.use_custom_background  ?? false,
+            this.backgroundXOffset =      MyStorage[`${newValue}`]?.backgroundXOffset      ?? 0,
+            this.backgroundYOffset =      MyStorage[`${newValue}`]?.backgroundYOffset      ?? 0,
+            this.backgroundBrightness =   MyStorage[`${newValue}`]?.backgroundBrightness   ?? 100,
+            this.backgroundContrast =     MyStorage[`${newValue}`]?.backgroundContrast     ?? 100,
+            this.backgroundSaturation =   MyStorage[`${newValue}`]?.backgroundSaturation   ?? 100,
+            //Attempts and finishes
+            this.attempt_number =         MyStorage[`${newValue}`]?.attempt_number     ?? 0,
+            this.finished_run_count =     MyStorage[`${newValue}`]?.finished_run_count ?? 0,
+            //main pokemon settings
+            MyStorage['starterString'] =  newValue
+            this.pkmnNature =             MyStorage[`${newValue}`]?.pkmnNature        ?? "Hardy",
+            this.pkmn_ability =           MyStorage[`${newValue}`]?.pkmn_ability      ?? this.dexDataRubySapphireEmerald[newValue].abilities[0],
+            this.hidden_power_type =      MyStorage[`${newValue}`]?.hidden_power_type ?? "Dark",
+            this.pkmn_gender =            MyStorage[`${newValue}`]?.pkmn_gender       ?? "Female"
+            this.movepoolResize();
+        },
         ui_stat_arrangement(newValue) {
             if (newValue == 'Speed: top right') {
                 this.ui_stat_arrangement_modifier = "hp_spe_"
@@ -1328,32 +1369,6 @@ const app = Vue.createApp({
             }
             MyStorage['hm_104_taillow'] = newValue
         },
-        starterString(newValue, oldValue) {
-            //background texture settings
-            this.overlay_color =         MyStorage[`${newValue}`]?.overlay_color         ?? this.default_colors[dexDataRubySapphireEmerald[newValue].type_1]
-            this.backgroundTexture =     MyStorage[`${newValue}`]?.backgroundTexture     ?? `${this.dexData[newValue].type_1}`
-            this.backgroundBlur =        MyStorage[`${newValue}`]?.backgroundBlur        ?? 0,
-            this.backgroundHue =         MyStorage[`${newValue}`]?.backgroundHue         ?? 0,
-            this.backgroundScale =       MyStorage[`${newValue}`]?.backgroundScale       ?? 100,
-            this.backgroundUrl =         MyStorage[`${newValue}`]?.backgroundUrl         ?? "",
-            this.backgroundFlip =        MyStorage[`${newValue}`]?.backgroundFlip        ?? false,
-            this.use_custom_background = MyStorage[`${newValue}`]?.use_custom_background ?? false,
-            this.backgroundXOffset =     MyStorage[`${newValue}`]?.backgroundXOffset     ?? 0,
-            this.backgroundYOffset =     MyStorage[`${newValue}`]?.backgroundYOffset     ?? 0,
-            this.backgroundBrightness =  MyStorage[`${newValue}`]?.backgroundBrightness  ?? 100,
-            this.backgroundContrast =    MyStorage[`${newValue}`]?.backgroundContrast    ?? 100,
-            this.backgroundSaturation =  MyStorage[`${newValue}`]?.backgroundSaturation  ?? 100,
-            //Attempts and finishes
-            this.attempt_number =        MyStorage[`${newValue}`]?.attempt_number     ?? 0,
-            this.finished_run_count =    MyStorage[`${newValue}`]?.finished_run_count ?? 0,
-            //main pokemon settings
-            MyStorage['starterString'] = newValue
-            this.pkmnNature =            MyStorage[`${newValue}`]?.pkmnNature        ?? "Hardy",
-            this.pkmn_ability =          MyStorage[`${newValue}`]?.pkmn_ability      ?? this.dexDataRubySapphireEmerald[newValue].abilities[0],
-            this.hidden_power_type =     MyStorage[`${newValue}`]?.hidden_power_type ?? "Dark",
-            this.pkmn_gender =           MyStorage[`${newValue}`]?.pkmn_gender       ?? "Female"
-            this.movepoolResize();
-        },
         playerId(newValue) {
             MyStorage["playerId"]         = newValue
             this.game_over                = false;
@@ -1407,8 +1422,20 @@ const app = Vue.createApp({
         },
         playerName(newName) {
             MyStorage['playerName'] = newName;
-        }
+        },
+        evolution(newValue) {
+            if (this.ready == false) { return }
+            const evolution_family = this.game.evolutions[this.starterString]?.evolution_family
+            const split_label = `${evolution_family[evolution_family.length - 1]?.species}-line`
+            if (newValue == true) {
+                this.evolution_splits_label = split_label
+            }
+            if (newValue == false) {
+                this.evolution_splits_label = ""
+            }
+        },
     },
+
     computed: {
         ev_total() {
             let ev_hp  = this.mapper.properties.player.team[0].evHp.value
@@ -1723,17 +1750,12 @@ const app = Vue.createApp({
             return this.dexData[this.starterString].dex_number
         },
         game() {
-            // console.log("game")
-            // console.log(this.mapper.meta)
-            // console.log(this.mapper?.properties?.meta.gameName.value)
-            if(this.mapper && this.mapper.properties.meta?.gameName) {
-                if(this.gameVariables[this.mapper.properties.meta.gameName?.value]!=null)
+            if (this.ready == false) { return }
+            if (this.mapper && this.mapper.properties.meta?.gameName) {
+                if (this.gameVariables[this.mapper.properties.meta.gameName?.value] != null)
                     this.gameSelection = this.mapper.properties.meta.gameName.value;
             }
             return this.gameVariables[this.gameSelection];
-            // return this.gameVariables[this.mapper?.properties?.meta?.gameName];
-        // return "FireRed and LeafGreen";
-            // return(this.mapper?.properties.meta.gameName);
         },
         gameName() {
             return this.mapper?.properties?.meta?.gameName;
@@ -2299,9 +2321,9 @@ const app = Vue.createApp({
             this.backgroundSaturation =  MyStorage[this.starterString]?.backgroundSaturation  ?? 100
             this.backgroundHue =         MyStorage[this.starterString]?.backgroundHue         ?? 0
 
-            // const evolution_family = this.g4PokemonData[this.starter]?.evolution_family ?? [ {species: null, method: null,}, {species: null, method: null,}, {species: null, method: null,}, ]
-            // this.evolution =               MyStorage[`${game_name}_${this.starter}`]?.evolution              ?? false
-            // this.evolution_splits_label =  MyStorage[`${game_name}_${this.starter}`]?.evolution_splits_label ?? `${evolution_family[evolution_family.length - 1]?.species}-line`
+            const evolution_family = this.game.evolutions[this.starterString]?.evolution_family  ?? [ {species: null, method: null,}, {species: null, method: null,}, {species: null, method: null,}, ]
+            this.evolution =               MyStorage[this.starterString]?.evolution              ?? false
+            this.evolution_splits_label =  MyStorage[this.starterString]?.evolution_splits_label ?? ""
             this.copy_overlay_pokemon_from = MyStorage['copy_overlay_pokemon_from'] ?? ""
             this.copy_overlay_pokemon_to   = MyStorage['copy_overlay_pokemon_to']   ?? ""
         },
@@ -3517,7 +3539,6 @@ const app = Vue.createApp({
         this.newGame();
         //GAMESTATE MANAGEMENT
         // set initial gamestate value when the layout is loaded
-
         if (this.mapper.properties.player.team[0].level.value == 0) 
             this.g3stateVariable = "Base Stats"
         else if (this.mapper.properties.pointers.callback1.value == 0 || this.mapper.properties.pointers.callback1.value == null)
@@ -3648,6 +3669,21 @@ const app = Vue.createApp({
             }
         });
 
+        // Evolution control
+        this.mapper.properties.player.team[0].species.change(async (newProp, oldProp) => {
+            if (this.evolution == true) {
+                const evolution_family_raw = this.game.evolutions[this.starter].evolution_family
+                const evolution_family = evolution_family_raw.map(obj => obj.species)
+                const length = evolution_family.length
+                const evolved = evolution_family.includes(newProp.value)
+                const buffer_evolution_splits_label = this.evolution_splits_label
+                this.buffer_battle_exp = this.mapper.properties.player.team[0].exp.value
+                if (evolved == true) {
+                    this.starter = newProp.value
+                    this.evolution_splits_label = buffer_evolution_splits_label
+                }
+            }
+        })
 
         //MOST RECENT FIELD STATUS
         //resets the field status at the start of battle
@@ -3939,17 +3975,17 @@ const app = Vue.createApp({
                 let gameName = this.game.gameName;
                 
                 //write full split data
-                logData(gameName, this.full_data_str, this.attempt_number, this.starterString, "Full", this.testRun, this.scott_mode)
+                logData(gameName, this.full_data_str, this.attempt_number, this.starterString, "Full", this.testRun, this.scott_mode, this.evolution, this.evolution_splits_label)
                 
                 //write deprecated split data
                 if (this.autosplitter[this.game.gameName][trainer]) {
-                    logData(gameName, this.deprecated_data_str, this.attempt_number, this.starterString, "Deprecated", this.testRun, this.scott_mode)
+                    logData(gameName, this.deprecated_data_str, this.attempt_number, this.starterString, "Deprecated", this.testRun, this.scott_mode, this.evolution, this.evolution_splits_label)
                 }
                 
                 //write simple split data
                 const simpleSplit = () => {
                     this.log_split()
-                    logData(gameName, this.simple_data_str, this.attempt_number, this.starterString, "Simple", this.testRun, this.scott_mode)
+                    logData(gameName, this.simple_data_str, this.attempt_number, this.starterString, "Simple", this.testRun, this.scott_mode, this.evolution, this.evolution_splits_label)
                     this.split_data.push(this.simple_data)
                     MyStorage["split_data"] = this.split_data
                     MyStorage[this.starterString] = {
@@ -3978,7 +4014,7 @@ const app = Vue.createApp({
                     this.log_split();
                     
                     //use then so that logCopy doesn't touch any files until logData finishes
-                    logData(gameName, this.simple_data_str, this.attempt_number, this.starterString, "Simple", this.testRun, this.scott_mode)
+                    logData(gameName, this.simple_data_str, this.attempt_number, this.starterString, "Simple", this.testRun, this.scott_mode, this.evolution, this.evolution_splits_label)
                     .then(() => {
                             console.log("Run complete - moving attempt files to finished folder.")
                             logCopy(gameName, this.attempt_number, this.starterString, this.finished_run_count);
