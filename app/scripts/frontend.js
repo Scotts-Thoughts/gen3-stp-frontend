@@ -713,6 +713,7 @@ const app = Vue.createApp({
             testStatus:     MyStorage['testStatus']     ?? false,
             repel_counter:  MyStorage['repel_counter']  ?? true,
             vs_seeker:      MyStorage['vs_seeker']      ?? false,
+            collect_split_data:         MyStorage["collect_split_data"]         ?? true,
             autosplitter_toggle:        MyStorage["autosplitter_toggle"]        ?? true,
             showSpecialTrainerGraphics: MyStorage['showSpecialTrainerGraphics'] ?? true, 
             league_rematches:           MyStorage['league_rematches']           ?? false,
@@ -758,6 +759,7 @@ const app = Vue.createApp({
             trainer_name_lookup:        trainer_name_lookup,
             pokedex_emerald:            pokedex_emerald,
             pokedex_frlg:               pokedex_frlg,
+            split_trainers:             split_trainers,
 
             trainerLists: {
                 "emeraldTrainers" : emeraldTrainers,
@@ -925,6 +927,8 @@ const app = Vue.createApp({
 
             previous_splits: MyStorage['previous_splits'] ?? [],
             current_splits:  MyStorage['current_splits']  ?? [],
+            // previous_splits: [],
+            // current_splits:  [],
 
             //movepool starting parameters. set to -1 if not initialized
             movepoolDefaultFontSize:        -1,
@@ -1039,6 +1043,7 @@ const app = Vue.createApp({
                 "show_nature_changes",
                 "previous_splits",
                 "current_splits",
+                "collect_split_data",
             ],
 
             stats_toggle_settings: [
@@ -1450,32 +1455,38 @@ const app = Vue.createApp({
             return total   
         },
         compare_splits() {
-            const result = []
-            for (const x of this.previous_splits) {
-                const default_string = "-"
-                const cur_split = this.current_splits.find(y => y.trainer === x.trainer)
-                const prev = this.convertDurationToSeconds(x.time)
-                if (cur_split == undefined) { 
-                    result.push({trainer: x.trainer, previous_time: x.time, current_time: default_string, difference: default_string}) 
-                    continue
+            if (this.collect_split_data == true) {
+                const result = []
+                let lastPushedTrainer = null; // Keep track of the last pushed trainer
+                const trainersToSkip = ["ELITE_FOUR_LORELEI_2", "ELITE_FOUR_BRUNO_2", "ELITE_FOUR_AGATHA_2", "ELITE_FOUR_LANCE_2", "CHAMPION_REMATCH_CHARMANDER", "CHAMPION_REMATCH_BULBASAUR", "CHAMPION_REMATCH_SQUIRTLE"]; // Trainers to skip
+                for (const x of this.previous_splits) {
+                    if (this.split_trainers.includes(x.trainer)) {
+                        const default_string = "-"
+                        const cur_split = this.current_splits.find(y => y.trainer === x.trainer)
+                        const prev = this.convertDurationToSeconds(x.time)
+                        if (cur_split == undefined) { 
+                            if (x.trainer !== lastPushedTrainer && !(this.league_rematches == false && this.gameSelection === "FireRed and LeafGreen" && trainersToSkip.includes(x.trainer))) { // Check if the current trainer is the same as the last pushed one and if it should be skipped
+                                result.push({trainer: x.trainer, previous_time: this.convertSecondsToDuration(prev), current_time: default_string, difference: default_string}) 
+                                lastPushedTrainer = x.trainer; // Update the last pushed trainer
+                            }
+                            continue
+                        }
+                        const cur = this.convertDurationToSeconds(cur_split.time)
+                        const diff = cur - prev;
+                        const diff_abs = Math.abs(diff);
+                        const diff_sign = Math.sign(diff);
+                        const diff_m = Math.floor(diff_abs / 60);
+                        const diff_s = diff_abs % 60;
+                        var diff_str = `${diff_sign === -1 ? "-" : "+"}${diff_m}:${diff_s.toString().padStart(2, "0")}`;
+                        if (diff_str == "+0:00") { diff_str = "0:00" }
+                        if (x.trainer !== lastPushedTrainer && !(this.league_rematches && this.gameSelection === "FireRed and LeafGreen" && trainersToSkip.includes(x.trainer))) { // Check if the current trainer is the same as the last pushed one and if it should be skipped
+                            result.push({trainer: x.trainer, previous_time: this.convertSecondsToDuration(prev), current_time: this.convertSecondsToDuration(cur), difference: diff_str})
+                            lastPushedTrainer = x.trainer; // Update the last pushed trainer
+                        }
+                    }
                 }
-                const cur = this.convertDurationToSeconds(cur_split.time)
-                const diff = cur - prev;
-                const diff_abs = Math.abs(diff);
-                const diff_sign = Math.sign(diff);
-                const diff_m = Math.floor(diff_abs / 60);
-                const diff_s = diff_abs % 60;
-                const diff_str = `${diff_sign === -1 ? "-" : "+"}${diff_m}:${diff_s.toString().padStart(2, "0")}`;
-                result.push({trainer: x.trainer, previous_time: x.time, current_time: cur_split.time, difference: diff_str})
+                return result
             }
-            console.log(result)
-            return result
-            // "+543"[0]
-            // "+543".charAt(0)
-            // "+543".at(-1) // wraps around to last element
-            // "+543".startsWith("+") // Returns true
-            // "+543".endsWith("+") // Returns false
-            // "+543".includes("+") // Returns true
         },
         stats_header() {
             const stat_type = this.stats
@@ -1829,6 +1840,9 @@ const app = Vue.createApp({
     },
 
     methods: { 
+        get_nested_property(obj, path) {
+            return path.split('.').reduce((o, p) => (o || {})[p], obj);
+        },
         split_diff_color(difference_string) {
             if (difference_string === "-")          { return "color: black" }
             if (difference_string === "+0:00")      { return "color: black" }
