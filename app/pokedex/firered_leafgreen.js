@@ -12454,8 +12454,8 @@ const pokedex_frlg = {
         ],
         "weight": 7.5,
         "evolution_family": [
-            {"species": "Omastar", "method": "level", "parameter": 40},
-            {"species": "Omanyte", "method": null, "parameter": null}
+            {"species": "Omanyte", "method": null, "parameter": null},
+            {"species": "Omastar", "method": "level", "parameter": 40}
         ]
     },
     "Omastar": {
@@ -12545,8 +12545,8 @@ const pokedex_frlg = {
         "egg_moves": [],
         "weight": 35.0,
         "evolution_family": [
-            {"species": "Omastar", "method": null, "parameter": null},
-            {"species": "Omanyte", "method": null, "parameter": null}
+            {"species": "Omanyte", "method": null, "parameter": null},
+            {"species": "Omastar", "method": null, "parameter": null}
         ]
     },
     "Kabuto": {
@@ -12641,8 +12641,8 @@ const pokedex_frlg = {
         ],
         "weight": 11.5,
         "evolution_family": [
-            {"species": "Kabutops", "method": "level", "parameter": 40},
-            {"species": "Kabuto", "method": null, "parameter": null}
+            {"species": "Kabuto", "method": null, "parameter": null},
+            {"species": "Kabutops", "method": "level", "parameter": 40}
         ]
     },
     "Kabutops": {
@@ -12740,8 +12740,8 @@ const pokedex_frlg = {
         "egg_moves": [],
         "weight": 40.5,
         "evolution_family": [
-            {"species": "Kabutops", "method": null, "parameter": null},
-            {"species": "Kabuto", "method": null, "parameter": null}
+            {"species": "Kabuto", "method": null, "parameter": null},
+            {"species": "Kabutops", "method": null, "parameter": null}
         ]
     },
     "Aerodactyl": {

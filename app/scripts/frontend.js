@@ -1433,12 +1433,22 @@ const app = Vue.createApp({
         evolution(newValue) {
             if (this.ready == false) { return }
             const evolution_family = this.game.evolutions[this.starterString]?.evolution_family
+            const family_length = evolution_family.length
             const split_label = `${evolution_family[evolution_family.length - 1]?.species}-line`
+            // console.log(evolution_family)
             if (newValue == true) {
                 this.evolution_splits_label = split_label
             }
             if (newValue == false) {
                 this.evolution_splits_label = ""
+            }
+            for (let i = 0; i < family_length; i++) {
+                MyStorage[evolution_family[i].species] = {
+                    ...MyStorage[evolution_family[i].species],
+                    evolution: newValue,
+                    evolution_splits_label: this.evolution_splits_label
+                };
+                // console.log(MyStorage[evolution_family[i].species])
             }
         },
     },
