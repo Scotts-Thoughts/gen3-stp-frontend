@@ -2338,8 +2338,11 @@ const app = Vue.createApp({
             this.time_ms =                    MyStorage['time_ms']                    ?? 0
             this.time_split_start =           MyStorage['time_split_start']           ?? "00:00:00:00"
             this.battle_start =               MyStorage['battle_start']               ?? 0
+            
+            let starter = this.starterString
+            this.evolution = MyStorage[starter]?.evolution ?? false
+            this.evolution_splits_label =  MyStorage[starter]?.evolution_splits_label ?? ""
 
-            let starter = this.evolution ? this.evolution_splits_label : this.starterString
             //Pokemon settings for local storage
             this.overlay_color = MyStorage[starter]?.overlay_color ?? this.default_colors[`${dexDataRubySapphireEmerald[this.starterString].type_1}`]
             this.imageXOffset =  MyStorage[starter]?.imageXOffset  ?? 0
@@ -2350,23 +2353,28 @@ const app = Vue.createApp({
             this.imageRotation = MyStorage[starter]?.imageRotation ?? 0
 
             //background texture settings
-            this.frame =                 MyStorage[starter]?.frame                 ?? true
-            this.backgroundBlur =        MyStorage[starter]?.backgroundBlur        ?? 0
-            this.backgroundScale =       MyStorage[starter]?.backgroundScale       ?? 100
-            this.backgroundUrl =         MyStorage[starter]?.backgroundUrl         ?? ""
-            this.backgroundFlip =        MyStorage[starter]?.backgroundFlip        ?? false
+            this.frame                 = MyStorage[starter]?.frame                 ?? true
+            this.backgroundBlur        = MyStorage[starter]?.backgroundBlur        ?? 0
+            this.backgroundScale       = MyStorage[starter]?.backgroundScale       ?? 100
+            this.backgroundUrl         = MyStorage[starter]?.backgroundUrl         ?? ""
+            this.backgroundFlip        = MyStorage[starter]?.backgroundFlip        ?? false
             this.use_custom_background = MyStorage[starter]?.use_custom_background ?? false
-            this.backgroundXOffset =     MyStorage[starter]?.backgroundXOffset     ?? 0
-            this.backgroundYOffset =     MyStorage[starter]?.backgroundYOffset     ?? 0
-            this.backgroundTexture =     MyStorage[starter]?.backgroundTexture     ?? `${this.dexData[this.starterString].type_1}`
-            this.backgroundBrightness =  MyStorage[starter]?.backgroundBrightness  ?? 100
-            this.backgroundContrast =    MyStorage[starter]?.backgroundContrast    ?? 100
-            this.backgroundSaturation =  MyStorage[starter]?.backgroundSaturation  ?? 100
-            this.backgroundHue =         MyStorage[starter]?.backgroundHue         ?? 0
+            this.backgroundXOffset     = MyStorage[starter]?.backgroundXOffset     ?? 0
+            this.backgroundYOffset     = MyStorage[starter]?.backgroundYOffset     ?? 0
+            this.backgroundTexture     = MyStorage[starter]?.backgroundTexture     ?? `${this.dexData[this.starterString].type_1}`
+            this.backgroundBrightness  = MyStorage[starter]?.backgroundBrightness  ?? 100
+            this.backgroundContrast    = MyStorage[starter]?.backgroundContrast    ?? 100
+            this.backgroundSaturation  = MyStorage[starter]?.backgroundSaturation  ?? 100
+            this.backgroundHue         = MyStorage[starter]?.backgroundHue         ?? 0
+            
+            if (starter) { starter = this.evolution_splits_label }
+            console.log("Starter", starter)
+            
+            this.attempt_number        = MyStorage[starter]?.attempt_number        ?? 0
+            this.finished_run_count    = MyStorage[starter]?.finished_run_count    ?? 0
 
             const evolution_family = this.game.evolutions[starter]?.evolution_family  ?? [ {species: null, method: null,}, {species: null, method: null,}, {species: null, method: null,}, ]
-            this.evolution =               MyStorage[starter]?.evolution              ?? false
-            this.evolution_splits_label =  MyStorage[starter]?.evolution_splits_label ?? ""
+            console.log(this.evolution)
             this.copy_overlay_pokemon_from = MyStorage['copy_overlay_pokemon_from'] ?? ""
             this.copy_overlay_pokemon_to   = MyStorage['copy_overlay_pokemon_to']   ?? ""
         },
