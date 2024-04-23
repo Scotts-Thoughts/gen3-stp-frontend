@@ -7701,8 +7701,8 @@ const pokedex_frlg = {
         ],
         "weight": 90.0,
         "evolution_family": [
-            {"species": "Dewgong", "method": "level", "parameter": 34},
-            {"species": "Seel", "method": null, "parameter": null}
+            {"species": "Seel", "method": null, "parameter": null},
+            {"species": "Dewgong", "method": "level", "parameter": 34}
         ]
     },
     "Dewgong": {

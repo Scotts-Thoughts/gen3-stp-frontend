@@ -664,64 +664,64 @@ function transition(fn, ms) {
 const app = Vue.createApp({
     data() {
         return {
-            ready:         false,
-            mapper:        null,
-            scott_mode:    true,
+            ready        : false,
+            mapper       : null,
+            scott_mode   : true,
             gameVariables: null,
             // game: null,
             // POKEMON CONFIG (components) ---------------------------------------------------------------------//
-            starterString:     "Beedrill",
-            pkmnNature:        "Adamant",
-            pkmn_ability:      "Pressure", // false = ability 1, true = ability 2
-            hidden_power_type: "Electric",
-            pkmn_gender:       "Female",
-            gameSelection:     MyStorage['gameSelection'] ?? "FireRed and LeafGreen",
-            evolution:         MyStorage['evolution'] ?? false,
+            starterString         : "Beedrill",
+            pkmnNature            : "Adamant",
+            pkmn_ability          : "Pressure",                                              // false = ability 1, true = ability 2
+            hidden_power_type     : "Electric",
+            pkmn_gender           : "Female",
+            gameSelection         : MyStorage['gameSelection'] ?? "FireRed and LeafGreen",
+            evolution             : MyStorage['evolution'] ?? false,
             evolution_splits_label: MyStorage['evolution_splits_label'] ?? "",
 
-            stats:              MyStorage['stats']              ?? "Automatic",
-            stat_exp_display:   MyStorage['stat_exp_display']   ?? true,
-            dv_display:         MyStorage['dv_display']         ?? true,
-            inventory_display:  MyStorage['inventory_display']  ?? true,
-            battleGraphic:      MyStorage['battleGraphic']      ?? true,
+            stats             : MyStorage['stats']              ?? "Automatic",
+            stat_exp_display  : MyStorage['stat_exp_display']   ?? true,
+            dv_display        : MyStorage['dv_display']         ?? true,
+            inventory_display : MyStorage['inventory_display']  ?? true,
+            battleGraphic     : MyStorage['battleGraphic']      ?? true,
             base_stats_display: MyStorage['base_stats_display'] ?? true,
-            stats_display:      MyStorage['stats_display']      ?? true,
-            automatic_ivs:      MyStorage['automatic_ivs']      ?? true,
-            automatic_evs:      MyStorage['automatic_evs']      ?? true,
+            stats_display     : MyStorage['stats_display']      ?? true,
+            automatic_ivs     : MyStorage['automatic_ivs']      ?? true,
+            automatic_evs     : MyStorage['automatic_evs']      ?? true,
 
             // USER CONFIG (components) ------------------------------------------------------------------------// 
-            graphicOverlay: MyStorage['graphicOverlay'] ?? true, //places a single image as the overlay  //MVP
-            gameArea:       MyStorage['gameArea']       ?? false, //shows green box to place game in
-            pokeballFloor:  MyStorage['pokeballFloor']  ?? false, //shows floor for Pokemon to stand on
-            dynamicOverlay: MyStorage['dynamicOverlay'] ?? false, //dynamically picks overlay graphics based on team slot 1
-            gametime:       MyStorage['gametime']       ?? false, //shows gametime
-            pick:           MyStorage['pick']           ?? true,
-            typeCalcs:      MyStorage['typeCalcs']      ?? true, //turns on type effectiveness calculations
-            moveset:        MyStorage['moveset']        ?? true, //includes the moveset area and dynamic PP  //MVP
-            dynamicPower:   MyStorage['dynamicPower']   ?? false, //dynamically calculates power based on type effectiveness
-            resets:         MyStorage['resets']         ?? false, //includes the resets graphics
-            movepool:       MyStorage['movepool']       ?? false, //includes the movepool graphic
-            inventory:      MyStorage['inventory']      ?? false, //includes the inventory graphic when in marts
-            battleStats:    MyStorage['battleStats']    ?? false, //calculates stats with stage modifiers  //MVP
-            battleInfo:     MyStorage['battleInfo']     ?? false, //includes rightBar battle graphic
-            conditions:     MyStorage['conditions']     ?? false, //shows status conditions as pop ups
-            expBar:         MyStorage['expBar']         ?? false, //includes a dynamic exp bar
-            splits:         MyStorage['splits']         ?? false, //shows splits when a major battle is complete
-            tooltips:       MyStorage['tooltips']       ?? false, //displays move tooltips when a new move is learned
-            btcInfo:        MyStorage['btcInfo']        ?? false, //shows behind the scenes info in the game area
-            returnPower:    MyStorage['returnPower']    ?? true, //dynamically calculates the power of Return
-            gamestate:      MyStorage['gamestate']      ?? true, //shows the current gamestate in the place of the timer
-            labels:         MyStorage['labels']         ?? true, //shows the current gamestate in the place of the timer
-            tutor_moves:    MyStorage['tutor_moves']    ?? false,
-            testStatus:     MyStorage['testStatus']     ?? false,
-            repel_counter:  MyStorage['repel_counter']  ?? true,
-            vs_seeker:      MyStorage['vs_seeker']      ?? false,
-            collect_split_data:         MyStorage["collect_split_data"]         ?? true,
-            autosplitter_toggle:        MyStorage["autosplitter_toggle"]        ?? true,
-            showSpecialTrainerGraphics: MyStorage['showSpecialTrainerGraphics'] ?? true, 
-            league_rematches:           MyStorage['league_rematches']           ?? false,
-            display_badge_boosts:       MyStorage['display_badge_boosts']       ?? true,
-            show_nature_changes:        MyStorage['show_nature_changes']        ?? true,
+            graphicOverlay            : MyStorage['graphicOverlay'] ?? true,                //places a single image as the overlay  //MVP
+            gameArea                  : MyStorage['gameArea']       ?? false,               //shows green box to place game in
+            pokeballFloor             : MyStorage['pokeballFloor']  ?? false,               //shows floor for Pokemon to stand on
+            dynamicOverlay            : MyStorage['dynamicOverlay'] ?? false,               //dynamically picks overlay graphics based on team slot 1
+            gametime                  : MyStorage['gametime']       ?? false,               //shows gametime
+            pick                      : MyStorage['pick']           ?? true,
+            typeCalcs                 : MyStorage['typeCalcs']      ?? true,                //turns on type effectiveness calculations
+            moveset                   : MyStorage['moveset']        ?? true,                //includes the moveset area and dynamic PP  //MVP
+            dynamicPower              : MyStorage['dynamicPower']   ?? false,               //dynamically calculates power based on type effectiveness
+            resets                    : MyStorage['resets']         ?? false,               //includes the resets graphics
+            movepool                  : MyStorage['movepool']       ?? false,               //includes the movepool graphic
+            inventory                 : MyStorage['inventory']      ?? false,               //includes the inventory graphic when in marts
+            battleStats               : MyStorage['battleStats']    ?? false,               //calculates stats with stage modifiers  //MVP
+            battleInfo                : MyStorage['battleInfo']     ?? false,               //includes rightBar battle graphic
+            conditions                : MyStorage['conditions']     ?? false,               //shows status conditions as pop ups
+            expBar                    : MyStorage['expBar']         ?? false,               //includes a dynamic exp bar
+            splits                    : MyStorage['splits']         ?? false,               //shows splits when a major battle is complete
+            tooltips                  : MyStorage['tooltips']       ?? false,               //displays move tooltips when a new move is learned
+            btcInfo                   : MyStorage['btcInfo']        ?? false,               //shows behind the scenes info in the game area
+            returnPower               : MyStorage['returnPower']    ?? true,                //dynamically calculates the power of Return
+            gamestate                 : MyStorage['gamestate']      ?? true,                //shows the current gamestate in the place of the timer
+            labels                    : MyStorage['labels']         ?? true,                //shows the current gamestate in the place of the timer
+            tutor_moves               : MyStorage['tutor_moves']    ?? false,
+            testStatus                : MyStorage['testStatus']     ?? false,
+            repel_counter             : MyStorage['repel_counter']  ?? true,
+            vs_seeker                 : MyStorage['vs_seeker']      ?? false,
+            collect_split_data        : MyStorage["collect_split_data"]         ?? true,
+            autosplitter_toggle       : MyStorage["autosplitter_toggle"]        ?? true,
+            showSpecialTrainerGraphics: MyStorage['showSpecialTrainerGraphics'] ?? true,
+            league_rematches          : MyStorage['league_rematches']           ?? false,
+            display_badge_boosts      : MyStorage['display_badge_boosts']       ?? true,
+            show_nature_changes       : MyStorage['show_nature_changes']        ?? true,
 
             badges: ["badge1", "badge2", "badge3", "badge4", "badge5", "badge6", "badge7", "badge8"],
             badgeBoosts: ["badge1", "badge3", "badge5", "badge7"],
@@ -739,30 +739,30 @@ const app = Vue.createApp({
             statLabelOpacityValue: 0.1, //used when a stage modifier is applied
 
             //DATA ---------------------------------------------------------------------------------------------//
-            gen3data:                   gen3data,
-            gen3moves:                  gen3moves,
-            gen3abilities:              gen3abilities,
-            stageModifiersData:         stageModifiersData,
-            natures:                    natures,
-            typeData:                   typeData,
-            typeBoostingItems:          typeBoostingItems,
+            gen3data                  : gen3data,
+            gen3moves                 : gen3moves,
+            gen3abilities             : gen3abilities,
+            stageModifiersData        : stageModifiersData,
+            natures                   : natures,
+            typeData                  : typeData,
+            typeBoostingItems         : typeBoostingItems,
             dexDataRubySapphireEmerald: dexDataRubySapphireEmerald,
-            dexDataFireRedLeafGreen:    dexDataFireRedLeafGreen,
-            emeraldTrainers:            emeraldTrainers,
-            g3MoveData:                 g3MoveData,
-            g3tmhmMapping:              g3tmhmMapping,
-            g3hiddenPowerTypeSelector:  g3hiddenPowerTypeSelector,
-            textures:                   textures,
-            default_colors:             default_colors,
-            hp_ivs:                     hp_ivs,
-            autosplitter:               autosplitter,
-            generation_3_moves:         generation_3_moves,
-            remakeTrainers:             remakeTrainers,
-            emeraldTrainers:            emeraldTrainers,
-            trainer_name_lookup:        trainer_name_lookup,
-            pokedex_emerald:            pokedex_emerald,
-            pokedex_frlg:               pokedex_frlg,
-            split_trainers:             split_trainers,
+            dexDataFireRedLeafGreen   : dexDataFireRedLeafGreen,
+            emeraldTrainers           : emeraldTrainers,
+            g3MoveData                : g3MoveData,
+            g3tmhmMapping             : g3tmhmMapping,
+            g3hiddenPowerTypeSelector : g3hiddenPowerTypeSelector,
+            textures                  : textures,
+            default_colors            : default_colors,
+            hp_ivs                    : hp_ivs,
+            autosplitter              : autosplitter,
+            generation_3_moves        : generation_3_moves,
+            remakeTrainers            : remakeTrainers,
+            emeraldTrainers           : emeraldTrainers,
+            trainer_name_lookup       : trainer_name_lookup,
+            pokedex_emerald           : pokedex_emerald,
+            pokedex_frlg              : pokedex_frlg,
+            split_trainers            : split_trainers,
 
             trainerLists: {
                 "emeraldTrainers" : emeraldTrainers,
@@ -2379,24 +2379,24 @@ const app = Vue.createApp({
             this.copy_overlay_pokemon_to   = MyStorage['copy_overlay_pokemon_to']   ?? ""
         },
         reset() {
-            this.backgroundBlur =        0,
-            this.backgroundHue =         0,
-            this.backgroundScale =       100,
-            this.backgroundUrl =         "",
+            this.backgroundBlur        = 0,
+            this.backgroundHue         = 0,
+            this.backgroundScale       = 100,
+            this.backgroundUrl         = "",
             this.use_custom_background = false,
-            this.backgroundXOffset =     0,
-            this.backgroundYOffset =     0,
-            this.backgroundTexture =     this.dexData[this.starterString]?.type_1?.toLowerCase(),
-            this.backgroundBrightness =  100,
-            this.backgroundContrast =    100,
-            this.backgroundSaturation =  100
+            this.backgroundXOffset     = 0,
+            this.backgroundYOffset     = 0,
+            this.backgroundTexture     = this.dexData[this.starterString]?.type_1?.toLowerCase(),
+            this.backgroundBrightness  = 100,
+            this.backgroundContrast    = 100,
+            this.backgroundSaturation  = 100
         },
         resetPokemon() {
-            this.imageXOffset =  0
-            this.imageYOffset =  0
-            this.imageScale =    1
-            this.imageFlip =     false
-            this.imageSat =      100
+            this.imageXOffset  = 0
+            this.imageYOffset  = 0
+            this.imageScale    = 1
+            this.imageFlip     = false
+            this.imageSat      = 100
             this.imageRotation = 0
         },
         increment(property) {
@@ -2599,11 +2599,11 @@ const app = Vue.createApp({
                     return `-`;
                 }
             }
-            var stageModsAcc = this.stageModifiersData.find(x => x.modType === "accuracy")
-            var stageModsEva = this.stageModifiersData.find(x => x.modType === "evasion")
+            var stageModsAcc       = this.stageModifiersData.find(x => x.modType === "accuracy")
+            var stageModsEva       = this.stageModifiersData.find(x => x.modType === "evasion")
             var currentModStageAcc = this.batt.yourPokemon.modStageAccuracy.value
             var currentModStageEva = this.batt.enemyPokemon.modStageEvasion.value
-            var abilityMod = 1
+            var abilityMod         = 1
             // debugger
             let soundProof = ["GRASSWHISTLE","GROWL","METAL SOUND","PERISH SONG","ROAR","SCREECH","SING","SUPERSONIC"]
             if (this.mapper.properties.battle.enemyPokemon.ability.value == "SOUNDPROOF" && soundProof.includes(move) && this.g3stateVariable=="Battle") {
