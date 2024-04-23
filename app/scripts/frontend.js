@@ -3722,7 +3722,7 @@ const app = Vue.createApp({
                 const buffer_evolution_splits_label = this.evolution_splits_label
                 this.buffer_battle_exp = this.mapper.properties.player.team[0].expPoints.value
                 if (evolved == true) {
-                    this.starter = newProp.value
+                    this.starterString = newProp.value
                     this.evolution_splits_label = buffer_evolution_splits_label
                 }
             }
