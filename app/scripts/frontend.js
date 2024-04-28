@@ -2629,7 +2629,7 @@ const app = Vue.createApp({
                 return accuracy
             }
             else {
-                var accuracy = moveAccuracy * abilityMod
+                var accuracy = Math.floor(moveAccuracy * abilityMod)
                 if (accuracy > 100) {
                     return 100
                 }
