@@ -2485,6 +2485,7 @@ body {
 .fadeMod-leave-active { transition: opacity 400ms ease-out; }
 
 .opacityTransition { transition: opacity 500ms ease-in-out;}
+.enemy_stat_opacity_transition { transition: opacity 250ms ease-in-out;}
 .ePkmn1 {
     border: 1px solid rgba(255, 102, 0, 0);
     position: relative;
