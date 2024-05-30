@@ -2942,9 +2942,9 @@ body {
     opacity: .9;
     border: none;
 }
-/* .movepoolDemo tr {
-    transform: scaleY(.9);
-} */
+.first-row td {
+    padding-top: 1px;
+}
 .movepoolBorder {
     z-index: 1;
 }

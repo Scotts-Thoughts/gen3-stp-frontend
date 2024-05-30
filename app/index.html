@@ -633,7 +633,7 @@
                             <th class="movepool_header movepool_tableC">Acc.</th>
                             <th class="movepool_header movepool_tableC">PP</th>
                         </tr>
-                        <tr v-for="x in getMovepool(dexData, g3MoveData, g3tmhmMapping, s1dynamicReset.species.value).level">
+                        <tr v-for="(x, index) in getMovepool(dexData, g3MoveData, g3tmhmMapping, s1dynamicReset.species.value).level" :class="{ 'first-row': index === 0 }">
                             <td class="movepool_way">{{x.Level}}</td>
                             <td class="movepool_move">{{move_name(x.Move)}}</td>
                             <td class="movepool_type" :style="{'background-color': `var(--${ui_type_color_modifier}${movepoolTypeColor(x)?.toLowerCase()})`}">{{movepoolType(x)}}</td>
@@ -723,7 +723,8 @@
 <!--------------------------------------- JAVASCRIPT ------------------------------------------------->
     <script src="packages/signalR.js"></script>
     <script src="packages/vue.js"></script>
-    <script src="http://localhost:8085/dist/gameHookMapperClient.js"></script>
+    <!-- <script src="http://localhost:8085/dist/gameHookMapperClient.js"></script> -->
+    <script src="packages/gameHookMapperClient.js"></script>
     <!-- DATA -->
     <script src="data/gen1data.js"></script>
     <script src="data/g3MovesData.js"></script>
