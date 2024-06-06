@@ -672,7 +672,7 @@ const app = Vue.createApp({
             // POKEMON CONFIG (components) ---------------------------------------------------------------------//
             starterString         : "Beedrill",
             pkmnNature            : "Adamant",
-            pkmn_ability          : "Pressure",                                              // false = ability 1, true = ability 2
+            pkmn_ability          : "Pressure", // false = ability 1, true = ability 2
             hidden_power_type     : "Electric",
             pkmn_gender           : "Female",
             gameSelection         : MyStorage['gameSelection'] ?? "FireRed and LeafGreen",
@@ -690,28 +690,28 @@ const app = Vue.createApp({
             automatic_evs     : MyStorage['automatic_evs']      ?? true,
 
             // USER CONFIG (components) ------------------------------------------------------------------------// 
-            graphicOverlay            : MyStorage['graphicOverlay'] ?? true,                //places a single image as the overlay  //MVP
-            gameArea                  : MyStorage['gameArea']       ?? false,               //shows green box to place game in
-            pokeballFloor             : MyStorage['pokeballFloor']  ?? false,               //shows floor for Pokemon to stand on
-            dynamicOverlay            : MyStorage['dynamicOverlay'] ?? false,               //dynamically picks overlay graphics based on team slot 1
-            gametime                  : MyStorage['gametime']       ?? false,               //shows gametime
+            graphicOverlay            : MyStorage['graphicOverlay'] ?? true,  //places a single image as the overlay  //MVP
+            gameArea                  : MyStorage['gameArea']       ?? false, //shows green box to place game in
+            pokeballFloor             : MyStorage['pokeballFloor']  ?? false, //shows floor for Pokemon to stand on
+            dynamicOverlay            : MyStorage['dynamicOverlay'] ?? false, //dynamically picks overlay graphics based on team slot 1
+            gametime                  : MyStorage['gametime']       ?? false, //shows gametime
             pick                      : MyStorage['pick']           ?? true,
-            typeCalcs                 : MyStorage['typeCalcs']      ?? true,                //turns on type effectiveness calculations
-            moveset                   : MyStorage['moveset']        ?? true,                //includes the moveset area and dynamic PP  //MVP
-            dynamicPower              : MyStorage['dynamicPower']   ?? false,               //dynamically calculates power based on type effectiveness
-            resets                    : MyStorage['resets']         ?? false,               //includes the resets graphics
-            movepool                  : MyStorage['movepool']       ?? false,               //includes the movepool graphic
-            inventory                 : MyStorage['inventory']      ?? false,               //includes the inventory graphic when in marts
-            battleStats               : MyStorage['battleStats']    ?? false,               //calculates stats with stage modifiers  //MVP
-            battleInfo                : MyStorage['battleInfo']     ?? false,               //includes rightBar battle graphic
-            conditions                : MyStorage['conditions']     ?? false,               //shows status conditions as pop ups
-            expBar                    : MyStorage['expBar']         ?? false,               //includes a dynamic exp bar
-            splits                    : MyStorage['splits']         ?? false,               //shows splits when a major battle is complete
-            tooltips                  : MyStorage['tooltips']       ?? false,               //displays move tooltips when a new move is learned
-            btcInfo                   : MyStorage['btcInfo']        ?? false,               //shows behind the scenes info in the game area
-            returnPower               : MyStorage['returnPower']    ?? true,                //dynamically calculates the power of Return
-            gamestate                 : MyStorage['gamestate']      ?? true,                //shows the current gamestate in the place of the timer
-            labels                    : MyStorage['labels']         ?? true,                //shows the current gamestate in the place of the timer
+            typeCalcs                 : MyStorage['typeCalcs']      ?? true,  //turns on type effectiveness calculations
+            moveset                   : MyStorage['moveset']        ?? true,  //includes the moveset area and dynamic PP  //MVP
+            dynamicPower              : MyStorage['dynamicPower']   ?? false, //dynamically calculates power based on type effectiveness
+            resets                    : MyStorage['resets']         ?? false, //includes the resets graphics
+            movepool                  : MyStorage['movepool']       ?? false, //includes the movepool graphic
+            inventory                 : MyStorage['inventory']      ?? false, //includes the inventory graphic when in marts
+            battleStats               : MyStorage['battleStats']    ?? false, //calculates stats with stage modifiers  //MVP
+            battleInfo                : MyStorage['battleInfo']     ?? false, //includes rightBar battle graphic
+            conditions                : MyStorage['conditions']     ?? false, //shows status conditions as pop ups
+            expBar                    : MyStorage['expBar']         ?? false, //includes a dynamic exp bar
+            splits                    : MyStorage['splits']         ?? false, //shows splits when a major battle is complete
+            tooltips                  : MyStorage['tooltips']       ?? false, //displays move tooltips when a new move is learned
+            btcInfo                   : MyStorage['btcInfo']        ?? false, //shows behind the scenes info in the game area
+            returnPower               : MyStorage['returnPower']    ?? true,  //dynamically calculates the power of Return
+            gamestate                 : MyStorage['gamestate']      ?? true,  //shows the current gamestate in the place of the timer
+            labels                    : MyStorage['labels']         ?? true,  //shows the current gamestate in the place of the timer
             tutor_moves               : MyStorage['tutor_moves']    ?? false,
             testStatus                : MyStorage['testStatus']     ?? false,
             repel_counter             : MyStorage['repel_counter']  ?? true,
