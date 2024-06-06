@@ -616,7 +616,7 @@ const gen3moves = [
     Description: "Boosts the power of FIRE- type moves for 5 turns."
   },
   {
-    Move: "Will-o-wisp",
+    Move: "Will-O-Wisp",
     Type: "Fire",
     PP: "15",
     Power: "-",

@@ -692,9 +692,9 @@ const g3MoveData = {
     Accuracy: "-",
     Description: "Boosts the power of FIRE- type moves for 5 turns."
   },
-"Will-o-wisp" :
+"Will-O-Wisp" :
   {
-    Move: "Will-o-wisp",
+    Move: "Will-O-Wisp",
     Type: "Fire",
     PP: "15",
     Power: "-",

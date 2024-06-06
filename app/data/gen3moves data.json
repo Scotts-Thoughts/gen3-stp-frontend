@@ -77,7 +77,7 @@
 {"Move":"Overheat","Type":"Fire","PP":"5","Power":"140","Accuracy":"90","Description":"Allows a full-power attack, but sharply lowers SP. ATK."},
 {"Move":"Sacred Fire","Type":"Fire","PP":"5","Power":"100","Accuracy":"95","Description":"A mystical fire attack that may inflict a burn."},
 {"Move":"Sunny Day","Type":"Fire","PP":"5","Power":"--","Accuracy":"--","Description":"Boosts the power of FIRE- type moves for 5 turns."},
-{"Move":"Will-o-wisp","Type":"Fire","PP":"15","Power":"--","Accuracy":"75","Description":"Inflicts a burn on the foe with intense fire."},
+{"Move":"Will-O-Wisp","Type":"Fire","PP":"15","Power":"--","Accuracy":"75","Description":"Inflicts a burn on the foe with intense fire."},
 {"Move":"Aerial Ace","Type":"Flying","PP":"20","Power":"60","Accuracy":"--","Description":"An extremely speedy and unavoidable attack."},
 {"Move":"Aeroblast","Type":"Flying","PP":"5","Power":"100","Accuracy":"95","Description":"Launches a vacuumed blast. High critical-hit ratio."},
 {"Move":"Air Cutter","Type":"Flying","PP":"25","Power":"55","Accuracy":"95","Description":"Hacks with razorlike wind. High critical-hit ratio."},
