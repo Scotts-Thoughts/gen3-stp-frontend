@@ -3831,7 +3831,7 @@ const app = Vue.createApp({
             }
             var iv_block = this.g3hiddenPowerTypeSelector[this.hidden_power_type]
             if (this.pkmn_ability == this.game.dexData[this.starterString].abilities[1]) {
-                iv_block = iv_block + 2147483648;
+                iv_block = iv_block - 2147483648;
             }
             //the odd/evenness may need to be flipped according to the selected ability
             //if this were going to break, it would probably be when evolving
