@@ -763,6 +763,7 @@ const app = Vue.createApp({
             pokedex_emerald           : pokedex_emerald,
             pokedex_frlg              : pokedex_frlg,
             split_trainers            : split_trainers,
+            hiddenpower_type_selector : hiddenpower_type_selector,
 
             trainerLists: {
                 "emeraldTrainers" : emeraldTrainers,
@@ -817,9 +818,11 @@ const app = Vue.createApp({
                 14 : "Dragon",
                 2 : "Poison",
             },
+            pokemon_list: [],
 
             //LOOPS
             pkmnSlots: [0, 1, 2, 3, 4, 5],
+            search_term: "",
 
             //STATE MANAGEMENT ---------------------------------------------------------------------------------//
             gamestateLogging:     false,
@@ -1470,6 +1473,13 @@ const app = Vue.createApp({
     },
 
     computed: {
+        filtered_pokemon_list() {
+            if (this.search_term === '') {
+                return this.pokemon_list;
+            } else {
+                return this.pokemon_list.filter(pokemon => pokemon.toLowerCase().includes(this.search_term.toLowerCase()));
+            }
+        },
         ev_total() {
             let ev_hp  = this.mapper.properties.player.team[0].evHp.value
             let ev_atk = this.mapper.properties.player.team[0].evAttack.value
@@ -3586,6 +3596,7 @@ const app = Vue.createApp({
             var image = new Image();
             image.src = `images/pokemon/${species}.png`;
         }
+        this.pokemon_list = this.keys_function(this.dexDataRubySapphireEmerald)
 
         this.newGame();
         //GAMESTATE MANAGEMENT
@@ -3853,16 +3864,23 @@ const app = Vue.createApp({
         
         const setStartingStats = async () => {
             const pkmnData = this.dexData[this.starterString]
-            const level = 5
-            const natures = this.natures[this.pkmnNature]
-            const species = this.mapper.properties.player.team[0].species.value
+            const level    = 5
+            const natures  = this.natures[this.pkmnNature]
+            const species  = this.mapper.properties.player.team[0].species.value
 
-            var ivHp = this.mapper.properties.player.team[0].ivHp.value
+            var ivHp  = this.mapper.properties.player.team[0].ivHp.value
             var ivAtk = this.mapper.properties.player.team[0].ivAttack.value
             var ivDef = this.mapper.properties.player.team[0].ivDefense.value
             var ivSpA = this.mapper.properties.player.team[0].ivSpecialAttack.value
             var ivSpD = this.mapper.properties.player.team[0].ivSpecialDefense.value
             var ivSpe = this.mapper.properties.player.team[0].ivSpeed.value
+
+            // var iv_hp              = this.hiddenpower_type_selector[this.hidden_power_type].hp
+            // var iv_attack          = this.hiddenpower_type_selector[this.hidden_power_type].attack
+            // var iv_defense         = this.hiddenpower_type_selector[this.hidden_power_type].defense
+            // var iv_speed           = this.hiddenpower_type_selector[this.hidden_power_type].speed
+            // var iv_special_attack  = this.hiddenpower_type_selector[this.hidden_power_type].special_attack
+            // var iv_special_defense = this.hiddenpower_type_selector[this.hidden_power_type].special_defense
 
             //calculates the Pokemon's starting stats with the desired DVs
             var hitpoints      = Math.floor((((2 * pkmnData.base_hp + ivHp + 0) * level)/100) + level + 10)
@@ -3882,6 +3900,14 @@ const app = Vue.createApp({
                     await this.mapper.properties.player.team[0].specialAttack.set(specialAttack, false), 
                     await this.mapper.properties.player.team[0].specialDefense.set(specialDefense, false), 
                     await this.mapper.properties.player.team[0].speed.set(speed, false), 
+                    // await this.mapper.setBits([
+                    //     {path: 'player.team.ivHp',             value: iv_hp,              freeze: false},
+                    //     {path: 'player.team.ivAttack',         value: iv_attack,          freeze: false},
+                    //     {path: 'player.team.ivDefense',        value: iv_defense,         freeze: false},
+                    //     {path: 'player.team.ivSpeed',          value: iv_speed,           freeze: false},
+                    //     {path: 'player.team.ivSpecialAttack',  value: iv_special_attack,  freeze: false},
+                    //     {path: 'player.team.ivSpecialDefense', value: iv_special_defense, freeze: false},
+                    // ]),
                 ])
                 // if (species == 'Regirock' || species == 'Regice' || species == 'Registeel') {
                 //     await Promise.all([
@@ -3905,6 +3931,7 @@ const app = Vue.createApp({
         });
         this.mapper.properties.player.team[0].level.change(async (newProp) => {
             if (newProp == 5 && this.game.starterLocation.includes(this.mapper.properties.overworld.mapName?.value) ) {
+                console.log("Set starting attributes")
                 await setStartingAttributes()
             }
         });

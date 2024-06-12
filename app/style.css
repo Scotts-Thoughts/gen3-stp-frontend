@@ -388,7 +388,7 @@ body {
     margin-bottom: 8px;
     font-size: 24px;
     width: 210px; 
-    height: 45px;
+    height: 35px;
 }
 .comparison_button {
     margin-bottom: 8px;
@@ -1760,7 +1760,7 @@ body {
 .ui_style {
     font-size: 15px;
     position: fixed;
-    line-height: 16px;
+    line-height: 14px;
     text-transform: capitalize;
     text-align: left;
     font-family: osb;
