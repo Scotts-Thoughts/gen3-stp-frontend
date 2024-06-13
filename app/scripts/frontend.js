@@ -1309,8 +1309,14 @@ const app = Vue.createApp({
             this.backgroundContrast =     MyStorage[`${newValue}`]?.backgroundContrast     ?? 100
             this.backgroundSaturation =   MyStorage[`${newValue}`]?.backgroundSaturation   ?? 100
             //Attempts and finishes
-            this.attempt_number =         MyStorage[`${newValue}`]?.attempt_number     ?? 0
-            this.finished_run_count =     MyStorage[`${newValue}`]?.finished_run_count ?? 0
+            if(this.evolution) {
+                this.attempt_number =         MyStorage[`${this.evolution_splits_label}`]?.attempt_number     ?? 0
+                this.finished_run_count =     MyStorage[`${this.evolution_splits_label}`]?.finished_run_count ?? 0
+            }
+            else {
+                this.attempt_number =         MyStorage[`${newValue}`]?.attempt_number     ?? 0
+                this.finished_run_count =     MyStorage[`${newValue}`]?.finished_run_count ?? 0
+            }
 
             //main pokemon settings
             MyStorage['starterString'] =  newValue
@@ -2377,7 +2383,7 @@ const app = Vue.createApp({
             this.backgroundSaturation  = MyStorage[starter]?.backgroundSaturation  ?? 100
             this.backgroundHue         = MyStorage[starter]?.backgroundHue         ?? 0
             
-            if (starter) { starter = this.evolution_splits_label }
+            if (starter && this.evolution_splits_label) { starter = this.evolution_splits_label }
             console.log("Starter", starter)
             
             this.attempt_number        = MyStorage[starter]?.attempt_number        ?? 0
