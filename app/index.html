@@ -89,6 +89,8 @@
                     <br>
                     <button class="buttonStyle" onClick="openFolder('splits')">Splits Folder</button><br>
                     <br>
+                    <button v-if="gameSelection == 'FireRed and LeafGreen'" class="buttonStyle" @click="toggle_national_dex">Toggle National Pokedex</button><br>
+                    <button v-if="gameSelection == 'FireRed and LeafGreen'" class="buttonStyle" @click="toggle_pokedex">Toggle Pokedex</button><br>
                     <br>
                     <div style="font-size: 20px;">Debugging:</div>
                     <br>
@@ -548,7 +550,7 @@
                     </div>
                 </div>
                 <div v-else-if="right_panel == 'Inventory'" key=3>
-                    <div key=3>
+                    <!-- <div key=3>
                         <div class="movepoolTitle">Inventory</div>
                         <table class="inventory_demo" cellspacing="0" :style="movepoolResize()">
                             <tr>
@@ -619,7 +621,7 @@
                             </tr>
                         </table>
                         <div class="colored-image ds" :style="`filter: saturate(${ui_saturation})`" style="--url: url(images/ui/movepool.svg)"></div>
-                    </div>
+                    </div> -->
                 </div>
                 <!-- <div v-else-if="youtube_chat == true" key=3>
                     <div class="movepoolTitle">Chat</div>
@@ -771,6 +773,7 @@
 
     <script src="autosplitter/split_trainers.js"></script>
     <script src="lib/hiddenpower.js"></script>
+    <script src="data/pokedex_indexes.js"></script>
     <!-- VUE APP -->
     <script type="text/javascript" src="scripts/frontend.js"></script>
 </body>

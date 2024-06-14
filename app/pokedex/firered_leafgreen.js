@@ -22345,8 +22345,8 @@ const pokedex_frlg = {
         ],
         "weight": 72.0,
         "evolution_family": [
-            {"species": "Pupitar", "method": "level", "parameter": 30},
             {"species": "Larvitar", "method": null, "parameter": null},
+            {"species": "Pupitar", "method": "level", "parameter": 30},
             {"species": "Tyranitar", "method": null, "parameter": null}
         ]
     },
@@ -22431,9 +22431,9 @@ const pokedex_frlg = {
         "egg_moves": [],
         "weight": 152.0,
         "evolution_family": [
-            {"species": "Tyranitar", "method": "level", "parameter": 55},
             {"species": "Larvitar", "method": null, "parameter": null},
-            {"species": "Pupitar", "method": null, "parameter": null}
+            {"species": "Pupitar", "method": null, "parameter": null},
+            {"species": "Tyranitar", "method": "level", "parameter": 55}
         ]
     },
     "Tyranitar": {
@@ -22540,8 +22540,8 @@ const pokedex_frlg = {
         "weight": 202.0,
         "evolution_family": [
             {"species": "Larvitar", "method": null, "parameter": null},
-            {"species": "Tyranitar", "method": null, "parameter": null},
-            {"species": "Pupitar", "method": null, "parameter": null}
+            {"species": "Pupitar", "method": null, "parameter": null},
+            {"species": "Tyranitar", "method": null, "parameter": null}
         ]
     },
     "Lugia": {

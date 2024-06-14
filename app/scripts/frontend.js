@@ -688,6 +688,8 @@ const app = Vue.createApp({
             stats_display     : MyStorage['stats_display']      ?? true,
             automatic_ivs     : MyStorage['automatic_ivs']      ?? true,
             automatic_evs     : MyStorage['automatic_evs']      ?? true,
+            buffer_pokedex_owned: MyStorage['buffer_pokedex_owned'] ?? [],
+            buffer_pokedex_seen : MyStorage['buffer_pokedex_seen']  ?? [],
 
             // USER CONFIG (components) ------------------------------------------------------------------------// 
             graphicOverlay            : MyStorage['graphicOverlay'] ?? true,  //places a single image as the overlay  //MVP
@@ -764,6 +766,7 @@ const app = Vue.createApp({
             pokedex_frlg              : pokedex_frlg,
             split_trainers            : split_trainers,
             hiddenpower_type_selector : hiddenpower_type_selector,
+            pokedex_indexes           : pokedex_indexes,
 
             trainerLists: {
                 "emeraldTrainers" : emeraldTrainers,
@@ -1882,6 +1885,44 @@ const app = Vue.createApp({
     },
 
     methods: { 
+        async toggle_pokedex() {
+            const bit_array_bytes_151 = [   0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
+                                            0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
+                                            0xFF, 0xFF, 0x7F]
+            const bit_array_bytes_386 = [   0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 
+                                            0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
+                                            0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
+                                            0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
+                                            0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
+                                            0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
+                                            0x03]
+            var write_value = bit_array_bytes_386
+            await Promise.all([
+                await this.mapper.properties.pokedex.owned_start_of_bit_array.setBytes(write_value, false),
+                await this.mapper.properties.pokedex.seen_start_of_bit_array.setBytes(write_value, false),
+                await this.mapper.properties.pokedex.seen1_start_of_bit_array.setBytes(write_value, false),
+                await this.mapper.properties.pokedex.seen2_start_of_bit_array.setBytes(write_value, false),
+            ])
+        },
+        async toggle_national_dex() {
+            const magic    = this.mapper.properties.pokedex.magic.value
+            const dex_var  = this.mapper.properties.variables.pokedex.value
+            const dex_flag = this.mapper.properties.events.nationalDex.value
+            if (magic == 185 && dex_var == 25176 && dex_flag == true) {
+                await Promise.all([
+                    await this.mapper.properties.pokedex.magic.set(0, false), // 0xB9
+                    await this.mapper.properties.variables.pokedex.set(0, false), // 0x6258 (Bytes: 0x58 0x62)
+                    await this.mapper.properties.events.nationalDex.set(false, false), 
+                ])
+            }
+            else {
+                await Promise.all([
+                    await this.mapper.properties.pokedex.magic.set(185, false), // 0xB9
+                    await this.mapper.properties.variables.pokedex.set(25176, false), // 0x6258 (Bytes: 0x58 0x62)
+                    await this.mapper.properties.events.nationalDex.set(true, false), 
+                ])
+            }
+        },
         get_nested_property(obj, path) {
             return path.split('.').reduce((o, p) => (o || {})[p], obj);
         },
@@ -3920,6 +3961,9 @@ const app = Vue.createApp({
                 //         await this.mapper.properties.player.team[0].move1pp.set(0, false),
                 //     ])
                 // }
+            }
+            if (this.pokedex_indexes[this.starterString] > 0x97 && this.gameSelection == 'FireRed and LeafGreen') { // TODO requires testing
+                this.toggle_national_dex()
             }
         }
         this.mapper.properties.player.team[0].move1pp.change(async (newProp) => {
