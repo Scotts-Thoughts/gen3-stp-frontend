@@ -475,7 +475,7 @@ function logData(gameName, str, file_name, starter, log_type, testStatus, toggle
                     "move4,\n"
         if (log_type == "Deprecated" && toggle == true) {
             filePath = path.join(dirPath, `${testStatusText}${starter}-${file_name}-deprecated.csv`);
-            header = "ROM" +
+            header = "ROM," +
                 "Species," +
                 "Trainer," +
                 "Start Time," +
