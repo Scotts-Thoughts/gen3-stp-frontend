@@ -1650,6 +1650,14 @@ const app = Vue.createApp({
             }
         },
         s1dynamicReset() {
+            if (this.starterString == "Mr. Mime") {
+                var data = this.dexData[this.starterString]
+                return {
+                    species: { value: data["name"] },
+                    ...data
+                }
+            }
+
             if (this.zigzagoon_check == true) {
                 var data = this.dexData[this.starterString]
                 return {
