@@ -3494,7 +3494,25 @@ const app = Vue.createApp({
         },
         freezeEncounters() {
             const map_name = this.mapper.properties.overworld.mapName.value;
-            if (this.gameSelection == 'Emerald') {
+            const starter  = this.starterString
+            const badge    = this.mapper.properties.player.badges.badge1.value
+            const game     = this.gameSelection
+            if (game == 'Emerald' && starter == "Latios") {
+                if (badge == false) {
+                    this.mapper.setBits([
+                        {path: 'overworld.encounters.zigzagoon', value: false, freeze: false},
+                        {path: 'overworld.encounters.marill',    value: false, freeze: false},
+                        {path: 'overworld.encounters.taillow',   value: false, freeze: false},
+                    ])
+                    return
+                }
+                if (badge == true) {
+                    this.mapper.setBits([
+                        {path: 'overworld.encounters.zigzagoon', value: true, freeze: false},
+                        {path: 'overworld.encounters.marill',    value: true, freeze: false},
+                        {path: 'overworld.encounters.taillow',   value: true, freeze: false},
+                    ])
+                }
                 switch (map_name) {
                     case "ROUTE 101": 
                         if (this.route_101 == false) {
@@ -3502,13 +3520,13 @@ const app = Vue.createApp({
                         }
                         break;
                     case "ROUTE 102": 
-                        if (this.route_102 == false && this.mapper.properties.player.badges.badge1.value == false) {
+                        if (this.route_102 == false && badge == false) {
                             this.mapper.properties.overworld.disabledEncounters.set(0x01,false);
                         }
-                        else if (this.route_102 == false && this.mapper.properties.player.badges.badge1.value == true && this.mapper.properties.overworld.encounters.zigzagoon.value == true) {
+                        else if (this.route_102 == false && badge == true && this.mapper.properties.overworld.encounters.zigzagoon.value == true) {
                             this.mapper.properties.overworld.disabledEncounters.set(0x00,false);
                         }
-                        else if (this.route_102 == false && this.mapper.properties.player.badges.badge1.value == true) {
+                        else if (this.route_102 == false && badge == true) {
                             this.mapper.properties.overworld.disabledEncounters.set(0x01,false);
                         }
                         break;
@@ -3520,7 +3538,33 @@ const app = Vue.createApp({
                     default: this.mapper.properties.overworld.disabledEncounters.set(0x00,false);
                 }
             }
-            if (this.gameSelection == 'FireRed and LeafGreen') {
+            if (game == 'Emerald') {
+                switch (map_name) {
+                    case "ROUTE 101": 
+                        if (this.route_101 == false) {
+                            this.mapper.properties.overworld.disabledEncounters.set(0x01,false);
+                        }
+                        break;
+                    case "ROUTE 102": 
+                        if (this.route_102 == false && badge == false) {
+                            this.mapper.properties.overworld.disabledEncounters.set(0x01,false);
+                        }
+                        else if (this.route_102 == false && badge == true && this.mapper.properties.overworld.encounters.zigzagoon.value == true) {
+                            this.mapper.properties.overworld.disabledEncounters.set(0x00,false);
+                        }
+                        else if (this.route_102 == false && badge == true) {
+                            this.mapper.properties.overworld.disabledEncounters.set(0x01,false);
+                        }
+                        break;
+                    case "ROUTE 103": 
+                        if (this.route_103 == false) {
+                            this.mapper.properties.overworld.disabledEncounters.set(0x01,false);
+                        }
+                        break;
+                    default: this.mapper.properties.overworld.disabledEncounters.set(0x00,false);
+                }
+            }
+            if (game == 'FireRed and LeafGreen') {
                 switch (map_name) {
                     case "ROUTE 1": 
                         if (this.mapper.properties.events.menu.pokedex.value == false) {
