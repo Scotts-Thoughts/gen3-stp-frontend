@@ -2942,7 +2942,7 @@ body {
     border: none;
 }
 .first-row td {
-    padding-top: 1px;
+    padding-top: 1.5px;
 }
 .movepoolBorder {
     z-index: 1;
