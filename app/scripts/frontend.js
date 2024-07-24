@@ -729,12 +729,12 @@ const app = Vue.createApp({
             badgeBoosts: ["badge1", "badge3", "badge5", "badge7"],
             pkmnMoves: ["move1", "move2", "move3", "move4"],
             stat_object:     [
-                {abrv: "HP",  name: "Hp",              name_ev: "Hp",             label: "HP",   path: "maxHp",          base_stat_path: "base_hp",      hp_spe_label_row: 1, hp_spd_label_row: 1, label_column: 1, hp_spe_value_row: 1, hp_spd_value_row: 1, value_column: 2,}, 
-                {abrv: "Atk", name: "Attack",          name_ev: "Attack",         label: "Atk.", path: "attack",         base_stat_path: "base_atk",     hp_spe_label_row: 2, hp_spd_label_row: 2, label_column: 1, hp_spe_value_row: 2, hp_spd_value_row: 2, value_column: 2,}, 
-                {abrv: "Def", name: "Defense",         name_ev: "Defense",        label: "Def.", path: "defense",        base_stat_path: "base_def",     hp_spe_label_row: 3, hp_spd_label_row: 3, label_column: 1, hp_spe_value_row: 3, hp_spd_value_row: 3, value_column: 2,}, 
-                {abrv: "SpA", name: "Special Attack",  name_ev: "SpecialAttack",  label: "SpA.", path: "specialAttack",  base_stat_path: "base_spc_atk", hp_spe_label_row: 1, hp_spd_label_row: 2, label_column: 3, hp_spe_value_row: 1, hp_spd_value_row: 2, value_column: 4,}, 
-                {abrv: "SpD", name: "Special Defense", name_ev: "SpecialDefense", label: "SpD.", path: "specialDefense", base_stat_path: "base_spc_def", hp_spe_label_row: 2, hp_spd_label_row: 3, label_column: 3, hp_spe_value_row: 2, hp_spd_value_row: 3, value_column: 4,}, 
-                {abrv: "Spe", name: "Speed",           name_ev: "Speed",          label: "Spe.", path: "speed",          base_stat_path: "base_spd",     hp_spe_label_row: 3, hp_spd_label_row: 1, label_column: 3, hp_spe_value_row: 3, hp_spd_value_row: 1, value_column: 4,}, 
+                {abrv: "HP",  name: "Hp",              name_ev: "Hp",             label: "HP",   path: "maxHp",          base_stat_path: "base_hp",      object_identifier: "hp",      hp_spe_label_row: 1, hp_spd_label_row: 1, label_column: 1, hp_spe_value_row: 1, hp_spd_value_row: 1, value_column: 2,}, 
+                {abrv: "Atk", name: "Attack",          name_ev: "Attack",         label: "Atk.", path: "attack",         base_stat_path: "base_atk",     object_identifier: "atk",     hp_spe_label_row: 2, hp_spd_label_row: 2, label_column: 1, hp_spe_value_row: 2, hp_spd_value_row: 2, value_column: 2,}, 
+                {abrv: "Def", name: "Defense",         name_ev: "Defense",        label: "Def.", path: "defense",        base_stat_path: "base_def",     object_identifier: "def",     hp_spe_label_row: 3, hp_spd_label_row: 3, label_column: 1, hp_spe_value_row: 3, hp_spd_value_row: 3, value_column: 2,}, 
+                {abrv: "SpA", name: "Special Attack",  name_ev: "SpecialAttack",  label: "SpA.", path: "specialAttack",  base_stat_path: "base_spc_atk", object_identifier: "spc_atk", hp_spe_label_row: 1, hp_spd_label_row: 2, label_column: 3, hp_spe_value_row: 1, hp_spd_value_row: 2, value_column: 4,}, 
+                {abrv: "SpD", name: "Special Defense", name_ev: "SpecialDefense", label: "SpD.", path: "specialDefense", base_stat_path: "base_spc_def", object_identifier: "spc_def", hp_spe_label_row: 2, hp_spd_label_row: 3, label_column: 3, hp_spe_value_row: 2, hp_spd_value_row: 3, value_column: 4,}, 
+                {abrv: "Spe", name: "Speed",           name_ev: "Speed",          label: "Spe.", path: "speed",          base_stat_path: "base_spd",     object_identifier: "spd",     hp_spe_label_row: 3, hp_spd_label_row: 1, label_column: 3, hp_spe_value_row: 3, hp_spd_value_row: 1, value_column: 4,}, 
             ],
 
             //CSS styling values
@@ -1536,6 +1536,12 @@ const app = Vue.createApp({
         stats_header() {
             const stat_type = this.stats
             const state     = this.g3stateVariable
+            if (stat_type == 'Base Stats Average') {
+                return 'Averages'
+            }
+            if (stat_type == 'Base Stats Median') {
+                return 'Medians'
+            }
             switch (stat_type) {
                 case "Base Stats": return `Base Stats`
                 case "IVs":        return `IVs`
@@ -1893,6 +1899,34 @@ const app = Vue.createApp({
     },
 
     methods: { 
+        average_median_stats(stat_label) {
+            let sum = 0;
+            let count = 0;
+            let values = [];
+            
+            for (let pokemon of Object.values(this.dexDataFireRedLeafGreen)) {
+                let stat = pokemon[`base_${stat_label}`];
+                sum += stat;
+                count++;
+                values.push(stat);
+            }
+            
+            let average = sum / count;
+            
+            values.sort((a, b) => a - b);
+            let median;
+            let midIndex = Math.floor(values.length / 2);
+            
+            if (values.length % 2 === 0) {
+                median = (values[midIndex - 1] + values[midIndex]) / 2;
+            } else {
+                median = values[midIndex];
+            }
+            return {
+                average: Math.round(average),
+                median : Math.round(median),
+            };
+        },
         async toggle_pokedex() {
             const bit_array_bytes_151 = [   0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
                                             0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
@@ -4278,24 +4312,24 @@ const app = Vue.createApp({
         }
 
         //keybinds
-        keyhook.registerShortCut('F13', async () => { // Show IVs
-            console.log("Key: F13 pressed: IVs displayed.")
+        keyhook.registerShortCut('F22', async () => { // Show IVs
+            console.log("Key: F22 pressed: IVs displayed.")
             this.stats = "IVs";
         });
-        keyhook.registerShortCut('F14', async () => { // Show EVs
-            console.log("Key: F14 pressed: EVs displayed.")
+        keyhook.registerShortCut('F21', async () => { // Show EVs
+            console.log("Key: F21 pressed: EVs displayed.")
             if (this.stats == "EVs") { 
                 this.stats = "Detailed EVs"
                 return
             };
             this.stats = "EVs";
         });
-        keyhook.registerShortCut('F15', async () => { // Show Base Stats
-            console.log("Key: F15 pressed. Base Stats displayed.")
+        keyhook.registerShortCut('F20', async () => { // Show Base Stats
+            console.log("Key: F20 pressed. Base Stats displayed.")
             this.stats = "Base Stats";
         });
-        keyhook.registerShortCut('F16', async () => { // Automatic
-            console.log("Key: F16 pressed. Stats are displaying automatically now.")
+        keyhook.registerShortCut('F20', async () => { // Automatic
+            console.log("Key: F20 pressed. Stats are displaying automatically now.")
             if (this.stats == "Automatic") { 
                 this.stats = "Badge Boosts"
                 return

@@ -258,6 +258,8 @@
                         <option>IVs</option>
                         <option>EVs</option>
                         <option>Detailed EVs</option>
+                        <option>Base Stats Average</option>
+                        <option>Base Stats Median</option>
                     </select><br>
                     <br>
                     <div>Right Panel:</div>
@@ -370,6 +372,9 @@
                                 <div v-if="stats == 'Badge Boosts'" :class="`stat_value_style detailed_ev_stat_row_${stat[`${ui_stat_arrangement_modifier}value_row`]} stat_column_${stat.value_column} devs`">Stat: {{mapper.properties.player.team[0][stat.path].value}}</div>
                                 <div v-if="stats == 'Badge Boosts'" :class="`stat_value_style detailed_ev_stat_row_${stat[`${ui_stat_arrangement_modifier}value_row`]} stat_column_${stat.value_column} percentage_evs`">Boost: {{get_bb_stat(`${stat.name}`)}}</div>
                                 <div v-if="stats == 'Badge Boosts'" :class="`stat_value_style detailed_ev_stat_row_${stat[`${ui_stat_arrangement_modifier}value_row`]} stat_column_${stat.value_column} ev_stats_gained`">Result: {{get_stat(`${stat.name}`)}}</div>
+                                
+                                <div v-if="stats == 'Base Stats Average'"   :class="`stat_value_style stat_row_${stat[`${ui_stat_arrangement_modifier}value_row`]} stat_column_${stat.value_column}`">{{average_median_stats(stat.object_identifier).average}}</div>
+                                <div v-if="stats == 'Base Stats Median'"    :class="`stat_value_style stat_row_${stat[`${ui_stat_arrangement_modifier}value_row`]} stat_column_${stat.value_column}`">{{average_median_stats(stat.object_identifier).median}}</div>
                             </div>
                         </div>
                     </div> 
