@@ -260,6 +260,8 @@
                         <option>Detailed EVs</option>
                         <option>Base Stats Average</option>
                         <option>Base Stats Median</option>
+                        <option>Comparison</option>
+                        <option>Evolution</option>
                     </select><br>
                     <br>
                     <div>Right Panel:</div>
@@ -321,9 +323,11 @@
             <div class="statsContainer" id="stats">
                 <div class="growthRate">{{pkmnGrowthRate}}</div>
                 <!--------- BADGE BOOST ICONS ---------------------------------------------------------------------------------------------------------------------->
-                <div v-for="x in badgeBoosts">
-                    <div v-if="mapper.properties.player.badges[x].value == true && display_badge_boosts == true">
-                        <img class="badgeBoost" :src="`images/badges/badge_boosts/${this.game.region}/${ui_stat_arrangement_modifier}/${x}.png`"/>
+                <div v-if="stats != 'Comparison'">
+                    <div v-for="x in badgeBoosts">
+                        <div v-if="mapper.properties.player.badges[x].value == true && display_badge_boosts == true">
+                            <img class="badgeBoost" :src="`images/badges/badge_boosts/${this.game.region}/${ui_stat_arrangement_modifier}/${x}.png`"/>
+                        </div>
                     </div>
                 </div>
 
@@ -357,7 +361,7 @@
                         <div>
                             <div class="stats_header">{{stats_header}}</div>
                             <div v-for="stat in stat_object">
-                                <div :style="{ opacity: stat_label_opacity()?.[stat.name]}" :class="`stat_label_style stat_row_${stat[`${ui_stat_arrangement_modifier}label_row`]} stat_column_${stat.label_column}`">{{stat.label}}</div>
+                                <div v-if="stats != 'Comparison'" :style="{ opacity: stat_label_opacity()?.[stat.name]}" :class="`stat_label_style stat_row_${stat[`${ui_stat_arrangement_modifier}label_row`]} stat_column_${stat.label_column}`">{{stat.label}}</div>
                             </div>
                             <div v-for="stat in stat_object">
                                 <div v-if="stats == 'Base Stats'"   :class="`stat_value_style stat_row_${stat[`${ui_stat_arrangement_modifier}value_row`]} stat_column_${stat.value_column}`">{{game.dexData[starterString][stat.base_stat_path]}}</div>
@@ -373,8 +377,17 @@
                                 <div v-if="stats == 'Badge Boosts'" :class="`stat_value_style detailed_ev_stat_row_${stat[`${ui_stat_arrangement_modifier}value_row`]} stat_column_${stat.value_column} percentage_evs`">Boost: {{get_bb_stat(`${stat.name}`)}}</div>
                                 <div v-if="stats == 'Badge Boosts'" :class="`stat_value_style detailed_ev_stat_row_${stat[`${ui_stat_arrangement_modifier}value_row`]} stat_column_${stat.value_column} ev_stats_gained`">Result: {{get_stat(`${stat.name}`)}}</div>
                                 
-                                <div v-if="stats == 'Base Stats Average'"   :class="`stat_value_style stat_row_${stat[`${ui_stat_arrangement_modifier}value_row`]} stat_column_${stat.value_column}`">{{average_median_stats(stat.object_identifier).average}}</div>
-                                <div v-if="stats == 'Base Stats Median'"    :class="`stat_value_style stat_row_${stat[`${ui_stat_arrangement_modifier}value_row`]} stat_column_${stat.value_column}`">{{average_median_stats(stat.object_identifier).median}}</div>
+                                <div v-if="stats == 'Base Stats Average'" :class="`stat_value_style stat_row_${stat[`${ui_stat_arrangement_modifier}value_row`]} stat_column_${stat.value_column}`">{{average_median_stats(stat.object_identifier).average}}</div>
+                                <div v-if="stats == 'Base Stats Median'"  :class="`stat_value_style stat_row_${stat[`${ui_stat_arrangement_modifier}value_row`]} stat_column_${stat.value_column}`">{{average_median_stats(stat.object_identifier).median}}</div>
+                            
+                                <div v-if="stats == 'Comparison'" :class="`stat_value_style comparison_row_${stat[`${ui_stat_arrangement_modifier}value_row`]} comparison_column_${stat.value_column} stat_avrg`" :style="">
+                                    <table class="comparison_table">
+                                        <tr><td style="text-align: left; opacity: 0.65;">{{stat.label}}</td><td style="text-align: right;"></td></tr>
+                                        <tr><td style="text-align: left;">Avrg:</td>         <td style="text-align: right;">{{average_median_stats(stat.object_identifier).average}}</td></tr>
+                                        <tr><td style="text-align: left;">Medn:</td>         <td style="text-align: right;">{{average_median_stats(stat.object_identifier).median}}</td></tr>
+                                    </table>
+                                </div>
+                                <div v-if="stats == 'Comparison'" :class="`stat_comparison_value_style stat_row_${stat[`${ui_stat_arrangement_modifier}value_row`]} stat_column_${stat.value_column}`">{{game.dexData[starterString][stat.base_stat_path]}}</div>
                             </div>
                         </div>
                     </div> 

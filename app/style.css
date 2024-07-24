@@ -1629,6 +1629,43 @@ body {
     font-size: 18px;
 }
 
+.stat_avrg {
+    padding-top: 0px;
+    font-size: 15px;
+}
+.stat_medn {
+    padding-top: 18px;
+    font-size: 15px;
+}
+.stat_base {
+    padding-top: 36px;
+    font-size: 15px;
+}
+.comparison_stat_row_1 { top: 39px; }
+.comparison_stat_row_2 { top: 101px; }
+.comparison_stat_row_3 { top: 163px; }
+.stat_comparison_value_style {
+    position: absolute;
+    padding-left: 1px;
+    text-align: right; 
+    line-height: 58px;
+    width: 28px;
+    min-width: 120px;
+    max-width: 120px;
+    border: 1px solid #00000000;
+    font-size: 42px;
+    font-family: osb;
+}
+.comparison_row_1 { top: 58px; }
+.comparison_row_2 { top: 120px; }
+.comparison_row_3 { top: 182px; }
+.comparison_column_1 { left: 16px; padding-top: 1px; padding-left: 1px; }
+.comparison_column_2 { left: 16px; }
+.comparison_column_3 { left: 184px; padding-top: 1px; padding-left: 1px; }
+.comparison_column_4 { left: 184px; }
+.comparison_table {
+    line-height: 16px;
+}
 
 .atkMod {
     font-size: 28px;

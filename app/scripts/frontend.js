@@ -1542,6 +1542,12 @@ const app = Vue.createApp({
             if (stat_type == 'Base Stats Median') {
                 return 'Medians'
             }
+            if (stat_type == 'Comparison') {
+                return 'Comparison'
+            }
+            if (stat_type == 'Evolution') {
+                return 'Evolution'
+            }
             switch (stat_type) {
                 case "Base Stats": return `Base Stats`
                 case "IVs":        return `IVs`
