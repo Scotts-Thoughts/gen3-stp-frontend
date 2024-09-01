@@ -3528,6 +3528,7 @@ const app = Vue.createApp({
                     if (!this.testRun) { this.attempt_number++ }
                     this.hallOfFameReset = false;
                     this.newRun();
+                    fetch("http://localhost:8085/timer/start/");
                     this.startTime();
                 }
             })

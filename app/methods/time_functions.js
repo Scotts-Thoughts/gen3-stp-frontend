@@ -21,9 +21,34 @@ function padTime(time) {
     return time.toString().padStart(2, "0")
 }
 //animate the timer
-function updateTime() {
+async function updateTime() {
     var time = Date.now() - this.timer_startTime
-    if (this.timer_pause == true) {
+    var pabTime = 0;
+    var pabTimeParsed = false;
+    await fetch("http://localhost:8085/timer/get").then(response => {
+        // Check if the request was successful
+        if (!response.ok) {
+          console.error('Network response was not ok ' + response.statusText);
+        }
+        // Parse the response as text
+        return response.text();
+      })
+      .then(text => {
+        // Convert the text to a floating-point number
+        const value = parseFloat(text);
+        pabTimeParsed = true;
+        pabTime = value * 1000;
+      })
+      .catch(error => {
+        // Handle any errors that occurred during the fetch
+        console.error('There was a problem with the fetch operation:', error);
+      });
+
+    if(pabTimeParsed === true) {
+        time = pabTime;
+        console.log(time);
+    }
+    else if (this.timer_pause == true) {
         time = this.timer_pause_time - this.timer_startTime
     }
     var f = (x) => x.toString().padStart(2, "0")
