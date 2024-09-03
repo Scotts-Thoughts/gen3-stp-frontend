@@ -385,6 +385,7 @@ const pokedex_indexes = {
     "Jirachi"    : 0x199,
     "Deoxys"     : 0x19A,
     "Chimecho"   : 0x19B,
+    "Backport"   : 0x19C,
     "Pokemon Egg": 0x19C,
     "Unown"      : 0x19D,
     "Unown"      : 0x19E,

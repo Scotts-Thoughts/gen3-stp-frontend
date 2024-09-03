@@ -1,5 +1,18 @@
 const gen3data = [
 {
+  dexNumber: "0",
+  Pokemon: "Testmoth",
+  baseHp: "255",
+  baseAtk: "255",
+  baseDef: "255",
+  baseSpcA: "255",
+  baseSpcD: "255",
+  baseSpd: "255",
+  baseStatTotal: "1530",
+  baseStatAverage: "255",
+  gen1Spc: "255"
+},
+{
   dexNumber: "1",
   Pokemon: "Bulbasaur",
   baseHp: "45",
