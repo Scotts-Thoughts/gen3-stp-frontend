@@ -1,5 +1,20 @@
 [
  {
+  "dexNumber": 0,
+  "Pokemon": "Testmoth",
+  "baseHP": 255,
+  "baseAtk": 255,
+  "baseDef": 255,
+  "baseSpd": 255,
+  "baseSpc": 255,
+  "Crit Rate": 100,
+  "baseStatTotal": 1530,
+  "baseStatAverage": 255,
+  "Type 1": "Psychic",
+  "Type 2": "Fighting",
+  "experienceYield": 255
+ },
+ {
   "dexNumber": 1,
   "Pokemon": "Bulbasaur",
   "baseHP": 45,
