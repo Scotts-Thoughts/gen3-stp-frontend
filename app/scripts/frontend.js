@@ -4229,6 +4229,7 @@ const app = Vue.createApp({
                             return
                     }
                     this.stopTime()
+                    fetch("http://localhost:8085/timer/stop/");
                     if (this.testRun == false) {
                         this.finished_run_count++
                     };
