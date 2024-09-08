@@ -46,7 +46,7 @@ async function updateTime() {
 
     if(pabTimeParsed === true) {
         time = pabTime;
-        console.log(time);
+        // console.log(time);
     }
     else if (this.timer_pause == true) {
         time = this.timer_pause_time - this.timer_startTime
