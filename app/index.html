@@ -380,7 +380,7 @@
                                 <div v-if="stats == 'Base Stats Average'" :class="`stat_value_style stat_row_${stat[`${ui_stat_arrangement_modifier}value_row`]} stat_column_${stat.value_column}`">{{average_median_stats(stat.object_identifier).average}}</div>
                                 <div v-if="stats == 'Base Stats Median'"  :class="`stat_value_style stat_row_${stat[`${ui_stat_arrangement_modifier}value_row`]} stat_column_${stat.value_column}`">{{average_median_stats(stat.object_identifier).median}}</div>
                             
-                                <div v-if="stats == 'Comparison'" :class="`stat_value_style comparison_row_${stat[`${ui_stat_arrangement_modifier}value_row`]} comparison_column_${stat.value_column} stat_avrg`" :style="">
+                                <div v-if="stats == 'Comparison'" :class="`stat_value_style comparison_row_${stat[`${ui_stat_arrangement_modifier}value_row`]} comparison_column_${stat.value_column} stat_avrg`" >
                                     <table class="comparison_table">
                                         <tr><td style="text-align: left; opacity: 0.65;">{{stat.label}}</td><td style="text-align: right;"></td></tr>
                                         <tr><td style="text-align: left;">Avrg:</td>         <td style="text-align: right;">{{average_median_stats(stat.object_identifier).average}}</td></tr>

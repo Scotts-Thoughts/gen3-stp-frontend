@@ -65,7 +65,7 @@ function autosplitter_process() {
         
         //deprecated properties
         let runIdentifier = this.starterString.toString() + this.attempt_number.toString()
-        let trainerName = this.opponent
+        let trainerName = this.autosplitter_trainer(this.opponent)
         let RTHours = this.time_h
         let RTMinutes = this.time_m
         let RTSeconds = this.time_s
@@ -231,7 +231,7 @@ function autosplitter_process() {
         let deprecated_data = []
         if (this.scott_mode == true) {
             deprecated_data = [
-                runIdentifier, this.starter, trainerName,
+                runIdentifier, this.starterString, trainerName,
                 startTime, realTime, gameTime, level, this.playerResets,
                 RTHours, RTMinutes, RTSeconds, RTMilliseconds,
                 move1, move2, move3, move4,

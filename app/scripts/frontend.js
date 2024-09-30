@@ -337,7 +337,7 @@ class KeyHook {
         this.process = require("child_process").spawn("keyhook.exe");
 
         // general logging
-        this.process.on("spawn", () => console.log("Keyboard hook started!"));
+        // this.process.on("spawn", () => console.log("Keyboard hook started!"));
         this.process.stderr.on("data", (data) => console.error(`${data}`));
         
         // handle output of the keyboard hook
@@ -1654,6 +1654,13 @@ const app = Vue.createApp({
             return this.mapper?.properties?.battle.trainer[this.game?.opponentId]?.value
         },
         s1dynamic() {
+            if (this.mapper?.properties?.player?.team[0]?.species?.value == "Backport") {
+                return {
+                    species: {
+                        value: this.starterString
+                    }
+                };
+            }
             if (this.g3stateVariable == `Battle`) {
                 return this.mapper?.properties?.battle?.yourPokemon
             }
@@ -1662,6 +1669,13 @@ const app = Vue.createApp({
             }
         },
         s1dynamicReset() {
+            if (this.mapper?.properties?.player?.team[0]?.species?.value == "Backport") {
+                return {
+                    species: {
+                        value: this.starterString
+                    }
+                };
+            }
             if (this.starterString == "Mr. Mime") {
                 var data = this.dexData[this.starterString]
                 return {
@@ -1868,6 +1882,9 @@ const app = Vue.createApp({
                     return false
         },
         getStarterType1() {
+            if (this.zigzagoon_check == true) {
+                var type = this.dexData[this.starterString].type_1
+            }
             if (this.pick == true)
                 var type = this.dexData[this.starterString].type_1
                 if(this.dynamicTypeAvailable) {
@@ -1876,6 +1893,9 @@ const app = Vue.createApp({
                 return `images/elements/types/${this.ui_type_icons_modifier}${type}.png`.toLowerCase();
         },
         getStarterType2() {
+            if (this.zigzagoon_check == true) {
+                var type = this.dexData[this.starterString].type_2
+            }
             if (this.pick == true)
                 var type = this.dexData[this.starterString].type_2
                 if(this.dynamicTypeAvailable) {
@@ -1905,6 +1925,38 @@ const app = Vue.createApp({
     },
 
     methods: { 
+        autosplitter_trainer(opponent) {
+            switch (opponent) {
+                case "RIVAL_BRENDAN_ROUTE_103_TORCHIC" : return "Rival 1"
+                case "RIVAL_BRENDAN_ROUTE_103_MUDKIP"  : return "Rival 1"
+                case "RIVAL_BRENDAN_ROUTE_103_TREECKO" : return "Rival 1"
+                case "LEADER_ROXANNE_1"                : return "Roxanne"
+                case "LEADER_BRAWLY_1"                 : return "Brawly"
+                case "RIVAL_BRENDAN_ROUTE_110_TORCHIC" : return "Rival 2"
+                case "RIVAL_BRENDAN_ROUTE_110_MUDKIP"  : return "Rival 2"
+                case "RIVAL_BRENDAN_ROUTE_110_TREECKO" : return "Rival 2"
+                case "LEADER_WATTSON_1"                : return "Wattson"
+                case "MAGMA_LEADER_MAXIE_MT_CHIMNEY"   : return "Maxie (Mt. Chimney)"
+                case "LEADER_FLANNERY_1"               : return "Flannery"
+                case "LEADER_NORMAN_1"                 : return "Norman"
+                case "RIVAL_BRENDAN_ROUTE_119_TORCHIC" : return "Rival 3"
+                case "RIVAL_BRENDAN_ROUTE_119_MUDKIP"  : return "Rival 3"
+                case "RIVAL_BRENDAN_ROUTE_119_TREECKO" : return "Rival 3"
+                case "LEADER_WINONA_1"                 : return "Winona"
+                case "MAGMA_LEADER_MAXIE_MAGMA_HIDEOUT": return "Maxie (Magma Hideout)"
+                case "LEADER_TATE_AND_LIZA_1"          : return "Tate and Liza"
+                case "AQUA_LEADER_ARCHIE"              : return "Archie"
+                case "LEADER_JUAN_1"                   : return "Juan"
+                case "RIVAL_WALLY_VR_1"                : return "Wally"
+                case "ELITE_FOUR_SIDNEY"               : return "Sidney"
+                case "ELITE_FOUR_PHOEBE"               : return "Phoebe"
+                case "ELITE_FOUR_GLACIA"               : return "Glacia"
+                case "ELITE_FOUR_DRAKE"                : return "Drake"
+                case "CHAMPION_WALLACE"                : return "Wallace"
+                case "RIVAL_STEVEN"                    : return "Steven"
+                default                                : return opponent
+            }
+        },
         average_median_stats(stat_label) {
             let sum = 0;
             let count = 0;
@@ -2660,7 +2712,10 @@ const app = Vue.createApp({
             //calculate new sizes
             let currentStarter = this.s1dynamicReset.name;
             if(currentStarter == undefined || currentStarter == null) {
-                if(this.mapper.properties.player.team[0].species) {
+                if (this.mapper.properties.player.team[0].species.value == 'Backport') {
+                    currentStarter = this.starterString;
+                }
+                else if (this.mapper.properties.player.team[0].species) {
                     currentStarter = this.mapper.properties.player.team[0].species.value;
                 }
                 else {
