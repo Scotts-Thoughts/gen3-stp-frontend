@@ -42,7 +42,7 @@ const dexDataRubySapphireEmerald =
             [25, "Crunch"],
             [28, "Slam"],
             [32, "Dragon Claw"],
-            [38, "Bulk Up"],
+            [38, "Dragon Dance"],
             [42, "Outrage"],
             [48, "Body Slam"],
             [55, "Scary Face"],
