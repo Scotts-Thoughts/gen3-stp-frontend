@@ -3446,6 +3446,7 @@ const app = Vue.createApp({
             if (moveObject.Type == `Curse`) {
                 return "Curse"
             }
+            // console.log(moveObject.Move)
             if (moveObject.Move.toUpperCase() == `HIDDEN POWER`) {
                 return this.hidden_power_type
             }
