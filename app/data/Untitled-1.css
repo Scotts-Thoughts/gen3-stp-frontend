@@ -1,0 +1,7 @@
+    --hp_gradient:     linear-gradient(90deg, #1e993d 16.5%, #2eeb5d 50%, #1e993d 83.5%);
+    --atk_gradient:    linear-gradient(90deg, #9b8b2d 16.5%, #f4e486 50%, #9b8b2d 83.5%);
+    --def_gradient:    linear-gradient(90deg, #a55821 16.5%, #fd8732 50%, #a55821 83.5%);
+    --spc_gradient:    linear-gradient(90deg, #2f8589 16.5%, #48ccd2 50%, #2f8589 83.5%);
+    --spcAtk_gradient: linear-gradient(90deg, #2f8589 16.5%, #48ccd2 50%, #2f8589 83.5%);
+    --spcDef_gradient: linear-gradient(90deg, #5667a6 16.5%, #859fff 50%, #5667a6 83.5%);
+    --spd_gradient:    linear-gradient(90deg, #8c53a6 16.5%, #d880ff 50%, #8c53a6 83.5%);

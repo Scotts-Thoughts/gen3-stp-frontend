@@ -1727,6 +1727,7 @@ const app = Vue.createApp({
             if (this.zigzagoon_check == `Base Stats`) { return this.dexData[this.starterString]?.type_2}
             if (this.g3stateVariable == `Battle`) { return this.mapper.properties.battle.yourPokemon.type2.value }
             if (this.g3stateVariable == `Overworld` && this.mapper.properties.player.team[0].species.value == null) { return this.dexData[this.starterString]?.type_2 }
+            if (this.g3stateVariable == `Overworld` && this.mapper.properties.player.team[0].species.value == 'Backport') { return this.dexData[this.starterString]?.type_2 }
             if (this.g3stateVariable == `Overworld`) { return this.dexData[this.mapper.properties.player.team[0].species.value]?.type_2 }
             if (this.g3stateVariable == `Base Stats`) { return this.dexData[this.starterString]?.type_2}
             else { return this.dexData[this.starterString].type_2}
@@ -4319,10 +4320,11 @@ const app = Vue.createApp({
         });
 
         //EXP BAR ANIMATION FUNCTION
-        var species = this.mapper.properties.player.team[0].species.value??this.starterString;
-        if(this.dexData[species]==null){
-            return;
+        var species = this.mapper.properties.player.team[0].species.value ?? this.starterString;
+        if (species == 'Backport') {
+            species = this.starterString;
         }
+        if (this.dexData[species]==null) { return; }
         var growthRate = this.dexData[species].growth_rate
         var expStats = this.calcExpStats(growthRate, this.mapper.properties.player.team[0].expPoints.value);
         this.$refs.expBar.style.width = (expStats.percent * 100) + "%";

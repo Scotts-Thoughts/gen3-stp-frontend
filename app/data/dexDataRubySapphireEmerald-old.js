@@ -37,7 +37,7 @@ const dexDataRubySapphireEmerald =
             [4, "Focus Energy"],
             [9, "Bite"],
             [12, "Headbutt"],
-            [17, "Dragon Breath"],
+            [17, "DragonBreath"],
             [20, "Roar"],
             [25, "Crunch"],
             [28, "Slam"],

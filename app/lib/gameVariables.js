@@ -220,11 +220,11 @@ const gameVariables =
         },
         "starterLocation" : ["ROUTE 101"],
         "callback1" : {
-            "overworld" : [134765285, "Overworld", 134765313],
-            "toBattle" : [134455025,"Battle"]
+            "overworld" : [134765285, "Overworld", 134765313, 134765525],
+            "toBattle" : [134455025,"Battle", 134765601]
         },
         "callback2" : {
-            "toBattle" : [134765389, 134442925, "Battle Animation",134448161,"Battle"],
+            "toBattle" : [134765389, 134442925, "Battle Animation",134448161,"Battle", 134765601],
             "baseStats" : [135711589],
             "reset" : ["Owners",0],
             "blackout" : [134765653],
