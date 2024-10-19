@@ -274,14 +274,15 @@
                     <br>
                     <table>
                         <tr>Toggles:</tr>
-                        <tr><td>Frame:</td>               <td><input class="checkBoxStyle" type="checkbox" v-model="frame"/></td></tr>
-                        <tr><td>Automatic IVs:</td>       <td><input class="checkBoxStyle" type="checkbox" v-model="automatic_ivs"/></td></tr>
-                        <tr><td>Automatic EVs:</td>       <td><input class="checkBoxStyle" type="checkbox" v-model="automatic_evs"/></td></tr>
-                        <tr><td>Show Tutor Moves:</td>    <td><input class="checkBoxStyle" type="checkbox" v-model="tutor_moves"/></td></tr>
-                        <tr><td>Show Battle Graphics:</td><td><input class="checkBoxStyle" type="checkbox" v-model="battleGraphic"/></td></tr>
-                        <tr><td>Show Inventory:</td>      <td><input class="checkBoxStyle" type="checkbox" v-model="inventory_display"/></td></tr>
-                        <tr><td>Show Nature Arrows:</td>  <td><input class="checkBoxStyle" type="checkbox" v-model="show_nature_changes"/></td></tr>
-                        <tr><td>Badge Boosts:</td>        <td><input class="checkBoxStyle" type="checkbox" v-model="display_badge_boosts"/></td></tr>
+                        <tr><td>Frame:</td>                 <td><input class="checkBoxStyle" type="checkbox" v-model="frame"/></td></tr>
+                        <tr><td>Automatic IVs:</td>         <td><input class="checkBoxStyle" type="checkbox" v-model="automatic_ivs"/></td></tr>
+                        <tr><td>Automatic EVs:</td>         <td><input class="checkBoxStyle" type="checkbox" v-model="automatic_evs"/></td></tr>
+                        <tr><td>Show Tutor Moves:</td>      <td><input class="checkBoxStyle" type="checkbox" v-model="tutor_moves"/></td></tr>
+                        <tr><td>Show Battle Graphics:</td>  <td><input class="checkBoxStyle" type="checkbox" v-model="battleGraphic"/></td></tr>
+                        <tr><td>Show Inventory:</td>        <td><input class="checkBoxStyle" type="checkbox" v-model="inventory_display"/></td></tr>
+                        <tr><td>Show Nature Arrows:</td>    <td><input class="checkBoxStyle" type="checkbox" v-model="show_nature_changes"/></td></tr>
+                        <tr><td>Badge Boosts:</td>          <td><input class="checkBoxStyle" type="checkbox" v-model="display_badge_boosts"/></td></tr>
+                        <tr><td>Disable Panel Hotkeys:</td> <td><input class="checkBoxStyle" type="checkbox" v-model="disable_right_hotkeys"/></td></tr>
                         <tr v-if="gameSelection == 'FireRed and LeafGreen'"><td>Repel Counter:</td><td><input class="checkBoxStyle" type="checkbox" v-model="repel_counter"/></td></tr>
                         <tr v-if="gameSelection == 'FireRed and LeafGreen'"><td>Vs. Seeker:</td>   <td><input class="checkBoxStyle" type="checkbox" v-model="vs_seeker"/></td></tr>
                         <br>

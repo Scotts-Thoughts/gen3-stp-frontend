@@ -690,6 +690,7 @@ const app = Vue.createApp({
             automatic_evs     : MyStorage['automatic_evs']      ?? true,
             buffer_pokedex_owned: MyStorage['buffer_pokedex_owned'] ?? [],
             buffer_pokedex_seen : MyStorage['buffer_pokedex_seen']  ?? [],
+            disable_right_hotkeys: true,
 
             // USER CONFIG (components) ------------------------------------------------------------------------// 
             graphicOverlay            : MyStorage['graphicOverlay'] ?? true,  //places a single image as the overlay  //MVP
@@ -1724,12 +1725,14 @@ const app = Vue.createApp({
             }
         },
         typeHeaderColor() {
-            if (this.zigzagoon_check == `Base Stats`) { return this.dexData[this.starterString]?.type_2}
+            const starter_type2 = this.dexData[this.starterString]?.type_2
+            if (this.mapper.properties.battle.type.old_man_tutorial.value == true) { return starter_type2 }
+            if (this.zigzagoon_check == `Base Stats`) { return starter_type2}
             if (this.g3stateVariable == `Battle`) { return this.mapper.properties.battle.yourPokemon.type2.value }
-            if (this.g3stateVariable == `Overworld` && this.mapper.properties.player.team[0].species.value == null) { return this.dexData[this.starterString]?.type_2 }
-            if (this.g3stateVariable == `Overworld` && this.mapper.properties.player.team[0].species.value == 'Backport') { return this.dexData[this.starterString]?.type_2 }
+            if (this.g3stateVariable == `Overworld` && this.mapper.properties.player.team[0].species.value == null) { return starter_type2 }
+            if (this.g3stateVariable == `Overworld` && this.mapper.properties.player.team[0].species.value == 'Backport') { return starter_type2 }
             if (this.g3stateVariable == `Overworld`) { return this.dexData[this.mapper.properties.player.team[0].species.value]?.type_2 }
-            if (this.g3stateVariable == `Base Stats`) { return this.dexData[this.starterString]?.type_2}
+            if (this.g3stateVariable == `Base Stats`) { return starter_type2}
             else { return this.dexData[this.starterString].type_2}
         },
         //BATTLE FADE
@@ -4411,14 +4414,17 @@ const app = Vue.createApp({
         });
 
         keyhook.registerShortCut('F17', async () => { // Inventory
+            if (this.disable_right_hotkeys) { return }
             console.log("Key: F17 pressed. Automatic battle graphics will be displayed.")
             this.right_panel = "Battle Graphic";
         });
         keyhook.registerShortCut('F18', async () => { // Trainer Graphic during Battle
+            if (this.disable_right_hotkeys) { return }
             console.log("Key: F18 pressed. Inventory displayed.")
             this.right_panel = "Inventory";
         });
         keyhook.registerShortCut('F19', async () => { // Trainer Graphic during Battle
+            if (this.disable_right_hotkeys) { return }
             console.log("Key: F19 pressed. Movepool displayed.")
             this.right_panel = "Movepool";
         });
