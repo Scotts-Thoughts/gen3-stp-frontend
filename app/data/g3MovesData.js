@@ -3203,6 +3203,15 @@ const g3MoveData = {
     Accuracy: "-",
     Description: "Withdraws the body into its hard shell to raise DEFENSE."
   },
+"Techno Blast" :
+  {
+    Move: "Techno Blast",
+    Type: "Normal",
+    PP: "5",
+    Power: "85",
+    Accuracy: "100",
+    Description: "	It damages a Pokémon, even one far away. The move's type changes depending on the Drive you have."
+  },
 "null" :
   {
     Move: "null",

@@ -2848,6 +2848,14 @@ const gen3moves = [
     Description: "Withdraws the body into its hard shell to raise DEFENSE."
   },
   {
+    Move: "Techno Blast",
+    Type: "Normal",
+    PP: "5",
+    Power: "85",
+    Accuracy: "100",
+    Description: "Withdraws the body into its hard shell to raise DEFENSE."
+  },
+  {
     Move: "null",
     Type: " ",
     PP: " ",

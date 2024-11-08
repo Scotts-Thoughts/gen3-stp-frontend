@@ -1929,6 +1929,14 @@ const app = Vue.createApp({
     },
 
     methods: { 
+        macho_brace(stat) { 
+            if (this.mapper.properties.player.team[0].itemHeld.value == 'MACHO BRACE') {
+                return Math.floor(stat * 0.5)
+            }
+            else {
+                return stat
+            }
+        },
         autosplitter_trainer(opponent) {
             switch (opponent) {
                 case "RIVAL_BRENDAN_ROUTE_103_TORCHIC" : return "Rival 1"
@@ -2127,7 +2135,7 @@ const app = Vue.createApp({
                     case "Hp":              return this.mapper.properties.battle.yourPokemon.maxHp.value
                     case "Attack":          return this.ability(this.pkmn_ability, "attack",  this.badge_boost(this.mapper.properties.player.badges.badge1.value, this.stageMultiplier(this.mapper.properties.battle.yourPokemon.modStageAttack.value,  this.mapper.properties.battle.yourPokemon.attack.value)))
                     case "Defense":         return this.ability(this.pkmn_ability, "defense", this.badge_boost(this.mapper.properties.player.badges.badge5.value, this.stageMultiplier(this.mapper.properties.battle.yourPokemon.modStageDefense.value, this.mapper.properties.battle.yourPokemon.defense.value)))
-                    case "Speed":           return this.ability(this.pkmn_ability, "speed",   this.badge_boost(this.mapper.properties.player.badges.badge3.value, this.stageMultiplier(this.mapper.properties.battle.yourPokemon.modStageSpeed.value,   this.mapper.properties.battle.yourPokemon.speed.value)))
+                    case "Speed":           return this.macho_brace(this.ability(this.pkmn_ability, "speed",   this.badge_boost(this.mapper.properties.player.badges.badge3.value, this.stageMultiplier(this.mapper.properties.battle.yourPokemon.modStageSpeed.value,   this.mapper.properties.battle.yourPokemon.speed.value))))
                     case "Special Attack":  return this.badge_boost(this.mapper.properties.player.badges.badge7.value, this.stageMultiplier(this.mapper.properties.battle.yourPokemon.modStageSpecialAttack.value,  this.mapper.properties.battle.yourPokemon.specialAttack.value))
                     case "Special Defense": return this.badge_boost(this.mapper.properties.player.badges.badge7.value, this.stageMultiplier(this.mapper.properties.battle.yourPokemon.modStageSpecialDefense.value, this.mapper.properties.battle.yourPokemon.specialDefense.value))
                 }
@@ -2961,7 +2969,7 @@ const app = Vue.createApp({
             var ability = pkmnData.ability?.value?.toLowerCase() ?? null
 
             if (pkmnData.status1.value == "Paralyzed" && statLabel == "speed") { status_paralysis = .25 } // sets modifier for paralysis if the Pokemon is paralyzed
-            if (pkmnData.status1.value == "Burned" && statLabel == "attack")   { status_burn = .25 }      // sets modifier for burn if the Pokemon is burned
+            if (pkmnData.status1.value == "Burned" && statLabel == "attack")   { status_burn = 1 }      // sets modifier for burn if the Pokemon is burned
 
             //ABILITIES
             //Guts

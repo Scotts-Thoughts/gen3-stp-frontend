@@ -7078,5 +7078,25 @@ const generation_3_moves = {
         "affected_by_mirror_move": true,
         "affected_by_kings_rock": true,
         "description": "Allows a full-power attack, but sharply lowers SP. ATK."
+    },
+    "Techno Blast": {
+        "rom_id": 355,
+        "move": "Techno Blast",
+        "type": "Normal",
+        "category": "Physical",
+        "pp": 5,
+        "power": 85,
+        "accuracy": 100,
+        "priority": 0,
+        "effect": "lower_self_special_attack_2",
+        "effect_chance": null,
+        "target": "Target Selected",
+        "makes_contact": false,
+        "affected_by_protect": true,
+        "affected_by_magic_coat": false,
+        "affected_by_snatch": false,
+        "affected_by_mirror_move": true,
+        "affected_by_kings_rock": true,
+        "description": "Allows a full-power attack, but sharply lowers SP. ATK."
     }
 }

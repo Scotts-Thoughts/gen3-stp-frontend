@@ -148,6 +148,7 @@ function type_effectiveness(pkmnData, moveNumber, enemyData) { //pkmnData = team
         var multiplier_stab    = 1
         var multiplier_type1   = move_info[defender_type1]
         var multiplier_type2   = 1
+        var burn_modifier      = 1
         var screen_reflect     = 1
         var screen_lightscreen = 1
         var held_item          = this.determineItemBoost(move_name)

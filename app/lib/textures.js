@@ -39,4 +39,6 @@ const textures = {
     'Mountain at Night': 'images\\textures\\Mountain at Night.jpg',
     'Dark Perspective' : 'images\\textures\\Dark Perspective.jpg',
     'Fireplace'        : 'images\\textures\\Fireplace.jpg',
+    'SciFi'            : 'images\\textures\\SciFi.jpg',
+    'SteelLab'         : 'images\\textures\\SteelLab.jpg',
 }
