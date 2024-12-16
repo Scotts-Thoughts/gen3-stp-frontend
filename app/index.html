@@ -171,6 +171,7 @@
                         <option disabled value="">Select a Hidden Power type</option>
                         <option v-for="key in values_function(hiddenPowerTypes)" :value="`${key}`">{{key}}</option>
                     </select><br>
+                    <div>HP: {{hp_ivs[hidden_power_type][0]}}, Atk: {{hp_ivs[hidden_power_type][1]}}, Def: {{hp_ivs[hidden_power_type][2]}}, Spe: {{hp_ivs[hidden_power_type][3]}}, SpA: {{hp_ivs[hidden_power_type][4]}}, SpD: {{hp_ivs[hidden_power_type][5]}}</div>
                     <br>
                     <table>
                         <tr><td>Evolution:</td><td><input class="checkBoxStyle" type="checkbox" v-model="evolution"/></td></tr>

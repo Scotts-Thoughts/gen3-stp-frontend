@@ -1553,7 +1553,7 @@ const app = Vue.createApp({
                 case "Base Stats": return `Base Stats`
                 case "IVs":        return `IVs`
                 case "EVs": {
-                    return `EVs`
+                    return `EVs (Lv:${this.mapper.properties.player.team[0].level.value})`
                 }
                 case "Detailed EVs": {
                     return `Detailed EVs`

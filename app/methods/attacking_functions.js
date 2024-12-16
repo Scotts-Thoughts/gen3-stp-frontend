@@ -13,6 +13,11 @@ function enemy_effective_power(move_name, enemy_mon, slot) {
         const move_data = this.generation_3_moves[move_name]
         if (move_data == undefined) { return }
         const move_type = move_data.type
+        if (this.starterString == "Shedinja") {
+            if (move_type != "Flying" && move_type != "Rock" && move_type != "Ghost" && move_type != "Fire" && move_type != "Dark") {
+                return 0
+            }
+        }
         const move_base_power = this.enemy_move_power(move_name) ?? move_data.power
         const move_category = move_data.category
         const user_type_1 = this.game.dexData[species]?.type_1
