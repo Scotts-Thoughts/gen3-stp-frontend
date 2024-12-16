@@ -575,7 +575,7 @@
                     <div key=3>
                         <div class="movepoolTitle">Splits</div>
                         <table class="splits_table" cellspacing="0">
-                            <tr>
+                            <tr :style="{'background-color': `var(--${ui_type_color_modifier}${typeHeaderColor?.toLowerCase()})`, 'outline': '1px solid #000', height: '10px'}">
                                 <td style="text-decoration: underline; font-size: 16px; width: 118px; text-align: left; padding-left: 3px;">Split</td>
                                 <td style="text-decoration: underline; font-size: 16px; width: 70px;  text-align: right;">{{previous_label}}</td>
                                 <td style="text-decoration: underline; font-size: 16px; width: 70px;  text-align: right;">{{current_label}}</td>
