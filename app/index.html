@@ -295,6 +295,7 @@
                         <tr><td>Show Nature Arrows:</td>    <td><input class="checkBoxStyle" type="checkbox" v-model="show_nature_changes"/></td></tr>
                         <tr><td>Badge Boosts:</td>          <td><input class="checkBoxStyle" type="checkbox" v-model="display_badge_boosts"/></td></tr>
                         <tr><td>Disable Panel Hotkeys:</td> <td><input class="checkBoxStyle" type="checkbox" v-model="disable_right_hotkeys"/></td></tr>
+                        <tr><td>Post-Battle Splits:</td>    <td><input class="checkBoxStyle" type="checkbox" v-model="automatic_post_battle_splits"/></td></tr>
                         <tr v-if="gameSelection == 'FireRed and LeafGreen'"><td>Repel Counter:</td><td><input class="checkBoxStyle" type="checkbox" v-model="repel_counter"/></td></tr>
                         <tr v-if="gameSelection == 'FireRed and LeafGreen'"><td>Vs. Seeker:</td>   <td><input class="checkBoxStyle" type="checkbox" v-model="vs_seeker"/></td></tr>
                         <br>
@@ -307,6 +308,16 @@
                     </table>
                     <button @click="copy_overlay_properties()" class="buttonStyle buttonStyle_column3">Copy Overlay Settings</button><br>
                     <br>
+                    <table>
+                        <tr>
+                            <td>Previous:</td>
+                            <td><input type="text" class="inputContainer" v-model="previous_label" placeholder="Previous"/></td>
+                        </tr>
+                        <tr>
+                            <td>Current:</td>
+                            <td><input type="text" class="inputContainer" v-model="current_label" placeholder="Current"/></td>
+                        </tr>
+                    </table>
                 </div>
             </div>
 
@@ -566,8 +577,8 @@
                         <table class="splits_table" cellspacing="0">
                             <tr>
                                 <td style="text-decoration: underline; font-size: 16px; width: 118px; text-align: left; padding-left: 3px;">Split</td>
-                                <td style="text-decoration: underline; font-size: 16px; width: 70px;  text-align: right;">Previous</td>
-                                <td style="text-decoration: underline; font-size: 16px; width: 70px;  text-align: right;">Current</td>
+                                <td style="text-decoration: underline; font-size: 16px; width: 70px;  text-align: right;">{{previous_label}}</td>
+                                <td style="text-decoration: underline; font-size: 16px; width: 70px;  text-align: right;">{{current_label}}</td>
                                 <td style="text-decoration: underline; font-size: 16px; width: 70px;  text-align: right; padding-right: 3px;">Diff</td>
                             </tr>
                             <tr v-for="split in compare_splits">

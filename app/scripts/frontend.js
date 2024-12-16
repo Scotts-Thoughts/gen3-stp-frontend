@@ -693,38 +693,39 @@ const app = Vue.createApp({
             disable_right_hotkeys: true,
 
             // USER CONFIG (components) ------------------------------------------------------------------------// 
-            graphicOverlay            : MyStorage['graphicOverlay'] ?? true,  //places a single image as the overlay  //MVP
-            gameArea                  : MyStorage['gameArea']       ?? false, //shows green box to place game in
-            pokeballFloor             : MyStorage['pokeballFloor']  ?? false, //shows floor for Pokemon to stand on
-            dynamicOverlay            : MyStorage['dynamicOverlay'] ?? false, //dynamically picks overlay graphics based on team slot 1
-            gametime                  : MyStorage['gametime']       ?? false, //shows gametime
-            pick                      : MyStorage['pick']           ?? true,
-            typeCalcs                 : MyStorage['typeCalcs']      ?? true,  //turns on type effectiveness calculations
-            moveset                   : MyStorage['moveset']        ?? true,  //includes the moveset area and dynamic PP  //MVP
-            dynamicPower              : MyStorage['dynamicPower']   ?? false, //dynamically calculates power based on type effectiveness
-            resets                    : MyStorage['resets']         ?? false, //includes the resets graphics
-            movepool                  : MyStorage['movepool']       ?? false, //includes the movepool graphic
-            inventory                 : MyStorage['inventory']      ?? false, //includes the inventory graphic when in marts
-            battleStats               : MyStorage['battleStats']    ?? false, //calculates stats with stage modifiers  //MVP
-            battleInfo                : MyStorage['battleInfo']     ?? false, //includes rightBar battle graphic
-            conditions                : MyStorage['conditions']     ?? false, //shows status conditions as pop ups
-            expBar                    : MyStorage['expBar']         ?? false, //includes a dynamic exp bar
-            splits                    : MyStorage['splits']         ?? false, //shows splits when a major battle is complete
-            tooltips                  : MyStorage['tooltips']       ?? false, //displays move tooltips when a new move is learned
-            btcInfo                   : MyStorage['btcInfo']        ?? false, //shows behind the scenes info in the game area
-            returnPower               : MyStorage['returnPower']    ?? true,  //dynamically calculates the power of Return
-            gamestate                 : MyStorage['gamestate']      ?? true,  //shows the current gamestate in the place of the timer
-            labels                    : MyStorage['labels']         ?? true,  //shows the current gamestate in the place of the timer
-            tutor_moves               : MyStorage['tutor_moves']    ?? false,
-            testStatus                : MyStorage['testStatus']     ?? false,
-            repel_counter             : MyStorage['repel_counter']  ?? true,
-            vs_seeker                 : MyStorage['vs_seeker']      ?? false,
-            collect_split_data        : MyStorage["collect_split_data"]         ?? true,
-            autosplitter_toggle       : MyStorage["autosplitter_toggle"]        ?? true,
-            showSpecialTrainerGraphics: MyStorage['showSpecialTrainerGraphics'] ?? true,
-            league_rematches          : MyStorage['league_rematches']           ?? false,
-            display_badge_boosts      : MyStorage['display_badge_boosts']       ?? true,
-            show_nature_changes       : MyStorage['show_nature_changes']        ?? true,
+            graphicOverlay               : MyStorage['graphicOverlay']               ?? true,  //places a single image as the overlay  //MVP
+            gameArea                     : MyStorage['gameArea']                     ?? false, //shows green box to place game in
+            pokeballFloor                : MyStorage['pokeballFloor']                ?? false, //shows floor for Pokemon to stand on
+            dynamicOverlay               : MyStorage['dynamicOverlay']               ?? false, //dynamically picks overlay graphics based on team slot 1
+            gametime                     : MyStorage['gametime']                     ?? false, //shows gametime
+            pick                         : MyStorage['pick']                         ?? true,
+            typeCalcs                    : MyStorage['typeCalcs']                    ?? true,  //turns on type effectiveness calculations
+            moveset                      : MyStorage['moveset']                      ?? true,  //includes the moveset area and dynamic PP  //MVP
+            dynamicPower                 : MyStorage['dynamicPower']                 ?? false, //dynamically calculates power based on type effectiveness
+            resets                       : MyStorage['resets']                       ?? false, //includes the resets graphics
+            movepool                     : MyStorage['movepool']                     ?? false, //includes the movepool graphic
+            inventory                    : MyStorage['inventory']                    ?? false, //includes the inventory graphic when in marts
+            battleStats                  : MyStorage['battleStats']                  ?? false, //calculates stats with stage modifiers  //MVP
+            battleInfo                   : MyStorage['battleInfo']                   ?? false, //includes rightBar battle graphic
+            conditions                   : MyStorage['conditions']                   ?? false, //shows status conditions as pop ups
+            expBar                       : MyStorage['expBar']                       ?? false, //includes a dynamic exp bar
+            splits                       : MyStorage['splits']                       ?? false, //shows splits when a major battle is complete
+            tooltips                     : MyStorage['tooltips']                     ?? false, //displays move tooltips when a new move is learned
+            btcInfo                      : MyStorage['btcInfo']                      ?? false, //shows behind the scenes info in the game area
+            returnPower                  : MyStorage['returnPower']                  ?? true,  //dynamically calculates the power of Return
+            gamestate                    : MyStorage['gamestate']                    ?? true,  //shows the current gamestate in the place of the timer
+            labels                       : MyStorage['labels']                       ?? true,  //shows the current gamestate in the place of the timer
+            tutor_moves                  : MyStorage['tutor_moves']                  ?? false,
+            testStatus                   : MyStorage['testStatus']                   ?? false,
+            repel_counter                : MyStorage['repel_counter']                ?? true,
+            vs_seeker                    : MyStorage['vs_seeker']                    ?? false,
+            collect_split_data           : MyStorage["collect_split_data"]           ?? true,
+            autosplitter_toggle          : MyStorage["autosplitter_toggle"]          ?? true,
+            showSpecialTrainerGraphics   : MyStorage['showSpecialTrainerGraphics']   ?? true,
+            league_rematches             : MyStorage['league_rematches']             ?? false,
+            display_badge_boosts         : MyStorage['display_badge_boosts']         ?? true,
+            show_nature_changes          : MyStorage['show_nature_changes']          ?? true,
+            automatic_post_battle_splits : MyStorage["automatic_post_battle_splits"] ?? false,
 
             badges: ["badge1", "badge2", "badge3", "badge4", "badge5", "badge6", "badge7", "badge8"],
             badgeBoosts: ["badge1", "badge3", "badge5", "badge7"],
@@ -827,6 +828,8 @@ const app = Vue.createApp({
             //LOOPS
             pkmnSlots: [0, 1, 2, 3, 4, 5],
             search_term: "",
+            previous_label:        MyStorage['this.previous_label']        ?? "Previous",
+            current_label:         MyStorage['this.current_label']         ?? "Current",
 
             //STATE MANAGEMENT ---------------------------------------------------------------------------------//
             gamestateLogging:     false,
@@ -900,6 +903,8 @@ const app = Vue.createApp({
                 "backgroundHue",
                 "evolution",
                 "evolution_splits_label",
+                "previous_label",
+                "current_label",
             ],
             //timer variables
             timer_startTimeOffset: MyStorage["timer_startTimeOffset"] ?? "00:00:00.00",
@@ -937,8 +942,6 @@ const app = Vue.createApp({
 
             previous_splits: MyStorage['previous_splits'] ?? [],
             current_splits:  MyStorage['current_splits']  ?? [],
-            // previous_splits: [],
-            // current_splits:  [],
 
             //movepool starting parameters. set to -1 if not initialized
             movepoolDefaultFontSize:        -1,
@@ -1054,6 +1057,8 @@ const app = Vue.createApp({
                 "previous_splits",
                 "current_splits",
                 "collect_split_data",
+                "disable_right_hotkeys",
+                "automatic_post_battle_splits",
             ],
 
             stats_toggle_settings: [
@@ -1330,6 +1335,18 @@ const app = Vue.createApp({
             this.pkmn_gender =            MyStorage[`${newValue}`]?.pkmn_gender       ?? "Female"
             this.movepoolResize();
         },
+        current_splits: {
+            handler: function (newVal, oldVal) {
+                MyStorage['current_splits'] = newVal
+            },
+            deep: true,
+        },
+        previous_splits: {
+            handler: function (newVal, oldVal) {
+                MyStorage['previous_splits'] = newVal
+            },
+            deep: true,
+        },
         ui_stat_arrangement(newValue) {
             if (newValue == 'Speed: bottom right') {
                 this.ui_stat_arrangement_modifier = "hp_spe_"
@@ -1360,7 +1377,7 @@ const app = Vue.createApp({
         //*Autosplitter
         //log the start of a battle
         g3stateVariable(newProp) {
-            // console.log(newProp)
+            console.log("G3StateVariable newProp: " + newProp)
             try {
                 var logStr = `Autosplitter - Battle Started: ${this.batt.trainer[this.game.opponent].value} started at ${this.timer_formatted_time[0]}${this.timer_formatted_time[1]} (Gametime: ${this.gametimeSplit})`
             }
@@ -1375,6 +1392,10 @@ const app = Vue.createApp({
                 this.battle_start = Date.now()
                 this.time_split_start = this.padTime(this.time_h) + ":" + this.padTime(this.time_m) + ":" + this.padTime(this.time_s) + "." + this.padTime(this.time_ms)
                 log_start()
+            }
+
+            if (newProp == "To Battle") {
+                this.right_panel = "Battle Graphic"
             }
         },
         hm_102_zigzagoon(newValue) {
@@ -2416,7 +2437,8 @@ const app = Vue.createApp({
             const timeOffset = timeOffsetArray[0] * 3600000 + timeOffsetArray[1] * 60000 + timeOffsetArray[2] * 1000 + timeOffsetArray[3] * 10;
 
             // this.current_splits = await this.load_temp_splits()
-            this.current_splits = []
+            this.compared_splits = []
+            this.current_splits  = []
 
             this.timer_pause = true
             this.timer_startTime = Date.now() - timeOffset
@@ -2555,6 +2577,9 @@ const app = Vue.createApp({
             console.log(this.evolution)
             this.copy_overlay_pokemon_from = MyStorage['copy_overlay_pokemon_from'] ?? ""
             this.copy_overlay_pokemon_to   = MyStorage['copy_overlay_pokemon_to']   ?? ""
+
+            this.current_splits  = MyStorage["current_splits"]  ?? []
+            this.previous_splits = MyStorage["previous_splits"] ?? []
         },
         reset() {
             this.backgroundBlur        = 0,
@@ -4292,6 +4317,11 @@ const app = Vue.createApp({
                 }
                 if(this.game.splits.includes(trainer) && !this.game.finalBattle.includes(trainer)) {
                     simpleSplit();
+                    if (this.automatic_post_battle_splits == true) {
+                        // this.battle_summary_header = `${this.capitalization_format(trainer)} Summary`
+                        this.right_panel = "Splits"
+                        // this.automatic_splits = true
+                    }
                 }
            
                 if (this.game.champion.includes(trainer)) {
@@ -4308,8 +4338,13 @@ const app = Vue.createApp({
                     if (this.testRun == false) {
                         this.finished_run_count++
                     };
+                    if (this.automatic_post_battle_splits == true) {
+                        // this.battle_summary_header = `${this.capitalization_format(trainer)} Summary`
+                        this.right_panel = "Splits"
+                        // this.automatic_splits = true
+                    }
                     this.log_split();
-                    
+
                     //use then so that logCopy doesn't touch any files until logData finishes
                     logData(gameName, this.simple_data_str, this.attempt_number, this.starterString, "Simple", this.testRun, this.scott_mode, this.evolution, this.evolution_splits_label)
                     .then(() => {
