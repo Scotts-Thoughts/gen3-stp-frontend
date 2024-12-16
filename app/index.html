@@ -65,7 +65,9 @@
                     <div class="gametimeClock">{{timer_formatted_time[0]}}</div>
                     <div class="gametimeFrames">{{timer_formatted_time[1]}}</div>
                 </div>
-                <div class="resetsTitle">resets</div>
+                <div v-if="blackout_counter === 0"                          class="resetsTitle">resets</div>
+                <div v-else-if="blackout_counter > 0 && playerResets === 0" class="blackoutsTitle">blackouts</div>
+                <div v-else-if="blackout_counter > 0 && playerResets != 0"  class="resetsTitle">faults</div>
             </div>
 <!--------- DEBUGGING ----------------------------------------------------------------------------------------------------------------->
             <div v-if="gamestate == true">
@@ -740,7 +742,9 @@
             </div>
             <!-- RESET COUNTER -->
             <div v-show="resetCounter == true" id="reset_counter" class="resets">
-                <div>{{playerResets}}</div>
+                <div v-if="blackout_counter === 0"                         >{{playerResets}}</div>
+                <div v-else-if="blackout_counter > 0 && playerResets === 0">{{blackout_counter}}</div>
+                <div v-else-if="blackout_counter > 0 && playerResets != 0" >{{playerResets + blackout_counter}}</div>
             </div>
         </div>
     </div>

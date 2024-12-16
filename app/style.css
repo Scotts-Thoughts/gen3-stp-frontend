@@ -579,6 +579,14 @@ body {
     padding-left: 25px;
     padding-top: 127px;
 }
+.blackoutsTitle {
+    position: absolute;
+    font-family: titan;
+    opacity: .7;
+    padding-left: 25px;
+    padding-top: 129px;
+    font-size: 13px;
+}
 .gametimeClock {
     font-size: 68px;
     display: block;
