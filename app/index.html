@@ -81,7 +81,13 @@
                     <br>
                     <div>Timer:</div>
                     <table>
-                        <tr><td>Autosplitter:</td><td><input class="checkBoxStyle" type="checkbox" v-model="autosplitter_toggle"/></td></tr>
+                        <tr>
+                            <td>Autosplitter:</td>
+                            <td><input class="checkBoxStyle" type="checkbox" v-model="autosplitter_toggle"/></td></tr>
+                        <tr>
+                            <td style="height: 24px;">Test Run:</td>
+                            <td style="height: 24px;"><input class="checkBoxStyle" type="checkbox" v-model="testStatus"/></td>
+                        </tr>
                         <tr v-if="gameSelection == 'FireRed and LeafGreen'"><td>League Rematches:</td><td><input class="checkBoxStyle" type="checkbox" v-model="league_rematches"/></td></tr>
                     </table>
                     <button @click="pauseUnpauseTime()" class="buttonStyle">Play/Pause</button>
@@ -144,10 +150,6 @@
                             <td>Faults:</td>
                             <td>{{playerResets + blackout_counter}}</td>
                         </tr>
-                        <tr>
-                            <td style="height: 24px;">Test Run:</td>
-                            <td style="height: 24px;"><input class="checkBoxStyle" type="checkbox" v-model="testStatus"/></td>
-                        </tr>
                     </table>
                     <br>
                     <div>Gender:</div>
@@ -173,7 +175,14 @@
                         <option disabled value="">Select a Hidden Power type</option>
                         <option v-for="key in values_function(hiddenPowerTypes)" :value="`${key}`">{{key}}</option>
                     </select><br>
-                    <div>HP: {{hp_ivs[hidden_power_type][0]}}, Atk: {{hp_ivs[hidden_power_type][1]}}, Def: {{hp_ivs[hidden_power_type][2]}}, Spe: {{hp_ivs[hidden_power_type][3]}}, SpA: {{hp_ivs[hidden_power_type][4]}}, SpD: {{hp_ivs[hidden_power_type][5]}}</div>
+                    <table>
+                        <tr><td>HP: </td><td>{{hp_ivs[hidden_power_type][0]}}</td></tr>
+                        <tr><td>Atk:</td><td>{{hp_ivs[hidden_power_type][1]}}</td></tr>
+                        <tr><td>Def:</td><td>{{hp_ivs[hidden_power_type][2]}}</td></tr>
+                        <tr><td>Spe:</td><td>{{hp_ivs[hidden_power_type][3]}}</td></tr>
+                        <tr><td>SpA:</td><td>{{hp_ivs[hidden_power_type][4]}}</td></tr>
+                        <tr><td>SpD:</td><td>{{hp_ivs[hidden_power_type][5]}}</td></tr>
+                    </table>
                     <br>
                     <table>
                         <tr><td>Evolution:</td><td><input class="checkBoxStyle" type="checkbox" v-model="evolution"/></td></tr>

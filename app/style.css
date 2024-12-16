@@ -353,7 +353,7 @@ body {
     pointer-events: auto; 
     position: relative; 
     width: 280px; 
-    height: 30px; 
+    height: 26px; 
     font-size: 18px; 
     background: #72fd4f; 
     font-family: Play;
@@ -386,15 +386,15 @@ body {
 .new_run_button {
     margin-top: 8px;
     margin-bottom: 8px;
-    font-size: 24px;
+    font-size: 21px;
     width: 210px; 
-    height: 35px;
+    height: 28px;
 }
 .comparison_button {
     margin-bottom: 8px;
-    font-size: 20px;
+    font-size: 18px;
     width: 210px; 
-    height: 33px;
+    height: 29px;
 }
 .buttonStyle:hover {
     background: #14d61a; 
