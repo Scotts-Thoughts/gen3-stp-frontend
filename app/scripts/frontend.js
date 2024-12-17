@@ -769,6 +769,7 @@ const app = Vue.createApp({
             split_trainers            : split_trainers,
             hiddenpower_type_selector : hiddenpower_type_selector,
             pokedex_indexes           : pokedex_indexes,
+            split_trainers_simple     : split_trainers_simple,
 
             trainerLists: {
                 "emeraldTrainers" : emeraldTrainers,
@@ -939,6 +940,7 @@ const app = Vue.createApp({
             deprecated_data_str: MyStorage["deprecated_data_str"] ?? "",
             simple_data:         MyStorage["simple_data"]         ?? "",
             testRun:             MyStorage['testRun']             ?? false,
+            show_wild_battles:   MyStorage['show_wild_battles']   ?? true,
 
             previous_splits: MyStorage['previous_splits'] ?? [],
             current_splits:  MyStorage['current_splits']  ?? [],
@@ -1059,6 +1061,7 @@ const app = Vue.createApp({
                 "collect_split_data",
                 "disable_right_hotkeys",
                 "automatic_post_battle_splits",
+                "show_wild_battles",
             ],
 
             stats_toggle_settings: [
@@ -1394,7 +1397,11 @@ const app = Vue.createApp({
                 log_start()
             }
 
-            if (newProp == "To Battle") {
+            if (newProp == "To Battle" && this.mapper.properties.battle.type.trainer.value == false && this.show_wild_battles == true) {
+                this.right_panel = "Wild"
+            }
+
+            if (newProp == "To Battle" && this.mapper.properties.battle.type.trainer.value == true) {
                 this.right_panel = "Battle Graphic"
             }
         },
@@ -1705,7 +1712,13 @@ const app = Vue.createApp({
                     ...data
                 }
             }
-
+            if (this.starterString == "Ditto") {
+                var data = this.dexData[this.starterString]
+                return {
+                    species: { value: data["name"] },
+                    ...data
+                }
+            }
             if (this.zigzagoon_check == true) {
                 var data = this.dexData[this.starterString]
                 return {
@@ -2933,6 +2946,9 @@ const app = Vue.createApp({
                 return "filter: drop-shadow(2px 2px 2px #000) saturate(1.1) grayscale(0%);"
             }
         },
+        enemyPkmnFaintWild() {
+            return "filter: drop-shadow(2px 2px 2px #000) saturate(1.1) grayscale(100%); opacity: .3;"
+        },
         enemyPkmnText(pkmnData) {
             if (this.g3stateVariable != `Battle` && this.g3stateVariable != `From Battle`) { return "opacity: 1" }
             if (pkmnData.hp == 0 || this.g3stateVariable == `From Battle`) {
@@ -3538,6 +3554,9 @@ const app = Vue.createApp({
             if (y != null && y != undefined && y.toUpperCase() == "WEATHER BALL" && this.g3stateVariable=="Battle") {
                 return `images/elements/type-icons/${this.weatherBallTypeCalc().toLowerCase()}.png`
             }
+            if (y === "Struggle") {
+                return `images/elements/type-icons/curse.png`
+            }
             else if (y != null && y != undefined) {
                 var move = this.gen3moves.find(x => x.Move.toLowerCase() === this.move_name(y).toLowerCase())
                 if(!move) {
@@ -3620,6 +3639,9 @@ const app = Vue.createApp({
               6: "1080px"
             };
             return `height: ${heights[totalPokemon]}; filter: saturate(${this.ui_saturation}) drop-shadow(0px 0px 1px #000000)`;
+        },
+        battlePokemonCropWild() {
+            return `height: 234px`
         },
         newGame() {
             // console.log("watching for new game")

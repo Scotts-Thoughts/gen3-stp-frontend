@@ -118,7 +118,7 @@ const gameVariables =
             "toBattle" : [134287637, 134282653, "Battle Animation"],
             "baseStats" : [135711589], //copied from emerald, what should this be??
             "reset" : ["Owners", 0],
-            "blackout" : [134570917],//test further //134570677 overworld after
+            "blackout" : [134570917, 134570949],//test further //134570677 overworld after
         },
     },
     "Emerald": {

@@ -1803,7 +1803,7 @@ body {
     border: 1px solid #ff000000;
 }
 .ui_style {
-    font-size: 15px;
+    font-size: 14px;
     position: fixed;
     line-height: 14px;
     text-transform: capitalize;
@@ -1838,7 +1838,7 @@ body {
 }
 .ui5 {
     left: 1072px;
-    top: 560px;
+    top: 500px;
     width: 470px;
     height: 250px;
 }
@@ -1851,8 +1851,8 @@ body {
     border-radius: 12px;
     padding-left: 4px;
     padding-right: 4px;
-    width: 24px;
-    height: 24px;
+    width: 18px;
+    height: 18px;
 }
 .smallButtonStyle2 {
     pointer-events: auto; 
@@ -1863,8 +1863,8 @@ body {
     border-radius: 12px;
     padding-left: 4px;
     padding-right: 4px;
-    width: 24px;
-    height: 24px;
+    width: 18px;
+    height: 18px;
 }
 .increment {
     background: #29c702;
