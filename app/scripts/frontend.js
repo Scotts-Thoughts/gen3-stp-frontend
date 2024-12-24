@@ -726,6 +726,8 @@ const app = Vue.createApp({
             display_badge_boosts         : MyStorage['display_badge_boosts']         ?? true,
             show_nature_changes          : MyStorage['show_nature_changes']          ?? true,
             automatic_post_battle_splits : MyStorage["automatic_post_battle_splits"] ?? false,
+            no_counters                  : MyStorage["no_counters"]                  ?? false,
+
 
             badges: ["badge1", "badge2", "badge3", "badge4", "badge5", "badge6", "badge7", "badge8"],
             badgeBoosts: ["badge1", "badge3", "badge5", "badge7"],
@@ -1062,6 +1064,7 @@ const app = Vue.createApp({
                 "disable_right_hotkeys",
                 "automatic_post_battle_splits",
                 "show_wild_battles",
+                "no_counters",
             ],
 
             stats_toggle_settings: [
@@ -1445,14 +1448,15 @@ const app = Vue.createApp({
             document.documentElement.style.setProperty('--overlay-color', newColor);
         }, 
         playerResets(newProp) {
-            if (newProp.toString().length == 1) {
+            const faults = newProp + this.blackout_counter
+            if (faults.toString().length == 1) {
                 document.getElementById("reset_counter").style.fontSize = "68px"
             }
-            if (newProp.toString().length == 3) {
-                document.getElementById("reset_counter").style.fontSize = "54px"
+            if (faults.toString().length == 3) {
+                document.getElementById("reset_counter").style.fontSize = "48px"
             }
-            if (newProp.toString().length == 4) {
-                document.getElementById("reset_counter").style.fontSize = "40px"
+            if (faults.toString().length == 4) {
+                document.getElementById("reset_counter").style.fontSize = "38px"
             }
             
             if (this.playerResets < 0) {
@@ -1462,6 +1466,17 @@ const app = Vue.createApp({
             MyStorage["playerResets"] = this.playerResets
         },
         blackout_counter(newProp) {
+            const faults = newProp + this.blackout_counter
+            if (faults.toString().length == 1) {
+                document.getElementById("reset_counter").style.fontSize = "68px"
+            }
+            if (faults.toString().length == 3) {
+                document.getElementById("reset_counter").style.fontSize = "48px"
+            }
+            if (faults.toString().length == 4) {
+                document.getElementById("reset_counter").style.fontSize = "38px"
+            }
+
             if (this.blackout_counter < 0) {
                 this.blackout_counter = 0;
             }
@@ -2158,9 +2173,9 @@ const app = Vue.createApp({
                 switch (stat_name) {
                     case "Hp":              return this.mapper.properties.player.team[0].maxHp.value
                     case "Attack":          return this.badge_boost(this.mapper.properties.player.badges.badge1.value, this.mapper.properties.player.team[0].attack.value)
-                    case "Defense":         return this.badge_boost(this.mapper.properties.player.badges.badge5.value, this.mapper.properties.player.team[0].defense.value)
+                    case "Defense":         return this.metal_powder("defense", this.badge_boost(this.mapper.properties.player.badges.badge5.value, this.mapper.properties.player.team[0].defense.value))
                     case "Special Attack":  return this.badge_boost(this.mapper.properties.player.badges.badge7.value, this.mapper.properties.player.team[0].specialAttack.value)
-                    case "Special Defense": return this.badge_boost(this.mapper.properties.player.badges.badge7.value, this.mapper.properties.player.team[0].specialDefense.value)
+                    case "Special Defense": return this.metal_powder("special_defense", this.badge_boost(this.mapper.properties.player.badges.badge7.value, this.mapper.properties.player.team[0].specialDefense.value))
                     case "Speed":           return this.badge_boost(this.mapper.properties.player.badges.badge3.value, this.mapper.properties.player.team[0].speed.value)
                 }
             }
@@ -2168,10 +2183,10 @@ const app = Vue.createApp({
                 switch (stat_name) {
                     case "Hp":              return this.mapper.properties.battle.yourPokemon.maxHp.value
                     case "Attack":          return this.ability(this.pkmn_ability, "attack",  this.badge_boost(this.mapper.properties.player.badges.badge1.value, this.stageMultiplier(this.mapper.properties.battle.yourPokemon.modStageAttack.value,  this.mapper.properties.battle.yourPokemon.attack.value)))
-                    case "Defense":         return this.ability(this.pkmn_ability, "defense", this.badge_boost(this.mapper.properties.player.badges.badge5.value, this.stageMultiplier(this.mapper.properties.battle.yourPokemon.modStageDefense.value, this.mapper.properties.battle.yourPokemon.defense.value)))
+                    case "Defense":         return this.metal_powder("defense", this.ability(this.pkmn_ability, "defense", this.badge_boost(this.mapper.properties.player.badges.badge5.value, this.stageMultiplier(this.mapper.properties.battle.yourPokemon.modStageDefense.value, this.mapper.properties.battle.yourPokemon.defense.value))))
                     case "Speed":           return this.macho_brace(this.ability(this.pkmn_ability, "speed",   this.badge_boost(this.mapper.properties.player.badges.badge3.value, this.stageMultiplier(this.mapper.properties.battle.yourPokemon.modStageSpeed.value,   this.mapper.properties.battle.yourPokemon.speed.value))))
                     case "Special Attack":  return this.badge_boost(this.mapper.properties.player.badges.badge7.value, this.stageMultiplier(this.mapper.properties.battle.yourPokemon.modStageSpecialAttack.value,  this.mapper.properties.battle.yourPokemon.specialAttack.value))
-                    case "Special Defense": return this.badge_boost(this.mapper.properties.player.badges.badge7.value, this.stageMultiplier(this.mapper.properties.battle.yourPokemon.modStageSpecialDefense.value, this.mapper.properties.battle.yourPokemon.specialDefense.value))
+                    case "Special Defense": return this.metal_powder("special_defense", this.badge_boost(this.mapper.properties.player.badges.badge7.value, this.stageMultiplier(this.mapper.properties.battle.yourPokemon.modStageSpecialDefense.value, this.mapper.properties.battle.yourPokemon.specialDefense.value)))
                 }
             }
             if (state == `Base Stats` || this.mapper.properties.player.team[0].species.value == null) {
@@ -2183,6 +2198,19 @@ const app = Vue.createApp({
                     case "Special Defense": return this.game.dexData[this.starterString].base_spc_def
                     case "Speed":           return this.game.dexData[this.starterString].base_spd
                 }
+            }
+        },
+        metal_powder(stat_name, stat) {
+            if (this.mapper.properties.player.team[0].itemHeld.value == 'METAL POWDER') {
+                if (stat_name === 'defense' || stat_name === 'special_defense' && (this.starterString === "Ditto" && this.s1dynamicReset.species.value === "Ditto")) {
+                    return Math.floor(stat * 1.5)
+                }
+                else {
+                    return stat
+                }
+            }
+            else {
+                return stat
             }
         },
         get_bb_stat(stat_name) {
@@ -3647,12 +3675,14 @@ const app = Vue.createApp({
             // console.log("watching for new game")
             // console.log(this.mapper.properties[this.game.newGameFlagContainer][this.game.newGameFlag])
             this.mapper.properties[this.game.newGameFlagContainer][this.game.newGameFlag].change((newProp, oldProp) => {
-                if(this.game.newGameValueNew.includes(newProp.value) && this.game.newGameValueOld.includes(oldProp.value)){
-                    console.log("new game started")
-                    if (!this.testRun) { this.attempt_number++ }
-                    this.hallOfFameReset = false;
-                    this.newRun();
-                    this.startTime();
+                if (!this.no_counters) {
+                    if(this.game.newGameValueNew.includes(newProp.value) && this.game.newGameValueOld.includes(oldProp.value)){
+                        console.log("new game started")
+                        if (!this.testRun && !this.no_counters) { this.attempt_number++ }
+                        this.hallOfFameReset = false;
+                        this.newRun();
+                        this.startTime();
+                    }
                 }
             })
         },
@@ -3855,6 +3885,16 @@ const app = Vue.createApp({
         // console.log("mapper set")
         this.updateTime()
         this.load_all_settings()
+        const faults = this.playerResets + this.blackout_counter
+        if (faults.toString().length == 1) {
+            document.getElementById("reset_counter").style.fontSize = "68px"
+        }
+        if (faults.toString().length == 3) {
+            document.getElementById("reset_counter").style.fontSize = "48px"
+        }
+        if (faults.toString().length == 4) {
+            document.getElementById("reset_counter").style.fontSize = "38px"
+        }
         for (var species of Object.keys(dexDataRubySapphireEmerald)) {
             var image = new Image();
             image.src = `images/pokemon/${species}.png`;
@@ -3940,11 +3980,15 @@ const app = Vue.createApp({
                     this.hallOfFameReset = false;
                 }
                 else {
-                    this.playerResets++;
+                    if (this.no_counters == false) {
+                        this.playerResets++;
+                    }
                 }
             }
             if(this.game.callback2.blackout.includes(newProp.value) /*&& !this.game.callback2.reset.includes(newProp.value)*/) {
-                this.blackout_counter++;
+                if (this.no_counters == false) {
+                    this.blackout_counter++;
+                }
             }
         });
 
@@ -4122,6 +4166,11 @@ const app = Vue.createApp({
                     await this.mapper.properties.player.team[0].personalityValue.set(personalityValue, false), 
                     await this.mapper.properties.player.team[0].ivEggAbilityBlock.set(iv_block, false), 
                 ])
+                if (this.gameSelection == 'FireRed and LeafGreen' && (this.starterString == 'Mew' || this.starterString == 'Celebi' || this.starterString == 'Jirachi' || this.starterString == 'Deoxys')) {
+                    await Promise.all([ 
+                        await this.mapper.properties.player.team[0].fateful_encounter.set(true, false), 
+                    ])
+                }
             }
         }
         
@@ -4357,7 +4406,7 @@ const app = Vue.createApp({
                             return
                     }
                     this.stopTime()
-                    if (this.testRun == false) {
+                    if (!this.testRun && !this.no_counters) {
                         this.finished_run_count++
                     };
                     if (this.automatic_post_battle_splits == true) {

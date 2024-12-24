@@ -1,4 +1,11 @@
 function move_name(move_string) { //converts move strings so that they are formatted correctly
+    function cap_form(str) {
+        if (str == null) { return "" }
+        return str.toLowerCase().replace(/(^|\s|\-|\.)(\w)/g, function(match, p1, p2) {
+            return p1 + p2.toUpperCase();
+        });
+    }
+    
     if (move_string != undefined) {
         if (move_string.toLowerCase() == "vicegrip")      { return "ViceGrip" }
         if (move_string.toLowerCase() == "vice grip")     { return "ViceGrip" }
@@ -29,10 +36,11 @@ function move_name(move_string) { //converts move strings so that they are forma
         if (move_string.toLowerCase() == "lock on")       { return "Lock-on" }
         if (move_string.toLowerCase() == "lock-on")       { return "Lock-on" }
         if (move_string.toLowerCase() == "will o wisp")   { return "Will-O-Wisp" }
+        if (move_string.toLowerCase() == "string shot")   { return "String Shot" }
 
-        else { return move_string }
+        else { return cap_form(move_string) }
     }
-    else { return move_string }
+    else { return cap_form(move_string) }
 }
 function camelCase(str) {
     if (!str || !str.toString()) { return '' }

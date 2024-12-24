@@ -3871,7 +3871,7 @@ const remakeTrainers = {
                 "spd": 28,
                 "held_item": null,
                 "moves": [
-                    "Thunder Shock",
+                    "Thundershock",
                     "Supersonic",
                     "SonicBoom",
                     "Thunder Wave"
@@ -3907,7 +3907,7 @@ const remakeTrainers = {
                 "held_item": null,
                 "moves": [
                     "Tackle",
-                    "Thunder Shock",
+                    "Thundershock",
                     "Supersonic",
                     "SonicBoom"
                 ],
@@ -3928,7 +3928,7 @@ const remakeTrainers = {
                 "held_item": null,
                 "moves": [
                     "Tackle",
-                    "Thunder Shock",
+                    "Thundershock",
                     "Supersonic",
                     "SonicBoom"
                 ],
@@ -3949,7 +3949,7 @@ const remakeTrainers = {
                 "held_item": null,
                 "moves": [
                     "Tackle",
-                    "Thunder Shock",
+                    "Thundershock",
                     "Supersonic",
                     "SonicBoom"
                 ],
@@ -4192,7 +4192,7 @@ const remakeTrainers = {
                 "held_item": null,
                 "moves": [
                     "Tackle",
-                    "Thunder Shock",
+                    "Thundershock",
                     "Supersonic",
                     "SonicBoom"
                 ],
@@ -6339,7 +6339,7 @@ const remakeTrainers = {
                 "spd": 77,
                 "held_item": null,
                 "moves": [
-                    "Thunder Shock",
+                    "Thundershock",
                     "Tail Whip",
                     "Quick Attack",
                     "Thunderbolt"
@@ -6495,7 +6495,7 @@ const remakeTrainers = {
                 "moves": [
                     "SonicBoom",
                     "Supersonic",
-                    "Thunder Shock",
+                    "Thundershock",
                     "Tackle"
                 ],
                 "ability": "Magnet Pull",
@@ -9190,7 +9190,7 @@ const remakeTrainers = {
                 "spd": 95,
                 "held_item": null,
                 "moves": [
-                    "Thunder Shock",
+                    "Thundershock",
                     "Tail Whip",
                     "Quick Attack",
                     "Thunderbolt"
@@ -11374,7 +11374,7 @@ const remakeTrainers = {
                 "spd": 45,
                 "held_item": null,
                 "moves": [
-                    "Thunder Shock",
+                    "Thundershock",
                     "Tail Whip",
                     "Quick Attack",
                     "Thunderbolt"
@@ -11430,7 +11430,7 @@ const remakeTrainers = {
                 "spd": 52,
                 "held_item": null,
                 "moves": [
-                    "Thunder Shock",
+                    "Thundershock",
                     "Tail Whip",
                     "Quick Attack",
                     "Thunderbolt"
@@ -11486,7 +11486,7 @@ const remakeTrainers = {
                 "spd": 78,
                 "held_item": null,
                 "moves": [
-                    "Thunder Shock",
+                    "Thundershock",
                     "Tail Whip",
                     "Quick Attack",
                     "Thunderbolt"
@@ -11521,7 +11521,7 @@ const remakeTrainers = {
                 "spd": 98,
                 "held_item": null,
                 "moves": [
-                    "Thunder Shock",
+                    "Thundershock",
                     "Tail Whip",
                     "Quick Attack",
                     "Thunderbolt"
@@ -11542,7 +11542,7 @@ const remakeTrainers = {
                 "spd": 88,
                 "held_item": null,
                 "moves": [
-                    "Thunder Shock",
+                    "Thundershock",
                     "Tail Whip",
                     "Quick Attack",
                     "Thunderbolt"
@@ -24669,7 +24669,7 @@ const remakeTrainers = {
                 "moves": [
                     "Metal Sound",
                     "Tackle",
-                    "Thunder Shock",
+                    "Thundershock",
                     "Supersonic"
                 ],
                 "ability": "Magnet Pull",
@@ -24818,7 +24818,7 @@ const remakeTrainers = {
                 "spd": 31,
                 "held_item": null,
                 "moves": [
-                    "Thunder Shock",
+                    "Thundershock",
                     "Supersonic",
                     "SonicBoom",
                     "Thunder Wave"
@@ -24875,7 +24875,7 @@ const remakeTrainers = {
                 "held_item": null,
                 "moves": [
                     "Tackle",
-                    "Thunder Shock",
+                    "Thundershock",
                     "Supersonic",
                     "SonicBoom"
                 ],
@@ -24896,7 +24896,7 @@ const remakeTrainers = {
                 "held_item": null,
                 "moves": [
                     "Tackle",
-                    "Thunder Shock",
+                    "Thundershock",
                     "Supersonic",
                     "SonicBoom"
                 ],
@@ -24938,7 +24938,7 @@ const remakeTrainers = {
                 "held_item": null,
                 "moves": [
                     "Tackle",
-                    "Thunder Shock",
+                    "Thundershock",
                     "Supersonic",
                     "SonicBoom"
                 ],
@@ -24972,7 +24972,7 @@ const remakeTrainers = {
                 "spd": 31,
                 "held_item": null,
                 "moves": [
-                    "Thunder Shock",
+                    "Thundershock",
                     "Supersonic",
                     "SonicBoom",
                     "Thunder Wave"
@@ -26327,7 +26327,7 @@ const remakeTrainers = {
                 "spd": 28,
                 "held_item": null,
                 "moves": [
-                    "Thunder Shock",
+                    "Thundershock",
                     "Supersonic",
                     "SonicBoom",
                     "Thunder Wave"
@@ -27200,7 +27200,7 @@ const remakeTrainers = {
                 "held_item": null,
                 "moves": [
                     "Tackle",
-                    "Thunder Shock",
+                    "Thundershock",
                     "Supersonic",
                     "SonicBoom"
                 ],
@@ -29793,7 +29793,7 @@ const remakeTrainers = {
                     "Thunder Wave",
                     "SonicBoom",
                     "Supersonic",
-                    "Thunder Shock"
+                    "Thundershock"
                 ],
                 "ability": "Magnet Pull",
                 "xp": 862,
@@ -29814,7 +29814,7 @@ const remakeTrainers = {
                     "Thunder Wave",
                     "SonicBoom",
                     "Supersonic",
-                    "Thunder Shock"
+                    "Thundershock"
                 ],
                 "ability": "Magnet Pull",
                 "xp": 475,
