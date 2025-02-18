@@ -35,6 +35,7 @@ function movePower(y) { //y = move1.value
             return specialMovePower
         }
         else if (y == "LOW KICK") {
+            if (this.g3stateVariable != "Battle") { return "-" }
             if (this.dexData[this.batt.enemyPokemon.species.value]?.weight < 10) { return 20 }
             if (this.dexData[this.batt.enemyPokemon.species.value]?.weight < 25) { return 40 }
             if (this.dexData[this.batt.enemyPokemon.species.value]?.weight < 50) { return 60 }

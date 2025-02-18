@@ -2148,8 +2148,8 @@ const pokedex_emerald = {
         ],
         "weight": 6.9,
         "evolution_family": [
-            {"species": "Arbok", "method": "level", "parameter": 22},
-            {"species": "Ekans", "method": null, "parameter": null}
+            {"species": "Ekans", "method": null, "parameter": null},
+            {"species": "Arbok", "method": null, "parameter": null}
         ]
     },
     "Arbok": {
@@ -2749,9 +2749,9 @@ const pokedex_emerald = {
         ],
         "weight": 7.0,
         "evolution_family": [
+            {"species": "NidoranF", "method": null, "parameter": null},
             {"species": "Nidorina", "method": "level", "parameter": 16},
-            {"species": "Nidoqueen", "method": null, "parameter": null},
-            {"species": "NidoranF", "method": null, "parameter": null}
+            {"species": "Nidoqueen", "method": null, "parameter": null}
         ]
     },
     "Nidorina": {
@@ -2845,9 +2845,9 @@ const pokedex_emerald = {
         "egg_moves": [],
         "weight": 20.0,
         "evolution_family": [
-            {"species": "Nidoqueen", "method": "item", "parameter": "Moon Stone"},
+            {"species": "NidoranF", "method": null, "parameter": null},
             {"species": "Nidorina", "method": null, "parameter": null},
-            {"species": "NidoranF", "method": null, "parameter": null}
+            {"species": "Nidoqueen", "method": "item", "parameter": "Moon Stone"}
         ]
     },
     "Nidoqueen": {
@@ -2959,9 +2959,9 @@ const pokedex_emerald = {
         "egg_moves": [],
         "weight": 60.0,
         "evolution_family": [
+            {"species": "NidoranF", "method": null, "parameter": null},
             {"species": "Nidorina", "method": null, "parameter": null},
-            {"species": "Nidoqueen", "method": null, "parameter": null},
-            {"species": "NidoranF", "method": null, "parameter": null}
+            {"species": "Nidoqueen", "method": null, "parameter": null}
         ]
     },
     "Nidoran_M": {

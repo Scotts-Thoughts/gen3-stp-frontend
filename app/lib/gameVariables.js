@@ -9,8 +9,8 @@ const gameVariables =
         "opponentId" : "opponentId",
         "newGameFlagContainer" : "pointers",
         "newGameFlag" : "callback2",
-        "newGameValueNew" : ["New Game", 135456953, 135456965],
-        "newGameValueOld" : ["Main Menu", 134267625, 134711521, 134267605, 134711553],
+        "newGameValueNew" : ["New Game", 135456953, 135456965, 135457077],
+        "newGameValueOld" : ["Main Menu", 134267625, 134711521, 134267605, 134711553, 134711657, 134267629],
         "trainerList" : "remakeTrainers",
         "opponentImageMap" : {
             "LEADER_BROCK": "images/trainers/LEADER_BROCK.png",

@@ -24,7 +24,6 @@
                     'filter': `blur(${backgroundBlur}px) hue-rotate(${backgroundHue}deg) brightness(${backgroundBrightness}%) contrast(${backgroundContrast}%) saturate(${backgroundSaturation}%)` ,
                     'transform': `scale(${backgroundScale}%) ${backgroundFlip ? 'rotateY(180deg)' : ''} translate(${backgroundXOffset}px, ${-backgroundYOffset}px)`
                 }"/>
-                <img v-if="frame == true" class="canvas" src="images/elements/overlay/gen1&2/frame.png" />
                 <img class="canvas" style="top: 30px;" :src="`images/elements/overlay/gen1&2/pokeball.png`" />
                 <div v-if="starterString == 'Ditto'">
                     <img class="pokemon_art" ref="pokemon_art"
@@ -271,19 +270,6 @@
                     </table>
                 </div>
                 <div class="ui_style ui4 ui_border">
-                    <div>Bulbapedia Colors:</div>
-                    <select v-model="ui_type_colors" class="dropdownMenu dropdown_menu_column3">
-                        <option>Current</option>
-                        <option>Legacy</option>
-                        <option>Legacy Stats & Current Type</option>
-                    </select>
-                    <br><br>
-                    <div>Stat Arrangement:</div>
-                    <select v-model="ui_stat_arrangement" class="dropdownMenu dropdown_menu_column3">
-                        <option>Speed: bottom right</option>
-                        <option>Speed: top right</option>
-                    </select><br>
-                    <br>
                     Stats:<br>
                     <select v-model="stats" class="dropdownMenu dropdown_menu_column3">
                         <option>Automatic</option>
@@ -310,7 +296,6 @@
                     <br>
                     <table>
                         <tr>Toggles:</tr>
-                        <tr><td>Frame:</td>                 <td><input class="checkBoxStyle" type="checkbox" v-model="frame"/></td></tr>
                         <tr><td>Automatic IVs:</td>         <td><input class="checkBoxStyle" type="checkbox" v-model="automatic_ivs"/></td></tr>
                         <tr><td>Automatic EVs:</td>         <td><input class="checkBoxStyle" type="checkbox" v-model="automatic_evs"/></td></tr>
                         <tr><td>Show Tutor Moves:</td>      <td><input class="checkBoxStyle" type="checkbox" v-model="tutor_moves"/></td></tr>
@@ -456,14 +441,14 @@
             <div class="movesetLabel movesetLabelColumn9">acc.</div>
             <div class="movesetLabel movesetLabelColumn10">pp</div>
             <div v-show="moveset == true" id="moveset">
-                <div v-if="g3stateVariable != 'Base Stats' && mapper.properties.player.teamCount.value > 0 && mapper.properties.player.team[0].move1pp.value === 0 && mapper.properties.player.team[0].move2pp.value === 0 && mapper.properties.player.team[0].move3pp.value === 0 && mapper.properties.player.team[0].move4pp.value === 0">
+                <div v-if="g3stateVariable != 'Base Stats' && mapper.properties.player.teamCount.value > 0 && mapper.properties.player.teamCount.value < 10 && mapper.properties.player.team[0].move1pp.value === 0 && mapper.properties.player.team[0].move2pp.value === 0 && mapper.properties.player.team[0].move3pp.value === 0 && mapper.properties.player.team[0].move4pp.value === 0">
                     <div :class="`movesetFontSize moveStyle move1`">Struggle</div>
                     <div :class="`movesetSmallFontSize movePowerStyle movesetFontSize move1power`">50</div>
                     <div :class="`movesetSmallFontSize moveAccuracyStyle movesetFontSize move1acc`">{{ moveAccuracyDynamic("Struggle") }}<span class="movesetPercentage">%</span></div>
                     <div :class="`movesetSmallFontSize movePPStyle movesetFontSize move1pp`">-</div>
                     <img :class="`movesetFontSize move1icon`" src="images/elements/type-icons/curse.png" />
                 </div>
-                <div v-else-if="g3stateVariable == 'Battle' && mapper.properties.player.teamCount.value > 0 && mapper.properties.battle.yourPokemon.move1pp.value === 0 && mapper.properties.battle.yourPokemon.move2pp.value === 0 && mapper.properties.battle.yourPokemon.move3pp.value === 0 && mapper.properties.battle.yourPokemon.move4pp.value === 0">
+                <div v-else-if="g3stateVariable == 'Battle' && mapper.properties.player.teamCount.value > 0 && mapper.properties.player.teamCount.value < 10 && mapper.properties.battle.yourPokemon.move1pp.value === 0 && mapper.properties.battle.yourPokemon.move2pp.value === 0 && mapper.properties.battle.yourPokemon.move3pp.value === 0 && mapper.properties.battle.yourPokemon.move4pp.value === 0">
                     <div :class="`movesetFontSize moveStyle move1`">Struggle</div>
                     <div :class="`movesetSmallFontSize movePowerStyle movesetFontSize move1power`">50</div>
                     <div :class="`movesetSmallFontSize moveAccuracyStyle movesetFontSize move1acc`">{{ moveAccuracyDynamic("Struggle") }}<span class="movesetPercentage">%</span></div>
@@ -611,12 +596,12 @@
                                 <td style="text-decoration: underline; font-size: 16px; width: 70px;  text-align: right;">Max Lv:</td>
                                 <td style="text-decoration: underline; font-size: 16px; width: 70px;  text-align: right; padding-right: 3px;">Chance</td>
                             </tr>
-                            <tr v-for="">
+                            <!-- <tr v-for="">
                                 <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                            </tr>
+                            </tr> -->
                         </table>
                     </div>
                 </div>

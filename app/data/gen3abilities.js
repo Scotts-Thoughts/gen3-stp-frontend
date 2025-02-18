@@ -14,6 +14,7 @@ const gen3abilities =
         "Oblivious":	"Prevents the Pokémon from becoming infatuated.",
         "Cloud Nine":	"Eliminates the effects of weather.",
         "Compoundeyes":	"The Pokémon’s accuracy is boosted.",
+        "Compound Eyes": "The Pokémon’s accuracy is boosted.",
         "Insomnia":	    "Prevents the Pokémon from falling asleep.",
         "Color Change":	"Changes the Pokémon’s type to the foe’s move.",
         "Immunity":	    "Prevents the Pokémon from getting poisoned.",

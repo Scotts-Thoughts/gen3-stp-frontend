@@ -861,7 +861,6 @@ const app = Vue.createApp({
             imageRotation: MyStorage["imageRotation"] ?? 0,
 
             //background texture settings
-            frame:                 MyStorage["frame"]                 ?? true, //shows overlay frame
             backgroundBlur:        MyStorage["backgroundBlur"]        ?? 0,
             backgroundScale:       MyStorage["backgroundScale"]       ?? 100,
             backgroundUrl:         MyStorage["backgroundUrl"]         ?? "",
@@ -877,7 +876,6 @@ const app = Vue.createApp({
 
             //backed up pokemon specific settings
             pokemon_settings: [
-                "frame",
                 "overlay_color",
                 "imageXOffset",
                 "imageYOffset",
@@ -3675,10 +3673,10 @@ const app = Vue.createApp({
             // console.log("watching for new game")
             // console.log(this.mapper.properties[this.game.newGameFlagContainer][this.game.newGameFlag])
             this.mapper.properties[this.game.newGameFlagContainer][this.game.newGameFlag].change((newProp, oldProp) => {
-                if (!this.no_counters) {
+                if (this.no_counters == false) {
                     if(this.game.newGameValueNew.includes(newProp.value) && this.game.newGameValueOld.includes(oldProp.value)){
                         console.log("new game started")
-                        if (!this.testRun && !this.no_counters) { this.attempt_number++ }
+                        if (!this.testRun && this.no_counters == false) { this.attempt_number++ }
                         this.hallOfFameReset = false;
                         this.newRun();
                         this.startTime();
@@ -4141,21 +4139,21 @@ const app = Vue.createApp({
                 iv_block = iv_block - 2147483648;
             }
             //the odd/evenness may need to be flipped according to the selected ability
-            //if this were going to break, it would probably be when evolving
-            if((personalityValue % 2 == 0 && this.pkmn_ability == this.game.dexData[this.starterString].abilities[1]) ||
+            //this is very important to ensure evolutions do not have their abilities swapped
+            if ((personalityValue % 2 == 0 && this.pkmn_ability == this.game.dexData[this.starterString].abilities[1]) ||
             (personalityValue % 2 == 1 && this.pkmn_ability == this.game.dexData[this.starterString].abilities[0])) {
                 //these checks are trying to flip the odd/even by adding an odd number multiple of 25
                 //in order to not disturb the nature calc. It's trying to maintain the gender calc too.
-                if(personalityValue % 256 <= 11 && this.pkmn_gender != "Male") {
+                if (personalityValue % 256 <= 11 && this.pkmn_gender != "Male") {
                     personalityValue += 275; //adding 275 won't make the modulo exceed 31
                 }
-                if(personalityValue % 256 > 11 && this.pkmn_gender != "Male") {
+                else if (personalityValue % 256 > 11 && this.pkmn_gender != "Male") {
                     personalityValue += 1525; //1525 keeps the modulo between 0 and 31
                 }
-                if(personalityValue % 256 <= 236 && this.pkmn_gender == "Male") {
+                else if (personalityValue % 256 <= 236 && this.pkmn_gender == "Male") {
                     personalityValue += 275; //adding 275 keeps the modulo between 225 and 255
                 }
-                if(personalityValue % 256 > 236 && this.pkmn_gender == "Male") {
+                else if (personalityValue % 256 > 236 && this.pkmn_gender == "Male") {
                     personalityValue += 1525; //1525 keeps the modulo between 225 and 255
                 }
             }
