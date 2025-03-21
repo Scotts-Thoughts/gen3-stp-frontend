@@ -120,6 +120,22 @@
                     <br>
                     <button v-if="gameSelection == 'FireRed and LeafGreen'" class="buttonStyle" @click="toggle_national_dex">Toggle National Pokedex</button><br>
                     <button v-if="gameSelection == 'FireRed and LeafGreen'" class="buttonStyle" @click="toggle_pokedex">Toggle Pokedex</button><br>
+                    <div>Moveset Updating:</div>
+                    <input type="text" v-model="move1_replacement" placeholder="Input move 1">
+                    <input type="text" v-model="move2_replacement" placeholder="Input move 2">
+                    <input type="text" v-model="move3_replacement" placeholder="Input move 3">
+                    <input type="text" v-model="move4_replacement" placeholder="Input move 4">
+                    <button class="buttonStyle buttonStyle_column3" @click="update_moveset">Update Party Moves</button>
+                    <button class="buttonStyle buttonStyle_column3" @click="update_battle_moveset">Update Battle Moves</button>
+                    <br>
+                    <br>
+                    <div>Item Updating:</div>
+                    <input type="text" v-model="item1_replacement" placeholder="Input item 1">
+                    <input type="text" v-model="item2_replacement" placeholder="Input item 2">
+                    <input type="text" v-model="item3_replacement" placeholder="Input item 3">
+                    <input type="text" v-model="item4_replacement" placeholder="Input item 4">
+                    <button class="buttonStyle buttonStyle_column3" @click="update_items">Update</button>
+                    <br>
                     <br>
                     <div style="font-size: 20px;">Debugging:</div>
                     <br>
@@ -976,6 +992,7 @@
     <script src="lib/default_colors.js"></script>
     <script src="lib/hp_ivs.js"></script>
     <script src="lib/split_trainers_simple.js"></script>
+    <script src="lib/cross_generation_moves.js"></script>
 
     <script src="data/autosplitter.js"></script>
     <script src="data/generation_3_moves.js"></script>
