@@ -109,6 +109,10 @@
                             <td style="height: 24px;">No counters</td>
                             <td style="height: 24px;"><input class="checkBoxStyle" type="checkbox" v-model="no_counters"/></td>
                         </tr>
+                        <tr>
+                            <td style="height: 24px;">Legacy State (for old repplays)</td>
+                            <td style="height: 24px;"><input class="checkBoxStyle" type="checkbox" v-model="legacy_state"/></td>
+                        </tr>
                         <tr v-if="gameSelection == 'FireRed and LeafGreen'"><td>League Rematches:</td><td><input class="checkBoxStyle" type="checkbox" v-model="league_rematches"/></td></tr>
                     </table>
                     <button @click="pauseUnpauseTime()" class="buttonStyle">Play/Pause</button>

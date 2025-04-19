@@ -220,14 +220,14 @@ const gameVariables =
         },
         "starterLocation" : ["ROUTE 101"],
         "callback1" : {
-            "overworld" : [134765285, "Overworld", 134765313, 134765525],
-            "toBattle" : [134455025,"Battle", 134765601]
+            "overworld" : [134765285, "Overworld", 134765313, 134765525, "CB1_Overworld"],
+            "toBattle" : [134455025,"Battle", 134765601, "BattleMainCB1"]
         },
         "callback2" : {
-            "toBattle" : [134765389, 134442925, "Battle Animation",134448161,"Battle", 134765601],
-            "baseStats" : [135711589],
-            "reset" : ["Owners",0],
-            "blackout" : [134765653],
+            "toBattle" : [134765389, 134442925, "Battle Animation",134448161,"Battle", 134765601, "CB2_InitBattle"],
+            "baseStats" : [135711589, "CB2_InitCopyrightScreenAfterBootup"],
+            "reset" : ["Owners",0,"CB2_InitCopyrightScreenAfterTitleScreen"],
+            "blackout" : [134765653,"CB2_WhiteOut"],
         },
     },
     "Ruby and Sapphire": {

@@ -668,6 +668,7 @@ const app = Vue.createApp({
             mapper       : null,
             scott_mode   : true,
             gameVariables: null,
+            legacy_state : false,
             // game: null,
             // POKEMON CONFIG (components) ---------------------------------------------------------------------//
             starterString         : "Beedrill",
@@ -3985,101 +3986,173 @@ const app = Vue.createApp({
         this.newGame();
         //GAMESTATE MANAGEMENT
         // set initial gamestate value when the layout is loaded
-        if (this.mapper.properties.player.team[0].level.value == 0) 
-            this.g3stateVariable = "Base Stats"
-        else if (this.mapper.properties.pointers.callback1.value == 0 || this.mapper.properties.pointers.callback1.value == null)
-            this.g3stateVariable = "Base Stats"
-        else if (this.game.callback1.overworld.includes(this.mapper.properties.pointers.callback1.value))
-            this.g3stateVariable = "Overworld"
-        else if (this.game.callback1.toBattle.includes(this.mapper.properties.pointers.callback1.value)) {
-            if (this.game.callback2.toBattle.includes(this.mapper.properties.pointers.callback2.value) && this.mapper.properties.battle.turnInfo.battleDialogue.value == null) {
-                this.g3stateVariable = "To Battle"
+        if (this.legacy_state == true) {
+            if (this.mapper.properties.player.team[0].level.value == 0) {
+                this.g3stateVariable = "Base Stats"
+            }
+            else if (this.mapper.properties.pointers.callback1.value == 0 || this.mapper.properties.pointers.callback1.value == null) {
+                this.g3stateVariable = "Base Stats"
+            }
+            else if (this.game.callback1.overworld.includes(this.mapper.properties.pointers.callback1.value)) {
+                this.g3stateVariable = "Overworld"
+            }
+            else if (this.game.callback1.toBattle.includes(this.mapper.properties.pointers.callback1.value)) {
+                if (this.game.callback2.toBattle.includes(this.mapper.properties.pointers.callback2.value) && this.mapper.properties.battle.turnInfo.battleDialogue.value == null) {
+                    this.g3stateVariable = "To Battle"
+                }
+                else {
+                    this.g3stateVariable = "Battle"
+                }
+            }
+            else 
+                this.g3stateVariable = "Battle"
+    
+            // wait for events to change the state
+            this.mapper.properties.pointers.callback1.change((prop) => {
+                if ((this.game.callback1.overworld.includes(prop.value))) {
+                    this.g3stateVariable = "Overworld"
+                }
+            });
+            this.mapper.properties.battle.turnInfo.battleDialogue.change((prop) => {
+                if(prop == " " || prop == null || prop == undefined ) {
+                    return;
+                }
+                if (prop.value == "Player Control" || prop.bytes == 6) { 
+                    this.g3stateVariable = "Battle"
+                }
+            });
+            this.mapper.properties.battle.turnInfo.battleOutcome.change((prop) => {
+                let endConditions = ["WON", "LOST", "DRAW", "RAN", "CAUGHT", "PLAYER_TELEPORTED", "POKEMON_FLED", "NO_SAFARI_BALLS", "FORFEITED", "POKEMON_TELEPORTED",1,2,3,4,5,6,7,8,9,10];
+                if (endConditions.includes(prop.value)) { this.g3stateVariable = "From Battle"}
+                if (prop.value == "WON")                { this.g3stateVariable = "From Battle"}
+                if (prop.value == "LOST")               { this.g3stateVariable = "From Battle"}
+                if (prop.value == "DRAW")               { this.g3stateVariable = "From Battle"}
+                if (prop.value == "RAN")                { this.g3stateVariable = "From Battle"}
+                if (prop.value == "CAUGHT")             { this.g3stateVariable = "From Battle"}
+                if (prop.value == "PLAYER_TELEPORTED")  { this.g3stateVariable = "From Battle"}
+                if (prop.value == "POKEMON_FLED")       { this.g3stateVariable = "From Battle"}
+                if (prop.value == "NO_SAFARI_BALLS")    { this.g3stateVariable = "From Battle"}
+                if (prop.value == "FORFEITED")          { this.g3stateVariable = "From Battle"}
+                if (prop.value == "POKEMON_TELEPORTED") { this.g3stateVariable = "From Battle"}
+            });
+            this.mapper.properties.pointers.callback2.change((prop) => {
+                if (this.game.callback2.baseStats.includes(prop.value)) { 
+                    this.g3stateVariable = "Base Stats"
+                }
+                else if (this.game.callback2.toBattle.includes(prop.value) && this.g3stateVariable != "Battle") { 
+                    this.g3stateVariable = "To Battle"
+                }
+            });
+            this.mapper.properties.player.team[0].personalityValue.change((prop) => {
+                if (prop.value == 0) {
+                    this.g3stateVariable = "Base Stats"
+                }
+            });
+            //track resets
+            //callback2 seems more reliable to track than dma1 in firered no encryption
+            this.mapper.properties.pointers.callback2.change((newProp, oldProp) => {
+                if(this.game.callback2.reset.includes(newProp.value) /*&& !this.game.callback2.reset.includes(newProp.value)*/) {
+                    if (this.hallOfFameReset == true) {
+                        this.hallOfFameReset = false;
+                    }
+                    else {
+                        if (this.no_counters == false) {
+                            this.playerResets++;
+                        }
+                    }
+                }
+                if(this.game.callback2.blackout.includes(newProp.value) /*&& !this.game.callback2.reset.includes(newProp.value)*/) {
+                    if (this.no_counters == false) {
+                        this.blackout_counter++;
+                    }
+                }
+            });
+        }
+        else {
+            if (this.mapper.properties.player.team[0].level.value == 0) {
+                this.g3stateVariable = "Base Stats"
+            }
+            else if (this.mapper.properties.pointers.sStpCallback1.value == null) {
+                this.g3stateVariable = "Base Stats"
+            }
+            else if (this.game.callback1.overworld.includes(this.mapper.properties.pointers.sStpCallback1.value)) {
+                this.g3stateVariable = "Overworld"
+            }
+            else if (this.game.callback1.toBattle.includes(this.mapper.properties.pointers.sStpCallback1.value)) {
+                if (this.game.callback2.toBattle.includes(this.mapper.properties.pointers.sStpCallback2.value) && this.mapper.properties.battle.turnInfo.battleDialogue.value == null) {
+                    this.g3stateVariable = "To Battle"
+                }
+                else {
+                    this.g3stateVariable = "Battle"
+                }
             }
             else {
                 this.g3stateVariable = "Battle"
             }
-        }
-        else 
-            this.g3stateVariable = "Battle"
-
-        // wait for events to change the state
-        this.mapper.properties.pointers.callback1.change((prop) => {
-            if (this.game.callback1.overworld.includes(prop.value)) {
-                this.g3stateVariable = "Overworld"
-            }
-        });
-
-        this.mapper.properties.battle.turnInfo.battleDialogue.change((prop) => {
-            if(prop == " " || prop == null || prop == undefined ) {
-                return;
-            }
-            if (prop.value == "Player Control" || prop.bytes == 6) { 
-                this.g3stateVariable = "Battle"
-            }
-        });
-
-        this.mapper.properties.battle.turnInfo.battleOutcome.change((prop) => {
-            let endConditions = ["WON", "LOST", "DRAW", "RAN", "CAUGHT",
-                 "PLAYER_TELEPORTED", "POKEMON_FLED", "NO_SAFARI_BALLS", "FORFEITED", "POKEMON_TELEPORTED",1,2,3,4,5,6,7,8,9,10];
-            if (endConditions.includes(prop.value)) {this.g3stateVariable = "From Battle"}
-            if (prop.value == "WON") { this.g3stateVariable = "From Battle"}
-            if (prop.value == "LOST") { this.g3stateVariable = "From Battle"}
-            if (prop.value == "DRAW") { this.g3stateVariable = "From Battle"}
-            if (prop.value == "RAN") { this.g3stateVariable = "From Battle"}
-            if (prop.value == "CAUGHT") { this.g3stateVariable = "From Battle"}
-            if (prop.value == "PLAYER_TELEPORTED") { this.g3stateVariable = "From Battle"}
-            if (prop.value == "POKEMON_FLED") { this.g3stateVariable = "From Battle"}
-            if (prop.value == "NO_SAFARI_BALLS") { this.g3stateVariable = "From Battle"}
-            if (prop.value == "FORFEITED") { this.g3stateVariable = "From Battle"}
-            if (prop.value == "POKEMON_TELEPORTED") { this.g3stateVariable = "From Battle"}
-        });
-
-        this.mapper.properties.pointers.callback2.change((prop) => {
-            if (this.game.callback2.baseStats.includes(prop.value)) { 
-                this.g3stateVariable = "Base Stats"
-            }
-            else if (this.game.callback2.toBattle.includes(prop.value) && this.g3stateVariable != "Battle") { 
-                this.g3stateVariable = "To Battle"
-            }
-        });
-
-        this.mapper.properties.player.team[0].personalityValue.change((prop) => {
-            if (prop.value == 0) {
-                this.g3stateVariable = "Base Stats"
-            }
-        });
-
-        //track resets
-        //callback2 seems more reliable to track than dma1 in firered no encryption
-        this.mapper.properties.pointers.callback2.change((newProp, oldProp) => {
-            // console.log(newProp.value,oldProp.value);
-            // console.log("array: " + this.game.callback2.reset)
-            // console.log("includes: "+ this.game.callback2.reset.includes(newProp.value)+ " old : " + this.game.callback2.reset.includes(newProp.value));
-            
-            if(this.game.callback2.reset.includes(newProp.value) /*&& !this.game.callback2.reset.includes(newProp.value)*/) {
-                if (this.hallOfFameReset == true) {
-                    this.hallOfFameReset = false;
+    
+            // wait for events to change the state
+            this.mapper.properties.pointers.sStpCallback1.change((prop) => {
+                if ((this.game.callback1.overworld.includes(prop.value))) {
+                    this.g3stateVariable = "Overworld"
                 }
-                else {
-                    if (this.no_counters == false) {
-                        this.playerResets++;
+            });
+            this.mapper.properties.battle.turnInfo.battleDialogue.change((prop) => {
+                if(prop == " " || prop == null || prop == undefined ) {
+                    return;
+                }
+                if (prop.value == "Player Control" || prop.bytes == 6) { 
+                    this.g3stateVariable = "Battle"
+                }
+            });
+            this.mapper.properties.battle.turnInfo.battleOutcome.change((prop) => {
+                let endConditions = ["WON", "LOST", "DRAW", "RAN", "CAUGHT", "PLAYER_TELEPORTED", "POKEMON_FLED", "NO_SAFARI_BALLS", "FORFEITED", "POKEMON_TELEPORTED",1,2,3,4,5,6,7,8,9,10];
+                if (endConditions.includes(prop.value)) { this.g3stateVariable = "From Battle"}
+                if (prop.value == "WON")                { this.g3stateVariable = "From Battle"}
+                if (prop.value == "LOST")               { this.g3stateVariable = "From Battle"}
+                if (prop.value == "DRAW")               { this.g3stateVariable = "From Battle"}
+                if (prop.value == "RAN")                { this.g3stateVariable = "From Battle"}
+                if (prop.value == "CAUGHT")             { this.g3stateVariable = "From Battle"}
+                if (prop.value == "PLAYER_TELEPORTED")  { this.g3stateVariable = "From Battle"}
+                if (prop.value == "POKEMON_FLED")       { this.g3stateVariable = "From Battle"}
+                if (prop.value == "NO_SAFARI_BALLS")    { this.g3stateVariable = "From Battle"}
+                if (prop.value == "FORFEITED")          { this.g3stateVariable = "From Battle"}
+                if (prop.value == "POKEMON_TELEPORTED") { this.g3stateVariable = "From Battle"}
+            });
+            this.mapper.properties.pointers.sStpCallback2.change((prop) => {
+                if (this.game.callback2.baseStats.includes(prop.value)) { 
+                    this.g3stateVariable = "Base Stats"
+                }
+                else if (this.game.callback2.toBattle.includes(prop.value) && this.g3stateVariable != "Battle") { 
+                    this.g3stateVariable = "To Battle"
+                }
+            });
+            this.mapper.properties.player.team[0].personalityValue.change((prop) => {
+                if (prop.value == 0) {
+                    this.g3stateVariable = "Base Stats"
+                }
+            });
+            //track resets
+            //callback2 seems more reliable to track than dma1 in firered no encryption
+            this.mapper.properties.pointers.sStpCallback2.change((newProp, oldProp) => {
+                if(this.game.callback2.reset.includes(newProp.value) /*&& !this.game.callback2.reset.includes(newProp.value)*/) {
+                    if (this.hallOfFameReset == true) {
+                        this.hallOfFameReset = false;
+                    }
+                    else {
+                        if (this.no_counters == false) {
+                            this.playerResets++;
+                        }
                     }
                 }
-            }
-            if(this.game.callback2.blackout.includes(newProp.value) /*&& !this.game.callback2.reset.includes(newProp.value)*/) {
-                if (this.no_counters == false) {
-                    this.blackout_counter++;
+                if(this.game.callback2.blackout.includes(newProp.value) /*&& !this.game.callback2.reset.includes(newProp.value)*/) {
+                    if (this.no_counters == false) {
+                        this.blackout_counter++;
+                    }
                 }
-            }
-        });
+            });
+        }
 
-        //ENEMY STATE
         //ENEMY STATE MANAGER
-        //"Pokemon", "Fainted"
-        // this.mapper.properties.battle.enemyPokemon.partyPos.change(async (newProp, oldProp) => {
-        //     await this.sleep(100)
-        //     this.enemyState = "Pokemon"
-        // })
         if (this.mapper.properties.player.team[0].level.value == 0 || this.g3stateVariable == 'Overworld') 
             this.enemyState = "Not In Battle";
         else if (this.mapper.properties.battle.turnInfo.battleDialogue.value ==  6 ||this.mapper.properties.battle.turnInfo.battleDialogue.bytes ==  6)
@@ -4098,6 +4171,7 @@ const app = Vue.createApp({
                 this.enemyState = "Battle Starting"
             }
         });
+
         this.mapper.properties.battle.turnInfo.battleDialogue.change((prop) => {
             if ((prop.value == `Player Control` || prop.value == 6) && this.enemyState == "Battle Starting") {
                 this.enemyState = "Pokemon";
