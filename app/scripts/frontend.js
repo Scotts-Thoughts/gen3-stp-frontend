@@ -131,10 +131,10 @@ async function loadCsvFile() {
     return text;
 }
 
-// Open the folder ./splits/ in the file explorer with node.js
-function openFolder(folderName) {
-    require('child_process').exec(`start .\\${folderName}\\`);
-}
+// // Open the folder ./splits/ in the file explorer with node.js
+// function openFolder(folderName) {
+//     require('child_process').exec(`start .\\${folderName}\\`);
+// }
 
 class RetroArchHook {
     client = undefined
@@ -668,7 +668,7 @@ const app = Vue.createApp({
             mapper       : null,
             scott_mode   : true,
             gameVariables: null,
-            legacy_state : false,
+            legacy_state : MyStorage['legacy_state'] ?? false,
             // game: null,
             // POKEMON CONFIG (components) ---------------------------------------------------------------------//
             starterString         : "Beedrill",
@@ -1076,6 +1076,7 @@ const app = Vue.createApp({
                 "automatic_post_battle_splits",
                 "show_wild_battles",
                 "no_counters",
+                "legacy_state",
             ],
 
             stats_toggle_settings: [
@@ -1988,7 +1989,20 @@ const app = Vue.createApp({
         },
     },
 
-    methods: { 
+    methods: {
+        openFolder(folderName, game_name = "Emerald", path = "", path2) {
+            const fs = require('fs');
+            const fullPath = path ? `.\\${folderName}\\${game_name}\\${path}\\${path2}` : `.\\${folderName}\\${game_name}\\${path}\\${path2}`;
+        
+            // Check if the folder exists
+            if (!fs.existsSync(fullPath)) {
+                // Create the folder (recursive ensures all parent directories are created)
+                fs.mkdirSync(fullPath, { recursive: true });
+            }
+        
+            // Open the folder
+            require('child_process').exec(`start ${fullPath}`);
+        }, 
         async update_items() {
             var item1 = this.item1_replacement.toUpperCase()
             var item2 = this.item2_replacement.toUpperCase()
@@ -2614,6 +2628,7 @@ const app = Vue.createApp({
             this.battleGraphic =      MyStorage['battleGraphic']      ?? true,
             this.base_stats_display = MyStorage['base_stats_display'] ?? true,
             this.stats_display =      MyStorage['stats_display']      ?? true,
+            this.legacy_state =       MyStorage['legacy_state']       ?? false,
 
             this.graphicOverlay =             MyStorage['graphicOverlay']             ?? true
             this.gameArea =                   MyStorage['gameArea']                   ?? false
