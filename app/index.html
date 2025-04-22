@@ -200,19 +200,16 @@
                         <option disabled value="">Select a gender</option>
                         <option v-for="key in values_function(genders)" :value="`${key}`">{{key}}</option>
                     </select><br>
-                    <br>
                     <div>Abilities: ({{starterString}} has {{dexDataRubySapphireEmerald[starterString].abilities.length}})</div>
                     <select v-model="pkmn_ability" class="dropdownMenu dropdown_menu_column3">
                         <option disabled value="">Select an ability</option>
                         <option v-for="key in values_function(dexDataRubySapphireEmerald[starterString].abilities)" :value="`${key}`">{{key}}</option>
                     </select><br>
-                    <br>
                     <div>Nature:</div>
                     <select v-model="pkmnNature" class="dropdownMenu dropdown_menu_column3">
                         <option disabled value="">Select a Nature</option>
                         <option v-for="key in values_function(simple_natures)" :value="`${key}`">{{natureLabels(`${key}`)}}</option>
                     </select><br>
-                    <br>
                     <div>Hidden Power:</div>
                     <select v-model="hidden_power_type" class="dropdownMenu dropdown_menu_column3">
                         <option disabled value="">Select a Hidden Power type</option>
@@ -251,6 +248,9 @@
                         <tr><td>Route 102 - Zigzagoon:</td><td><input class="checkBoxStyle" type="checkbox" v-model="hm_102_zigzagoon"/><br></td></tr>
                         <tr><td>Route 104 - Marill:</td><td><input class="checkBoxStyle" type="checkbox" v-model="hm_104_marill"/><br></td></tr>
                         <tr><td>Route 104 - Taillow:</td><td><input class="checkBoxStyle" type="checkbox" v-model="hm_104_taillow"/><br></td></tr>
+                        <tr><td>Route 116 - Abra:</td><td><input class="checkBoxStyle" type="checkbox" v-model="hm_116_abra"/><br></td></tr>
+                        <tr><td>Woods - Shroomish:</td><td><input class="checkBoxStyle" type="checkbox" v-model="hm_woods_shroomish"/><br></td></tr>
+                        <tr><td>Granite Cave - Abra:</td><td><input class="checkBoxStyle" type="checkbox" v-model="hm_cave_abra"/><br></td></tr>
                     </table>
                     <table v-if="gameSelection == 'FireRed and LeafGreen'">
                         <tr><td>Pidgey:</td><td><input  class="checkBoxStyle" type="checkbox" v-model="hm_102_zigzagoon"/><br></td></tr>

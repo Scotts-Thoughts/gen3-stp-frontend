@@ -133,11 +133,15 @@ const application_settings = [
     [ "route_6",         true, ],
 
     //HM flags
-    [ "hm_102_zigzagoon", true, ],
-    [ "hm_104_marill",    true, ],
-    [ "hm_104_taillow",   true, ],
-    [ "hm_1_pidgey",      true, ],
-    [ "hm_1_rattata",     true, ],
+    [ "hm_102_zigzagoon",   true, ],
+    [ "hm_104_marill",      true, ],
+    [ "hm_104_taillow",     true, ],
+    [ "hm_116_abra",        false, ],
+    [ "hm_woods_shroomish", false, ],
+    [ "hm_cave_abra",       false, ],
+
+    [ "hm_1_pidgey",        true, ],
+    [ "hm_1_rattata",       true, ],
 
     // UI
     [ "ui_saturation",          .6,                   ],

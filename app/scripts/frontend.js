@@ -986,9 +986,12 @@ const app = Vue.createApp({
             ],
 
             //HM flags
-            hm_102_zigzagoon: MyStorage['hm_102_zigzagoon'] ?? true,
-            hm_104_marill:    MyStorage['hm_104_marill']    ?? true,
-            hm_104_taillow:   MyStorage['hm_104_taillow']   ?? true,
+            hm_102_zigzagoon:   MyStorage['hm_102_zigzagoon']   ?? true,
+            hm_104_marill:      MyStorage['hm_104_marill']      ?? true,
+            hm_104_taillow:     MyStorage['hm_104_taillow']     ?? true,
+            hm_116_abra:        MyStorage['hm_116_abra']        ?? true,
+            hm_woods_shroomish: MyStorage['hm_woods_shroomish'] ?? true,
+            hm_cave_abra:       MyStorage['hm_cave_abra']       ?? true,
 
             hm_1_pidgey:      MyStorage['hm_101_pidgey']    ?? true,
             hm_1_rattata:     MyStorage['hm_101_rattata']   ?? true,
@@ -1446,6 +1449,33 @@ const app = Vue.createApp({
                 this.mapper.properties.overworld.encounters.taillow.set(true, false)
             }
             MyStorage['hm_104_taillow'] = newValue
+        },
+        hm_116_abra(newValue) {
+            if (newValue == false) {
+                this.mapper.properties.overworld.encounters?.abra_116?.set(false, false)
+            }
+            if (newValue == true) {
+                this.mapper.properties.overworld.encounters.abra_116.set(true, false)
+            }
+            MyStorage['hm_116_abra'] = newValue
+        },
+        hm_woods_shroomish(newValue) {
+            if (newValue == false) {
+                this.mapper.properties.overworld.encounters?.shroomish?.set(false, false)
+            }
+            if (newValue == true) {
+                this.mapper.properties.overworld.encounters.shroomish.set(true, false)
+            }
+            MyStorage['hm_woods_shroomish'] = newValue
+        },
+        hm_cave_abra(newValue) {
+            if (newValue == false) {
+                this.mapper.properties.overworld.encounters?.abra_granite?.set(false, false)
+            }
+            if (newValue == true) {
+                this.mapper.properties.overworld.encounters.abra_granite.set(true, false)
+            }
+            MyStorage['hm_cave_abra'] = newValue
         },
         playerId(newValue) {
             MyStorage["playerId"]         = newValue
@@ -2661,6 +2691,9 @@ const app = Vue.createApp({
             this.hm_102_zigzagoon =           MyStorage['hm_102_zigzagoon']           ?? true
             this.hm_104_marill =              MyStorage['hm_104_marill']              ?? true
             this.hm_104_taillow =             MyStorage['hm_104_taillow']             ?? true
+            this.hm_116_abra =                MyStorage['hm_116_abra']                ?? false,
+            this.hm_woods_shroomish =         MyStorage['hm_woods_shroomish']         ?? false,
+            this.hm_cave_abra =               MyStorage['hm_cave_abra']               ?? false,
             this.testRun =                    MyStorage['testRun']                    ?? false
             this.simple_data_str =            MyStorage['simple_data_str']            ?? ""
             this.full_data_str =              MyStorage['full_data_str']              ?? ""
@@ -4248,6 +4281,20 @@ const app = Vue.createApp({
         });
 
 
+        this.mapper.properties.player.badges.badge1.change(async (prop) => {
+            if (this.game.gameName == "Emerald" && prop.value == true) {
+                if (this.hm_woods_shroomish == true) {
+                    this.mapper.properties.overworld.encounters.shroomish.set(true, false)
+                }
+                // if (this.hm_116_abra == true) {
+
+                // }
+                // if (this.hm_cave_abra == true) {
+                    
+                // }
+            }
+        })     
+
         // TRACK VARIABLES HERE ------------------------------------------------------------------------------------------------//
         this.mapper.properties.gameTime.seconds.change(async (x) => {
             if (this.mapper.properties.battle.yourPokemon.speciesArray.value != null) {
@@ -4339,6 +4386,14 @@ const app = Vue.createApp({
                 if (this.gameSelection == 'FireRed and LeafGreen' && (this.starterString == 'Mew' || this.starterString == 'Celebi' || this.starterString == 'Jirachi' || this.starterString == 'Deoxys')) {
                     await Promise.all([ 
                         await this.mapper.properties.player.team[0].fateful_encounter.set(true, false), 
+                    ])
+                }
+                if (this.gameSelection == 'Emerald') {
+                    const abra_116 = this.hm_116_abra
+                    const abra_granite = this.hm_cave_abra
+                    await this.mapper.setBits([
+                        {path: 'overworld.encounters.abra_116',     value: abra_116,     freeze: false},
+                        {path: 'overworld.encounters.abra_granite', value: abra_granite, freeze: false},
                     ])
                 }
             }
