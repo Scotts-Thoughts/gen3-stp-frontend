@@ -64,7 +64,8 @@ function autosplitter_process() {
         let experience = this.mapper.properties.player.team[0].expPoints.value
         
         //deprecated properties
-        let runIdentifier = this.starterString.toString() + this.attempt_number.toString()
+        let incremented_finished_run_count = this.finished_run_count + 1
+        let runIdentifier = this.starterString.toString() + " " + incremented_finished_run_count.toString()
         let trainerName = this.autosplitter_trainer(this.opponent)
         let RTHours = this.time_h
         let RTMinutes = this.time_m

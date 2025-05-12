@@ -96,7 +96,6 @@
                         <option>FireRed and LeafGreen</option>
                     </select><br>
                     <br>
-                    <div>Timer:</div>
                     <table>
                         <tr>
                             <td>Autosplitter:</td>
@@ -112,6 +111,10 @@
                         <tr>
                             <td style="height: 24px;">Legacy State (for old replays)</td>
                             <td style="height: 24px;"><input class="checkBoxStyle" type="checkbox" v-model="legacy_state"/></td>
+                        </tr>
+                        <tr>
+                            <td style="height: 24px;">Debugging:</td>
+                            <td style="height: 24px;"><input class="checkBoxStyle" type="checkbox" v-model="debugging"/></td>
                         </tr>
                         <tr v-if="gameSelection == 'FireRed and LeafGreen'"><td>League Rematches:</td><td><input class="checkBoxStyle" type="checkbox" v-model="league_rematches"/></td></tr>
                     </table>
@@ -143,15 +146,20 @@
                     <button class="buttonStyle buttonStyle_column3" @click="update_items">Update</button>
                     <br>
                     <br>
-                    <div style="font-size: 20px;">Debugging:</div>
-                    <br>
-                    <table>
-                        <tr><td>State:</td>          <td>{{g3stateVariable}}</td></tr>
-                        <tr><td>Enemy State:</td>    <td>{{enemyState}}</td></tr>
-                        <tr><td>Stats Toggle:</td>   <td>{{stats}}</td></tr>
-                        <tr><td>Evolution:</td>      <td>{{evolution}}</td></tr>
-                        <tr><td>Evo Split Label:</td><td>{{evolution_splits_label}}</td></tr>
-                    </table>
+                    <button class="buttonStyle buttonStyle_column3" @click="update_nature">Update Stats</button>
+                    <div v-show="debugging">
+                        <div style="font-size: 20px;">Debugging:</div>
+                        <br>
+                        <table>
+                            <tr><td>State:</td>          <td>{{g3stateVariable}}</td></tr>
+                            <tr><td>stpCallback1:</td>    <td>{{mapper.properties.pointers.sStpCallback1.value}}</td></tr>
+                            <tr><td>stpCallback2:</td>    <td>{{mapper.properties.pointers.sStpCallback2.value}}</td></tr>
+                            <tr><td>Enemy State:</td>    <td>{{enemyState}}</td></tr>
+                            <tr><td>Stats Toggle:</td>   <td>{{stats}}</td></tr>
+                            <tr><td>Evolution:</td>      <td>{{evolution}}</td></tr>
+                            <tr><td>Evo Split Label:</td><td>{{evolution_splits_label}}</td></tr>
+                        </table>
+                    </div>
                 </div>
                 <div class="ui_style ui2 ui_border">
                     <div>Solo Pokemon:</div>

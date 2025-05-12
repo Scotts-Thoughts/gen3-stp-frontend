@@ -451,14 +451,14 @@ for (folder of folders = ['storage', 'splits', 'splits/Emerald', 'splits/FireRed
     }
 }
 
-function logData(gameName, str, file_name, starter, log_type, testStatus, toggle, evolution, evolution_label) {
+function logData(gameName, gameName_path, str, file_name, starter, log_type, testStatus, toggle, evolution, evolution_label) {
         return new Promise((resolve, reject) => {
         const testStatusText = testStatus ? "test_run_" : "";
         if (evolution == true) {
             starter = evolution_label;
         }
         const dirPath = `./splits/${app.game.gameName}/${starter}/attempts/`;
-        let filePath = path.join(dirPath, `${testStatusText}${starter}-${file_name}-simple.csv`);
+        let filePath = path.join(dirPath, `${gameName}-${testStatusText}${starter}-${file_name}-simple.csv`);
         let header = "player_name," +
                     "pokemon," +
                     "trainer_name," +
@@ -474,7 +474,7 @@ function logData(gameName, str, file_name, starter, log_type, testStatus, toggle
                     "move3," +
                     "move4,\n"
         if (log_type == "Deprecated" && toggle == true) {
-            filePath = path.join(dirPath, `${testStatusText}${starter}-${file_name}-deprecated.csv`);
+            filePath = path.join(dirPath, `${gameName}-${testStatusText}${starter}-${file_name}.csv`);
             header = "ROM," +
                 "Species," +
                 "Trainer," +
@@ -586,7 +586,7 @@ function logData(gameName, str, file_name, starter, log_type, testStatus, toggle
                 "Rival's Tea,m\n"
         }
         if (log_type == "Full" && toggle == true) {
-            filePath = path.join(dirPath, `${testStatusText}${starter}-${file_name}-full.csv`);
+            filePath = path.join(dirPath, `${gameName}-${testStatusText}${starter}-${file_name}-full.csv`);
         }
         fs.mkdir(dirPath, { recursive: true }, (err) => {
             if (!fs.existsSync(filePath)) {
@@ -615,30 +615,30 @@ function logData(gameName, str, file_name, starter, log_type, testStatus, toggle
     });
 }
 
-function logCopy(gameName, file_name, starter, finished_run_count, evolution, evolution_label) {
+function logCopy(gameName, gameName_path, file_name, starter, finished_run_count, evolution, evolution_label) {
     if (evolution == true) {
         starter = evolution_label;
     }
-    var dirPathAttempts = `./splits/${gameName}/${starter}/attempts/`;
-    var dirPathFinishes = `./splits/${gameName}/${starter}/finishes/`;
+    var dirPathAttempts = `./splits/${gameName_path}/${starter}/attempts/`;
+    var dirPathFinishes = `./splits/${gameName_path}/${starter}/finishes/`;
     fs.mkdir(dirPathFinishes, { recursive: true }, (err) => {
         fs.copyFile(
-            path.join(dirPathAttempts, `${starter}-${file_name}-simple.csv`), 
-            path.join(dirPathFinishes, `${starter}-${finished_run_count}-simple.csv`), (err) => {
+            path.join(dirPathAttempts, `${gameName}-${starter}-${file_name}-simple.csv`), 
+            path.join(dirPathFinishes, `${gameName}-${starter}-${finished_run_count}-simple.csv`), (err) => {
             if (err) {
                 console.error(err);
             }
         });
         fs.copyFile(
-            path.join(dirPathAttempts, `${starter}-${file_name}-full.csv`), 
-            path.join(dirPathFinishes, `${starter}-${finished_run_count}-full.csv`), (err) => {
+            path.join(dirPathAttempts, `${gameName}-${starter}-${file_name}-full.csv`), 
+            path.join(dirPathFinishes, `${gameName}-${starter}-${finished_run_count}-full.csv`), (err) => {
             if (err) {
                 console.error(err);
             }
         });
         fs.copyFile(
-            path.join(dirPathAttempts, `${starter}-${file_name}-deprecated.csv`), 
-            path.join(dirPathFinishes, `${starter}-${finished_run_count}-deprecated.csv`), (err) => {
+            path.join(dirPathAttempts, `${gameName}-${starter}-${file_name}.csv`), 
+            path.join(dirPathFinishes, `${gameName}-${starter}-${finished_run_count}.csv`), (err) => {
             if (err) {
                 console.error(err);
             }
@@ -668,6 +668,7 @@ const app = Vue.createApp({
             mapper       : null,
             scott_mode   : true,
             gameVariables: null,
+            debugging: false,
             legacy_state : MyStorage['legacy_state'] ?? false,
             // game: null,
             // POKEMON CONFIG (components) ---------------------------------------------------------------------//
@@ -2020,6 +2021,76 @@ const app = Vue.createApp({
     },
 
     methods: {
+        async update_nature() {
+            const pkmnData = this.dexData[this.starterString]
+            const level    = this.mapper.properties.player.team[0].level.value
+            const natures  = this.natures[this.pkmnNature]
+
+            var ivHp  = this.mapper.properties.player.team[0].ivHp.value
+            var ivAtk = this.mapper.properties.player.team[0].ivAttack.value
+            var ivDef = this.mapper.properties.player.team[0].ivDefense.value
+            var ivSpA = this.mapper.properties.player.team[0].ivSpecialAttack.value
+            var ivSpD = this.mapper.properties.player.team[0].ivSpecialDefense.value
+            var ivSpe = this.mapper.properties.player.team[0].ivSpeed.value
+
+            var evHp  = this.mapper.properties.player.team[0].evHp.value
+            var evAtk = this.mapper.properties.player.team[0].evAttack.value
+            var evDef = this.mapper.properties.player.team[0].evDefense.value
+            var evSpA = this.mapper.properties.player.team[0].evSpecialAttack.value
+            var evSpD = this.mapper.properties.player.team[0].evSpecialDefense.value
+            var evSpe = this.mapper.properties.player.team[0].evSpeed.value
+
+            //calculates the Pokemon's stats with the desired nature
+            var hitpoints      = Math.floor((((2 * pkmnData.base_hp + ivHp + Math.floor(evHp/4)) * level)/100) + level + 10)
+            var attack         = Math.floor(Math.floor(((((2 * pkmnData.base_atk + ivAtk + Math.floor(evAtk/4)) * level)/100) + 5)) * natures["nature_attack"])
+            var defense        = Math.floor(Math.floor(((((2 * pkmnData.base_def + ivDef + Math.floor(evDef/4)) * level)/100) + 5)) * natures["nature_defense"])
+            var specialAttack  = Math.floor(Math.floor(((((2 * pkmnData.base_spc_atk + ivSpA + Math.floor(evSpA/4)) * level)/100) + 5)) * natures["nature_specialAttack"])
+            var specialDefense = Math.floor(Math.floor(((((2 * pkmnData.base_spc_def + ivSpD + Math.floor(evSpD/4)) * level)/100) + 5)) * natures["nature_specialDefense"])
+            var speed          = Math.floor(Math.floor(((((2 * pkmnData.base_spd + ivSpe + Math.floor(evSpe/4)) * level)/100) + 5)) * natures["nature_speed"])
+
+            const value_object = {
+                species: pkmnData,
+                level: level,
+                natures: natures,
+                ivs: {
+                    hp:  ivHp,
+                    atk: ivAtk,
+                    def: ivDef,
+                    spa: ivSpA,
+                    spd: ivSpD,
+                    spe: ivSpe,
+                },
+                evs: {
+                    hp:  evHp,
+                    atk: evAtk,
+                    def: evDef,
+                    spa: evSpA,
+                    spd: evSpD,
+                    spe: evSpe,
+                },
+                stats: {
+                    hp:  hitpoints,
+                    atk: attack,
+                    def: defense,
+                    spa: specialAttack,
+                    spd: specialDefense,
+                    spe: speed,
+                },
+            }
+
+            console.log(value_object)
+
+            // only recalculate stats when IVs when your starter is received
+            await Promise.all([
+                await this.mapper.properties.player.team[0].hp.set(hitpoints, false), 
+                await this.mapper.properties.player.team[0].maxHp.set(hitpoints, false), 
+                await this.mapper.properties.player.team[0].attack.set(attack, false), 
+                await this.mapper.properties.player.team[0].defense.set(defense, false), 
+                await this.mapper.properties.player.team[0].specialAttack.set(specialAttack, false), 
+                await this.mapper.properties.player.team[0].specialDefense.set(specialDefense, false), 
+                await this.mapper.properties.player.team[0].speed.set(speed, false), 
+            ])
+        },
         openFolder(folderName, game_name = "Emerald", path = "", path2) {
             const fs = require('fs');
             const fullPath = path ? `.\\${folderName}\\${game_name}\\${path}\\${path2}` : `.\\${folderName}\\${game_name}\\${path}\\${path2}`;
@@ -2298,11 +2369,11 @@ const app = Vue.createApp({
             if ((state == `Overworld` || state == `To Battle`) && this.mapper.properties.player.team[0].species.value != null) {
                 switch (stat_name) {
                     case "Hp":              return this.mapper.properties.player.team[0].maxHp.value
-                    case "Attack":          return this.badge_boost(this.mapper.properties.player.badges.badge1.value, this.mapper.properties.player.team[0].attack.value)
+                    case "Attack":          return this.ability(this.pkmn_ability, "attack",  this.badge_boost(this.mapper.properties.player.badges.badge1.value, this.mapper.properties.player.team[0].attack.value))
                     case "Defense":         return this.metal_powder("defense", this.badge_boost(this.mapper.properties.player.badges.badge5.value, this.mapper.properties.player.team[0].defense.value))
                     case "Special Attack":  return this.badge_boost(this.mapper.properties.player.badges.badge7.value, this.mapper.properties.player.team[0].specialAttack.value)
                     case "Special Defense": return this.metal_powder("special_defense", this.badge_boost(this.mapper.properties.player.badges.badge7.value, this.mapper.properties.player.team[0].specialDefense.value))
-                    case "Speed":           return this.badge_boost(this.mapper.properties.player.badges.badge3.value, this.mapper.properties.player.team[0].speed.value)
+                    case "Speed":           return this.status_stat_change(this.mapper.properties.player.team[0].statusCondition.value, this.badge_boost(this.mapper.properties.player.badges.badge3.value, this.mapper.properties.player.team[0].speed.value))
                 }
             }
             if (state == `Battle` || state == `From Battle`) {
@@ -2310,7 +2381,7 @@ const app = Vue.createApp({
                     case "Hp":              return this.mapper.properties.battle.yourPokemon.maxHp.value
                     case "Attack":          return this.ability(this.pkmn_ability, "attack",  this.badge_boost(this.mapper.properties.player.badges.badge1.value, this.stageMultiplier(this.mapper.properties.battle.yourPokemon.modStageAttack.value,  this.mapper.properties.battle.yourPokemon.attack.value)))
                     case "Defense":         return this.metal_powder("defense", this.ability(this.pkmn_ability, "defense", this.badge_boost(this.mapper.properties.player.badges.badge5.value, this.stageMultiplier(this.mapper.properties.battle.yourPokemon.modStageDefense.value, this.mapper.properties.battle.yourPokemon.defense.value))))
-                    case "Speed":           return this.macho_brace(this.ability(this.pkmn_ability, "speed",   this.badge_boost(this.mapper.properties.player.badges.badge3.value, this.stageMultiplier(this.mapper.properties.battle.yourPokemon.modStageSpeed.value,   this.mapper.properties.battle.yourPokemon.speed.value))))
+                    case "Speed":           return this.status_stat_change(this.mapper.properties.battle.yourPokemon.status1.value, this.macho_brace(this.ability(this.pkmn_ability, "speed",   this.badge_boost(this.mapper.properties.player.badges.badge3.value, this.stageMultiplier(this.mapper.properties.battle.yourPokemon.modStageSpeed.value,   this.mapper.properties.battle.yourPokemon.speed.value)))))
                     case "Special Attack":  return this.badge_boost(this.mapper.properties.player.badges.badge7.value, this.stageMultiplier(this.mapper.properties.battle.yourPokemon.modStageSpecialAttack.value,  this.mapper.properties.battle.yourPokemon.specialAttack.value))
                     case "Special Defense": return this.metal_powder("special_defense", this.badge_boost(this.mapper.properties.player.badges.badge7.value, this.stageMultiplier(this.mapper.properties.battle.yourPokemon.modStageSpecialDefense.value, this.mapper.properties.battle.yourPokemon.specialDefense.value)))
                 }
@@ -2324,6 +2395,15 @@ const app = Vue.createApp({
                     case "Special Defense": return this.game.dexData[this.starterString].base_spc_def
                     case "Speed":           return this.game.dexData[this.starterString].base_spd
                 }
+            }
+        },
+        status_stat_change(status_condition, stat_value) {
+            console.log(status_condition, stat_value)
+            if (status_condition == "Paralyzed") { 
+                return Math.floor(stat_value * 0.25)
+            }
+            else {
+                return stat_value
             }
         },
         metal_powder(stat_name, stat) {
@@ -4098,23 +4178,44 @@ const app = Vue.createApp({
             });
             //track resets
             //callback2 seems more reliable to track than dma1 in firered no encryption
-            this.mapper.properties.pointers.callback2.change((newProp, oldProp) => {
-                if(this.game.callback2.reset.includes(newProp.value) /*&& !this.game.callback2.reset.includes(newProp.value)*/) {
-                    if (this.hallOfFameReset == true) {
-                        this.hallOfFameReset = false;
-                    }
-                    else {
-                        if (this.no_counters == false) {
-                            this.playerResets++;
+            if (this.legacy_state == true) {
+                this.mapper.properties.pointers.callback2.change((newProp, oldProp) => {
+                    if(this.game.callback2.reset.includes(newProp.value) /*&& !this.game.callback2.reset.includes(newProp.value)*/) {
+                        if (this.hallOfFameReset == true) {
+                            this.hallOfFameReset = false;
+                        }
+                        else {
+                            if (this.no_counters == false) {
+                                this.playerResets++;
+                            }
                         }
                     }
-                }
-                if(this.game.callback2.blackout.includes(newProp.value) /*&& !this.game.callback2.reset.includes(newProp.value)*/) {
-                    if (this.no_counters == false) {
-                        this.blackout_counter++;
+                    if(this.game.callback2.blackout.includes(newProp.value) /*&& !this.game.callback2.reset.includes(newProp.value)*/) {
+                        if (this.no_counters == false) {
+                            this.blackout_counter++;
+                        }
                     }
-                }
-            });
+                });
+            }
+            else {
+                this.mapper.properties.pointers.sStpCallback2.change((newProp, oldProp) => {
+                    if(this.game.callback2.reset.includes(newProp.value) /*&& !this.game.callback2.reset.includes(newProp.value)*/) {
+                        if (this.hallOfFameReset == true) {
+                            this.hallOfFameReset = false;
+                        }
+                        else {
+                            if (this.no_counters == false) {
+                                this.playerResets++;
+                            }
+                        }
+                    }
+                    if(this.game.callback2.blackout.includes(newProp.value) /*&& !this.game.callback2.reset.includes(newProp.value)*/) {
+                        if (this.no_counters == false) {
+                            this.blackout_counter++;
+                        }
+                    }
+                });
+            }
         }
         else {
             if (this.mapper.properties.player.team[0].level.value == 0) {
@@ -4590,20 +4691,21 @@ const app = Vue.createApp({
                 console.log('Starting log process')
                 let trainer = this.opponent
                 let id = this.opponentId
-                let gameName = this.game.gameName;
+                let gameName = this.game.gameName == 'Emerald' ? 'E' : this.game.gameName == 'Ruby & Sapphire' ? 'RS' : this.game.gameName == 'FireRed & LeafGreen' ? 'FRLG' : this.game.gameName;
+                let gameName_path = this.game.gameName;
                 
                 //write full split data
-                logData(gameName, this.full_data_str, this.attempt_number, this.starterString, "Full", this.testRun, this.scott_mode, this.evolution, this.evolution_splits_label)
+                logData(gameName, gameName_path, this.full_data_str, this.attempt_number, this.starterString, "Full", this.testRun, this.scott_mode, this.evolution, this.evolution_splits_label)
                 
                 //write deprecated split data
                 if (this.autosplitter[this.game.gameName][trainer]) {
-                    logData(gameName, this.deprecated_data_str, this.attempt_number, this.starterString, "Deprecated", this.testRun, this.scott_mode, this.evolution, this.evolution_splits_label)
+                    logData(gameName, gameName_path, this.deprecated_data_str, this.attempt_number, this.starterString, "Deprecated", this.testRun, this.scott_mode, this.evolution, this.evolution_splits_label)
                 }
                 
                 //write simple split data
                 const simpleSplit = () => {
                     this.log_split()
-                    logData(gameName, this.simple_data_str, this.attempt_number, this.starterString, "Simple", this.testRun, this.scott_mode, this.evolution, this.evolution_splits_label)
+                    logData(gameName, gameName_path, this.simple_data_str, this.attempt_number, this.starterString, "Simple", this.testRun, this.scott_mode, this.evolution, this.evolution_splits_label)
                     this.split_data.push(this.simple_data)
                     MyStorage["split_data"] = this.split_data
                     MyStorage[this.starterString] = {
@@ -4642,10 +4744,10 @@ const app = Vue.createApp({
                     this.log_split();
 
                     //use then so that logCopy doesn't touch any files until logData finishes
-                    logData(gameName, this.simple_data_str, this.attempt_number, this.starterString, "Simple", this.testRun, this.scott_mode, this.evolution, this.evolution_splits_label)
+                    logData(gameName, gameName_path, this.simple_data_str, this.attempt_number, this.starterString, "Simple", this.testRun, this.scott_mode, this.evolution, this.evolution_splits_label)
                     .then(() => {
                             console.log("Run complete - moving attempt files to finished folder.")
-                            logCopy(gameName, this.attempt_number, this.starterString, this.finished_run_count, this.evolution, this.evolution_splits_label);
+                            logCopy(gameName, gameName_path, this.attempt_number, this.starterString, this.finished_run_count, this.evolution, this.evolution_splits_label);
                         })
                         .catch(error => {
                             console.error("Error:", error);

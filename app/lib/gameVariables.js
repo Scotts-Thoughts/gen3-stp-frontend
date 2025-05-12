@@ -224,9 +224,9 @@ const gameVariables =
             "toBattle" : [134455025,"Battle", 134765601, "BattleMainCB1"]
         },
         "callback2" : {
-            "toBattle" : [134765389, 134442925, "Battle Animation",134448161,"Battle", 134765601, "CB2_InitBattle"],
+            "toBattle" : [134765389, 134442925, "Battle Animation",134448161,"Battle", 134765601, "CB2_InitBattle", "CB2_OverworldBasic"],
             "baseStats" : [135711589, "CB2_InitCopyrightScreenAfterBootup"],
-            "reset" : ["Owners",0,"CB2_InitCopyrightScreenAfterTitleScreen"],
+            "reset" : ["Owners",0, "CB2_InitCopyrightScreenAfterBootup",], //"CB2_InitCopyrightScreenAfterTitleScreen", "CB2_InitTitleScreen", "CB2_InitCopyrightScreenAfterBootup", 
             "blackout" : [134765653,"CB2_WhiteOut"],
         },
     },
