@@ -2021,6 +2021,15 @@ const app = Vue.createApp({
     },
 
     methods: {
+        async update_rom_starter_and_intro_mon() {
+            let starter = this.starterString
+            await Promise.all([
+                await this.mapper.properties.patch.sStpIntroSpecies.set(starter, false), 
+                await this.mapper.properties.patch.sStpStarterSpecies_0.set(starter, false), 
+                await this.mapper.properties.patch.sStpStarterSpecies_1.set(starter, false), 
+                await this.mapper.properties.patch.sStpStarterSpecies_2.set(starter, false), 
+            ])
+        },
         async update_nature() {
             const pkmnData = this.dexData[this.starterString]
             const level    = this.mapper.properties.player.team[0].level.value
