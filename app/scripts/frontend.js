@@ -668,8 +668,9 @@ const app = Vue.createApp({
             mapper       : null,
             scott_mode   : true,
             gameVariables: null,
-            debugging: false,
-            legacy_state : MyStorage['legacy_state'] ?? false,
+            debugging    : false,
+            legacy_state          : MyStorage['legacy_state'] ?? false,
+            show_advanced_settings: MyStorage['show_advanced_settings'] ?? false,
             // game: null,
             // POKEMON CONFIG (components) ---------------------------------------------------------------------//
             starterString         : "Beedrill",
@@ -1081,6 +1082,7 @@ const app = Vue.createApp({
                 "show_wild_battles",
                 "no_counters",
                 "legacy_state",
+                "show_advanced_settings",
             ],
 
             stats_toggle_settings: [
@@ -2752,6 +2754,7 @@ const app = Vue.createApp({
         },
         load_all_settings() {
             this.starterString = MyStorage["starterString"] ?? "Rayquaza"
+            this.show_advanced_settings = MyStorage['show_advanced_settings'] ?? false,
 
             this.stat_exp_display =   MyStorage['stat_exp_display']   ?? true,
             this.dv_display =         MyStorage['dv_display']         ?? true,

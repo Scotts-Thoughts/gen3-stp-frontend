@@ -98,37 +98,43 @@
                     <br>
                     <table>
                         <tr>
+                            <td>Show Advanced Settings:</td>
+                            <td><input class="checkBoxStyle" type="checkbox" v-model="show_advanced_settings"/></td>
+                        </tr>
+                        <tr v-if="show_advanced_settings">
                             <td>Autosplitter:</td>
-                            <td><input class="checkBoxStyle" type="checkbox" v-model="autosplitter_toggle"/></td></tr>
-                        <tr>
+                            <td><input class="checkBoxStyle" type="checkbox" v-model="autosplitter_toggle"/></td>
+                        </tr>
+                        <tr v-if="show_advanced_settings">
                             <td style="height: 24px;">Test Run:</td>
                             <td style="height: 24px;"><input class="checkBoxStyle" type="checkbox" v-model="testStatus"/></td>
                         </tr>
-                        <tr>
+                        <tr v-if="show_advanced_settings">
                             <td style="height: 24px;">No counters</td>
                             <td style="height: 24px;"><input class="checkBoxStyle" type="checkbox" v-model="no_counters"/></td>
                         </tr>
-                        <tr>
+                        <tr v-if="show_advanced_settings">
                             <td style="height: 24px;">Legacy State (for old replays)</td>
                             <td style="height: 24px;"><input class="checkBoxStyle" type="checkbox" v-model="legacy_state"/></td>
                         </tr>
-                        <tr>
+                        <tr v-if="show_advanced_settings">
                             <td style="height: 24px;">Debugging:</td>
                             <td style="height: 24px;"><input class="checkBoxStyle" type="checkbox" v-model="debugging"/></td>
                         </tr>
-                        <tr v-if="gameSelection == 'FireRed and LeafGreen'"><td>League Rematches:</td><td><input class="checkBoxStyle" type="checkbox" v-model="league_rematches"/></td></tr>
+                        <tr v-if="gameSelection == 'FireRed and LeafGreen'"><td>Stop Timer After League Rematches:</td><td><input class="checkBoxStyle" type="checkbox" v-model="league_rematches"/></td></tr>
                     </table>
+                    <br>
+                    <div>Timer:</div>
                     <button @click="pauseUnpauseTime()" class="buttonStyle">Play/Pause</button>
                     <button class="buttonStyle" @click="set_timer">Set Timer</button><br>
                     Start Time Offset: <input class="inputContainer" type="text" v-model="timer_startTimeOffset" placeholder="00:00:00.00"/><br>
                     <br>
-                    <br>
-                    <!-- <button class="buttonStyle" onClick="openFolder('splits')">Splits Folder</button><br> -->
+                    <div>Splits:</div>
                     <button class="buttonStyle buttonStyle_column3" @click="openFolder(`splits`, gameSelection, starterString, ``)">Open Splits Folder</button>
                     <button class="buttonStyle buttonStyle_column3" @click="openFolder(`splits`, gameSelection, starterString, `finishes`)">Finished Splits</button>
-                    <br>
-                    <button v-if="gameSelection == 'FireRed and LeafGreen'" class="buttonStyle" @click="toggle_national_dex">Toggle National Pokedex</button><br>
-                    <button v-if="gameSelection == 'FireRed and LeafGreen'" class="buttonStyle" @click="toggle_pokedex">Toggle Pokedex</button><br>
+                    <br><br>
+                    <!-- <button v-if="gameSelection == 'FireRed and LeafGreen'" class="buttonStyle" @click="toggle_national_dex">Toggle National Pokedex</button><br> -->
+                    <!-- <button v-if="gameSelection == 'FireRed and LeafGreen'" class="buttonStyle" @click="toggle_pokedex">Toggle Pokedex</button><br> -->
                     <div>Moveset Updating:</div>
                     <input type="text" v-model="move1_replacement" placeholder="Input move 1">
                     <input type="text" v-model="move2_replacement" placeholder="Input move 2">
@@ -172,7 +178,7 @@
                     <button class="buttonStyle set_starter_button" @click="update_rom_starter_and_intro_mon">Set ROM Starter</button>
                     <br>
                     <button class="buttonStyle new_run_button" @click="newRun">New Run</button><br>
-                    <button class="buttonStyle comparison_button" @click="load_splits()">Split Comparison</button><br>
+                    <button class="buttonStyle comparison_button" @click="load_splits()">Load split file to compare splits</button><br>
                     <table>
                         <tr>
                             <td>Attempt Number:</td>
@@ -315,34 +321,37 @@
                         <option>Evolution</option>
                     </select><br>
                     <br>
-                    <div>Right Panel:</div>
-                    <select v-model="right_panel" class="dropdownMenu dropdown_menu_column3">
-                        <option>Battle Graphic</option>
-                        <option>Inventory</option>
-                        <option>Movepool</option>
-                        <option>Movepool+</option>
-                        <option>Splits</option>
-                        <option>Wild</option>
-                    </select><br>
-                    <br>
+                    <div v-if="show_advanced_settings">
+                        <div>Right Panel:</div>
+                        <select v-model="right_panel" class="dropdownMenu dropdown_menu_column3">
+                            <option>Battle Graphic</option>
+                            <option>Inventory</option>
+                            <option>Movepool</option>
+                            <option>Movepool+</option>
+                            <option>Splits</option>
+                            <option>Wild</option>
+                        </select><br>
+                        <br>
+                    </div>
+
                     <table>
-                        <tr>Toggles:</tr>
-                        <tr><td>Automatic IVs:</td>         <td><input class="checkBoxStyle" type="checkbox" v-model="automatic_ivs"/></td></tr>
-                        <tr><td>Automatic EVs:</td>         <td><input class="checkBoxStyle" type="checkbox" v-model="automatic_evs"/></td></tr>
-                        <tr><td>Show Tutor Moves:</td>      <td><input class="checkBoxStyle" type="checkbox" v-model="tutor_moves"/></td></tr>
-                        <tr><td>Show Battle Graphics:</td>  <td><input class="checkBoxStyle" type="checkbox" v-model="battleGraphic"/></td></tr>
-                        <tr><td>Show Inventory:</td>        <td><input class="checkBoxStyle" type="checkbox" v-model="inventory_display"/></td></tr>
-                        <tr><td>Show Nature Arrows:</td>    <td><input class="checkBoxStyle" type="checkbox" v-model="show_nature_changes"/></td></tr>
-                        <tr><td>Badge Boosts:</td>          <td><input class="checkBoxStyle" type="checkbox" v-model="display_badge_boosts"/></td></tr>
-                        <tr><td>Disable Panel Hotkeys:</td> <td><input class="checkBoxStyle" type="checkbox" v-model="disable_right_hotkeys"/></td></tr>
-                        <tr><td>Post-Battle Splits:</td>    <td><input class="checkBoxStyle" type="checkbox" v-model="automatic_post_battle_splits"/></td></tr>
-                        <tr v-if="gameSelection == 'FireRed and LeafGreen'"><td>Repel Counter:</td><td><input class="checkBoxStyle" type="checkbox" v-model="repel_counter"/></td></tr>
-                        <tr v-if="gameSelection == 'FireRed and LeafGreen'"><td>Vs. Seeker:</td>   <td><input class="checkBoxStyle" type="checkbox" v-model="vs_seeker"/></td></tr>
-                        <tr v-if="gameSelection == 'FireRed and LeafGreen'"><td>Show wild battles:</td>   <td><input class="checkBoxStyle" type="checkbox" v-model="show_wild_battles"/></td></tr>
+                        <tr v-if="show_advanced_settings">Toggles:</tr>
+                        <tr v-if="show_advanced_settings"                                            ><td>Automatic IVs:</td>         <td><input class="checkBoxStyle" type="checkbox" v-model="automatic_ivs"/></td></tr>
+                        <tr v-if="show_advanced_settings"                                            ><td>Automatic EVs:</td>         <td><input class="checkBoxStyle" type="checkbox" v-model="automatic_evs"/></td></tr>
+                        <tr                                                                          ><td>Show Tutor Moves:</td>      <td><input class="checkBoxStyle" type="checkbox" v-model="tutor_moves"/></td></tr>
+                        <tr v-if="show_advanced_settings"                                            ><td>Show Battle Graphics:</td>  <td><input class="checkBoxStyle" type="checkbox" v-model="battleGraphic"/></td></tr>
+                        <tr v-if="show_advanced_settings"                                            ><td>Show Inventory:</td>        <td><input class="checkBoxStyle" type="checkbox" v-model="inventory_display"/></td></tr>
+                        <tr v-if="show_advanced_settings"                                            ><td>Show Nature Arrows:</td>    <td><input class="checkBoxStyle" type="checkbox" v-model="show_nature_changes"/></td></tr>
+                        <tr v-if="show_advanced_settings"                                            ><td>Badge Boosts:</td>          <td><input class="checkBoxStyle" type="checkbox" v-model="display_badge_boosts"/></td></tr>
+                        <tr v-if="show_advanced_settings"                                            ><td>Disable Panel Hotkeys:</td> <td><input class="checkBoxStyle" type="checkbox" v-model="disable_right_hotkeys"/></td></tr>
+                        <tr v-if="show_advanced_settings"                                            ><td>Post-Battle Splits:</td>    <td><input class="checkBoxStyle" type="checkbox" v-model="automatic_post_battle_splits"/></td></tr>
+                        <tr v-if="show_advanced_settings && gameSelection == 'FireRed and LeafGreen'"><td>Repel Counter:</td>         <td><input class="checkBoxStyle" type="checkbox" v-model="repel_counter"/></td></tr>
+                        <tr v-if="show_advanced_settings && gameSelection == 'FireRed and LeafGreen'"><td>Vs. Seeker:</td>            <td><input class="checkBoxStyle" type="checkbox" v-model="vs_seeker"/></td></tr>
+                        <tr v-if="show_advanced_settings && gameSelection == 'FireRed and LeafGreen'"><td>Show wild battles:</td>     <td><input class="checkBoxStyle" type="checkbox" v-model="show_wild_battles"/></td></tr>
                         <br>
                     </table>
                 </div>
-                <div class="ui_style ui5 ui_border">
+                <div class="ui_style ui5 ui_border" v-if="show_advanced_settings">
                     <table>
                         <tr><td>Copy from:</td><td><input class="inputContainer" style="width: 126px;" type="text" v-model="copy_overlay_pokemon_from"/></td></tr>
                         <tr><td>Copy to:</td>  <td><input class="inputContainer" style="width: 126px;" type="text" v-model="copy_overlay_pokemon_to"/></td></tr>
