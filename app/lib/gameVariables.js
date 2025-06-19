@@ -9,8 +9,8 @@ const gameVariables =
         "opponentId" : "opponentId",
         "newGameFlagContainer" : "pointers",
         "newGameFlag" : "callback2",
-        "newGameValueNew" : ["New Game", 135456953, 135456965, 135457077],
-        "newGameValueOld" : ["Main Menu", 134267625, 134711521, 134267605, 134711553, 134711657, 134267629],
+        "newGameValueNew" : ["New Game", 135456953, 135456965, 135457077, 135457185],
+        "newGameValueOld" : ["Main Menu", 134267625, 134711521, 134267605, 134711553, 134711657, 134267629, 134711781, 134267717],
         "trainerList" : "remakeTrainers",
         "opponentImageMap" : {
             "LEADER_BROCK": "images/trainers/LEADER_BROCK.png",
@@ -117,8 +117,8 @@ const gameVariables =
         "callback2" : {
             "toBattle" : [134287637, 134282653, "Battle Animation"],
             "baseStats" : [135711589], //copied from emerald, what should this be??
-            "reset" : ["Owners", 0],
-            "blackout" : [134570917, 134570949],//test further //134570677 overworld after
+            "reset" : ["Owners", 0, "CB2_InitCopyrightScreenAfterBootup"],
+            "blackout" : [134570917, 134570949, "CB2_WhiteOut"], //test further //134570677 overworld after
         },
     },
     "Emerald": {

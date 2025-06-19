@@ -2023,12 +2023,24 @@ const app = Vue.createApp({
     methods: {
         async update_rom_starter_and_intro_mon() {
             let starter = this.starterString
-            await Promise.all([
-                await this.mapper.properties.patch.sStpIntroSpecies.set(starter, false), 
-                await this.mapper.properties.patch.sStpStarterSpecies_0.set(starter, false), 
-                await this.mapper.properties.patch.sStpStarterSpecies_1.set(starter, false), 
-                await this.mapper.properties.patch.sStpStarterSpecies_2.set(starter, false), 
-            ])
+            let game = this.gameSelection
+            if (game == "Emerald") {
+                await Promise.all([
+                    await this.mapper.properties.patch.sStpIntroSpecies.set(starter, false), 
+                    await this.mapper.properties.patch.sStpStarterSpecies_0.set(starter, false), 
+                    await this.mapper.properties.patch.sStpStarterSpecies_1.set(starter, false), 
+                    await this.mapper.properties.patch.sStpStarterSpecies_2.set(starter, false), 
+                ])
+            }
+            if (game == "FireRed and LeafGreen") {
+                await Promise.all([
+                    await this.mapper.properties.variables.VAR_CHOSEN_STARTER.set(starter, false), 
+                    await this.mapper.properties.patch.STP_CHOSEN_STARTER.set(starter, false), 
+                ])
+            }
+            else {
+                console.log("This game is not supported yet.")
+            }
         },
         async update_nature() {
             const pkmnData = this.dexData[this.starterString]
@@ -3893,17 +3905,65 @@ const app = Vue.createApp({
         newGame() {
             // console.log("watching for new game")
             // console.log(this.mapper.properties[this.game.newGameFlagContainer][this.game.newGameFlag])
-            this.mapper.properties[this.game.newGameFlagContainer][this.game.newGameFlag].change((newProp, oldProp) => {
-                if (this.no_counters == false) {
-                    if(this.game.newGameValueNew.includes(newProp.value) && this.game.newGameValueOld.includes(oldProp.value)){
-                        console.log("new game started")
-                        if (!this.testRun && this.no_counters == false) { this.attempt_number++ }
-                        this.hallOfFameReset = false;
-                        this.newRun();
-                        this.startTime();
+            if (this.no_counters == false) {
+                if (this.gameSelection == 'Emerald') {
+                    this.mapper.properties[this.game.newGameFlagContainer][this.game.newGameFlag].change((newProp, oldProp) => {
+                        if(this.game.newGameValueNew.includes(newProp.value) && this.game.newGameValueOld.includes(oldProp.value)){
+                            console.log("New run detected... Timer started.")
+                            if (!this.testRun && this.no_counters == false) { 
+                                this.attempt_number++ 
+                            }
+                            this.hallOfFameReset = false;
+                            this.newRun();
+                            this.startTime();
+                        }
+                    })
+                }
+                else if (this.gameSelection == 'FireRed and LeafGreen') {
+                    if (this.legacy_state == false) {
+                        this.mapper.properties.pointers.sStpCallback2.change((currentProp, previousProp) => {
+                            value_current  = currentProp.value
+                            value_previous = previousProp.value
+                            console.log(value_current, value_previous)
+                            if (value_current == 'CB2_NewGameScene' && (value_previous == 'CB2_TitleScreenRun' || value_previous == 'CB2_TitleScreenRun' || value_previous == 'CB2_MainMenu')) {
+                                console.log("New run detected... Timer started.")
+                                if (!this.testRun && this.no_counters == false) { 
+                                    this.attempt_number++ 
+                                }
+                                this.hallOfFameReset = false;
+                                this.newRun();
+                                this.startTime();
+                            }
+                        })
+                    }
+                    else {
+                        this.mapper.properties[this.game.newGameFlagContainer][this.game.newGameFlag].change((newProp, oldProp) => {
+                            if(this.game.newGameValueNew.includes(newProp.value) && this.game.newGameValueOld.includes(oldProp.value)){
+                                console.log("New run detected... Timer started.")
+                                if (!this.testRun && this.no_counters == false) { 
+                                    this.attempt_number++ 
+                                }
+                                this.hallOfFameReset = false;
+                                this.newRun();
+                                this.startTime();
+                            }
+                        })
                     }
                 }
-            })
+                else {
+                    this.mapper.properties[this.game.newGameFlagContainer][this.game.newGameFlag].change((newProp, oldProp) => {
+                        if(this.game.newGameValueNew.includes(newProp.value) && this.game.newGameValueOld.includes(oldProp.value)){
+                            console.log("New run detected... Timer started.")
+                            if (!this.testRun && this.no_counters == false) { 
+                                this.attempt_number++ 
+                            }
+                            this.hallOfFameReset = false;
+                            this.newRun();
+                            this.startTime();
+                        }
+                    })
+                }
+            }
         },
         freezeEncounters() {
             const map_name = this.mapper.properties.overworld.mapName.value;
