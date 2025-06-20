@@ -681,6 +681,7 @@ const app = Vue.createApp({
             gameSelection         : MyStorage['gameSelection'] ?? "FireRed and LeafGreen",
             evolution             : MyStorage['evolution'] ?? false,
             evolution_splits_label: MyStorage['evolution_splits_label'] ?? "",
+            catch_rate            : MyStorage['catch_rate'] ?? false,
 
             // Editors
             move1_replacement: "",
@@ -992,8 +993,9 @@ const app = Vue.createApp({
             hm_104_marill:      MyStorage['hm_104_marill']      ?? true,
             hm_104_taillow:     MyStorage['hm_104_taillow']     ?? true,
             hm_116_abra:        MyStorage['hm_116_abra']        ?? true,
-            hm_woods_shroomish: MyStorage['hm_woods_shroomish'] ?? true,
-            hm_cave_abra:       MyStorage['hm_cave_abra']       ?? true,
+            hm_woods_shroomish: MyStorage['hm_woods_shroomish'] ?? false,
+            hm_cave_abra:       MyStorage['hm_cave_abra']       ?? false,
+            hm_119_tropius:     MyStorage['hm_119_tropius']     ?? false,
 
             hm_1_pidgey:      MyStorage['hm_101_pidgey']    ?? true,
             hm_1_rattata:     MyStorage['hm_101_rattata']   ?? true,
@@ -1083,6 +1085,7 @@ const app = Vue.createApp({
                 "no_counters",
                 "legacy_state",
                 "show_advanced_settings",
+                "catch_rate",
             ],
 
             stats_toggle_settings: [
@@ -1479,6 +1482,54 @@ const app = Vue.createApp({
                 this.mapper.properties.overworld.encounters.abra_granite.set(true, false)
             }
             MyStorage['hm_cave_abra'] = newValue
+        },
+        hm_119_tropius(newValue) {
+            if (newValue == false) {
+                this.mapper.properties.overworld.encounters?.tropius_119?.set(false, false)
+            }
+            if (newValue == true) {
+                this.mapper.properties.overworld.encounters.tropius_119.set(true, false)
+            }
+            MyStorage['hm_119_tropius'] = newValue
+        },
+        hm_1_pidgey(newValue) {
+            if (newValue == false) {
+                this.mapper.properties.overworld.stp_pidgey_on_route_1?.set(false, false)
+            }
+            if (newValue == true) {
+                this.mapper.properties.overworld.stp_pidgey_on_route_1?.set(true, false)
+            }
+            MyStorage['hm_1_pidgey'] = newValue
+        },
+        hm_1_rattata(newValue) {
+            if (newValue == false) {
+                this.mapper.properties.overworld.stp_rattata_on_route_1?.set(false, false)
+            }
+            if (newValue == true) {
+                this.mapper.properties.overworld.stp_rattata_on_route_1?.set(true, false)
+            }
+            MyStorage['hm_1_rattata'] = newValue
+        },
+        catch_rate(newValue) {
+            let game = this.gameSelection
+            if (game == "Emerald") {
+                if (newValue == false) {
+                    this.mapper.properties.stp_vars?.STP_CATCH_RATE?.set(0, true)
+                }
+                if (newValue == true) {
+                    this.mapper.properties.stp_vars?.STP_CATCH_RATE?.set(1, true)
+                }
+                MyStorage['catch_rate'] = newValue
+            }
+            else if (game == "FireRed and LeafGreen") {
+                if (newValue == false) {
+                    this.mapper.properties.patch?.STP_CATCH_RATE?.set(0, true)
+                }
+                if (newValue == true) {
+                    this.mapper.properties.patch?.STP_CATCH_RATE?.set(1, true)
+                }
+                MyStorage['catch_rate'] = newValue
+            }
         },
         playerId(newValue) {
             MyStorage["playerId"]         = newValue
@@ -2114,18 +2165,17 @@ const app = Vue.createApp({
                 await this.mapper.properties.player.team[0].speed.set(speed, false), 
             ])
         },
-        openFolder(folderName, game_name = "Emerald", path = "", path2) {
+        openFolder(folderName, game_name, path = "", path2) {
             const fs = require('fs');
-            const fullPath = path ? `.\\${folderName}\\${game_name}\\${path}\\${path2}` : `.\\${folderName}\\${game_name}\\${path}\\${path2}`;
-        
-            // Check if the folder exists
+            const fullPath = `.\\${folderName}\\${game_name}\\${path}\\${path2}`;
+            console.log(fullPath);
+
             if (!fs.existsSync(fullPath)) {
-                // Create the folder (recursive ensures all parent directories are created)
                 fs.mkdirSync(fullPath, { recursive: true });
             }
-        
-            // Open the folder
-            require('child_process').exec(`start ${fullPath}`);
+
+            // Correctly handle spaces in folder names
+            require('child_process').exec(`start "" "${fullPath}"`);
         }, 
         async update_items() {
             var item1 = this.item1_replacement.toUpperCase()
@@ -2421,7 +2471,7 @@ const app = Vue.createApp({
             }
         },
         status_stat_change(status_condition, stat_value) {
-            console.log(status_condition, stat_value)
+            // console.log(status_condition, stat_value)
             if (status_condition == "Paralyzed") { 
                 return Math.floor(stat_value * 0.25)
             }
@@ -2753,8 +2803,9 @@ const app = Vue.createApp({
             console.log(MyStorage[to])
         },
         load_all_settings() {
-            this.starterString = MyStorage["starterString"] ?? "Rayquaza"
+            this.starterString          = MyStorage["starterString"] ?? "Rayquaza"
             this.show_advanced_settings = MyStorage['show_advanced_settings'] ?? false,
+            this.catch_rate             = MyStorage['catch_rate'] ?? false,
 
             this.stat_exp_display =   MyStorage['stat_exp_display']   ?? true,
             this.dv_display =         MyStorage['dv_display']         ?? true,
@@ -2798,6 +2849,9 @@ const app = Vue.createApp({
             this.hm_116_abra =                MyStorage['hm_116_abra']                ?? false,
             this.hm_woods_shroomish =         MyStorage['hm_woods_shroomish']         ?? false,
             this.hm_cave_abra =               MyStorage['hm_cave_abra']               ?? false,
+            this.hm_119_tropius =             MyStorage['hm_119_tropius']             ?? false,
+            this.hm_1_pidgey =                MyStorage['hm_1_pidgey']                ?? true,
+            this.hm_1_rattata =               MyStorage['hm_1_rattata']               ?? true,
             this.testRun =                    MyStorage['testRun']                    ?? false
             this.simple_data_str =            MyStorage['simple_data_str']            ?? ""
             this.full_data_str =              MyStorage['full_data_str']              ?? ""
@@ -2843,13 +2897,13 @@ const app = Vue.createApp({
             this.backgroundHue         = MyStorage[starter]?.backgroundHue         ?? 0
             
             if (starter && this.evolution_splits_label) { starter = this.evolution_splits_label }
-            console.log("Starter", starter)
+            // console.log("Starter", starter)
             
             this.attempt_number        = MyStorage[starter]?.attempt_number        ?? 0
             this.finished_run_count    = MyStorage[starter]?.finished_run_count    ?? 0
 
             const evolution_family = this.game.evolutions[starter]?.evolution_family  ?? [ {species: null, method: null,}, {species: null, method: null,}, {species: null, method: null,}, ]
-            console.log(this.evolution)
+            // console.log(this.evolution)
             this.copy_overlay_pokemon_from = MyStorage['copy_overlay_pokemon_from'] ?? ""
             this.copy_overlay_pokemon_to   = MyStorage['copy_overlay_pokemon_to']   ?? ""
 
@@ -2955,7 +3009,7 @@ const app = Vue.createApp({
         },
 
         split(splitName, splits) {
-            console.log(splits)
+            // console.log(splits)
             var split = splits.find(x => x.trainer_name === splitName)
             if (split == undefined) return
             return split["realtime.end.hours"] + ":" + split["realtime.end.minutes"] + ":" + split["realtime.end.seconds"]
@@ -3314,7 +3368,7 @@ const app = Vue.createApp({
 
         setGamestate(state, number) {
             if (this.gamestateLogging == true)
-                console.log("Gamestate: "+"("+number+") "+state)
+                // console.log("Gamestate: "+"("+number+") "+state)
             this.currentGameStateNew = string
             return string
         },
@@ -3927,7 +3981,7 @@ const app = Vue.createApp({
                         this.mapper.properties.pointers.sStpCallback2.change((currentProp, previousProp) => {
                             value_current  = currentProp.value
                             value_previous = previousProp.value
-                            console.log(value_current, value_previous)
+                            // console.log(value_current, value_previous)
                             if (value_current == 'CB2_NewGameScene' && (value_previous == 'CB2_TitleScreenRun' || value_previous == 'CB2_TitleScreenRun' || value_previous == 'CB2_MainMenu')) {
                                 console.log("New run detected... Timer started.")
                                 if (!this.testRun && this.no_counters == false) { 
@@ -4043,13 +4097,21 @@ const app = Vue.createApp({
             if (game == 'FireRed and LeafGreen') {
                 switch (map_name) {
                     case "ROUTE 1": 
-                        if (this.mapper.properties.events.menu.pokedex.value == false) {
-                            if (this.route_1 == false && this.mapper.properties.events.stp_pidgey_on_route_1.value == true && this.mapper.properties.events.stp_rattata_on_route_1.value == true) {
+                        if (this.mapper.properties.events.menu.pokedex.value == true) {
+                            if (this.mapper.properties.events.stp_pidgey_on_route_1.value == true || this.mapper.properties.events.stp_rattata_on_route_1.value == true) {
+                                this.mapper.properties.overworld.disabledEncounters.set(0x00,false);
+                            }
+                            else {
                                 this.mapper.properties.overworld.disabledEncounters.set(0x01,false);
                             }
                         }
-                        else if (this.route_1 == false && this.mapper.properties.events.stp_pidgey_on_route_1.value == false && this.mapper.properties.events.stp_rattata_on_route_1.value == false) {
-                            this.mapper.properties.overworld.disabledEncounters.set(0x01,false);
+                        else if (this.mapper.properties.events.menu.pokedex.value == false) {
+                            if (this.route_1 == false) {
+                                this.mapper.properties.overworld.disabledEncounters.set(0x01,false);
+                            }
+                            else {
+                                this.mapper.properties.overworld.disabledEncounters.set(0x00,false);
+                            }
                         }
                         break;
                     case "ROUTE 2": 
@@ -4760,7 +4822,7 @@ const app = Vue.createApp({
             // console.log('Autosplitter Attempted to Run by Battle Outcome Change')
             // console.log("Battle outcome: " + prop.value)
             if ((prop.value == "WON" || prop.value == 1) && this.mapper.properties.battle.type.trainer.value) {
-                console.log('Starting log process')
+                // console.log('Starting log process')
                 let trainer = this.opponent
                 let id = this.opponentId
                 let gameName = this.game.gameName == 'Emerald' ? 'E' : this.game.gameName == 'Ruby & Sapphire' ? 'RS' : this.game.gameName == 'FireRed & LeafGreen' ? 'FRLG' : this.game.gameName;

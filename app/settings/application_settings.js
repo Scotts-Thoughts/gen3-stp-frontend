@@ -121,6 +121,9 @@ const application_settings = [
     [ "movepoolDefaultFontSize",        -1, ],
     [ "movepoolDefaultLineHeight",      -1, ],
     [ "movepoolDefaultContainerHeight", -1, ],
+   
+    //catch rate
+    [ "catch_rate",   false, ],
 
     //encounters
     [ "route_101",       true, ],

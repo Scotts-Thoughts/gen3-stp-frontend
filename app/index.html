@@ -125,6 +125,7 @@
                     </table>
                     <br>
                     <div>Timer:</div>
+                    <button class="buttonStyle new_run_button" @click="newRun">New Run</button><br>
                     <button @click="pauseUnpauseTime()" class="buttonStyle">Play/Pause</button>
                     <button class="buttonStyle" @click="set_timer">Set Timer</button><br>
                     Start Time Offset: <input class="inputContainer" type="text" v-model="timer_startTimeOffset" placeholder="00:00:00.00"/><br>
@@ -135,24 +136,26 @@
                     <br><br>
                     <!-- <button v-if="gameSelection == 'FireRed and LeafGreen'" class="buttonStyle" @click="toggle_national_dex">Toggle National Pokedex</button><br> -->
                     <!-- <button v-if="gameSelection == 'FireRed and LeafGreen'" class="buttonStyle" @click="toggle_pokedex">Toggle Pokedex</button><br> -->
-                    <div>Moveset Updating:</div>
-                    <input type="text" v-model="move1_replacement" placeholder="Input move 1">
-                    <input type="text" v-model="move2_replacement" placeholder="Input move 2">
-                    <input type="text" v-model="move3_replacement" placeholder="Input move 3">
-                    <input type="text" v-model="move4_replacement" placeholder="Input move 4">
-                    <button class="buttonStyle buttonStyle_column3" @click="update_moveset">Update Party Moves</button>
-                    <button class="buttonStyle buttonStyle_column3" @click="update_battle_moveset">Update Battle Moves</button>
-                    <br>
-                    <br>
-                    <div>Item Updating:</div>
-                    <input type="text" v-model="item1_replacement" placeholder="Input item 1">
-                    <input type="text" v-model="item2_replacement" placeholder="Input item 2">
-                    <input type="text" v-model="item3_replacement" placeholder="Input item 3">
-                    <input type="text" v-model="item4_replacement" placeholder="Input item 4">
-                    <button class="buttonStyle buttonStyle_column3" @click="update_items">Update</button>
-                    <br>
-                    <br>
-                    <button class="buttonStyle buttonStyle_column3" @click="update_nature">Update Stats</button>
+                    <div v-show="!debugging">
+                        <div>Moveset Updating:</div>
+                        <input type="text" v-model="move1_replacement" placeholder="Input move 1">
+                        <input type="text" v-model="move2_replacement" placeholder="Input move 2">
+                        <input type="text" v-model="move3_replacement" placeholder="Input move 3">
+                        <input type="text" v-model="move4_replacement" placeholder="Input move 4">
+                        <button class="buttonStyle buttonStyle_column3" @click="update_moveset">Update Party Moves</button>
+                        <button class="buttonStyle buttonStyle_column3" @click="update_battle_moveset">Update Battle Moves</button>
+                        <br>
+                        <br>
+                        <div>Item Updating:</div>
+                        <input type="text" v-model="item1_replacement" placeholder="Input item 1">
+                        <input type="text" v-model="item2_replacement" placeholder="Input item 2">
+                        <input type="text" v-model="item3_replacement" placeholder="Input item 3">
+                        <input type="text" v-model="item4_replacement" placeholder="Input item 4">
+                        <button class="buttonStyle buttonStyle_column3" @click="update_items">Update</button>
+                        <br>
+                        <br>
+                        <button class="buttonStyle buttonStyle_column3" @click="update_nature">Update Stats</button>
+                    </div>
                     <div v-show="debugging">
                         <div style="font-size: 20px;">Debugging:</div>
                         <br>
@@ -177,7 +180,6 @@
                     <input type="text" v-model="search_term" placeholder="Search for a species">
                     <button class="buttonStyle set_starter_button" @click="update_rom_starter_and_intro_mon">Set ROM Starter</button>
                     <br>
-                    <button class="buttonStyle new_run_button" @click="newRun">New Run</button><br>
                     <button class="buttonStyle comparison_button" @click="load_splits()">Load split file to compare splits</button><br>
                     <table>
                         <tr>
@@ -243,6 +245,10 @@
                         <tr><td>Evolution:</td><td><input class="checkBoxStyle" type="checkbox" v-model="evolution"/></td></tr>
                     </table>
                     <br>
+                    <div>
+                        <div>Guarantee catches:</td><td><input class="checkBoxStyle" type="checkbox" v-model="catch_rate"/><br></div>
+                        <br>
+                    </div>
                     <div>Encounters:</div>
                     <table v-if="gameSelection == 'Emerald'">
                         <tr><td>Route 101:</td><td><input class="checkBoxStyle" type="checkbox" v-model="route_101"/><br></td></tr>
@@ -266,10 +272,11 @@
                         <tr><td>Route 116 - Abra:</td><td><input class="checkBoxStyle" type="checkbox" v-model="hm_116_abra"/><br></td></tr>
                         <tr><td>Woods - Shroomish:</td><td><input class="checkBoxStyle" type="checkbox" v-model="hm_woods_shroomish"/><br></td></tr>
                         <tr><td>Granite Cave - Abra:</td><td><input class="checkBoxStyle" type="checkbox" v-model="hm_cave_abra"/><br></td></tr>
+                        <tr><td>Route 119 - Tropius:</td><td><input class="checkBoxStyle" type="checkbox" v-model="hm_119_tropius"/><br></td></tr>
                     </table>
                     <table v-if="gameSelection == 'FireRed and LeafGreen'">
-                        <tr><td>Pidgey:</td><td><input  class="checkBoxStyle" type="checkbox" v-model="hm_102_zigzagoon"/><br></td></tr>
-                        <tr><td>Rattata:</td><td><input class="checkBoxStyle" type="checkbox" v-model="hm_104_marill"/><br></td></tr>
+                        <tr><td>Pidgey:</td><td><input  class="checkBoxStyle" type="checkbox" v-model="hm_1_pidgey"/><br></td></tr>
+                        <tr><td>Rattata:</td><td><input class="checkBoxStyle" type="checkbox" v-model="hm_1_rattata"/><br></td></tr>
                     </table>
                 </div>
                 <div class="ui_style ui3 ui_border">
