@@ -232,13 +232,17 @@
                         <option disabled value="">Select a Hidden Power type</option>
                         <option v-for="key in values_function(hiddenPowerTypes)" :value="`${key}`">{{key}}</option>
                     </select><br>
+                    <select v-model="hidden_power_index" class="dropdownMenu dropdown_menu_column3">
+                        <option disabled value="">Select a Hidden Power index</option>
+                        <option v-for="(key, index) in hiddenpowers[hidden_power_type]" :value="`${index}`">{{key}}</option>
+                    </select><br>
                     <table>
-                        <tr><td>HP: </td><td>{{hp_ivs[hidden_power_type][0]}}</td></tr>
-                        <tr><td>Atk:</td><td>{{hp_ivs[hidden_power_type][1]}}</td></tr>
-                        <tr><td>Def:</td><td>{{hp_ivs[hidden_power_type][2]}}</td></tr>
-                        <tr><td>Spe:</td><td>{{hp_ivs[hidden_power_type][3]}}</td></tr>
-                        <tr><td>SpA:</td><td>{{hp_ivs[hidden_power_type][4]}}</td></tr>
-                        <tr><td>SpD:</td><td>{{hp_ivs[hidden_power_type][5]}}</td></tr>
+                        <tr><td>HP: </td><td>{{hiddenpowers[hidden_power_type][hidden_power_index][0]}}</td></tr>
+                        <tr><td>Atk:</td><td>{{hiddenpowers[hidden_power_type][hidden_power_index][1]}}</td></tr>
+                        <tr><td>Def:</td><td>{{hiddenpowers[hidden_power_type][hidden_power_index][2]}}</td></tr>
+                        <tr><td>Spe:</td><td>{{hiddenpowers[hidden_power_type][hidden_power_index][3]}}</td></tr>
+                        <tr><td>SpA:</td><td>{{hiddenpowers[hidden_power_type][hidden_power_index][4]}}</td></tr>
+                        <tr><td>SpD:</td><td>{{hiddenpowers[hidden_power_type][hidden_power_index][5]}}</td></tr>
                     </table>
                     <br>
                     <table>
@@ -1022,6 +1026,7 @@
     <script src="lib/textures.js"></script>
     <script src="lib/default_colors.js"></script>
     <script src="lib/hp_ivs.js"></script>
+    <script src="lib/hiddenpower-all.js"></script>
     <script src="lib/split_trainers_simple.js"></script>
     <script src="lib/cross_generation_moves.js"></script>
 

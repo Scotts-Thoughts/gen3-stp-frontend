@@ -7,7 +7,8 @@ const g3hiddenPowerTypeSelector = {
     "Ground"   : 1039138815,
     "Rock"     : 1040153599,
     "Bug"      : 1040186335,
-    "Ghost"    : 1040186366,
+    "Ghost"    : 1040186367, // New HP Ghost
+    // "Ghost"    : 1040186366, Old HP Ghost
     "Steel"    : 1040187391,
     "Fire"     : 1072660447,
     "Water"    : 1072692191,

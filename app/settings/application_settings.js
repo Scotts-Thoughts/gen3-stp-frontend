@@ -4,6 +4,7 @@ const application_settings = [
     [ "pkmnNature",        "Adamant",  ],
     [ "pkmn_ability",      "Pressure", ], // false = ability 1, true = ability 2
     [ "hidden_power_type", "Electric", ],
+    [ "hidden_power_index", 0, ],
     [ "pkmn_gender",       "Female",   ],
     [ "gameSelection",     "FireRed and LeafGreen", ],
 

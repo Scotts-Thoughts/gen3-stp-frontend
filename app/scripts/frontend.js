@@ -675,8 +675,9 @@ const app = Vue.createApp({
             // POKEMON CONFIG (components) ---------------------------------------------------------------------//
             starterString         : "Beedrill",
             pkmnNature            : "Adamant",
-            pkmn_ability          : "Pressure", // false = ability 1, true = ability 2
+            pkmn_ability          : MyStorage['pkmn_ability'] ?? "Pressure", // false = ability 1, true = ability 2
             hidden_power_type     : "Electric",
+            hidden_power_index    : 0,
             pkmn_gender           : "Female",
             gameSelection         : MyStorage['gameSelection'] ?? "FireRed and LeafGreen",
             evolution             : MyStorage['evolution'] ?? false,
@@ -787,6 +788,7 @@ const app = Vue.createApp({
             pokedex_indexes           : pokedex_indexes,
             split_trainers_simple     : split_trainers_simple,
             cross_generation_moves    : cross_generation_moves,
+            hiddenpowers              : hiddenpowers,
             
 
             trainerLists: {
@@ -4580,6 +4582,7 @@ const app = Vue.createApp({
 
         // SETTING THE STARTER POKEMON'S STATS ----------------------------------------------------------------------------------------------//
         const setStartingAttributes = async () => {
+            //* PERSIONALITY VALUE CALCULATION
             // const personalityValue = this.natures[this.pkmnNature][`personality_value_${this.pkmn_gender.toLowerCase()}`]
             //256 * 25 * 10 = 70400, gives a clean starting point where modulo 25 and modulo 256 are both 0
             //this can really be anything divisible by 256 though
@@ -4587,10 +4590,6 @@ const app = Vue.createApp({
             if(this.pkmn_gender == "Male") {
                 //31 and 225 are the breakpoints for 87% gender ratio pokemon
                 personalityValue += 225;
-            }
-            var iv_block = this.g3hiddenPowerTypeSelector[this.hidden_power_type]
-            if (this.pkmn_ability == this.game.dexData[this.starterString].abilities[1]) {
-                iv_block = iv_block - 2147483648;
             }
             //the odd/evenness may need to be flipped according to the selected ability
             //this is very important to ensure evolutions do not have their abilities swapped
@@ -4611,12 +4610,40 @@ const app = Vue.createApp({
                     personalityValue += 1525; //1525 keeps the modulo between 225 and 255
                 }
             }
-        
+
+            //* IV BLOCK CALCULATION
+            var hp_data       = this.hiddenpowers
+            var pkmn_hp       = this.hidden_power_type  
+            var pkmn_hp_index = this.hidden_power_index
+
+            var ivHp    = hp_data[pkmn_hp][pkmn_hp_index][0]
+            var ivAtk   = hp_data[pkmn_hp][pkmn_hp_index][1]
+            var ivDef   = hp_data[pkmn_hp][pkmn_hp_index][2]
+            var ivSpe   = hp_data[pkmn_hp][pkmn_hp_index][3]
+            var ivSpA   = hp_data[pkmn_hp][pkmn_hp_index][4]
+            var ivSpD   = hp_data[pkmn_hp][pkmn_hp_index][5]
+            var egg     = false
+            var ability = this.pkmn_ability == this.game.dexData[this.starterString].abilities[1] ? true : false
+            var int_egg     = 0
+            var int_ability = this.pkmn_ability == this.game.dexData[this.starterString].abilities[1] ? 1 : 0
+
+            //* SET PROPERTIES
             // only recalculate stats when IVs when your starter is received
             if (this.game.starterLocation.includes(this.mapper.properties.overworld.mapName.value)  && this.mapper.properties.player.team[0].level.value == 5) {
                 await Promise.all([
                     await this.mapper.properties.player.team[0].personalityValue.set(personalityValue, false), 
-                    await this.mapper.properties.player.team[0].ivEggAbilityBlock.set(iv_block, false), 
+                    await this.mapper.setBits([
+                        {path: 'player.team.0.ivHp',             value: ivHp,        freeze: false},
+                        {path: 'player.team.0.ivAttack',         value: ivAtk,       freeze: false},
+                        {path: 'player.team.0.ivDefense',        value: ivDef,       freeze: false},
+                        {path: 'player.team.0.ivSpeed',          value: ivSpe,       freeze: false},
+                        {path: 'player.team.0.ivSpecialAttack',  value: ivSpA,       freeze: false},
+                        {path: 'player.team.0.ivSpecialDefense', value: ivSpD,       freeze: false},
+                        // {path: 'player.team.0.isEgg',            value: egg,         freeze: false},
+                        // {path: 'player.team.0.ability',          value: ability,     freeze: false},
+                        // {path: 'player.team.0.int_isEgg',        value: int_egg,     freeze: false},
+                        {path: 'player.team.0.int_ability',      value: int_ability, freeze: false},
+                    ]),
                 ])
                 if (this.gameSelection == 'FireRed and LeafGreen' && (this.starterString == 'Mew' || this.starterString == 'Celebi' || this.starterString == 'Jirachi' || this.starterString == 'Deoxys')) {
                     await Promise.all([ 
@@ -4638,7 +4665,6 @@ const app = Vue.createApp({
             const pkmnData = this.dexData[this.starterString]
             const level    = 5
             const natures  = this.natures[this.pkmnNature]
-            const species  = this.mapper.properties.player.team[0].species.value
 
             var ivHp  = this.mapper.properties.player.team[0].ivHp.value
             var ivAtk = this.mapper.properties.player.team[0].ivAttack.value
@@ -4646,13 +4672,6 @@ const app = Vue.createApp({
             var ivSpA = this.mapper.properties.player.team[0].ivSpecialAttack.value
             var ivSpD = this.mapper.properties.player.team[0].ivSpecialDefense.value
             var ivSpe = this.mapper.properties.player.team[0].ivSpeed.value
-
-            // var iv_hp              = this.hiddenpower_type_selector[this.hidden_power_type].hp
-            // var iv_attack          = this.hiddenpower_type_selector[this.hidden_power_type].attack
-            // var iv_defense         = this.hiddenpower_type_selector[this.hidden_power_type].defense
-            // var iv_speed           = this.hiddenpower_type_selector[this.hidden_power_type].speed
-            // var iv_special_attack  = this.hiddenpower_type_selector[this.hidden_power_type].special_attack
-            // var iv_special_defense = this.hiddenpower_type_selector[this.hidden_power_type].special_defense
 
             //calculates the Pokemon's starting stats with the desired DVs
             var hitpoints      = Math.floor((((2 * pkmnData.base_hp + ivHp + 0) * level)/100) + level + 10)
@@ -4672,20 +4691,7 @@ const app = Vue.createApp({
                     await this.mapper.properties.player.team[0].specialAttack.set(specialAttack, false), 
                     await this.mapper.properties.player.team[0].specialDefense.set(specialDefense, false), 
                     await this.mapper.properties.player.team[0].speed.set(speed, false), 
-                    // await this.mapper.setBits([
-                    //     {path: 'player.team.ivHp',             value: iv_hp,              freeze: false},
-                    //     {path: 'player.team.ivAttack',         value: iv_attack,          freeze: false},
-                    //     {path: 'player.team.ivDefense',        value: iv_defense,         freeze: false},
-                    //     {path: 'player.team.ivSpeed',          value: iv_speed,           freeze: false},
-                    //     {path: 'player.team.ivSpecialAttack',  value: iv_special_attack,  freeze: false},
-                    //     {path: 'player.team.ivSpecialDefense', value: iv_special_defense, freeze: false},
-                    // ]),
                 ])
-                // if (species == 'Regirock' || species == 'Regice' || species == 'Registeel') {
-                //     await Promise.all([
-                //         await this.mapper.properties.player.team[0].move1pp.set(0, false),
-                //     ])
-                // }
             }
             if (this.pokedex_indexes[this.starterString] > 0x97 && this.gameSelection == 'FireRed and LeafGreen') { // TODO requires testing
                 this.toggle_national_dex()
@@ -4693,7 +4699,6 @@ const app = Vue.createApp({
         }
         this.mapper.properties.player.team[0].move1pp.change(async (newProp) => {
             const species = this.mapper.properties.player.team[0].species.value
-            const pp    = newProp.value
             const move1 = this.mapper.properties.player.team[0].move1.value
             const move2 = this.mapper.properties.player.team[0].move2.value
             if (species == 'Regirock' || species == 'Regice' || species == 'Registeel') {
