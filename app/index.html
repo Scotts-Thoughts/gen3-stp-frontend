@@ -121,6 +121,10 @@
                             <td style="height: 24px;">Debugging:</td>
                             <td style="height: 24px;"><input class="checkBoxStyle" type="checkbox" v-model="debugging"/></td>
                         </tr>
+                        <tr v-if="show_advanced_settings">
+                            <td style="height: 24px;">Set Starter Automatically:</td>
+                            <td style="height: 24px;"><input class="checkBoxStyle" type="checkbox" v-model="set_rom_starter_automatically"/></td>
+                        </tr>
                         <tr v-if="gameSelection == 'FireRed and LeafGreen'"><td>Stop Timer After League Rematches:</td><td><input class="checkBoxStyle" type="checkbox" v-model="league_rematches"/></td></tr>
                     </table>
                     <br>
@@ -136,17 +140,19 @@
                     <br><br>
                     <!-- <button v-if="gameSelection == 'FireRed and LeafGreen'" class="buttonStyle" @click="toggle_national_dex">Toggle National Pokedex</button><br> -->
                     <!-- <button v-if="gameSelection == 'FireRed and LeafGreen'" class="buttonStyle" @click="toggle_pokedex">Toggle Pokedex</button><br> -->
-                    <div v-show="!debugging">
-                        <div>Moveset Updating:</div>
+                    <button v-show="!battle_testing_ui" class="buttonStyle buttonStyle_column3" @click="battle_testing_ui_toggle">Show optimization UI</button>
+                    <button v-show="battle_testing_ui" class="buttonStyle buttonStyle_column3" @click="battle_testing_ui_toggle">Close optimization UI</button>
+                    <div v-show="!debugging && battle_testing_ui">
+                        <div>Moveset:</div>
                         <input type="text" v-model="move1_replacement" placeholder="Input move 1">
                         <input type="text" v-model="move2_replacement" placeholder="Input move 2">
                         <input type="text" v-model="move3_replacement" placeholder="Input move 3">
                         <input type="text" v-model="move4_replacement" placeholder="Input move 4">
-                        <button class="buttonStyle buttonStyle_column3" @click="update_moveset">Update Party Moves</button>
-                        <button class="buttonStyle buttonStyle_column3" @click="update_battle_moveset">Update Battle Moves</button>
+                        <button class="buttonStyle buttonStyle_column3" @click="update_moveset">Set moves in the Overworld</button>
+                        <button class="buttonStyle buttonStyle_column3" @click="update_battle_moveset">Set moves while in Battle</button>
                         <br>
                         <br>
-                        <div>Item Updating:</div>
+                        <div>Top 4 items:</div>
                         <input type="text" v-model="item1_replacement" placeholder="Input item 1">
                         <input type="text" v-model="item2_replacement" placeholder="Input item 2">
                         <input type="text" v-model="item3_replacement" placeholder="Input item 3">
@@ -154,15 +160,15 @@
                         <button class="buttonStyle buttonStyle_column3" @click="update_items">Update</button>
                         <br>
                         <br>
-                        <button class="buttonStyle buttonStyle_column3" @click="update_nature">Update Stats</button>
+                        <button class="buttonStyle buttonStyle_column3" @click="update_nature">Recalculate stats for nature</button>
                     </div>
                     <div v-show="debugging">
                         <div style="font-size: 20px;">Debugging:</div>
                         <br>
                         <table>
                             <tr><td>State:</td>          <td>{{g3stateVariable}}</td></tr>
-                            <tr><td>stpCallback1:</td>    <td>{{mapper.properties.pointers.sStpCallback1.value}}</td></tr>
-                            <tr><td>stpCallback2:</td>    <td>{{mapper.properties.pointers.sStpCallback2.value}}</td></tr>
+                            <tr><td>stpCallback1:</td>   <td>{{mapper.properties.pointers.sStpCallback1.value}}</td></tr>
+                            <tr><td>stpCallback2:</td>   <td>{{mapper.properties.pointers.sStpCallback2.value}}</td></tr>
                             <tr><td>Enemy State:</td>    <td>{{enemyState}}</td></tr>
                             <tr><td>Stats Toggle:</td>   <td>{{stats}}</td></tr>
                             <tr><td>Evolution:</td>      <td>{{evolution}}</td></tr>
@@ -245,10 +251,12 @@
                         <tr><td>SpD:</td><td>{{hiddenpowers[hidden_power_type][hidden_power_index][5]}}</td></tr>
                     </table>
                     <br>
-                    <table>
-                        <tr><td>Evolution:</td><td><input class="checkBoxStyle" type="checkbox" v-model="evolution"/></td></tr>
-                    </table>
-                    <br>
+                    <div v-if="show_advanced_settings">
+                        <table>
+                            <tr><td>Evolution:</td><td><input class="checkBoxStyle" type="checkbox" v-model="evolution"/></td></tr>
+                        </table>
+                        <br>
+                    </div>
                     <div>
                         <div>Guarantee catches:</td><td><input class="checkBoxStyle" type="checkbox" v-model="catch_rate"/><br></div>
                         <br>
@@ -1025,7 +1033,6 @@
     <script src="lib/hiddenPowerTypeSelector.js"></script>
     <script src="lib/textures.js"></script>
     <script src="lib/default_colors.js"></script>
-    <script src="lib/hp_ivs.js"></script>
     <script src="lib/hiddenpower-all.js"></script>
     <script src="lib/split_trainers_simple.js"></script>
     <script src="lib/cross_generation_moves.js"></script>

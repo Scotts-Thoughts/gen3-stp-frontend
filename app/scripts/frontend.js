@@ -669,8 +669,10 @@ const app = Vue.createApp({
             scott_mode   : true,
             gameVariables: null,
             debugging    : false,
+            set_rom_starter_automatically : true,
             legacy_state          : MyStorage['legacy_state'] ?? false,
             show_advanced_settings: MyStorage['show_advanced_settings'] ?? false,
+            battle_testing_ui     : MyStorage['battle_testing_ui'] ?? false,
             // game: null,
             // POKEMON CONFIG (components) ---------------------------------------------------------------------//
             starterString         : "Beedrill",
@@ -775,7 +777,6 @@ const app = Vue.createApp({
             g3hiddenPowerTypeSelector : g3hiddenPowerTypeSelector,
             textures                  : textures,
             default_colors            : default_colors,
-            hp_ivs                    : hp_ivs,
             autosplitter              : autosplitter,
             generation_3_moves        : generation_3_moves,
             remakeTrainers            : remakeTrainers,
@@ -917,6 +918,7 @@ const app = Vue.createApp({
                 "pkmnNature",
                 "pkmn_ability",
                 "hidden_power_type",
+                "hidden_power_index",
                 "pkmn_gender",
                 "finished_run_count",
                 "backgroundHue",
@@ -1087,6 +1089,7 @@ const app = Vue.createApp({
                 "no_counters",
                 "legacy_state",
                 "show_advanced_settings",
+                "set_rom_starter_automatically",
                 "catch_rate",
             ],
 
@@ -1361,6 +1364,7 @@ const app = Vue.createApp({
             this.pkmnNature =             MyStorage[`${newValue}`]?.pkmnNature        ?? "Hardy"
             this.pkmn_ability =           MyStorage[`${newValue}`]?.pkmn_ability      ?? this.dexDataRubySapphireEmerald[newValue].abilities[0]
             this.hidden_power_type =      MyStorage[`${newValue}`]?.hidden_power_type ?? "Dark"
+            this.hidden_power_index =     MyStorage[`${newValue}`]?.hidden_power_index ?? 0
             this.pkmn_gender =            MyStorage[`${newValue}`]?.pkmn_gender       ?? "Female"
             this.movepoolResize();
         },
@@ -2076,28 +2080,38 @@ const app = Vue.createApp({
     },
 
     methods: {
+        battle_testing_ui_toggle() {
+            switch (this.battle_testing_ui) {
+                case false: this.battle_testing_ui = true; break;
+                case true:  this.battle_testing_ui = false; break;
+            }
+        },
         async update_rom_starter_and_intro_mon() {
             let starter = this.starterString
             let game = this.gameSelection
             if (game == "Emerald") {
                 await Promise.all([
-                    await this.mapper.properties.patch.sStpIntroSpecies.set(starter, false), 
-                    await this.mapper.properties.patch.sStpStarterSpecies_0.set(starter, false), 
-                    await this.mapper.properties.patch.sStpStarterSpecies_1.set(starter, false), 
-                    await this.mapper.properties.patch.sStpStarterSpecies_2.set(starter, false), 
+                    this.mapper.properties.patch.sStpIntroSpecies.set(starter, false), 
+                    this.mapper.properties.patch.sStpStarterSpecies_0.set(starter, false), 
+                    this.mapper.properties.patch.sStpStarterSpecies_1.set(starter, false), 
+                    this.mapper.properties.patch.sStpStarterSpecies_2.set(starter, false), 
                 ])
             }
             if (game == "FireRed and LeafGreen") {
                 await Promise.all([
-                    await this.mapper.properties.variables.VAR_CHOSEN_STARTER.set(starter, false), 
-                    await this.mapper.properties.patch.STP_CHOSEN_STARTER.set(starter, false), 
+                    this.mapper.properties.variables.VAR_CHOSEN_STARTER.set(starter, false), 
+                    this.mapper.properties.patch.STP_CHOSEN_STARTER.set(starter, false), 
                 ])
             }
-            else {
-                console.log("This game is not supported yet.")
-            }
+            // else {
+            //     // console.log("This game is not supported yet.")
+            // }
         },
         async update_nature() {
+            if (this.mapper.properties.player.teamCount.value == 0) { 
+                console.log('Cannot update stats while the player has no Pokemon.')
+                return 
+            }
             const pkmnData = this.dexData[this.starterString]
             const level    = this.mapper.properties.player.team[0].level.value
             const natures  = this.natures[this.pkmnNature]
@@ -2158,13 +2172,13 @@ const app = Vue.createApp({
 
             // only recalculate stats when IVs when your starter is received
             await Promise.all([
-                await this.mapper.properties.player.team[0].hp.set(hitpoints, false), 
-                await this.mapper.properties.player.team[0].maxHp.set(hitpoints, false), 
-                await this.mapper.properties.player.team[0].attack.set(attack, false), 
-                await this.mapper.properties.player.team[0].defense.set(defense, false), 
-                await this.mapper.properties.player.team[0].specialAttack.set(specialAttack, false), 
-                await this.mapper.properties.player.team[0].specialDefense.set(specialDefense, false), 
-                await this.mapper.properties.player.team[0].speed.set(speed, false), 
+                this.mapper.properties.player.team[0].hp.set(hitpoints, false), 
+                this.mapper.properties.player.team[0].maxHp.set(hitpoints, false), 
+                this.mapper.properties.player.team[0].attack.set(attack, false), 
+                this.mapper.properties.player.team[0].defense.set(defense, false), 
+                this.mapper.properties.player.team[0].specialAttack.set(specialAttack, false), 
+                this.mapper.properties.player.team[0].specialDefense.set(specialDefense, false), 
+                this.mapper.properties.player.team[0].speed.set(speed, false), 
             ])
         },
         openFolder(folderName, game_name, path = "", path2) {
@@ -2340,10 +2354,10 @@ const app = Vue.createApp({
                                             0x03]
             var write_value = bit_array_bytes_386
             await Promise.all([
-                await this.mapper.properties.pokedex.owned_start_of_bit_array.setBytes(write_value, false),
-                await this.mapper.properties.pokedex.seen_start_of_bit_array.setBytes(write_value, false),
-                await this.mapper.properties.pokedex.seen1_start_of_bit_array.setBytes(write_value, false),
-                await this.mapper.properties.pokedex.seen2_start_of_bit_array.setBytes(write_value, false),
+                this.mapper.properties.pokedex.owned_start_of_bit_array.setBytes(write_value, false),
+                this.mapper.properties.pokedex.seen_start_of_bit_array.setBytes(write_value, false),
+                this.mapper.properties.pokedex.seen1_start_of_bit_array.setBytes(write_value, false),
+                this.mapper.properties.pokedex.seen2_start_of_bit_array.setBytes(write_value, false),
             ])
         },
         async toggle_national_dex() {
@@ -2352,16 +2366,16 @@ const app = Vue.createApp({
             const dex_flag = this.mapper.properties.events.nationalDex.value
             if (magic == 185 && dex_var == 25176 && dex_flag == true) {
                 await Promise.all([
-                    await this.mapper.properties.pokedex.magic.set(0, false), // 0xB9
-                    await this.mapper.properties.variables.pokedex.set(0, false), // 0x6258 (Bytes: 0x58 0x62)
-                    await this.mapper.properties.events.nationalDex.set(false, false), 
+                    this.mapper.properties.pokedex.magic.set(0, false), // 0xB9
+                    this.mapper.properties.variables.pokedex.set(0, false), // 0x6258 (Bytes: 0x58 0x62)
+                    this.mapper.properties.events.nationalDex.set(false, false), 
                 ])
             }
             else {
                 await Promise.all([
-                    await this.mapper.properties.pokedex.magic.set(185, false), // 0xB9
-                    await this.mapper.properties.variables.pokedex.set(25176, false), // 0x6258 (Bytes: 0x58 0x62)
-                    await this.mapper.properties.events.nationalDex.set(true, false), 
+                    this.mapper.properties.pokedex.magic.set(185, false), // 0xB9
+                    this.mapper.properties.variables.pokedex.set(25176, false), // 0x6258 (Bytes: 0x58 0x62)
+                    this.mapper.properties.events.nationalDex.set(true, false), 
                 ])
             }
         },
@@ -2770,6 +2784,10 @@ const app = Vue.createApp({
             this.finished_logs = false
             this.blackout_counter = 0
             this.playerId = 0
+            if (this.set_rom_starter_automatically && this.timer_formatted_time[0] == "0" && this.timer_formatted_time[1] == ".00") {
+                console.log('Setting ROM starter automatically')
+                this.update_rom_starter_and_intro_mon()
+            }
             // this.playerName = "NINTEN"
         },
         copy_overlay_properties() {
@@ -2807,6 +2825,7 @@ const app = Vue.createApp({
         load_all_settings() {
             this.starterString          = MyStorage["starterString"] ?? "Rayquaza"
             this.show_advanced_settings = MyStorage['show_advanced_settings'] ?? false,
+            this.set_rom_starter_automatically = MyStorage['set_rom_starter_automatically'] ?? true,
             this.catch_rate             = MyStorage['catch_rate'] ?? false,
 
             this.stat_exp_display =   MyStorage['stat_exp_display']   ?? true,
@@ -3975,6 +3994,7 @@ const app = Vue.createApp({
                             this.hallOfFameReset = false;
                             this.newRun();
                             this.startTime();
+                            if (this.set_rom_starter_automatically) { this.update_rom_starter_and_intro_mon(); }
                         }
                     })
                 }
@@ -3992,6 +4012,7 @@ const app = Vue.createApp({
                                 this.hallOfFameReset = false;
                                 this.newRun();
                                 this.startTime();
+                                if (this.set_rom_starter_automatically) { this.update_rom_starter_and_intro_mon(); }
                             }
                         })
                     }
@@ -4005,6 +4026,7 @@ const app = Vue.createApp({
                                 this.hallOfFameReset = false;
                                 this.newRun();
                                 this.startTime();
+                                if (this.set_rom_starter_automatically) { this.update_rom_starter_and_intro_mon(); }
                             }
                         })
                     }
@@ -4019,6 +4041,7 @@ const app = Vue.createApp({
                             this.hallOfFameReset = false;
                             this.newRun();
                             this.startTime();
+                            if (this.set_rom_starter_automatically) { this.update_rom_starter_and_intro_mon(); }
                         }
                     })
                 }
@@ -4194,7 +4217,7 @@ const app = Vue.createApp({
             const trashCanPuzzle = async () => {
                 if (this.mapper.properties.events.trashCanPuzzle.value == false) {//check to see if the Puzzle is solved yet, if it's not proceeds to solve it
                     await Promise.all([
-                        await this.mapper.properties.events.trashCanPuzzle.set(true, false), 
+                        this.mapper.properties.events.trashCanPuzzle.set(true, false), 
                     ])
                 }
             }	
@@ -4248,6 +4271,13 @@ const app = Vue.createApp({
         this.pokemon_list = this.keys_function(this.dexDataRubySapphireEmerald)
 
         this.newGame();
+
+        this.mapper.properties.pointers.sStpCallback2.change((newProp) => {
+            if (this.set_rom_starter_automatically && newProp.value == 'CB2_InitMainMenu' && this.timer_formatted_time[0] == "0h0m0s" && this.timer_formatted_time[1] == ".00") {
+                console.log('Setting ROM starter automatically')
+                this.update_rom_starter_and_intro_mon()
+            }
+        });
         //GAMESTATE MANAGEMENT
         // set initial gamestate value when the layout is loaded
         if (this.legacy_state == true) {
@@ -4548,11 +4578,11 @@ const app = Vue.createApp({
             const noMod = 0x06 //0x06 - no modifier
             if (this.mapper.properties.player.team[0].personalityValue?.value == 0 || this.mapper.properties.player.team[0].personalityValue?.value == null) //battle is cleared
                 await Promise.all([
-                    await this.mapper.properties.battle.yourPokemon.modStageAttack.setBytes([noMod], false), //resets ram to no mod
-                    await this.mapper.properties.battle.yourPokemon.modStageDefense.setBytes([noMod], false), //resets ram to no mod
-                    await this.mapper.properties.battle.yourPokemon.modStageSpeed.setBytes([noMod], false), //resets ram to no mod
-                    await this.mapper.properties.battle.yourPokemon.modStageSpecialAttack.setBytes([noMod], false), //resets ram to no mod
-                    await this.mapper.properties.battle.yourPokemon.modStageSpecialDefense.setBytes([noMod], false), //resets ram to no mod
+                    this.mapper.properties.battle.yourPokemon.modStageAttack.setBytes([noMod], false), //resets ram to no mod
+                    this.mapper.properties.battle.yourPokemon.modStageDefense.setBytes([noMod], false), //resets ram to no mod
+                    this.mapper.properties.battle.yourPokemon.modStageSpeed.setBytes([noMod], false), //resets ram to no mod
+                    this.mapper.properties.battle.yourPokemon.modStageSpecialAttack.setBytes([noMod], false), //resets ram to no mod
+                    this.mapper.properties.battle.yourPokemon.modStageSpecialDefense.setBytes([noMod], false), //resets ram to no mod
                 ])
         }
         await onLoad()
@@ -4561,11 +4591,11 @@ const app = Vue.createApp({
             const noMod = 0x06 //0x06 - no modifier
             if (this.mapper.properties.battle.turnInfo.battleOutcome.bytes > 0) { //checks to see if the player is current in the overworld
                 await Promise.all([
-                    await this.mapper.properties.battle.yourPokemon.modStageAttack.setBytes([noMod], false), //resets ram to no mod
-                    await this.mapper.properties.battle.yourPokemon.modStageDefense.setBytes([noMod], false), //resets ram to no mod
-                    await this.mapper.properties.battle.yourPokemon.modStageSpeed.setBytes([noMod], false), //resets ram to no mod
-                    await this.mapper.properties.battle.yourPokemon.modStageSpecialAttack.setBytes([noMod], false), //resets ram to no mod
-                    await this.mapper.properties.battle.yourPokemon.modStageSpecialDefense.setBytes([noMod], false), //resets ram to no mod
+                    this.mapper.properties.battle.yourPokemon.modStageAttack.setBytes([noMod], false), //resets ram to no mod
+                    this.mapper.properties.battle.yourPokemon.modStageDefense.setBytes([noMod], false), //resets ram to no mod
+                    this.mapper.properties.battle.yourPokemon.modStageSpeed.setBytes([noMod], false), //resets ram to no mod
+                    this.mapper.properties.battle.yourPokemon.modStageSpecialAttack.setBytes([noMod], false), //resets ram to no mod
+                    this.mapper.properties.battle.yourPokemon.modStageSpecialDefense.setBytes([noMod], false), //resets ram to no mod
                 ])
             }
         }
@@ -4622,32 +4652,26 @@ const app = Vue.createApp({
             var ivSpe   = hp_data[pkmn_hp][pkmn_hp_index][3]
             var ivSpA   = hp_data[pkmn_hp][pkmn_hp_index][4]
             var ivSpD   = hp_data[pkmn_hp][pkmn_hp_index][5]
-            var egg     = false
-            var ability = this.pkmn_ability == this.game.dexData[this.starterString].abilities[1] ? true : false
-            var int_egg     = 0
             var int_ability = this.pkmn_ability == this.game.dexData[this.starterString].abilities[1] ? 1 : 0
 
             //* SET PROPERTIES
             // only recalculate stats when IVs when your starter is received
             if (this.game.starterLocation.includes(this.mapper.properties.overworld.mapName.value)  && this.mapper.properties.player.team[0].level.value == 5) {
                 await Promise.all([
-                    await this.mapper.properties.player.team[0].personalityValue.set(personalityValue, false), 
-                    await this.mapper.setBits([
+                    this.mapper.properties.player.team[0].personalityValue.set(personalityValue, false), 
+                    this.mapper.setBits([
                         {path: 'player.team.0.ivHp',             value: ivHp,        freeze: false},
                         {path: 'player.team.0.ivAttack',         value: ivAtk,       freeze: false},
                         {path: 'player.team.0.ivDefense',        value: ivDef,       freeze: false},
                         {path: 'player.team.0.ivSpeed',          value: ivSpe,       freeze: false},
                         {path: 'player.team.0.ivSpecialAttack',  value: ivSpA,       freeze: false},
                         {path: 'player.team.0.ivSpecialDefense', value: ivSpD,       freeze: false},
-                        // {path: 'player.team.0.isEgg',            value: egg,         freeze: false},
-                        // {path: 'player.team.0.ability',          value: ability,     freeze: false},
-                        // {path: 'player.team.0.int_isEgg',        value: int_egg,     freeze: false},
                         {path: 'player.team.0.int_ability',      value: int_ability, freeze: false},
                     ]),
                 ])
                 if (this.gameSelection == 'FireRed and LeafGreen' && (this.starterString == 'Mew' || this.starterString == 'Celebi' || this.starterString == 'Jirachi' || this.starterString == 'Deoxys')) {
                     await Promise.all([ 
-                        await this.mapper.properties.player.team[0].fateful_encounter.set(true, false), 
+                        this.mapper.properties.player.team[0].fateful_encounter.set(true, false), 
                     ])
                 }
                 if (this.gameSelection == 'Emerald') {
@@ -4684,13 +4708,13 @@ const app = Vue.createApp({
             // only recalculate stats when IVs when your starter is received
             if (this.game.starterLocation.includes(this.mapper.properties.overworld.mapName?.value) && this.mapper.properties.player.team[0].level.value == 5) {
                 await Promise.all([
-                    await this.mapper.properties.player.team[0].hp.set(hitpoints, false), 
-                    await this.mapper.properties.player.team[0].maxHp.set(hitpoints, false), 
-                    await this.mapper.properties.player.team[0].attack.set(attack, false), 
-                    await this.mapper.properties.player.team[0].defense.set(defense, false), 
-                    await this.mapper.properties.player.team[0].specialAttack.set(specialAttack, false), 
-                    await this.mapper.properties.player.team[0].specialDefense.set(specialDefense, false), 
-                    await this.mapper.properties.player.team[0].speed.set(speed, false), 
+                    this.mapper.properties.player.team[0].hp.set(hitpoints, false), 
+                    this.mapper.properties.player.team[0].maxHp.set(hitpoints, false), 
+                    this.mapper.properties.player.team[0].attack.set(attack, false), 
+                    this.mapper.properties.player.team[0].defense.set(defense, false), 
+                    this.mapper.properties.player.team[0].specialAttack.set(specialAttack, false), 
+                    this.mapper.properties.player.team[0].specialDefense.set(specialDefense, false), 
+                    this.mapper.properties.player.team[0].speed.set(speed, false), 
                 ])
             }
             if (this.pokedex_indexes[this.starterString] > 0x97 && this.gameSelection == 'FireRed and LeafGreen') { // TODO requires testing
@@ -4704,7 +4728,7 @@ const app = Vue.createApp({
             if (species == 'Regirock' || species == 'Regice' || species == 'Registeel') {
                 if (move1 == 'EXPLOSION' && move2 == null) {
                     await Promise.all([
-                        await this.mapper.properties.player.team[0].move1pp.set(0, false),
+                        this.mapper.properties.player.team[0].move1pp.set(0, false),
                     ])
                 }   
             }
