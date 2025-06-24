@@ -26,13 +26,11 @@ function createWindow() {
     // Get the new size of the window
     const { width } = mainWindow.getContentBounds();
     const { height } = mainWindow.getContentBounds();
-    const horizontalZoomFactor = width / 1920;
-    let verticalZoomFactor = height / 1080;
-    if (height == 1079) {
-      //fix for occasional 1 pixel invisible windows task bar on windows 11
-      verticalZoomFactor = 1;
-    }
+    //if odd, add 1 to make it even to prevent invisible 1px taskbar bug in windows 11
+    let horizontalZoomFactor = (width+(width%2)) / 1920;
+    let verticalZoomFactor = (height+(height%2)) / 1080;
     let zoomFactor = 1;
+
     //take the smaller factor
     if(horizontalZoomFactor > verticalZoomFactor){
       zoomFactor = verticalZoomFactor;
@@ -49,12 +47,10 @@ function createWindow() {
     //zoom the window appropriately before showing
     const { width } = mainWindow.getContentBounds();
     const { height } = mainWindow.getContentBounds();
-    const horizontalZoomFactor = width / 1920;
-    let verticalZoomFactor = height / 1080;
-    if (height == 1079) {
-      //fix for occasional 1 pixel invisible windows task bar on windows 11
-      verticalZoomFactor = 1;
-    }
+    
+    //if odd, add 1 to make it even to prevent invisible 1px taskbar bug in windows 11
+    let horizontalZoomFactor = (width+(width%2)) / 1920;
+    let verticalZoomFactor = (height+(height%2)) / 1080;
     let zoomFactor = 1;
     //take the smaller factor
     if(horizontalZoomFactor > verticalZoomFactor){
