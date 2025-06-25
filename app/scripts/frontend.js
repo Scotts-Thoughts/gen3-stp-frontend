@@ -4717,9 +4717,9 @@ const app = Vue.createApp({
                     this.mapper.properties.player.team[0].speed.set(speed, false), 
                 ])
             }
-            if (this.pokedex_indexes[this.starterString] > 0x97 && this.gameSelection == 'FireRed and LeafGreen') { // TODO requires testing
-                this.toggle_national_dex()
-            }
+            // if (this.pokedex_indexes[this.starterString] > 0x97 && this.gameSelection == 'FireRed and LeafGreen') { // TODO requires testing
+            //     this.toggle_national_dex()
+            // }
         }
         this.mapper.properties.player.team[0].move1pp.change(async (newProp) => {
             const species = this.mapper.properties.player.team[0].species.value
