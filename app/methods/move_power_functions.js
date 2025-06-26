@@ -49,6 +49,39 @@ function movePower(y) { //y = move1.value
         else if (y == "FACADE" && (this.s1.statusCondition.value == "Paralyzed" || this.s1.statusCondition.value == "Poisoned" || this.s1.statusCondition.value == "Burned")) {
             return move.Power * 2
         }
+        else if (y == "FURY CUTTER") {
+            let furyCutterCounter = this.mapper.properties.battle.yourPokemon.counters.furyCutter.value
+            if (this.g3stateVariable == "Battle") {
+                if ((10*(Math.pow(2, furyCutterCounter)) > 160)) { 
+                    return 160 
+                }
+                else { 
+                    return 10*(Math.pow(2, furyCutterCounter)) 
+                }
+            } 
+            else { 
+                return 10 
+            }
+        }
+        else if (y == "ROLLOUT") {
+            let rolloutTimer         = this.mapper.properties.battle.yourPokemon.counters.rollout.value
+            let defenseCurl_flag     = this.mapper.properties.battle.yourPokemon.status2.STATUS2_DEFENSE_CURL.value
+            let defenseCurl_modifier = defenseCurl_flag == true ? 1 : 0
+            let rolloutLevel         = 0
+            switch (rolloutTimer) {
+                case 0: rolloutLevel = 0; break;
+                case 4: rolloutLevel = 1; break;
+                case 3: rolloutLevel = 2; break;
+                case 2: rolloutLevel = 3; break;
+                case 1: rolloutLevel = 4; break;
+            }
+            if (this.g3stateVariable == "Battle") {
+                return 30*(Math.pow(2, rolloutLevel + defenseCurl_modifier))
+            } 
+            else { 
+                return 30 
+            }
+        }
         else
             if (move) return move.Power
     }
