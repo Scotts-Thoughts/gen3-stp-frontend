@@ -4048,11 +4048,14 @@ const app = Vue.createApp({
             }
         },
         freezeEncounters() {
+            const debug_function = true
+            if (debug_function) { console.log("Freezing encounters") }
             const map_name = this.mapper.properties.overworld.mapName.value;
             const starter  = this.starterString
             const badge    = this.mapper.properties.player.badges.badge1.value
             const game     = this.gameSelection
             if (game == 'Emerald' && starter == "Latios") {
+                if (this.catch_rate == true) { this.mapper.properties.stp_vars.STP_CATCH_RATE.set(0x01,false); }
                 if (badge == false) {
                     this.mapper.setBits([
                         {path: 'overworld.encounters.zigzagoon', value: false, freeze: false},
@@ -4093,7 +4096,8 @@ const app = Vue.createApp({
                     default: this.mapper.properties.overworld.disabledEncounters.set(0x00,false);
                 }
             }
-            if (game == 'Emerald') {
+            else if (game == 'Emerald') {
+                if (this.catch_rate == true) { this.mapper.properties.stp_vars.STP_CATCH_RATE.set(0x01,false); }
                 switch (map_name) {
                     case "ROUTE 101": 
                         if (this.route_101 == false) {
@@ -4119,7 +4123,8 @@ const app = Vue.createApp({
                     default: this.mapper.properties.overworld.disabledEncounters.set(0x00,false);
                 }
             }
-            if (game == 'FireRed and LeafGreen') {
+            else if (game == 'FireRed and LeafGreen') {
+                if (this.catch_rate == true) { this.mapper.properties.patch.STP_CATCH_RATE.set(1,false); }
                 switch (map_name) {
                     case "ROUTE 1": 
                         if (this.mapper.properties.events.menu.pokedex.value == true) {
