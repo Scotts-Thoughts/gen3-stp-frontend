@@ -110,13 +110,13 @@ const gameVariables =
         // stp-temporary yml patch
         "starterLocation" : ["PALLET_TOWN","PALLET_TOWN - PROFESSOR_OAKS_LAB"],
         "callback1" : {
-            "overworld" : ["Overworld", 134570549, 134570581],
-            "toBattle" : [134292473, 134292453],
+            "overworld" : ["Overworld", 134570549, 134570581, "CB1_Overworld"],
+            "toBattle" : [134292473, 134292453, "BattleMainCB1"],
             "blackout" : [134570917],//test further //134570549 overworld? after
         },
         "callback2" : {
-            "toBattle" : [134287637, 134282653, "Battle Animation"],
-            "baseStats" : [135711589], //copied from emerald, what should this be??
+            "toBattle" : [134287637, 134282653, "Battle Animation", "CB2_InitBattle", "CB2_OverworldBasic"],
+            "baseStats" : [135711589, "CB2_InitCopyrightScreenAfterBootup"], //copied from emerald, what should this be??
             "reset" : ["Owners", 0, "CB2_InitCopyrightScreenAfterBootup"],
             "blackout" : [134570917, 134570949, "CB2_WhiteOut"], //test further //134570677 overworld after
         },

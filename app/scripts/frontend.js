@@ -4128,7 +4128,7 @@ const app = Vue.createApp({
                 switch (map_name) {
                     case "ROUTE 1": 
                         if (this.mapper.properties.events.menu.pokedex.value == true) {
-                            if (this.mapper.properties.events.stp_pidgey_on_route_1.value == true || this.mapper.properties.events.stp_rattata_on_route_1.value == true) {
+                            if (this.route_1 == true || this.mapper.properties.events.stp_pidgey_on_route_1.value == true || this.mapper.properties.events.stp_rattata_on_route_1.value == true) {
                                 this.mapper.properties.overworld.disabledEncounters.set(0x00,false);
                             }
                             else {
@@ -4581,6 +4581,7 @@ const app = Vue.createApp({
         // DEFINE FUNCTIONS FOR GAMEHOOK MODIFICATIONS HERE --------------------------------------------------------------------//
         const onLoad = async () => {
             const noMod = 0x06 //0x06 - no modifier
+            // const noMod = "0" //0x06 - no modifier
             if (this.mapper.properties.player.team[0].personalityValue?.value == 0 || this.mapper.properties.player.team[0].personalityValue?.value == null) //battle is cleared
                 await Promise.all([
                     this.mapper.properties.battle.yourPokemon.modStageAttack.setBytes([noMod], false), //resets ram to no mod
@@ -4591,9 +4592,10 @@ const app = Vue.createApp({
                 ])
         }
         await onLoad()
-        
+
         const stageMods = async () => {
             const noMod = 0x06 //0x06 - no modifier
+            // const noMod = "0" //0x06 - no modifier
             if (this.mapper.properties.battle.turnInfo.battleOutcome.bytes > 0) { //checks to see if the player is current in the overworld
                 await Promise.all([
                     this.mapper.properties.battle.yourPokemon.modStageAttack.setBytes([noMod], false), //resets ram to no mod
