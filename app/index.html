@@ -77,14 +77,14 @@
                 <div v-else class="labelFriendship">Friendship:</div>
                 <div class="abilityHeldItemLabelStyle labelAbility">Ability:</div>
                 <div class="abilityHeldItemLabelStyle labelHeldItem">Held Item:</div>
-                <div class="gametime">
-                    <div class="timerTitle">time played at 4x game-speed</div>
-                    <div class="gametimeClock">{{timer_formatted_time[0]}}</div>
-                    <div class="gametimeFrames">{{timer_formatted_time[1]}}</div>
-                </div>
                 <div v-if="blackout_counter === 0"                          class="resetsTitle">resets</div>
                 <div v-else-if="blackout_counter > 0 && playerResets === 0" class="blackoutsTitle">blackouts</div>
                 <div v-else-if="blackout_counter > 0 && playerResets != 0"  class="resetsTitle">faults</div>
+                <Timer 
+                    v-bind:paused="timer_pause" 
+                    v-bind:start="timer_startTime" 
+                    v-bind:pauseTime="timer_pause_time" 
+                />
             </div>
 <!--------- DEBUGGING ----------------------------------------------------------------------------------------------------------------->
             <div v-if="gamestate == true">

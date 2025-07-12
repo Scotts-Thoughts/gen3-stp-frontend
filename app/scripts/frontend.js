@@ -1,3 +1,4 @@
+const Timer = require("./components/Timer.js");
 // Setup the Storage Object
 function createWatchedObject(watcher) {
     const root = {};
@@ -445,6 +446,7 @@ const { existsSync } = require('original-fs');
 const path = require("path");
 const { finished } = require('stream');
 
+
 for (folder of folders = ['storage', 'splits', 'splits/Emerald', 'splits/FireRed']) {
     if (!fs.existsSync(folder)) {
         fs.mkdirSync(folder);
@@ -662,6 +664,9 @@ function transition(fn, ms) {
 // import gameVariables from '../lib/gameVariables.js';
 
 const app = Vue.createApp({
+    components: {
+        "Timer": Timer
+    },
     data() {
         return {
             ready        : false,
