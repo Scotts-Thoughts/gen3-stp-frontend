@@ -1,7 +1,7 @@
 function log_split(x) {
     // console.log(this)
-    // console.log(this.timer_formatted_time)
-    console.log(`Autosplitter - Battle Ended: Split: ${this.opponent} at ${this.timer_formatted_time[0]}${this.timer_formatted_time[1]} (Gametime: ${this.gametimeSplit})`)
+    const time = this.timer.formatted_time;
+    console.log(`Autosplitter - Battle Ended: Split: ${this.opponent} at ${time[0]}${time[1]} (Gametime: ${this.gametimeSplit})`)
 } 
 function autosplitter_process() {
     // console.log("Checking if autosplitter is on...")
@@ -26,9 +26,10 @@ function autosplitter_process() {
         let trainer_id = this.opponentId
         let location = this.mapper.properties.overworld.mapName.value
         let total_pokemon = this.mapper.properties.battle.trainer.totalPokemon
-        let real_time_total = this.timer_formatted_time[0] + this.timer_formatted_time[1]
-        let real_time_hmmss = this.timer_formatted_time[0]
-        let real_time_file_label = this.timer_formatted_time[2]
+        const formattedTime = this.timer.formatted_time;
+        let real_time_total = formattedTime[0] + formattedTime[1]
+        let real_time_hmmss = formattedTime[0]
+        let real_time_file_label = formattedTime[2]
         let resets = this.playerResets.toString()
         let blackouts = this.blackout_counter.toString()
         let failures = this.playerResets + this.blackout_counter
@@ -67,12 +68,13 @@ function autosplitter_process() {
         let incremented_finished_run_count = this.finished_run_count + 1
         let runIdentifier = this.starterString.toString() + " " + incremented_finished_run_count.toString()
         let trainerName = this.autosplitter_trainer(this.opponent)
-        let RTHours = this.time_h
-        let RTMinutes = this.time_m
-        let RTSeconds = this.time_s
-        let RTMilliseconds = this.time_ms
+        const time = this.timer.getTime();
+        let RTHours = time.hours;
+        let RTMinutes = time.minutes;
+        let RTSeconds = time.seconds;
+        let RTMilliseconds = time.ms;
         let startTime = this.time_split_start
-        let realTime = this.padTime(this.time_h) + ":" + this.padTime(this.time_m) + ":" + this.padTime(this.time_s) + "." + this.padTime(this.time_ms)
+        let realTime = this.padTime(time.hours) + ":" + this.padTime(time.minutes) + ":" + this.padTime(time.seconds) + "." + this.padTime(time.ms)
         let gameTime = this.padTime(gameTimeH) + ":" + this.padTime(gameTimeM) + ":" + this.padTime(gameTimeS) + "." + this.padTime(gameTimeF)
         let hp = this.mapper.properties.player.team[0].hp.value
         let maxHp = this.mapper.properties.player.team[0].maxHp.value
