@@ -60,7 +60,7 @@
                 <img class="canvas colored-image ds" src="images/ui/game_area.svg" />
                 <div class="colored-image ds" :style="`filter: saturate(${ui_saturation}) drop-shadow(0px 0px 1px #000000)`" style="--url: url(images/ui/timer.svg)"></div>
                 <div class="colored-image ds" :style="`filter: saturate(${ui_saturation}) drop-shadow(0px 0px 1px #000000)`" style="--url: url(images/ui/moveset.svg)"></div>
-                <div class="colored-image ds" :style="`filter: saturate(${ui_saturation}) drop-shadow(0px 0px 1px #000000)`" style="--url: url(images/ui/resets.svg)"></div>
+                
                 <div class="colored-image ds" :style="`filter: saturate(${ui_saturation}) drop-shadow(0px 0px 1px #000000)`" style="--url: url(images/ui/badges.svg)"></div>
                 <img class="canvas" :src="`images/elements/${this.game.region.toLowerCase()}_badges_unobtained.png`" />
                 <img class="canvas" src="images/elements/moveset.png" />
@@ -73,13 +73,11 @@
                     <img class="canvas colored-image ds" :src="`images/ui/nature arrows/${ui_stat_arrangement_modifier}/lowers/${natures[pkmnNature].lowers}.svg`" />
                 </div>
                 <div class="labelNature">Nature:</div>
-                <div v-if="labels == true && (stats == 'EVs' || stats == 'Detailed EVs')" class="labelFriendship">EVs:</div>
+                <div v-if="(stats == 'EVs' || stats == 'Detailed EVs')" class="labelFriendship">EVs:</div>
                 <div v-else class="labelFriendship">Friendship:</div>
                 <div class="abilityHeldItemLabelStyle labelAbility">Ability:</div>
                 <div class="abilityHeldItemLabelStyle labelHeldItem">Held Item:</div>
-                <div v-if="blackout_counter === 0"                          class="resetsTitle">resets</div>
-                <div v-else-if="blackout_counter > 0 && playerResets === 0" class="blackoutsTitle">blackouts</div>
-                <div v-else-if="blackout_counter > 0 && playerResets != 0"  class="resetsTitle">faults</div>
+
                 <Timer ></Timer>
             </div>
 <!--------- DEBUGGING ----------------------------------------------------------------------------------------------------------------->
@@ -395,13 +393,7 @@
             </div>
 
 <!--------- BADGE ICONS ---------------------------------------------------------------------------------------------------------------------->
-            <div>
-                <div v-for="x in badges">
-                    <div v-if="mapper.properties.player.badges[x].value == true && g3stateVariable != `Base Stats`">
-                        <img class="badge" :src="`images/badges/positioned/${this.game.region}/${x}.png`"/>
-                    </div>
-                </div>
-            </div>            
+            <Badge-Icons v-bind:mapper="mapper" v-bind:game="game" ></Badge-Icons>
 
 <!--------- STATS ---------------------------------------------------------------------------------------------------------------------------->
             <!-- STATS OVERLAY GRAPHIC  -->
@@ -538,9 +530,9 @@
             <div>
                 <div v-if="expBarAnimation == true" class="expMeterOuter"><div class="expMeterInner" ref="expBar"></div></div>
                 <div v-if="expBarAnimation == false" class="expMeterOuter"><div class="expMeterInner" :style="{ width: expPercent(s1) + '%' }"></div></div>
-                <div v-if="labels == true && mapper.properties.player.team[0].species.value == null" class="labelEXP">Exp:</div>
-                <div v-else-if="labels == true && g3stateVariable == 'Base Stats'" class="labelEXP">Exp:</div>
-                <div v-else-if="mapper.properties.player.team[0].species.value != null && labels == true" class="labelEXP">{{decimalToPercentage(calcExpStats(pkmnGrowthRate, mapper.properties.player.team[0].expPoints.value).percent)}}%</div>
+                <div v-if="mapper.properties.player.team[0].species.value == null" class="labelEXP">Exp:</div>
+                <div v-else-if="g3stateVariable == 'Base Stats'" class="labelEXP">Exp:</div>
+                <div v-else-if="mapper.properties.player.team[0].species.value != null" class="labelEXP">{{decimalToPercentage(calcExpStats(pkmnGrowthRate, mapper.properties.player.team[0].expPoints.value).percent)}}%</div>
             </div>
 
 <!--------- MOVEPOOL ------------------------------------------------------------------------------------------------------------------------------------->
@@ -995,31 +987,29 @@
                 </div>
             </transition>
             <!-- REPEL COUNTER -->
-            <div v-if="repel_counter == true">
-                <transition name="fadeBattle">
-                    <div v-show="g3stateVariable == 'Overworld' && mapper.properties.overworld.repelCount?.value > 0">
-                        <div class="colored-image" :style="`filter: saturate(${ui_saturation})`" style="--url: url(images/ui/accuracy.svg)"></div>
-                        <div class="accEvaStyle accEvaLabel accuracyLabel" style="font-size: 14px;">Repel Steps:</div>
-                        <div class="accEvaStyle accEvaMod accuracyMod">{{ mapper.properties.overworld.repelCount?.value }}</div>
-                    </div>
-                </transition>
-            </div>
+            <Repel-Counter 
+                :display="repel_counter" 
+                :mapper="mapper" 
+                :gamestate="g3stateVariable"
+                :ui_saturation="ui_saturation"
+            /></Repel-Counter>
             <!-- VS SEEKER COUNTER -->
             <div v-if="vs_seeker == true">
                 <transition name="fadeBattle">
                     <div v-show="g3stateVariable == 'Overworld' && mapper.properties.events.got_vs_seeker.value == true && mapper.properties.events.sys_vs_seeker_charging.value == true">
-                        <div class="colored-image" :style="`filter: saturate(${ui_saturation})`" style="--url: url(images/ui/evasion.svg)"></div>
+                        <div class="colored-image" style="--url: url(images/ui/evasion.svg)"></div>
                         <div class="accEvaStyle accEvaLabel evasionLabel" style="font-size: 14px;">Vs. Seeker:</div>
                         <div class="accEvaStyle accEvaMod evasionMod">{{ mapper.properties.player.vsSeeker.stepsUntilCharged.value }}</div>
                     </div>
                 </transition>
             </div>
             <!-- RESET COUNTER -->
-            <div v-show="resetCounter == true" id="reset_counter" class="resets">
-                <div v-if="blackout_counter === 0"                         >{{playerResets}}</div>
-                <div v-else-if="blackout_counter > 0 && playerResets === 0">{{blackout_counter}}</div>
-                <div v-else-if="blackout_counter > 0 && playerResets != 0" >{{playerResets + blackout_counter}}</div>
-            </div>
+            <Reset-Counter 
+                :display="resetCounter"
+                :resets="playerResets"
+                :blackouts="blackout_counter"
+                :ui_saturation="ui_saturation"
+            ></Reset-Counter>
         </div>
     </div>
 

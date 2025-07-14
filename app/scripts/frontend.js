@@ -666,6 +666,9 @@ function transition(fn, ms) {
 const app = Vue.createApp({
     components: {
         "Timer": require("./components/Timer.js"),
+        "ResetCounter": require("./components/ResetCounter.js"),
+        "BadgeIcons": require("./components/BadgeIcons.js"),
+        "RepelCounter": require("./components/RepelCounter.js"),
     },
     data() {
         return {
@@ -675,7 +678,6 @@ const app = Vue.createApp({
             gameVariables: null,
             debugging    : false,
             set_rom_starter_automatically : true,
-            legacy_state          : MyStorage['legacy_state'] ?? false,
             show_advanced_settings: MyStorage['show_advanced_settings'] ?? false,
             battle_testing_ui     : MyStorage['battle_testing_ui'] ?? false,
             // game: null,
@@ -1077,7 +1079,6 @@ const app = Vue.createApp({
                 "automatic_post_battle_splits",
                 "show_wild_battles",
                 "no_counters",
-                "legacy_state",
                 "show_advanced_settings",
                 "set_rom_starter_automatically",
                 "catch_rate",
@@ -1176,146 +1177,6 @@ const app = Vue.createApp({
                 }
             );
         }
-        // for (let i = 0; i < this.stats_toggle_settings.length; i++) {
-        //     let propName = this.stats_toggle_settings[i];
-        //     this.$watch(
-        //         () => this[propName], // Using a function to return the property's value
-        //         (newValue) => {
-        //             MyStorage[`${propName}`] = newValue;
-        //         }
-        //     );
-        // }
-        // for (let i = 0; i < this.right_panel_toggle.length; i++) {
-        //     let propName = this.right_panel_toggle[i];
-        //     this.$watch(
-        //         () => this[propName], // Using a function to return the property's value
-        //         (newValue) => {
-        //             MyStorage[`${propName}`] = newValue;
-        //             //!TODO: this needs to call a function to toggle the display on the right side of the screen
-        //         }
-        //     );
-        // }
-
-        // //!Setup the new Storage object
-        //         // Initialize the Storage object
-        // // This creates all of the objects that will then be filled
-        // const debug_mode = false; // This enables the printing of storage related console logs
-        // const clear_storage = false; // Use this to test functionality. It resets all the data blocks within the Storage.json file to their default values
-        // if (debug_mode) { console.log(`Initializing the Storage Object...`) }
-        // if (!Storage['global_variables'] || clear_storage == true) { //If the global variables don't exist, create them
-        //     // Assigns the global variables to the Storage object
-        //     Storage['global_variables'] = {
-        //         starter: this.starterName,
-        //         game: this.gameSelection,
-        //     }
-        // }
-        // if (!Storage['application_settings'] || clear_storage == true) {
-        //     //Assigns the application settings to the Storage object, these persist when the user changes the starter Pokemon
-        //     Storage['application_settings'] = {}
-        //     this.application_settings.forEach(setting => {
-        //         Storage['application_settings'][setting[0]] = setting[1];
-        //     });
-        // }
-        // if (!Storage['games'] || clear_storage == true) {
-        //     // Assigns the game data to the Storage object, these properties will be switched between depending on the game and starter currently selected
-        //     Storage['games'] = { //If the games object doesn't exist, create it; everything will be stored within here
-        //         "Ruby and Sapphire":    {},
-        //         "Emerald":              {},
-        //         "FireRed and Sapphire": {},
-        //     }
-        // }
-        // if (debug_mode) { 
-        //     console.log(`Success!`) 
-        //     console.log(`Initializing Starter Storage Object...`)
-        // }
-        // if (!Storage['games'][this.gameSelection][this.starterName] || clear_storage == true) {
-        //     Storage['games'][this.gameSelection][this.starterName] = {
-        //         style:    {},
-        //         settings: {},
-        //         splits:   {},
-        //         data:     {},
-        //     };
-        //     this.pokemon_settings.forEach(setting => {
-        //         Storage['games'][this.gameSelection][this.starterName].style[setting[0]] = setting[1];
-        //     });
-        // }
-        // if (debug_mode) { console.log(`Success!`) }
-
-        // // Initialize watchers for all of the style properties. 
-        // // These are game and Pokemon specific saved within: Storage.games[game][starter]
-        // // Define variables
-        // if (debug_mode) { 
-        //     console.log(`Stored Starter: ${this.starterName}`) 
-        //     console.log(`Stored Game: ${this.gameSelection}`)
-        // }
-        // //Loop through application settings and create watchers
-        // for (let i = 0; i < this.application_settings.length; i++) {
-        //     let [prop_name, value] = this.application_settings[i];
-        //     this.$watch(
-        //         () => this[prop_name],
-        //         (new_value) => {
-        //             if (!Storage.application_settings) {
-        //                 Storage.application_settings = {};
-        //             }
-        //             Storage.application_settings = {
-        //                 ...Storage.application_settings,
-        //                 [prop_name]: new_value
-        //             };
-        //         }
-        //     );
-        // }
-        // //Loop through style settings that will be saved within a game and specific Pokemon
-        // for (let i = 0; i < this.pokemon_settings.length; i++) {
-        //     let [prop_name, value] = this.pokemon_settings[i];
-        //     this.$watch(
-        //         () => this[prop_name],
-        //         (new_value) => {
-        //             if (!Storage.games[this.gameSelection][this.starterName].style) {
-        //                 Storage.games[this.gameSelection][this.starterName].style = {};
-        //             }
-        //             Storage.games[this.gameSelection][this.starterName].style = {
-        //                 ...Storage.games[this.gameSelection][this.starterName].style,
-        //                 [prop_name]: new_value
-        //             };
-        //         }
-        //     );
-        // }
-        // if (debug_mode) { 
-        //     console.log(`Storage finished initialization. Printing Storage object to console...`) 
-        //     console.log(Storage) 
-        //     console.log(`Loading settings from the Storage object into the application...`) 
-        //     console.log(Storage['global_variables'].starter) 
-        //     console.log(Storage['global_variables'].game) 
-        // }
-        // // Load Settings from the Storage object
-        // // Load Starter and Game
-        // this.starterName   = Storage['global_variables'].starter;
-        // this.gameSelection = Storage['global_variables'].game;
-        // // // Application Settings
-        // for (let key in Storage.application_settings) {
-        //     if (debug_mode) { 
-        //         console.log(`Application Setting Key: ${key}`) 
-        //     }
-        //     let application_settings = Object.entries(Storage.application_settings); // Assign the Pokemon's style settings to an array
-        //     for (let i = 0; i < application_settings.length; i++) { // Iterate through the array
-        //         this[key] = Storage.application_settings[key]; // Assign the values for each setting to the data() properties
-        //     }
-        // }
-        // // Pokemon Style Settings
-        // for (let key in Storage.games[this.gameSelection][this.starterName].style) {
-        //     if (debug_mode) { 
-        //         console.log(`Pokemon Style Key: ${key}`) 
-        //         console.log(Storage.games[this.gameSelection][this.starterName].style[key])
-        //     }
-        //     let style_settings = Object.entries(Storage.games[this.gameSelection][this.starterName].style); // Assign the Pokemon's style settings to an array
-        //     for (let i = 0; i < style_settings.length; i++) { // Iterate through the array
-        //         this[key] = Storage.games[this.gameSelection][this.starterName].style[key]; // Assign the values for each setting to the data() properties
-        //     }
-        // }
-        // if (debug_mode) { 
-        //     console.log(`Success!`) 
-        //     console.log(`Loaded all settings from Storage.`) 
-        // }
     },
 
     watch: {
@@ -1539,18 +1400,7 @@ const app = Vue.createApp({
         overlay_color(newColor) {
             document.documentElement.style.setProperty('--overlay-color', newColor);
         }, 
-        playerResets(newProp) {
-            const faults = newProp + this.blackout_counter
-            if (faults.toString().length == 1) {
-                document.getElementById("reset_counter").style.fontSize = "68px"
-            }
-            if (faults.toString().length == 3) {
-                document.getElementById("reset_counter").style.fontSize = "48px"
-            }
-            if (faults.toString().length == 4) {
-                document.getElementById("reset_counter").style.fontSize = "38px"
-            }
-            
+        playerResets(newProp) {           
             if (this.playerResets < 0) {
                 this.playerResets = 0;
             }
@@ -1558,17 +1408,6 @@ const app = Vue.createApp({
             MyStorage["playerResets"] = this.playerResets
         },
         blackout_counter(newProp) {
-            const faults = newProp + this.blackout_counter
-            if (faults.toString().length == 1) {
-                document.getElementById("reset_counter").style.fontSize = "68px"
-            }
-            if (faults.toString().length == 3) {
-                document.getElementById("reset_counter").style.fontSize = "48px"
-            }
-            if (faults.toString().length == 4) {
-                document.getElementById("reset_counter").style.fontSize = "38px"
-            }
-
             if (this.blackout_counter < 0) {
                 this.blackout_counter = 0;
             }
@@ -1878,21 +1717,20 @@ const app = Vue.createApp({
         },
         //BATTLE FADE
         battle_fade() {
+            console.log("battle_fade");
             if (
-            (this.opponent == "ELITE_FOUR_SIDNEY" ||
-            this.opponent == "ELITE_FOUR_PHOEBE" ||
-            this.opponent == "ELITE_FOUR_GLACIA" ||
-            this.opponent == "ELITE_FOUR_DRAKE" ||
-            this.opponent == "CHAMPION_WALLACE") &&
-            (this.g3stateVariable == "To Battle" ||
-            this.g3stateVariable == "Battle" ||
-            this.g3stateVariable == "From Battle")
+                (this.opponent == "ELITE_FOUR_SIDNEY" ||
+                this.opponent == "ELITE_FOUR_PHOEBE" ||
+                this.opponent == "ELITE_FOUR_GLACIA" ||
+                this.opponent == "ELITE_FOUR_DRAKE" ||
+                this.opponent == "CHAMPION_WALLACE") &&
+                (this.g3stateVariable == "To Battle" ||
+                this.g3stateVariable == "Battle" ||
+                this.g3stateVariable == "From Battle")
             ) {
                 return true
             }
-            else if (
-            this.g3stateVariable == "To Battle" ||
-            this.g3stateVariable == "Battle") {
+            else if (this.g3stateVariable == "To Battle" || this.g3stateVariable == "Battle") {
                 return true
             }
             else {
@@ -2332,9 +2170,6 @@ const app = Vue.createApp({
             };
         },
         async toggle_pokedex() {
-            const bit_array_bytes_151 = [   0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
-                                            0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
-                                            0xFF, 0xFF, 0x7F]
             const bit_array_bytes_386 = [   0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 
                                             0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
                                             0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
@@ -2818,7 +2653,6 @@ const app = Vue.createApp({
             this.battleGraphic =      MyStorage['battleGraphic']      ?? true,
             this.base_stats_display = MyStorage['base_stats_display'] ?? true,
             this.stats_display =      MyStorage['stats_display']      ?? true,
-            this.legacy_state =       MyStorage['legacy_state']       ?? false,
 
             this.graphicOverlay =             MyStorage['graphicOverlay']             ?? true
             this.gameArea =                   MyStorage['gameArea']                   ?? false
@@ -2842,7 +2676,6 @@ const app = Vue.createApp({
             this.btcInfo =                    MyStorage['btcInfo']                    ?? false
             this.returnPower =                MyStorage['returnPower']                ?? true
             this.gamestate =                  MyStorage['gamestate']                  ?? true
-            this.labels =                     MyStorage['labels']                     ?? true
             this.tutor_moves =                MyStorage['tutor_moves']                ?? false
             this.showSpecialTrainerGraphics = MyStorage['showSpecialTrainerGraphics'] ?? true
             this.route_101 =                  MyStorage['route_101']                  ?? true
@@ -3970,37 +3803,21 @@ const app = Vue.createApp({
                     })
                 }
                 else if (this.gameSelection == 'FireRed and LeafGreen') {
-                    if (this.legacy_state == false) {
-                        this.mapper.properties.pointers.sStpCallback2.change((currentProp, previousProp) => {
-                            value_current  = currentProp.value
-                            value_previous = previousProp.value
-                            // console.log(value_current, value_previous)
-                            if (value_current == 'CB2_NewGameScene' && (value_previous == 'CB2_TitleScreenRun' || value_previous == 'CB2_TitleScreenRun' || value_previous == 'CB2_MainMenu')) {
-                                console.log("New run detected... Timer started.")
-                                if (!this.testRun && this.no_counters == false) { 
-                                    this.attempt_number++ 
-                                }
-                                this.hallOfFameReset = false;
-                                this.newRun();
-                                this.timer.startTime(this.timer_startTimeOffset);
-                                if (this.set_rom_starter_automatically) { this.update_rom_starter_and_intro_mon(); }
+                    this.mapper.properties.pointers.sStpCallback2.change((currentProp, previousProp) => {
+                        value_current  = currentProp.value
+                        value_previous = previousProp.value
+                        // console.log(value_current, value_previous)
+                        if (value_current == 'CB2_NewGameScene' && (value_previous == 'CB2_TitleScreenRun' || value_previous == 'CB2_TitleScreenRun' || value_previous == 'CB2_MainMenu')) {
+                            console.log("New run detected... Timer started.")
+                            if (!this.testRun && this.no_counters == false) { 
+                                this.attempt_number++ 
                             }
-                        })
-                    }
-                    else {
-                        this.mapper.properties[this.game.newGameFlagContainer][this.game.newGameFlag].change((newProp, oldProp) => {
-                            if(this.game.newGameValueNew.includes(newProp.value) && this.game.newGameValueOld.includes(oldProp.value)){
-                                console.log("New run detected... Timer started.")
-                                if (!this.testRun && this.no_counters == false) { 
-                                    this.attempt_number++ 
-                                }
-                                this.hallOfFameReset = false;
-                                this.newRun();
-                                this.timer.startTime(this.timer_startTimeOffset);
-                                if (this.set_rom_starter_automatically) { this.update_rom_starter_and_intro_mon(); }
-                            }
-                        })
-                    }
+                            this.hallOfFameReset = false;
+                            this.newRun();
+                            this.timer.startTime(this.timer_startTimeOffset);
+                            if (this.set_rom_starter_automatically) { this.update_rom_starter_and_intro_mon(); }
+                        }
+                    })
                 }
                 else {
                     this.mapper.properties[this.game.newGameFlagContainer][this.game.newGameFlag].change((newProp, oldProp) => {
@@ -4230,16 +4047,6 @@ const app = Vue.createApp({
         // console.log("mapper set")
         this.timer.update();
         this.load_all_settings()
-        const faults = this.playerResets + this.blackout_counter
-        if (faults.toString().length == 1) {
-            document.getElementById("reset_counter").style.fontSize = "68px"
-        }
-        if (faults.toString().length == 3) {
-            document.getElementById("reset_counter").style.fontSize = "48px"
-        }
-        if (faults.toString().length == 4) {
-            document.getElementById("reset_counter").style.fontSize = "38px"
-        }
         for (var species of Object.keys(dexDataRubySapphireEmerald)) {
             var image = new Image();
             image.src = `images/pokemon/${species}.png`;
@@ -4255,193 +4062,88 @@ const app = Vue.createApp({
             }
         });
         //GAMESTATE MANAGEMENT
-        // set initial gamestate value when the layout is loaded
-        if (this.legacy_state == true) {
-            if (this.mapper.properties.player.team[0].level.value == 0) {
-                this.g3stateVariable = "Base Stats"
-            }
-            else if (this.mapper.properties.pointers.callback1.value == 0 || this.mapper.properties.pointers.callback1.value == null) {
-                this.g3stateVariable = "Base Stats"
-            }
-            else if (this.game.callback1.overworld.includes(this.mapper.properties.pointers.callback1.value)) {
-                this.g3stateVariable = "Overworld"
-            }
-            else if (this.game.callback1.toBattle.includes(this.mapper.properties.pointers.callback1.value)) {
-                if (this.game.callback2.toBattle.includes(this.mapper.properties.pointers.callback2.value) && this.mapper.properties.battle.turnInfo.battleDialogue.value == null) {
-                    this.g3stateVariable = "To Battle"
-                }
-                else {
-                    this.g3stateVariable = "Battle"
-                }
-            }
-            else 
-                this.g3stateVariable = "Battle"
-    
-            // wait for events to change the state
-            this.mapper.properties.pointers.callback1.change((prop) => {
-                if ((this.game.callback1.overworld.includes(prop.value))) {
-                    this.g3stateVariable = "Overworld"
-                }
-            });
-            this.mapper.properties.battle.turnInfo.battleDialogue.change((prop) => {
-                if(prop == " " || prop == null || prop == undefined ) {
-                    return;
-                }
-                if (prop.value == "Player Control" || prop.bytes == 6) { 
-                    this.g3stateVariable = "Battle"
-                }
-            });
-            this.mapper.properties.battle.turnInfo.battleOutcome.change((prop) => {
-                let endConditions = ["WON", "LOST", "DRAW", "RAN", "CAUGHT", "PLAYER_TELEPORTED", "POKEMON_FLED", "NO_SAFARI_BALLS", "FORFEITED", "POKEMON_TELEPORTED",1,2,3,4,5,6,7,8,9,10];
-                if (endConditions.includes(prop.value)) { this.g3stateVariable = "From Battle"}
-                if (prop.value == "WON")                { this.g3stateVariable = "From Battle"}
-                if (prop.value == "LOST")               { this.g3stateVariable = "From Battle"}
-                if (prop.value == "DRAW")               { this.g3stateVariable = "From Battle"}
-                if (prop.value == "RAN")                { this.g3stateVariable = "From Battle"}
-                if (prop.value == "CAUGHT")             { this.g3stateVariable = "From Battle"}
-                if (prop.value == "PLAYER_TELEPORTED")  { this.g3stateVariable = "From Battle"}
-                if (prop.value == "POKEMON_FLED")       { this.g3stateVariable = "From Battle"}
-                if (prop.value == "NO_SAFARI_BALLS")    { this.g3stateVariable = "From Battle"}
-                if (prop.value == "FORFEITED")          { this.g3stateVariable = "From Battle"}
-                if (prop.value == "POKEMON_TELEPORTED") { this.g3stateVariable = "From Battle"}
-            });
-            this.mapper.properties.pointers.callback2.change((prop) => {
-                if (this.game.callback2.baseStats.includes(prop.value)) { 
-                    this.g3stateVariable = "Base Stats"
-                }
-                else if (this.game.callback2.toBattle.includes(prop.value) && this.g3stateVariable != "Battle") { 
-                    this.g3stateVariable = "To Battle"
-                }
-            });
-            this.mapper.properties.player.team[0].personalityValue.change((prop) => {
-                if (prop.value == 0) {
-                    this.g3stateVariable = "Base Stats"
-                }
-            });
-            //track resets
-            //callback2 seems more reliable to track than dma1 in firered no encryption
-            if (this.legacy_state == true) {
-                this.mapper.properties.pointers.callback2.change((newProp, oldProp) => {
-                    if(this.game.callback2.reset.includes(newProp.value) /*&& !this.game.callback2.reset.includes(newProp.value)*/) {
-                        if (this.hallOfFameReset == true) {
-                            this.hallOfFameReset = false;
-                        }
-                        else {
-                            if (this.no_counters == false) {
-                                this.playerResets++;
-                            }
-                        }
-                    }
-                    if(this.game.callback2.blackout.includes(newProp.value) /*&& !this.game.callback2.reset.includes(newProp.value)*/) {
-                        if (this.no_counters == false) {
-                            this.blackout_counter++;
-                        }
-                    }
-                });
+    // set initial gamestate value when the layout is loaded
+        if (this.mapper.properties.player.team[0].level.value == 0) {
+            this.g3stateVariable = "Base Stats"
+        }
+        else if (this.mapper.properties.pointers.sStpCallback1.value == null) {
+            this.g3stateVariable = "Base Stats"
+        }
+        else if (this.game.callback1.overworld.includes(this.mapper.properties.pointers.sStpCallback1.value)) {
+            this.g3stateVariable = "Overworld"
+        }
+        else if (this.game.callback1.toBattle.includes(this.mapper.properties.pointers.sStpCallback1.value)) {
+            if (this.game.callback2.toBattle.includes(this.mapper.properties.pointers.sStpCallback2.value) && this.mapper.properties.battle.turnInfo.battleDialogue.value == null) {
+                this.g3stateVariable = "To Battle"
             }
             else {
-                this.mapper.properties.pointers.sStpCallback2.change((newProp, oldProp) => {
-                    if(this.game.callback2.reset.includes(newProp.value) /*&& !this.game.callback2.reset.includes(newProp.value)*/) {
-                        if (this.hallOfFameReset == true) {
-                            this.hallOfFameReset = false;
-                        }
-                        else {
-                            if (this.no_counters == false) {
-                                this.playerResets++;
-                            }
-                        }
-                    }
-                    if(this.game.callback2.blackout.includes(newProp.value) /*&& !this.game.callback2.reset.includes(newProp.value)*/) {
-                        if (this.no_counters == false) {
-                            this.blackout_counter++;
-                        }
-                    }
-                });
+                this.g3stateVariable = "Battle"
             }
         }
         else {
-            if (this.mapper.properties.player.team[0].level.value == 0) {
-                this.g3stateVariable = "Base Stats"
-            }
-            else if (this.mapper.properties.pointers.sStpCallback1.value == null) {
-                this.g3stateVariable = "Base Stats"
-            }
-            else if (this.game.callback1.overworld.includes(this.mapper.properties.pointers.sStpCallback1.value)) {
+            this.g3stateVariable = "Battle"
+        }
+
+        // wait for events to change the state
+        this.mapper.properties.pointers.sStpCallback1.change((prop) => {
+            if ((this.game.callback1.overworld.includes(prop.value))) {
                 this.g3stateVariable = "Overworld"
             }
-            else if (this.game.callback1.toBattle.includes(this.mapper.properties.pointers.sStpCallback1.value)) {
-                if (this.game.callback2.toBattle.includes(this.mapper.properties.pointers.sStpCallback2.value) && this.mapper.properties.battle.turnInfo.battleDialogue.value == null) {
-                    this.g3stateVariable = "To Battle"
-                }
-                else {
-                    this.g3stateVariable = "Battle"
-                }
+        });
+        this.mapper.properties.battle.turnInfo.battleDialogue.change((prop) => {
+            if(prop == " " || prop == null || prop == undefined ) {
+                return;
             }
-            else {
+            if (prop.value == "Player Control" || prop.bytes == 6) { 
                 this.g3stateVariable = "Battle"
             }
-    
-            // wait for events to change the state
-            this.mapper.properties.pointers.sStpCallback1.change((prop) => {
-                if ((this.game.callback1.overworld.includes(prop.value))) {
-                    this.g3stateVariable = "Overworld"
+        });
+        this.mapper.properties.battle.turnInfo.battleOutcome.change((prop) => {
+            let endConditions = ["WON", "LOST", "DRAW", "RAN", "CAUGHT", "PLAYER_TELEPORTED", "POKEMON_FLED", "NO_SAFARI_BALLS", "FORFEITED", "POKEMON_TELEPORTED",1,2,3,4,5,6,7,8,9,10];
+            if (endConditions.includes(prop.value)) { this.g3stateVariable = "From Battle"}
+            if (prop.value == "WON")                { this.g3stateVariable = "From Battle"}
+            if (prop.value == "LOST")               { this.g3stateVariable = "From Battle"}
+            if (prop.value == "DRAW")               { this.g3stateVariable = "From Battle"}
+            if (prop.value == "RAN")                { this.g3stateVariable = "From Battle"}
+            if (prop.value == "CAUGHT")             { this.g3stateVariable = "From Battle"}
+            if (prop.value == "PLAYER_TELEPORTED")  { this.g3stateVariable = "From Battle"}
+            if (prop.value == "POKEMON_FLED")       { this.g3stateVariable = "From Battle"}
+            if (prop.value == "NO_SAFARI_BALLS")    { this.g3stateVariable = "From Battle"}
+            if (prop.value == "FORFEITED")          { this.g3stateVariable = "From Battle"}
+            if (prop.value == "POKEMON_TELEPORTED") { this.g3stateVariable = "From Battle"}
+        });
+        this.mapper.properties.pointers.sStpCallback2.change((prop) => {
+            if (this.game.callback2.baseStats.includes(prop.value)) { 
+                this.g3stateVariable = "Base Stats"
+            }
+            else if (this.game.callback2.toBattle.includes(prop.value) && this.g3stateVariable != "Battle") { 
+                this.g3stateVariable = "To Battle"
+            }
+        });
+        this.mapper.properties.player.team[0].personalityValue.change((prop) => {
+            if (prop.value == 0) {
+                this.g3stateVariable = "Base Stats"
+            }
+        });
+        //track resets
+        //callback2 seems more reliable to track than dma1 in firered no encryption
+        this.mapper.properties.pointers.sStpCallback2.change((newProp, oldProp) => {
+            if(this.game.callback2.reset.includes(newProp.value) /*&& !this.game.callback2.reset.includes(newProp.value)*/) {
+                if (this.hallOfFameReset == true) {
+                    this.hallOfFameReset = false;
                 }
-            });
-            this.mapper.properties.battle.turnInfo.battleDialogue.change((prop) => {
-                if(prop == " " || prop == null || prop == undefined ) {
-                    return;
-                }
-                if (prop.value == "Player Control" || prop.bytes == 6) { 
-                    this.g3stateVariable = "Battle"
-                }
-            });
-            this.mapper.properties.battle.turnInfo.battleOutcome.change((prop) => {
-                let endConditions = ["WON", "LOST", "DRAW", "RAN", "CAUGHT", "PLAYER_TELEPORTED", "POKEMON_FLED", "NO_SAFARI_BALLS", "FORFEITED", "POKEMON_TELEPORTED",1,2,3,4,5,6,7,8,9,10];
-                if (endConditions.includes(prop.value)) { this.g3stateVariable = "From Battle"}
-                if (prop.value == "WON")                { this.g3stateVariable = "From Battle"}
-                if (prop.value == "LOST")               { this.g3stateVariable = "From Battle"}
-                if (prop.value == "DRAW")               { this.g3stateVariable = "From Battle"}
-                if (prop.value == "RAN")                { this.g3stateVariable = "From Battle"}
-                if (prop.value == "CAUGHT")             { this.g3stateVariable = "From Battle"}
-                if (prop.value == "PLAYER_TELEPORTED")  { this.g3stateVariable = "From Battle"}
-                if (prop.value == "POKEMON_FLED")       { this.g3stateVariable = "From Battle"}
-                if (prop.value == "NO_SAFARI_BALLS")    { this.g3stateVariable = "From Battle"}
-                if (prop.value == "FORFEITED")          { this.g3stateVariable = "From Battle"}
-                if (prop.value == "POKEMON_TELEPORTED") { this.g3stateVariable = "From Battle"}
-            });
-            this.mapper.properties.pointers.sStpCallback2.change((prop) => {
-                if (this.game.callback2.baseStats.includes(prop.value)) { 
-                    this.g3stateVariable = "Base Stats"
-                }
-                else if (this.game.callback2.toBattle.includes(prop.value) && this.g3stateVariable != "Battle") { 
-                    this.g3stateVariable = "To Battle"
-                }
-            });
-            this.mapper.properties.player.team[0].personalityValue.change((prop) => {
-                if (prop.value == 0) {
-                    this.g3stateVariable = "Base Stats"
-                }
-            });
-            //track resets
-            //callback2 seems more reliable to track than dma1 in firered no encryption
-            this.mapper.properties.pointers.sStpCallback2.change((newProp, oldProp) => {
-                if(this.game.callback2.reset.includes(newProp.value) /*&& !this.game.callback2.reset.includes(newProp.value)*/) {
-                    if (this.hallOfFameReset == true) {
-                        this.hallOfFameReset = false;
-                    }
-                    else {
-                        if (this.no_counters == false) {
-                            this.playerResets++;
-                        }
-                    }
-                }
-                if(this.game.callback2.blackout.includes(newProp.value) /*&& !this.game.callback2.reset.includes(newProp.value)*/) {
+                else {
                     if (this.no_counters == false) {
-                        this.blackout_counter++;
+                        this.playerResets++;
                     }
                 }
-            });
-        }
+            }
+            if(this.game.callback2.blackout.includes(newProp.value) /*&& !this.game.callback2.reset.includes(newProp.value)*/) {
+                if (this.no_counters == false) {
+                    this.blackout_counter++;
+                }
+            }
+        });        
 
         //ENEMY STATE MANAGER
         if (this.mapper.properties.player.team[0].level.value == 0 || this.g3stateVariable == 'Overworld') 
@@ -5021,4 +4723,10 @@ const app = Vue.createApp({
             this.timer.pauseUnpauseTime();
         });
     },
+    provide() {
+        return {
+            g3stateVariable: this.g3stateVariable,
+            ui_saturation: Vue.ref(this.ui_saturation),
+        };
+    }
 }).mount('#app')
