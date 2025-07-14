@@ -86,15 +86,7 @@ const application_settings = [
 
     //timer variables
     [ "timer_startTimeOffset", "00:00:00.00", ],
-    [ "timer_formatted_time",  ["0", ".00"],  ],
     [ "time_split_start",      "00:00:00:00", ],
-    [ "timer_startTime",       0,    ],
-    [ "timer_pause",           true, ],
-    [ "timer_pause_time",      0,    ],
-    [ "time_h",                0,    ],
-    [ "time_m",                0,    ],
-    [ "time_s",                0,    ],
-    [ "time_ms",               0,    ],
     [ "battle_start",          0,    ],
 
     //resets

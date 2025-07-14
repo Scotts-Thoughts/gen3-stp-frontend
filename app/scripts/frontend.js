@@ -104,6 +104,7 @@ const MyStorage = new Proxy({}, {
             localStorage.removeItem(prop);
         else
             localStorage.setItem(prop, JSON.stringify(value));
+        return true;
     },
     get: (_, prop) => {
         if (prop === "clear")
@@ -113,7 +114,7 @@ const MyStorage = new Proxy({}, {
         if (prop === "keys")
             return () => Object.keys(localStorage);
         if (prop === "has")
-            return (key) => localStorage.getItem(key) == null;
+            return (key) => localStorage.getItem(key) === null;
         return JSON.parse(localStorage.getItem(prop));
     }
 });
@@ -444,6 +445,7 @@ const fs = require("fs");
 const { existsSync } = require('original-fs');
 const path = require("path");
 const { finished } = require('stream');
+const Timer = require("./logic/Timer.js");
 
 for (folder of folders = ['storage', 'splits', 'splits/Emerald', 'splits/FireRed']) {
     if (!fs.existsSync(folder)) {
@@ -662,6 +664,9 @@ function transition(fn, ms) {
 // import gameVariables from '../lib/gameVariables.js';
 
 const app = Vue.createApp({
+    components: {
+        "Timer": require("./components/Timer.js"),
+    },
     data() {
         return {
             ready        : false,
@@ -929,16 +934,9 @@ const app = Vue.createApp({
             ],
             //timer variables
             timer_startTimeOffset: MyStorage["timer_startTimeOffset"] ?? "00:00:00.00",
-            timer_startTime:       MyStorage["timer_startTime"]      ?? 0,
-            timer_pause:           MyStorage["timer_pause"]          ?? true,
-            timer_formatted_time:  MyStorage["timer_formatted_time"] ?? ["0", ".00"],
-            timer_pause_time:      MyStorage["timer_pause_time"]     ?? 0,
-            time_h:                MyStorage['time_h']               ?? 0,
-            time_m:                MyStorage['time_m']               ?? 0,
-            time_s:                MyStorage['time_s']               ?? 0,
-            time_ms:               MyStorage['time_ms']              ?? 0,
             time_split_start:      MyStorage['time_split_start']     ?? "00:00:00:00",
             battle_start:          MyStorage['battle_start']         ?? 0,
+            timer:                 new Timer(MyStorage),
 
             //resets
             playerId:            MyStorage["playerId"]         ?? 0,
@@ -1046,14 +1044,6 @@ const app = Vue.createApp({
                 "full_data_str",
                 "deprecated_data_str",
                 "simple_data",
-                "timer_startTime",
-                "timer_pause",
-                "timer_formatted_time",
-                "timer_pause_time",
-                "time_h",
-                "time_m",
-                "time_s",
-                "time_ms",
                 "time_split_start",
                 "battle_start",
                 "testStatus",
@@ -1109,7 +1099,6 @@ const app = Vue.createApp({
             copy_overlay_pokemon_to:   MyStorage['copy_overlay_pokemon_to']   ?? "",
         }
     },
-
     created() {
         import('../lib/gameVariables.js').then((gameVariables) => {
             this.gameVariables = gameVariables.default;
@@ -1412,7 +1401,7 @@ const app = Vue.createApp({
         g3stateVariable(newProp) {
             console.log("G3StateVariable newProp: " + newProp)
             try {
-                var logStr = `Autosplitter - Battle Started: ${this.batt.trainer[this.game.opponent].value} started at ${this.timer_formatted_time[0]}${this.timer_formatted_time[1]} (Gametime: ${this.gametimeSplit})`
+                var logStr = `Autosplitter - Battle Started: ${this.batt.trainer[this.game.opponent].value} started at ${this.timer.formatted_time[0]}${this.timer.formatted_time[1]} (Gametime: ${this.gametimeSplit})`
             }
             catch {
                 
@@ -1423,7 +1412,8 @@ const app = Vue.createApp({
             if (newProp == "Battle" && this.mapper.properties.battle.type.trainer.value == true) {
                 this.split_logStr = logStr
                 this.battle_start = Date.now()
-                this.time_split_start = this.padTime(this.time_h) + ":" + this.padTime(this.time_m) + ":" + this.padTime(this.time_s) + "." + this.padTime(this.time_ms)
+                const time = this.timer.getTime();
+                this.time_split_start = this.padTime(time.hours) + ":" + this.padTime(time.minutes) + ":" + this.padTime(time.seconds) + "." + this.padTime(time.ms)
                 log_start()
             }
 
@@ -2767,24 +2757,18 @@ const app = Vue.createApp({
             return Object.values(object)
         },
 
-        async newRun() {
-            const timeRegex = /(\d+):(\d{2}):(\d{2})\.(\d{2})/;
-            const timeOffsetArray = this.timer_startTimeOffset.match(timeRegex)?.slice(1,5).map(x => parseInt(x)) ?? [0,0,0,0];
-            const timeOffset = timeOffsetArray[0] * 3600000 + timeOffsetArray[1] * 60000 + timeOffsetArray[2] * 1000 + timeOffsetArray[3] * 10;
-
+        async newRun() {         
             // this.current_splits = await this.load_temp_splits()
             this.compared_splits = []
             this.current_splits  = []
 
-            this.timer_pause = true
-            this.timer_startTime = Date.now() - timeOffset
-            this.timer_pause_time = Date.now()
-            this.timer_formatted_time = [ "0", ".00" ]
+            this.timer.setTimer(this.timer_startTimeOffset);
+
             this.playerResets = 0
             this.finished_logs = false
             this.blackout_counter = 0
             this.playerId = 0
-            if (this.set_rom_starter_automatically && this.timer_formatted_time[0] == "0" && this.timer_formatted_time[1] == ".00") {
+            if (this.set_rom_starter_automatically && this.timer.formatted_time[0] == "0" && this.timer.formatted_time[1] == ".00") {
                 console.log('Setting ROM starter automatically')
                 this.update_rom_starter_and_intro_mon()
             }
@@ -2878,14 +2862,6 @@ const app = Vue.createApp({
             this.full_data_str =              MyStorage['full_data_str']              ?? ""
             this.deprecated_data_str =        MyStorage['deprecated_data_str']        ?? ""
             this.simple_data =                MyStorage['simple_data']                ?? ""
-            this.timer_startTime =            MyStorage['timer_startTime']            ?? 0
-            this.timer_pause =                MyStorage['timer_pause']                ?? true
-            this.timer_formatted_time =       MyStorage['timer_formatted_time']       ?? ["0", ".00"]
-            this.timer_pause_time =           MyStorage['timer_pause_time']           ?? 0
-            this.time_h =                     MyStorage['time_h']                     ?? 0
-            this.time_m =                     MyStorage['time_m']                     ?? 0
-            this.time_s =                     MyStorage['time_s']                     ?? 0
-            this.time_ms =                    MyStorage['time_ms']                    ?? 0
             this.time_split_start =           MyStorage['time_split_start']           ?? "00:00:00:00"
             this.battle_start =               MyStorage['battle_start']               ?? 0
             
@@ -3593,11 +3569,6 @@ const app = Vue.createApp({
         nullToSpace,
 
         // time_functions.js
-        startTime,
-        stopTime,
-        updateTime,
-        pauseUnpauseTime,
-        set_timer,
         padTime,
         gameTimeHM,
         gameTimeHM,
@@ -3993,7 +3964,7 @@ const app = Vue.createApp({
                             }
                             this.hallOfFameReset = false;
                             this.newRun();
-                            this.startTime();
+                            this.timer.startTime(this.timer_startTimeOffset);
                             if (this.set_rom_starter_automatically) { this.update_rom_starter_and_intro_mon(); }
                         }
                     })
@@ -4011,7 +3982,7 @@ const app = Vue.createApp({
                                 }
                                 this.hallOfFameReset = false;
                                 this.newRun();
-                                this.startTime();
+                                this.timer.startTime(this.timer_startTimeOffset);
                                 if (this.set_rom_starter_automatically) { this.update_rom_starter_and_intro_mon(); }
                             }
                         })
@@ -4025,7 +3996,7 @@ const app = Vue.createApp({
                                 }
                                 this.hallOfFameReset = false;
                                 this.newRun();
-                                this.startTime();
+                                this.timer.startTime(this.timer_startTimeOffset);
                                 if (this.set_rom_starter_automatically) { this.update_rom_starter_and_intro_mon(); }
                             }
                         })
@@ -4040,7 +4011,7 @@ const app = Vue.createApp({
                             }
                             this.hallOfFameReset = false;
                             this.newRun();
-                            this.startTime();
+                            this.timer.startTime(this.timer_startTimeOffset);
                             if (this.set_rom_starter_automatically) { this.update_rom_starter_and_intro_mon(); }
                         }
                     })
@@ -4257,7 +4228,7 @@ const app = Vue.createApp({
         this.mapper.onDisconnected = (x) => this.ready = false
         await this.mapper.connect()
         // console.log("mapper set")
-        this.updateTime()
+        this.timer.update();
         this.load_all_settings()
         const faults = this.playerResets + this.blackout_counter
         if (faults.toString().length == 1) {
@@ -4278,7 +4249,7 @@ const app = Vue.createApp({
         this.newGame();
 
         this.mapper.properties.pointers.sStpCallback2.change((newProp) => {
-            if (this.set_rom_starter_automatically && newProp.value == 'CB2_InitMainMenu' && this.timer_formatted_time[0] == "0h0m0s" && this.timer_formatted_time[1] == ".00") {
+            if (this.set_rom_starter_automatically && newProp.value == 'CB2_InitMainMenu' && this.timer.formatted_time[0] == "0h0m0s" && this.timer.formatted_time[1] == ".00") {
                 console.log('Setting ROM starter automatically')
                 this.update_rom_starter_and_intro_mon()
             }
@@ -4902,7 +4873,7 @@ const app = Vue.createApp({
                         && this.league_rematches == true) {
                             return
                     }
-                    this.stopTime()
+                    this.timer.stopTime();
                     if (!this.testRun && !this.no_counters) {
                         this.finished_run_count++
                     };
@@ -4941,7 +4912,10 @@ const app = Vue.createApp({
         if (this.dexData[species]==null) { return; }
         var growthRate = this.dexData[species].growth_rate
         var expStats = this.calcExpStats(growthRate, this.mapper.properties.player.team[0].expPoints.value);
-        this.$refs.expBar.style.width = (expStats.percent * 100) + "%";
+        if (this.$refs.expBar) {
+
+            this.$refs.expBar.style.width = (expStats.percent * 100) + "%";
+        }
         this.prevSpecies = species
 
         this.mapper.properties.player.team[0].expPoints.change(async (newProp, oldProp) => {
@@ -5044,7 +5018,7 @@ const app = Vue.createApp({
             this.newRun()
         });
         keyhook.registerShortCut('F24', async () => { // Pause
-            this.pauseUnpauseTime()
+            this.timer.pauseUnpauseTime();
         });
     },
 }).mount('#app')
