@@ -595,11 +595,11 @@ body {
     font-size: 13px;
 }
 .gametimeClock {
+    position: fixed;
+    left: -183px;
+    width: 7em;
     font-size: 68px;
-    display: block;
-    position: absolute;
     text-align: right;
-    right: 1627px;
     top: 46px;
     line-height: 60px;
     font-family: oseb;
@@ -609,8 +609,8 @@ body {
 .gametimeFrames {
     font-size: 35px;
     top: 60px;
-    right: 1576px;
-    position: absolute;
+    left: 293px;
+    position: fixed;
     text-align: right;
     line-height: 60px;
     font-family: oseb;
