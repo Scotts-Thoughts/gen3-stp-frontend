@@ -4224,8 +4224,8 @@ const app = Vue.createApp({
     mounted: async function () {
         const that = this
         this.mapper = new GameHookMapperClient()
-        this.mapper.onConnected = (x) => this.ready = true
-        this.mapper.onDisconnected = (x) => this.ready = false
+        this.mapper.onMapperLoaded = (x) => this.ready = true
+        this.mapper.onMapperUnloaded = (x) => this.ready = false
         await this.mapper.connect()
         // console.log("mapper set")
         this.timer.update();
