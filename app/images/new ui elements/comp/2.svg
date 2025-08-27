@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Individual_Areas" data-name="Individual Areas" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1920 1080">
+  <defs>
+    <linearGradient id="eCrit" x1="1689" y1="437.89" x2="1787" y2="437.89" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#999"/>
+      <stop offset=".04" stop-color="#a0a0a0"/>
+      <stop offset=".21" stop-color="#b8b8b8"/>
+      <stop offset=".37" stop-color="#c6c6c6"/>
+      <stop offset=".5" stop-color="#ccc"/>
+      <stop offset=".63" stop-color="#c6c6c6"/>
+      <stop offset=".79" stop-color="#b7b7b7"/>
+      <stop offset=".97" stop-color="#9d9d9d"/>
+      <stop offset="1" stop-color="#999"/>
+    </linearGradient>
+    <filter id="drop-shadow-1" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="0"/>
+      <feGaussianBlur result="blur" stdDeviation="2"/>
+      <feFlood flood-color="#000" flood-opacity=".8"/>
+      <feComposite in2="blur" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="linear-gradient" x1="1689" y1="454" x2="1787" y2="454" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#999"/>
+      <stop offset=".04" stop-color="#a0a0a0"/>
+      <stop offset=".21" stop-color="#b8b8b8"/>
+      <stop offset=".37" stop-color="#c6c6c6"/>
+      <stop offset=".5" stop-color="#ccc"/>
+      <stop offset=".63" stop-color="#c6c6c6"/>
+      <stop offset=".79" stop-color="#b7b7b7"/>
+      <stop offset=".97" stop-color="#9d9d9d"/>
+      <stop offset="1" stop-color="#999"/>
+    </linearGradient>
+  </defs>
+  <g id="Main_Elements" data-name="Main Elements">
+    <g id="Enemy">
+      <g id="Layer_62" data-name="Layer 62">
+        <g id="Layer_61" data-name="Layer 61">
+          <path id="move4" d="m1781,443h-86c-3.31,0-6-2.69-6-6v-4c0-3.31,2.69-6,6-6h86c3.31,0,6,2.69,6,6v15c0,3.31-2.69-5-6-5Z" style="fill: url(#eCrit); filter: url(#drop-shadow-1); stroke-width: 0px;"/>
+          <path d="m1694.86,427h86.27c3.24,0,5.86,2.58,5.86,5.76v42.49c0,3.17-2.62,5.75-5.85,5.75h-36.29c-3.23,0-5.85-2.57-5.85-5.75v-26.38c0-3.24-2.63-5.87-5.86-5.87h-37.27c-4.86,0-6.86-3-6.86-6.87v-3.26c0-3.24,2.63-5.87,5.86-5.87Z" style="fill: url(#linear-gradient); stroke-width: 0px;"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

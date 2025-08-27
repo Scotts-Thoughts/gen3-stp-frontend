@@ -1,0 +1,535 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Individual_Areas" data-name="Individual Areas" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1920 1080">
+  <defs>
+    <linearGradient id="linear-gradient" x1="1569" y1="985" x2="1911" y2="985" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#999"/>
+      <stop offset=".04" stop-color="#a0a0a0"/>
+      <stop offset=".21" stop-color="#b8b8b8"/>
+      <stop offset=".37" stop-color="#c6c6c6"/>
+      <stop offset=".5" stop-color="#ccc"/>
+      <stop offset=".63" stop-color="#c6c6c6"/>
+      <stop offset=".79" stop-color="#b7b7b7"/>
+      <stop offset=".97" stop-color="#9d9d9d"/>
+      <stop offset="1" stop-color="#999"/>
+    </linearGradient>
+    <filter id="drop-shadow-1" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="-1"/>
+      <feGaussianBlur result="blur" stdDeviation="1"/>
+      <feFlood flood-color="#000" flood-opacity=".4"/>
+      <feComposite in2="blur" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="drop-shadow-2" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="0"/>
+      <feGaussianBlur result="blur-2" stdDeviation="2"/>
+      <feFlood flood-color="#000" flood-opacity=".8"/>
+      <feComposite in2="blur-2" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="eCrit" x1="1790" y1="919" x2="1907" y2="919" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#999"/>
+      <stop offset=".04" stop-color="#a0a0a0"/>
+      <stop offset=".21" stop-color="#b8b8b8"/>
+      <stop offset=".37" stop-color="#c6c6c6"/>
+      <stop offset=".5" stop-color="#ccc"/>
+      <stop offset=".63" stop-color="#c6c6c6"/>
+      <stop offset=".79" stop-color="#b7b7b7"/>
+      <stop offset=".97" stop-color="#9d9d9d"/>
+      <stop offset="1" stop-color="#999"/>
+    </linearGradient>
+    <filter id="drop-shadow-3" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="1"/>
+      <feGaussianBlur result="blur-3" stdDeviation="2"/>
+      <feFlood flood-color="#000" flood-opacity=".9"/>
+      <feComposite in2="blur-3" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="eCrit-2" data-name="eCrit" x1="1689" x2="1787" xlink:href="#eCrit"/>
+    <filter id="drop-shadow-4" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="1"/>
+      <feGaussianBlur result="blur-4" stdDeviation="2"/>
+      <feFlood flood-color="#000" flood-opacity=".9"/>
+      <feComposite in2="blur-4" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="eCrit-3" data-name="eCrit" y1="944.5" y2="944.5" xlink:href="#eCrit"/>
+    <filter id="drop-shadow-5" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="1"/>
+      <feGaussianBlur result="blur-5" stdDeviation="2"/>
+      <feFlood flood-color="#000" flood-opacity=".9"/>
+      <feComposite in2="blur-5" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="eCrit-4" data-name="eCrit" y1="977.5" y2="977.5" xlink:href="#eCrit"/>
+    <filter id="drop-shadow-6" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="1"/>
+      <feGaussianBlur result="blur-6" stdDeviation="2"/>
+      <feFlood flood-color="#000" flood-opacity=".9"/>
+      <feComposite in2="blur-6" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="eCrit-5" data-name="eCrit" y1="1010.5" y2="1010.5" xlink:href="#eCrit"/>
+    <filter id="drop-shadow-7" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="1"/>
+      <feGaussianBlur result="blur-7" stdDeviation="2"/>
+      <feFlood flood-color="#000" flood-opacity=".9"/>
+      <feComposite in2="blur-7" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="eCrit-6" data-name="eCrit" y1="1043.5" y2="1043.5" xlink:href="#eCrit"/>
+    <filter id="drop-shadow-8" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="1"/>
+      <feGaussianBlur result="blur-8" stdDeviation="2"/>
+      <feFlood flood-color="#000" flood-opacity=".9"/>
+      <feComposite in2="blur-8" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="linear-gradient-2" y1="818" y2="818" xlink:href="#linear-gradient"/>
+    <filter id="drop-shadow-9" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="-1"/>
+      <feGaussianBlur result="blur-9" stdDeviation="1"/>
+      <feFlood flood-color="#000" flood-opacity=".4"/>
+      <feComposite in2="blur-9" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="drop-shadow-10" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="0"/>
+      <feGaussianBlur result="blur-10" stdDeviation="2"/>
+      <feFlood flood-color="#000" flood-opacity=".8"/>
+      <feComposite in2="blur-10" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="eCrit-7" data-name="eCrit" y1="752" y2="752" xlink:href="#eCrit"/>
+    <filter id="drop-shadow-11" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="1"/>
+      <feGaussianBlur result="blur-11" stdDeviation="2"/>
+      <feFlood flood-color="#000" flood-opacity=".9"/>
+      <feComposite in2="blur-11" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="eCrit-8" data-name="eCrit" x1="1689" y1="752" x2="1787" y2="752" xlink:href="#eCrit"/>
+    <filter id="drop-shadow-12" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="1"/>
+      <feGaussianBlur result="blur-12" stdDeviation="2"/>
+      <feFlood flood-color="#000" flood-opacity=".9"/>
+      <feComposite in2="blur-12" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="eCrit-9" data-name="eCrit" y1="777.5" y2="777.5" xlink:href="#eCrit"/>
+    <filter id="drop-shadow-13" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="1"/>
+      <feGaussianBlur result="blur-13" stdDeviation="2"/>
+      <feFlood flood-color="#000" flood-opacity=".9"/>
+      <feComposite in2="blur-13" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="eCrit-10" data-name="eCrit" y1="810.5" y2="810.5" xlink:href="#eCrit"/>
+    <filter id="drop-shadow-14" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="1"/>
+      <feGaussianBlur result="blur-14" stdDeviation="2"/>
+      <feFlood flood-color="#000" flood-opacity=".9"/>
+      <feComposite in2="blur-14" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="eCrit-11" data-name="eCrit" y1="843.5" y2="843.5" xlink:href="#eCrit"/>
+    <filter id="drop-shadow-15" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="1"/>
+      <feGaussianBlur result="blur-15" stdDeviation="2"/>
+      <feFlood flood-color="#000" flood-opacity=".9"/>
+      <feComposite in2="blur-15" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="eCrit-12" data-name="eCrit" y1="876.5" y2="876.5" xlink:href="#eCrit"/>
+    <filter id="drop-shadow-16" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="1"/>
+      <feGaussianBlur result="blur-16" stdDeviation="2"/>
+      <feFlood flood-color="#000" flood-opacity=".9"/>
+      <feComposite in2="blur-16" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="linear-gradient-3" y1="650" y2="650" xlink:href="#linear-gradient"/>
+    <filter id="drop-shadow-17" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="-1"/>
+      <feGaussianBlur result="blur-17" stdDeviation="1"/>
+      <feFlood flood-color="#000" flood-opacity=".4"/>
+      <feComposite in2="blur-17" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="drop-shadow-18" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="0"/>
+      <feGaussianBlur result="blur-18" stdDeviation="2"/>
+      <feFlood flood-color="#000" flood-opacity=".8"/>
+      <feComposite in2="blur-18" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="eCrit-13" data-name="eCrit" y1="584" y2="584" xlink:href="#eCrit"/>
+    <filter id="drop-shadow-19" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="1"/>
+      <feGaussianBlur result="blur-19" stdDeviation="2"/>
+      <feFlood flood-color="#000" flood-opacity=".9"/>
+      <feComposite in2="blur-19" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="eCrit-14" data-name="eCrit" x1="1689" y1="584" x2="1787" y2="584" xlink:href="#eCrit"/>
+    <filter id="drop-shadow-20" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="1"/>
+      <feGaussianBlur result="blur-20" stdDeviation="2"/>
+      <feFlood flood-color="#000" flood-opacity=".9"/>
+      <feComposite in2="blur-20" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="eCrit-15" data-name="eCrit" y1="609.5" y2="609.5" xlink:href="#eCrit"/>
+    <filter id="drop-shadow-21" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="1"/>
+      <feGaussianBlur result="blur-21" stdDeviation="2"/>
+      <feFlood flood-color="#000" flood-opacity=".9"/>
+      <feComposite in2="blur-21" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="eCrit-16" data-name="eCrit" y1="642.5" y2="642.5" xlink:href="#eCrit"/>
+    <filter id="drop-shadow-22" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="1"/>
+      <feGaussianBlur result="blur-22" stdDeviation="2"/>
+      <feFlood flood-color="#000" flood-opacity=".9"/>
+      <feComposite in2="blur-22" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="eCrit-17" data-name="eCrit" y1="675.5" y2="675.5" xlink:href="#eCrit"/>
+    <filter id="drop-shadow-23" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="1"/>
+      <feGaussianBlur result="blur-23" stdDeviation="2"/>
+      <feFlood flood-color="#000" flood-opacity=".9"/>
+      <feComposite in2="blur-23" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="eCrit-18" data-name="eCrit" y1="708.5" y2="708.5" xlink:href="#eCrit"/>
+    <filter id="drop-shadow-24" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="1"/>
+      <feGaussianBlur result="blur-24" stdDeviation="2"/>
+      <feFlood flood-color="#000" flood-opacity=".9"/>
+      <feComposite in2="blur-24" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="linear-gradient-4" y1="483" y2="483" xlink:href="#linear-gradient"/>
+    <filter id="drop-shadow-25" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="-1"/>
+      <feGaussianBlur result="blur-25" stdDeviation="1"/>
+      <feFlood flood-color="#000" flood-opacity=".4"/>
+      <feComposite in2="blur-25" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="drop-shadow-26" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="0"/>
+      <feGaussianBlur result="blur-26" stdDeviation="2"/>
+      <feFlood flood-color="#000" flood-opacity=".8"/>
+      <feComposite in2="blur-26" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="eCrit-19" data-name="eCrit" y1="417" y2="417" xlink:href="#eCrit"/>
+    <filter id="drop-shadow-27" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="1"/>
+      <feGaussianBlur result="blur-27" stdDeviation="2"/>
+      <feFlood flood-color="#000" flood-opacity=".9"/>
+      <feComposite in2="blur-27" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="eCrit-20" data-name="eCrit" x1="1689" y1="417" x2="1787" y2="417" xlink:href="#eCrit"/>
+    <filter id="drop-shadow-28" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="1"/>
+      <feGaussianBlur result="blur-28" stdDeviation="2"/>
+      <feFlood flood-color="#000" flood-opacity=".9"/>
+      <feComposite in2="blur-28" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="eCrit-21" data-name="eCrit" y1="442.5" y2="442.5" xlink:href="#eCrit"/>
+    <filter id="drop-shadow-29" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="1"/>
+      <feGaussianBlur result="blur-29" stdDeviation="2"/>
+      <feFlood flood-color="#000" flood-opacity=".9"/>
+      <feComposite in2="blur-29" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="eCrit-22" data-name="eCrit" y1="475.5" y2="475.5" xlink:href="#eCrit"/>
+    <filter id="drop-shadow-30" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="1"/>
+      <feGaussianBlur result="blur-30" stdDeviation="2"/>
+      <feFlood flood-color="#000" flood-opacity=".9"/>
+      <feComposite in2="blur-30" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="eCrit-23" data-name="eCrit" y1="508.5" y2="508.5" xlink:href="#eCrit"/>
+    <filter id="drop-shadow-31" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="1"/>
+      <feGaussianBlur result="blur-31" stdDeviation="2"/>
+      <feFlood flood-color="#000" flood-opacity=".9"/>
+      <feComposite in2="blur-31" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="eCrit-24" data-name="eCrit" y1="541.5" y2="541.5" xlink:href="#eCrit"/>
+    <filter id="drop-shadow-32" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="1"/>
+      <feGaussianBlur result="blur-32" stdDeviation="2"/>
+      <feFlood flood-color="#000" flood-opacity=".9"/>
+      <feComposite in2="blur-32" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="linear-gradient-5" y1="316" y2="316" xlink:href="#linear-gradient"/>
+    <filter id="drop-shadow-33" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="-1"/>
+      <feGaussianBlur result="blur-33" stdDeviation="1"/>
+      <feFlood flood-color="#000" flood-opacity=".4"/>
+      <feComposite in2="blur-33" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="drop-shadow-34" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="0"/>
+      <feGaussianBlur result="blur-34" stdDeviation="2"/>
+      <feFlood flood-color="#000" flood-opacity=".8"/>
+      <feComposite in2="blur-34" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="eCrit-25" data-name="eCrit" y1="250" y2="250" xlink:href="#eCrit"/>
+    <filter id="drop-shadow-35" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="1"/>
+      <feGaussianBlur result="blur-35" stdDeviation="2"/>
+      <feFlood flood-color="#000" flood-opacity=".9"/>
+      <feComposite in2="blur-35" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="eCrit-26" data-name="eCrit" x1="1689" y1="250" x2="1787" y2="250" xlink:href="#eCrit"/>
+    <filter id="drop-shadow-36" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="1"/>
+      <feGaussianBlur result="blur-36" stdDeviation="2"/>
+      <feFlood flood-color="#000" flood-opacity=".9"/>
+      <feComposite in2="blur-36" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="eCrit-27" data-name="eCrit" y1="275.5" y2="275.5" xlink:href="#eCrit"/>
+    <filter id="drop-shadow-37" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="1"/>
+      <feGaussianBlur result="blur-37" stdDeviation="2"/>
+      <feFlood flood-color="#000" flood-opacity=".9"/>
+      <feComposite in2="blur-37" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="eCrit-28" data-name="eCrit" y1="308.5" y2="308.5" xlink:href="#eCrit"/>
+    <filter id="drop-shadow-38" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="1"/>
+      <feGaussianBlur result="blur-38" stdDeviation="2"/>
+      <feFlood flood-color="#000" flood-opacity=".9"/>
+      <feComposite in2="blur-38" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="eCrit-29" data-name="eCrit" y1="341.5" y2="341.5" xlink:href="#eCrit"/>
+    <filter id="drop-shadow-39" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="1"/>
+      <feGaussianBlur result="blur-39" stdDeviation="2"/>
+      <feFlood flood-color="#000" flood-opacity=".9"/>
+      <feComposite in2="blur-39" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="eCrit-30" data-name="eCrit" y1="374.5" y2="374.5" xlink:href="#eCrit"/>
+    <filter id="drop-shadow-40" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="1"/>
+      <feGaussianBlur result="blur-40" stdDeviation="2"/>
+      <feFlood flood-color="#000" flood-opacity=".9"/>
+      <feComposite in2="blur-40" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="drop-shadow-41" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="0"/>
+      <feGaussianBlur result="blur-41" stdDeviation="2"/>
+      <feFlood flood-color="#000" flood-opacity=".9"/>
+      <feComposite in2="blur-41" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="linear-gradient-6" y1="149" y2="149" xlink:href="#linear-gradient"/>
+    <filter id="drop-shadow-42" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="-1"/>
+      <feGaussianBlur result="blur-42" stdDeviation="1"/>
+      <feFlood flood-color="#000" flood-opacity=".4"/>
+      <feComposite in2="blur-42" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="drop-shadow-43" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="0"/>
+      <feGaussianBlur result="blur-43" stdDeviation="2"/>
+      <feFlood flood-color="#000" flood-opacity=".8"/>
+      <feComposite in2="blur-43" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="eCrit-31" data-name="eCrit" y1="83" y2="83" xlink:href="#eCrit"/>
+    <filter id="drop-shadow-44" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="1"/>
+      <feGaussianBlur result="blur-44" stdDeviation="2"/>
+      <feFlood flood-color="#000" flood-opacity=".9"/>
+      <feComposite in2="blur-44" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="eCrit-32" data-name="eCrit" x1="1689" y1="83" x2="1787" y2="83" xlink:href="#eCrit"/>
+    <filter id="drop-shadow-45" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="1"/>
+      <feGaussianBlur result="blur-45" stdDeviation="2"/>
+      <feFlood flood-color="#000" flood-opacity=".9"/>
+      <feComposite in2="blur-45" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="eCrit-33" data-name="eCrit" y1="108.5" y2="108.5" xlink:href="#eCrit"/>
+    <filter id="drop-shadow-46" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="1"/>
+      <feGaussianBlur result="blur-46" stdDeviation="2"/>
+      <feFlood flood-color="#000" flood-opacity=".9"/>
+      <feComposite in2="blur-46" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="eCrit-34" data-name="eCrit" y1="141.5" y2="141.5" xlink:href="#eCrit"/>
+    <filter id="drop-shadow-47" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="1"/>
+      <feGaussianBlur result="blur-47" stdDeviation="2"/>
+      <feFlood flood-color="#000" flood-opacity=".9"/>
+      <feComposite in2="blur-47" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="eCrit-35" data-name="eCrit" y1="174.5" y2="174.5" xlink:href="#eCrit"/>
+    <filter id="drop-shadow-48" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="1"/>
+      <feGaussianBlur result="blur-48" stdDeviation="2"/>
+      <feFlood flood-color="#000" flood-opacity=".9"/>
+      <feComposite in2="blur-48" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="eCrit-36" data-name="eCrit" y1="207.5" y2="207.5" xlink:href="#eCrit"/>
+    <filter id="drop-shadow-49" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="1"/>
+      <feGaussianBlur result="blur-49" stdDeviation="2"/>
+      <feFlood flood-color="#000" flood-opacity=".9"/>
+      <feComposite in2="blur-49" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="linear-gradient-7" y1="41" y2="41" xlink:href="#linear-gradient"/>
+  </defs>
+  <g id="Main_Elements" data-name="Main Elements">
+    <g id="Enemy">
+      <g id="slot2_ui_6" data-name="slot2 ui 6">
+        <g id="_pkmn1moves_" data-name="&amp;lt;pkmn1moves&amp;gt;">
+          <g>
+            <rect x="1569" y="906" width="342" height="158" rx="6" ry="6" style="fill: url(#linear-gradient); stroke-width: 0px;"/>
+            <path d="m1905,908c2.21,0,4,1.79,4,4v146c0,2.21-1.79,4-4,4h-330c-2.21,0-4-1.79-4-4v-146c0-2.21,1.79-4,4-4h330m0-4h-330c-4.42,0-8,3.58-8,8v146c0,4.42,3.58,8,8,8h330c4.42,0,8-3.58,8-8v-146c0-4.42-3.58-8-8-8h0Z" style="fill: gray; stroke-width: 0px;"/>
+            <path d="m1905,906c3.31,0,6,2.69,6,6v146c0,3.31-2.69,6-6,6h-330c-3.31,0-6-2.69-6-6v-146c0-3.31,2.69-6,6-6h330m0-2h-330c-4.42,0-8,3.58-8,8v146c0,4.42,3.58,8,8,8h330c4.42,0,8-3.58,8-8v-146c0-4.42-3.58-8-8-8h0Z" style="fill: #4d4d4d; stroke-width: 0px;"/>
+            <path d="m1905,904c4.42,0,8,3.58,8,8v146c0,4.42-3.58,8-8,8h-330c-4.42,0-8-3.58-8-8v-146c0-4.42,3.58-8,8-8h330m0-1h-330c-4.96,0-9,4.04-9,9v146c0,4.96,4.04,9,9,9h330c4.96,0,9-4.04,9-9v-146c0-4.96-4.04-9-9-9h0Z" style="stroke-width: 0px;"/>
+          </g>
+          <path id="Slot6_Highlight" data-name="Slot6 Highlight" d="m1571,1040.82l11.5,12.18h326.5v5c0,2.21-1.79,4-4,4h-330c-2.21,0-4-1.9-4-4.24h0v-16.94Z" style="fill: #939598; filter: url(#drop-shadow-1); opacity: .4; stroke-width: 0px;"/>
+        </g>
+        <g id="Layer_57_copy_5" data-name="Layer 57 copy 5" style="filter: url(#drop-shadow-2);">
+          <rect id="move4" x="1790" y="911" width="117" height="16" rx="6" ry="6" style="fill: url(#eCrit); filter: url(#drop-shadow-3); stroke-width: 0px;"/>
+          <rect id="move4-2" data-name="move4" x="1689" y="911" width="98" height="16" rx="6" ry="6" style="fill: url(#eCrit-2); filter: url(#drop-shadow-4); stroke-width: 0px;"/>
+          <rect id="move4-3" data-name="move4" x="1790" y="929" width="117" height="31" rx="6" ry="6" style="fill: url(#eCrit-3); filter: url(#drop-shadow-5); stroke-width: 0px;"/>
+          <rect id="move4-4" data-name="move4" x="1790" y="962" width="117" height="31" rx="6" ry="6" style="fill: url(#eCrit-4); filter: url(#drop-shadow-6); stroke-width: 0px;"/>
+          <rect id="move4-5" data-name="move4" x="1790" y="995" width="117" height="31" rx="6" ry="6" style="fill: url(#eCrit-5); filter: url(#drop-shadow-7); stroke-width: 0px;"/>
+          <rect id="move4-6" data-name="move4" x="1790" y="1028" width="117" height="31" rx="6" ry="6" style="fill: url(#eCrit-6); filter: url(#drop-shadow-8); stroke-width: 0px;"/>
+        </g>
+      </g>
+      <g id="slot2_ui_5" data-name="slot2 ui 5">
+        <g id="_pkmn1moves_-2" data-name="&amp;lt;pkmn1moves&amp;gt;">
+          <g>
+            <rect x="1569" y="739" width="342" height="158" rx="6" ry="6" style="fill: url(#linear-gradient-2); stroke-width: 0px;"/>
+            <path d="m1905,741c2.21,0,4,1.79,4,4v146c0,2.21-1.79,4-4,4h-330c-2.21,0-4-1.79-4-4v-146c0-2.21,1.79-4,4-4h330m0-4h-330c-4.42,0-8,3.58-8,8v146c0,4.42,3.58,8,8,8h330c4.42,0,8-3.58,8-8v-146c0-4.42-3.58-8-8-8h0Z" style="fill: gray; stroke-width: 0px;"/>
+            <path d="m1905,739c3.31,0,6,2.69,6,6v146c0,3.31-2.69,6-6,6h-330c-3.31,0-6-2.69-6-6v-146c0-3.31,2.69-6,6-6h330m0-2h-330c-4.42,0-8,3.58-8,8v146c0,4.42,3.58,8,8,8h330c4.42,0,8-3.58,8-8v-146c0-4.42-3.58-8-8-8h0Z" style="fill: #4d4d4d; stroke-width: 0px;"/>
+            <path d="m1905,737c4.42,0,8,3.58,8,8v146c0,4.42-3.58,8-8,8h-330c-4.42,0-8-3.58-8-8v-146c0-4.42,3.58-8,8-8h330m0-1h-330c-4.96,0-9,4.04-9,9v146c0,4.96,4.04,9,9,9h330c4.96,0,9-4.04,9-9v-146c0-4.96-4.04-9-9-9h0Z" style="stroke-width: 0px;"/>
+          </g>
+          <path id="Slot5_Highlight" data-name="Slot5 Highlight" d="m1571,873.82l11.5,12.18h326.5v5c0,2.21-1.79,4-4,4h-330c-2.21,0-4-1.9-4-4.24h0v-16.94Z" style="fill: #939598; filter: url(#drop-shadow-9); opacity: .4; stroke-width: 0px;"/>
+        </g>
+        <g id="Layer_57_copy_4" data-name="Layer 57 copy 4" style="filter: url(#drop-shadow-10);">
+          <rect id="move4-7" data-name="move4" x="1790" y="744" width="117" height="16" rx="6" ry="6" style="fill: url(#eCrit-7); filter: url(#drop-shadow-11); stroke-width: 0px;"/>
+          <rect id="move4-8" data-name="move4" x="1689" y="744" width="98" height="16" rx="6" ry="6" style="fill: url(#eCrit-8); filter: url(#drop-shadow-12); stroke-width: 0px;"/>
+          <rect id="move4-9" data-name="move4" x="1790" y="762" width="117" height="31" rx="6" ry="6" style="fill: url(#eCrit-9); filter: url(#drop-shadow-13); stroke-width: 0px;"/>
+          <rect id="move4-10" data-name="move4" x="1790" y="795" width="117" height="31" rx="6" ry="6" style="fill: url(#eCrit-10); filter: url(#drop-shadow-14); stroke-width: 0px;"/>
+          <rect id="move4-11" data-name="move4" x="1790" y="828" width="117" height="31" rx="6" ry="6" style="fill: url(#eCrit-11); filter: url(#drop-shadow-15); stroke-width: 0px;"/>
+          <rect id="move4-12" data-name="move4" x="1790" y="861" width="117" height="31" rx="6" ry="6" style="fill: url(#eCrit-12); filter: url(#drop-shadow-16); stroke-width: 0px;"/>
+        </g>
+      </g>
+      <g id="slot2_ui_4" data-name="slot2 ui 4">
+        <g id="_pkmn1moves_-3" data-name="&amp;lt;pkmn1moves&amp;gt;">
+          <g>
+            <rect x="1569" y="571" width="342" height="158" rx="6" ry="6" style="fill: url(#linear-gradient-3); stroke-width: 0px;"/>
+            <path d="m1905,573c2.21,0,4,1.79,4,4v146c0,2.21-1.79,4-4,4h-330c-2.21,0-4-1.79-4-4v-146c0-2.21,1.79-4,4-4h330m0-4h-330c-4.42,0-8,3.58-8,8v146c0,4.42,3.58,8,8,8h330c4.42,0,8-3.58,8-8v-146c0-4.42-3.58-8-8-8h0Z" style="fill: gray; stroke-width: 0px;"/>
+            <path d="m1905,571c3.31,0,6,2.69,6,6v146c0,3.31-2.69,6-6,6h-330c-3.31,0-6-2.69-6-6v-146c0-3.31,2.69-6,6-6h330m0-2h-330c-4.42,0-8,3.58-8,8v146c0,4.42,3.58,8,8,8h330c4.42,0,8-3.58,8-8v-146c0-4.42-3.58-8-8-8h0Z" style="fill: #4d4d4d; stroke-width: 0px;"/>
+            <path d="m1905,569c4.42,0,8,3.58,8,8v146c0,4.42-3.58,8-8,8h-330c-4.42,0-8-3.58-8-8v-146c0-4.42,3.58-8,8-8h330m0-1h-330c-4.96,0-9,4.04-9,9v146c0,4.96,4.04,9,9,9h330c4.96,0,9-4.04,9-9v-146c0-4.96-4.04-9-9-9h0Z" style="stroke-width: 0px;"/>
+          </g>
+          <path id="Slot4_Highlight" data-name="Slot4 Highlight" d="m1571,705.82l11.5,12.18h326.5v5c0,2.21-1.79,4-4,4h-330c-2.21,0-4-1.9-4-4.24h0v-16.94Z" style="fill: #939598; filter: url(#drop-shadow-17); opacity: .4; stroke-width: 0px;"/>
+        </g>
+        <g id="Layer_57_copy_3" data-name="Layer 57 copy 3" style="filter: url(#drop-shadow-18);">
+          <rect id="move4-13" data-name="move4" x="1790" y="576" width="117" height="16" rx="6" ry="6" style="fill: url(#eCrit-13); filter: url(#drop-shadow-19); stroke-width: 0px;"/>
+          <rect id="move4-14" data-name="move4" x="1689" y="576" width="98" height="16" rx="6" ry="6" style="fill: url(#eCrit-14); filter: url(#drop-shadow-20); stroke-width: 0px;"/>
+          <rect id="move4-15" data-name="move4" x="1790" y="594" width="117" height="31" rx="6" ry="6" style="fill: url(#eCrit-15); filter: url(#drop-shadow-21); stroke-width: 0px;"/>
+          <rect id="move4-16" data-name="move4" x="1790" y="627" width="117" height="31" rx="6" ry="6" style="fill: url(#eCrit-16); filter: url(#drop-shadow-22); stroke-width: 0px;"/>
+          <rect id="move4-17" data-name="move4" x="1790" y="660" width="117" height="31" rx="6" ry="6" style="fill: url(#eCrit-17); filter: url(#drop-shadow-23); stroke-width: 0px;"/>
+          <rect id="move4-18" data-name="move4" x="1790" y="693" width="117" height="31" rx="6" ry="6" style="fill: url(#eCrit-18); filter: url(#drop-shadow-24); stroke-width: 0px;"/>
+        </g>
+      </g>
+      <g id="slot2_ui_3" data-name="slot2 ui 3">
+        <g id="_pkmn1moves_-4" data-name="&amp;lt;pkmn1moves&amp;gt;">
+          <g>
+            <rect x="1569" y="404" width="342" height="158" rx="6" ry="6" style="fill: url(#linear-gradient-4); stroke-width: 0px;"/>
+            <path d="m1905,406c2.21,0,4,1.79,4,4v146c0,2.21-1.79,4-4,4h-330c-2.21,0-4-1.79-4-4v-146c0-2.21,1.79-4,4-4h330m0-4h-330c-4.42,0-8,3.58-8,8v146c0,4.42,3.58,8,8,8h330c4.42,0,8-3.58,8-8v-146c0-4.42-3.58-8-8-8h0Z" style="fill: gray; stroke-width: 0px;"/>
+            <path d="m1905,404c3.31,0,6,2.69,6,6v146c0,3.31-2.69,6-6,6h-330c-3.31,0-6-2.69-6-6v-146c0-3.31,2.69-6,6-6h330m0-2h-330c-4.42,0-8,3.58-8,8v146c0,4.42,3.58,8,8,8h330c4.42,0,8-3.58,8-8v-146c0-4.42-3.58-8-8-8h0Z" style="fill: #4d4d4d; stroke-width: 0px;"/>
+            <path d="m1905,402c4.42,0,8,3.58,8,8v146c0,4.42-3.58,8-8,8h-330c-4.42,0-8-3.58-8-8v-146c0-4.42,3.58-8,8-8h330m0-1h-330c-4.96,0-9,4.04-9,9v146c0,4.96,4.04,9,9,9h330c4.96,0,9-4.04,9-9v-146c0-4.96-4.04-9-9-9h0Z" style="stroke-width: 0px;"/>
+          </g>
+          <path id="Slot3_Highlight" data-name="Slot3 Highlight" d="m1571,538.82l11.5,12.18h326.5v5c0,2.21-1.79,4-4,4h-330c-2.21,0-4-1.9-4-4.24h0v-16.94Z" style="fill: #939598; filter: url(#drop-shadow-25); opacity: .4; stroke-width: 0px;"/>
+        </g>
+        <g id="Layer_57_copy_2" data-name="Layer 57 copy 2" style="filter: url(#drop-shadow-26);">
+          <rect id="move4-19" data-name="move4" x="1790" y="409" width="117" height="16" rx="6" ry="6" style="fill: url(#eCrit-19); filter: url(#drop-shadow-27); stroke-width: 0px;"/>
+          <rect id="move4-20" data-name="move4" x="1689" y="409" width="98" height="16" rx="6" ry="6" style="fill: url(#eCrit-20); filter: url(#drop-shadow-28); stroke-width: 0px;"/>
+          <rect id="move4-21" data-name="move4" x="1790" y="427" width="117" height="31" rx="6" ry="6" style="fill: url(#eCrit-21); filter: url(#drop-shadow-29); stroke-width: 0px;"/>
+          <rect id="move4-22" data-name="move4" x="1790" y="460" width="117" height="31" rx="6" ry="6" style="fill: url(#eCrit-22); filter: url(#drop-shadow-30); stroke-width: 0px;"/>
+          <rect id="move4-23" data-name="move4" x="1790" y="493" width="117" height="31" rx="6" ry="6" style="fill: url(#eCrit-23); filter: url(#drop-shadow-31); stroke-width: 0px;"/>
+          <rect id="move4-24" data-name="move4" x="1790" y="526" width="117" height="31" rx="6" ry="6" style="fill: url(#eCrit-24); filter: url(#drop-shadow-32); stroke-width: 0px;"/>
+        </g>
+      </g>
+      <g id="slot2_ui_2" data-name="slot2 ui 2">
+        <g id="_pkmn1moves_-5" data-name="&amp;lt;pkmn1moves&amp;gt;">
+          <g>
+            <rect x="1569" y="237" width="342" height="158" rx="6" ry="6" style="fill: url(#linear-gradient-5); stroke-width: 0px;"/>
+            <path d="m1905,239c2.21,0,4,1.79,4,4v146c0,2.21-1.79,4-4,4h-330c-2.21,0-4-1.79-4-4v-146c0-2.21,1.79-4,4-4h330m0-4h-330c-4.42,0-8,3.58-8,8v146c0,4.42,3.58,8,8,8h330c4.42,0,8-3.58,8-8v-146c0-4.42-3.58-8-8-8h0Z" style="fill: gray; stroke-width: 0px;"/>
+            <path d="m1905,237c3.31,0,6,2.69,6,6v146c0,3.31-2.69,6-6,6h-330c-3.31,0-6-2.69-6-6v-146c0-3.31,2.69-6,6-6h330m0-2h-330c-4.42,0-8,3.58-8,8v146c0,4.42,3.58,8,8,8h330c4.42,0,8-3.58,8-8v-146c0-4.42-3.58-8-8-8h0Z" style="fill: #4d4d4d; stroke-width: 0px;"/>
+            <path d="m1905,235c4.42,0,8,3.58,8,8v146c0,4.42-3.58,8-8,8h-330c-4.42,0-8-3.58-8-8v-146c0-4.42,3.58-8,8-8h330m0-1h-330c-4.96,0-9,4.04-9,9v146c0,4.96,4.04,9,9,9h330c4.96,0,9-4.04,9-9v-146c0-4.96-4.04-9-9-9h0Z" style="stroke-width: 0px;"/>
+          </g>
+          <path id="Slot2_Highlight" data-name="Slot2 Highlight" d="m1571,371.82l11.5,12.18h326.5v5c0,2.21-1.79,4-4,4h-330c-2.21,0-4-1.9-4-4.24h0v-16.94Z" style="fill: #939598; filter: url(#drop-shadow-33); opacity: .4; stroke-width: 0px;"/>
+        </g>
+        <g id="Layer_57_copy" data-name="Layer 57 copy" style="filter: url(#drop-shadow-34);">
+          <rect id="move4-25" data-name="move4" x="1790" y="242" width="117" height="16" rx="6" ry="6" style="fill: url(#eCrit-25); filter: url(#drop-shadow-35); stroke-width: 0px;"/>
+          <rect id="move4-26" data-name="move4" x="1689" y="242" width="98" height="16" rx="6" ry="6" style="fill: url(#eCrit-26); filter: url(#drop-shadow-36); stroke-width: 0px;"/>
+          <rect id="move4-27" data-name="move4" x="1790" y="260" width="117" height="31" rx="6" ry="6" style="fill: url(#eCrit-27); filter: url(#drop-shadow-37); stroke-width: 0px;"/>
+          <rect id="move4-28" data-name="move4" x="1790" y="293" width="117" height="31" rx="6" ry="6" style="fill: url(#eCrit-28); filter: url(#drop-shadow-38); stroke-width: 0px;"/>
+          <rect id="move4-29" data-name="move4" x="1790" y="326" width="117" height="31" rx="6" ry="6" style="fill: url(#eCrit-29); filter: url(#drop-shadow-39); stroke-width: 0px;"/>
+          <rect id="move4-30" data-name="move4" x="1790" y="359" width="117" height="31" rx="6" ry="6" style="fill: url(#eCrit-30); filter: url(#drop-shadow-40); stroke-width: 0px;"/>
+        </g>
+      </g>
+      <g id="slot1_ui_1" data-name="slot1 ui 1">
+        <g id="_pkmn1moves_-6" data-name="&amp;lt;pkmn1moves&amp;gt;" style="filter: url(#drop-shadow-41);">
+          <g>
+            <rect x="1569" y="70" width="342" height="158" rx="6" ry="6" style="fill: url(#linear-gradient-6); stroke-width: 0px;"/>
+            <path d="m1905,72c2.21,0,4,1.79,4,4v146c0,2.21-1.79,4-4,4h-330c-2.21,0-4-1.79-4-4V76c0-2.21,1.79-4,4-4h330m0-4h-330c-4.42,0-8,3.58-8,8v146c0,4.42,3.58,8,8,8h330c4.42,0,8-3.58,8-8V76c0-4.42-3.58-8-8-8h0Z" style="fill: gray; stroke-width: 0px;"/>
+            <path d="m1905,70c3.31,0,6,2.69,6,6v146c0,3.31-2.69,6-6,6h-330c-3.31,0-6-2.69-6-6V76c0-3.31,2.69-6,6-6h330m0-2h-330c-4.42,0-8,3.58-8,8v146c0,4.42,3.58,8,8,8h330c4.42,0,8-3.58,8-8V76c0-4.42-3.58-8-8-8h0Z" style="fill: #4d4d4d; stroke-width: 0px;"/>
+            <path d="m1905,68c4.42,0,8,3.58,8,8v146c0,4.42-3.58,8-8,8h-330c-4.42,0-8-3.58-8-8V76c0-4.42,3.58-8,8-8h330m0-1h-330c-4.96,0-9,4.04-9,9v146c0,4.96,4.04,9,9,9h330c4.96,0,9-4.04,9-9V76c0-4.96-4.04-9-9-9h0Z" style="stroke-width: 0px;"/>
+          </g>
+          <path id="Slot1_Highlight" data-name="Slot1 Highlight" d="m1571,204.82l11.5,12.18h326.5v5c0,2.21-1.79,4-4,4h-330c-2.21,0-4-1.9-4-4.24h0v-16.94Z" style="fill: #939598; filter: url(#drop-shadow-42); opacity: .4; stroke-width: 0px;"/>
+        </g>
+        <g id="Layer_57" data-name="Layer 57" style="filter: url(#drop-shadow-43);">
+          <rect id="move4-31" data-name="move4" x="1790" y="75" width="117" height="16" rx="6" ry="6" style="fill: url(#eCrit-31); filter: url(#drop-shadow-44); stroke-width: 0px;"/>
+          <rect id="move4-32" data-name="move4" x="1689" y="75" width="98" height="16" rx="6" ry="6" style="fill: url(#eCrit-32); filter: url(#drop-shadow-45); stroke-width: 0px;"/>
+          <rect id="move4-33" data-name="move4" x="1790" y="93" width="117" height="31" rx="6" ry="6" style="fill: url(#eCrit-33); filter: url(#drop-shadow-46); stroke-width: 0px;"/>
+          <rect id="move4-34" data-name="move4" x="1790" y="126" width="117" height="31" rx="6" ry="6" style="fill: url(#eCrit-34); filter: url(#drop-shadow-47); stroke-width: 0px;"/>
+          <rect id="move4-35" data-name="move4" x="1790" y="159" width="117" height="31" rx="6" ry="6" style="fill: url(#eCrit-35); filter: url(#drop-shadow-48); stroke-width: 0px;"/>
+          <rect id="move4-36" data-name="move4" x="1790" y="192" width="117" height="31" rx="6" ry="6" style="fill: url(#eCrit-36); filter: url(#drop-shadow-49); stroke-width: 0px;"/>
+        </g>
+      </g>
+      <g id="Slot1">
+        <path d="m1575,61c-3.31,0-6-2.71-6-6.05v-13.63c0-1.58.6-3.07,1.68-4.2l12.49-14.34c1.06-1.11,2.64-1.78,4.25-1.78h317.57c3.31,0,6,2.71,6,6.05v27.9c0,3.34-2.69,6.05-6,6.05h-330Z" style="fill: url(#linear-gradient-7); opacity: .95; stroke-width: 0px;"/>
+        <path d="m1905,23c2.21,0,4,1.82,4,4.05v27.9c0,2.23-1.79,4.05-4,4.05h-330c-2.21,0-4-1.82-4-4.05v-13.63c0-1.06.4-2.06,1.13-2.82l.06-.07.06-.07,12.36-14.19c.75-.75,1.77-1.18,2.82-1.18h317.57m0-4h-317.57c-2.17,0-4.25.89-5.76,2.47l-12.43,14.27c-1.44,1.5-2.24,3.5-2.24,5.59v13.63c0,4.45,3.58,8.05,8,8.05h330c4.42,0,8-3.6,8-8.05v-27.9c0-4.45-3.58-8.05-8-8.05h0Z" style="fill: gray; stroke-width: 0px;"/>
+        <path d="m1905,21c3.31,0,6,2.71,6,6.05v27.9c0,3.34-2.69,6.05-6,6.05h-330c-3.31,0-6-2.71-6-6.05v-13.63c0-1.58.6-3.07,1.68-4.2l.03-.03.03-.04,12.4-14.23c1.12-1.16,2.68-1.82,4.29-1.82h317.57m0-2h-317.57c-2.17,0-4.25.89-5.76,2.47l-12.43,14.27c-1.44,1.5-2.24,3.5-2.24,5.59v13.63c0,4.45,3.58,8.05,8,8.05h330c4.42,0,8-3.6,8-8.05v-27.9c0-4.45-3.58-8.05-8-8.05h0Z" style="fill: #4d4d4d; stroke-width: 0px;"/>
+        <path d="m1905,19c4.42,0,8,3.6,8,8.05v27.9c0,4.45-3.58,8.05-8,8.05h-330c-4.42,0-8-3.6-8-8.05v-13.63c0-2.08.8-4.09,2.24-5.59l12.43-14.27c1.51-1.58,3.59-2.47,5.76-2.47h317.57m0-1h-317.57c-2.43,0-4.8,1.01-6.48,2.78l-12.46,14.3c-1.59,1.66-2.48,3.89-2.48,6.24v13.63c0,4.99,4.04,9.05,9,9.05h330c4.96,0,9-4.06,9-9.05v-27.9c0-4.99-4.04-9.05-9-9.05h0Z" style="stroke-width: 0px;"/>
+      </g>
+    </g>
+  </g>
+</svg>
