@@ -690,6 +690,7 @@ const app = Vue.createApp({
             evolution             : MyStorage['evolution'] ?? false,
             evolution_splits_label: MyStorage['evolution_splits_label'] ?? "",
             catch_rate            : MyStorage['catch_rate'] ?? false,
+            deoxys_form           : MyStorage['deoxys_form'] ?? "Speed",
 
             // Editors
             move1_replacement: "",
@@ -1081,6 +1082,7 @@ const app = Vue.createApp({
                 "show_advanced_settings",
                 "set_rom_starter_automatically",
                 "catch_rate",
+                "deoxys_form",
             ],
 
             stats_toggle_settings: [
@@ -1618,6 +1620,60 @@ const app = Vue.createApp({
     },
 
     computed: {
+        deoxys_form_base_stats() {
+            switch (this.deoxys_form) {
+                case "Speed"  : {
+                    return {
+                        "Hp"             : 50,
+                        "Attack"         : 95,
+                        "Defense"        : 90,
+                        "Special Attack" : 95,
+                        "Special Defense": 90,
+                        "Speed"          : 180
+                    }
+                }
+                case "Normal" : {
+                    return {
+                        "Hp"             : 50,
+                        "Attack"         : 150,
+                        "Defense"        : 50,
+                        "Special Attack" : 150,
+                        "Special Defense": 50,
+                        "Speed"          : 150
+                    }
+                }
+                case "Attack" : {
+                    return {
+                        "Hp"             : 50,
+                        "Attack"         : 180,
+                        "Defense"        : 20,
+                        "Special Attack" : 180,
+                        "Special Defense": 20,
+                        "Speed"          : 150
+                    }
+                }
+                case "Defense": {
+                    return {
+                        "Hp"             : 50,
+                        "Attack"         : 70,
+                        "Defense"        : 160,
+                        "Special Attack" : 70,
+                        "Special Defense": 160,
+                        "Speed"          : 90
+                    }
+                }
+            }
+        },
+        deoxys_image() {
+            if (this.starterString == "Deoxys") {
+                switch (this.deoxys_form) {
+                    case "Speed"  : return "Deoxys-Speed"
+                    case "Normal" : return "Deoxys-Normal"
+                    case "Attack" : return "Deoxys-Attack"
+                    case "Defense": return "Deoxys-Defense"
+                }
+            }
+        },
         filtered_pokemon_list() {
             if (this.search_term === '') {
                 return this.pokemon_list;
@@ -2466,6 +2522,9 @@ const app = Vue.createApp({
                 }
             }
             if (state == `Base Stats` || this.mapper.properties.player.team[0].species.value == null) {
+                if (this.starterString == "Deoxys") {
+                    return this.deoxys_form_base_stats[stat_name]
+                }
                 switch (stat_name) {
                     case "Hp":              return this.game.dexData[this.starterString].base_hp
                     case "Attack":          return this.game.dexData[this.starterString].base_atk
@@ -2750,6 +2809,63 @@ const app = Vue.createApp({
             this.backgroundScale = MyStorage[pokemon_species]?.backgroundScale ?? 100
             this.backgroundUrl   = MyStorage[pokemon_species]?.backgroundUrl   ?? false
         },
+        load_deoxys_sprite_settings(form) {            
+            switch (form) {
+                case "Speed"  : {
+                    this.overlay_color   = "#bc6f42"
+                    this.imageXOffset    = 27
+                    this.imageYOffset    = 41
+                    this.imageScale      = 0.86
+                    this.imageFlip       = true
+                    this.imageSat        = 100
+                    this.backgroundBlur  = 0
+                    this.backgroundHue   = 271
+                    this.backgroundScale = 120
+                    this.backgroundUrl   = false
+                    break;
+                }
+                case "Normal" : {
+                    this.overlay_color   = "#79becb"
+                    this.imageXOffset    = 55
+                    this.imageYOffset    = 41
+                    this.imageScale      = 1
+                    this.imageFlip       = true
+                    this.imageSat        = 100
+                    this.backgroundBlur  = 0
+                    this.backgroundHue   = 183
+                    this.backgroundScale = 100
+                    this.backgroundUrl   = false
+                    break;
+                }
+                case "Attack" : {
+                    this.overlay_color   = "#7c5181"
+                    this.imageXOffset    = 20
+                    this.imageYOffset    = 62
+                    this.imageScale      = 1
+                    this.imageFlip       = true
+                    this.imageSat        = 100
+                    this.backgroundBlur  = 0
+                    this.backgroundHue   = 0
+                    this.backgroundScale = 100
+                    this.backgroundUrl   = false
+                    break;
+                }
+                case "Defense": {
+                    this.overlay_color   = "#819ff5"
+                    this.imageXOffset    = -16
+                    this.imageYOffset    = 48
+                    this.imageScale      = 1
+                    this.imageFlip       = false
+                    this.imageSat        = 100
+                    this.backgroundBlur  = 0
+                    this.backgroundHue   = 319
+                    this.backgroundScale = 100
+                    this.backgroundUrl   = false
+                    this.backkgroundFlip = true
+                    break;
+                }
+            }
+        },
         keys_function(object) {
             return Object.keys(object)
         },
@@ -3028,8 +3144,17 @@ const app = Vue.createApp({
         },
         getMovepool(gen3PkmnData, moveData, tmhmMapping, species) {
             const pkmn = this.dataSearch(gen3PkmnData, species)
+            let levelup_set = pkmn.levelup_moveset
+            if (this.starterString == "Deoxys") {
+                switch (this.deoxys_form) {
+                    case "Speed"  : levelup_set = pkmn.levelup_moveset_speed; break;
+                    case "Normal" : levelup_set = pkmn.levelup_moveset_normal; break;
+                    case "Attack" : levelup_set = pkmn.levelup_moveset_attack; break;
+                    case "Defense": levelup_set = pkmn.levelup_moveset_defense; break;
+                }
+            }
             let obj = {
-                level: pkmn.levelup_moveset.map(x => {
+                level: levelup_set.map(x => {
                     return {
                         ...{Level: x[0]},
                         ...this.dataSearch(moveData, x[1]) //searching for index 1
@@ -3079,7 +3204,7 @@ const app = Vue.createApp({
             //if(this.movepoolDefaultFontSize==-1) {
                 this.movepoolDefaultFontSize = 15;//parseInt(computedStyle.getPropertyValue('font-size'),10);
                 this.movepoolDefaultLineHeight = 18;//parseInt(computedStyle.getPropertyValue('line-height'),10);
-                this.movepoolDefaultContainerHeight = 1001-(this.movepoolDefaultLineHeight+0);// parseInt(computedStyle.getPropertyValue('height'),10)-this.movepoolDefaultLineHeight+1;
+                this.movepoolDefaultContainerHeight = 1000-(this.movepoolDefaultLineHeight+0);// parseInt(computedStyle.getPropertyValue('height'),10)-this.movepoolDefaultLineHeight+1;
             //}
             //calculate new sizes
             let currentStarter = this.s1dynamicReset.name;
@@ -3094,7 +3219,18 @@ const app = Vue.createApp({
                     currentStarter = this.starterString;
                 }
             }
-            let movepoolSize = this.dexData[currentStarter].tm_hm_learnset.length + this.dexData[currentStarter].levelup_moveset.length;
+            let levelup_set = this.dexData[currentStarter].levelup_moveset
+            if (this.starterString == "Deoxys") {
+                switch (this.deoxys_form) {
+                    case "Speed"  : levelup_set = this.dexData[currentStarter].levelup_moveset_speed; break;
+                    case "Normal" : levelup_set = this.dexData[currentStarter].levelup_moveset_normal; break;
+                    case "Attack" : levelup_set = this.dexData[currentStarter].levelup_moveset_attack; break;
+                    case "Defense": levelup_set = this.dexData[currentStarter].levelup_moveset_defense; break;
+                }
+            }
+            let tmhm_set = this.dexData[currentStarter].tm_hm_learnset
+            
+            let movepoolSize = tmhm_set.length + levelup_set.length;
             if (this.tutor_moves) {
                 movepoolSize = movepoolSize + this.dexData[currentStarter].tutor_learnset.length;
             }
