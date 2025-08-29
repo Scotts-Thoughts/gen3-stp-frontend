@@ -691,6 +691,7 @@ const app = Vue.createApp({
             evolution_splits_label: MyStorage['evolution_splits_label'] ?? "",
             catch_rate            : MyStorage['catch_rate'] ?? false,
             deoxys_form           : MyStorage['deoxys_form'] ?? "Speed",
+            speed_comparison_toggle: true,
 
             // Editors
             move1_replacement: "",
@@ -753,6 +754,7 @@ const app = Vue.createApp({
 
 
             badges: ["badge1", "badge2", "badge3", "badge4", "badge5", "badge6", "badge7", "badge8"],
+            badge_indexes: [0, 1, 2, 3, 4, 5, 6, 7],
             badgeBoosts: ["badge1", "badge3", "badge5", "badge7"],
             pkmnMoves: ["move1", "move2", "move3", "move4"],
             stat_object:     [
@@ -1542,15 +1544,11 @@ const app = Vue.createApp({
             document.documentElement.style.setProperty('--overlay-color', newColor);
         }, 
         playerResets(newProp) {
-            const faults = newProp + this.blackout_counter
-            if (faults.toString().length == 1) {
-                document.getElementById("reset_counter").style.fontSize = "68px"
-            }
-            if (faults.toString().length == 3) {
-                document.getElementById("reset_counter").style.fontSize = "48px"
-            }
-            if (faults.toString().length == 4) {
-                document.getElementById("reset_counter").style.fontSize = "38px"
+            switch (this.playerResets.toString().length) {
+                case 1:
+                case 2: document.getElementById("reset_counter").style.fontSize = "68px"; document.getElementById("reset_counter_single").style.fontSize = "68px"; break;
+                case 3: document.getElementById("reset_counter").style.fontSize = "58px"; document.getElementById("reset_counter_single").style.fontSize = "58px"; break;
+                case 4: document.getElementById("reset_counter").style.fontSize = "48px"; document.getElementById("reset_counter_single").style.fontSize = "48px"; break;
             }
             
             if (this.playerResets < 0) {
@@ -1560,15 +1558,21 @@ const app = Vue.createApp({
             MyStorage["playerResets"] = this.playerResets
         },
         blackout_counter(newProp) {
-            const faults = newProp + this.blackout_counter
-            if (faults.toString().length == 1) {
-                document.getElementById("reset_counter").style.fontSize = "68px"
+            if (this.playerResets > 0) {
+                switch (this.blackout_counter.toString().length) {
+                    case 1:
+                    case 2: document.getElementById("blackout_counter").style.fontSize = "68px"; break;
+                    case 3: document.getElementById("blackout_counter").style.fontSize = "58px"; break;
+                    case 4: document.getElementById("blackout_counter").style.fontSize = "48px"; break;
+                }
             }
-            if (faults.toString().length == 3) {
-                document.getElementById("reset_counter").style.fontSize = "48px"
-            }
-            if (faults.toString().length == 4) {
-                document.getElementById("reset_counter").style.fontSize = "38px"
+            else {
+                switch (this.blackout_counter.toString().length) {
+                    case 1:
+                    case 2: document.getElementById("reset_counter").style.fontSize = "68px"; break;
+                    case 3: document.getElementById("reset_counter").style.fontSize = "58px"; break;
+                    case 4: document.getElementById("reset_counter").style.fontSize = "48px"; break;
+                }
             }
 
             if (this.blackout_counter < 0) {
@@ -1620,6 +1624,23 @@ const app = Vue.createApp({
     },
 
     computed: {
+        blackouts_resets() {
+            const resets = this.playerResets
+            const blackouts = this.blackout_counter
+            const allow_none = true // Toggle that allows for the UI to display no border if there are no faults
+            if (allow_none == true && blackouts == 0 && resets == 0) {
+                return "None"
+            }
+            else if (blackouts == 0 && resets > 0) {
+                return "Resets"
+            }
+            else if (blackouts > 0 && resets == 0) {
+                return "Blackouts"
+            }
+            else {
+                return "Both"
+            }
+        },
         deoxys_form_base_stats() {
             switch (this.deoxys_form) {
                 case "Speed"  : {
@@ -2126,6 +2147,53 @@ const app = Vue.createApp({
     },
 
     methods: {
+        speed_comparison(enemy_slot, enemy_speed_incoming) {
+            let object = {
+                comparison: "Outspeeds",
+                color: "background-color: rgba(255, 63, 63, 0.6)",
+            }
+            if (this.mapper.properties.battle.type.trainer.value == false) { return object }
+
+            const state          = this.g3stateVariable
+            const trainer        = this.capitalization_format(this.mapper.properties.battle.trainer.opponentA.value)
+            const trainer_number = this.mapper.properties.battle.trainer.opponentAId.value
+            const badge_3        = this.mapper.properties.player.badges.badge3.value
+            let data = this.gameSelection == 'Emerald' ? this.emeraldTrainers : this.remakeTrainers
+            let enemy_hp = this.mapper.properties.battle.trainer.team[enemy_slot]?.hp.value
+            let player_speed   = this.mapper.properties.battle.yourPokemon.speed.value
+            let enemy_speed = enemy_speed_incoming
+            if (state == 'To Battle') {
+                enemy_speed = data[`${trainer} ${trainer_number}`].party[enemy_slot]?.stats.speed
+                player_speed = badge_3 ? Math.floor(this.mapper.properties.player.team[0].speed.value * 1.125) : this.mapper.properties.player.team[0].speed.value
+            }
+
+            if (player_speed > enemy_speed) {
+                object.comparison = "Outsped"
+                object.color      = "background-color: rgba(28, 255, 58, 0.4)"
+            }
+            else if (player_speed == enemy_speed) {
+                object.comparison = "Speed-tie"
+                object.color      = "background-color: rgba(255, 255, 0, 0.5)"
+            }
+            if (enemy_hp == 0) {
+                object.color      = "background-color: rgba(28, 255, 58, 0.5); opacity: 0.0; filter: grayscale(100%)"
+            }
+            return object
+        },
+        svgColorClass(speed_comparison, enemy_data) {
+            // console.log(enemy_data)
+            const isFainted = enemy_data?.hp.value
+            if (isFainted == 0) {
+                return 'grey-svg';
+            }
+            if (speed_comparison === 'Outsped') {
+                return 'blue-svg';
+            } 
+            else if (speed_comparison === 'Speed-tie') {
+                return 'yellow-svg';
+            }
+            return 'red-svg';
+        },
         battle_testing_ui_toggle() {
             switch (this.battle_testing_ui) {
                 case false: this.battle_testing_ui = true; break;
@@ -3378,6 +3446,24 @@ const app = Vue.createApp({
                 return "Underspeeds"
             }
         },
+        fade_enemy_mon(pkmnData) {
+            const enemy_hp = pkmnData.hp.value
+            if (enemy_hp > 0) {
+                return
+            }
+            else {
+                return `filter: grayscale(100%);`
+            }
+        },
+        enemyPkmnUI(pkmnData) {
+            if (this.g3stateVariable != `Battle` && this.g3stateVariable != `From Battle`) { return "opacity: 1" }
+            if (pkmnData.hp == 0 || this.g3stateVariable == `From Battle`) {
+                return "opacity: .5;"
+            }
+            else {
+                return "opacity: 1"
+            }
+        },
         enemyPkmnFaintCheck(pkmnData) {
             if (pkmnData.hp == 0) {
                 return false
@@ -4366,16 +4452,35 @@ const app = Vue.createApp({
         // console.log("mapper set")
         this.timer.update();
         this.load_all_settings()
-        const faults = this.playerResets + this.blackout_counter
-        if (faults.toString().length == 1) {
+
+        if (this.playerResets.toString().length == 1) {
+            document.getElementById("reset_counter_single").style.fontSize = "68px"
+        }
+        if (this.playerResets.toString().length == 3) {
+            document.getElementById("reset_counter_single").style.fontSize = "58px"
+        }
+        if (this.playerResets.toString().length == 4) {
+            document.getElementById("reset_counter_single").style.fontSize = "48px"
+        }
+        if (this.playerResets.toString().length == 1) {
             document.getElementById("reset_counter").style.fontSize = "68px"
         }
-        if (faults.toString().length == 3) {
+        if (this.playerResets.toString().length == 3) {
+            document.getElementById("reset_counter").style.fontSize = "58px"
+        }
+        if (this.playerResets.toString().length == 4) {
             document.getElementById("reset_counter").style.fontSize = "48px"
         }
-        if (faults.toString().length == 4) {
-            document.getElementById("reset_counter").style.fontSize = "38px"
+        if (this.blackout_counter.toString().length == 1) {
+            document.getElementById("blackout_counter").style.fontSize = "68px"
         }
+        if (this.blackout_counter.toString().length == 3) {
+            document.getElementById("blackout_counter").style.fontSize = "58px"
+        }
+        if (this.blackout_counter.toString().length == 4) {
+            document.getElementById("blackout_counter").style.fontSize = "48px"
+        }
+
         for (var species of Object.keys(dexDataRubySapphireEmerald)) {
             var image = new Image();
             image.src = `images/pokemon/${species}.png`;

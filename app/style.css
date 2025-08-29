@@ -286,6 +286,10 @@ body {
     mask-image: var(--url); /* use the alpha channel of provided image as a mask of this layer */
     mix-blend-mode: color; /* color blend mode, I'm not sure if 'color' is the right one - might need to be changed */
 }
+.grey-svg {   filter: invert(29%) sepia(96%)  saturate(0%)    hue-rotate(180deg) brightness(95%)  contrast(101%) drop-shadow(0px 1px 2px #000000); opacity: .2;}
+.blue-svg {   filter: invert(29%) sepia(96%)  saturate(748%)  hue-rotate(180deg) brightness(95%)  contrast(101%) drop-shadow(0px 1px 2px #000000); }
+.yellow-svg { filter: invert(29%) sepia(100%) saturate(300%)  hue-rotate(10deg)  brightness(110%) contrast(101%) drop-shadow(0px 1px 2px #000000); }
+.red-svg {    filter: invert(29%) sepia(96%)  saturate(1448%) hue-rotate(310deg) brightness(95%)  contrast(101%) drop-shadow(0px 1px 2px #000000); }
 .ds {
     filter: drop-shadow(0px 0px 1px #000000c5);
 }
@@ -578,6 +582,27 @@ body {
     opacity: .7;
     padding-left: 25px;
     padding-top: 26px;
+}
+.fault_label {
+    position: absolute;
+    text-align: center;
+    font-size: 15px;
+    width: 128px;
+    border: 1px solid #ff000000;
+    font-family: titan;
+    opacity: .7;
+}
+.timer_reset_label {
+    top: 166px;
+    left: 118px;
+}
+.timer_2_reset_label {
+    top: 166px;
+    left: 52px;
+}
+.blackout_2_reset_label {
+    top: 166px;
+    left: 182px;
 }
 .resetsTitle {
     position: absolute;
@@ -885,7 +910,27 @@ body {
     font-weight: 700;
     width: 108px;
 }
-
+.faults_value {
+    position: absolute;
+    font-size: 68px;
+    z-index: 5;
+    line-height: 60px;
+    text-align: center;
+    font-family: oseb;
+    font-weight: 700;
+    width: 128px;
+    border: 1px solid rgba(255, 0, 0, 0);
+    top: 186px;
+}
+.timer_reset_value {
+    left: 118px;
+}
+.timer_2_reset_value {
+    left: 52px;
+}
+.timer_2_blackout_value {
+    left: 182px;
+}
 
 
 .popup {
@@ -2538,52 +2583,29 @@ body {
 
 .opacityTransition { transition: opacity 500ms ease-in-out;}
 .enemy_stat_opacity_transition { transition: opacity 250ms ease-in-out;}
-.ePkmn1 {
+.ePkmnStyle {
     border: 1px solid rgba(255, 102, 0, 0);
     position: relative;
     height: 160px;
     width: 350px;
     left: 24px;
+}
+.ePkmn1 {
     top: 69px;
 }
 .ePkmn2 {
-    border: 1px solid rgba(255, 102, 0, 0);
-    position: relative;
-    height: 160px;
-    width: 350px;
-    left: 24px;
     top: 236px;
 }
 .ePkmn3 {
-    border: 1px solid rgba(255, 102, 0, 0);
-    position: relative;
-    height: 160px;
-    width: 350px;
-    left: 24px;
-    top: 403.5px;
+    top: 403px;
 }
 .ePkmn4 {
-    border: 1px solid rgba(255, 102, 0, 0);
-    position: relative;
-    height: 160px;
-    width: 350px;
-    left: 24px;
-    top: 570.5px;
+    top: 570px;
 }
 .ePkmn5 {
-    border: 1px solid rgba(255, 102, 0, 0);
-    position: relative;
-    height: 160px;
-    width: 350px;
-    left: 24px;
     top: 737.5px;
 }
 .ePkmn6 {
-    border: 1px solid rgba(255, 102, 0, 0);
-    position: relative;
-    height: 160px;
-    width: 350px;
-    left: 24px;
     top: 905px;
 }
 
@@ -2592,53 +2614,38 @@ body {
     border: 1px solid rgba(0, 255, 149, 0);
     font-size: 13px;
     font-family: play;
-    width: 98px;
+    width: 118px;
     text-align: center;
     top: 2px;
-    left: 12px;
-}
-.ePkmnLevel {
-    position: absolute;
-    /* border: 1px solid rgb(0, 255, 149); */
-    font-size: 18px;
-    font-family: titan;
-    width: 68px;
-    opacity: .7;
-    text-align: center;
-    top: 128px;
-    left: 11px;
-    background:hwb(0 53% 47% / 0.9);
-    border: 1px solid #000;
-    border-radius: 5px;
-    filter: drop-shadow(0px 0px 5px)
+    left: 3px;
 }
 .ePkmnSprite {
     position: absolute;
     image-rendering: optimizeQuality;
     border: 1px solid rgba(255, 0, 0, 0);
-    max-width: 102px;
-    max-height: 102px;
-    left: 5px;
-    top: 32px;
+    max-width: 112px;
+    max-height: 112px;
+    left: 6px;
+    top: 22px;
     transition: opacity 500ms ease-in-out, filter 500ms ease-in-out;
 }
 .ePkmnMoveStyle {
     position: absolute;
     border: 1px solid rgba(47, 0, 255, 0);
-    width: 146px;
+    width: 92px;
     font-size: 13px;
     line-height: 27px;
     text-align: left;
-    left: 221px;
+    left: 250px;
 }
 .ePkmnMove1 {
-    top: 29px;
+    top: 23px;
 }
 .ePkmnMove2 {
-    top: 60px;
+    top: 56px;
 }
 .ePkmnMove3 {
-    top: 91px;
+    top: 89px;
 }
 .ePkmnMove4 {
     top: 122px;
@@ -2669,85 +2676,113 @@ body {
     width: 22px;
     height: 22px;
     margin-bottom: 2px;
-    left: 198px;
+    left: 226px;
+    border: 1px solid rgba(255, 0, 0, 0);
 }
 .moveIcon1 {
-    top: 32px;
+    top: 27px;
 }
 .moveIcon2 {
-    top: 63px;
+    top: 60px;
 }
 .moveIcon3 {
-    top: 94px;
+    top: 93px;
 }
 .moveIcon4 {
-    top: 125px;
+    top: 126px;
 }
 .ePkmnStatsStyle {
     position: absolute;
     left: 144px;
-    text-align: right;
+    text-align: center;
     line-height: 20px;
-    font-size: 17px;
-    width: 46px;
+    font-size: 19px;
+    width: 48px;
     border: 1px solid rgba(255, 0, 0, 0);
 }
 .ePkmnHp {
-    top: 9px;
+    top: 51px;
 }
 .ePkmnAtk {
-    top: 32px;
+    top: 89px;
 }
 .ePkmnDef {
-    top: 56px;
+    top: 127px;
 }
 .ePkmnSpa {
-    top: 80px;
+    top: 89px;
 }
 .ePkmnSpd {
-    top: 104.5px;
+    top: 127px;
 }
 .ePkmnSpe {
-    top: 128px;
+    top: 51px;
 }
 .ePkmnStatsLabelsStyle {
     position: absolute;
-    left: 114px;
-    text-align: left;
+    text-align: center;
     line-height: 20px;
-    font-size: 13px;
+    font-size: 11px;
     opacity: .7;
-    width: 56px;
+    width: 48px;
     border: 1px solid rgba(255, 0, 0, 0);
 }
+.ePkmnStatsLabelColumn1 {
+    left: 123px;
+}
+.ePkmnStatsLabelColumn2 {
+    left: 173px;
+}
 .ePkmnHpLabel {
-    top: 9px;
+    top: 36px;
 }
 .ePkmnAtkLabel {
-    top: 33px;
+    top: 74px;
 }
 .ePkmnDefLabel {
-    top: 57px;
+    top: 112px;
 }
 .ePkmnSpaLabel {
-    top: 80.5px;
+    top: 74px;
 }
 .ePkmnSpdLabel {
-    top: 104.5px;
+    top: 112px;
 }
 .ePkmnSpeLabel {
-    top: 129px;
+    top: 36px;
+}
+.ePkmnLevel {
+    position: absolute;
+    border: 1px solid rgba(255, 0, 0, 0);
+    text-align: center;
+    color:rgb(70, 70, 70);
+    font-size: 12px;
+    line-height: 13px;
+    width: 101px;
+    top: 5px;
+    left: 122px;
 }
 .ePkmnAbility {
     position: absolute;
     border: 1px solid rgba(255, 0, 0, 0);
     text-align: center;
     color:rgb(70, 70, 70);
-    font-size: 13px;
-    line-height: 15px;
-    width: 128px;
-    top: 9px;
-    left: 204px;
+    font-size: 12px;
+    line-height: 13px;
+    width: 101px;
+    top: 5px;
+    left: 232px;
+}
+.ePkmnSpeedComparison {
+    position: absolute;
+    border: 1px solid rgba(255, 0, 0, 0);
+    text-align: center;
+    color:rgb(70, 70, 70);
+    font-size: 12px;
+    line-height: 13px;
+    width: 101px;
+    top: 23px;
+    left: 122px;
 }
 .seHp {
     position: absolute;
@@ -3042,7 +3077,7 @@ body {
     position: absolute;
     border: 1px solid #ff000000;
     text-align: center;
-    width: 114px;
+    width: 115px;
 }
 .accEvaLabel {
     /* text-decoration: underline; */
@@ -3050,8 +3085,8 @@ body {
     font-size: 14px;
 }
 .accuracyLabel {
-    left: 10px;
-    top: 230px;
+    left: 6px;
+    top: 259px;
 }
 .accEvaMod {
     font-size: 40px;
@@ -3059,16 +3094,16 @@ body {
     top: 380px;
 }
 .accuracyMod {
-    left: 10px;
-    top: 245px;
+    left: 6px;
+    top: 274px;
 }
 .evasionLabel {
-    left: 137px;
-    top: 230px;
+    left: 240px;
+    top: 259px;
 }
 .evasionMod {
-    left: 137px;
-    top: 245px;
+    left: 240px;
+    top: 274px;
 }
 .playerFieldEffects {
     position: absolute;
@@ -3105,23 +3140,24 @@ body {
 }
 .enemyMod {
     position: absolute;
+    font-size: 14px;
     border: 1px solid #00000000;
-    width: 33px;
+    width: 46px;
     text-align: center;
-    left: 110px;
+    /* left: 110px; */
 }
 .attackMod {
-    top: 32px;
+    top: 76px;
 }
 .defenseMod {
-    top: 56px;
+    top: 114px;
 }
 .specialAttackMod {
-    top: 80px;
+    top: 76px;
 }
 .specialDefenseMod {
-    top: 105px;
+    top: 114px;
 }
 .speedMod {
-    top: 128.5px;
+    top: 38px;
 }
