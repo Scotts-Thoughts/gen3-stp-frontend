@@ -414,13 +414,15 @@
                         </tr>
                     </table>
                     <br>
-                    <div>Deoxys Form:</div>
-                    <select v-model="deoxys_form" @change="load_deoxys_sprite_settings(deoxys_form)" class="dropdownMenu dropdown_menu_column3">
-                        <option>Speed</option>
-                        <option>Normal</option>
-                        <option>Attack</option>
-                        <option>Defense</option>
-                    </select><br>
+                    <div v-if="starterString == 'Deoxys'">
+                        <div>Deoxys Form:</div>
+                        <select v-model="deoxys_form" @change="load_deoxys_sprite_settings(deoxys_form)" class="dropdownMenu dropdown_menu_column3">
+                            <option>Speed</option>
+                            <option>Normal</option>
+                            <option>Attack</option>
+                            <option>Defense</option>
+                        </select><br>
+                    </div>
                 </div>
             </div>
 
@@ -760,10 +762,14 @@
                     <div class="enemy_trainer_name">{{ special_trainer_names(enemyTrainerName) }}</div>
                     <div class="colored-image ds" :style="battlePokemonCrop()" style="--url: url(images/ui/enemy.svg)"></div>
                     <div v-for="x in pkmnSlots" class="enemyGraphic">
-                        <img class="enemyStatsArea" :class="svgColorClass(speed_comparison(x, mapper.properties.battle.trainer.team[x]?.speed.value).comparison, mapper.properties.battle.trainer.team[x])" :src="`images/new_ui/comp/${x}.svg`"/>
-                        <div :style="enemyPkmnUI(batt.trainer.team[x])">
-                            <img :style="fade_enemy_mon(batt.trainer.team[x])" class="enemyStatsArea" :src="`images/new_ui/enemy_stats/${x}.svg`"/>
-                            <div class="enemyStatsArea colored-image" :style="`--overlay-color: ${overlay_color}; --url: url(images/new_ui/enemy_ui/${x}.svg)`"></div>
+                        <div v-if="enemyTrainer.pokemon[x] != undefined"> 
+                            <div :style="enemyPkmnUI(batt.trainer.team[x])">
+                                <div class="enemyStatsArea colored-image" :style="`--overlay-color: ${overlay_color}; --url: url(images/new_ui/enemy_ui/${x}.svg)`"></div>
+                            </div>
+                            <img class="enemyStatsArea" :class="svgColorClass(speed_comparison(x, mapper.properties.battle.trainer.team[x]?.speed.value).comparison, mapper.properties.battle.trainer.team[x])" :src="`images/new_ui/comp/${x}.svg`"/>
+                            <div :style="enemyPkmnUI(batt.trainer.team[x])">
+                                <img :style="fade_enemy_mon(batt.trainer.team[x])" class="enemyStatsArea" :src="`images/new_ui/enemy_stats/${x}.svg`"/>
+                            </div>
                         </div>
                         <div v-if="enemyTrainer.pokemon[x] != undefined" :class="`ePkmnStyle ePkmn${x + 1}`">
                             <img v-show="enemyTrainer.pokemon[x]?.species != undefined" class="ePkmnSprite" :style="enemyPkmnFaint(batt.trainer.team[x])" :src="`images/pokemon/${enemyTrainer.pokemon[x]?.species}.png`"/>

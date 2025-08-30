@@ -2163,10 +2163,10 @@ const app = Vue.createApp({
             let player_speed   = this.mapper.properties.battle.yourPokemon.speed.value
             let enemy_speed = enemy_speed_incoming
             if (state == 'To Battle') {
-                enemy_speed = data[`${trainer} ${trainer_number}`].party[enemy_slot]?.stats.speed
-                player_speed = badge_3 ? Math.floor(this.mapper.properties.player.team[0].speed.value * 1.125) : this.mapper.properties.player.team[0].speed.value
+                enemy_speed = data[`${trainer_number}`].pokemon[enemy_slot]?.spe
+                console.log('To Battle', enemy_slot, enemy_speed)
             }
-
+            player_speed = badge_3 ? Math.floor(this.mapper.properties.player.team[0].speed.value * 1.1) : this.mapper.properties.player.team[0].speed.value
             if (player_speed > enemy_speed) {
                 object.comparison = "Outsped"
                 object.color      = "background-color: rgba(28, 255, 58, 0.4)"
@@ -3448,7 +3448,7 @@ const app = Vue.createApp({
         },
         fade_enemy_mon(pkmnData) {
             const enemy_hp = pkmnData.hp.value
-            if (enemy_hp > 0) {
+            if (enemy_hp > 0 || this.g3stateVariable == `To Battle`) {
                 return
             }
             else {
