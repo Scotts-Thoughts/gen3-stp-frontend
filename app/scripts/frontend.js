@@ -1403,7 +1403,7 @@ const app = Vue.createApp({
         //*Autosplitter
         //log the start of a battle
         g3stateVariable(newProp) {
-            console.log("G3StateVariable newProp: " + newProp)
+            // console.log("G3StateVariable newProp: " + newProp)
             try {
                 var logStr = `Autosplitter - Battle Started: ${this.batt.trainer[this.game.opponent].value} started at ${this.timer.formatted_time[0]}${this.timer.formatted_time[1]} (Gametime: ${this.gametimeSplit})`
             }
@@ -2155,18 +2155,15 @@ const app = Vue.createApp({
             if (this.mapper.properties.battle.type.trainer.value == false) { return object }
 
             const state          = this.g3stateVariable
-            const trainer        = this.capitalization_format(this.mapper.properties.battle.trainer.opponentA.value)
             const trainer_number = this.mapper.properties.battle.trainer.opponentAId.value
-            const badge_3        = this.mapper.properties.player.badges.badge3.value
             let data = this.gameSelection == 'Emerald' ? this.emeraldTrainers : this.remakeTrainers
             let enemy_hp = this.mapper.properties.battle.trainer.team[enemy_slot]?.hp.value
-            let player_speed   = this.mapper.properties.battle.yourPokemon.speed.value
+            let player_speed   = this.get_stat('Speed')
             let enemy_speed = enemy_speed_incoming
+            // console.log(player_speed, enemy_speed)
             if (state == 'To Battle') {
                 enemy_speed = data[`${trainer_number}`].pokemon[enemy_slot]?.spe
-                console.log('To Battle', enemy_slot, enemy_speed)
             }
-            player_speed = badge_3 ? Math.floor(this.mapper.properties.player.team[0].speed.value * 1.1) : this.mapper.properties.player.team[0].speed.value
             if (player_speed > enemy_speed) {
                 object.comparison = "Outsped"
                 object.color      = "background-color: rgba(28, 255, 58, 0.4)"
