@@ -4896,6 +4896,11 @@ const app = Vue.createApp({
                         this.mapper.properties.player.team[0].fateful_encounter.set(true, false), 
                     ])
                 }
+                if (this.gameSelection == 'Emerald' && (this.starterString == 'Mew' || this.starterString == 'Celebi' || this.starterString == 'Jirachi' || this.starterString == 'Deoxys')) {
+                    await Promise.all([ 
+                        this.mapper.properties.player.team[0].fateful_encounter.set(1, false), 
+                    ])
+                }
                 if (this.gameSelection == 'Emerald') {
                     const abra_116 = this.hm_116_abra
                     const abra_granite = this.hm_cave_abra
