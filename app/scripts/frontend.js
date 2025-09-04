@@ -2147,6 +2147,12 @@ const app = Vue.createApp({
     },
 
     methods: {
+        light_ball(stat) {
+            if (this.mapper.properties.player.team[0].itemHeld.value == 'LIGHT BALL' && this.starterString == "Pikachu") {
+                return Math.floor(stat * 2)
+            }
+            return stat
+        },
         speed_comparison(enemy_slot, enemy_speed_incoming) {
             let object = {
                 comparison: "Outspeeds",
@@ -2571,7 +2577,7 @@ const app = Vue.createApp({
                     case "Hp":              return this.mapper.properties.player.team[0].maxHp.value
                     case "Attack":          return this.ability(this.pkmn_ability, "attack",  this.badge_boost(this.mapper.properties.player.badges.badge1.value, this.mapper.properties.player.team[0].attack.value))
                     case "Defense":         return this.metal_powder("defense", this.badge_boost(this.mapper.properties.player.badges.badge5.value, this.mapper.properties.player.team[0].defense.value))
-                    case "Special Attack":  return this.badge_boost(this.mapper.properties.player.badges.badge7.value, this.mapper.properties.player.team[0].specialAttack.value)
+                    case "Special Attack":  return this.light_ball(this.badge_boost(this.mapper.properties.player.badges.badge7.value, this.mapper.properties.player.team[0].specialAttack.value))
                     case "Special Defense": return this.metal_powder("special_defense", this.badge_boost(this.mapper.properties.player.badges.badge7.value, this.mapper.properties.player.team[0].specialDefense.value))
                     case "Speed":           return this.status_stat_change(this.mapper.properties.player.team[0].statusCondition.value, this.badge_boost(this.mapper.properties.player.badges.badge3.value, this.mapper.properties.player.team[0].speed.value))
                 }
@@ -2582,7 +2588,7 @@ const app = Vue.createApp({
                     case "Attack":          return this.ability(this.pkmn_ability, "attack",  this.badge_boost(this.mapper.properties.player.badges.badge1.value, this.stageMultiplier(this.mapper.properties.battle.yourPokemon.modStageAttack.value,  this.mapper.properties.battle.yourPokemon.attack.value)))
                     case "Defense":         return this.metal_powder("defense", this.ability(this.pkmn_ability, "defense", this.badge_boost(this.mapper.properties.player.badges.badge5.value, this.stageMultiplier(this.mapper.properties.battle.yourPokemon.modStageDefense.value, this.mapper.properties.battle.yourPokemon.defense.value))))
                     case "Speed":           return this.status_stat_change(this.mapper.properties.battle.yourPokemon.status1.value, this.macho_brace(this.ability(this.pkmn_ability, "speed",   this.badge_boost(this.mapper.properties.player.badges.badge3.value, this.stageMultiplier(this.mapper.properties.battle.yourPokemon.modStageSpeed.value,   this.mapper.properties.battle.yourPokemon.speed.value)))))
-                    case "Special Attack":  return this.badge_boost(this.mapper.properties.player.badges.badge7.value, this.stageMultiplier(this.mapper.properties.battle.yourPokemon.modStageSpecialAttack.value,  this.mapper.properties.battle.yourPokemon.specialAttack.value))
+                    case "Special Attack":  return this.light_ball(this.badge_boost(this.mapper.properties.player.badges.badge7.value, this.stageMultiplier(this.mapper.properties.battle.yourPokemon.modStageSpecialAttack.value,  this.mapper.properties.battle.yourPokemon.specialAttack.value)))
                     case "Special Defense": return this.metal_powder("special_defense", this.badge_boost(this.mapper.properties.player.badges.badge7.value, this.stageMultiplier(this.mapper.properties.battle.yourPokemon.modStageSpecialDefense.value, this.mapper.properties.battle.yourPokemon.specialDefense.value)))
                 }
             }
