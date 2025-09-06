@@ -13,7 +13,7 @@ const trainer_name_lookup = {
     "RIVAL_BRENDAN_ROUTE_110_TREECKO":  { trainer: "Rival 2",       color: "background-color: #00000" },
     "RIVAL_BRENDAN_ROUTE_110_MUDKIP":   { trainer: "Rival 2",       color: "background-color: #00000" },
     "RIVAL_BRENDAN_ROUTE_110_TORCHIC":  { trainer: "Rival 2",       color: "background-color: #00000" },
-    "LEADER_WATTSON_1":                 { trainer: "Watson",        color: "background-color: #FCD659" },
+    "LEADER_WATTSON_1":                 { trainer: "Wattson",       color: "background-color: #FCD659" },
     "MAGMA_LEADER_MAXIE_MT_CHIMNEY":    { trainer: "Maxie 1",       color: "background-color: grey" },
     "LEADER_FLANNERY_1":                { trainer: "Flannery",      color: "background-color: #EF7374" },
     "LEADER_NORMAN_1":                  { trainer: "Norman",        color: "background-color: #C1C2C1" },

@@ -2955,9 +2955,9 @@ body {
     /* border: 1px solid #00ff0d00; */
     background-color: #ffffff;
     font-size: 12px;
-    line-height: 24px;
+    line-height: 14.2px;
     width: 328px;
-    height: 527px;
+    height: 754px;
     font-family: play;
     left: 1576px;
     top: 57px;
@@ -2966,6 +2966,12 @@ body {
 }
 .splits_table tr:nth-child(odd) {
     background-color: #cfcfcf;
+}
+.scaled_icon {
+    padding-top: 3px;
+    margin: 0; /* Remove any margin */
+    text-align: center; /* Center the content horizontally */
+    width: 30px;
 }
 .inventory_demo {
     display: block;
