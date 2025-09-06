@@ -3262,21 +3262,14 @@ const app = Vue.createApp({
             }
             //retrieve the default sizing from the .css
             var element = document.getElementById('movepoolMoveTable')
-            //********The next few lines were dynamic to support different css sizes */
-            //********This is useful if you want to reuse the code in other overlays */
-            //********However it had bugs with resizing after battles, so I'm commenting it for now */
-            // var moveElement = document.querySelector('.movepoolDemo');
-            // if (!moveElement) {
-            //     console.log("nope")
-            //     return;
-            // }
-            //store the default sizes so we can access them after overwriting them
-            //var computedStyle = window.getComputedStyle(moveElement);
-            //if(this.movepoolDefaultFontSize==-1) {
-                this.movepoolDefaultFontSize = 15;//parseInt(computedStyle.getPropertyValue('font-size'),10);
-                this.movepoolDefaultLineHeight = 18;//parseInt(computedStyle.getPropertyValue('line-height'),10);
-                this.movepoolDefaultContainerHeight = 1000-(this.movepoolDefaultLineHeight+0);// parseInt(computedStyle.getPropertyValue('height'),10)-this.movepoolDefaultLineHeight+1;
-            //}
+
+            let small_line_height = 19;
+            let resize_threshold = 20;
+            this.movepoolDefaultFontSize = 13;//parseInt(computedStyle.getPropertyValue('font-size'),10);
+            this.movepoolDefaultLineHeight = 18;//parseInt(computedStyle.getPropertyValue('line-height'),10);
+            this.movepoolDefaultContainerHeight = 1000-(this.movepoolDefaultLineHeight);// parseInt(computedStyle.getPropertyValue('height'),10)-this.movepoolDefaultLineHeight+1;
+            let maxSize = this.movepoolDefaultContainerHeight / this.movepoolDefaultLineHeight;
+
             //calculate new sizes
             let currentStarter = this.s1dynamicReset.name;
             if(currentStarter == undefined || currentStarter == null) {
@@ -3305,11 +3298,22 @@ const app = Vue.createApp({
             if (this.tutor_moves) {
                 movepoolSize = movepoolSize + this.dexData[currentStarter].tutor_learnset.length;
             }
-            let maxSize = this.movepoolDefaultContainerHeight / this.movepoolDefaultLineHeight;
             let correctedLineHeight = this.movepoolDefaultContainerHeight / movepoolSize;
-            let correctedFontSize = this.movepoolDefaultFontSize * Math.sqrt(correctedLineHeight / this.movepoolDefaultLineHeight);
-            if(movepoolSize > (maxSize)){
+            let fontShrinkFactor = 0; //make this bigger to shrink the font more. 0.5 was the default in gen1-3. 0 = no shrinking. 1 or above will be *tiny*
+
+            let correctedFontSize = this.movepoolDefaultFontSize * Math.pow(correctedLineHeight / this.movepoolDefaultLineHeight, fontShrinkFactor);
+           
+            if (movepoolSize > (maxSize)) {
                 return "line-height: " + correctedLineHeight + "px; font-size: "+correctedFontSize+"px;";
+            }
+            else if (movepoolSize < resize_threshold) {
+                return "line-height: " + small_line_height + "px; font-size: "+this.movepoolDefaultFontSize+"px;";
+            }
+            else if (movepoolSize < resize_threshold) {
+                return "line-height: " + small_line_height + "px; font-size: "+this.movepoolDefaultFontSize+"px;";
+            }
+            else {
+                return "line-height: " + correctedLineHeight + "px; font-size: "+this.movepoolDefaultFontSize+"px;";
             }
         },
 
