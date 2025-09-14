@@ -22,7 +22,7 @@
                 <img class="canvas" ref="background_texture" :src="textures[backgroundTexture]" 
                 :style="{ 
                     'filter': `blur(${backgroundBlur}px) hue-rotate(${backgroundHue}deg) brightness(${backgroundBrightness}%) contrast(${backgroundContrast}%) saturate(${backgroundSaturation}%)` ,
-                    'transform': `scale(${backgroundScale}%) ${backgroundFlip ? 'rotateY(180deg)' : ''} translate(${backgroundXOffset}px, ${-backgroundYOffset}px)`
+                    'transform': `scale(${backgroundScale}%) ${backgroundFlip ? 'rotateY(180deg)' : ''} ${backgroundXFlip ? 'rotateX(180deg)' : ''} translate(${backgroundXOffset}px, ${-backgroundYOffset}px)`
                 }"/>
                 <img class="canvas" style="top: 30px;" :src="`images/elements/overlay/gen1&2/pokeball.png`" />
                 <div v-if="starterString == 'Ditto'">
@@ -339,15 +339,16 @@
                         </option>
                     </select><br>
                     <table>
-                        <tr><td>X-Offset:  </td><td><input type="range" min="-125" max="125" v-model="backgroundXOffset"/></td></tr>
-                        <tr><td>Y-Offset:  </td><td><input type="range" min="-125" max="125" v-model="backgroundYOffset"/></td></tr>
-                        <tr><td>Scale:     </td><td><input type="range" min="100"  max="200" v-model="backgroundScale"/></td></tr>
-                        <tr><td>Brightness:</td><td><input type="range" min="0"    max="200" v-model="backgroundBrightness"/></td></tr>
-                        <tr><td>Contrast:  </td><td><input type="range" min="0"    max="200" v-model="backgroundContrast"/></td></tr>
-                        <tr><td>Saturation:</td><td><input type="range" min="0"    max="200" v-model="backgroundSaturation"/></td></tr>
-                        <tr><td>Blur:      </td><td><input type="range" min="0"    max="10"  v-model="backgroundBlur"/></td></tr>
-                        <tr><td>Hue:       </td><td><input type="range" min="0"    max="358" v-model="backgroundHue"/></td></tr>
-                        <tr><td>Flip:      </td><td><input class="checkBoxStyle" type="checkbox" v-model="backgroundFlip"/></td></tr>
+                        <tr><td>X-Offset:       </td><td><input type="range" min="-125" max="125" v-model="backgroundXOffset"/></td></tr>
+                        <tr><td>Y-Offset:       </td><td><input type="range" min="-125" max="125" v-model="backgroundYOffset"/></td></tr>
+                        <tr><td>Scale:          </td><td><input type="range" min="100"  max="200" v-model="backgroundScale"/></td></tr>
+                        <tr><td>Brightness:     </td><td><input type="range" min="0"    max="200" v-model="backgroundBrightness"/></td></tr>
+                        <tr><td>Contrast:       </td><td><input type="range" min="0"    max="200" v-model="backgroundContrast"/></td></tr>
+                        <tr><td>Saturation:     </td><td><input type="range" min="0"    max="200" v-model="backgroundSaturation"/></td></tr>
+                        <tr><td>Blur:           </td><td><input type="range" min="0"    max="10"  v-model="backgroundBlur"/></td></tr>
+                        <tr><td>Hue:            </td><td><input type="range" min="0"    max="358" v-model="backgroundHue"/></td></tr>
+                        <tr><td>Horizontal Flip:</td><td><input class="checkBoxStyle" type="checkbox" v-model="backgroundFlip"/></td></tr>
+                        <tr><td>Vertical Flip:  </td><td><input class="checkBoxStyle" type="checkbox" v-model="backgroundXFlip"/></td></tr>
                     </table>
                 </div>
                 <div class="ui_style ui4 ui_border">
@@ -377,7 +378,6 @@
                         </select><br>
                         <br>
                     </div>
-
                     <table>
                         <tr v-if="show_advanced_settings">Toggles:</tr>
                         <tr v-if="show_advanced_settings"                                            ><td>Automatic IVs:</td>         <td><input class="checkBoxStyle" type="checkbox" v-model="automatic_ivs"/></td></tr>
@@ -396,6 +396,7 @@
                     </table>
                 </div>
                 <div class="ui_style ui5 ui_border" v-if="show_advanced_settings">
+                    <br>
                     <table>
                         <tr><td>Copy from:</td><td><input class="inputContainer" style="width: 126px;" type="text" v-model="copy_overlay_pokemon_from"/></td></tr>
                         <tr><td>Copy to:</td>  <td><input class="inputContainer" style="width: 126px;" type="text" v-model="copy_overlay_pokemon_to"/></td></tr>

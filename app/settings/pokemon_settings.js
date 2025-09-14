@@ -19,6 +19,7 @@ const pokemon_settings = [
     [ "backgroundScale",       100,     ],
     [ "backgroundUrl",         "",      ],
     [ "backgroundFlip",        false,   ],
+    [ "backgroundXFlip",       false,   ],
     [ "use_custom_background", false,   ],
     [ "backgroundXOffset",     0,       ],
     [ "backgroundYOffset",     0,       ],

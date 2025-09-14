@@ -892,6 +892,7 @@ const app = Vue.createApp({
             backgroundScale:       MyStorage["backgroundScale"]       ?? 100,
             backgroundUrl:         MyStorage["backgroundUrl"]         ?? "",
             backgroundFlip:        MyStorage["backgroundFlip"]        ?? false,
+            backgroundXFlip:       MyStorage["backgroundXFlip"]       ?? false,
             use_custom_background: MyStorage["use_custom_background"] ?? false,
             backgroundXOffset:     MyStorage["backgroundXOffset"]     ?? 0,
             backgroundYOffset:     MyStorage["backgroundYOffset"]     ?? 0,
@@ -923,6 +924,7 @@ const app = Vue.createApp({
                 "backgroundContrast",
                 "backgroundSaturation",
                 "backgroundFlip",
+                "backgroundXFlip",
                 "pkmnNature",
                 "pkmn_ability",
                 "hidden_power_type",
@@ -1336,6 +1338,7 @@ const app = Vue.createApp({
             this.backgroundScale =        MyStorage[`${newValue}`]?.backgroundScale        ?? 100
             this.backgroundUrl =          MyStorage[`${newValue}`]?.backgroundUrl          ?? ""
             this.backgroundFlip =         MyStorage[`${newValue}`]?.backgroundFlip         ?? false
+            this.backgroundXFlip =        MyStorage[`${newValue}`]?.backgroundXFlip        ?? false
             this.use_custom_background =  MyStorage[`${newValue}`]?.use_custom_background  ?? false
             this.backgroundXOffset =      MyStorage[`${newValue}`]?.backgroundXOffset      ?? 0
             this.backgroundYOffset =      MyStorage[`${newValue}`]?.backgroundYOffset      ?? 0
@@ -2206,7 +2209,10 @@ const app = Vue.createApp({
         async update_rom_starter_and_intro_mon() {
             let starter = this.starterString
             let game = this.gameSelection
-            if (game == "Emerald") {
+            if (starter == 'Deoxys') {
+                starter = 'Backport'
+            }
+            if (game == 'Emerald') {
                 await Promise.all([
                     this.mapper.properties.patch.sStpIntroSpecies.set(starter, false), 
                     this.mapper.properties.patch.sStpStarterSpecies_0.set(starter, false), 
@@ -2214,7 +2220,7 @@ const app = Vue.createApp({
                     this.mapper.properties.patch.sStpStarterSpecies_2.set(starter, false), 
                 ])
             }
-            if (game == "FireRed and LeafGreen") {
+            if (game == 'FireRed and LeafGreen') {
                 await Promise.all([
                     this.mapper.properties.variables.VAR_CHOSEN_STARTER.set(starter, false), 
                     this.mapper.properties.patch.STP_CHOSEN_STARTER.set(starter, false), 
@@ -2572,7 +2578,36 @@ const app = Vue.createApp({
         },
         get_stat(stat_name) {
             const state = this.g3stateVariable
-            if ((state == `Overworld` || state == `To Battle`) && this.mapper.properties.player.team[0].species.value != null) {
+            const level5_exp_points = [
+                237, 100, 125, 135, 156, 65
+            ]
+            if (state == `To Battle` && this.mapper.properties.battle.type.first_battle.value == true) {
+                if (this.starterString == "Deoxys") {
+                    return this.deoxys_form_base_stats[stat_name]
+                }
+                switch (stat_name) {
+                    case "Hp":              return this.game.dexData[this.starterString].base_hp
+                    case "Attack":          return this.game.dexData[this.starterString].base_atk
+                    case "Defense":         return this.game.dexData[this.starterString].base_def
+                    case "Special Attack":  return this.game.dexData[this.starterString].base_spc_atk
+                    case "Special Defense": return this.game.dexData[this.starterString].base_spc_def
+                    case "Speed":           return this.game.dexData[this.starterString].base_spd
+                }
+            }
+            else if (state == `Overworld` && this.mapper.properties.player.team[0].level.value == 5 && level5_exp_points.includes(this.mapper.properties.player.team[0].expPoints.value)) {
+                if (this.starterString == "Deoxys") {
+                    return this.deoxys_form_base_stats[stat_name]
+                }
+                switch (stat_name) {
+                    case "Hp":              return this.game.dexData[this.starterString].base_hp
+                    case "Attack":          return this.game.dexData[this.starterString].base_atk
+                    case "Defense":         return this.game.dexData[this.starterString].base_def
+                    case "Special Attack":  return this.game.dexData[this.starterString].base_spc_atk
+                    case "Special Defense": return this.game.dexData[this.starterString].base_spc_def
+                    case "Speed":           return this.game.dexData[this.starterString].base_spd
+                }
+            }
+            else if ((state == `Overworld` || state == `To Battle`) && this.mapper.properties.player.team[0].species.value != null) {
                 switch (stat_name) {
                     case "Hp":              return this.mapper.properties.player.team[0].maxHp.value
                     case "Attack":          return this.ability(this.pkmn_ability, "attack",  this.badge_boost(this.mapper.properties.player.badges.badge1.value, this.mapper.properties.player.team[0].attack.value))
@@ -2582,7 +2617,7 @@ const app = Vue.createApp({
                     case "Speed":           return this.status_stat_change(this.mapper.properties.player.team[0].statusCondition.value, this.badge_boost(this.mapper.properties.player.badges.badge3.value, this.mapper.properties.player.team[0].speed.value))
                 }
             }
-            if (state == `Battle` || state == `From Battle`) {
+            else if (state == `Battle` || state == `From Battle`) {
                 switch (stat_name) {
                     case "Hp":              return this.mapper.properties.battle.yourPokemon.maxHp.value
                     case "Attack":          return this.ability(this.pkmn_ability, "attack",  this.badge_boost(this.mapper.properties.player.badges.badge1.value, this.stageMultiplier(this.mapper.properties.battle.yourPokemon.modStageAttack.value,  this.mapper.properties.battle.yourPokemon.attack.value)))
@@ -2592,7 +2627,7 @@ const app = Vue.createApp({
                     case "Special Defense": return this.metal_powder("special_defense", this.badge_boost(this.mapper.properties.player.badges.badge7.value, this.stageMultiplier(this.mapper.properties.battle.yourPokemon.modStageSpecialDefense.value, this.mapper.properties.battle.yourPokemon.specialDefense.value)))
                 }
             }
-            if (state == `Base Stats` || this.mapper.properties.player.team[0].species.value == null) {
+            else if (state == `Base Stats` || this.mapper.properties.player.team[0].species.value == null) {
                 if (this.starterString == "Deoxys") {
                     return this.deoxys_form_base_stats[stat_name]
                 }
@@ -2893,6 +2928,8 @@ const app = Vue.createApp({
                     this.backgroundHue   = 271
                     this.backgroundScale = 120
                     this.backgroundUrl   = false
+                    this.backgroundFlip  = false
+                    this.backgroundXFlip = false
                     break;
                 }
                 case "Normal" : {
@@ -2906,6 +2943,8 @@ const app = Vue.createApp({
                     this.backgroundHue   = 183
                     this.backgroundScale = 100
                     this.backgroundUrl   = false
+                    this.backgroundFlip  = false
+                    this.backgroundXFlip = false
                     break;
                 }
                 case "Attack" : {
@@ -2919,6 +2958,8 @@ const app = Vue.createApp({
                     this.backgroundHue   = 0
                     this.backgroundScale = 100
                     this.backgroundUrl   = false
+                    this.backgroundFlip  = true
+                    this.backgroundXFlip = true
                     break;
                 }
                 case "Defense": {
@@ -2932,7 +2973,8 @@ const app = Vue.createApp({
                     this.backgroundHue   = 319
                     this.backgroundScale = 100
                     this.backgroundUrl   = false
-                    this.backkgroundFlip = true
+                    this.backgroundFlip  = true
+                    this.backgroundXFlip = false
                     break;
                 }
             }
@@ -2976,7 +3018,7 @@ const app = Vue.createApp({
             if (MyStorage[from]) {
                 const properties = [
                     'overlay_color', 'backgroundBlur', 'backgroundHue', 'backgroundScale', 'backgroundUrl', 
-                    'backgroundFlip', 'use_custom_background', 'backgroundXOffset', 'backgroundYOffset', 
+                    'backgroundFlip', 'backgroundXFlip', 'use_custom_background', 'backgroundXOffset', 'backgroundYOffset', 
                     'backgroundTexture', 'backgroundBrightness', 'backgroundContrast', 'backgroundSaturation'
                 ];
         
@@ -3071,6 +3113,7 @@ const app = Vue.createApp({
             this.backgroundScale       = MyStorage[starter]?.backgroundScale       ?? 100
             this.backgroundUrl         = MyStorage[starter]?.backgroundUrl         ?? ""
             this.backgroundFlip        = MyStorage[starter]?.backgroundFlip        ?? false
+            this.backgroundXFlip       = MyStorage[starter]?.backgroundXFlip       ?? false
             this.use_custom_background = MyStorage[starter]?.use_custom_background ?? false
             this.backgroundXOffset     = MyStorage[starter]?.backgroundXOffset     ?? 0
             this.backgroundYOffset     = MyStorage[starter]?.backgroundYOffset     ?? 0
@@ -4917,9 +4960,53 @@ const app = Vue.createApp({
         }
         
         const setStartingStats = async () => {
-            const pkmnData = this.dexData[this.starterString]
+            let pkmnData = this.dexData[this.starterString]
             const level    = 5
             const natures  = this.natures[this.pkmnNature]
+
+            // Deoxys Forms
+            const deoxys_stats = {
+                "Speed": {
+                    "base_hp"     : 50,
+                    "base_atk"    : 95,
+                    "base_def"    : 90,
+                    "base_spc_atk": 95,
+                    "base_spc_def": 90,
+                    "base_spd"    : 180
+                },
+                "Normal" : {
+                    "base_hp"     : 50,
+                    "base_atk"    : 150,
+                    "base_def"    : 50,
+                    "base_spc_atk": 150,
+                    "base_spc_def": 50,
+                    "base_spd"    : 150
+                },
+                "Attack" : {
+                    "base_hp"     : 50,
+                    "base_atk"    : 180,
+                    "base_def"    : 20,
+                    "base_spc_atk": 180,
+                    "base_spc_def": 20,
+                    "base_spd"    : 150
+                },
+                "Defense": {
+                    "base_hp"     : 50,
+                    "base_atk"    : 70,
+                    "base_def"    : 160,
+                    "base_spc_atk": 70,
+                    "base_spc_def": 160,
+                    "base_spd"    : 90
+                }
+            }
+            if (this.starterString == "Deoxys") {
+                switch (this.deoxys_form) {
+                    case "Speed"  : pkmnData = deoxys_stats["Speed"]; break;
+                    case "Normal" : pkmnData = deoxys_stats["Normal"]; break;
+                    case "Attack" : pkmnData = deoxys_stats["Attack"]; break;
+                    case "Defense": pkmnData = deoxys_stats["Defense"]; break;
+                }
+            }
 
             var ivHp  = this.mapper.properties.player.team[0].ivHp.value
             var ivAtk = this.mapper.properties.player.team[0].ivAttack.value
