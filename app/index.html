@@ -268,12 +268,9 @@
                         <option v-for="(key, index) in hiddenpowers[hidden_power_type]" :value="`${index}`">{{key}}</option>
                     </select><br>
                     <table>
-                        <tr><td>HP: </td><td>{{hiddenpowers[hidden_power_type][hidden_power_index][0]}}</td></tr>
-                        <tr><td>Atk:</td><td>{{hiddenpowers[hidden_power_type][hidden_power_index][1]}}</td></tr>
-                        <tr><td>Def:</td><td>{{hiddenpowers[hidden_power_type][hidden_power_index][2]}}</td></tr>
-                        <tr><td>Spe:</td><td>{{hiddenpowers[hidden_power_type][hidden_power_index][3]}}</td></tr>
-                        <tr><td>SpA:</td><td>{{hiddenpowers[hidden_power_type][hidden_power_index][4]}}</td></tr>
-                        <tr><td>SpD:</td><td>{{hiddenpowers[hidden_power_type][hidden_power_index][5]}}</td></tr>
+                        <tr><td>HP: </td><td style="padding-left: 5px;">{{hiddenpowers[hidden_power_type][hidden_power_index][0]}}</td><td style="padding-left: 15px;">Spe:</td><td style="padding-left: 5px;">{{hiddenpowers[hidden_power_type][hidden_power_index][3]}}</td></tr>
+                        <tr><td>Atk:</td><td style="padding-left: 5px;">{{hiddenpowers[hidden_power_type][hidden_power_index][1]}}</td><td style="padding-left: 15px;">SpA:</td><td style="padding-left: 5px;">{{hiddenpowers[hidden_power_type][hidden_power_index][4]}}</td></tr>
+                        <tr><td>Def:</td><td style="padding-left: 5px;">{{hiddenpowers[hidden_power_type][hidden_power_index][2]}}</td><td style="padding-left: 15px;">SpD:</td><td style="padding-left: 5px;">{{hiddenpowers[hidden_power_type][hidden_power_index][5]}}</td></tr>
                     </table>
                     <br>
                     <div v-if="show_advanced_settings">
