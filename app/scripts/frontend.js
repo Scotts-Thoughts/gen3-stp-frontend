@@ -2652,8 +2652,8 @@ const app = Vue.createApp({
         },
         metal_powder(stat_name, stat) {
             if (this.mapper.properties.player.team[0].itemHeld.value == 'METAL POWDER') {
-                if (stat_name === 'defense' || stat_name === 'special_defense' && (this.starterString === "Ditto" && this.s1dynamicReset.species.value === "Ditto")) {
-                    return Math.floor(stat * 1.5)
+                if (stat_name === 'defense' && (this.starterString === "Ditto" && this.s1dynamicReset.species.value === "Ditto")) {
+                    return Math.floor(stat * 2)
                 }
                 else {
                     return stat
