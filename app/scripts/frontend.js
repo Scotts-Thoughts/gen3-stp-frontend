@@ -467,7 +467,6 @@ function logData(gameName, gameName_path, str, file_name, starter, log_type, tes
                     "real_time_hmmss," +
                     "resets," +
                     "blackouts," +
-                    "failures," +
                     "level," +
                     "game_time," +
                     "battle_duration," +
@@ -1605,7 +1604,7 @@ const app = Vue.createApp({
         evolution(newValue) {
             if (this.ready == false) { return }
             const evolution_family = this.game.evolutions[this.starterString]?.evolution_family
-            const family_length = evolution_family.length
+            const family_length = evolution_family?.length
             const split_label = `${evolution_family[evolution_family.length - 1]?.species}-line`
             // console.log(evolution_family)
             if (newValue == true) {
@@ -1720,8 +1719,16 @@ const app = Vue.createApp({
                 const result = []
                 let lastPushedTrainer = null; // Keep track of the last pushed trainer
                 const trainersToSkip = ["ELITE_FOUR_LORELEI_2", "ELITE_FOUR_BRUNO_2", "ELITE_FOUR_AGATHA_2", "ELITE_FOUR_LANCE_2", "CHAMPION_REMATCH_CHARMANDER", "CHAMPION_REMATCH_BULBASAUR", "CHAMPION_REMATCH_SQUIRTLE"]; // Trainers to skip
+                const firstOccurrenceOnly = ["ELITE_FOUR_SIDNEY", "ELITE_FOUR_PHOEBE", "ELITE_FOUR_GLACIA", "ELITE_FOUR_DRAKE", "CHAMPION_WALLACE"]; // Characters to only show first occurrence of
+                const processedFirstOccurrences = new Set(); // Track which characters have already been processed for first occurrence
+                
                 for (const x of this.previous_splits) {
                     if (this.split_trainers.includes(x.trainer)) {
+                        // Skip if this is a character that should only show first occurrence and we've already processed it
+                        if (firstOccurrenceOnly.includes(x.trainer) && processedFirstOccurrences.has(x.trainer)) {
+                            continue;
+                        }
+                        
                         const default_string = "-"
                         const cur_split = this.current_splits.find(y => y.trainer === x.trainer)
                         const prev = this.convertDurationToSeconds(x.time)
@@ -1729,6 +1736,10 @@ const app = Vue.createApp({
                             if (x.trainer !== lastPushedTrainer && !(this.league_rematches == false && this.gameSelection === "FireRed and LeafGreen" && trainersToSkip.includes(x.trainer))) { // Check if the current trainer is the same as the last pushed one and if it should be skipped
                                 result.push({trainer: x.trainer, previous_time: this.convertSecondsToDuration(prev), current_time: default_string, difference: default_string}) 
                                 lastPushedTrainer = x.trainer; // Update the last pushed trainer
+                                // Mark this character as processed for first occurrence
+                                if (firstOccurrenceOnly.includes(x.trainer)) {
+                                    processedFirstOccurrences.add(x.trainer);
+                                }
                             }
                             continue
                         }
@@ -1743,6 +1754,10 @@ const app = Vue.createApp({
                         if (x.trainer !== lastPushedTrainer && !(this.league_rematches && this.gameSelection === "FireRed and LeafGreen" && trainersToSkip.includes(x.trainer))) { // Check if the current trainer is the same as the last pushed one and if it should be skipped
                             result.push({trainer: x.trainer, previous_time: this.convertSecondsToDuration(prev), current_time: this.convertSecondsToDuration(cur), difference: diff_str})
                             lastPushedTrainer = x.trainer; // Update the last pushed trainer
+                            // Mark this character as processed for first occurrence
+                            if (firstOccurrenceOnly.includes(x.trainer)) {
+                                processedFirstOccurrences.add(x.trainer);
+                            }
                         }
                     }
                 }
@@ -2164,7 +2179,16 @@ const app = Vue.createApp({
             if (this.mapper.properties.battle.type.trainer.value == false) { return object }
 
             const state          = this.g3stateVariable
-            const trainer_number = this.mapper.properties.battle.trainer.opponentAId.value
+            let trainer_number = 0
+            if (this.gameSelection == 'Emerald') {
+                trainer_number = this.mapper.properties.battle.trainer.opponentAId.value
+            }
+            else if (this.gameSelection == 'FireRed and LeafGreen') {
+                trainer_number = this.mapper.properties.battle.trainer.opponentId.value
+            }
+            else {
+                trainer_number = this.mapper.properties.battle.trainer.opponentAId.value
+            }
             let data = this.gameSelection == 'Emerald' ? this.emeraldTrainers : this.remakeTrainers
             let enemy_hp = this.mapper.properties.battle.trainer.team[enemy_slot]?.hp.value
             let player_speed   = this.get_stat('Speed')
