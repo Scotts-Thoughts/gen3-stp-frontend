@@ -1387,7 +1387,7 @@ const app = Vue.createApp({
         evolution(newValue) {
             // When evolution checkbox is toggled, immediately switch to parallel styling
             // Style watchers will automatically save to the correct storage based on getCurrentStorageKey()
-            console.log('Evolution watcher triggered:', newValue);
+            // console.log('Evolution watcher triggered:', newValue);
             
             // Handle legacy split label functionality
             if (this.ready !== false) {
@@ -1424,16 +1424,16 @@ const app = Vue.createApp({
             if (newValue) {
                 // Update evolution family list first
                 const starter = this.starterString || this.starter;
-                console.log('Updating evolution family list for:', starter);
+                // console.log('Updating evolution family list for:', starter);
                 this.updateEvolutionFamilyList();
-                console.log('Evolution family list:', this.evolution_family_list);
+                // console.log('Evolution family list:', this.evolution_family_list);
                 
                 // Always set default selected evolution species to the starter when enabling
                 // Set selected_evolution_species if not set or if current selection is invalid
                 if (!this.selected_evolution_species || 
                     (this.evolution_family_list.length > 0 && !this.evolution_family_list.includes(this.selected_evolution_species))) {
                     this.selected_evolution_species = starter;
-                    console.log('Set selected_evolution_species to:', starter);
+                    // console.log('Set selected_evolution_species to:', starter);
                     
                     // Save selected evolution species to storage
                     const game_name = this.mapper?.properties?.meta?.game_name?.value || this.gameSelection;
@@ -1448,10 +1448,10 @@ const app = Vue.createApp({
                 
                 // Always load styles immediately when evolution is enabled
                 if (this.selected_evolution_species) {
-                    console.log('Loading evolution style for:', this.selected_evolution_species);
+                    // console.log('Loading evolution style for:', this.selected_evolution_species);
                     this.loadEvolutionStyle(this.selected_evolution_species, true);
                 } else {
-                    console.log('WARNING: selected_evolution_species is not set!');
+                    // console.log('WARNING: selected_evolution_species is not set!');
                 }
             } else {
                 // When disabled, immediately switch back to normal non-evolution styling
@@ -3439,15 +3439,19 @@ const app = Vue.createApp({
             // this.load_pokemon_sprite_settings()
         },
         load_pokemon_sprite_settings(pokemon_species) {
-            this.imageXOffset    = MyStorage[pokemon_species]?.imageXOffset    ?? 0
-            this.imageYOffset    = MyStorage[pokemon_species]?.imageYOffset    ?? 0
-            this.imageScale      = MyStorage[pokemon_species]?.imageScale      ?? 1
-            this.imageFlip       = MyStorage[pokemon_species]?.imageFlip       ?? false
-            this.imageSat        = MyStorage[pokemon_species]?.imageSat        ?? 100
-            this.backgroundBlur  = MyStorage[pokemon_species]?.backgroundBlur  ?? 0
-            this.backgroundHue   = MyStorage[pokemon_species]?.backgroundHue   ?? 0
-            this.backgroundScale = MyStorage[pokemon_species]?.backgroundScale ?? 100
-            this.backgroundUrl   = MyStorage[pokemon_species]?.backgroundUrl   ?? false
+            // If evolution is enabled, use loadEvolutionStyle to load from evolution line storage
+            // Otherwise, load from individual species storage
+            if (this.evolution && this.evolution_family_list.length > 0) {
+                // When evolution is enabled, we need to determine which species to load
+                // If selected_evolution_species is set and valid, use it; otherwise use the pokemon_species
+                const speciesToLoad = (this.selected_evolution_species && this.evolution_family_list.includes(this.selected_evolution_species)) 
+                    ? this.selected_evolution_species 
+                    : pokemon_species;
+                this.loadEvolutionStyle(speciesToLoad, true);
+            } else {
+                // Evolution is disabled, load from individual species storage
+                this.loadEvolutionStyle(pokemon_species, false);
+            }
         },
         load_deoxys_sprite_settings(form) {            
             switch (form) {
@@ -3968,8 +3972,8 @@ const app = Vue.createApp({
         updateEvolutionFamilyList() {
             // Update the evolution family list when starter changes
             const starter = this.starterString || this.starter;
-            console.log('updateEvolutionFamilyList called for:', starter);
-            console.log('evolution_data_pokedex available:', !!this.evolution_data_pokedex);
+            // console.log('updateEvolutionFamilyList called for:', starter);
+            // console.log('evolution_data_pokedex available:', !!this.evolution_data_pokedex);
             
             if (!starter) {
                 console.log('No starter, clearing list');
@@ -3986,16 +3990,16 @@ const app = Vue.createApp({
             }
             
             const family = this.getEvolutionFamily(starter);
-            console.log('getEvolutionFamily returned:', family);
+            // console.log('getEvolutionFamily returned:', family);
             this.evolution_family_list = family;
             
             // Ensure list is never empty - always include at least the starter
             if (this.evolution_family_list.length === 0) {
-                console.log('List was empty, adding starter');
+                // console.log('List was empty, adding starter');
                 this.evolution_family_list = [starter];
             }
             
-            console.log('Final evolution_family_list:', this.evolution_family_list);
+            // console.log('Final evolution_family_list:', this.evolution_family_list);
         },
         loadEvolutionStyle(species, useEvolutionLine = false) {
             // Set flag to prevent watchers from saving during loading
@@ -4006,8 +4010,8 @@ const app = Vue.createApp({
             const storageKey = useEvolutionLine ? this.getStorageKey(species, true) : this.getStorageKey(species, false);
             
             // Debug: Log what we're trying to load
-            console.log(`Loading styles for ${species} (useEvolutionLine: ${useEvolutionLine}, key: ${storageKey})`);
-            console.log(`Storage data for ${species}:`, MyStorage[storageKey]);
+            // console.log(`Loading styles for ${species} (useEvolutionLine: ${useEvolutionLine}, key: ${storageKey})`);
+            // console.log(`Storage data for ${species}:`, MyStorage[storageKey]);
             
             // Load overlay and image settings
             // Get type_1 from evolution_data_pokedex or fallback to appropriate dex data based on game selection
@@ -4071,18 +4075,18 @@ const app = Vue.createApp({
             }
             
             // Debug: Log what was actually loaded
-            console.log(`Loaded background settings for ${species}:`, {
-                backgroundTexture: this.backgroundTexture,
-                backgroundXOffset: this.backgroundXOffset,
-                backgroundYOffset: this.backgroundYOffset,
-                backgroundScale: this.backgroundScale,
-                backgroundBrightness: this.backgroundBrightness,
-                backgroundContrast: this.backgroundContrast,
-                backgroundSaturation: this.backgroundSaturation,
-                backgroundBlur: this.backgroundBlur,
-                backgroundHue: this.backgroundHue,
-                backgroundFlip: this.backgroundFlip
-            });
+            // console.log(`Loaded background settings for ${species}:`, {
+            //     backgroundTexture: this.backgroundTexture,
+            //     backgroundXOffset: this.backgroundXOffset,
+            //     backgroundYOffset: this.backgroundYOffset,
+            //     backgroundScale: this.backgroundScale,
+            //     backgroundBrightness: this.backgroundBrightness,
+            //     backgroundContrast: this.backgroundContrast,
+            //     backgroundSaturation: this.backgroundSaturation,
+            //     backgroundBlur: this.backgroundBlur,
+            //     backgroundHue: this.backgroundHue,
+            //     backgroundFlip: this.backgroundFlip
+            // });
             
             // Clear flag after loading is complete, use $nextTick to ensure all watchers have fired
             this.$nextTick(() => {
@@ -5529,14 +5533,11 @@ const app = Vue.createApp({
             this.last_known_species = newProp.value;
             this.last_known_personality_value = currentPersonalityValue;
             
-            if ((state == "Battle" || state == "From Battle") && this.mapper.properties.battle.player.pkmn_ram.pokemon_0_ram.stats.hp.value != 0) {
-                this.starter = newProp.value
-            }
-            else if (state == "Overworld" && this.mapper.properties.overworld.map_index.value == 278 && newProp.value == 'Reshiram') {
-                // Special handling for Reshiram
+            if ((state == "Battle" || state == "From Battle") && this.mapper.properties.battle.yourPokemon.hp.value != 0) {
+                this.starterString = newProp.value
             }
             else if (state == "Overworld") {
-                this.starter = newProp.value
+                this.starterString = newProp.value
             }
         })
 

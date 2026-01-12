@@ -32,6 +32,7 @@ const unobtainable_moves = {
         "Rock Slide",
         "Counter",
         "Thunder Wave",
+        "Swords Dance",
         "Defense Curl",
         "Snore",
         "Mud-Slap",
