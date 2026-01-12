@@ -435,4 +435,18 @@ class GameHookMapperClient {
     onPropertyChanged(property, oldProperty, fieldsChanged) { /* Override this with your own function. */ }
 
     onUiBuilderScreenSaved(id) { /* Override this with your own function. */ }
+
+    async disconnect() {
+        this.connected = false;
+        if (this._signalrClient) {
+            try {
+                await this._signalrClient.stop();
+                console.debug('[GameHook Client] SignalR connection stopped.');
+            } catch (err) {
+                console.warn('[GameHook Client] Error stopping SignalR connection:', err);
+            }
+            this._signalrClient = null;
+        }
+        this._deconstructMapper();
+    }
 }

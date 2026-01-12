@@ -55,7 +55,7 @@
                         drop-shadow(${imageFlip ? '-3px' : '3px'} 3px 3px #000)
                         `
                     }" 
-                    :src="`images/pokemon/${s1dynamicReset.species.value == 'Deoxys' ? deoxys_image : s1dynamicReset.species.value}.png`" />
+                    :src="`images/pokemon/${displayedPokemonSpecies == 'Deoxys' ? deoxys_image : displayedPokemonSpecies}.png`" />
                 </div>
                 <img class="canvas colored-image ds" src="images/ui/game_area.svg" />
 
@@ -125,6 +125,10 @@
                         <tr>
                             <td>Show Advanced Settings:</td>
                             <td><input class="checkBoxStyle" type="checkbox" v-model="show_advanced_settings"/></td>
+                        </tr>
+                        <tr>
+                            <td>HP Banned for 1st run:</td>
+                            <td><input class="checkBoxStyle" type="checkbox" v-model="banned_hidden_power"/></td>
                         </tr>
                         <tr v-if="show_advanced_settings">
                             <td>Autosplitter:</td>
@@ -243,15 +247,30 @@
                         </tr>
                     </table>
                     <br>
+                    <div>
+                        <table>
+                            <tr><td>Evolution:</td><td><input class="checkBoxStyle" type="checkbox" v-model="evolution"/></td></tr>
+                        </table>
+                    </div>
+                    <div v-if="evolution == true && evolution_family_list.length > 0">
+                        <div>Evolution Family Style:</div>
+                        <select v-model="selected_evolution_species" class="dropdownMenu" style="width: 125px;">
+                            <option disabled value="">Select a species in the evolution family</option>
+                            <option v-for="species in evolution_family_list" :value="`${species}`">{{species}}</option>
+                        </select>
+                        <button @click="copyCurrentStylesToAllFamilyMembers()" class="buttonStyle" style="font-size: 13px; width: 85px; height: 23px; top: -2px;">Unify Styles</button>
+                        <br>
+                    </div>
+                    <br>
                     <div>Gender:</div>
                     <select v-model="pkmn_gender" class="dropdownMenu dropdown_menu_column3">
                         <option disabled value="">Select a gender</option>
                         <option v-for="key in values_function(genders)" :value="`${key}`">{{key}}</option>
                     </select><br>
-                    <div>Abilities: ({{starterString}} has {{dexDataRubySapphireEmerald[starterString].abilities.length}})</div>
+                    <div>Abilities: ({{displayedPokemonSpecies}} has {{dexDataRubySapphireEmerald[displayedPokemonSpecies].abilities.length}})</div>
                     <select v-model="pkmn_ability" class="dropdownMenu dropdown_menu_column3">
                         <option disabled value="">Select an ability</option>
-                        <option v-for="key in values_function(dexDataRubySapphireEmerald[starterString].abilities)" :value="`${key}`">{{key}}</option>
+                        <option v-for="key in values_function(dexDataRubySapphireEmerald[displayedPokemonSpecies].abilities)" :value="`${key}`">{{key}}</option>
                     </select><br>
                     <div>Nature:</div>
                     <select v-model="pkmnNature" class="dropdownMenu dropdown_menu_column3">
@@ -273,12 +292,6 @@
                         <tr><td>Def:</td><td style="padding-left: 5px;">{{hiddenpowers[hidden_power_type][hidden_power_index][2]}}</td><td style="padding-left: 15px;">SpD:</td><td style="padding-left: 5px;">{{hiddenpowers[hidden_power_type][hidden_power_index][5]}}</td></tr>
                     </table>
                     <br>
-                    <div v-if="show_advanced_settings">
-                        <table>
-                            <tr><td>Evolution:</td><td><input class="checkBoxStyle" type="checkbox" v-model="evolution"/></td></tr>
-                        </table>
-                        <br>
-                    </div>
                     <div>
                         <div>Guarantee catches:</td><td><input class="checkBoxStyle" type="checkbox" v-model="catch_rate"/><br></div>
                         <br>
@@ -317,6 +330,14 @@
                     <div>UI Color:</div>
                     <button @click="color_picker" class="buttonStyle buttonStyle_column3">Color Picker</button><br>
                     Saturation: <input type="range" min="0" max="2" step="0.1" v-model="ui_saturation"/><br>
+                    <br>
+                    <div>Unobtainable Moves:</div>
+                    <select v-model="unobtainable_moves_toggle" class="dropdownMenu dropdown_menu_column3">
+                        <option>Never Cross Out</option>
+                        <option>Cross Out When Starter is Obtained</option>
+                        <option>Cross Out After First Badge</option>
+                        <option>Always Cross Out</option>
+                    </select><br>
                     <br>
                     <div>Pokemon Image Settings</div>
                     <table>
@@ -393,25 +414,6 @@
                     </table>
                 </div>
                 <div class="ui_style ui5 ui_border" v-if="show_advanced_settings">
-                    <br>
-                    <table>
-                        <tr><td>Copy from:</td><td><input class="inputContainer" style="width: 126px;" type="text" v-model="copy_overlay_pokemon_from"/></td></tr>
-                        <tr><td>Copy to:</td>  <td><input class="inputContainer" style="width: 126px;" type="text" v-model="copy_overlay_pokemon_to"/></td></tr>
-                    </table>
-                    <button @click="copy_overlay_properties()" class="buttonStyle buttonStyle_column3">Copy Overlay Settings</button><br>
-                    <br>
-                    <div>Split Labels:</div>
-                    <table>
-                        <tr>
-                            <td>Previous:</td>
-                            <td><input type="text" class="inputContainer" v-model="previous_label" placeholder="Previous"/></td>
-                        </tr>
-                        <tr>
-                            <td>Current:</td>
-                            <td><input type="text" class="inputContainer" v-model="current_label" placeholder="Current"/></td>
-                        </tr>
-                    </table>
-                    <br>
                     <div v-if="starterString == 'Deoxys'">
                         <div>Deoxys Form:</div>
                         <select v-model="deoxys_form" @change="load_deoxys_sprite_settings(deoxys_form)" class="dropdownMenu dropdown_menu_column3">
@@ -482,7 +484,7 @@
                                 <div v-if="stats != 'Comparison'" :style="{ opacity: stat_label_opacity()?.[stat.name]}" :class="`stat_label_style stat_row_${stat[`${ui_stat_arrangement_modifier}label_row`]} stat_column_${stat.label_column}`">{{stat.label}}</div>
                             </div>
                             <div v-for="stat in stat_object">
-                                <div v-if="stats == 'Base Stats'"   :class="`stat_value_style stat_row_${stat[`${ui_stat_arrangement_modifier}value_row`]} stat_column_${stat.value_column}`">{{starterString == "Deoxys" ? deoxys_form_base_stats[stat.name] : game.dexData[starterString][stat.base_stat_path]}}</div>
+                                <div v-if="stats == 'Base Stats'"   :class="`stat_value_style stat_row_${stat[`${ui_stat_arrangement_modifier}value_row`]} stat_column_${stat.value_column}`">{{statsDisplaySpecies == "Deoxys" ? deoxys_form_base_stats[stat.name] : game.dexData[statsDisplaySpecies][stat.base_stat_path]}}</div>
                                 <div v-if="stats == 'IVs'"          :class="`stat_value_style stat_row_${stat[`${ui_stat_arrangement_modifier}value_row`]} stat_column_${stat.value_column} dv`">{{get_iv(`${stat.name}`)}}/31</div>
                                 <div v-if="stats == 'EVs'"          :class="`stat_value_style stat_row_${stat[`${ui_stat_arrangement_modifier}value_row`]} stat_column_${stat.value_column} evs`">{{mapper.properties.player.team[0][`ev${stat.name_ev}`].value}}</div>
                                 <div v-if="stats == 'Automatic'"    :class="`stat_value_style stat_row_${stat[`${ui_stat_arrangement_modifier}value_row`]} stat_column_${stat.value_column}`" :id="`${stat.abrv}`">{{get_stat(`${stat.name}`)}}</div>
@@ -584,7 +586,7 @@
                             <th class="movepool_header movepool_tableC">Acc.</th>
                             <th class="movepool_header movepool_tableC">PP</th>
                         </tr>
-                        <tr v-for="(x, index) in getMovepool(dexData, g3MoveData, g3tmhmMapping, s1dynamicReset.species.value).level" :class="{ 'first-row': index === 0 }">
+                        <tr v-for="(x, index) in getMovepool(dexData, g3MoveData, g3tmhmMapping, displayedPokemonSpecies).level" :class="{ 'first-row': index === 0 }" :style="getUnobtainableMoveStyle(x, 'Banned')">
                             <td class="movepool_way">{{x.Level}}</td>
                             <td class="movepool_move">{{move_name(x.Move)}}</td>
                             <td class="movepool_type" :style="{'background-color': `var(--${ui_type_color_modifier}${movepoolTypeColor(x)?.toLowerCase()})`}">{{movepoolType(x)}}</td>
@@ -592,7 +594,7 @@
                             <td class="movepool_tableC">{{x.Accuracy}}%</td>
                             <td class="movepool_tableC">{{x.PP}}</td>
                         </tr>
-                        <tr v-for="x in getMovepool(dexData, g3MoveData, g3tmhmMapping, s1dynamicReset.species.value).tmhm">
+                        <tr v-for="x in getMovepool(dexData, g3MoveData, g3tmhmMapping, displayedPokemonSpecies).tmhm" :style="getUnobtainableMoveStyle(x, gameSelection)">
                             <td class="movepool_way">{{x.tmhm}}</td>
                             <td class="movepool_move">{{move_name(x.Move)}}</td>
                             <td class="movepool_type" :style="{'background-color': `var(--${ui_type_color_modifier}${movepoolTypeColor(x)?.toLowerCase()})`}">{{movepoolType(x)}}</td>
@@ -600,7 +602,7 @@
                             <td class="movepool_tableC">{{x.Accuracy}}%</td>
                             <td class="movepool_tableC">{{x.PP}}</td>
                         </tr>
-                        <tr v-for="x in getMovepool(dexData, g3MoveData, g3tmhmMapping, s1dynamicReset.species.value).tutor">
+                        <tr v-for="x in getMovepool(dexData, g3MoveData, g3tmhmMapping, displayedPokemonSpecies).tutor" :style="getUnobtainableMoveStyle(x, gameSelection)">
                             <td v-if="tutor_moves" class="movepool_way">Tutor</td>
                             <td v-if="tutor_moves" class="movepool_move">{{move_name(x.Move)}}</td>
                             <td v-if="tutor_moves" class="movepool_type" :style="{'background-color': `var(--${ui_type_color_modifier}${x.Type?.toLowerCase()})`}">{{x.Type}}</td>
@@ -623,7 +625,7 @@
                                 <th class="movepool_header movepool_tableC">Acc.</th>
                                 <th class="movepool_header movepool_tableC">PP</th>
                             </tr>
-                            <tr v-for="(x, index) in getMovepool(dexData, g3MoveData, g3tmhmMapping, s1dynamicReset.species.value).level" :class="{ 'first-row': index === 0 }">
+                            <tr v-for="(x, index) in getMovepool(dexData, g3MoveData, g3tmhmMapping, displayedPokemonSpecies).level" :class="{ 'first-row': index === 0 }" :style="getUnobtainableMoveStyle(x, 'Banned')">
                                 <td class="movepool_way">{{x.Level}}</td>
                                 <td class="movepool_move">{{move_name(x.Move)}}</td>
                                 <td class="movepool_type" :style="{'background-color': `var(--${ui_type_color_modifier}${movepoolTypeColor(x)?.toLowerCase()})`}">{{movepoolType(x)}}</td>
@@ -631,7 +633,7 @@
                                 <td class="movepool_tableC">{{x.Accuracy}}%</td>
                                 <td class="movepool_tableC">{{x.PP}}</td>
                             </tr>
-                            <tr v-for="x in getMovepool(dexData, g3MoveData, g3tmhmMapping, s1dynamicReset.species.value).tmhm">
+                            <tr v-for="x in getMovepool(dexData, g3MoveData, g3tmhmMapping, displayedPokemonSpecies).tmhm" :style="getUnobtainableMoveStyle(x, gameSelection)">
                                 <td class="movepool_way">{{x.tmhm}}</td>
                                 <td class="movepool_move">{{move_name(x.Move)}}</td>
                                 <td class="movepool_type" :style="{'background-color': `var(--${ui_type_color_modifier}${movepoolTypeColor(x)?.toLowerCase()})`}">{{movepoolType(x)}}</td>
@@ -639,7 +641,7 @@
                                 <td class="movepool_tableC">{{x.Accuracy}}%</td>
                                 <td class="movepool_tableC">{{x.PP}}</td>
                             </tr>
-                            <tr v-for="x in getMovepool(dexData, g3MoveData, g3tmhmMapping, s1dynamicReset.species.value).tutor">
+                            <tr v-for="x in getMovepool(dexData, g3MoveData, g3tmhmMapping, displayedPokemonSpecies).tutor" :style="getUnobtainableMoveStyle(x, gameSelection)">
                                 <td v-if="tutor_moves" class="movepool_way">Tutor</td>
                                 <td v-if="tutor_moves" class="movepool_move">{{move_name(x.Move)}}</td>
                                 <td v-if="tutor_moves" class="movepool_type" :style="{'background-color': `var(--${ui_type_color_modifier}${x.Type?.toLowerCase()})`}">{{x.Type}}</td>
@@ -951,7 +953,7 @@
                             <th class="movepool_header movepool_tableC">Acc.</th>
                             <th class="movepool_header movepool_tableC">PP</th>
                         </tr>
-                        <tr v-for="(x, index) in getMovepool(dexData, g3MoveData, g3tmhmMapping, s1dynamicReset.species.value).level" :class="{ 'first-row': index === 0 }">
+                        <tr v-for="(x, index) in getMovepool(dexData, g3MoveData, g3tmhmMapping, displayedPokemonSpecies).level" :class="{ 'first-row': index === 0 }" :style="getUnobtainableMoveStyle(x, 'Banned')">
                             <td class="movepool_way">{{x.Level}}</td>
                             <td class="movepool_move">{{move_name(x.Move)}}</td>
                             <td class="movepool_type" :style="{'background-color': `var(--${ui_type_color_modifier}${movepoolTypeColor(x)?.toLowerCase()})`}">{{movepoolType(x)}}</td>
@@ -959,7 +961,7 @@
                             <td class="movepool_tableC">{{x.Accuracy}}%</td>
                             <td class="movepool_tableC">{{x.PP}}</td>
                         </tr>
-                        <tr v-for="x in getMovepool(dexData, g3MoveData, g3tmhmMapping, s1dynamicReset.species.value).tmhm">
+                        <tr v-for="x in getMovepool(dexData, g3MoveData, g3tmhmMapping, displayedPokemonSpecies).tmhm" :style="getUnobtainableMoveStyle(x, gameSelection)">
                             <td class="movepool_way">{{x.tmhm}}</td>
                             <td class="movepool_move">{{move_name(x.Move)}}</td>
                             <td class="movepool_type" :style="{'background-color': `var(--${ui_type_color_modifier}${movepoolTypeColor(x)?.toLowerCase()})`}">{{movepoolType(x)}}</td>
@@ -967,7 +969,7 @@
                             <td class="movepool_tableC">{{x.Accuracy}}%</td>
                             <td class="movepool_tableC">{{x.PP}}</td>
                         </tr>
-                        <tr v-for="x in getMovepool(dexData, g3MoveData, g3tmhmMapping, s1dynamicReset.species.value).tutor">
+                        <tr v-for="x in getMovepool(dexData, g3MoveData, g3tmhmMapping, displayedPokemonSpecies).tutor" :style="getUnobtainableMoveStyle(x, gameSelection)">
                             <td v-if="tutor_moves" class="movepool_way">Tutor</td>
                             <td v-if="tutor_moves" class="movepool_move">{{move_name(x.Move)}}</td>
                             <td v-if="tutor_moves" class="movepool_type" :style="{'background-color': `var(--${ui_type_color_modifier}${x.Type?.toLowerCase()})`}">{{x.Type}}</td>
@@ -1085,6 +1087,8 @@
     <script src="autosplitter/split_trainers.js"></script>
     <script src="lib/hiddenpower.js"></script>
     <script src="data/pokedex_indexes.js"></script>
+    <script src="data/unobtainable_moves.js"></script>
+    <script src="data/firered_leafgreen.js"></script>
     <!-- VUE APP -->
     <script type="text/javascript" src="scripts/frontend.js"></script>
 </body>

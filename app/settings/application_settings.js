@@ -40,6 +40,8 @@ const application_settings = [
     [ "autosplitter_toggle",        true,  ],
     [ "showSpecialTrainerGraphics", true,  ], 
     [ "league_rematches",           false, ],
+    [ "unobtainable_moves_toggle",  "Always Cross Out", ],
+    [ "banned_hidden_power",        true,  ],
 
     //CSS styling values
     [ "statLabelOpacityValue", 0.1, ], //used when a stage modifier is applied
