@@ -1456,7 +1456,7 @@ const app = Vue.createApp({
             } else {
                 // When disabled, immediately switch back to normal non-evolution styling
                 const starter = this.starterString || this.starter;
-                console.log('Loading normal style for:', starter);
+                // console.log('Loading normal style for:', starter);
                 this.loadEvolutionStyle(starter, false);
             }
         },
