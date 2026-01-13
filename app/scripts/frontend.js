@@ -468,13 +468,9 @@ for (folder of folders = ['storage', 'splits', 'splits/Emerald', 'splits/FireRed
 function logData(gameName, gameName_path, str, file_name, starter, log_type, testStatus, toggle, evolution, evolution_label) {
         return new Promise((resolve, reject) => {
         const testStatusText = testStatus ? "test_run_" : "";
-        // When evolution is enabled, use the evolution_label which should be in "FullyEvolved-line" format
-        // Otherwise, use split_file_prefix which is the species name
-        if (evolution == true && evolution_label) {
-            split_file_prefix = evolution_label;
-        }
-        const dirPath = `./splits/${app.game.gameName}/${splitFileName}/attempts/`;
-        let filePath = path.join(dirPath, `${gameName}-${testStatusText}${splitFileName}-${file_name}-simple.csv`);
+        // The starter parameter already contains the correct split file name (calculated by getSplitFileName())
+        const dirPath = `./splits/${app.game.gameName}/${starter}/attempts/`;
+        let filePath = path.join(dirPath, `${gameName}-${testStatusText}${starter}-${file_name}-simple.csv`);
         let header = "player_name," +
                     "pokemon," +
                     "trainer_name," +
@@ -489,7 +485,7 @@ function logData(gameName, gameName_path, str, file_name, starter, log_type, tes
                     "move3," +
                     "move4,\n"
         if (log_type == "Deprecated" && toggle == true) {
-            filePath = path.join(dirPath, `${gameName}-${testStatusText}${splitFileName}-${file_name}.csv`);
+            filePath = path.join(dirPath, `${gameName}-${testStatusText}${starter}-${file_name}.csv`);
             header = "ROM," +
                 "Species," +
                 "Trainer," +
@@ -601,7 +597,7 @@ function logData(gameName, gameName_path, str, file_name, starter, log_type, tes
                 "Rival's Tea,m\n"
         }
         if (log_type == "Full" && toggle == true) {
-            filePath = path.join(dirPath, `${gameName}-${testStatusText}${splitFileName}-${file_name}-full.csv`);
+            filePath = path.join(dirPath, `${gameName}-${testStatusText}${starter}-${file_name}-full.csv`);
         }
         fs.mkdir(dirPath, { recursive: true }, (err) => {
             if (!fs.existsSync(filePath)) {
