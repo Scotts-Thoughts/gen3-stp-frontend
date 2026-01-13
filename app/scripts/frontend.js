@@ -1227,6 +1227,27 @@ const app = Vue.createApp({
                 }
             );
         }
+        // Special watcher for ui_saturation to save to per-species storage
+        // This ensures ui_saturation is saved to the correct storage key based on evolution mode
+        this.$watch(
+            () => this.ui_saturation,
+            (newValue) => {
+                // Skip saving if we're currently loading evolution styles to prevent overwriting
+                if (this.is_loading_evolution_style) {
+                    return;
+                }
+                
+                // Save to per-species storage (same logic as pokemon_settings)
+                const storageKey = this.getCurrentStorageKey();
+                if (!MyStorage[storageKey]) {
+                    MyStorage[storageKey] = {};
+                }
+                MyStorage[storageKey] = {
+                    ...MyStorage[storageKey],
+                    ui_saturation: newValue
+                };
+            }
+        );
         for (let i = 0; i < this.encounter_settings.length; i++) {
             let propName = this.encounter_settings[i];
             this.$watch(
@@ -3821,8 +3842,8 @@ const app = Vue.createApp({
                 this.backgroundContrast =    'backgroundContrast' in stored ? stored.backgroundContrast : 100
                 this.backgroundSaturation =  'backgroundSaturation' in stored ? stored.backgroundSaturation : 100
                 
-                //UI styling
-                this.ui_saturation =  'ui_saturation' in stored ? stored.ui_saturation : .6
+                //UI styling - load from per-species storage, fall back to global storage, then default to 0.6
+                this.ui_saturation =  'ui_saturation' in stored ? stored.ui_saturation : (MyStorage['ui_saturation'] ?? 0.6)
             }
 
             //main pokemon settings
@@ -4016,7 +4037,8 @@ const app = Vue.createApp({
                 ?? this.game?.dexData?.[species]?.type_1 
                 ?? 'Normal';
             this.overlay_color = MyStorage[storageKey]?.overlay_color ?? this.default_colors[type_1] ?? this.default_colors.Normal;
-            this.ui_saturation = MyStorage[storageKey]?.ui_saturation ?? 0.6;
+            // Load ui_saturation from per-species storage, fall back to global storage, then default to 0.6
+            this.ui_saturation = MyStorage[storageKey]?.ui_saturation ?? MyStorage['ui_saturation'] ?? 0.6;
             this.imageXOffset = MyStorage[storageKey]?.imageXOffset ?? 0;
             this.imageYOffset = MyStorage[storageKey]?.imageYOffset ?? 0;
             this.imageScale = MyStorage[storageKey]?.imageScale ?? 1;
