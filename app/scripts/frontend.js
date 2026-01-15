@@ -5277,7 +5277,7 @@ const app = Vue.createApp({
             }
         },
         freezeEncounters() {
-            const debug_function = true
+            const debug_function = false
             if (debug_function) { console.log("Freezing encounters") }
             const map_name = this.mapper.properties.overworld.mapName.value;
             const starter  = this.starterString
@@ -5507,44 +5507,51 @@ const app = Vue.createApp({
             const currentPersonalityValue = this.mapper.properties.player.team[0].personalityValue.value;
             // const state = this.mapper.properties.meta.state.value
             const state = this.g3stateVariable
+            // console.log(newProp)
+            // console.log(this.evolution)
+            // console.log(this.last_known_personality_value)
             
             // Check if this is an evolution (same personality value, different species, evolution enabled)
             if (this.evolution == true && newProp.value != oldProp.value && 
                 currentPersonalityValue === this.last_known_personality_value &&
                 this.last_known_personality_value != null) {
-                
-                const evolution_family_raw = this.evolution_data_pokedex?.[this.starter]?.evolution_family;
-                if (evolution_family_raw && evolution_family_raw.length > 0) {
-                    const evolution_family = evolution_family_raw.map(obj => obj.species).filter(s => s != null);
-                    const evolved = evolution_family.includes(newProp.value);
                     
-                    if (evolved == true) {
-                        // Store old species for transition
-                        const oldSpecies = this.starter;
-                        const newSpecies = newProp.value;
+                    const evolution_family_raw = this.evolution_data_pokedex?.[this.starterString]?.evolution_family;
+                    // console.log(evolution_family_raw)
+                    // console.log(this.evolution_data_pokedex)
 
-                        this.stats_setting = "Base Stats";
-                        
-                        // Update starter
-                        this.starter = newSpecies;
-                        this.last_known_species = newSpecies;
-                        
-                        // Update the dropdown to the new evolved species
-                        // This will trigger the watcher to load the new species' styles
-                        this.selected_evolution_species = newSpecies;
-                        
-                        // Show base stats of new evolved species until next battle
-                        this.show_evolved_base_stats = true;
-                        this.evolved_species_for_stats = newSpecies;
-                        
-                        // Perform fade transition
-                        await this.performEvolutionTransition(oldSpecies, newSpecies);
-                        
-                        // Update personality value tracking
-                        this.last_known_personality_value = currentPersonalityValue;
-                        return; // Don't process as normal species change
+                    if (evolution_family_raw && evolution_family_raw.length > 0) {
+                        // console.log('Got here')
+                        const evolution_family = evolution_family_raw.map(obj => obj.species).filter(s => s != null);
+                        const evolved = evolution_family.includes(newProp.value);
+                        console.log(evolved)
+                        if (evolved == true) {
+                            // Store old species for transition
+                            const oldSpecies = this.starter;
+                            const newSpecies = newProp.value;
+
+                            this.stats = "Base Stats";
+                            
+                            // Update starter
+                            this.starter = newSpecies;
+                            this.last_known_species = newSpecies;
+                            
+                            // Update the dropdown to the new evolved species
+                            // This will trigger the watcher to load the new species' styles
+                            this.selected_evolution_species = newSpecies;
+                            
+                            // Show base stats of new evolved species until next battle
+                            this.show_evolved_base_stats = true;
+                            this.evolved_species_for_stats = newSpecies;
+                            
+                            // Perform fade transition
+                            await this.performEvolutionTransition(oldSpecies, newSpecies);
+                            
+                            // Update personality value tracking
+                            this.last_known_personality_value = currentPersonalityValue;
+                            return; // Don't process as normal species change
+                        }
                     }
-                }
             }
             
             // Normal species change handling (not an evolution)
@@ -5718,13 +5725,25 @@ const app = Vue.createApp({
             }
             else if (this.game.callback1.toBattle.includes(this.mapper.properties.pointers.sStpCallback1.value)) {
                 if (this.game.callback2.toBattle.includes(this.mapper.properties.pointers.sStpCallback2.value) && this.mapper.properties.battle.turnInfo.battleDialogue.value == null) {
+                    if (this.show_evolved_base_stats) {
+                        this.show_evolved_base_stats = false;
+                        this.stats = "Automatic";
+                    }
                     this.g3stateVariable = "To Battle"
                 }
                 else {
+                    if (this.show_evolved_base_stats) {
+                        this.show_evolved_base_stats = false;
+                        this.stats = "Automatic";
+                    }
                     this.g3stateVariable = "Battle"
                 }
             }
             else {
+                if (this.show_evolved_base_stats) {
+                    this.show_evolved_base_stats = false;
+                    this.stats = "Automatic";
+                }
                 this.g3stateVariable = "Battle"
             }
     
@@ -5739,6 +5758,10 @@ const app = Vue.createApp({
                     return;
                 }
                 if (prop.value == "Player Control" || prop.bytes == 6) { 
+                    if (this.show_evolved_base_stats) {
+                        this.show_evolved_base_stats = false;
+                        this.stats = "Automatic";
+                    }
                     this.g3stateVariable = "Battle"
                 }
             });
@@ -6120,56 +6143,57 @@ const app = Vue.createApp({
         });
         this.mapper.properties.overworld.mapName.change(async (newProp) => {
             this.freezeEncounters();
-            if (this.automatic_evs == true) { 
-                const locations = [
-                    "VIRIDIAN_CITY - MART",
-                    "CELADON_CITY - DEPARTMENT_STORE_1F",      
-                    "CELADON_CITY - DEPARTMENT_STORE_2F",      
-                    "CELADON_CITY - DEPARTMENT_STORE_3F",      
-                    "CELADON_CITY - DEPARTMENT_STORE_4F",      
-                    "CELADON_CITY - DEPARTMENT_STORE_5F",      
-                    "CELADON_CITY - DEPARTMENT_STORE_ROOF",    
-                    "CELADON_CITY - DEPARTMENT_STORE_ELEVATOR",
-                    "SILPH_CO - 1F",       
-                    "SILPH_CO - 2F",       
-                    "SILPH_CO - 3F",       
-                    "SILPH_CO - 4F",       
-                    "SILPH_CO - 5F",       
-                    "SILPH_CO - 6F",       
-                    "SILPH_CO - 7F",       
-                    "SILPH_CO - 8F",       
-                    "SILPH_CO - 9F",       
-                    "SILPH_CO - 10F",      
-                    "SILPH_CO - 11F",      
-                    "SILPH_CO - ELEVATOR", 
-                    "POKEMON_MANSION - 1F",
-                    "POKEMON_MANSION - 2F",
-                    "POKEMON_MANSION - 3F",
-                    "POKEMON_MANSION - B1F",
-                    "SAFARI_ZONE - CENTER",
-                    "SAFARI_ZONE - EAST",  
-                    "SAFARI_ZONE - NORTH", 
-                    "SAFARI_ZONE - WEST",  
-                    "ROCKET_HIDEOUT - B1F",     
-                    "ROCKET_HIDEOUT - B2F",     
-                    "ROCKET_HIDEOUT - B3F",     
-                    "ROCKET_HIDEOUT - B4F",     
-                    "ROCKET_HIDEOUT - ELEVATOR",
-                    "SAFARI_ZONE - CENTER_REST_HOUSE",
-                    "SAFARI_ZONE - EAST_REST_HOUSE",  
-                    "SAFARI_ZONE - NORTH_REST_HOUSE", 
-                    "SAFARI_ZONE - WEST_REST_HOUSE",  
-                    "SAFARI_ZONE - SECRET_HOUSE",     
-                    "INDIGO_PLATEAU - POKEMON_CENTER_1F",
-                    "INDIGO_PLATEAU - POKEMON_CENTER_2F",
-                ]
-                if (locations.includes(newProp.value)) {
-                    this.stats = "EVs"
-                }
-                else {
-                    this.stats = "Automatic"
-                }
-            }
+            // Automatic EV display based on location has been disabled
+            // if (this.automatic_evs == true) { 
+            //     const locations = [
+            //         "VIRIDIAN_CITY - MART",
+            //         "CELADON_CITY - DEPARTMENT_STORE_1F",      
+            //         "CELADON_CITY - DEPARTMENT_STORE_2F",      
+            //         "CELADON_CITY - DEPARTMENT_STORE_3F",      
+            //         "CELADON_CITY - DEPARTMENT_STORE_4F",      
+            //         "CELADON_CITY - DEPARTMENT_STORE_5F",      
+            //         "CELADON_CITY - DEPARTMENT_STORE_ROOF",    
+            //         "CELADON_CITY - DEPARTMENT_STORE_ELEVATOR",
+            //         "SILPH_CO - 1F",       
+            //         "SILPH_CO - 2F",       
+            //         "SILPH_CO - 3F",       
+            //         "SILPH_CO - 4F",       
+            //         "SILPH_CO - 5F",       
+            //         "SILPH_CO - 6F",       
+            //         "SILPH_CO - 7F",       
+            //         "SILPH_CO - 8F",       
+            //         "SILPH_CO - 9F",       
+            //         "SILPH_CO - 10F",      
+            //         "SILPH_CO - 11F",      
+            //         "SILPH_CO - ELEVATOR", 
+            //         "POKEMON_MANSION - 1F",
+            //         "POKEMON_MANSION - 2F",
+            //         "POKEMON_MANSION - 3F",
+            //         "POKEMON_MANSION - B1F",
+            //         "SAFARI_ZONE - CENTER",
+            //         "SAFARI_ZONE - EAST",  
+            //         "SAFARI_ZONE - NORTH", 
+            //         "SAFARI_ZONE - WEST",  
+            //         "ROCKET_HIDEOUT - B1F",     
+            //         "ROCKET_HIDEOUT - B2F",     
+            //         "ROCKET_HIDEOUT - B3F",     
+            //         "ROCKET_HIDEOUT - B4F",     
+            //         "ROCKET_HIDEOUT - ELEVATOR",
+            //         "SAFARI_ZONE - CENTER_REST_HOUSE",
+            //         "SAFARI_ZONE - EAST_REST_HOUSE",  
+            //         "SAFARI_ZONE - NORTH_REST_HOUSE", 
+            //         "SAFARI_ZONE - WEST_REST_HOUSE",  
+            //         "SAFARI_ZONE - SECRET_HOUSE",     
+            //         "INDIGO_PLATEAU - POKEMON_CENTER_1F",
+            //         "INDIGO_PLATEAU - POKEMON_CENTER_2F",
+            //     ]
+            //     if (locations.includes(newProp.value)) {
+            //         this.stats = "EVs"
+            //     }
+            //     else {
+            //         this.stats = "Automatic"
+            //     }
+            // }
         });
         this.mapper.properties.overworld.disabledEncounters.change(async (newProp) => {
             console.log("disabled encounters: " + newProp.value)
