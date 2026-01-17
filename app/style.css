@@ -2971,8 +2971,8 @@ body {
     padding-top: 3px;
     margin: 0; /* Remove any margin */
     text-align: center; /* Center the content horizontally */
-    width: 30px;
-    filter: saturate(1.1) contrast(1.1);
+    width: 33.7px;
+    filter: saturate(1.1) contrast(1.1) drop-shadow(0 0 1px #000000);
 }
 .inventory_demo {
     display: block;

@@ -135,24 +135,28 @@
                             <td><input class="checkBoxStyle" type="checkbox" v-model="autosplitter_toggle"/></td>
                         </tr>
                         <tr v-if="show_advanced_settings">
-                            <td style="height: 24px;">Test Run:</td>
-                            <td style="height: 24px;"><input class="checkBoxStyle" type="checkbox" v-model="testStatus"/></td>
+                            <td>Test Run:</td>
+                            <td><input class="checkBoxStyle" type="checkbox" v-model="testStatus"/></td>
                         </tr>
                         <tr v-if="show_advanced_settings">
-                            <td style="height: 24px;">No counters</td>
-                            <td style="height: 24px;"><input class="checkBoxStyle" type="checkbox" v-model="no_counters"/></td>
+                            <td>No counters</td>
+                            <td><input class="checkBoxStyle" type="checkbox" v-model="no_counters"/></td>
                         </tr>
                         <tr v-if="show_advanced_settings">
-                            <td style="height: 24px;">Legacy State (for old replays)</td>
-                            <td style="height: 24px;"><input class="checkBoxStyle" type="checkbox" v-model="legacy_state"/></td>
+                            <td>Legacy State (for old replays)</td>
+                            <td><input class="checkBoxStyle" type="checkbox" v-model="legacy_state"/></td>
                         </tr>
                         <tr v-if="show_advanced_settings">
-                            <td style="height: 24px;">Debugging:</td>
-                            <td style="height: 24px;"><input class="checkBoxStyle" type="checkbox" v-model="debugging"/></td>
+                            <td>Debugging:</td>
+                            <td><input class="checkBoxStyle" type="checkbox" v-model="debugging"/></td>
                         </tr>
                         <tr v-if="show_advanced_settings">
-                            <td style="height: 24px;">Set Starter Automatically:</td>
-                            <td style="height: 24px;"><input class="checkBoxStyle" type="checkbox" v-model="set_rom_starter_automatically"/></td>
+                            <td>Set Starter Automatically:</td>
+                            <td><input class="checkBoxStyle" type="checkbox" v-model="set_rom_starter_automatically"/></td>
+                        </tr>
+                        <tr v-if="show_advanced_settings">
+                            <td>Show post-battle splits:</td>
+                            <td><input class="checkBoxStyle" type="checkbox" v-model="show_post_battle_splits"/></td>
                         </tr>
                         <tr v-if="gameSelection == 'FireRed and LeafGreen'"><td>Stop Timer After League Rematches:</td><td><input class="checkBoxStyle" type="checkbox" v-model="league_rematches"/></td></tr>
                     </table>
@@ -260,6 +264,9 @@
                         </select>
                         <button @click="copyCurrentStylesToAllFamilyMembers()" class="buttonStyle" style="font-size: 13px; width: 85px; height: 23px; top: -2px;">Unify Styles</button>
                         <br>
+                        <table>
+                            <tr><td>Allow post-Kanto evolutions:</td><td><input class="checkBoxStyle" type="checkbox" v-model="post_kanto_evolutions"/></td></tr>
+                        </table>
                     </div>
                     <br>
                     <div>Gender:</div>
@@ -393,6 +400,11 @@
                             <option>Movepool+</option>
                             <option>Splits</option>
                             <option>Wild</option>
+                        </select><br>
+                        <div>Splits:</div>
+                        <select v-model="splits_display" class="dropdownMenu dropdown_menu_column3">
+                            <option>First</option>
+                            <option>Followup</option>
                         </select><br>
                         <br>
                     </div>
@@ -847,7 +859,27 @@
                     </div> 
                 </div>
                 <div v-else-if="right_panel == 'Splits'" key=5>
-                    <div key=3>
+                    <div v-if="splits_display == 'First'" key=3>
+                        <div class="movepoolTitle">Splits</div>
+                        <table class="splits_table" cellspacing="0">
+                            <tr :style="{'background-color': `var(--${ui_type_color_modifier}${typeHeaderColor?.toLowerCase()})`, 'outline': '1px solid #000'}">
+                                <td style="text-decoration: underline; font-size: 14px; width: 30px;  text-align: left; padding-left: 3px;">Split</td>
+                                <td style="text-decoration: underline; font-size: 14px; width: 105px; text-align: right;"></td>
+                                <td style="text-decoration: underline; font-size: 14px; width: 65px;  text-align: right;"></td>
+                                <td style="text-decoration: underline; font-size: 14px; width: 65px;  text-align: right;"></td>
+                                <td style="text-decoration: underline; font-size: 14px; width: 65px;  text-align: right; padding-right: 6px;">Time</td>
+                            </tr>
+                            <tr v-for="split in compare_splits">
+                                <td style="font-size: 14px; text-align: left; padding-left: 3px;"><img class="scaled_icon" :src="`images/split_images/${gameSelection}/${trainer_name_lookup[split.trainer]?.trainer}.png`"></td>
+                                <td style="font-size: 14px; width: 105px; text-align: left; padding-left: 3px;">{{trainer_name_lookup[split.trainer]?.trainer}}</td>
+                                <td style="font-size: 14px; width: 65px;  text-align: right;"></td>
+                                <td style="font-size: 14px; width: 65px;  text-align: right;"></td>
+                                <td style="font-size: 14px; width: 65px;  text-align: right; padding-right: 6px;">{{split.current_time}}</td>
+                            </tr>
+                        </table>
+                        <div class="colored-image ds" :style="`filter: saturate(${ui_saturation})`" style="--url: url(images/ui/splits.svg)"></div>
+                    </div>
+                    <div v-if="splits_display == 'Followup'" key=10>
                         <div class="movepoolTitle">Splits</div>
                         <table class="splits_table" cellspacing="0">
                             <tr :style="{'background-color': `var(--${ui_type_color_modifier}${typeHeaderColor?.toLowerCase()})`, 'outline': '1px solid #000'}">
@@ -855,14 +887,14 @@
                                 <td style="text-decoration: underline; font-size: 14px; width: 105px; text-align: right;"></td>
                                 <td style="text-decoration: underline; font-size: 14px; width: 65px;  text-align: right;">{{previous_label}}</td>
                                 <td style="text-decoration: underline; font-size: 14px; width: 65px;  text-align: right;">{{current_label}}</td>
-                                <td style="text-decoration: underline; font-size: 14px; width: 65px;  text-align: right; padding-right: 3px;">Diff</td>
+                                <td style="text-decoration: underline; font-size: 14px; width: 65px;  text-align: right; padding-right: 6px;">Diff</td>
                             </tr>
                             <tr v-for="split in compare_splits">
                                 <td style="font-size: 14px; text-align: left; padding-left: 3px;"><img class="scaled_icon" :src="`images/split_images/${gameSelection}/${trainer_name_lookup[split.trainer]?.trainer}.png`"></td>
                                 <td style="font-size: 14px; width: 105px; text-align: left; padding-left: 3px;">{{trainer_name_lookup[split.trainer]?.trainer}}</td>
                                 <td style="font-size: 14px; width: 65px;  text-align: right;">{{split.previous_time}}</td>
                                 <td style="font-size: 14px; width: 65px;  text-align: right;">{{split.current_time}}</td>
-                                <td style="font-size: 14px; width: 65px;  text-align: right; padding-right: 3px;" :style="split_diff_color(split.difference)">{{split.difference}}</td>
+                                <td style="font-size: 14px; width: 65px;  text-align: right; padding-right: 6px;" :style="split_diff_color(split.difference)">{{split.difference}}</td>
                             </tr>
                         </table>
                         <div class="colored-image ds" :style="`filter: saturate(${ui_saturation})`" style="--url: url(images/ui/splits.svg)"></div>

@@ -715,8 +715,11 @@ const app = Vue.createApp({
             speed_comparison_toggle: true,
             unobtainable_moves_toggle: MyStorage['unobtainable_moves_toggle'] ?? "Always Cross Out",
             banned_hidden_power      : MyStorage['banned_hidden_power']       ?? true,
-
-            // Editors
+            post_kanto_evolutions    : MyStorage['post_kanto_evolutions']     ?? false,
+            splits_display           : MyStorage['splits_display']            ?? "First",
+            show_post_battle_splits  : MyStorage['show_post_battle_splits']   ?? true,
+ 
+            // Editors 
             move1_replacement: "",
             move2_replacement: "",
             move3_replacement: "",
@@ -726,17 +729,17 @@ const app = Vue.createApp({
             item3_replacement: "Full Restore",
             item4_replacement: "Max Elixir",
 
-            stats             : MyStorage['stats']              ?? "Automatic",
-            stat_exp_display  : MyStorage['stat_exp_display']   ?? true,
-            dv_display        : MyStorage['dv_display']         ?? true,
-            inventory_display : MyStorage['inventory_display']  ?? true,
-            battleGraphic     : MyStorage['battleGraphic']      ?? true,
-            base_stats_display: MyStorage['base_stats_display'] ?? true,
-            stats_display     : MyStorage['stats_display']      ?? true,
-            automatic_ivs     : MyStorage['automatic_ivs']      ?? true,
-            automatic_evs     : MyStorage['automatic_evs']      ?? true,
-            buffer_pokedex_owned: MyStorage['buffer_pokedex_owned'] ?? [],
-            buffer_pokedex_seen : MyStorage['buffer_pokedex_seen']  ?? [],
+            stats                : MyStorage['stats']                ?? "Automatic",
+            stat_exp_display     : MyStorage['stat_exp_display']     ?? true,
+            dv_display           : MyStorage['dv_display']           ?? true,
+            inventory_display    : MyStorage['inventory_display']    ?? true,
+            battleGraphic        : MyStorage['battleGraphic']        ?? true,
+            base_stats_display   : MyStorage['base_stats_display']   ?? true,
+            stats_display        : MyStorage['stats_display']        ?? true,
+            automatic_ivs        : MyStorage['automatic_ivs']        ?? true,
+            automatic_evs        : MyStorage['automatic_evs']        ?? true,
+            buffer_pokedex_owned : MyStorage['buffer_pokedex_owned'] ?? [],
+            buffer_pokedex_seen  : MyStorage['buffer_pokedex_seen']  ?? [],
             disable_right_hotkeys: true,
 
             // USER CONFIG (components) ------------------------------------------------------------------------// 
@@ -973,6 +976,7 @@ const app = Vue.createApp({
                 "evolution_splits_label",
                 "previous_label",
                 "current_label",
+                "splits_display",
             ],
             //timer variables
             timer_startTimeOffset: MyStorage["timer_startTimeOffset"] ?? "00:00:00.00",
@@ -1125,6 +1129,8 @@ const app = Vue.createApp({
                 "set_rom_starter_automatically",
                 "catch_rate",
                 "deoxys_form",
+                "post_kanto_evolutions",
+                "show_post_battle_splits",
             ],
 
             stats_toggle_settings: [
@@ -1401,6 +1407,14 @@ const app = Vue.createApp({
     },
 
     watch: {
+        post_kanto_evolutions(newValue) {
+            if (newValue == true) {
+                this.mapper.properties.patch.stp_flags.stp_allow_evolution.set(true, false)
+            }
+            else {
+                this.mapper.properties.patch.stp_flags.stp_allow_evolution.set(false, false)
+            }
+        },
         evolution(newValue) {
             // When evolution checkbox is toggled, immediately switch to parallel styling
             // Style watchers will automatically save to the correct storage based on getCurrentStorageKey()
@@ -2669,16 +2683,16 @@ const app = Vue.createApp({
             }
             if (game == 'Emerald') {
                 await Promise.all([
-                    this.mapper.properties.patch.sStpIntroSpecies.set(starter, false), 
-                    this.mapper.properties.patch.sStpStarterSpecies_0.set(starter, false), 
-                    this.mapper.properties.patch.sStpStarterSpecies_1.set(starter, false), 
-                    this.mapper.properties.patch.sStpStarterSpecies_2.set(starter, false), 
+                    this.mapper.properties.patch.sStpIntroSpecies.set(starter, true), 
+                    this.mapper.properties.patch.sStpStarterSpecies_0.set(starter, true), 
+                    this.mapper.properties.patch.sStpStarterSpecies_1.set(starter, true), 
+                    this.mapper.properties.patch.sStpStarterSpecies_2.set(starter, true), 
                 ])
             }
             if (game == 'FireRed and LeafGreen') {
                 await Promise.all([
-                    this.mapper.properties.variables.VAR_CHOSEN_STARTER.set(starter, false), 
-                    this.mapper.properties.patch.STP_CHOSEN_STARTER.set(starter, false), 
+                    this.mapper.properties.variables.VAR_CHOSEN_STARTER.set(starter, true), 
+                    this.mapper.properties.patch.STP_CHOSEN_STARTER.set(starter, true), 
                 ])
             }
             // else {
@@ -3552,6 +3566,9 @@ const app = Vue.createApp({
             this.finished_logs = false
             this.blackout_counter = 0
             this.playerId = 0
+
+            this.update_rom_starter_and_intro_mon()
+
             if (this.set_rom_starter_automatically && this.timer.formatted_time[0] == "0" && this.timer.formatted_time[1] == ".00") {
                 console.log('Setting ROM starter automatically')
                 this.update_rom_starter_and_intro_mon()
@@ -3694,6 +3711,8 @@ const app = Vue.createApp({
             this.show_advanced_settings = MyStorage['show_advanced_settings'] ?? false,
             this.set_rom_starter_automatically = MyStorage['set_rom_starter_automatically'] ?? true,
             this.catch_rate             = MyStorage['catch_rate'] ?? false,
+            this.post_kanto_evolutions  = MyStorage['post_kanto_evolutions'] ?? false,
+            this.show_post_battle_splits = MyStorage['show_post_battle_splits'] ?? false,
 
             this.stat_exp_display =   MyStorage['stat_exp_display']   ?? true,
             this.dv_display =         MyStorage['dv_display']         ?? true,

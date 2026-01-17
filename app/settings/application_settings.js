@@ -42,6 +42,8 @@ const application_settings = [
     [ "league_rematches",           false, ],
     [ "unobtainable_moves_toggle",  "Always Cross Out", ],
     [ "banned_hidden_power",        true,  ],
+    [ "post_kanto_evolutions",      false, ],
+    [ "show_post_battle_splits",    true, ],
 
     //CSS styling values
     [ "statLabelOpacityValue", 0.1, ], //used when a stage modifier is applied
