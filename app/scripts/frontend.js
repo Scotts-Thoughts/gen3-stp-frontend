@@ -6271,7 +6271,7 @@ const app = Vue.createApp({
                 // console.log('Starting log process')
                 let trainer = this.opponent
                 let id = this.opponentId
-                let gameName = this.game.gameName == 'Emerald' ? 'E' : this.game.gameName == 'Ruby & Sapphire' ? 'RS' : this.game.gameName == 'FireRed & LeafGreen' ? 'FRLG' : this.game.gameName;
+                let gameName = this.game.gameName == 'Emerald' ? 'E' : this.game.gameName == 'Ruby & Sapphire' ? 'RS' : this.game.gameName == 'FireRed and LeafGreen' ? 'FRLG' : this.game.gameName;
                 let gameName_path = this.game.gameName;
                 const splitFileName = this.getSplitFileName();
 
@@ -6325,22 +6325,62 @@ const app = Vue.createApp({
                     this.log_split();
 
                     //use then so that logCopy doesn't touch any files until logData finishes
-                    logData(gameName, gameName_path, this.simple_data_str, this.attempt_number, splitFileName, "Simple", this.testRun, this.scott_mode, this.evolution, this.evolution_splits_label)
-                    .then(() => {
-                            console.log("Run complete - moving attempt files to finished folder.")
-                            logCopy(gameName, gameName_path, this.attempt_number, splitFileName, this.finished_run_count, this.evolution, this.evolution_splits_label);
-                        })
-                        .catch(error => {
-                            console.error("Error:", error);
-                        });
-                    this.split_data.push(this.simple_data)
-                    MyStorage["split_data"] = this.split_data
-                    MyStorage[this.starterString] = {
-                        ...MyStorage[this.starterString],
-                        split_data: this.split_data
+                    if (this.gameSelection == 'FireRed and LeafGreen') {
+                        simpleSplit();
                     }
-                    console.log("Data transfer finished.")
+                    else {
+                        logData(gameName, gameName_path, this.simple_data_str, this.attempt_number, splitFileName, "Simple", this.testRun, this.scott_mode, this.evolution, this.evolution_splits_label)
+                        .then(() => {
+                                console.log("Run complete - moving attempt files to finished folder.")
+                                logCopy(gameName, gameName_path, this.attempt_number, splitFileName, this.finished_run_count, this.evolution, this.evolution_splits_label);
+                            })
+                            .catch(error => {
+                                console.error("Error:", error);
+                            });
+                        this.split_data.push(this.simple_data)
+                        MyStorage["split_data"] = this.split_data
+                        MyStorage[this.starterString] = {
+                            ...MyStorage[this.starterString],
+                            split_data: this.split_data
+                        }
+                        console.log("Data transfer finished.")
+                    }
                 }
+            }
+        });
+
+        this.mapper.properties.screen.hall_of_fame_4.change(async (newProp, oldProp) => {
+            if (newProp.value == 0 && oldProp.value == 255 && this.gameSelection == 'FireRed and LeafGreen' && this.mapper.properties.overworld.mapName.value == "POKEMON_LEAGUE - HALL_OF_FAME") {
+                this.autosplitter_process('HALL_OF_FAME')
+
+                let trainer = this.opponent
+                let id = this.opponentId
+                let gameName = this.game.gameName == 'Emerald' ? 'E' : this.game.gameName == 'Ruby & Sapphire' ? 'RS' : this.game.gameName == 'FireRed and LeafGreen' ? 'FRLG' : this.game.gameName;
+                let gameName_path = this.game.gameName;
+                const splitFileName = this.getSplitFileName();
+
+                //write full split data
+                logData(gameName, gameName_path, this.full_data_str, this.attempt_number, splitFileName, "Full", this.testRun, this.scott_mode, this.evolution, this.evolution_splits_label)
+                //write deprecated split data
+                logData(gameName, gameName_path, this.deprecated_data_str, this.attempt_number, splitFileName, "Deprecated", this.testRun, this.scott_mode, this.evolution, this.evolution_splits_label)
+                
+                //write simple split data
+                //use then so that logCopy doesn't touch any files until logData finishes
+                logData(gameName, gameName_path, this.simple_data_str, this.attempt_number, splitFileName, "Simple", this.testRun, this.scott_mode, this.evolution, this.evolution_splits_label)
+                .then(() => {
+                        console.log("Run complete - moving attempt files to finished folder.")
+                        logCopy(gameName, gameName_path, this.attempt_number, splitFileName, this.finished_run_count, this.evolution, this.evolution_splits_label);
+                    })
+                    .catch(error => {
+                        console.error("Error:", error);
+                    });
+                this.split_data.push(this.simple_data)
+                MyStorage["split_data"] = this.split_data
+                MyStorage[this.starterString] = {
+                    ...MyStorage[this.starterString],
+                    split_data: this.split_data
+                }
+                console.log("Data transfer finished.")
             }
         });
 

@@ -1,0 +1,5 @@
+pointers.sStpCallback2
+    CB2_DoHallOfFamePC
+
+screen.hall_of_fame_4
+    255 -> 0

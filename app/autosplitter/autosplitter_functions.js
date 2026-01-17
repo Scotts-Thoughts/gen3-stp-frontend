@@ -3,7 +3,7 @@ function log_split(x) {
     const time = this.timer.formatted_time;
     console.log(`Autosplitter - Battle Ended: Split: ${this.opponent} at ${time[0]}${time[1]} (Gametime: ${this.gametimeSplit})`)
 } 
-function autosplitter_process() {
+function autosplitter_process(split_name = null) {
     // console.log("Checking if autosplitter is on...")
     if (this.autosplitter_toggle == true && this.mapper.properties.battle.type.trainer.value == true) {
         console.log("Began Autosplitter Process")
@@ -21,7 +21,7 @@ function autosplitter_process() {
         let player_name = this.mapper.properties.player.name.value
         let pokemon = this.starterString
         console.log("opponent info: "+ this.opponent)
-        let trainer_name = this.opponent
+        let trainer_name = split_name != null ? split_name : this.opponent
         // let trainer_name = this.format_trainer_name(this.mapper.properties.battle.trainer.class.value, this.mapper.properties.battle.trainer.number.value)
         let trainer_id = this.opponentId
         let location = this.mapper.properties.overworld.mapName.value
