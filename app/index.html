@@ -108,8 +108,15 @@
                             <img class="badge" :src="`images/new_ui/badges/${this.game.region}/${x}.png`"/>
                         </div>
                     </div>
-                </div>            
-                <Timer ></Timer>
+                </div>         
+                <div v-if="shuckie_timer == true" class="gametime">
+                    <div class="timerTitle">time played at 4x game-speed</div>
+                    <div class="gametimeClock">{{formatMilliseconds(emulatorStats?.time_current)}}</div>
+                    <div class="gametimeFrames">.{{getCentiseconds(emulatorStats?.time_current)}}</div>
+                </div>
+                <div v-else>
+                    <Timer ></Timer>
+                </div>   
             </div>
 <!--------- DEBUGGING ----------------------------------------------------------------------------------------------------------------->
             <div v-if="gamestate == true">
@@ -139,6 +146,10 @@
                             <td><input class="checkBoxStyle" type="checkbox" v-model="testStatus"/></td>
                         </tr>
                         <tr v-if="show_advanced_settings">
+                            <td>Shuckie Timer:</td>
+                            <td><input class="checkBoxStyle" type="checkbox" v-model="shuckie_timer"/></td>
+                        </tr>
+                        <tr v-if="show_advanced_settings">
                             <td>No counters</td>
                             <td><input class="checkBoxStyle" type="checkbox" v-model="no_counters"/></td>
                         </tr>
@@ -164,6 +175,8 @@
                     <div>Timer:</div>
                     <button class="buttonStyle new_run_button" @click="newRun">New Run</button><br>
                     <button @click="this.timer.pauseUnpauseTime()" class="buttonStyle">Play/Pause</button>
+                    <!-- <button class="buttonStyle set_button_style" @click="this.sendEmulatorStart()">Start Time</button><br> -->
+                    <!-- <button class="buttonStyle set_button_style" @click="this.sendEmulatorEnd()">End Time</button><br> -->
                     <button class="buttonStyle" @click="this.timer.setTimer(this.timer_startTimeOffset)">Set Timer</button><br>
                     Start Time Offset: <input class="inputContainer" type="text" v-model="timer_startTimeOffset" placeholder="00:00:00.00"/><br>
                     <br>
@@ -459,7 +472,7 @@
                 <div v-if="stats != 'Comparison'">
                     <div v-for="x in badgeBoosts">
                         <div v-if="mapper.properties.player.badges[x].value == true && display_badge_boosts == true">
-                            <img class="badgeBoost" :src="`images/badges/badge_boosts/${this.game.region}/${ui_stat_arrangement_modifier}/${x}.png`"/>
+                            <img class="badgeBoost" :src="`images/badges/badge_boosts/${this.game.region.toLowerCase()}/${ui_stat_arrangement_modifier}/${x}.png`"/>
                         </div>
                     </div>
                 </div>

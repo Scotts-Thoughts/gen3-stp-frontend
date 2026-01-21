@@ -73,6 +73,11 @@ function autosplitter_process(split_name = null) {
         let RTMinutes = time.minutes;
         let RTSeconds = time.seconds;
         let RTMilliseconds = time.ms;
+
+        let shuckie_time_hhmmss = this.formatMilliseconds(this.emulatorStats?.time_current)
+        let shuckie_time_cs = this.getCentiseconds(this.emulatorStats?.time_current)
+        let shuckie_rt = shuckie_time_hhmmss + "." + shuckie_time_cs
+
         let startTime = this.time_split_start
         let realTime = this.padTime(time.hours) + ":" + this.padTime(time.minutes) + ":" + this.padTime(time.seconds) + "." + this.padTime(time.ms)
         let gameTime = this.padTime(gameTimeH) + ":" + this.padTime(gameTimeM) + ":" + this.padTime(gameTimeS) + "." + this.padTime(gameTimeF)
@@ -182,11 +187,20 @@ function autosplitter_process(split_name = null) {
         let patch_movesLearnt                = 0
 
         //definitions for what split data is logged to file
-        let simple_data = [
-            player_name, pokemon, trainer_name, real_time_total, 
-            resets, blackouts, level, game_time, battle_duration, 
-            move1, move2, move3, move4
-        ]
+        let simple_data = []
+        if (this.shuckie_timer == true) {
+            simple_data = [
+                player_name, pokemon, trainer_name, shuckie_rt, 
+                resets, blackouts, level, game_time, battle_duration, 
+                move1, move2, move3, move4
+            ]
+        } else {
+            simple_data = [
+                player_name, pokemon, trainer_name, real_time_hmmss, 
+                resets, blackouts, level, game_time, battle_duration, 
+                move1, move2, move3, move4
+            ]
+        }
         let full_data = simple_data
         if (this.scott_mode == true) {
             full_data = [

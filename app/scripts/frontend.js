@@ -683,6 +683,11 @@ const app = Vue.createApp({
             scott_mode   : true,
             gameVariables: null,
             debugging    : false,
+
+            emulatorStatsInterval: null,
+            emulatorStats        : null,
+            shuckie_timer        : MyStorage['shuckie_timer'] ?? false,
+            
             set_rom_starter_automatically : true,
             legacy_state          : MyStorage['legacy_state'] ?? false,
             show_advanced_settings: MyStorage['show_advanced_settings'] ?? false,
@@ -1131,6 +1136,7 @@ const app = Vue.createApp({
                 "deoxys_form",
                 "post_kanto_evolutions",
                 "show_post_battle_splits",
+                "shuckie_timer",
             ],
 
             stats_toggle_settings: [
@@ -2512,6 +2518,96 @@ const app = Vue.createApp({
     },
 
     methods: {
+        // Add this method to your Vue app methods section (around line 4182)
+        async fetchEmulatorStats() {
+            try {
+                const response = await fetch('http://127.0.0.1:30158/stats');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const stats = await response.json();
+                
+                // Store the stats object in Vue data
+                this.emulatorStats = stats;
+                
+                // Update timer without pausing - sync the timer's startTime to match emulator
+                if (stats.time) {
+                    // Parse the time string from emulator (format: "hh:mm:ss.ms")
+                    const timeRegex = /(\d+):(\d{2}):(\d{2})\.(\d{2})/;
+                    const timeArray = stats.time.match(timeRegex)?.slice(1,5).map(x => parseInt(x)) ?? [0,0,0,0];
+                    const timeOffsetMs = timeArray[0] * 3600000 + timeArray[1] * 60000 + timeArray[2] * 1000 + timeArray[3] * 10;
+                    
+                    // Sync timer without pausing - set the startTime so current time matches emulator time
+                    const currentPauseState = this.timer.storage.timer_pause;
+                    this.timer.storage.timer_startTime = Date.now() - timeOffsetMs;
+                    
+                    // If timer was paused, also update pause_time
+                    if (currentPauseState) {
+                        this.timer.storage.timer_pause_time = Date.now();
+                    }
+                }
+                
+                return stats;
+            } catch (error) {
+                console.error('Error fetching emulator stats:', error);
+                return null;
+            }
+        },
+        // Add these methods to your Vue app methods section
+        async sendEmulatorStart() {
+            try {
+                const response = await fetch('http://127.0.0.1:30158/mark-start', {
+                    method: 'POST'
+                });
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                console.log('Emulator start command sent successfully');
+                return true;
+            } catch (error) {
+                console.error('Error sending start command:', error);
+                return false;
+            }
+        },
+        async sendEmulatorEnd() {
+            try {
+                const response = await fetch('http://127.0.0.1:30158/mark-end', {
+                    method: 'POST'
+                });
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                console.log('Emulator end command sent successfully');
+                return true;
+            } catch (error) {
+                console.error('Error sending end command:', error);
+                return false;
+            }
+        },
+        formatMilliseconds(ms) {
+            // Truncate milliseconds to seconds
+            const totalSeconds = Math.floor(ms / 1000);
+            const hours = Math.floor(totalSeconds / 3600);
+            const minutes = Math.floor((totalSeconds % 3600) / 60);
+            const seconds = totalSeconds % 60;
+            
+            // Helper function to pad with leading zero
+            const pad = (x) => x.toString().padStart(2, "0");
+            
+            // Progressive format: starts at "0" and grows as needed
+            if (hours > 0) {
+                return `${hours}:${pad(minutes)}:${pad(seconds)}`;
+            } else if (minutes > 0) {
+                return `${minutes}:${pad(seconds)}`;
+            } else {
+                return seconds.toString();
+            }
+        },
+        getCentiseconds(ms) {
+            // Convert milliseconds to centiseconds and extract only the centiseconds part
+            const centiseconds = Math.floor(ms / 10) % 100;
+            return centiseconds.toString().padStart(2, "0");
+        },
         getUnobtainableMoveStyle(move_object, type_of_move) {
             const unobtainable_moves_toggle = this.unobtainable_moves_toggle
             // const state = this.mapper.properties.meta.state.value
@@ -3560,7 +3656,9 @@ const app = Vue.createApp({
             this.compared_splits = []
             this.current_splits  = []
 
-            this.timer.setTimer(this.timer_startTimeOffset);
+            if (this.shuckie_timer == false) {
+                this.timer.setTimer(this.timer_startTimeOffset);
+            }
 
             this.playerResets = 0
             this.finished_logs = false
@@ -3574,6 +3672,13 @@ const app = Vue.createApp({
                 this.update_rom_starter_and_intro_mon()
             }
             // this.playerName = "NINTEN"
+            // start timer
+            if (this.shuckie_timer == true) {
+                this.sendEmulatorStart();
+            }   
+            else {
+                this.timer.startTime(this.timer_startTimeOffset);
+            }
         },
         copy_overlay_properties() {
             const copy_from = this.copy_overlay_pokemon_from
@@ -5241,7 +5346,7 @@ const app = Vue.createApp({
                             }
                             this.hallOfFameReset = false;
                             this.newRun();
-                            this.timer.startTime(this.timer_startTimeOffset);
+                            // this.timer.startTime(this.timer_startTimeOffset);
                             if (this.set_rom_starter_automatically) { this.update_rom_starter_and_intro_mon(); }
                         }
                     })
@@ -5259,7 +5364,7 @@ const app = Vue.createApp({
                                 }
                                 this.hallOfFameReset = false;
                                 this.newRun();
-                                this.timer.startTime(this.timer_startTimeOffset);
+                                // this.timer.startTime(this.timer_startTimeOffset);
                                 if (this.set_rom_starter_automatically) { this.update_rom_starter_and_intro_mon(); }
                             }
                         })
@@ -5273,7 +5378,7 @@ const app = Vue.createApp({
                                 }
                                 this.hallOfFameReset = false;
                                 this.newRun();
-                                this.timer.startTime(this.timer_startTimeOffset);
+                                // this.timer.startTime(this.timer_startTimeOffset);
                                 if (this.set_rom_starter_automatically) { this.update_rom_starter_and_intro_mon(); }
                             }
                         })
@@ -5288,7 +5393,7 @@ const app = Vue.createApp({
                             }
                             this.hallOfFameReset = false;
                             this.newRun();
-                            this.timer.startTime(this.timer_startTimeOffset);
+                            // this.timer.startTime(this.timer_startTimeOffset);
                             if (this.set_rom_starter_automatically) { this.update_rom_starter_and_intro_mon(); }
                         }
                     })
@@ -5504,6 +5609,15 @@ const app = Vue.createApp({
         this.mapper.onMapperLoaded = (x) => this.ready = true
         this.mapper.onMapperUnloaded = (x) => this.ready = false
         await this.mapper.connect()
+
+        // In mounted hook (around line 6897)
+        // Poll for emulator stats continuously
+        this.emulatorStatsInterval = setInterval(async () => {
+            if (this.ready) { // Only poll when mapper is ready
+                await this.fetchEmulatorStats();
+            }
+        }, 10); // 100ms = 10 times per second (adjust as needed)
+
         // console.log("mapper set")
         this.timer.update();
         this.load_all_settings()
@@ -6314,6 +6428,9 @@ const app = Vue.createApp({
                             return
                     }
                     this.timer.stopTime();
+                    if (this.shuckie_timer == true) { 
+                        this.sendEmulatorEnd(); 
+                    }
                     if (!this.testRun && !this.no_counters) {
                         this.finished_run_count++
                     };
@@ -6349,40 +6466,42 @@ const app = Vue.createApp({
             }
         });
 
-        this.mapper.properties.screen.hall_of_fame_4.change(async (newProp, oldProp) => {
-            if (newProp.value == 0 && oldProp.value == 255 && this.gameSelection == 'FireRed and LeafGreen' && this.mapper.properties.overworld.mapName.value == "POKEMON_LEAGUE - HALL_OF_FAME") {
-                this.autosplitter_process('HALL_OF_FAME')
-
-                let trainer = this.opponent
-                let id = this.opponentId
-                let gameName = this.game.gameName == 'Emerald' ? 'E' : this.game.gameName == 'Ruby & Sapphire' ? 'RS' : this.game.gameName == 'FireRed and LeafGreen' ? 'FRLG' : this.game.gameName;
-                let gameName_path = this.game.gameName;
-                const splitFileName = this.getSplitFileName();
-
-                //write full split data
-                logData(gameName, gameName_path, this.full_data_str, this.attempt_number, splitFileName, "Full", this.testRun, this.scott_mode, this.evolution, this.evolution_splits_label)
-                //write deprecated split data
-                logData(gameName, gameName_path, this.deprecated_data_str, this.attempt_number, splitFileName, "Deprecated", this.testRun, this.scott_mode, this.evolution, this.evolution_splits_label)
-                
-                //write simple split data
-                //use then so that logCopy doesn't touch any files until logData finishes
-                logData(gameName, gameName_path, this.simple_data_str, this.attempt_number, splitFileName, "Simple", this.testRun, this.scott_mode, this.evolution, this.evolution_splits_label)
-                .then(() => {
-                        console.log("Run complete - moving attempt files to finished folder.")
-                        logCopy(gameName, gameName_path, this.attempt_number, splitFileName, this.finished_run_count, this.evolution, this.evolution_splits_label);
-                    })
-                    .catch(error => {
-                        console.error("Error:", error);
-                    });
-                this.split_data.push(this.simple_data)
-                MyStorage["split_data"] = this.split_data
-                MyStorage[this.starterString] = {
-                    ...MyStorage[this.starterString],
-                    split_data: this.split_data
+        if (this.gameSelection == 'FireRed and LeafGreen') {
+            this.mapper.properties.screen.hall_of_fame_4.change(async (newProp, oldProp) => {
+                if (newProp.value == 0 && oldProp.value == 255 && this.mapper.properties.overworld.mapName.value == "POKEMON_LEAGUE - HALL_OF_FAME") {
+                    this.autosplitter_process('HALL_OF_FAME')
+    
+                    let trainer = this.opponent
+                    let id = this.opponentId
+                    let gameName = this.game.gameName == 'Emerald' ? 'E' : this.game.gameName == 'Ruby & Sapphire' ? 'RS' : this.game.gameName == 'FireRed and LeafGreen' ? 'FRLG' : this.game.gameName;
+                    let gameName_path = this.game.gameName;
+                    const splitFileName = this.getSplitFileName();
+    
+                    //write full split data
+                    logData(gameName, gameName_path, this.full_data_str, this.attempt_number, splitFileName, "Full", this.testRun, this.scott_mode, this.evolution, this.evolution_splits_label)
+                    //write deprecated split data
+                    logData(gameName, gameName_path, this.deprecated_data_str, this.attempt_number, splitFileName, "Deprecated", this.testRun, this.scott_mode, this.evolution, this.evolution_splits_label)
+                    
+                    //write simple split data
+                    //use then so that logCopy doesn't touch any files until logData finishes
+                    logData(gameName, gameName_path, this.simple_data_str, this.attempt_number, splitFileName, "Simple", this.testRun, this.scott_mode, this.evolution, this.evolution_splits_label)
+                    .then(() => {
+                            console.log("Run complete - moving attempt files to finished folder.")
+                            logCopy(gameName, gameName_path, this.attempt_number, splitFileName, this.finished_run_count, this.evolution, this.evolution_splits_label);
+                        })
+                        .catch(error => {
+                            console.error("Error:", error);
+                        });
+                    this.split_data.push(this.simple_data)
+                    MyStorage["split_data"] = this.split_data
+                    MyStorage[this.starterString] = {
+                        ...MyStorage[this.starterString],
+                        split_data: this.split_data
+                    }
+                    console.log("Data transfer finished.")
                 }
-                console.log("Data transfer finished.")
-            }
-        });
+            });
+        }
 
         //EXP BAR ANIMATION FUNCTION
         var species = this.mapper.properties.player.team[0].species.value ?? this.starterString;
