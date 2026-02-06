@@ -184,6 +184,26 @@
                     <button class="buttonStyle buttonStyle_column3" @click="openFolder(`splits`, gameSelection, starterString, ``)">Open Splits Folder</button>
                     <button class="buttonStyle buttonStyle_column3" @click="openFolder(`splits`, gameSelection, starterString, `finishes`)">Finished Splits</button>
                     <br><br>
+                    
+                    <!-- Style Settings Management -->
+                    <div v-if="show_advanced_settings && debugging == true" style="margin-bottom: 10px; padding: 8px; border: 1px solid #444; border-radius: 4px;">
+                        <div style="margin-bottom: 5px; font-weight: bold;">Style Settings</div>
+                        <div v-if="isInDevMode" style="color: #4CAF50; font-size: 11px; margin-bottom: 5px;">
+                            Development Mode - Changes save to defaults
+                        </div>
+                        <div v-else style="color: #888; font-size: 11px; margin-bottom: 5px;">
+                            📦 Production Mode - Changes save locally
+                        </div>
+                        <button v-if="isInDevMode" class="buttonStyle" @click="exportStyleSettingsAsDefaults()" style="font-size: 11px;">
+                            Export All Settings as Defaults
+                        </button>
+                        <button class="buttonStyle" @click="resetCurrentPokemonToDefaults()" style="font-size: 11px;">
+                            Reset Current Pokémon to Defaults
+                        </button>
+                        <button class="buttonStyle" @click="resetAllStyleSettingsToDefaults()" style="font-size: 11px; color: #f44;">
+                            Reset ALL to Defaults
+                        </button>
+                    </div>
                     <button v-show="!battle_testing_ui" class="buttonStyle buttonStyle_column3" @click="battle_testing_ui_toggle">Show optimization UI</button>
                     <button v-show="battle_testing_ui" class="buttonStyle buttonStyle_column3" @click="battle_testing_ui_toggle">Close optimization UI</button>
                     <div v-show="!debugging && battle_testing_ui">
@@ -265,12 +285,12 @@
                         </tr>
                     </table>
                     <br>
-                    <div>
+                    <div v-if="hasMultipleEvolutionStages">
                         <table>
                             <tr><td>Evolution:</td><td><input class="checkBoxStyle" type="checkbox" v-model="evolution"/></td></tr>
                         </table>
                     </div>
-                    <div v-if="evolution == true && evolution_family_list.length > 0">
+                    <div v-if="evolution == true && evolution_family_list.length > 1">
                         <div>Evolution Family Style:</div>
                         <select v-model="selected_evolution_species" class="dropdownMenu" style="width: 125px;">
                             <option disabled value="">Select a species in the evolution family</option>

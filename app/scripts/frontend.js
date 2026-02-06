@@ -97,13 +97,21 @@ const Storage = createStoredObject('./storage', 'Storage.json', {
 });
 
 
+// Style Settings Manager for layered defaults + user overrides
+const styleSettingsManager = require('../lib/style_settings_manager.js');
+
 // Setup the MyStorage Object
 const MyStorage = new Proxy({}, {
     set: (_, prop, value) => {
-        if (value === undefined || value === null)
-            localStorage.removeItem(prop);
-        else
-            localStorage.setItem(prop, JSON.stringify(value));
+        // Use the style settings manager for style-related keys
+        if (styleSettingsManager.isStyleSettingsKey(prop)) {
+            styleSettingsManager.set(prop, value);
+        } else {
+            if (value === undefined || value === null)
+                localStorage.removeItem(prop);
+            else
+                localStorage.setItem(prop, JSON.stringify(value));
+        }
         return true;
     },
     get: (_, prop) => {
@@ -115,9 +123,59 @@ const MyStorage = new Proxy({}, {
             return () => Object.keys(localStorage);
         if (prop === "has")
             return (key) => localStorage.getItem(key) === null;
-        return JSON.parse(localStorage.getItem(prop));
+        
+        // Use the style settings manager for style-related keys
+        if (styleSettingsManager.isStyleSettingsKey(prop)) {
+            return styleSettingsManager.get(prop);
+        }
+        
+        const value = localStorage.getItem(prop);
+        if (value === null) return null;
+        try {
+            return JSON.parse(value);
+        } catch (e) {
+            return value;
+        }
     }
 });
+
+// Utility functions for style settings management
+const StyleSettingsUtils = {
+    /**
+     * Export current localStorage style settings to defaults file (dev mode only)
+     */
+    exportCurrentAsDefaults: () => {
+        return styleSettingsManager.exportCurrentAsDefaults();
+    },
+    
+    /**
+     * Reset a specific Pokemon's style settings to defaults
+     */
+    resetToDefaults: (key) => {
+        styleSettingsManager.resetToDefaults(key);
+    },
+    
+    /**
+     * Reset all style settings to defaults
+     */
+    resetAllToDefaults: () => {
+        styleSettingsManager.resetAllToDefaults();
+    },
+    
+    /**
+     * Check if running in development mode
+     */
+    isDevMode: () => {
+        return styleSettingsManager.isDevMode();
+    },
+    
+    /**
+     * Get all default settings keys
+     */
+    getDefaultSettingsKeys: () => {
+        return styleSettingsManager.getDefaultSettingsKeys();
+    }
+};
 
 async function loadCsvFile() {
     const file = await window.showOpenFilePicker({
@@ -679,6 +737,7 @@ const app = Vue.createApp({
     data() {
         return {
             ready        : false,
+            isInDevMode  : StyleSettingsUtils.isDevMode(), // Track if running in development mode
             mapper       : null,
             scott_mode   : true,
             gameVariables: null,
@@ -1921,6 +1980,19 @@ const app = Vue.createApp({
     },
 
     computed: {
+        /**
+         * Check if the current Pokemon has multiple evolution stages
+         * Returns true if evolution family has more than one species
+         * Used to show/hide evolution checkbox (hide for single-species families like Registeel)
+         */
+        hasMultipleEvolutionStages() {
+            // Get the evolution family for the current starter
+            const starter = this.starterString || this.starter;
+            if (!starter) return false;
+            
+            const evolutionFamily = this.getEvolutionFamily(starter);
+            return evolutionFamily && evolutionFamily.length > 1;
+        },
         blackouts_resets() {
             const resets = this.playerResets
             const blackouts = this.blackout_counter
@@ -2518,6 +2590,56 @@ const app = Vue.createApp({
     },
 
     methods: {
+        // ============ Style Settings Management Methods ============
+        /**
+         * Export current localStorage settings to the defaults file (dev mode only)
+         * This migrates your existing style settings to become the new app defaults
+         */
+        exportStyleSettingsAsDefaults() {
+            return StyleSettingsUtils.exportCurrentAsDefaults();
+        },
+        
+        /**
+         * Reset the current Pokemon's style settings to defaults
+         */
+        resetCurrentPokemonToDefaults() {
+            const storageKey = this.getCurrentStorageKey();
+            StyleSettingsUtils.resetToDefaults(storageKey);
+            // Reload the styles
+            if (this.evolution && this.selected_evolution_species) {
+                this.loadEvolutionStyle(this.selected_evolution_species, true);
+            } else {
+                this.load_pokemon_sprite_settings(this.starterString);
+            }
+        },
+        
+        /**
+         * Reset all style settings to defaults
+         */
+        resetAllStyleSettingsToDefaults() {
+            if (confirm('This will reset ALL Pokemon style settings to defaults. Are you sure?')) {
+                StyleSettingsUtils.resetAllToDefaults();
+                // Reload current styles
+                if (this.evolution && this.selected_evolution_species) {
+                    this.loadEvolutionStyle(this.selected_evolution_species, true);
+                } else {
+                    this.load_pokemon_sprite_settings(this.starterString);
+                }
+            }
+        },
+        
+        /**
+         * Get the current storage key for the active Pokemon
+         */
+        getCurrentStorageKey() {
+            const game_name = this.mapper?.properties?.meta?.game_name?.value || this.gameSelection;
+            if (this.evolution && this.selected_evolution_species) {
+                return this.getStorageKey(this.selected_evolution_species, true);
+            } else {
+                return `${game_name}_${this.starterString}`;
+            }
+        },
+        
         // Add this method to your Vue app methods section (around line 4182)
         async fetchEmulatorStats() {
             try {
@@ -4138,6 +4260,19 @@ const app = Vue.createApp({
             if (this.evolution_family_list.length === 0) {
                 // console.log('List was empty, adding starter');
                 this.evolution_family_list = [starter];
+            }
+            
+            // If the evolution family has only one member (e.g., Registeel), disable evolution
+            if (this.evolution_family_list.length <= 1 && this.evolution) {
+                console.log(`[Evolution] Disabling evolution for single-species family: ${starter}`);
+                this.evolution = false;
+            }
+            
+            // Set default selected evolution species to the starter if not set
+            if (this.evolution && this.evolution_family_list.length > 1) {
+                if (!this.selected_evolution_species || !this.evolution_family_list.includes(this.selected_evolution_species)) {
+                    this.selected_evolution_species = starter;
+                }
             }
             
             // console.log('Final evolution_family_list:', this.evolution_family_list);
