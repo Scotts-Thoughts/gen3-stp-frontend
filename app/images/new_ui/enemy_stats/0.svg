@@ -1,7 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg id="Individual_Areas" data-name="Individual Areas" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1920 1080">
   <defs>
-    <filter id="drop-shadow-1" filterUnits="userSpaceOnUse">
+    <style>
+      .cls-1 {
+        fill: url(#Stat_Def_New_Sat);
+      }
+
+      .cls-2 {
+        fill: url(#New_SpD_Dark);
+      }
+
+      .cls-3 {
+        fill: url(#Stat_Atk_New_Sat);
+      }
+
+      .cls-4 {
+        fill: url(#Stat_HP_New_Sat);
+      }
+
+      .cls-5 {
+        filter: url(#drop-shadow-1);
+      }
+
+      .cls-6 {
+        fill: url(#New_Spe_Dark);
+      }
+
+      .cls-7 {
+        fill: url(#Stat_SpA_New_Sat);
+      }
+    </style>
+    <filter id="drop-shadow-1" x="1682.88" y="104.88" width="110.16" height="124.32" filterUnits="userSpaceOnUse">
       <feOffset dx="0" dy="0"/>
       <feGaussianBlur result="blur" stdDeviation="2"/>
       <feFlood flood-color="#000" flood-opacity=".8"/>
@@ -10,129 +39,99 @@
     </filter>
     <linearGradient id="New_Spe_Dark" data-name="New Spe Dark" x1="1739" y1="129" x2="1787" y2="129" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#8c53a6"/>
-      <stop offset=".04" stop-color="#9659b1"/>
-      <stop offset=".17" stop-color="#b269d3"/>
-      <stop offset=".29" stop-color="#c776eb"/>
-      <stop offset=".41" stop-color="#d37df9"/>
+      <stop offset=".04005" stop-color="#9659b1"/>
+      <stop offset=".16874" stop-color="#b269d3"/>
+      <stop offset=".29159" stop-color="#c776eb"/>
+      <stop offset=".40503" stop-color="#d37df9"/>
       <stop offset=".5" stop-color="#d880ff"/>
-      <stop offset=".59" stop-color="#d37df9"/>
-      <stop offset=".71" stop-color="#c675ea"/>
-      <stop offset=".84" stop-color="#b068d0"/>
-      <stop offset=".97" stop-color="#9256ad"/>
+      <stop offset=".59294" stop-color="#d37df9"/>
+      <stop offset=".70915" stop-color="#c675ea"/>
+      <stop offset=".83776" stop-color="#b068d0"/>
+      <stop offset=".97445" stop-color="#9256ad"/>
       <stop offset="1" stop-color="#8c53a6"/>
     </linearGradient>
-    <filter id="drop-shadow-2" filterUnits="userSpaceOnUse">
-      <feOffset dx="0" dy="0"/>
-      <feGaussianBlur result="blur-2" stdDeviation="2"/>
-      <feFlood flood-color="#000" flood-opacity=".9"/>
-      <feComposite in2="blur-2" operator="in"/>
-      <feComposite in="SourceGraphic"/>
-    </filter>
     <linearGradient id="New_SpD_Dark" data-name="New SpD Dark" x1="1739" y1="205" x2="1787" y2="205" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#5667a6"/>
-      <stop offset=".04" stop-color="#5c6eb1"/>
-      <stop offset=".17" stop-color="#6d83d3"/>
-      <stop offset=".29" stop-color="#7a92eb"/>
-      <stop offset=".41" stop-color="#829bf9"/>
+      <stop offset=".04005" stop-color="#5c6eb1"/>
+      <stop offset=".16874" stop-color="#6d83d3"/>
+      <stop offset=".29159" stop-color="#7a92eb"/>
+      <stop offset=".40503" stop-color="#829bf9"/>
       <stop offset=".5" stop-color="#859fff"/>
-      <stop offset=".59" stop-color="#829bf9"/>
-      <stop offset=".71" stop-color="#7a91ea"/>
-      <stop offset=".84" stop-color="#6c81d0"/>
-      <stop offset=".97" stop-color="#596bad"/>
+      <stop offset=".59294" stop-color="#829bf9"/>
+      <stop offset=".70915" stop-color="#7a91ea"/>
+      <stop offset=".83776" stop-color="#6c81d0"/>
+      <stop offset=".97445" stop-color="#596bad"/>
       <stop offset="1" stop-color="#5667a6"/>
     </linearGradient>
-    <filter id="drop-shadow-3" filterUnits="userSpaceOnUse">
-      <feOffset dx="0" dy="0"/>
-      <feGaussianBlur result="blur-3" stdDeviation="2"/>
-      <feFlood flood-color="#000" flood-opacity=".9"/>
-      <feComposite in2="blur-3" operator="in"/>
-      <feComposite in="SourceGraphic"/>
-    </filter>
     <linearGradient id="Stat_SpA_New_Sat" data-name="Stat SpA New Sat" x1="1739" y1="167" x2="1787" y2="167" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#2f8589"/>
-      <stop offset=".13" stop-color="#39a1a6"/>
-      <stop offset=".27" stop-color="#41b8be"/>
-      <stop offset=".39" stop-color="#46c7cc"/>
+      <stop offset=".12919" stop-color="#39a1a6"/>
+      <stop offset=".26634" stop-color="#41b8be"/>
+      <stop offset=".39352" stop-color="#46c7cc"/>
       <stop offset=".5" stop-color="#48ccd2"/>
-      <stop offset=".6" stop-color="#46c6cc"/>
-      <stop offset=".74" stop-color="#40b7bd"/>
-      <stop offset=".88" stop-color="#389fa3"/>
+      <stop offset=".60468" stop-color="#46c6cc"/>
+      <stop offset=".73556" stop-color="#40b7bd"/>
+      <stop offset=".87975" stop-color="#389fa3"/>
       <stop offset="1" stop-color="#2f8589"/>
     </linearGradient>
-    <filter id="drop-shadow-4" filterUnits="userSpaceOnUse">
-      <feOffset dx="0" dy="0"/>
-      <feGaussianBlur result="blur-4" stdDeviation="2"/>
-      <feFlood flood-color="#000" flood-opacity=".9"/>
-      <feComposite in2="blur-4" operator="in"/>
-      <feComposite in="SourceGraphic"/>
-    </filter>
     <linearGradient id="Stat_Def_New_Sat" data-name="Stat Def New Sat" x1="1689" y1="205" x2="1737" y2="205" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#a55821"/>
-      <stop offset=".04" stop-color="#af5d23"/>
-      <stop offset=".17" stop-color="#d16f29"/>
-      <stop offset=".29" stop-color="#e97c2e"/>
-      <stop offset=".4" stop-color="#f78431"/>
+      <stop offset=".03699" stop-color="#af5d23"/>
+      <stop offset=".16656" stop-color="#d16f29"/>
+      <stop offset=".29022" stop-color="#e97c2e"/>
+      <stop offset=".40441" stop-color="#f78431"/>
       <stop offset=".5" stop-color="#fd8732"/>
-      <stop offset=".59" stop-color="#f78430"/>
-      <stop offset=".71" stop-color="#e87b2d"/>
-      <stop offset=".84" stop-color="#ce6e29"/>
-      <stop offset=".98" stop-color="#ab5b22"/>
+      <stop offset=".59357" stop-color="#f78430"/>
+      <stop offset=".71061" stop-color="#e87b2d"/>
+      <stop offset=".84011" stop-color="#ce6e29"/>
+      <stop offset=".97772" stop-color="#ab5b22"/>
       <stop offset="1" stop-color="#a55821"/>
     </linearGradient>
-    <filter id="drop-shadow-5" filterUnits="userSpaceOnUse">
-      <feOffset dx="0" dy="0"/>
-      <feGaussianBlur result="blur-5" stdDeviation="2"/>
-      <feFlood flood-color="#000" flood-opacity=".9"/>
-      <feComposite in2="blur-5" operator="in"/>
-      <feComposite in="SourceGraphic"/>
-    </filter>
     <linearGradient id="Stat_Atk_New_Sat" data-name="Stat Atk New Sat" x1="1689" y1="167" x2="1737" y2="167" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#9b8b2d"/>
-      <stop offset=".04" stop-color="#a69638"/>
-      <stop offset=".17" stop-color="#c8b85a"/>
-      <stop offset=".29" stop-color="#e0d072"/>
-      <stop offset=".41" stop-color="#eede80"/>
+      <stop offset=".04005" stop-color="#a69638"/>
+      <stop offset=".16874" stop-color="#c8b85a"/>
+      <stop offset=".29159" stop-color="#e0d072"/>
+      <stop offset=".40503" stop-color="#eede80"/>
       <stop offset=".5" stop-color="#f4e486"/>
-      <stop offset=".59" stop-color="#eede80"/>
-      <stop offset=".71" stop-color="#dfcf71"/>
-      <stop offset=".84" stop-color="#c5b557"/>
-      <stop offset=".97" stop-color="#a29234"/>
+      <stop offset=".59294" stop-color="#eede80"/>
+      <stop offset=".70915" stop-color="#dfcf71"/>
+      <stop offset=".83776" stop-color="#c5b557"/>
+      <stop offset=".97445" stop-color="#a29234"/>
       <stop offset="1" stop-color="#9b8b2d"/>
     </linearGradient>
-    <filter id="drop-shadow-6" filterUnits="userSpaceOnUse">
-      <feOffset dx="0" dy="0"/>
-      <feGaussianBlur result="blur-6" stdDeviation="2"/>
-      <feFlood flood-color="#000" flood-opacity=".9"/>
-      <feComposite in2="blur-6" operator="in"/>
-      <feComposite in="SourceGraphic"/>
-    </filter>
     <linearGradient id="Stat_HP_New_Sat" data-name="Stat HP New Sat" x1="1689" y1="129" x2="1737" y2="129" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#ef2028"/>
       <stop offset="0" stop-color="#1e993d"/>
       <stop offset=".5" stop-color="#2eeb5d"/>
-      <stop offset=".6" stop-color="#2ce55a"/>
-      <stop offset=".72" stop-color="#29d654"/>
-      <stop offset=".85" stop-color="#24bc4a"/>
-      <stop offset="1" stop-color="#1e993d"/>
+      <stop offset=".59761" stop-color="#2ce55a"/>
+      <stop offset=".71968" stop-color="#29d654"/>
+      <stop offset=".85476" stop-color="#24bc4a"/>
+      <stop offset=".99832" stop-color="#1e993d"/>
       <stop offset="1" stop-color="#1e993d"/>
     </linearGradient>
-    <filter id="drop-shadow-7" filterUnits="userSpaceOnUse">
-      <feOffset dx="0" dy="0"/>
-      <feGaussianBlur result="blur-7" stdDeviation="2"/>
-      <feFlood flood-color="#000" flood-opacity=".9"/>
-      <feComposite in2="blur-7" operator="in"/>
-      <feComposite in="SourceGraphic"/>
-    </filter>
   </defs>
-  <g id="Main_Elements" data-name="Main Elements">
-    <g id="Enemy">
-      <g id="pkmn1_stats" data-name="pkmn1 stats" style="filter: url(#drop-shadow-1);">
-        <rect id="speed" x="1739" y="111" width="48" height="36" rx="6" ry="6" style="fill: url(#New_Spe_Dark); filter: url(#drop-shadow-2); stroke-width: 0px;"/>
-        <rect id="special_defense" data-name="special defense" x="1739" y="187" width="48" height="36" rx="6" ry="6" style="fill: url(#New_SpD_Dark); filter: url(#drop-shadow-3); stroke-width: 0px;"/>
-        <rect id="special_attack" data-name="special attack" x="1739" y="149" width="48" height="36" rx="6" ry="6" style="fill: url(#Stat_SpA_New_Sat); filter: url(#drop-shadow-4); stroke-width: 0px;"/>
-        <rect id="defense" x="1689" y="187" width="48" height="36" rx="6" ry="6" style="fill: url(#Stat_Def_New_Sat); filter: url(#drop-shadow-5); stroke-width: 0px;"/>
-        <rect id="attack" x="1689" y="149" width="48" height="36" rx="6" ry="6" style="fill: url(#Stat_Atk_New_Sat); filter: url(#drop-shadow-6); stroke-width: 0px;"/>
-        <rect id="hp" x="1689" y="111" width="48" height="36" rx="6" ry="6" style="fill: url(#Stat_HP_New_Sat); filter: url(#drop-shadow-7); stroke-width: 0px;"/>
+  <g id="Export_Layer" data-name="Export Layer">
+    <g id="Enemy_copy" data-name="Enemy copy">
+      <g id="pkmn1_stats" data-name="pkmn1 stats" class="cls-5">
+        <g id="speed">
+          <rect class="cls-6" x="1739" y="111" width="48" height="36" rx="6" ry="6"/>
+        </g>
+        <g id="special_defense" data-name="special defense">
+          <rect class="cls-2" x="1739" y="187" width="48" height="36" rx="6" ry="6"/>
+        </g>
+        <g id="special_attack" data-name="special attack">
+          <rect class="cls-7" x="1739" y="149" width="48" height="36" rx="6" ry="6"/>
+        </g>
+        <g id="defense">
+          <rect class="cls-1" x="1689" y="187" width="48" height="36" rx="6" ry="6"/>
+        </g>
+        <g id="attack">
+          <rect class="cls-3" x="1689" y="149" width="48" height="36" rx="6" ry="6"/>
+        </g>
+        <g id="hp">
+          <rect class="cls-4" x="1689" y="111" width="48" height="36" rx="6" ry="6"/>
+        </g>
       </g>
     </g>
   </g>

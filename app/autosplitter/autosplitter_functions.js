@@ -294,7 +294,7 @@ function autosplitter_process(split_name = null) {
         if (this.collect_split_data == true && this.mapper.properties.battle.turnInfo.battleOutcome.value == "WON" && this.mapper.properties.battle.type.trainer.value == true) {
             this.current_splits.push({
                 trainer: trainer_name, 
-                time:    real_time_hmmss,
+                time:    this.shuckie_timer ? shuckie_time_hhmmss : real_time_hmmss,
             })
         }
     }

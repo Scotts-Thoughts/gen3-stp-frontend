@@ -1,7 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg id="Individual_Areas" data-name="Individual Areas" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1920 1080">
   <defs>
-    <filter id="drop-shadow-1" filterUnits="userSpaceOnUse">
+    <style>
+      .cls-1 {
+        fill: url(#eCrit-2);
+      }
+
+      .cls-2 {
+        filter: url(#drop-shadow-1);
+      }
+
+      .cls-3 {
+        fill: url(#eCrit-5);
+      }
+
+      .cls-4 {
+        fill: url(#eCrit-3);
+      }
+
+      .cls-5 {
+        fill: url(#eCrit-4);
+      }
+
+      .cls-6 {
+        fill: url(#eCrit-6);
+      }
+
+      .cls-7 {
+        fill: url(#eCrit);
+      }
+    </style>
+    <filter id="drop-shadow-1" x="1682.88" y="738" width="230.16" height="160.08" filterUnits="userSpaceOnUse">
       <feOffset dx="0" dy="0"/>
       <feGaussianBlur result="blur" stdDeviation="2"/>
       <feFlood flood-color="#000" flood-opacity=".8"/>
@@ -10,73 +39,43 @@
     </filter>
     <linearGradient id="eCrit" x1="1798" y1="752" x2="1899" y2="752" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#999"/>
-      <stop offset=".04" stop-color="#a0a0a0"/>
-      <stop offset=".21" stop-color="#b8b8b8"/>
-      <stop offset=".37" stop-color="#c6c6c6"/>
+      <stop offset=".04384" stop-color="#a0a0a0"/>
+      <stop offset=".21261" stop-color="#b8b8b8"/>
+      <stop offset=".369" stop-color="#c6c6c6"/>
       <stop offset=".5" stop-color="#ccc"/>
-      <stop offset=".63" stop-color="#c6c6c6"/>
-      <stop offset=".79" stop-color="#b7b7b7"/>
-      <stop offset=".97" stop-color="#9d9d9d"/>
+      <stop offset=".62975" stop-color="#c6c6c6"/>
+      <stop offset=".79195" stop-color="#b7b7b7"/>
+      <stop offset=".97077" stop-color="#9d9d9d"/>
       <stop offset="1" stop-color="#999"/>
     </linearGradient>
-    <filter id="drop-shadow-2" filterUnits="userSpaceOnUse">
-      <feOffset dx="0" dy="1"/>
-      <feGaussianBlur result="blur-2" stdDeviation="2"/>
-      <feFlood flood-color="#000" flood-opacity=".9"/>
-      <feComposite in2="blur-2" operator="in"/>
-      <feComposite in="SourceGraphic"/>
-    </filter>
     <linearGradient id="eCrit-2" data-name="eCrit" x1="1689" x2="1787" xlink:href="#eCrit"/>
-    <filter id="drop-shadow-3" filterUnits="userSpaceOnUse">
-      <feOffset dx="0" dy="1"/>
-      <feGaussianBlur result="blur-3" stdDeviation="2"/>
-      <feFlood flood-color="#000" flood-opacity=".9"/>
-      <feComposite in2="blur-3" operator="in"/>
-      <feComposite in="SourceGraphic"/>
-    </filter>
     <linearGradient id="eCrit-3" data-name="eCrit" x1="1790" y1="777.5" x2="1907" y2="777.5" xlink:href="#eCrit"/>
-    <filter id="drop-shadow-4" filterUnits="userSpaceOnUse">
-      <feOffset dx="0" dy="1"/>
-      <feGaussianBlur result="blur-4" stdDeviation="2"/>
-      <feFlood flood-color="#000" flood-opacity=".9"/>
-      <feComposite in2="blur-4" operator="in"/>
-      <feComposite in="SourceGraphic"/>
-    </filter>
     <linearGradient id="eCrit-4" data-name="eCrit" x1="1790" y1="810.5" x2="1907" y2="810.5" xlink:href="#eCrit"/>
-    <filter id="drop-shadow-5" filterUnits="userSpaceOnUse">
-      <feOffset dx="0" dy="1"/>
-      <feGaussianBlur result="blur-5" stdDeviation="2"/>
-      <feFlood flood-color="#000" flood-opacity=".9"/>
-      <feComposite in2="blur-5" operator="in"/>
-      <feComposite in="SourceGraphic"/>
-    </filter>
     <linearGradient id="eCrit-5" data-name="eCrit" x1="1790" y1="843.5" x2="1907" y2="843.5" xlink:href="#eCrit"/>
-    <filter id="drop-shadow-6" filterUnits="userSpaceOnUse">
-      <feOffset dx="0" dy="1"/>
-      <feGaussianBlur result="blur-6" stdDeviation="2"/>
-      <feFlood flood-color="#000" flood-opacity=".9"/>
-      <feComposite in2="blur-6" operator="in"/>
-      <feComposite in="SourceGraphic"/>
-    </filter>
     <linearGradient id="eCrit-6" data-name="eCrit" x1="1790" y1="876.5" x2="1907" y2="876.5" xlink:href="#eCrit"/>
-    <filter id="drop-shadow-7" filterUnits="userSpaceOnUse">
-      <feOffset dx="0" dy="1"/>
-      <feGaussianBlur result="blur-7" stdDeviation="2"/>
-      <feFlood flood-color="#000" flood-opacity=".9"/>
-      <feComposite in2="blur-7" operator="in"/>
-      <feComposite in="SourceGraphic"/>
-    </filter>
   </defs>
-  <g id="Main_Elements" data-name="Main Elements">
-    <g id="Enemy">
-      <g id="Layer_69" data-name="Layer 69">
-        <g id="Layer_57_copy_4" data-name="Layer 57 copy 4" style="filter: url(#drop-shadow-1);">
-          <rect id="move4" x="1798" y="744" width="101" height="16" rx="6" ry="6" style="fill: url(#eCrit); filter: url(#drop-shadow-2); stroke-width: 0px;"/>
-          <rect id="move4-2" data-name="move4" x="1689" y="744" width="98" height="16" rx="6" ry="6" style="fill: url(#eCrit-2); filter: url(#drop-shadow-3); stroke-width: 0px;"/>
-          <rect id="move4-3" data-name="move4" x="1790" y="762" width="117" height="31" rx="6" ry="6" style="fill: url(#eCrit-3); filter: url(#drop-shadow-4); stroke-width: 0px;"/>
-          <rect id="move4-4" data-name="move4" x="1790" y="795" width="117" height="31" rx="6" ry="6" style="fill: url(#eCrit-4); filter: url(#drop-shadow-5); stroke-width: 0px;"/>
-          <rect id="move4-5" data-name="move4" x="1790" y="828" width="117" height="31" rx="6" ry="6" style="fill: url(#eCrit-5); filter: url(#drop-shadow-6); stroke-width: 0px;"/>
-          <rect id="move4-6" data-name="move4" x="1790" y="861" width="117" height="31" rx="6" ry="6" style="fill: url(#eCrit-6); filter: url(#drop-shadow-7); stroke-width: 0px;"/>
+  <g id="Export_Layer" data-name="Export Layer">
+    <g id="Enemy_copy" data-name="Enemy copy">
+      <g id="Layer_69_copy" data-name="Layer 69 copy">
+        <g id="Layer_57_copy_6" data-name="Layer 57 copy 6" class="cls-2">
+          <g id="move4">
+            <rect class="cls-7" x="1798" y="744" width="101" height="16" rx="6" ry="6"/>
+          </g>
+          <g id="move4-2" data-name="move4">
+            <rect class="cls-1" x="1689" y="744" width="98" height="16" rx="6" ry="6"/>
+          </g>
+          <g id="move4-3" data-name="move4">
+            <rect class="cls-4" x="1790" y="762" width="117" height="31" rx="6" ry="6"/>
+          </g>
+          <g id="move4-4" data-name="move4">
+            <rect class="cls-5" x="1790" y="795" width="117" height="31" rx="6" ry="6"/>
+          </g>
+          <g id="move4-5" data-name="move4">
+            <rect class="cls-3" x="1790" y="828" width="117" height="31" rx="6" ry="6"/>
+          </g>
+          <g id="move4-6" data-name="move4">
+            <rect class="cls-6" x="1790" y="861" width="117" height="31" rx="6" ry="6"/>
+          </g>
         </g>
       </g>
     </g>

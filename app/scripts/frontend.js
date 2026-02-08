@@ -98,7 +98,7 @@ const Storage = createStoredObject('./storage', 'Storage.json', {
 
 
 // Style Settings Manager for layered defaults + user overrides
-const styleSettingsManager = require('../lib/style_settings_manager.js');
+const styleSettingsManager = require('./lib/style_settings_manager.js');
 
 // Setup the MyStorage Object
 const MyStorage = new Proxy({}, {
@@ -745,7 +745,8 @@ const app = Vue.createApp({
 
             emulatorStatsInterval: null,
             emulatorStats        : null,
-            shuckie_timer        : MyStorage['shuckie_timer'] ?? false,
+            shuckie_timer        : MyStorage['shuckie_timer']    ?? false,
+            shuckie_counters     : MyStorage['shuckie_counters'] ?? false,
             
             set_rom_starter_automatically : true,
             legacy_state          : MyStorage['legacy_state'] ?? false,
@@ -1196,6 +1197,8 @@ const app = Vue.createApp({
                 "post_kanto_evolutions",
                 "show_post_battle_splits",
                 "shuckie_timer",
+                "shuckie_counters",
+                "banned_hidden_power",
             ],
 
             stats_toggle_settings: [
@@ -2089,6 +2092,9 @@ const app = Vue.createApp({
                 const firstOccurrenceOnly = ["ELITE_FOUR_SIDNEY", "ELITE_FOUR_PHOEBE", "ELITE_FOUR_GLACIA", "ELITE_FOUR_DRAKE", "CHAMPION_WALLACE"]; // Characters to only show first occurrence of
                 const processedFirstOccurrences = new Set(); // Track which characters have already been processed for first occurrence
                 
+                // Helper to normalize trainer ID to display name for matching rival variants
+                const getNormalizedName = (trainerId) => this.trainer_name_lookup[trainerId]?.trainer ?? trainerId;
+                
                 for (const x of this.previous_splits) {
                     if (this.split_trainers.includes(x.trainer)) {
                         // Skip if this is a character that should only show first occurrence and we've already processed it
@@ -2097,7 +2103,9 @@ const app = Vue.createApp({
                         }
                         
                         const default_string = "-"
-                        const cur_split = this.current_splits.find(y => y.trainer === x.trainer)
+                        // Match by normalized display name so rival variants (e.g. different starters) are treated as the same split
+                        const normalizedName = getNormalizedName(x.trainer);
+                        const cur_split = this.current_splits.find(y => y.trainer === x.trainer || getNormalizedName(y.trainer) === normalizedName)
                         const prev = this.convertDurationToSeconds(x.time)
                         if (cur_split == undefined) { 
                             if (x.trainer !== lastPushedTrainer && !(this.league_rematches == false && this.gameSelection === "FireRed and LeafGreen" && trainersToSkip.includes(x.trainer))) { // Check if the current trainer is the same as the last pushed one and if it should be skipped
@@ -2706,6 +2714,36 @@ const app = Vue.createApp({
                 return false;
             }
         },
+        async incrementEmulatorCounter(counter_name) {
+            try {
+                const response = await fetch(`http://127.0.0.1:30158/increment-counter?name=${counter_name}`, {
+                    method: 'POST'
+                });
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                console.log('Emulator start command sent successfully');
+                return true;
+            } catch (error) {
+                console.error('Error sending start command:', error);
+                return false;
+            }
+        },
+        async incrementEmulatorCounterByAmount(counter_name, amount) {
+            try {
+                const response = await fetch(`http://127.0.0.1:30158/increment-counter?name=${counter_name}&by=${amount}`, {
+                    method: 'POST'
+                });
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                console.log('Emulator start command sent successfully');
+                return true;
+            } catch (error) {
+                console.error('Error sending start command:', error);
+                return false;
+            }
+        },
         formatMilliseconds(ms) {
             // Truncate milliseconds to seconds
             const totalSeconds = Math.floor(ms / 1000);
@@ -2738,7 +2776,7 @@ const app = Vue.createApp({
             const unobtainable_moves = this.unobtainable_moves_object[type_of_move] || []
             const opacity = 0.4
             const animation_duration = 1.5 // seconds
-            let unobtainable_moves_first_run = (this.attempt_number > 1 || this.banned_hidden_power == false) ? [] : (this.unobtainable_moves_object['First Playthrough'] || [])
+            let unobtainable_moves_first_run = (this.finished_run_count > 0 || this.banned_hidden_power == false) ? [] : (this.unobtainable_moves_object['First Playthrough'] || [])
 
             if (unobtainable_moves_toggle == "Never Cross Out") {
                 return `transition: opacity ${animation_duration}s;`
@@ -4142,12 +4180,22 @@ const app = Vue.createApp({
         },
         increment(property) {
             this[property]++;
+            if (this.shuckie_counters == true) { 
+                this.incrementEmulatorCounter(property) 
+            }
         },
         decrement(property) {
             if (this[property] == 0) {
                 return 0
             }
             this[property]--;
+
+            if (this.shuckie_counters == true) { 
+                if (this.emulatorStats?.counters?.[property] == undefined || this.emulatorStats?.counters?.[property] <= 0) {
+                    return
+                }
+                this.incrementEmulatorCounterByAmount(property, -1) 
+            }
         },
         async colorPick() {
             return new EyeDropper().open().then(res => res.sRGBHex)
@@ -5951,12 +5999,14 @@ const app = Vue.createApp({
                         else {
                             if (this.no_counters == false) {
                                 this.playerResets++;
+                                if (this.shuckie_counters) { this.incrementEmulatorCounter("playerResets") }
                             }
                         }
                     }
                     if(this.game.callback2.blackout.includes(newProp.value) /*&& !this.game.callback2.reset.includes(newProp.value)*/) {
                         if (this.no_counters == false) {
                             this.blackout_counter++;
+                            if (this.shuckie_counters) { this.incrementEmulatorCounter("blackout_counter") }
                         }
                     }
                 });
@@ -5970,12 +6020,14 @@ const app = Vue.createApp({
                         else {
                             if (this.no_counters == false) {
                                 this.playerResets++;
+                                if (this.shuckie_counters) { this.incrementEmulatorCounter("playerResets") }
                             }
                         }
                     }
                     if(this.game.callback2.blackout.includes(newProp.value) /*&& !this.game.callback2.reset.includes(newProp.value)*/) {
                         if (this.no_counters == false) {
                             this.blackout_counter++;
+                            if (this.shuckie_counters) { this.incrementEmulatorCounter("blackout_counter") }
                         }
                     }
                 });
@@ -6070,12 +6122,14 @@ const app = Vue.createApp({
                     else {
                         if (this.no_counters == false) {
                             this.playerResets++;
+                            if (this.shuckie_counters) { this.incrementEmulatorCounter("playerResets") }
                         }
                     }
                 }
                 if(this.game.callback2.blackout.includes(newProp.value) /*&& !this.game.callback2.reset.includes(newProp.value)*/) {
                     if (this.no_counters == false) {
                         this.blackout_counter++;
+                        if (this.shuckie_counters) { this.incrementEmulatorCounter("blackout_counter") }
                     }
                 }
             });
