@@ -233,6 +233,39 @@
                         </button>
                     </div>
                     <button v-show="!battle_testing_ui" class="buttonStyle buttonStyle_column3" @click="battle_testing_ui_toggle">Show optimization UI</button>
+                    <div v-show="!battle_testing_ui">
+                        <div>EVs:</div>
+                        <table>
+                            <tr>
+                                <td>HP:</td>
+                                <td>{{mapper.properties.player.team[0].evHp.value}}</td>
+                            </tr>
+                            <tr>
+                                <td>Atk:</td>
+                                <td>{{mapper.properties.player.team[0].evAttack.value}}</td>
+                            </tr>
+                            <tr>
+                                <td>Def:</td>
+                                <td>{{mapper.properties.player.team[0].evDefense.value}}</td>
+                            </tr>
+                            <tr>
+                                <td>Spe:</td>
+                                <td>{{mapper.properties.player.team[0].evSpeed.value}}</td>
+                            </tr>
+                            <tr>
+                                <td>SpA:</td>
+                                <td>{{mapper.properties.player.team[0].evSpecialAttack.value}}</td>
+                            </tr>
+                            <tr>
+                                <td>SpD:</td>
+                                <td>{{mapper.properties.player.team[0].evSpecialDefense.value}}</td>
+                            </tr>
+                            <tr>
+                                <td>Total:</td>
+                                <td>{{mapper.properties.player.team[0].evHp.value + mapper.properties.player.team[0].evAttack.value + mapper.properties.player.team[0].evDefense.value + mapper.properties.player.team[0].evSpeed.value + mapper.properties.player.team[0].evSpecialAttack.value + mapper.properties.player.team[0].evSpecialDefense.value}}</td>
+                            </tr>
+                        </table>
+                    </div>
                     <button v-show="battle_testing_ui" class="buttonStyle buttonStyle_column3" @click="battle_testing_ui_toggle">Close optimization UI</button>
                     <div v-show="!debugging && battle_testing_ui">
                         <div>Moveset:</div>

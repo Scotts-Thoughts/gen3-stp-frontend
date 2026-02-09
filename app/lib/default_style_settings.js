@@ -61,8 +61,10 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundYOffset": "65",
         "backgroundBrightness": "83",
         "hidden_power_type": "Electric",
-        "attempt_number": 2,
-        "finished_run_count": 2
+        "attempt_number": 13,
+        "finished_run_count": 3,
+        "splits_display": "Followup",
+        "hidden_power_index": "3"
     },
     "Emerald_Typhlosion": {
         "imageFlip": true,
@@ -77,10 +79,12 @@ const DEFAULT_STYLE_SETTINGS = {
         "pkmn_ability": "Blaze",
         "pkmnNature": "Quiet",
         "backgroundTexture": "Fire",
-        "hidden_power_type": "Electric",
-        "attempt_number": 2,
-        "finished_run_count": 1,
-        "imageScale": "0.96"
+        "hidden_power_type": "Grass",
+        "attempt_number": 4,
+        "finished_run_count": 5,
+        "imageScale": "0.96",
+        "hidden_power_index": "4",
+        "splits_display": "Followup"
     },
     "Emerald_Meganium": {
         "imageFlip": true,
@@ -97,9 +101,11 @@ const DEFAULT_STYLE_SETTINGS = {
         "pkmnNature": "Rash",
         "hidden_power_type": "Water",
         "hidden_power_index": "3",
-        "attempt_number": 2,
-        "finished_run_count": 1
-    }
+        "attempt_number": 8,
+        "finished_run_count": 2
+    },
+    "Emerald_Abra": {},
+    "Emerald_Taillow": {}
 };
 
 module.exports = { DEFAULT_STYLE_SETTINGS };
