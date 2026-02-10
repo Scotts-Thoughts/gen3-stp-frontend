@@ -80,8 +80,8 @@ const DEFAULT_STYLE_SETTINGS = {
         "pkmnNature": "Quiet",
         "backgroundTexture": "Fire",
         "hidden_power_type": "Grass",
-        "attempt_number": 4,
-        "finished_run_count": 5,
+        "attempt_number": 6,
+        "finished_run_count": 6,
         "imageScale": "0.96",
         "hidden_power_index": "4",
         "splits_display": "Followup"
@@ -101,11 +101,17 @@ const DEFAULT_STYLE_SETTINGS = {
         "pkmnNature": "Rash",
         "hidden_power_type": "Water",
         "hidden_power_index": "3",
-        "attempt_number": 8,
-        "finished_run_count": 2
+        "attempt_number": 9,
+        "finished_run_count": 3
     },
     "Emerald_Abra": {},
-    "Emerald_Taillow": {}
+    "Emerald_Taillow": {},
+    "Emerald_Zigzagoon": {
+        "pkmn_ability": "Pickup",
+        "pkmnNature": "Hardy",
+        "backgroundTexture": "Normal",
+        "overlay_color": "#a8a878"
+    }
 };
 
 module.exports = { DEFAULT_STYLE_SETTINGS };
