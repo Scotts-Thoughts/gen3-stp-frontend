@@ -111,6 +111,51 @@ const DEFAULT_STYLE_SETTINGS = {
         "pkmnNature": "Hardy",
         "backgroundTexture": "Normal",
         "overlay_color": "#a8a878"
+    },
+    "Emerald_Ampharos": {
+        "pkmn_ability": "Static",
+        "pkmnNature": "Naive",
+        "backgroundTexture": "Electric",
+        "overlay_color": "#f5cd55",
+        "imageFlip": true,
+        "imageYOffset": "62",
+        "imageXOffset": "13",
+        "backgroundScale": "177",
+        "backgroundBlur": "0",
+        "backgroundYOffset": "30",
+        "backgroundXOffset": "125",
+        "ui_saturation": "1.6",
+        "backgroundBrightness": "58",
+        "backgroundContrast": "149",
+        "backgroundHue": "41",
+        "hidden_power_type": "Ice",
+        "hidden_power_index": "3"
+    },
+    "Emerald_Raichu": {
+        "imageFlip": true,
+        "imageScale": "1.12",
+        "imageYOffset": "62",
+        "imageXOffset": "90",
+        "overlay_color": "#f8c165",
+        "ui_saturation": "1.5",
+        "backgroundScale": "200",
+        "backgroundBlur": "0",
+        "backgroundYOffset": "125",
+        "backgroundXOffset": "125",
+        "backgroundContrast": "179",
+        "backgroundBrightness": "48",
+        "pkmn_ability": "Static",
+        "pkmnNature": "Brave",
+        "hidden_power_type": "Ice",
+        "hidden_power_index": "3",
+        "attempt_number": 2,
+        "finished_run_count": 1
+    },
+    "Emerald_Pidgeot": {
+        "pkmn_ability": "Keen Eye",
+        "pkmnNature": "Hardy",
+        "backgroundTexture": "Normal",
+        "overlay_color": "#a8a878"
     }
 };
 

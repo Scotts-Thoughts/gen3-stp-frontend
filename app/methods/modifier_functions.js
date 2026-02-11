@@ -29,7 +29,7 @@ function abilityModifier(ability, attackingType, controller) {
         case "player": healthPercentage = this.s1.hp.value / this.s1.maxHp.value; break;
         case "opponent": healthPercentage = this.mapper.properties.battle.enemyPokemon.hp.value / this.mapper.properties.battle.enemyPokemon.maxHp.value; break;
     }
-    if (healthPercentage <= .3) {
+    if (healthPercentage <= 1/3) {
         if (ability == `Torrent` && attackingType == `Water`) {
             return 1.5
         }
