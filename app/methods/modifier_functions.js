@@ -1,6 +1,7 @@
 function determineSTAB(x) { //x = move1.value
-    var pkmnType1 = this.dexData[this.starterString].type_1
-    var pkmnType2 = this.dexData[this.starterString].type_2
+    var species = (this.evolution && this.selected_evolution_species) ? this.selected_evolution_species : this.starterString;
+    var pkmnType1 = this.dexData[species].type_1
+    var pkmnType2 = this.dexData[species].type_2
     if (this.g3stateVariable == `Battle`) {
         //suport transform or conversion
         var pkmnType1 = this.mapper.properties.battle.yourPokemon.type1.value

@@ -2497,22 +2497,24 @@ const app = Vue.createApp({
                     return false
         },
         getStarterType1() {
+            const species = (this.evolution && this.selected_evolution_species) ? this.selected_evolution_species : this.starterString;
             if (this.zigzagoon_check == true) {
-                var type = this.dexData[this.starterString].type_1
+                var type = this.dexData[species].type_1
             }
             if (this.pick == true)
-                var type = this.dexData[this.starterString].type_1
+                var type = this.dexData[species].type_1
                 if(this.dynamicTypeAvailable) {
                     type = this.mapper.properties.battle.yourPokemon.type1;
                 }
                 return `images/elements/types/${this.ui_type_icons_modifier}${type}.png`.toLowerCase();
         },
         getStarterType2() {
+            const species = (this.evolution && this.selected_evolution_species) ? this.selected_evolution_species : this.starterString;
             if (this.zigzagoon_check == true) {
-                var type = this.dexData[this.starterString].type_2
+                var type = this.dexData[species].type_2
             }
             if (this.pick == true)
-                var type = this.dexData[this.starterString].type_2
+                var type = this.dexData[species].type_2
                 if(this.dynamicTypeAvailable) {
                     type = this.mapper.properties.battle.yourPokemon.type2;
                 }

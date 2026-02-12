@@ -61,8 +61,8 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundYOffset": "65",
         "backgroundBrightness": "83",
         "hidden_power_type": "Electric",
-        "attempt_number": 13,
-        "finished_run_count": 3,
+        "attempt_number": 14,
+        "finished_run_count": 4,
         "splits_display": "Followup",
         "hidden_power_index": "3"
     },
@@ -80,8 +80,8 @@ const DEFAULT_STYLE_SETTINGS = {
         "pkmnNature": "Quiet",
         "backgroundTexture": "Fire",
         "hidden_power_type": "Grass",
-        "attempt_number": 6,
-        "finished_run_count": 6,
+        "attempt_number": 7,
+        "finished_run_count": 7,
         "imageScale": "0.96",
         "hidden_power_index": "4",
         "splits_display": "Followup"
@@ -101,8 +101,8 @@ const DEFAULT_STYLE_SETTINGS = {
         "pkmnNature": "Rash",
         "hidden_power_type": "Water",
         "hidden_power_index": "3",
-        "attempt_number": 9,
-        "finished_run_count": 3
+        "attempt_number": 10,
+        "finished_run_count": 4
     },
     "Emerald_Abra": {},
     "Emerald_Taillow": {},
@@ -114,7 +114,7 @@ const DEFAULT_STYLE_SETTINGS = {
     },
     "Emerald_Ampharos": {
         "pkmn_ability": "Static",
-        "pkmnNature": "Naive",
+        "pkmnNature": "Rash",
         "backgroundTexture": "Electric",
         "overlay_color": "#f5cd55",
         "imageFlip": true,
@@ -129,7 +129,9 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundContrast": "149",
         "backgroundHue": "41",
         "hidden_power_type": "Ice",
-        "hidden_power_index": "3"
+        "hidden_power_index": "3",
+        "attempt_number": 1,
+        "finished_run_count": 1
     },
     "Emerald_Raichu": {
         "imageFlip": true,
@@ -156,6 +158,112 @@ const DEFAULT_STYLE_SETTINGS = {
         "pkmnNature": "Hardy",
         "backgroundTexture": "Normal",
         "overlay_color": "#a8a878"
+    },
+    "Emerald_NidoranF": {},
+    "Emerald_NidoranM": {
+        "pkmn_ability": "Poison Point",
+        "pkmnNature": "Hardy",
+        "backgroundTexture": "Poison",
+        "overlay_color": "#a040a0",
+        "evolution": true,
+        "selected_evolution_species": "NidoranM"
+    },
+    "Emerald_32": {
+        "selected_evolution_species": "NidoranM"
+    },
+    "FireRed and LeafGreen_32": {
+        "selected_evolution_species": "NidoranM"
+    },
+    "FireRed and LeafGreen_NidoranM": {
+        "selected_evolution_species": "NidoranM"
+    },
+    "FireRed and LeafGreen_Nidoking-line-NidoranM": {
+        "imageFlip": true,
+        "imageScale": "0.43",
+        "imageYOffset": "-79",
+        "imageXOffset": "34",
+        "overlay_color": "#a0709d",
+        "ui_saturation": "1.6",
+        "backgroundScale": "107",
+        "backgroundContrast": "129",
+        "backgroundBrightness": "51",
+        "imageSat": 100,
+        "imageRotation": 0,
+        "backgroundTexture": "Poison",
+        "backgroundBlur": 0,
+        "backgroundHue": 0,
+        "backgroundUrl": "",
+        "backgroundFlip": false,
+        "use_custom_background": false,
+        "backgroundXOffset": 0,
+        "backgroundYOffset": 0,
+        "backgroundSaturation": 100,
+        "attempt_number": 3
+    },
+    "FireRed and LeafGreen_NidoranM-line-Nidorino": {
+        "overlay_color": "#a0709d",
+        "ui_saturation": "1.6",
+        "imageXOffset": "48",
+        "imageYOffset": "-16",
+        "imageScale": "0.65",
+        "imageFlip": true,
+        "imageSat": 100,
+        "imageRotation": "12",
+        "backgroundTexture": "Poison",
+        "backgroundBlur": 0,
+        "backgroundHue": 0,
+        "backgroundScale": "107",
+        "backgroundUrl": "",
+        "backgroundFlip": false,
+        "use_custom_background": false,
+        "backgroundXOffset": 0,
+        "backgroundYOffset": 0,
+        "backgroundBrightness": "51",
+        "backgroundContrast": "129",
+        "backgroundSaturation": 100
+    },
+    "FireRed and LeafGreen_Nidoking-line-Nidoking": {
+        "overlay_color": "#a0709d",
+        "ui_saturation": "1.6",
+        "imageXOffset": "20",
+        "imageYOffset": "20",
+        "imageScale": "1.04",
+        "imageFlip": true,
+        "imageSat": 100,
+        "imageRotation": 0,
+        "backgroundTexture": "Ground",
+        "backgroundBlur": "5",
+        "backgroundHue": 0,
+        "backgroundScale": "133",
+        "backgroundUrl": "",
+        "backgroundFlip": false,
+        "use_custom_background": false,
+        "backgroundXOffset": 0,
+        "backgroundYOffset": 0,
+        "backgroundBrightness": "37",
+        "backgroundContrast": "129",
+        "backgroundSaturation": 100,
+        "attempt_number": 3,
+        "finished_run_count": 1
+    },
+    "FireRed and LeafGreen_Squirtle": {
+        "pkmn_ability": "Torrent",
+        "pkmnNature": "Hardy",
+        "backgroundTexture": "Water",
+        "overlay_color": "#6890f0"
+    },
+    "FireRed and LeafGreen_NidoranF": {
+        "pkmn_ability": "Poison Point",
+        "pkmnNature": "Hardy",
+        "backgroundTexture": "Poison",
+        "overlay_color": "#a040a0"
+    },
+    "FireRed and LeafGreen_Nidorina": {},
+    "FireRed and LeafGreen_Nidorino": {
+        "selected_evolution_species": "Nidorino"
+    },
+    "FireRed and LeafGreen_33": {
+        "selected_evolution_species": "Nidoking"
     }
 };
 
