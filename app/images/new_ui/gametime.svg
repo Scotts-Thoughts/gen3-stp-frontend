@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Individual_Areas" data-name="Individual Areas" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1920 1080">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #4d4d4d;
+      }
+
+      .cls-2 {
+        opacity: .95;
+      }
+
+      .cls-3 {
+        fill: gray;
+      }
+
+      .cls-4 {
+        fill: url(#eCrit);
+      }
+    </style>
+    <linearGradient id="eCrit" x1="86" y1="740.5" x2="277" y2="740.5" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#999"/>
+      <stop offset=".04384" stop-color="#a0a0a0"/>
+      <stop offset=".21261" stop-color="#b8b8b8"/>
+      <stop offset=".369" stop-color="#c6c6c6"/>
+      <stop offset=".5" stop-color="#ccc"/>
+      <stop offset=".62975" stop-color="#c6c6c6"/>
+      <stop offset=".79195" stop-color="#b7b7b7"/>
+      <stop offset=".97077" stop-color="#9d9d9d"/>
+      <stop offset="1" stop-color="#999"/>
+    </linearGradient>
+  </defs>
+  <g id="Export_Layer" data-name="Export Layer">
+    <g id="Gametime" class="cls-2">
+      <rect class="cls-4" x="86" y="714" width="191" height="53" rx="6" ry="6"/>
+      <path class="cls-3" d="M271,716c2.2056,0,4,1.79437,4,4v41c0,2.20563-1.7944,4-4,4H92c-2.2056,0-4-1.79437-4-4v-41c0-2.20563,1.7944-4,4-4h179M271,712H92c-4.41827,0-8,3.58173-8,8v41c0,4.41827,3.58173,8,8,8h179c4.41827,0,8-3.58173,8-8v-41c0-4.41827-3.58173-8-8-8h0Z"/>
+      <path class="cls-1" d="M271,714c3.30841,0,6,2.69159,6,6v41c0,3.30841-2.69159,6-6,6H92c-3.30841,0-6-2.69159-6-6v-41c0-3.30841,2.69159-6,6-6h179M271,712H92c-4.4183,0-8,3.58173-8,8v41c0,4.41827,3.5817,8,8,8h179c4.41827,0,8-3.58173,8-8v-41c0-4.41827-3.58173-8-8-8h0Z"/>
+      <path d="M271,712c4.41827,0,8,3.58173,8,8v41c0,4.41827-3.58173,8-8,8H92c-4.41829,0-8-3.58173-8-8v-41c0-4.41827,3.58171-8,8-8h179M271,711H92c-4.96261,0-9,4.03741-9,9v41c0,4.96259,4.03739,9,9,9h179c4.96262,0,9-4.03741,9-9v-41c0-4.96259-4.03738-9-9-9h0Z"/>
+    </g>
+  </g>
+</svg>

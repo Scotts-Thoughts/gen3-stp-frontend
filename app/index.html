@@ -124,6 +124,18 @@
                         <div id="blackout_counter" class="faults_value timer_2_blackout_value">{{blackout_counter}}</div>
                     </div>
                 </div>
+
+                <!-- Gametime -->
+                <transition name="fadeBattle">
+                    <div v-show="run_complete" style="position: absolute;">
+                        <div class="colored-image ds" :style="`filter: saturate(${ui_saturation}) drop-shadow(0px 1px 1px)`" style="--url: url(images/new_ui/gametime.svg)"></div>
+                        <div class="gametimeLabel">gametime</div>
+                        <div id="gametime_display" style="left: 84px; top: 714px; width: 196px; height: 60px;font-size: 38px; border: 1px solid #ff000000;" class="resets">
+                            <div>{{simple_data[7]}}</div>
+                        </div>
+                    </div>
+                </transition>
+
                 <img class="canvas" :src="`images/new_ui/badges/${this.game.region.toLowerCase()}/progress.png`" />
                 <!-- BADGES -->
                 <div>
@@ -214,7 +226,7 @@
                     <br><br>
                     
                     <!-- Style Settings Management -->
-                    <div v-if="show_advanced_settings && debugging == true" style="margin-bottom: 10px; padding: 8px; border: 1px solid #444; border-radius: 4px;">
+                    <!-- <div v-if="show_advanced_settings && debugging == true" style="margin-bottom: 10px; padding: 8px; border: 1px solid #444; border-radius: 4px;">
                         <div style="margin-bottom: 5px; font-weight: bold;">Style Settings</div>
                         <div v-if="isInDevMode" style="color: #4CAF50; font-size: 11px; margin-bottom: 5px;">
                             Development Mode - Changes save to defaults
@@ -231,7 +243,7 @@
                         <button class="buttonStyle" @click="resetAllStyleSettingsToDefaults()" style="font-size: 11px; color: #f44;">
                             Reset ALL to Defaults
                         </button>
-                    </div>
+                    </div> -->
                     <button v-show="!battle_testing_ui" class="buttonStyle buttonStyle_column3" @click="battle_testing_ui_toggle">Show optimization UI</button>
                     <div v-show="!battle_testing_ui">
                         <div>EVs:</div>
@@ -535,10 +547,12 @@
             </div>
 
 <!------ TYPE ICONS --------------------------------------------------------------------------------------------------------------------------->
-            <div class="typeIconContainer">
-                <img v-show="getStarterType1 == getStarterType2" id="monoType" class="types" :src="getStarterType1"/>
-                <img v-show="getStarterType1 != getStarterType2" id="type1" class="types" :src="getStarterType1" />
-                <img v-show="getStarterType1 != getStarterType2" id="type2" class="types" :src="getStarterType2" />
+            <div v-if="!run_complete">
+                <div class="typeIconContainer">
+                    <img v-show="getStarterType1 == getStarterType2" id="monoType" class="types" :src="getStarterType1"/>
+                    <img v-show="getStarterType1 != getStarterType2" id="type1" class="types" :src="getStarterType1" />
+                    <img v-show="getStarterType1 != getStarterType2" id="type2" class="types" :src="getStarterType2" />
+                </div>
             </div>
 
 <!--------- STATS ---------------------------------------------------------------------------------------------------------------------------->

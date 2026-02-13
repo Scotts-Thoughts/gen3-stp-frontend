@@ -62,7 +62,7 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundBrightness": "83",
         "hidden_power_type": "Electric",
         "attempt_number": 22,
-        "finished_run_count": 7,
+        "finished_run_count": 9,
         "splits_display": "Followup",
         "hidden_power_index": "3"
     },

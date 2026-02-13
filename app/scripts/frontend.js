@@ -742,6 +742,7 @@ const app = Vue.createApp({
             scott_mode   : true,
             gameVariables: null,
             debugging    : false,
+            run_complete : MyStorage['run_complete'] ?? false,
 
             emulatorStatsInterval: null,
             emulatorStats        : null,
@@ -1201,6 +1202,7 @@ const app = Vue.createApp({
                 "shuckie_timer",
                 "shuckie_counters",
                 "banned_hidden_power",
+                "run_complete",
             ],
 
             stats_toggle_settings: [
@@ -3853,6 +3855,7 @@ const app = Vue.createApp({
             // this.current_splits = await this.load_temp_splits()
             this.compared_splits = []
             this.current_splits  = []
+            this.run_complete = false
 
             if (this.shuckie_timer == false) {
                 this.timer.setTimer(this.timer_startTimeOffset);
@@ -6725,6 +6728,7 @@ const app = Vue.createApp({
                     if (!this.testRun && !this.no_counters) {
                         this.finished_run_count++
                     };
+                    this.run_complete = true;
                     if (this.automatic_post_battle_splits == true) {
                         // this.battle_summary_header = `${this.capitalization_format(trainer)} Summary`
                         this.right_panel = "Splits"

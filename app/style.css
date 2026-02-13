@@ -471,6 +471,14 @@ body {
     font-family: osb;
     top: 832px;
 }
+.gametimeLabel {
+    position: absolute;
+    top: 712px;
+    left: 84px;
+    width: 196px;
+    text-align: center;
+    border: 1px solid #ff000000;
+}
 .labelAbility {
     left: 369px;
 }
