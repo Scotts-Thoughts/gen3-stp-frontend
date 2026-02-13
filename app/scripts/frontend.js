@@ -774,6 +774,8 @@ const app = Vue.createApp({
             show_evolved_base_stats      : false, // Flag to show base stats of evolved species until next battle
             evolved_species_for_stats    : null,  // Species to show base stats for
             is_loading_evolution_style   : false, // Flag to prevent watchers from saving during style loading
+            wallyTutorialBuffer          : null,  // Buffered overlay values for Wally's Zigzagoon tutorial (Emerald)
+            wallyTutorialActive          : false, // True when displaying buffered values during Wally's tutorial
             frame                        : false,
             catch_rate            : MyStorage['catch_rate'] ?? false,
             deoxys_form           : MyStorage['deoxys_form'] ?? "Speed",
@@ -2142,6 +2144,9 @@ const app = Vue.createApp({
         stats_header() {
             const stat_type = this.stats
             const state     = this.g3stateVariable
+            const level = (this.wallyTutorialActive && this.wallyTutorialBuffer)
+                ? this.wallyTutorialBuffer.level
+                : this.mapper.properties.player.team[0].level.value
             if (stat_type == 'Base Stats Average') {
                 return 'Averages'
             }
@@ -2158,7 +2163,7 @@ const app = Vue.createApp({
                 case "Base Stats": return `Base Stats`
                 case "IVs":        return `IVs`
                 case "EVs": {
-                    return `EVs (Lv:${this.mapper.properties.player.team[0].level.value})`
+                    return `EVs (Lv:${level})`
                 }
                 case "Detailed EVs": {
                     return `Detailed EVs`
@@ -2167,9 +2172,9 @@ const app = Vue.createApp({
                     if (state == 'Base Stats' || this.mapper.properties.player.team[0].species.value == null) {
                         return `Base Stats`
                     }
-                    return `Level ${this.mapper.properties.player.team[0].level.value}`
+                    return `Level ${level}`
                 }
-                case "Badge Boosts": return `Level ${this.mapper.properties.player.team[0].level.value}`
+                case "Badge Boosts": return `Level ${level}`
             }
         },
         //boolean to check for the tutorial catching battle with wally
@@ -2196,6 +2201,11 @@ const app = Vue.createApp({
             }
         },
         pkmnAbility() {
+            // Wally's Zigzagoon tutorial - return buffered ability
+            if (this.wallyTutorialActive && this.wallyTutorialBuffer?.ability) {
+                return this.wallyTutorialBuffer.ability;
+            }
+
             // if (this.pkmn_ability == false) {
             //     return this.dexData[this.starterString]["abilities"][0]
             // }
@@ -2267,6 +2277,13 @@ const app = Vue.createApp({
                     }
                 };
             }
+            if (this.wallyTutorialActive) {
+                var data = this.dexData[this.starterString]
+                return {
+                    species: { value: data["name"] },
+                    ...data
+                }
+            }
             if (this.g3stateVariable == `Battle`) {
                 return this.mapper?.properties?.battle?.yourPokemon
             }
@@ -2337,6 +2354,7 @@ const app = Vue.createApp({
         },
         typeHeaderColor() {
             const starter_type2 = this.dexData[this.starterString]?.type_2
+            if (this.wallyTutorialActive) { return starter_type2 }
             if (this.mapper.properties.battle.type.old_man_tutorial.value == true) { return starter_type2 }
             if (this.zigzagoon_check == `Base Stats`) { return starter_type2}
             if (this.g3stateVariable == `Battle`) { return this.mapper.properties.battle.yourPokemon.type2.value }
@@ -2498,8 +2516,9 @@ const app = Vue.createApp({
         },
         getStarterType1() {
             const species = (this.evolution && this.selected_evolution_species) ? this.selected_evolution_species : this.starterString;
-            if (this.zigzagoon_check == true) {
+            if (this.wallyTutorialActive || this.zigzagoon_check == true) {
                 var type = this.dexData[species].type_1
+                return `images/elements/types/${this.ui_type_icons_modifier}${type}.png`.toLowerCase();
             }
             if (this.pick == true)
                 var type = this.dexData[species].type_1
@@ -2510,8 +2529,9 @@ const app = Vue.createApp({
         },
         getStarterType2() {
             const species = (this.evolution && this.selected_evolution_species) ? this.selected_evolution_species : this.starterString;
-            if (this.zigzagoon_check == true) {
+            if (this.wallyTutorialActive || this.zigzagoon_check == true) {
                 var type = this.dexData[species].type_2
+                return `images/elements/types/${this.ui_type_icons_modifier}${type}.png`.toLowerCase();
             }
             if (this.pick == true)
                 var type = this.dexData[species].type_2
@@ -3288,11 +3308,21 @@ const app = Vue.createApp({
             if (state != `Battle`) { return }
             let default_opacity = .63
             let faded_opacity = .1
+
             let mod_atk = this.mapper.properties.battle.yourPokemon.modStageAttack.value != '0'         ? faded_opacity : default_opacity
             let mod_def = this.mapper.properties.battle.yourPokemon.modStageDefense.value != '0'        ? faded_opacity : default_opacity
             let mod_spa = this.mapper.properties.battle.yourPokemon.modStageSpecialAttack.value != '0'  ? faded_opacity : default_opacity
             let mod_spd = this.mapper.properties.battle.yourPokemon.modStageSpecialDefense.value != '0' ? faded_opacity : default_opacity
             let mod_spe = this.mapper.properties.battle.yourPokemon.modStageSpeed.value != '0'          ? faded_opacity : default_opacity
+
+            if (this.wallyTutorialActive) {
+                mod_atk = default_opacity
+                mod_def = default_opacity
+                mod_spa = default_opacity
+                mod_spd = default_opacity
+                mod_spe = default_opacity
+            }
+
             let object = {
                 "Hp":              default_opacity,
                 "Attack":          mod_atk,
@@ -3304,6 +3334,11 @@ const app = Vue.createApp({
             return object
         },
         get_stat(stat_name) {
+            // Wally's Zigzagoon tutorial - return buffered stats
+            if (this.wallyTutorialActive && this.wallyTutorialBuffer?.stats) {
+                return this.wallyTutorialBuffer.stats[stat_name]
+            }
+
             const state = this.g3stateVariable
             const level5_exp_points = [
                 237, 100, 125, 135, 156, 65
@@ -3827,6 +3862,14 @@ const app = Vue.createApp({
             this.finished_logs = false
             this.blackout_counter = 0
             this.playerId = 0
+            this.prevExpPoints = 0
+            this.prevSpecies = undefined
+
+            // Reset exp bar to 0%
+            if (this.$refs.expBar) {
+                this.$refs.expBar.style.transition = 'none';
+                this.$refs.expBar.style.width = '0%';
+            }
 
             this.update_rom_starter_and_intro_mon()
 
@@ -5876,6 +5919,14 @@ const app = Vue.createApp({
             // Normal species change handling (not an evolution)
             this.last_known_species = newProp.value;
             this.last_known_personality_value = currentPersonalityValue;
+
+            // Wally's Zigzagoon tutorial (Emerald only) - ignore the species change to Zigzagoon
+            const wallyTutorialMaps = ['PETALBURG_CITY', 'PETALBURG_CITY - GYM', 'ROUTE 102'];
+            if (this.gameSelection == 'Emerald' && newProp.value == 'Zigzagoon' && this.starterString != 'Zigzagoon'
+                && wallyTutorialMaps.includes(this.mapper.properties.overworld.mapName.value) && this.wallyTutorialBuffer != null) {
+                this.wallyTutorialActive = true;
+                return; // Don't update starterString
+            }
             
             if ((state == "Battle" || state == "From Battle") && this.mapper.properties.battle.yourPokemon.hp.value != 0) {
                 this.starterString = newProp.value
@@ -6468,6 +6519,46 @@ const app = Vue.createApp({
         });
         this.mapper.properties.overworld.mapName.change(async (newProp) => {
             this.freezeEncounters();
+
+            // Wally's Zigzagoon tutorial handling (Emerald only)
+            if (this.gameSelection == 'Emerald' && newProp.value == 'PETALBURG_CITY - GYM') {
+                if (this.wallyTutorialActive) {
+                    // Returning from Wally's tutorial - stop displaying buffered values
+                    this.wallyTutorialActive = false;
+                    this.wallyTutorialBuffer = null;
+                } else {
+                    // Entering gym - buffer current overlay display values
+                    const team0 = this.mapper.properties.player.team[0];
+                    this.wallyTutorialBuffer = {
+                        level: team0.level.value,
+                        expBarWidth: this.$refs.expBar ? this.$refs.expBar.style.width : '0%',
+                        stats: {
+                            Hp:              this.get_stat('Hp'),
+                            Attack:          this.get_stat('Attack'),
+                            Defense:         this.get_stat('Defense'),
+                            'Special Attack':  this.get_stat('Special Attack'),
+                            'Special Defense': this.get_stat('Special Defense'),
+                            Speed:           this.get_stat('Speed'),
+                        },
+                        ability: this.pkmn_ability,
+                        friendship: team0.friendship?.value ?? team0.friendship,
+                        expPercent: this.decimalToPercentage(this.calcExpStats(this.pkmnGrowthRate, team0.expPoints.value).percent),
+                        moves: ['move1', 'move2', 'move3', 'move4'].map(x => {
+                            const moveValue = team0[x]?.value;
+                            if (!moveValue) return null;
+                            return {
+                                slot: x,
+                                name: this.move_name(this.camelCase(moveValue)),
+                                power: this.typeEffectiveness(moveValue),
+                                accuracy: this.moveAccuracyDynamic(moveValue),
+                                pp: team0[x + 'pp']?.value ?? team0[x + 'pp'],
+                                icon: this.moveTypeIcon(moveValue),
+                            };
+                        }),
+                    };
+                }
+            }
+
             // Automatic EV display based on location has been disabled
             // if (this.automatic_evs == true) { 
             //     const locations = [
@@ -6602,7 +6693,15 @@ const app = Vue.createApp({
                 }
                 if(this.game.splits.includes(trainer) && !this.game.finalBattle.includes(trainer)) {
                     simpleSplit();
-                    if (this.automatic_post_battle_splits == true) {
+                    if (this.automatic_post_battle_splits == true 
+                        && trainer != "RIVAL_WALLY_VR_1"
+                        && trainer != "RIVAL_BRENDAN_ROUTE_103_MUDKIP"
+                        && trainer != "RIVAL_MAY_ROUTE_103_MUDKIP"
+                        && trainer != "RIVAL_BRENDAN_ROUTE_103_TREECKO"
+                        && trainer != "RIVAL_MAY_ROUTE_103_TREECKO"
+                        && trainer != "RIVAL_BRENDAN_ROUTE_103_TORCHIC"
+                        && trainer != "RIVAL_MAY_ROUTE_103_TORCHIC"
+                    ) {
                         // this.battle_summary_header = `${this.capitalization_format(trainer)} Summary`
                         this.right_panel = "Splits"
                         // this.automatic_splits = true
@@ -6710,6 +6809,9 @@ const app = Vue.createApp({
         this.prevSpecies = species
 
         this.mapper.properties.player.team[0].expPoints.change(async (newProp, oldProp) => {
+            // Wally's Zigzagoon tutorial - don't update exp bar
+            if (this.wallyTutorialActive) { return; }
+
             if (this.expBarAnimation == true) {
                 if(!this.mapper.properties.player.team[0].species){
                     return;
@@ -6812,8 +6914,101 @@ const app = Vue.createApp({
             this.timer.pauseUnpauseTime();
         });
 
+        // ── External Control Server ──
+        // Allows the Recording Queuer (or other tools) to control this overlay remotely.
+        const http = require('http');
+        const url = require('url');
+        const controlServer = http.createServer((req, res) => {
+            const parsedUrl = url.parse(req.url, true);
+            const pathname = parsedUrl.pathname;
+            const query = parsedUrl.query;
+            
+            res.setHeader('Content-Type', 'application/json');
+            res.setHeader('Access-Control-Allow-Origin', '*');
+
+            try {
+                if (pathname === '/set-starter') {
+                    // Set the Solo Pokemon dropdown
+                    // Usage: /set-starter?species=Mudkip
+                    if (query.species) {
+                        this.starterString = query.species;
+                        res.end(JSON.stringify({ ok: true, starterString: this.starterString }));
+                    } else {
+                        res.statusCode = 400;
+                        res.end(JSON.stringify({ ok: false, error: 'Missing species parameter' }));
+                    }
+                }
+                else if (pathname === '/set-evolution') {
+                    // Enable/disable evolution mode and set the evolution style family
+                    // Usage: /set-evolution?enabled=true&species=Mudkip
+                    const enabled = query.enabled === 'true';
+                    this.evolution = enabled;
+                    if (enabled && query.species) {
+                        this.selected_evolution_species = query.species;
+                    }
+                    res.end(JSON.stringify({ ok: true, evolution: this.evolution, selected_evolution_species: this.selected_evolution_species }));
+                }
+                else if (pathname === '/refresh') {
+                    // Reload overlay styles for the current starter
+                    // Usage: /refresh
+                    this.load_pokemon_sprite_settings(this.starterString);
+                    res.end(JSON.stringify({ ok: true }));
+                }
+                else if (pathname === '/new-run') {
+                    // Trigger a new run (same as pressing the New Run button)
+                    // Usage: /new-run
+                    this.newRun();
+                    res.end(JSON.stringify({ ok: true }));
+                }
+                else if (pathname === '/set-right-panel') {
+                    // Set the right panel display
+                    // Usage: /set-right-panel?panel=Battle Graphic
+                    if (query.panel) {
+                        this.right_panel = query.panel;
+                        res.end(JSON.stringify({ ok: true, right_panel: this.right_panel }));
+                    } else {
+                        res.statusCode = 400;
+                        res.end(JSON.stringify({ ok: false, error: 'Missing panel parameter' }));
+                    }
+                }
+                else if (pathname === '/reload') {
+                    // Trigger a full page reload (like Ctrl+Shift+R)
+                    // Usage: /reload
+                    res.end(JSON.stringify({ ok: true, message: 'Reloading overlay...' }));
+                    setTimeout(() => {
+                        location.reload(true);
+                    }, 200);
+                }
+                else if (pathname === '/status') {
+                    // Get current overlay state
+                    // Usage: /status
+                    res.end(JSON.stringify({
+                        ok: true,
+                        ready: this.ready,
+                        starterString: this.starterString,
+                        evolution: this.evolution,
+                        evolution_splits_label: this.evolution_splits_label,
+                        selected_evolution_species: this.selected_evolution_species,
+                        gameSelection: this.gameSelection,
+                        right_panel: this.right_panel,
+                    }));
+                }
+                else {
+                    res.statusCode = 404;
+                    res.end(JSON.stringify({ ok: false, error: 'Unknown endpoint' }));
+                }
+            } catch (err) {
+                res.statusCode = 500;
+                res.end(JSON.stringify({ ok: false, error: err.message }));
+            }
+        });
+        controlServer.listen(30159, '127.0.0.1', () => {
+            console.log('Overlay control server listening on http://127.0.0.1:30159');
+        });
+
         // Cleanup on page reload/unload to prevent emulator crashes
         window.addEventListener('beforeunload', async () => {
+            controlServer.close();
             // Cleanup RetroArchHook UDP socket
             if (retro) {
                 retro.cleanup();

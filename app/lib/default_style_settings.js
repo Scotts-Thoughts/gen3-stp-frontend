@@ -61,8 +61,8 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundYOffset": "65",
         "backgroundBrightness": "83",
         "hidden_power_type": "Electric",
-        "attempt_number": 14,
-        "finished_run_count": 4,
+        "attempt_number": 22,
+        "finished_run_count": 7,
         "splits_display": "Followup",
         "hidden_power_index": "3"
     },
@@ -80,8 +80,8 @@ const DEFAULT_STYLE_SETTINGS = {
         "pkmnNature": "Quiet",
         "backgroundTexture": "Fire",
         "hidden_power_type": "Grass",
-        "attempt_number": 7,
-        "finished_run_count": 7,
+        "attempt_number": 12,
+        "finished_run_count": 11,
         "imageScale": "0.96",
         "hidden_power_index": "4",
         "splits_display": "Followup"
@@ -101,8 +101,8 @@ const DEFAULT_STYLE_SETTINGS = {
         "pkmnNature": "Rash",
         "hidden_power_type": "Water",
         "hidden_power_index": "3",
-        "attempt_number": 10,
-        "finished_run_count": 4
+        "attempt_number": 12,
+        "finished_run_count": 5
     },
     "Emerald_Abra": {},
     "Emerald_Taillow": {},
@@ -130,8 +130,8 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundHue": "41",
         "hidden_power_type": "Ice",
         "hidden_power_index": "3",
-        "attempt_number": 1,
-        "finished_run_count": 1
+        "attempt_number": 5,
+        "finished_run_count": 3
     },
     "Emerald_Raichu": {
         "imageFlip": true,
@@ -150,8 +150,8 @@ const DEFAULT_STYLE_SETTINGS = {
         "pkmnNature": "Brave",
         "hidden_power_type": "Ice",
         "hidden_power_index": "3",
-        "attempt_number": 2,
-        "finished_run_count": 1
+        "attempt_number": 5,
+        "finished_run_count": 4
     },
     "Emerald_Pidgeot": {
         "pkmn_ability": "Keen Eye",
@@ -263,7 +263,7 @@ const DEFAULT_STYLE_SETTINGS = {
         "selected_evolution_species": "Nidorino"
     },
     "FireRed and LeafGreen_33": {
-        "selected_evolution_species": "Nidoking"
+        "selected_evolution_species": "Nidorino"
     }
 };
 

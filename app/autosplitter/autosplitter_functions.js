@@ -244,9 +244,84 @@ function autosplitter_process(split_name = null) {
                 blackouts, this.attempt_number, failures, rivalTeam
             ]
         }
+        else {
+            full_data = [
+                date_string, time_string, player_name, pokemon, trainer_name, 
+                trainer_id, location, total_pokemon, real_time_total, 
+                shuckie_time_hhmmss, real_time_file_label, resets, blackouts, failures, 
+                level, game_time, battle_duration, move1, move2, move3, move4, 
+                saves, steps, bonks, trainerBattles, wildBattles, battleTurns, 
+                playerTurns, enemyTurns, itemsInBag, money, rivalTeam,
+                statusCondition, type1, type2, experience,
+                runIdentifier, this.starter, trainerName,
+                startTime, realTime, gameTime, level, this.playerResets,
+                RTHours, RTMinutes, RTSeconds, RTMilliseconds,
+                move1, move2, move3, move4, move1pp, move2pp, move3pp, move4pp, move1ppUp, move2ppUp, move3ppUp, move4ppUp,
+                hp, maxHp, atk, def, spA, spD, spe,
+                statExp_hp, statExp_atk, statExp_def, statExp_spA, statExp_spD, statExp_spe,
+                dvAttack, dvDefense, dvSpeed, dvSpecial,
+                mod_atk, mod_def, mod_spA, mod_spD, mod_spe, mod_acc, mod_eva,
+                battle_atk, battle_def, battle_spA, battle_spD, battle_spe,
+                patch_frameCount, patch_oWFrameCount, patch_battleFrameCount, patch_menuFrameCount, patch_introsFrameCount,
+                patch_saveCount, patch_reloadCount, patch_clockResetCount,
+                patch_stepsCount, patch_stepsCountWalk, patch_stepsCountBike, patch_stepsCountSurf, patch_bonks,
+                patch_battles, patch_trainerBattles, patch_wildBattles, patch_battlesFled, patch_failedRuns,
+                patch_totalDamageDealt, patch_actualDamageDealt, patch_totalDamageTaken, patch_actualDamageTaken,
+                patch_ownMovesHit, patch_ownMovesMissed, patch_enemyMovesHit, patch_enemyMovesMissed, 
+                patch_ownMovesSE, patch_ownMovesNVE, patch_enemyMovesSE, patch_enemyMovesNVE, 
+                patch_criticalsDealt, patch_oHKOsDealt, patch_criticalsTaken, patch_oHKOsTaken,
+                patch_wasConfused, patch_enemyBecameConfused, patch_wasParalyzed, patch_enemyWasParalyzed, 
+                patch_wasBurned, patch_enemyWasBurned, patch_wasFrozen, patch_enemyWasFrozen,
+                patch_wasPoisoned, patch_enemyWasPoisoned, patch_wasPoisonedBadly, patch_enemyWasPoisonedBadly,
+                patch_fellAsleep, patch_enemyFellAsleep, patch_playerTurnsConfused, patch_playerTurnsConfusedHitSelf, 
+                patch_playerTurnsParalyzed, patch_playerTurnsParalyzedFully, patch_enemyTurnsConfused, patch_enemyTurnsConfusedHitSelf, 
+                patch_enemyTurnsParalyzed, patch_enemyTurnsParalyzedFully, patch_PlayerTurnsAsleep, patch_EnemyTurnsAsleep,
+                patch_playerHpHealed, patch_enemyHpHealed, 
+                patch_playerPokemonFainted, patch_enemyPokemonFainted, patch_experienceGained, patch_switchout,
+                patch_moneyMade, patch_moneySpent, patch_moneyLost,
+                patch_itemsPickedUp, patch_itemsBought, patch_itemsSold,
+                patch_ballsThrown, patch_pokemonCaughtInBalls,
+                patch_movesLearnt,
+                //new properties
+                blackouts, this.attempt_number, failures, rivalTeam
+            ]
+        }
 
         let deprecated_data = []
-        if (this.scott_mode == true) {
+        if (this.scott_mode == true && this.shuckie_timer == true) {
+            deprecated_data = [
+                runIdentifier, this.starterString, trainerName,
+                startTime, shuckie_time_hhmmss, gameTime, level, this.playerResets,
+                RTHours, RTMinutes, RTSeconds, RTMilliseconds,
+                move1, move2, move3, move4,
+                atk, def, spA, spD, spe,
+                mod_atk, mod_def, mod_spA, mod_spD, mod_spe, mod_acc, mod_eva,
+                battle_atk, battle_def, battle_spA, battle_spD, battle_spe,
+                patch_frameCount, patch_oWFrameCount, patch_battleFrameCount, patch_menuFrameCount, patch_introsFrameCount,
+                patch_saveCount, patch_reloadCount, patch_clockResetCount,
+                patch_stepsCount, patch_stepsCountWalk, patch_stepsCountBike, patch_stepsCountSurf, patch_bonks,
+                patch_battles, patch_trainerBattles, patch_wildBattles, patch_battlesFled, patch_failedRuns,
+                patch_totalDamageDealt, patch_actualDamageDealt, patch_totalDamageTaken, patch_actualDamageTaken,
+                patch_ownMovesHit, patch_ownMovesMissed, patch_enemyMovesHit, patch_enemyMovesMissed, 
+                patch_ownMovesSE, patch_ownMovesNVE, patch_enemyMovesSE, patch_enemyMovesNVE, 
+                patch_criticalsDealt, patch_oHKOsDealt, patch_criticalsTaken, patch_oHKOsTaken,
+                patch_wasConfused, patch_enemyBecameConfused, patch_wasParalyzed, patch_enemyWasParalyzed, 
+                patch_wasBurned, patch_enemyWasBurned, patch_wasFrozen, patch_enemyWasFrozen,
+                patch_wasPoisoned, patch_enemyWasPoisoned, patch_wasPoisonedBadly, patch_enemyWasPoisonedBadly,
+                patch_fellAsleep, patch_enemyFellAsleep, patch_playerTurnsConfused, patch_playerTurnsConfusedHitSelf, 
+                patch_playerTurnsParalyzed, patch_playerTurnsParalyzedFully, patch_enemyTurnsConfused, patch_enemyTurnsConfusedHitSelf, 
+                patch_enemyTurnsParalyzed, patch_enemyTurnsParalyzedFully,
+                patch_playerHpHealed, patch_enemyHpHealed, 
+                patch_playerPokemonFainted, patch_enemyPokemonFainted, patch_experienceGained, patch_switchout,
+                patch_moneyMade, patch_moneySpent, patch_moneyLost,
+                patch_itemsPickedUp, patch_itemsBought, patch_itemsSold,
+                patch_ballsThrown, patch_pokemonCaughtInBalls,
+                patch_movesLearnt,
+                //new properties
+                blackouts, this.attempt_number, failures, rivalTeam
+            ]
+        }
+        else {
             deprecated_data = [
                 runIdentifier, this.starterString, trainerName,
                 startTime, realTime, gameTime, level, this.playerResets,
