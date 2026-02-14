@@ -1901,6 +1901,7 @@ body {
     top: 500px;
     width: 470px;
     height: 250px;
+    pointer-events: none;
 }
 .smallButtonStyle {
     pointer-events: auto; 

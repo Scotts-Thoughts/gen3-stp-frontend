@@ -2709,18 +2709,37 @@ const app = Vue.createApp({
         },
         // Add these methods to your Vue app methods section
         async sendEmulatorStart() {
-            try {
-                const response = await fetch('http://127.0.0.1:30158/mark-start', {
-                    method: 'POST'
-                });
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
+            if (this.timer_startTimeOffset != "00:00:00.00") {
+                // convert the timer_startTimeOffset to milliseconds
+                const offset = this.timer_startTimeOffset.split(":").map(x => parseInt(x)).reduce((acc, curr) => acc * 60 + curr, 0) * 1000;
+                try {
+                    const response = await fetch(`http://127.0.0.1:30158/mark-start?offset=${offset}`, {
+                        method: 'POST'
+                    });
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    console.log('Emulator start command sent successfully');
+                    return true;
+                } catch (error) {
+                    console.error('Error sending start command:', error);
+                    return false;
                 }
-                console.log('Emulator start command sent successfully');
-                return true;
-            } catch (error) {
-                console.error('Error sending start command:', error);
-                return false;
+            }
+            else {
+                try {
+                    const response = await fetch('http://127.0.0.1:30158/mark-start', {
+                        method: 'POST'
+                    });
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    console.log('Emulator start command sent successfully');
+                    return true;
+                } catch (error) {
+                    console.error('Error sending start command:', error);
+                    return false;
+                }
             }
         },
         async sendEmulatorEnd() {

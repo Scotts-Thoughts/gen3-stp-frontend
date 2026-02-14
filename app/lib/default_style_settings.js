@@ -61,8 +61,8 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundYOffset": "65",
         "backgroundBrightness": "83",
         "hidden_power_type": "Electric",
-        "attempt_number": 22,
-        "finished_run_count": 9,
+        "attempt_number": 24,
+        "finished_run_count": 10,
         "splits_display": "Followup",
         "hidden_power_index": "3"
     },
@@ -130,8 +130,8 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundHue": "41",
         "hidden_power_type": "Ice",
         "hidden_power_index": "3",
-        "attempt_number": 5,
-        "finished_run_count": 3
+        "attempt_number": 8,
+        "finished_run_count": 6
     },
     "Emerald_Raichu": {
         "imageFlip": true,
@@ -150,14 +150,20 @@ const DEFAULT_STYLE_SETTINGS = {
         "pkmnNature": "Brave",
         "hidden_power_type": "Ice",
         "hidden_power_index": "3",
-        "attempt_number": 5,
-        "finished_run_count": 4
+        "attempt_number": 6,
+        "finished_run_count": 5
     },
     "Emerald_Pidgeot": {
         "pkmn_ability": "Keen Eye",
-        "pkmnNature": "Hardy",
-        "backgroundTexture": "Normal",
-        "overlay_color": "#a8a878"
+        "pkmnNature": "Adamant",
+        "backgroundTexture": "Flying",
+        "overlay_color": "#8b724f",
+        "backgroundBrightness": "96",
+        "imageScale": "0.88",
+        "imageYOffset": "140",
+        "imageXOffset": "-23",
+        "hidden_power_type": "Ground",
+        "hidden_power_index": "3"
     },
     "Emerald_NidoranF": {},
     "Emerald_NidoranM": {
@@ -264,6 +270,41 @@ const DEFAULT_STYLE_SETTINGS = {
     },
     "FireRed and LeafGreen_33": {
         "selected_evolution_species": "Nidorino"
+    },
+    "Emerald_Bulbasaur": {},
+    "Emerald_Fearow": {
+        "backgroundTexture": "Flying",
+        "backgroundHue": "0",
+        "backgroundBrightness": "64",
+        "backgroundContrast": "127",
+        "imageFlip": true,
+        "imageYOffset": "154",
+        "imageXOffset": "27",
+        "imageScale": "0.94",
+        "overlay_color": "#c48a4f",
+        "ui_saturation": "1.2",
+        "pkmnNature": "Adamant",
+        "pkmn_ability": "Keen Eye",
+        "hidden_power_type": "Ground",
+        "hidden_power_index": "3"
+    },
+    "Emerald_Jumpluff": {
+        "pkmn_ability": "Chlorophyll",
+        "pkmnNature": "Hardy",
+        "backgroundTexture": "Dark Grass",
+        "overlay_color": "#748ec8",
+        "imageFlip": true,
+        "imageScale": "0.8",
+        "imageYOffset": "168",
+        "imageXOffset": "27",
+        "backgroundScale": "133",
+        "backgroundYOffset": "125",
+        "backgroundXOffset": "61",
+        "backgroundContrast": "120",
+        "backgroundBrightness": "39",
+        "backgroundSaturation": "126",
+        "ui_saturation": "1",
+        "backgroundFlip": true
     }
 };
 
