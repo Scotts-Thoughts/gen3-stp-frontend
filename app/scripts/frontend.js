@@ -5233,7 +5233,7 @@ const app = Vue.createApp({
         badgeGraphic(x) {
             if (x.value == true) {
                 var badge = x.path.toString().substring(14)
-                return `images/badges/${badge}.png`
+                return `images/badges/${badge}.png`.toLowerCase();
             }
             else if (x.value == false) {   
                 return null

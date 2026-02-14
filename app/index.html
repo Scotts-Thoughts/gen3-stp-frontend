@@ -141,7 +141,7 @@
                 <div>
                     <div v-for="x in badges">
                         <div v-if="mapper.properties.player.badges[x].value == true && g3stateVariable != `Base Stats`">
-                            <img class="badge" :src="`images/new_ui/badges/${this.game.region}/${x}.png`"/>
+                            <img class="badge" :src="`images/new_ui/badges/${this.game.region.toLowerCase()}/${x}.png`"/>
                         </div>
                     </div>
                 </div>         
