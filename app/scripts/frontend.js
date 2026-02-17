@@ -5950,10 +5950,10 @@ const app = Vue.createApp({
                 return; // Don't update starterString
             }
             
-            if ((state == "Battle" || state == "From Battle") && this.mapper.properties.battle.yourPokemon.hp.value != 0) {
+            if ((state == "Battle" || state == "From Battle") && this.mapper.properties.battle.yourPokemon.hp.value != 0 && this.evolution == true && this.evolution_family_list.includes(newProp.value)) {
                 this.starterString = newProp.value
             }
-            else if (state == "Overworld") {
+            else if (state == "Overworld" && this.evolution == true && this.evolution_family_list.includes(newProp.value)) {
                 this.starterString = newProp.value
             }
         })
