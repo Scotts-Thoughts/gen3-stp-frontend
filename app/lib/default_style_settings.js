@@ -112,8 +112,9 @@ const DEFAULT_STYLE_SETTINGS = {
         "pkmnNature": "Rash",
         "hidden_power_type": "Water",
         "hidden_power_index": "3",
-        "attempt_number": 12,
-        "finished_run_count": 5
+        "attempt_number": 20,
+        "finished_run_count": 7,
+        "splits_display": "Followup"
     },
     "Emerald_Abra": {},
     "Emerald_Taillow": {},
@@ -341,8 +342,8 @@ const DEFAULT_STYLE_SETTINGS = {
     "Emerald_Wartortle": {
         "imageFlip": true,
         "imageScale": "0.65",
-        "imageYOffset": "4",
-        "imageXOffset": "11",
+        "imageYOffset": "-2",
+        "imageXOffset": "27",
         "overlay_color": "#6795c9",
         "ui_saturation": "1.9",
         "backgroundScale": "140",
@@ -351,8 +352,11 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundContrast": "123",
         "backgroundBrightness": "27",
         "backgroundSaturation": "112",
-        "evolution": true,
-        "selected_evolution_species": "Wartortle"
+        "evolution": false,
+        "selected_evolution_species": "Wartortle",
+        "pkmn_ability": "Torrent",
+        "pkmnNature": "Hardy",
+        "backgroundTexture": "Water"
     },
     "Emerald_Charmeleon": {
         "imageFlip": true,
@@ -614,10 +618,12 @@ const DEFAULT_STYLE_SETTINGS = {
         "pkmnNature": "Hardy",
         "backgroundTexture": "Fighting",
         "overlay_color": "#c03028",
-        "evolution": true
+        "evolution": false,
+        "selected_evolution_species": "Machop",
+        "attempt_number": 3
     },
     "FireRed and LeafGreen_66": {
-        "selected_evolution_species": "Machamp"
+        "selected_evolution_species": "Machop"
     },
     "FireRed and LeafGreen_Machop-line-Machop": {
         "imageScale": "0.61",
@@ -639,7 +645,9 @@ const DEFAULT_STYLE_SETTINGS = {
         "use_custom_background": false,
         "backgroundXOffset": 0,
         "backgroundYOffset": 0,
-        "backgroundSaturation": 100
+        "backgroundSaturation": 100,
+        "evolution": true,
+        "attempt_number": 22
     },
     "FireRed and LeafGreen_Machop-line-Machoke": {
         "overlay_color": "#c28446",
@@ -684,7 +692,9 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundBrightness": "42",
         "backgroundContrast": "106",
         "backgroundSaturation": 100,
-        "evolution": true
+        "evolution": true,
+        "finished_run_count": 9,
+        "attempt_number": 3
     },
     "FireRed and LeafGreen_Geodude": {
         "pkmn_ability": "Rock Head",
@@ -698,7 +708,8 @@ const DEFAULT_STYLE_SETTINGS = {
         "ui_saturation": "1.7",
         "imageScale": "0.78",
         "imageYOffset": "-79",
-        "imageXOffset": "-16"
+        "imageXOffset": "-16",
+        "selected_evolution_species": "Geodude"
     },
     "FireRed and LeafGreen_74": {
         "selected_evolution_species": "Golem"
@@ -723,7 +734,9 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundHue": 0,
         "backgroundUrl": "",
         "use_custom_background": false,
-        "backgroundSaturation": 100
+        "backgroundSaturation": 100,
+        "attempt_number": 21,
+        "splits_display": "Followup"
     },
     "FireRed and LeafGreen_Graveler-line-Graveler": {
         "overlay_color": "#a5a495",
@@ -768,7 +781,9 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundBrightness": "73",
         "backgroundContrast": "112",
         "backgroundSaturation": 100,
-        "evolution": true
+        "evolution": true,
+        "finished_run_count": 8,
+        "attempt_number": 21
     },
     "FireRed and LeafGreen_Abra": {},
     "FireRed and LeafGreen_63": {
@@ -925,6 +940,40 @@ const DEFAULT_STYLE_SETTINGS = {
     },
     "Emerald_8": {
         "selected_evolution_species": "Wartortle"
+    },
+    "Emerald_66": {
+        "selected_evolution_species": "Machop"
+    },
+    "Emerald_Machop": {
+        "selected_evolution_species": "Machop",
+        "evolution": true,
+        "pkmn_ability": "Guts",
+        "pkmnNature": "Hardy",
+        "backgroundTexture": "Fighting",
+        "overlay_color": "#c03028",
+        "attempt_number": 3
+    },
+    "Emerald_Machop-line-Machop": {
+        "attempt_number": 1
+    },
+    "Emerald_Primeape": {
+        "pkmn_ability": "Vital Spirit",
+        "pkmnNature": "Adamant",
+        "backgroundTexture": "Fighting",
+        "overlay_color": "#9e7c63",
+        "imageFlip": true,
+        "imageScale": "0.83",
+        "imageYOffset": "68",
+        "imageXOffset": "17",
+        "ui_saturation": "1.7",
+        "backgroundBrightness": "35",
+        "backgroundContrast": "99",
+        "backgroundSaturation": "164",
+        "backgroundBlur": "0",
+        "backgroundScale": "100",
+        "attempt_number": 7,
+        "hidden_power_type": "Ghost",
+        "hidden_power_index": "3"
     }
 };
 

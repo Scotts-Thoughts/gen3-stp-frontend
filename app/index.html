@@ -214,7 +214,8 @@
                     <br>
                     <div>Timer:</div>
                     <button class="buttonStyle new_run_button" @click="newRun">New Run</button><br>
-                    <button @click="this.timer.pauseUnpauseTime()" class="buttonStyle">Play/Pause</button>
+                    <button v-if="shuckie_timer == false" @click="this.timer.pauseUnpauseTime()" class="buttonStyle">Play/Pause</button>
+                    <button v-else @click="sendEmulatorStart()" class="buttonStyle">Play/Pause</button>
                     <!-- <button class="buttonStyle set_button_style" @click="this.sendEmulatorStart()">Start Time</button><br> -->
                     <!-- <button class="buttonStyle set_button_style" @click="this.sendEmulatorEnd()">End Time</button><br> -->
                     <button class="buttonStyle" @click="this.timer.setTimer(this.timer_startTimeOffset)">Set Timer</button><br>

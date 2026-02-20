@@ -5607,8 +5607,8 @@ const app = Vue.createApp({
                         this.mapper.properties.pointers.sStpCallback2.change((currentProp, previousProp) => {
                             value_current  = currentProp.value
                             value_previous = previousProp.value
-                            // console.log(value_current, value_previous)
-                            if (value_current == 'CB2_NewGameScene' && (value_previous == 'CB2_TitleScreenRun' || value_previous == 'CB2_TitleScreenRun' || value_previous == 'CB2_MainMenu')) {
+                            console.log(value_current, value_previous)
+                            if (value_current == 'CB2_NewGameScene' && (value_previous == 'CB2_TitleScreenRun' || value_previous == 'CB2_MainMenu')) {
                                 console.log("New run detected... Timer started.")
                                 if (!this.testRun && this.no_counters == false) { 
                                     this.attempt_number++ 
@@ -6713,7 +6713,18 @@ const app = Vue.createApp({
                         split_data: this.split_data
                     }
                 }
-                if(this.game.splits.includes(trainer) && !this.game.finalBattle.includes(trainer)) {
+                // Debug logging for FireRed/LeafGreen splits
+                if (this.gameSelection == 'FireRed and LeafGreen') {
+                    console.log('FireRed/LeafGreen split check:', {
+                        trainer: trainer,
+                        gameExists: !!this.game,
+                        splitsExists: !!(this.game && this.game.splits),
+                        trainerInSplits: this.game && this.game.splits ? this.game.splits.includes(trainer) : false,
+                        trainerInFinalBattle: this.game && this.game.finalBattle ? this.game.finalBattle.includes(trainer) : false,
+                        splitsArrayLength: this.game && this.game.splits ? this.game.splits.length : 0
+                    });
+                }
+                if(this.game && this.game.splits && this.game.splits.includes(trainer) && this.game.finalBattle && !this.game.finalBattle.includes(trainer)) {
                     simpleSplit();
                     if (this.automatic_post_battle_splits == true 
                         && trainer != "RIVAL_WALLY_VR_1"

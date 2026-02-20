@@ -83,8 +83,8 @@ const gameVariables =
             "ELITE_FOUR_BRUNO_2",
             "ELITE_FOUR_AGATHA_2",
             "ELITE_FOUR_LANCE_2",
-            "CHAMPION_REMATCH_CHARMANDER",
-            "CHAMPION_REMATCH_CHARMANDER",
+            "CHAMPION_REMATCH_SQUIRTLE",
+            "CHAMPION_REMATCH_BULBASAUR",
             "CHAMPION_REMATCH_CHARMANDER"
         ],
         "champion" : [

@@ -5,6 +5,11 @@ function log_split(x) {
 } 
 function autosplitter_process(split_name = null) {
     // console.log("Checking if autosplitter is on...")
+    console.log("autosplitter_process called:", {
+        autosplitter_toggle: this.autosplitter_toggle,
+        isTrainerBattle: this.mapper?.properties?.battle?.type?.trainer?.value,
+        gameSelection: this.gameSelection
+    });
     if (this.autosplitter_toggle == true && this.mapper.properties.battle.type.trainer.value == true) {
         console.log("Began Autosplitter Process")
         d = new Date()
@@ -366,11 +371,35 @@ function autosplitter_process(split_name = null) {
         this.full_data_str = full_data_str
         this.simple_data = simple_data
         this.deprecated_data_str = deprecated_data_str
-        if (this.collect_split_data == true && this.mapper.properties.battle.turnInfo.battleOutcome.value == "WON" && this.mapper.properties.battle.type.trainer.value == true) {
+        
+        // Debug logging for current_splits population
+        const battleOutcome = this.mapper.properties.battle.turnInfo.battleOutcome.value;
+        const isTrainerBattle = this.mapper.properties.battle.type.trainer.value;
+        // Battle outcome can be "WON" (string) or 1 (number)
+        const battleWon = battleOutcome == "WON" || battleOutcome == 1;
+        console.log("Checking current_splits conditions:", {
+            collect_split_data: this.collect_split_data,
+            battleOutcome: battleOutcome,
+            battleOutcomeType: typeof battleOutcome,
+            battleWon: battleWon,
+            isTrainerBattle: isTrainerBattle,
+            trainer_name: trainer_name,
+            willPush: this.collect_split_data == true && battleWon && isTrainerBattle == true
+        });
+        
+        if (this.collect_split_data == true && battleWon && isTrainerBattle == true) {
+            console.log("Adding to current_splits:", {
+                trainer: trainer_name,
+                time: this.shuckie_timer ? shuckie_time_hhmmss : real_time_hmmss,
+                current_splits_length_before: this.current_splits?.length ?? 0
+            });
             this.current_splits.push({
                 trainer: trainer_name, 
                 time:    this.shuckie_timer ? shuckie_time_hhmmss : real_time_hmmss,
-            })
+            });
+            console.log("current_splits_length_after:", this.current_splits?.length ?? 0);
+        } else {
+            console.log("NOT adding to current_splits - conditions failed");
         }
     }
 }
