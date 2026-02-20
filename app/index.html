@@ -173,14 +173,14 @@
                             <td>HP Banned for 1st run:</td>
                             <td><input class="checkBoxStyle" type="checkbox" v-model="banned_hidden_power"/></td>
                         </tr>
-                        <tr v-if="show_advanced_settings">
+                        <!-- <tr v-if="show_advanced_settings">
                             <td>Autosplitter:</td>
                             <td><input class="checkBoxStyle" type="checkbox" v-model="autosplitter_toggle"/></td>
-                        </tr>
-                        <tr v-if="show_advanced_settings">
+                        </tr> -->
+                        <!-- <tr v-if="show_advanced_settings">
                             <td>Test Run:</td>
                             <td><input class="checkBoxStyle" type="checkbox" v-model="testStatus"/></td>
-                        </tr>
+                        </tr> -->
                         <tr v-if="show_advanced_settings">
                             <td>Shuckie Timer:</td>
                             <td><input class="checkBoxStyle" type="checkbox" v-model="shuckie_timer"/></td>
@@ -193,22 +193,22 @@
                             <td>No counters</td>
                             <td><input class="checkBoxStyle" type="checkbox" v-model="no_counters"/></td>
                         </tr>
-                        <tr v-if="show_advanced_settings">
+                        <!-- <tr v-if="show_advanced_settings">
                             <td>Legacy State (for old replays)</td>
                             <td><input class="checkBoxStyle" type="checkbox" v-model="legacy_state"/></td>
-                        </tr>
+                        </tr> -->
                         <tr v-if="show_advanced_settings">
                             <td>Debugging:</td>
                             <td><input class="checkBoxStyle" type="checkbox" v-model="debugging"/></td>
                         </tr>
-                        <tr v-if="show_advanced_settings">
+                        <!-- <tr v-if="show_advanced_settings">
                             <td>Set Starter Automatically:</td>
                             <td><input class="checkBoxStyle" type="checkbox" v-model="set_rom_starter_automatically"/></td>
-                        </tr>
-                        <tr v-if="show_advanced_settings">
+                        </tr> -->
+                        <!-- <tr v-if="show_advanced_settings">
                             <td>Show post-battle splits:</td>
                             <td><input class="checkBoxStyle" type="checkbox" v-model="show_post_battle_splits"/></td>
-                        </tr>
+                        </tr> -->
                         <tr v-if="gameSelection == 'FireRed and LeafGreen'"><td>Stop Timer After League Rematches:</td><td><input class="checkBoxStyle" type="checkbox" v-model="league_rematches"/></td></tr>
                     </table>
                     <br>

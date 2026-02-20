@@ -946,7 +946,7 @@ const DEFAULT_STYLE_SETTINGS = {
     },
     "Emerald_Machop": {
         "selected_evolution_species": "Machop",
-        "evolution": true,
+        "evolution": false,
         "pkmn_ability": "Guts",
         "pkmnNature": "Hardy",
         "backgroundTexture": "Fighting",
