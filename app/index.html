@@ -222,7 +222,7 @@
                     Start Time Offset: <input class="inputContainer" type="text" v-model="timer_startTimeOffset" placeholder="00:00:00.00"/><br>
                     <br>
                     <div>Splits:</div>
-                    <button class="buttonStyle buttonStyle_column3" @click="openFolder(`splits`, gameSelection, starterString, ``)">Open Splits Folder</button>
+                    <button class="buttonStyle buttonStyle_column3" @click="openFolder(`splits`, gameSelection, getSplitFileName(), `finishes`)">Open Splits Folder</button>
                     <button class="buttonStyle buttonStyle_column3" @click="openFolder(`splits`, gameSelection, starterString, `finishes`)">Finished Splits</button>
                     <br><br>
                     
