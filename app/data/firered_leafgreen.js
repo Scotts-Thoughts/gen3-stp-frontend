@@ -5598,8 +5598,8 @@ const evolution_data_pokedex = {
         ],
         "weight": 19.5,
         "evolution_family": [
-            {"species": "Kadabra", "method": "level", "parameter": 16},
             {"species": "Abra", "method": null, "parameter": null},
+            {"species": "Kadabra", "method": "level", "parameter": 16},
             {"species": "Alakazam", "method": null, "parameter": null}
         ]
     },
@@ -5698,9 +5698,9 @@ const evolution_data_pokedex = {
         "egg_moves": [],
         "weight": 56.5,
         "evolution_family": [
-            {"species": "Alakazam", "method": "trade", "parameter": null},
+            {"species": "Abra", "method": null, "parameter": null},
             {"species": "Kadabra", "method": null, "parameter": null},
-            {"species": "Abra", "method": null, "parameter": null}
+            {"species": "Alakazam", "method": "trade", "parameter": null}
         ]
     },
     "Alakazam": {
@@ -5799,8 +5799,8 @@ const evolution_data_pokedex = {
         "egg_moves": [],
         "weight": 48.0,
         "evolution_family": [
-            {"species": "Kadabra", "method": null, "parameter": null},
             {"species": "Abra", "method": null, "parameter": null},
+            {"species": "Kadabra", "method": null, "parameter": null},
             {"species": "Alakazam", "method": null, "parameter": null}
         ]
     },

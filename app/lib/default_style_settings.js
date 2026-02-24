@@ -623,7 +623,7 @@ const DEFAULT_STYLE_SETTINGS = {
         "attempt_number": 3
     },
     "FireRed and LeafGreen_66": {
-        "selected_evolution_species": "Machop"
+        "selected_evolution_species": "Machamp"
     },
     "FireRed and LeafGreen_Machop-line-Machop": {
         "imageScale": "0.61",
@@ -735,7 +735,7 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundUrl": "",
         "use_custom_background": false,
         "backgroundSaturation": 100,
-        "attempt_number": 21,
+        "attempt_number": 23,
         "splits_display": "Followup"
     },
     "FireRed and LeafGreen_Graveler-line-Graveler": {
@@ -783,11 +783,13 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundSaturation": 100,
         "evolution": true,
         "finished_run_count": 8,
-        "attempt_number": 21
+        "attempt_number": 25
     },
-    "FireRed and LeafGreen_Abra": {},
+    "FireRed and LeafGreen_Abra": {
+        "selected_evolution_species": "Abra"
+    },
     "FireRed and LeafGreen_63": {
-        "selected_evolution_species": "Alakazam"
+        "selected_evolution_species": "Abra"
     },
     "FireRed and LeafGreen_Alakazam-line-Abra": {
         "overlay_color": "#f0db46",
@@ -838,8 +840,8 @@ const DEFAULT_STYLE_SETTINGS = {
     "FireRed and LeafGreen_Alakazam-line-Alakazam": {
         "overlay_color": "#f0db46",
         "ui_saturation": "1.3",
-        "imageXOffset": "20",
-        "imageYOffset": "112",
+        "imageXOffset": "27",
+        "imageYOffset": "105",
         "imageScale": "0.86",
         "imageFlip": true,
         "imageSat": 100,
@@ -856,7 +858,9 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundBrightness": "81",
         "backgroundContrast": "163",
         "backgroundSaturation": 100,
-        "backgroundXFlip": true
+        "backgroundXFlip": true,
+        "attempt_number": 1,
+        "evolution": true
     },
     "FireRed and LeafGreen_Gastly": {
         "pkmn_ability": "Levitate",
@@ -974,6 +978,42 @@ const DEFAULT_STYLE_SETTINGS = {
         "attempt_number": 7,
         "hidden_power_type": "Ghost",
         "hidden_power_index": "3"
+    },
+    "FireRed and LeafGreen_Golem": {
+        "selected_evolution_species": "Golem"
+    },
+    "FireRed and LeafGreen_76": {
+        "selected_evolution_species": "Golem"
+    },
+    "FireRed and LeafGreen_Alakazam-line-Kadabra": {
+        "overlay_color": "#f0db46",
+        "ui_saturation": "1.3",
+        "imageXOffset": "20",
+        "imageYOffset": "27",
+        "imageScale": "0.78",
+        "imageFlip": true,
+        "imageSat": 100,
+        "imageRotation": 0,
+        "backgroundTexture": "Psychic",
+        "backgroundBlur": 0,
+        "backgroundHue": 0,
+        "backgroundScale": "116",
+        "backgroundUrl": "",
+        "backgroundFlip": false,
+        "use_custom_background": false,
+        "backgroundXOffset": "-39",
+        "backgroundYOffset": "37",
+        "backgroundBrightness": "81",
+        "backgroundContrast": "163",
+        "backgroundSaturation": 100,
+        "backgroundXFlip": true
+    },
+    "FireRed and LeafGreen_Kadabra": {
+        "selected_evolution_species": "Kadabra",
+        "evolution": false
+    },
+    "FireRed and LeafGreen_64": {
+        "selected_evolution_species": "Abra"
     }
 };
 

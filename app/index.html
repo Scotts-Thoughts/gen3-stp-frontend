@@ -218,7 +218,8 @@
                     <button v-else @click="sendEmulatorStart()" class="buttonStyle">Play/Pause</button>
                     <!-- <button class="buttonStyle set_button_style" @click="this.sendEmulatorStart()">Start Time</button><br> -->
                     <!-- <button class="buttonStyle set_button_style" @click="this.sendEmulatorEnd()">End Time</button><br> -->
-                    <button class="buttonStyle" @click="this.timer.setTimer(this.timer_startTimeOffset)">Set Timer</button><br>
+                    <button v-if="shuckie_timer == false" class="buttonStyle" @click="this.timer.setTimer(this.timer_startTimeOffset)">Set Timer</button><br>
+                    <button v-else class="buttonStyle" @click="sendEmulatorStart()">Set Timer</button><br>
                     Start Time Offset: <input class="inputContainer" type="text" v-model="timer_startTimeOffset" placeholder="00:00:00.00"/><br>
                     <br>
                     <div>Splits:</div>

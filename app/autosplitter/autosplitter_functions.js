@@ -12,6 +12,36 @@ function autosplitter_process(split_name = null) {
     });
     if (this.autosplitter_toggle == true && this.mapper.properties.battle.type.trainer.value == true) {
         console.log("Began Autosplitter Process")
+        
+        // Check if this is the first split and generate/check unique run identifier
+        if (this.unique_run_identifier === null) {
+            const uniqueId = this.generateUniqueRunIdentifier();
+            if (uniqueId) {
+                this.unique_run_identifier = uniqueId;
+                // Check if this run has been logged and finished before
+                // Use the loggedRunsManager from the app instance (loaded in frontend.js)
+                if (this.loggedRunsManager) {
+                    const isFinished = this.loggedRunsManager.isRunLogged(uniqueId);
+                    this.is_new_run = !isFinished;
+                    
+                    // Always ensure the run is in the logged runs (for tracking)
+                    // This will add it if new, or ensure finished flag exists if it already exists
+                    this.loggedRunsManager.addLoggedRun(uniqueId);
+                    
+                    if (this.is_new_run) {
+                        console.log(`[Autosplitter] New or unfinished run detected: ${uniqueId} - will record splits`);
+                    } else {
+                        console.log(`[Autosplitter] Finished run detected: ${uniqueId} - will NOT record splits`);
+                    }
+                } else {
+                    console.warn('[Autosplitter] loggedRunsManager not available');
+                    this.is_new_run = false; // Don't record if manager not available
+                }
+            } else {
+                console.warn('[Autosplitter] Could not generate unique run identifier');
+                this.is_new_run = false; // Don't record if we can't generate ID
+            }
+        }
         d = new Date()
         battle_end = Date.now()
         //values

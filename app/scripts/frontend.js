@@ -99,6 +99,8 @@ const Storage = createStoredObject('./storage', 'Storage.json', {
 
 // Style Settings Manager for layered defaults + user overrides
 const styleSettingsManager = require('./lib/style_settings_manager.js');
+// Logged Runs Manager for tracking unique run identifiers
+const loggedRunsManager = require('./lib/logged_runs_manager.js');
 
 // Setup the MyStorage Object
 const MyStorage = new Proxy({}, {
@@ -523,12 +525,21 @@ for (folder of folders = ['storage', 'splits', 'splits/Emerald', 'splits/FireRed
     }
 }
 
-function logData(gameName, gameName_path, str, file_name, starter, log_type, testStatus, toggle, evolution, evolution_label) {
+function logData(gameName, gameName_path, str, file_name, starter, log_type, testStatus, toggle, evolution, evolution_label, unique_run_identifier, is_new_run) {
         return new Promise((resolve, reject) => {
+        // If this is not a new run, don't write any data
+        if (!is_new_run) {
+            console.log(`[logData] Skipping write - run already logged: ${unique_run_identifier}`);
+            resolve();
+            return;
+        }
+        
         const testStatusText = testStatus ? "test_run_" : "";
         // The starter parameter already contains the correct split file name (calculated by getSplitFileName())
+        // Use unique_run_identifier instead of file_name (attempt_number) for attempts folder
+        const run_identifier = unique_run_identifier || file_name;
         const dirPath = `./splits/${app.game.gameName}/${starter}/attempts/`;
-        let filePath = path.join(dirPath, `${gameName}-${testStatusText}${starter}-${file_name}-simple.csv`);
+        let filePath = path.join(dirPath, `${gameName}-${testStatusText}${starter}-${run_identifier}-simple.csv`);
         let header = "player_name," +
                     "pokemon," +
                     "trainer_name," +
@@ -543,7 +554,7 @@ function logData(gameName, gameName_path, str, file_name, starter, log_type, tes
                     "move3," +
                     "move4,\n"
         if (log_type == "Deprecated" && toggle == true) {
-            filePath = path.join(dirPath, `${gameName}-${testStatusText}${starter}-${file_name}.csv`);
+            filePath = path.join(dirPath, `${gameName}-${testStatusText}${starter}-${run_identifier}.csv`);
             header = "ROM," +
                 "Species," +
                 "Trainer," +
@@ -655,7 +666,7 @@ function logData(gameName, gameName_path, str, file_name, starter, log_type, tes
                 "Rival's Tea,m\n"
         }
         if (log_type == "Full" && toggle == true) {
-            filePath = path.join(dirPath, `${gameName}-${testStatusText}${starter}-${file_name}-full.csv`);
+            filePath = path.join(dirPath, `${gameName}-${testStatusText}${starter}-${run_identifier}-full.csv`);
         }
         fs.mkdir(dirPath, { recursive: true }, (err) => {
             if (!fs.existsSync(filePath)) {
@@ -684,34 +695,93 @@ function logData(gameName, gameName_path, str, file_name, starter, log_type, tes
     });
 }
 
-function logCopy(gameName, gameName_path, file_name, starter, finished_run_count, evolution, evolution_label) {
+function logCopy(gameName, gameName_path, unique_run_identifier, starter, evolution, evolution_label, is_new_run, testStatus, loggedRunsManager) {
+    // If this is not a new run, don't copy any files
+    if (!is_new_run) {
+        console.log(`[logCopy] Skipping copy - run already logged: ${unique_run_identifier}`);
+        return;
+    }
+    
     if (evolution == true) {
         starter = evolution_label;
     }
+    const testStatusText = testStatus ? "test_run_" : "";
     var dirPathAttempts = `./splits/${gameName_path}/${starter}/attempts/`;
     var dirPathFinishes = `./splits/${gameName_path}/${starter}/finishes/`;
+    
+    // Calculate the next finished_run_count by checking existing files in finishes folder
+    let nextFinishedRunCount = 1;
+    try {
+        if (fs.existsSync(dirPathFinishes)) {
+            const files = fs.readdirSync(dirPathFinishes);
+            // Look for files matching the pattern: ${gameName}-${starter}-${number}-simple.csv
+            // (test runs are not copied to finishes, so we don't need to check for test_run_ prefix)
+            const pattern = new RegExp(`^${gameName}-${starter}-(\\d+)-simple\\.csv$`);
+            const numbers = files
+                .map(file => {
+                    const match = file.match(pattern);
+                    return match ? parseInt(match[1], 10) : null;
+                })
+                .filter(num => num !== null);
+            
+            if (numbers.length > 0) {
+                nextFinishedRunCount = Math.max(...numbers) + 1;
+            }
+        }
+    } catch (error) {
+        console.error('[logCopy] Error calculating next finished run count:', error);
+    }
+    
     fs.mkdir(dirPathFinishes, { recursive: true }, (err) => {
-        fs.copyFile(
-            path.join(dirPathAttempts, `${gameName}-${starter}-${file_name}-simple.csv`), 
-            path.join(dirPathFinishes, `${gameName}-${starter}-${finished_run_count}-simple.csv`), (err) => {
-            if (err) {
-                console.error(err);
-            }
-        });
-        fs.copyFile(
-            path.join(dirPathAttempts, `${gameName}-${starter}-${file_name}-full.csv`), 
-            path.join(dirPathFinishes, `${gameName}-${starter}-${finished_run_count}-full.csv`), (err) => {
-            if (err) {
-                console.error(err);
-            }
-        });
-        fs.copyFile(
-            path.join(dirPathAttempts, `${gameName}-${starter}-${file_name}.csv`), 
-            path.join(dirPathFinishes, `${gameName}-${starter}-${finished_run_count}.csv`), (err) => {
-            if (err) {
-                console.error(err);
-            }
-        });
+        if (err) {
+            console.error('[logCopy] Error creating finishes directory:', err);
+            return;
+        }
+        
+        // Copy files using unique_run_identifier from attempts folder and nextFinishedRunCount for finishes folder
+        // Note: test runs are not copied to finishes folder
+        if (!testStatus) {
+            let copyCount = 0;
+            const totalFiles = 3; // simple, full, and deprecated
+            const markFinished = () => {
+                copyCount++;
+                if (copyCount === totalFiles && loggedRunsManager) {
+                    // All files copied successfully, mark run as finished
+                    loggedRunsManager.markRunAsFinished(unique_run_identifier);
+                }
+            };
+            
+            fs.copyFile(
+                path.join(dirPathAttempts, `${gameName}-${testStatusText}${starter}-${unique_run_identifier}-simple.csv`), 
+                path.join(dirPathFinishes, `${gameName}-${starter}-${nextFinishedRunCount}-simple.csv`), (err) => {
+                if (err) {
+                    console.error('[logCopy] Error copying simple file:', err);
+                } else {
+                    console.log(`[logCopy] Copied simple file: ${nextFinishedRunCount}`);
+                    markFinished();
+                }
+            });
+            fs.copyFile(
+                path.join(dirPathAttempts, `${gameName}-${testStatusText}${starter}-${unique_run_identifier}-full.csv`), 
+                path.join(dirPathFinishes, `${gameName}-${starter}-${nextFinishedRunCount}-full.csv`), (err) => {
+                if (err) {
+                    console.error('[logCopy] Error copying full file:', err);
+                } else {
+                    console.log(`[logCopy] Copied full file: ${nextFinishedRunCount}`);
+                    markFinished();
+                }
+            });
+            fs.copyFile(
+                path.join(dirPathAttempts, `${gameName}-${testStatusText}${starter}-${unique_run_identifier}.csv`), 
+                path.join(dirPathFinishes, `${gameName}-${starter}-${nextFinishedRunCount}.csv`), (err) => {
+                if (err) {
+                    console.error('[logCopy] Error copying deprecated file:', err);
+                } else {
+                    console.log(`[logCopy] Copied deprecated file: ${nextFinishedRunCount}`);
+                    markFinished();
+                }
+            });
+        }
     });
 }
 
@@ -1066,6 +1136,9 @@ const app = Vue.createApp({
             split_logStr:        "",
             attempt_number:      0,
             finished_run_count:  0,
+            unique_run_identifier: null,  // Unique identifier for current run
+            is_new_run:          false,   // Whether current run should be recorded
+            loggedRunsManager:   loggedRunsManager,  // Make logged runs manager available
             split_data:          MyStorage["split_data"]          ?? [],
             simple_data_str:     MyStorage["simple_data_str"]     ?? "",
             full_data_str:       MyStorage["full_data_str"]       ?? "",
@@ -2901,6 +2974,24 @@ const app = Vue.createApp({
             const fullyEvolved = this.getFullyEvolvedSpecies(starter);
             return `${fullyEvolved}-line`;
         },
+        generateUniqueRunIdentifier() {
+            // Generate unique run identifier based on:
+            // species index, evolution boolean, player id, and solo mon personality value
+            // Format: species_index-evolution_boolean-player_id-personality_value
+            try {
+                const starter = this.starterString || this.starter;
+                const species_index = this.dexDataRubySapphireEmerald[starter]?.dex_number ?? 0;
+                const evolution_boolean = this.evolution == true ? 1 : 0;
+                const player_id = this.mapper?.properties?.player.playerId?.value ?? 0;
+                const solo_mon_personality_value = this.mapper?.properties?.player?.team?.[0]?.personalityValue?.value ?? 0;
+                
+                const unique_run_identifier = `${species_index}-${evolution_boolean}-${player_id}-${solo_mon_personality_value}`;
+                return unique_run_identifier;
+            } catch (error) {
+                console.error('[generateUniqueRunIdentifier] Error:', error);
+                return null;
+            }
+        },
         getCurrentStorageKey() {
             // Get the current storage key based on whether evolution is enabled and which species is selected
             if (this.evolution && this.selected_evolution_species) {
@@ -3418,13 +3509,14 @@ const app = Vue.createApp({
                 if (starter == "Deoxys") {
                     return this.deoxys_form_base_stats[stat_name]
                 }
+                const new_starter = this.evolution ? this.selected_evolution_species : starter
                 switch (stat_name) {
-                    case "Hp":              return this.game.dexData[starter].base_hp
-                    case "Attack":          return this.game.dexData[starter].base_atk
-                    case "Defense":         return this.game.dexData[starter].base_def
-                    case "Special Attack":  return this.game.dexData[starter].base_spc_atk
-                    case "Special Defense": return this.game.dexData[starter].base_spc_def
-                    case "Speed":           return this.game.dexData[starter].base_spd
+                    case "Hp":              return this.game.dexData[new_starter].base_hp
+                    case "Attack":          return this.game.dexData[new_starter].base_atk
+                    case "Defense":         return this.game.dexData[new_starter].base_def
+                    case "Special Attack":  return this.game.dexData[new_starter].base_spc_atk
+                    case "Special Defense": return this.game.dexData[new_starter].base_spc_def
+                    case "Speed":           return this.game.dexData[new_starter].base_spd
                 }
             }
         },
@@ -3870,7 +3962,10 @@ const app = Vue.createApp({
             return Object.values(object)
         },
 
-        async newRun() {         
+        async newRun() {
+            // Reset unique run identifier when starting a new run
+            this.unique_run_identifier = null;
+            this.is_new_run = false;         
             // this.current_splits = await this.load_temp_splits()
             this.compared_splits = []
             this.current_splits  = []
@@ -6695,17 +6790,17 @@ const app = Vue.createApp({
                 const splitFileName = this.getSplitFileName();
 
                 //write full split data
-                logData(gameName, gameName_path, this.full_data_str, this.attempt_number, splitFileName, "Full", this.testRun, this.scott_mode, this.evolution, this.evolution_splits_label)
+                logData(gameName, gameName_path, this.full_data_str, this.attempt_number, splitFileName, "Full", this.testRun, this.scott_mode, this.evolution, this.evolution_splits_label, this.unique_run_identifier, this.is_new_run)
                 
                 //write deprecated split data
                 if (this.autosplitter[this.game.gameName][trainer]) {
-                    logData(gameName, gameName_path, this.deprecated_data_str, this.attempt_number, splitFileName, "Deprecated", this.testRun, this.scott_mode, this.evolution, this.evolution_splits_label)
+                    logData(gameName, gameName_path, this.deprecated_data_str, this.attempt_number, splitFileName, "Deprecated", this.testRun, this.scott_mode, this.evolution, this.evolution_splits_label, this.unique_run_identifier, this.is_new_run)
                 }
                 
                 //write simple split data
                 const simpleSplit = () => {
                     this.log_split()
-                    logData(gameName, gameName_path, this.simple_data_str, this.attempt_number, splitFileName, "Simple", this.testRun, this.scott_mode, this.evolution, this.evolution_splits_label)
+                    logData(gameName, gameName_path, this.simple_data_str, this.attempt_number, splitFileName, "Simple", this.testRun, this.scott_mode, this.evolution, this.evolution_splits_label, this.unique_run_identifier, this.is_new_run)
                     this.split_data.push(this.simple_data)
                     MyStorage["split_data"] = this.split_data
                     MyStorage[this.starterString] = {
@@ -6755,7 +6850,8 @@ const app = Vue.createApp({
                     if (this.shuckie_timer == true) { 
                         this.sendEmulatorEnd(); 
                     }
-                    if (!this.testRun && !this.no_counters) {
+                    // Only increment finished_run_count if we're actually recording this run
+                    if (!this.testRun && !this.no_counters && this.is_new_run) {
                         this.finished_run_count++
                     };
                     this.run_complete = true;
@@ -6771,10 +6867,10 @@ const app = Vue.createApp({
                         simpleSplit();
                     }
                     else {
-                        logData(gameName, gameName_path, this.simple_data_str, this.attempt_number, splitFileName, "Simple", this.testRun, this.scott_mode, this.evolution, this.evolution_splits_label)
+                        logData(gameName, gameName_path, this.simple_data_str, this.attempt_number, splitFileName, "Simple", this.testRun, this.scott_mode, this.evolution, this.evolution_splits_label, this.unique_run_identifier, this.is_new_run)
                         .then(() => {
                                 console.log("Run complete - moving attempt files to finished folder.")
-                                logCopy(gameName, gameName_path, this.attempt_number, splitFileName, this.finished_run_count, this.evolution, this.evolution_splits_label);
+                                logCopy(gameName, gameName_path, this.unique_run_identifier, splitFileName, this.evolution, this.evolution_splits_label, this.is_new_run, this.testRun, this.loggedRunsManager);
                             })
                             .catch(error => {
                                 console.error("Error:", error);
@@ -6803,16 +6899,16 @@ const app = Vue.createApp({
                     const splitFileName = this.getSplitFileName();
     
                     //write full split data
-                    logData(gameName, gameName_path, this.full_data_str, this.attempt_number, splitFileName, "Full", this.testRun, this.scott_mode, this.evolution, this.evolution_splits_label)
+                    logData(gameName, gameName_path, this.full_data_str, this.attempt_number, splitFileName, "Full", this.testRun, this.scott_mode, this.evolution, this.evolution_splits_label, this.unique_run_identifier, this.is_new_run)
                     //write deprecated split data
-                    logData(gameName, gameName_path, this.deprecated_data_str, this.attempt_number, splitFileName, "Deprecated", this.testRun, this.scott_mode, this.evolution, this.evolution_splits_label)
+                    logData(gameName, gameName_path, this.deprecated_data_str, this.attempt_number, splitFileName, "Deprecated", this.testRun, this.scott_mode, this.evolution, this.evolution_splits_label, this.unique_run_identifier, this.is_new_run)
                     
                     //write simple split data
                     //use then so that logCopy doesn't touch any files until logData finishes
-                    logData(gameName, gameName_path, this.simple_data_str, this.attempt_number, splitFileName, "Simple", this.testRun, this.scott_mode, this.evolution, this.evolution_splits_label)
+                    logData(gameName, gameName_path, this.simple_data_str, this.attempt_number, splitFileName, "Simple", this.testRun, this.scott_mode, this.evolution, this.evolution_splits_label, this.unique_run_identifier, this.is_new_run)
                     .then(() => {
                             console.log("Run complete - moving attempt files to finished folder.")
-                            logCopy(gameName, gameName_path, this.attempt_number, splitFileName, this.finished_run_count, this.evolution, this.evolution_splits_label);
+                            logCopy(gameName, gameName_path, this.unique_run_identifier, splitFileName, this.evolution, this.evolution_splits_label, this.is_new_run, this.testRun, this.loggedRunsManager);
                         })
                         .catch(error => {
                             console.error("Error:", error);
