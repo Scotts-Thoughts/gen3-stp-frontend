@@ -1,17 +1,17 @@
 function log_split(x) {
     // console.log(this)
     const time = this.timer.formatted_time;
-    console.log(`Autosplitter - Battle Ended: Split: ${this.opponent} at ${time[0]}${time[1]} (Gametime: ${this.gametimeSplit})`)
+    // console.log(`Autosplitter - Battle Ended: Split: ${this.opponent} at ${time[0]}${time[1]} (Gametime: ${this.gametimeSplit})`)
 } 
 function autosplitter_process(split_name = null) {
     // console.log("Checking if autosplitter is on...")
-    console.log("autosplitter_process called:", {
-        autosplitter_toggle: this.autosplitter_toggle,
-        isTrainerBattle: this.mapper?.properties?.battle?.type?.trainer?.value,
-        gameSelection: this.gameSelection
-    });
+    // console.log("autosplitter_process called:", {
+    //     autosplitter_toggle: this.autosplitter_toggle,
+    //     isTrainerBattle: this.mapper?.properties?.battle?.type?.trainer?.value,
+    //     gameSelection: this.gameSelection
+    // });
     if (this.autosplitter_toggle == true && this.mapper.properties.battle.type.trainer.value == true) {
-        console.log("Began Autosplitter Process")
+        // console.log("Began Autosplitter Process")
         
         // Check if this is the first split and generate/check unique run identifier
         if (this.unique_run_identifier === null) {
@@ -55,7 +55,7 @@ function autosplitter_process(split_name = null) {
         let time_string = d.getHours().toString().padStart(2, "0") + ":" + d.getMinutes().toString().padStart(2, "0") + ":" + d.getSeconds().toString().padStart(2, "0")
         let player_name = this.mapper.properties.player.name.value
         let pokemon = this.starterString
-        console.log("opponent info: "+ this.opponent)
+        // console.log("opponent info: "+ this.opponent)
         let trainer_name = split_name != null ? split_name : this.opponent
         // let trainer_name = this.format_trainer_name(this.mapper.properties.battle.trainer.class.value, this.mapper.properties.battle.trainer.number.value)
         let trainer_id = this.opponentId

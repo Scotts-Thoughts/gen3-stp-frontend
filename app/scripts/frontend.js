@@ -2734,6 +2734,60 @@ const app = Vue.createApp({
         },
         
         /**
+         * Send an OBS WebSocket 5 "CreateRecordChapter" request (Add Chapter Marker).
+         * Connects to ws://localhost:4455 (or MyStorage.obs_websocket_url), identifies,
+         * sends the chapter name, then closes. Fails silently if OBS is not running.
+         * Optional: set MyStorage.obs_websocket_password if OBS has authentication enabled.
+         * @param {string} chapterName - Name for the chapter marker (e.g. "Overworld", "Battle")
+         */
+        sendObsChapterMarker(chapterName) {
+            const url = (typeof MyStorage !== 'undefined' && MyStorage.obs_websocket_url) ? MyStorage.obs_websocket_url : 'ws://localhost:4455';
+            const password = (typeof MyStorage !== 'undefined' && MyStorage.obs_websocket_password) ? MyStorage.obs_websocket_password : null;
+            const requestId = 'chapter-' + Date.now() + '-' + Math.random().toString(36).slice(2, 9);
+            let ws;
+            try {
+                ws = new WebSocket(url);
+            } catch (e) {
+                return;
+            }
+            ws.onerror = () => { try { ws.close(); } catch (_) {} };
+            ws.onclose = () => {};
+            ws.onmessage = (event) => {
+                try {
+                    const msg = JSON.parse(event.data);
+                    const op = msg.op;
+                    const d = msg.d || {};
+                    if (op === 0) {
+                        // Hello - send Identify (with optional auth)
+                        let identifyPayload = { rpcVersion: 1 };
+                        const auth = d.authentication;
+                        if (auth && auth.challenge && auth.salt && password) {
+                            try {
+                                const crypto = require('crypto');
+                                const secret = crypto.createHash('sha256').update(password + auth.salt, 'utf8').digest('base64');
+                                identifyPayload.authentication = crypto.createHash('sha256').update(secret + auth.challenge, 'utf8').digest('base64');
+                            } catch (_) {}
+                        }
+                        ws.send(JSON.stringify({ op: 1, d: identifyPayload }));
+                    } else if (op === 2) {
+                        // Identified - send CreateRecordChapter
+                        ws.send(JSON.stringify({
+                            op: 6,
+                            d: {
+                                requestId: requestId,
+                                requestType: 'CreateRecordChapter',
+                                requestData: { chapterName: String(chapterName) }
+                            }
+                        }));
+                    } else if (op === 7 && d.requestId === requestId) {
+                        try { ws.close(); } catch (_) {}
+                    }
+                } catch (_) {}
+            };
+            ws.onopen = () => {};
+        },
+
+        /**
          * Get the current storage key for the active Pokemon
          */
         getCurrentStorageKey() {
@@ -3188,6 +3242,69 @@ const app = Vue.createApp({
             await this.mapper.properties.player.bag.items[2].quantity.set(99, false)
             await this.mapper.properties.player.bag.items[3].item.set(item4, false)
             await this.mapper.properties.player.bag.items[3].quantity.set(99, false)
+        },
+        /**
+         * Get the set of non-null move values from player team slot 0.
+         * Used for order-independent move set comparison.
+         * @param {object} mapper - Mapper with mapper.properties.player.team[0]
+         * @returns {Set<string>} Set of move values (e.g. 'POUND', 'TELEPORT')
+         */
+        getPlayerTeamMoveSet(mapper) {
+            const team = mapper?.properties?.player?.team?.[0];
+            if (!team) return new Set();
+            const moves = [
+                team.move1?.value,
+                team.move2?.value,
+                team.move3?.value,
+                team.move4?.value
+            ].filter(m => m != null && m !== '');
+            return new Set(moves);
+        },
+        /**
+         * Returns true if the set of moves on player team[0] has changed compared to
+         * a previous snapshot. Order of moves is ignored; only the set of move names
+         * matters. E.g. ['Pound','Teleport',null,null] vs ['Teleport','Pound',null,null]
+         * is not a change; adding 'Swagger' is a change.
+         * @param {object} mapper - Current mapper (mapper.properties.player.team[0])
+         * @param {[string|null, string|null, string|null, string|null]} previousMoveValues - Previous [move1.value, move2.value, move3.value, move4.value]
+         * @returns {boolean} True if the set of moves has changed
+         */
+        playerTeamMovesChanged(mapper, previousMoveValues) {
+            const currentSet = this.getPlayerTeamMoveSet(mapper);
+            const previousSet = new Set((previousMoveValues || []).filter(m => m != null && m !== ''));
+            if (currentSet.size !== previousSet.size) return true;
+            for (const move of currentSet) {
+                if (!previousSet.has(move)) return true;
+            }
+            return false;
+        },
+        updateLastKnownMoves() {
+            const t = this.mapper?.properties?.player?.team?.[0];
+            if (!t) return;
+            this.last_known_moves = [
+                t.move1?.value,
+                t.move2?.value,
+                t.move3?.value,
+                t.move4?.value
+            ];
+        },
+        /**
+         * Debounced move-set change check. When the game updates multiple moves in quick
+         * succession, we run the check once after updates settle so we read all 4 slots
+         * consistently (avoids reading a partial state and seeing only 3 moves).
+         */
+        scheduleMoveSetChangeCheck() {
+            if (this._moveChangeCheckTimeoutId != null) {
+                clearTimeout(this._moveChangeCheckTimeoutId);
+            }
+            this._moveChangeCheckTimeoutId = setTimeout(() => {
+                this._moveChangeCheckTimeoutId = null;
+                if (this.playerTeamMovesChanged(this.mapper, this.last_known_moves)) {
+                    console.log('Moves changed:', this.getPlayerTeamMoveSet(this.mapper));
+                    this.sendObsChapterMarker('Move Change');
+                }
+                this.updateLastKnownMoves();
+            }, 50);
         },
         async update_moveset() {
             const move_data = this.cross_generation_moves.g3
@@ -5668,7 +5785,7 @@ const app = Vue.createApp({
             const totalPokemon = this.enemyTrainerList?.[this.opponentId]?.pokemon?.length;
             const heights = {
               1: "234px",
-              2: "402px",
+              2: "401px",
               3: "566px",
               4: "736px",
               5: "902px",
@@ -5974,11 +6091,31 @@ const app = Vue.createApp({
         // Initial tracking of personality value and species
         this.last_known_personality_value = this.mapper.properties.player.team[0].personalityValue.value;
         this.last_known_species = this.mapper.properties.player.team[0].species.value;
+        this.last_known_moves = [
+            this.mapper.properties.player.team[0].move1.value,
+            this.mapper.properties.player.team[0].move2.value,
+            this.mapper.properties.player.team[0].move3.value,
+            this.mapper.properties.player.team[0].move4.value
+        ];
+        this._moveChangeCheckTimeoutId = null;
         
         // Track personality value changes
         this.mapper.properties.player.team[0].personalityValue.change(async (newProp, oldProp) => {
             // Update tracked personality value
             this.last_known_personality_value = newProp.value;
+        });
+
+        this.mapper.properties.player.team[0].move1.change(async (newProp, oldProp) => {
+            this.scheduleMoveSetChangeCheck();
+        });
+        this.mapper.properties.player.team[0].move2.change(async (newProp, oldProp) => {
+            this.scheduleMoveSetChangeCheck();
+        });
+        this.mapper.properties.player.team[0].move3.change(async (newProp, oldProp) => {
+            this.scheduleMoveSetChangeCheck();
+        });
+        this.mapper.properties.player.team[0].move4.change(async (newProp, oldProp) => {
+            this.scheduleMoveSetChangeCheck();
         });
 
         // Species change handler - handles both normal species changes and evolution
@@ -6093,6 +6230,20 @@ const app = Vue.createApp({
             if (this.set_rom_starter_automatically && newProp.value == 'CB2_InitMainMenu' && this.timer.formatted_time[0] == "0h0m0s" && this.timer.formatted_time[1] == ".00") {
                 console.log('Setting ROM starter automatically')
                 this.update_rom_starter_and_intro_mon()
+            }
+            if (newProp.value == 'CB2_Overworld' || newProp.value == 'BattleMainCB2') {
+                const stateName = newProp.value === 'CB2_Overworld' ? 'OUT' : 'IN'; // Might need a better way to manage this so that we don't spam OUT markers in Emerald
+                const trainerFlag = this.mapper.properties.battle.type.trainer.value
+                var trainerName = "";
+                if (this.gameSelection == 'FireRed and LeafGreen') {
+                    trainerName = trainerFlag ? this.mapper.properties.battle.trainer.opponent.value : "Wild";
+                }
+                else if (this.gameSelection == 'Emerald') {
+                    trainerName = trainerFlag ? this.mapper.properties.battle.trainer.opponentA.value : "Wild";
+                }
+                const chapterName = stateName + " - " + trainerName;
+                console.log("Chapter Detected: " + chapterName)
+                this.sendObsChapterMarker(chapterName);
             }
         });
         //GAMESTATE MANAGEMENT

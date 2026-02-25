@@ -789,7 +789,7 @@ const DEFAULT_STYLE_SETTINGS = {
         "selected_evolution_species": "Abra"
     },
     "FireRed and LeafGreen_63": {
-        "selected_evolution_species": "Abra"
+        "selected_evolution_species": "Alakazam"
     },
     "FireRed and LeafGreen_Alakazam-line-Abra": {
         "overlay_color": "#f0db46",
@@ -812,7 +812,8 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundUrl": "",
         "backgroundFlip": false,
         "use_custom_background": false,
-        "backgroundSaturation": 100
+        "backgroundSaturation": 100,
+        "attempt_number": 1
     },
     "FireRed and LeafGreen_Abra-line-Kadabra": {
         "overlay_color": "#f0db46",
@@ -860,7 +861,8 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundSaturation": 100,
         "backgroundXFlip": true,
         "attempt_number": 1,
-        "evolution": true
+        "evolution": true,
+        "finished_run_count": 1
     },
     "FireRed and LeafGreen_Gastly": {
         "pkmn_ability": "Levitate",
@@ -1014,6 +1016,42 @@ const DEFAULT_STYLE_SETTINGS = {
     },
     "FireRed and LeafGreen_64": {
         "selected_evolution_species": "Abra"
+    },
+    "FireRed and LeafGreen_Tangela": {
+        "pkmn_ability": "Chlorophyll",
+        "pkmnNature": "Hardy",
+        "backgroundTexture": "Dark Grass",
+        "overlay_color": "#6c9ec1",
+        "backgroundBlur": "0",
+        "backgroundScale": "106",
+        "backgroundContrast": "163",
+        "imageScale": "0.61",
+        "imageYOffset": "-58",
+        "imageXOffset": "-30",
+        "ui_saturation": "1.2",
+        "backgroundYOffset": "10",
+        "backgroundXOffset": "37"
+    },
+    "FireRed and LeafGreen_Alakazam": {
+        "selected_evolution_species": "Alakazam",
+        "evolution": false,
+        "pkmn_ability": "Synchronize",
+        "pkmnNature": "Hardy",
+        "backgroundTexture": "Psychic",
+        "overlay_color": "#f85888",
+        "attempt_number": 3
+    },
+    "FireRed and LeafGreen_65": {
+        "selected_evolution_species": "Alakazam"
+    },
+    "Emerald_Machamp": {
+        "selected_evolution_species": "Machamp"
+    },
+    "Emerald_68": {
+        "selected_evolution_species": "Machamp"
+    },
+    "Emerald_Machop-line-Machamp": {
+        "attempt_number": 4
     }
 };
 
