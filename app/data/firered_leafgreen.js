@@ -659,9 +659,9 @@ const evolution_data_pokedex = {
         ],
         "weight": 9.0,
         "evolution_family": [
+            {"species": "Squirtle", "method": null, "parameter": null},
             {"species": "Wartortle", "method": "level", "parameter": 16},
-            {"species": "Blastoise", "method": null, "parameter": null},
-            {"species": "Squirtle", "method": null, "parameter": null}
+            {"species": "Blastoise", "method": null, "parameter": null}
         ]
     },
     "Wartortle": {
@@ -753,9 +753,9 @@ const evolution_data_pokedex = {
         "egg_moves": [],
         "weight": 22.5,
         "evolution_family": [
-            {"species": "Blastoise", "method": "level", "parameter": 36},
             {"species": "Squirtle", "method": null, "parameter": null},
-            {"species": "Wartortle", "method": null, "parameter": null}
+            {"species": "Wartortle", "method": null, "parameter": null},
+            {"species": "Blastoise", "method": "level", "parameter": 36}
         ]
     },
     "Blastoise": {
@@ -851,9 +851,9 @@ const evolution_data_pokedex = {
         "egg_moves": [],
         "weight": 85.5,
         "evolution_family": [
-            {"species": "Blastoise", "method": null, "parameter": null},
             {"species": "Squirtle", "method": null, "parameter": null},
-            {"species": "Wartortle", "method": null, "parameter": null}
+            {"species": "Wartortle", "method": null, "parameter": null},
+            {"species": "Blastoise", "method": null, "parameter": null}
         ]
     },
     "Caterpie": {

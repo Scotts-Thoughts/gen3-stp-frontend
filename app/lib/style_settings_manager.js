@@ -12,6 +12,8 @@
 const fs = require('fs');
 const path = require('path');
 
+const DEBUG_LOGGING = false;
+
 class StyleSettingsManager {
     constructor() {
         // Detect if running in development mode
@@ -27,9 +29,9 @@ class StyleSettingsManager {
         // Cache for user overrides (loaded from localStorage)
         this.userOverrides = {};
         
-        console.log(`[StyleSettingsManager] Initialized in ${this.isDev ? 'DEVELOPMENT' : 'PRODUCTION'} mode`);
-        console.log(`[StyleSettingsManager] Default settings path: ${this.defaultSettingsPath}`);
-        console.log(`[StyleSettingsManager] Loaded ${Object.keys(this.defaultSettings).length} default settings`);
+        DEBUG_LOGGING && console.log(`[StyleSettingsManager] Initialized in ${this.isDev ? 'DEVELOPMENT' : 'PRODUCTION'} mode`);
+        DEBUG_LOGGING && console.log(`[StyleSettingsManager] Default settings path: ${this.defaultSettingsPath}`);
+        DEBUG_LOGGING && console.log(`[StyleSettingsManager] Loaded ${Object.keys(this.defaultSettings).length} default settings`);
     }
     
     /**
@@ -44,7 +46,7 @@ class StyleSettingsManager {
                 const { app } = require('electron');
                 if (app && typeof app.isPackaged !== 'undefined') {
                     const isPackaged = app.isPackaged;
-                    console.log(`[StyleSettingsManager] Electron app.isPackaged: ${isPackaged}`);
+                    DEBUG_LOGGING && console.log(`[StyleSettingsManager] Electron app.isPackaged: ${isPackaged}`);
                     if (isPackaged) return false; // Definitely production
                 }
             } catch (e) {
@@ -53,7 +55,7 @@ class StyleSettingsManager {
                     const { remote } = require('electron');
                     if (remote && remote.app && typeof remote.app.isPackaged !== 'undefined') {
                         const isPackaged = remote.app.isPackaged;
-                        console.log(`[StyleSettingsManager] Electron remote.app.isPackaged: ${isPackaged}`);
+                        DEBUG_LOGGING && console.log(`[StyleSettingsManager] Electron remote.app.isPackaged: ${isPackaged}`);
                         if (isPackaged) return false;
                     }
                 } catch (e2) {
@@ -62,7 +64,7 @@ class StyleSettingsManager {
                         const remote = require('@electron/remote');
                         if (remote && remote.app && typeof remote.app.isPackaged !== 'undefined') {
                             const isPackaged = remote.app.isPackaged;
-                            console.log(`[StyleSettingsManager] @electron/remote app.isPackaged: ${isPackaged}`);
+                            DEBUG_LOGGING && console.log(`[StyleSettingsManager] @electron/remote app.isPackaged: ${isPackaged}`);
                             if (isPackaged) return false;
                         }
                     } catch (e3) {
@@ -73,24 +75,24 @@ class StyleSettingsManager {
             
             // Method 2: Check NODE_ENV
             if (process.env.NODE_ENV === 'production') {
-                console.log(`[StyleSettingsManager] NODE_ENV is production`);
+                DEBUG_LOGGING && console.log(`[StyleSettingsManager] NODE_ENV is production`);
                 return false;
             }
             if (process.env.NODE_ENV === 'development') {
-                console.log(`[StyleSettingsManager] NODE_ENV is development`);
+                DEBUG_LOGGING && console.log(`[StyleSettingsManager] NODE_ENV is development`);
                 return true;
             }
             
             // Method 3: Check if running from asar archive (packaged app)
             if (process.mainModule && process.mainModule.filename.includes('app.asar')) {
-                console.log(`[StyleSettingsManager] Running from app.asar (packaged)`);
+                DEBUG_LOGGING && console.log(`[StyleSettingsManager] Running from app.asar (packaged)`);
                 return false;
             }
             
             // Method 4: Check executable path
             const execPath = process.execPath || '';
             if (execPath.includes('electron') || execPath.includes('node_modules')) {
-                console.log(`[StyleSettingsManager] Running from electron/node_modules path (dev)`);
+                DEBUG_LOGGING && console.log(`[StyleSettingsManager] Running from electron/node_modules path (dev)`);
                 return true;
             }
             
@@ -100,14 +102,14 @@ class StyleSettingsManager {
                 const testPath = path.join(__dirname, '.dev_test');
                 fs.writeFileSync(testPath, 'test');
                 fs.unlinkSync(testPath);
-                console.log(`[StyleSettingsManager] Can write to app directory (dev mode)`);
+                DEBUG_LOGGING && console.log(`[StyleSettingsManager] Can write to app directory (dev mode)`);
                 return true;
             } catch (e) {
-                console.log(`[StyleSettingsManager] Cannot write to app directory (prod mode)`);
+                DEBUG_LOGGING && console.log(`[StyleSettingsManager] Cannot write to app directory (prod mode)`);
                 return false;
             }
         } catch (e) {
-            console.warn('[StyleSettingsManager] Error detecting dev mode:', e.message);
+            DEBUG_LOGGING && console.warn('[StyleSettingsManager] Error detecting dev mode:', e.message);
             // Default to production mode for safety
             return false;
         }
@@ -123,7 +125,7 @@ class StyleSettingsManager {
             const defaults = require('./default_style_settings.js');
             return defaults.DEFAULT_STYLE_SETTINGS || {};
         } catch (e) {
-            console.warn('[StyleSettingsManager] Could not load default settings:', e.message);
+            DEBUG_LOGGING && console.warn('[StyleSettingsManager] Could not load default settings:', e.message);
             return {};
         }
     }
@@ -262,9 +264,9 @@ module.exports = { DEFAULT_STYLE_SETTINGS };
 `;
             
             fs.writeFileSync(this.defaultSettingsPath, content, 'utf8');
-            console.log(`[StyleSettingsManager] Saved defaults to ${this.defaultSettingsPath}`);
+            // console.log(`[StyleSettingsManager] Saved defaults to ${this.defaultSettingsPath}`);
         } catch (e) {
-            console.error('[StyleSettingsManager] Failed to write defaults file:', e.message);
+            // console.error('[StyleSettingsManager] Failed to write defaults file:', e.message);
         }
     }
     
@@ -273,7 +275,7 @@ module.exports = { DEFAULT_STYLE_SETTINGS };
      */
     resetToDefaults(key) {
         localStorage.removeItem(key);
-        console.log(`[StyleSettingsManager] Reset ${key} to defaults`);
+        DEBUG_LOGGING && console.log(`[StyleSettingsManager] Reset ${key} to defaults`);
     }
     
     /**
@@ -288,7 +290,7 @@ module.exports = { DEFAULT_STYLE_SETTINGS };
             }
         }
         keysToRemove.forEach(key => localStorage.removeItem(key));
-        console.log(`[StyleSettingsManager] Reset ${keysToRemove.length} style settings to defaults`);
+        DEBUG_LOGGING && console.log(`[StyleSettingsManager] Reset ${keysToRemove.length} style settings to defaults`);
     }
     
     /**
@@ -297,7 +299,7 @@ module.exports = { DEFAULT_STYLE_SETTINGS };
      */
     exportCurrentAsDefaults() {
         if (!this.isDev) {
-            console.warn('[StyleSettingsManager] Can only export defaults in development mode');
+            DEBUG_LOGGING && console.warn('[StyleSettingsManager] Can only export defaults in development mode');
             return false;
         }
         
@@ -315,7 +317,7 @@ module.exports = { DEFAULT_STYLE_SETTINGS };
         
         this.defaultSettings = { ...this.defaultSettings, ...exported };
         this._writeDefaultsFile();
-        console.log(`[StyleSettingsManager] Exported ${Object.keys(exported).length} settings as defaults`);
+        DEBUG_LOGGING && console.log(`[StyleSettingsManager] Exported ${Object.keys(exported).length} settings as defaults`);
         return true;
     }
     

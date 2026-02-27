@@ -529,7 +529,7 @@ function logData(gameName, gameName_path, str, file_name, starter, log_type, tes
         return new Promise((resolve, reject) => {
         // If this is not a new run, don't write any data
         if (!is_new_run) {
-            console.log(`[logData] Skipping write - run already logged: ${unique_run_identifier}`);
+            // console.log(`[logData] Skipping write - run already logged: ${unique_run_identifier}`);
             resolve();
             return;
         }
@@ -698,7 +698,7 @@ function logData(gameName, gameName_path, str, file_name, starter, log_type, tes
 function logCopy(gameName, gameName_path, unique_run_identifier, starter, evolution, evolution_label, is_new_run, testStatus, loggedRunsManager) {
     // If this is not a new run, don't copy any files
     if (!is_new_run) {
-        console.log(`[logCopy] Skipping copy - run already logged: ${unique_run_identifier}`);
+        // console.log(`[logCopy] Skipping copy - run already logged: ${unique_run_identifier}`);
         return;
     }
     
@@ -757,7 +757,7 @@ function logCopy(gameName, gameName_path, unique_run_identifier, starter, evolut
                 if (err) {
                     console.error('[logCopy] Error copying simple file:', err);
                 } else {
-                    console.log(`[logCopy] Copied simple file: ${nextFinishedRunCount}`);
+                    // console.log(`[logCopy] Copied simple file: ${nextFinishedRunCount}`);
                     markFinished();
                 }
             });
@@ -767,7 +767,7 @@ function logCopy(gameName, gameName_path, unique_run_identifier, starter, evolut
                 if (err) {
                     console.error('[logCopy] Error copying full file:', err);
                 } else {
-                    console.log(`[logCopy] Copied full file: ${nextFinishedRunCount}`);
+                    // console.log(`[logCopy] Copied full file: ${nextFinishedRunCount}`);
                     markFinished();
                 }
             });
@@ -777,7 +777,7 @@ function logCopy(gameName, gameName_path, unique_run_identifier, starter, evolut
                 if (err) {
                     console.error('[logCopy] Error copying deprecated file:', err);
                 } else {
-                    console.log(`[logCopy] Copied deprecated file: ${nextFinishedRunCount}`);
+                    // console.log(`[logCopy] Copied deprecated file: ${nextFinishedRunCount}`);
                     markFinished();
                 }
             });
@@ -2846,10 +2846,10 @@ const app = Vue.createApp({
                     if (!response.ok) {
                         throw new Error(`HTTP error! status: ${response.status}`);
                     }
-                    console.log('Emulator start command sent successfully');
+                    // console.log('Emulator start command sent successfully');
                     return true;
                 } catch (error) {
-                    console.error('Error sending start command:', error);
+                    // console.error('Error sending start command:', error);
                     return false;
                 }
             }
@@ -2861,10 +2861,10 @@ const app = Vue.createApp({
                     if (!response.ok) {
                         throw new Error(`HTTP error! status: ${response.status}`);
                     }
-                    console.log('Emulator start command sent successfully');
+                    // console.log('Emulator start command sent successfully');
                     return true;
                 } catch (error) {
-                    console.error('Error sending start command:', error);
+                    // console.error('Error sending start command:', error);
                     return false;
                 }
             }
@@ -2877,10 +2877,10 @@ const app = Vue.createApp({
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
-                console.log('Emulator end command sent successfully');
+                // console.log('Emulator end command sent successfully');
                 return true;
             } catch (error) {
-                console.error('Error sending end command:', error);
+                // console.error('Error sending end command:', error);
                 return false;
             }
         },
@@ -2892,10 +2892,10 @@ const app = Vue.createApp({
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
-                console.log('Emulator start command sent successfully');
+                // console.log('Emulator start command sent successfully');
                 return true;
             } catch (error) {
-                console.error('Error sending start command:', error);
+                // console.error('Error sending start command:', error);
                 return false;
             }
         },
@@ -2907,10 +2907,10 @@ const app = Vue.createApp({
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
-                console.log('Emulator start command sent successfully');
+                // console.log('Emulator start command sent successfully');
                 return true;
             } catch (error) {
-                console.error('Error sending start command:', error);
+                // console.error('Error sending start command:', error);
                 return false;
             }
         },
@@ -3145,7 +3145,7 @@ const app = Vue.createApp({
         },
         async update_nature() {
             if (this.mapper.properties.player.teamCount.value == 0) { 
-                console.log('Cannot update stats while the player has no Pokemon.')
+                // console.log('Cannot update stats while the player has no Pokemon.')
                 return 
             }
             const pkmnData = this.dexData[this.starterString]
@@ -3204,7 +3204,7 @@ const app = Vue.createApp({
                 },
             }
 
-            console.log(value_object)
+            // console.log(value_object)
 
             // only recalculate stats when IVs when your starter is received
             await Promise.all([
@@ -3220,7 +3220,7 @@ const app = Vue.createApp({
         openFolder(folderName, game_name, path = "", path2) {
             const fs = require('fs');
             const fullPath = `.\\${folderName}\\${game_name}\\${path}\\${path2}`;
-            console.log(fullPath);
+            // console.log(fullPath);
 
             if (!fs.existsSync(fullPath)) {
                 fs.mkdirSync(fullPath, { recursive: true });
@@ -3300,7 +3300,7 @@ const app = Vue.createApp({
             this._moveChangeCheckTimeoutId = setTimeout(() => {
                 this._moveChangeCheckTimeoutId = null;
                 if (this.playerTeamMovesChanged(this.mapper, this.last_known_moves)) {
-                    console.log('Moves changed:', this.getPlayerTeamMoveSet(this.mapper));
+                    // console.log('Moves changed:', this.getPlayerTeamMoveSet(this.mapper));
                     this.sendObsChapterMarker('Move Change');
                 }
                 this.updateLastKnownMoves();
@@ -4108,7 +4108,7 @@ const app = Vue.createApp({
             this.update_rom_starter_and_intro_mon()
 
             if (this.set_rom_starter_automatically && this.timer.formatted_time[0] == "0" && this.timer.formatted_time[1] == ".00") {
-                console.log('Setting ROM starter automatically')
+                // console.log('Setting ROM starter automatically')
                 this.update_rom_starter_and_intro_mon()
             }
             // this.playerName = "NINTEN"
@@ -4127,11 +4127,11 @@ const app = Vue.createApp({
             const to        = `${copy_to}`
         
             if (!MyStorage[from]) {
-                console.log("The Pokemon you are trying to copy from does not have overlay data stored for it.")
+                // console.log("The Pokemon you are trying to copy from does not have overlay data stored for it.")
                 return
             }
         
-            console.log(MyStorage[from])
+            // console.log(MyStorage[from])
             if (MyStorage[from]) {
                 const properties = [
                     'overlay_color', 'backgroundBlur', 'backgroundHue', 'backgroundScale', 'backgroundUrl', 
@@ -4150,13 +4150,13 @@ const app = Vue.createApp({
                 // Assign the new object to MyStorage[to]
                 MyStorage[to] = newObject;
             }
-            console.log(MyStorage[to])
+            // console.log(MyStorage[to])
         },
         copyCurrentStylesToAllFamilyMembers() {
             // Copy all style settings from the currently selected evolution family member
             // to all other members of the evolution family
             if (!this.evolution || !this.selected_evolution_species || this.evolution_family_list.length <= 1) {
-                console.log("Evolution mode must be enabled and you must have multiple species in the evolution family.")
+                // console.log("Evolution mode must be enabled and you must have multiple species in the evolution family.")
                 return
             }
             
@@ -4242,13 +4242,13 @@ const app = Vue.createApp({
                     
                     copiedCount++;
                     // Debug: Log what was copied for this species
-                    console.log(`Copied to ${targetSpecies} (key: ${targetStorageKey}):`, copiedValues[targetSpecies]);
+                    // console.log(`Copied to ${targetSpecies} (key: ${targetStorageKey}):`, copiedValues[targetSpecies]);
                     // Verify what was actually saved
-                    console.log(`Verified storage for ${targetSpecies}:`, verifiedData);
+                    // console.log(`Verified storage for ${targetSpecies}:`, verifiedData);
                 }
             });
             
-            console.log(`Successfully copied style settings from "${sourceSpecies}" (key: ${sourceStorageKey}) to ${copiedCount} other family member(s).`);
+            // console.log(`Successfully copied style settings from "${sourceSpecies}" (key: ${sourceStorageKey}) to ${copiedCount} other family member(s).`);
         },
         load_all_settings() {
             const game_name             = this.gameSelection
@@ -4567,7 +4567,7 @@ const app = Vue.createApp({
             // console.log('evolution_data_pokedex available:', !!this.evolution_data_pokedex);
             
             if (!starter) {
-                console.log('No starter, clearing list');
+                // console.log('No starter, clearing list');
                 this.evolution_family_list = [];
                 return;
             }
@@ -4575,7 +4575,7 @@ const app = Vue.createApp({
             // Always try to get the evolution family, even if evolution_data_pokedex is not available yet
             if (!this.evolution_data_pokedex) {
                 // If no evolution data yet, just use the starter as the only option
-                console.log('No evolution_data_pokedex, using starter only');
+                // console.log('No evolution_data_pokedex, using starter only');
                 this.evolution_family_list = [starter];
                 return;
             }
@@ -4592,7 +4592,7 @@ const app = Vue.createApp({
             
             // If the evolution family has only one member (e.g., Registeel), disable evolution
             if (this.evolution_family_list.length <= 1 && this.evolution) {
-                console.log(`[Evolution] Disabling evolution for single-species family: ${starter}`);
+                // console.log(`[Evolution] Disabling evolution for single-species family: ${starter}`);
                 this.evolution = false;
             }
             
@@ -5803,7 +5803,7 @@ const app = Vue.createApp({
                 if (this.gameSelection == 'Emerald') {
                     this.mapper.properties[this.game.newGameFlagContainer][this.game.newGameFlag].change((newProp, oldProp) => {
                         if(this.game.newGameValueNew.includes(newProp.value) && this.game.newGameValueOld.includes(oldProp.value)){
-                            console.log("New run detected... Timer started.")
+                            // console.log("New run detected... Timer started.")
                             if (!this.testRun && this.no_counters == false) { 
                                 this.attempt_number++ 
                             }
@@ -5819,9 +5819,9 @@ const app = Vue.createApp({
                         this.mapper.properties.pointers.sStpCallback2.change((currentProp, previousProp) => {
                             value_current  = currentProp.value
                             value_previous = previousProp.value
-                            console.log(value_current, value_previous)
+                            // console.log(value_current, value_previous)
                             if (value_current == 'CB2_NewGameScene' && (value_previous == 'CB2_TitleScreenRun' || value_previous == 'CB2_MainMenu')) {
-                                console.log("New run detected... Timer started.")
+                                // console.log("New run detected... Timer started.")
                                 if (!this.testRun && this.no_counters == false) { 
                                     this.attempt_number++ 
                                 }
@@ -5835,7 +5835,7 @@ const app = Vue.createApp({
                     else {
                         this.mapper.properties[this.game.newGameFlagContainer][this.game.newGameFlag].change((newProp, oldProp) => {
                             if(this.game.newGameValueNew.includes(newProp.value) && this.game.newGameValueOld.includes(oldProp.value)){
-                                console.log("New run detected... Timer started.")
+                                // console.log("New run detected... Timer started.")
                                 if (!this.testRun && this.no_counters == false) { 
                                     this.attempt_number++ 
                                 }
@@ -5850,7 +5850,7 @@ const app = Vue.createApp({
                 else {
                     this.mapper.properties[this.game.newGameFlagContainer][this.game.newGameFlag].change((newProp, oldProp) => {
                         if(this.game.newGameValueNew.includes(newProp.value) && this.game.newGameValueOld.includes(oldProp.value)){
-                            console.log("New run detected... Timer started.")
+                            // console.log("New run detected... Timer started.")
                             if (!this.testRun && this.no_counters == false) { 
                                 this.attempt_number++ 
                             }
@@ -6088,16 +6088,16 @@ const app = Vue.createApp({
         // Initialize evolution family list
         this.updateEvolutionFamilyList();
 
-        // Initial tracking of personality value and species
+        // // Initial tracking of personality value and species
         this.last_known_personality_value = this.mapper.properties.player.team[0].personalityValue.value;
         this.last_known_species = this.mapper.properties.player.team[0].species.value;
-        this.last_known_moves = [
-            this.mapper.properties.player.team[0].move1.value,
-            this.mapper.properties.player.team[0].move2.value,
-            this.mapper.properties.player.team[0].move3.value,
-            this.mapper.properties.player.team[0].move4.value
-        ];
-        this._moveChangeCheckTimeoutId = null;
+        // this.last_known_moves = [
+        //     this.mapper.properties.player.team[0].move1.value,
+        //     this.mapper.properties.player.team[0].move2.value,
+        //     this.mapper.properties.player.team[0].move3.value,
+        //     this.mapper.properties.player.team[0].move4.value
+        // ];
+        // this._moveChangeCheckTimeoutId = null;
         
         // Track personality value changes
         this.mapper.properties.player.team[0].personalityValue.change(async (newProp, oldProp) => {
@@ -6105,18 +6105,18 @@ const app = Vue.createApp({
             this.last_known_personality_value = newProp.value;
         });
 
-        this.mapper.properties.player.team[0].move1.change(async (newProp, oldProp) => {
-            this.scheduleMoveSetChangeCheck();
-        });
-        this.mapper.properties.player.team[0].move2.change(async (newProp, oldProp) => {
-            this.scheduleMoveSetChangeCheck();
-        });
-        this.mapper.properties.player.team[0].move3.change(async (newProp, oldProp) => {
-            this.scheduleMoveSetChangeCheck();
-        });
-        this.mapper.properties.player.team[0].move4.change(async (newProp, oldProp) => {
-            this.scheduleMoveSetChangeCheck();
-        });
+        // this.mapper.properties.player.team[0].move1.change(async (newProp, oldProp) => {
+        //     this.scheduleMoveSetChangeCheck();
+        // });
+        // this.mapper.properties.player.team[0].move2.change(async (newProp, oldProp) => {
+        //     this.scheduleMoveSetChangeCheck();
+        // });
+        // this.mapper.properties.player.team[0].move3.change(async (newProp, oldProp) => {
+        //     this.scheduleMoveSetChangeCheck();
+        // });
+        // this.mapper.properties.player.team[0].move4.change(async (newProp, oldProp) => {
+        //     this.scheduleMoveSetChangeCheck();
+        // });
 
         // Species change handler - handles both normal species changes and evolution
         this.mapper.properties.player.team[0].species.change(async (newProp, oldProp) => {
@@ -6140,7 +6140,7 @@ const app = Vue.createApp({
                         // console.log('Got here')
                         const evolution_family = evolution_family_raw.map(obj => obj.species).filter(s => s != null);
                         const evolved = evolution_family.includes(newProp.value);
-                        console.log(evolved)
+                        // console.log(evolved)
                         if (evolved == true) {
                             // Store old species for transition
                             const oldSpecies = this.starter;
@@ -6226,23 +6226,77 @@ const app = Vue.createApp({
 
         this.newGame();
 
-        this.mapper.properties.pointers.sStpCallback2.change((newProp) => {
+        var trackingBattle = false;
+        this.mapper.properties.pointers.sStpCallback2.change((newProp, oldProp) => {
+            console.log("State:", newProp.value)
+            console.log(newProp.value)
+
             if (this.set_rom_starter_automatically && newProp.value == 'CB2_InitMainMenu' && this.timer.formatted_time[0] == "0h0m0s" && this.timer.formatted_time[1] == ".00") {
                 console.log('Setting ROM starter automatically')
                 this.update_rom_starter_and_intro_mon()
             }
-            if (newProp.value == 'CB2_Overworld' || newProp.value == 'BattleMainCB2') {
-                const stateName = newProp.value === 'CB2_Overworld' ? 'OUT' : 'IN'; // Might need a better way to manage this so that we don't spam OUT markers in Emerald
+            if (newProp.value == 'CB2_Overworld' || newProp.value == 'BattleMainCB2' || newProp.value == null || newProp.value == "CB2_WhiteOut") {
+                console.log("Passed If:", newProp.value)
+
+                var stateName = ""
+                switch (newProp.value) {
+                    /*
+                    CB2_RunPokemonSummaryScreen
+                    CB2_ReturnToPartyMenuWhileLearningMove
+                    CB2_UseTMHMAfterForgettingMove 
+
+                    CB2_SetUpTMCaseUI_Blocking 
+
+                    CB2_PSA
+                    */
+                    case 'CB2_UseTMHMAfterForgettingMove':
+                        stateName = 'LABEL - MOVE';
+                        this.sendObsChapterMarker(stateName);
+                        return;
+                    // case '':
+                    //     stateName = 'LABEL - MOVE';
+                    //     this.sendObsChapterMarker(stateName);
+                    //     return;
+                        
+                    case null:
+                        if (this.mapper.properties.pointers.sStpCallback1.value == null) {
+                            stateName = 'RESET';
+                            trackingBattle = false;
+                            this.sendObsChapterMarker(stateName);
+                        }
+                        return;
+                    case 'CB2_WhiteOut':
+                        stateName = 'BLACKOUT';
+                        trackingBattle = false;
+                        this.sendObsChapterMarker(stateName);
+                        return;
+                    case 'CB2_Overworld':
+                        stateName = 'OUT';
+                        break;
+                    default: 
+                        if (oldProp.value == 'CB2_ReshowBattleScreenAfterMenu') {
+                            return;
+                        }
+                        trackingBattle = true;
+                        stateName = 'IN';
+                        break;
+                }
                 const trainerFlag = this.mapper.properties.battle.type.trainer.value
                 var trainerName = "";
                 if (this.gameSelection == 'FireRed and LeafGreen') {
-                    trainerName = trainerFlag ? this.mapper.properties.battle.trainer.opponent.value : "Wild";
+                    trainerName = trainerFlag ? this.mapper.properties.battle.trainer.opponent.value : "NOT_MAJOR_BATTLE";
                 }
                 else if (this.gameSelection == 'Emerald') {
-                    trainerName = trainerFlag ? this.mapper.properties.battle.trainer.opponentA.value : "Wild";
+                    trainerName = trainerFlag ? this.mapper.properties.battle.trainer.opponentA.value : "NOT_MAJOR_BATTLE";
                 }
                 const chapterName = stateName + " - " + trainerName;
                 console.log("Chapter Detected: " + chapterName)
+                if (stateName == "OUT" && trackingBattle == false) {
+                    return;
+                }
+                // if (stateName == "IN" && trackingBattle == true) {
+                //     return;
+                // }
                 this.sendObsChapterMarker(chapterName);
             }
         });
@@ -6880,7 +6934,7 @@ const app = Vue.createApp({
             // }
         });
         this.mapper.properties.overworld.disabledEncounters.change(async (newProp) => {
-            console.log("disabled encounters: " + newProp.value)
+            // console.log("disabled encounters: " + newProp.value)
         });
 
         //FIX OF ENEMY BATTLE STATS
@@ -6905,24 +6959,24 @@ const app = Vue.createApp({
         if (document.getElementById("Spe") && this.get_stat('Speed').toString().length <= 3)           { document.getElementById("Spe").style.fontSize = stat_size_3_digit }
         if (document.getElementById("Spe") && this.get_stat('Speed').toString().length >= 4)           { document.getElementById("Spe").style.fontSize = stat_size_4_digit }
         this.mapper.properties.battle.yourPokemon.modStageAttack.change(async () => {
-            if (this.get_stat('Attack').toString().length <= 3) { document.getElementById("Atk").style.fontSize = stat_size_3_digit }
-            if (this.get_stat('Attack').toString().length >= 4) { document.getElementById("Atk").style.fontSize = stat_size_4_digit }
+            if (document.getElementById("Atk") && this.get_stat('Attack').toString().length <= 3) { document.getElementById("Atk").style.fontSize = stat_size_3_digit }
+            if (document.getElementById("Atk") && this.get_stat('Attack').toString().length >= 4) { document.getElementById("Atk").style.fontSize = stat_size_4_digit }
         })
         this.mapper.properties.battle.yourPokemon.modStageDefense.change(async () => {
-            if (this.get_stat('Defense').toString().length <= 3) { document.getElementById("Def").style.fontSize = stat_size_3_digit }
-            if (this.get_stat('Defense').toString().length >= 4) { document.getElementById("Def").style.fontSize = stat_size_4_digit }
+            if (document.getElementById("Def") && this.get_stat('Defense').toString().length <= 3) { document.getElementById("Def").style.fontSize = stat_size_3_digit }
+            if (document.getElementById("Def") && this.get_stat('Defense').toString().length >= 4) { document.getElementById("Def").style.fontSize = stat_size_4_digit }
         })
         this.mapper.properties.battle.yourPokemon.modStageSpecialAttack.change(async () => {
-            if (this.get_stat('Special Attack').toString().length <= 3) { document.getElementById("SpA").style.fontSize = stat_size_3_digit }
-            if (this.get_stat('Special Attack').toString().length >= 4) { document.getElementById("SpA").style.fontSize = stat_size_4_digit }
+            if (document.getElementById("SpA") && this.get_stat('Special Attack').toString().length <= 3) { document.getElementById("SpA").style.fontSize = stat_size_3_digit }
+            if (document.getElementById("SpA") && this.get_stat('Special Attack').toString().length >= 4) { document.getElementById("SpA").style.fontSize = stat_size_4_digit }
         })
         this.mapper.properties.battle.yourPokemon.modStageSpecialDefense.change(async () => {
-            if (this.get_stat('Special Defense').toString().length <= 3) { document.getElementById("SpD").style.fontSize = stat_size_3_digit }
-            if (this.get_stat('Special Defense').toString().length >= 4) { document.getElementById("SpD").style.fontSize = stat_size_4_digit }
+            if (document.getElementById("SpD") && this.get_stat('Special Defense').toString().length <= 3) { document.getElementById("SpD").style.fontSize = stat_size_3_digit }
+            if (document.getElementById("SpD") && this.get_stat('Special Defense').toString().length >= 4) { document.getElementById("SpD").style.fontSize = stat_size_4_digit }
         })
         this.mapper.properties.battle.yourPokemon.modStageSpeed.change(async () => {
-            if (this.get_stat('Speed').toString().length <= 3) { document.getElementById("Spe").style.fontSize = stat_size_3_digit }
-            if (this.get_stat('Speed').toString().length >= 4) { document.getElementById("Spe").style.fontSize = stat_size_4_digit }
+            if (document.getElementById("Spe") && this.get_stat('Speed').toString().length <= 3) { document.getElementById("Spe").style.fontSize = stat_size_3_digit }
+            if (document.getElementById("Spe") && this.get_stat('Speed').toString().length >= 4) { document.getElementById("Spe").style.fontSize = stat_size_4_digit }
         })
 
         //*Autosplitter
@@ -6950,6 +7004,7 @@ const app = Vue.createApp({
                 
                 //write simple split data
                 const simpleSplit = () => {
+                    this.sendObsChapterMarker('LABEL - VICTORY');
                     this.log_split()
                     logData(gameName, gameName_path, this.simple_data_str, this.attempt_number, splitFileName, "Simple", this.testRun, this.scott_mode, this.evolution, this.evolution_splits_label, this.unique_run_identifier, this.is_new_run)
                     this.split_data.push(this.simple_data)
@@ -7005,7 +7060,6 @@ const app = Vue.createApp({
                     if (!this.testRun && !this.no_counters && this.is_new_run) {
                         this.finished_run_count++
                     };
-                    this.run_complete = true;
                     if (this.automatic_post_battle_splits == true) {
                         // this.battle_summary_header = `${this.capitalization_format(trainer)} Summary`
                         this.right_panel = "Splits"
@@ -7042,7 +7096,8 @@ const app = Vue.createApp({
             this.mapper.properties.screen.hall_of_fame_4.change(async (newProp, oldProp) => {
                 if (newProp.value == 0 && oldProp.value == 255 && this.mapper.properties.overworld.mapName.value == "POKEMON_LEAGUE - HALL_OF_FAME") {
                     this.autosplitter_process('HALL_OF_FAME')
-    
+                    this.run_complete = true;
+
                     let trainer = this.opponent
                     let id = this.opponentId
                     let gameName = this.game.gameName == 'Emerald' ? 'E' : this.game.gameName == 'Ruby & Sapphire' ? 'RS' : this.game.gameName == 'FireRed and LeafGreen' ? 'FRLG' : this.game.gameName;
@@ -7284,7 +7339,7 @@ const app = Vue.createApp({
             }
         });
         controlServer.listen(30159, '127.0.0.1', () => {
-            console.log('Overlay control server listening on http://127.0.0.1:30159');
+            // console.log('Overlay control server listening on http://127.0.0.1:30159');
         });
 
         // Cleanup on page reload/unload to prevent emulator crashes
