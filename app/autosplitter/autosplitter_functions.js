@@ -109,13 +109,14 @@ function autosplitter_process(split_name = null) {
         let RTSeconds = time.seconds;
         let RTMilliseconds = time.ms;
 
-        let shuckie_time_hhmmss = this.formatMilliseconds(this.emulatorStats?.time_current)
-        let shuckie_time_cs = this.getCentiseconds(this.emulatorStats?.time_current)
-        let shuckie_rt = shuckie_time_hhmmss + "." + shuckie_time_cs
-
         let startTime = this.time_split_start
         let realTime = this.padTime(time.hours) + ":" + this.padTime(time.minutes) + ":" + this.padTime(time.seconds) + "." + this.padTime(time.ms)
         let gameTime = this.padTime(gameTimeH) + ":" + this.padTime(gameTimeM) + ":" + this.padTime(gameTimeS) + "." + this.padTime(gameTimeF)
+
+        let shuckie_time_hhmmss = this.formatMilliseconds(this.emulatorStats?.time_current)
+        let shuckie_time_cs = this.getCentiseconds(this.emulatorStats?.time_current)
+        let shuckie_rt = this.shuckie_timer ?shuckie_time_hhmmss + "." + shuckie_time_cs : realTime
+
         let hp = this.mapper.properties.player.team[0].hp.value
         let maxHp = this.mapper.properties.player.team[0].maxHp.value
         let atk = this.mapper.properties.player.team[0].attack.value
