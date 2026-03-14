@@ -142,8 +142,8 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundHue": "41",
         "hidden_power_type": "Ice",
         "hidden_power_index": "3",
-        "attempt_number": 8,
-        "finished_run_count": 6
+        "attempt_number": 14,
+        "finished_run_count": 8
     },
     "Emerald_Raichu": {
         "imageFlip": true,
@@ -162,8 +162,9 @@ const DEFAULT_STYLE_SETTINGS = {
         "pkmnNature": "Brave",
         "hidden_power_type": "Ice",
         "hidden_power_index": "3",
-        "attempt_number": 6,
-        "finished_run_count": 5
+        "attempt_number": 11,
+        "finished_run_count": 7,
+        "backgroundTexture": "Electric"
     },
     "Emerald_Pidgeot": {
         "pkmn_ability": "Keen Eye",
@@ -175,7 +176,9 @@ const DEFAULT_STYLE_SETTINGS = {
         "imageYOffset": "140",
         "imageXOffset": "-23",
         "hidden_power_type": "Ground",
-        "hidden_power_index": "3"
+        "hidden_power_index": "3",
+        "attempt_number": 3,
+        "finished_run_count": 2
     },
     "Emerald_NidoranF": {},
     "Emerald_NidoranM": {
@@ -290,19 +293,21 @@ const DEFAULT_STYLE_SETTINGS = {
     "Emerald_Bulbasaur": {},
     "Emerald_Fearow": {
         "backgroundTexture": "Flying",
-        "backgroundHue": "0",
+        "backgroundHue": "38",
         "backgroundBrightness": "64",
         "backgroundContrast": "127",
         "imageFlip": true,
         "imageYOffset": "154",
         "imageXOffset": "27",
         "imageScale": "0.94",
-        "overlay_color": "#c48a4f",
+        "overlay_color": "#77a0c8",
         "ui_saturation": "1.2",
         "pkmnNature": "Adamant",
         "pkmn_ability": "Keen Eye",
         "hidden_power_type": "Ground",
-        "hidden_power_index": "3"
+        "hidden_power_index": "3",
+        "attempt_number": 2,
+        "finished_run_count": 2
     },
     "Emerald_Jumpluff": {
         "pkmn_ability": "Chlorophyll",
@@ -340,8 +345,8 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundScale": "104",
         "hidden_power_type": "Fighting",
         "hidden_power_index": "4",
-        "attempt_number": 1,
-        "finished_run_count": 1
+        "attempt_number": 2,
+        "finished_run_count": 2
     },
     "Emerald_Wartortle": {
         "imageFlip": true,
@@ -1064,7 +1069,7 @@ const DEFAULT_STYLE_SETTINGS = {
         "selected_evolution_species": "Machamp"
     },
     "FireRed and LeafGreen_7": {
-        "selected_evolution_species": "Blastoise"
+        "selected_evolution_species": "Squirtle"
     },
     "FireRed and LeafGreen_Squirtle-line-Squirtle": {
         "imageScale": "0.49",
@@ -1207,6 +1212,48 @@ const DEFAULT_STYLE_SETTINGS = {
     },
     "FireRed and LeafGreen_8": {
         "selected_evolution_species": "Wartortle"
+    },
+    "FireRed and LeafGreen_Kangaskhan": {
+        "pkmn_ability": "Early Bird",
+        "pkmnNature": "Hardy",
+        "backgroundTexture": "Ground",
+        "overlay_color": "#c3a799",
+        "backgroundBlur": "3",
+        "backgroundBrightness": "27",
+        "backgroundScale": "112",
+        "backgroundFlip": true,
+        "backgroundContrast": "119",
+        "backgroundSaturation": "133",
+        "imageFlip": true,
+        "imageScale": "0.94",
+        "imageYOffset": "48",
+        "imageXOffset": "13",
+        "ui_saturation": "1.9",
+        "attempt_number": 2,
+        "finished_run_count": 1
+    },
+    "Emerald_Crawdaunt": {
+        "pkmn_ability": "Hyper Cutter",
+        "pkmnNature": "Naive",
+        "backgroundTexture": "Dark",
+        "overlay_color": "#128ec1",
+        "imageFlip": true,
+        "imageScale": "0.8",
+        "imageYOffset": "20",
+        "imageXOffset": "13",
+        "backgroundFlip": true,
+        "backgroundScale": "129",
+        "backgroundYOffset": "56",
+        "ui_saturation": "1.3",
+        "backgroundContrast": "152",
+        "backgroundHue": "200",
+        "backgroundSaturation": "5",
+        "backgroundBrightness": "81",
+        "hidden_power_type": "Ice",
+        "hidden_power_index": "1",
+        "attempt_number": 3,
+        "finished_run_count": 2,
+        "splits_display": "Followup"
     }
 };
 

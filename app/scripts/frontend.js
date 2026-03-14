@@ -2074,9 +2074,18 @@ const app = Vue.createApp({
             return evolutionFamily && evolutionFamily.length > 1;
         },
         blackouts_resets() {
-            const resets = this.playerResets
-            const blackouts = this.blackout_counter
+            var resets = 0
+            var blackouts = 0
             const allow_none = true // Toggle that allows for the UI to display no border if there are no faults
+            if (this.shuckie_counters == true) {
+                resets = this.emulatorStats?.counters?.playerResets ?? 0
+                blackouts = this.emulatorStats?.counters?.blackout_counter ?? 0
+            }
+            else {
+                resets = this.playerResets
+                blackouts = this.blackout_counter
+            }
+
             if (allow_none == true && blackouts == 0 && resets == 0) {
                 return "None"
             }
