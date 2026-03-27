@@ -2704,6 +2704,24 @@ const app = Vue.createApp({
     },
 
     methods: {
+        get_player_move(x) {
+            const state = this.g3stateVariable
+            if (state == "Battle") {
+                return this.move_name(this.camelCase(this.mapper.properties.battle.yourPokemon[x].value))
+            }
+            else {
+                return this.move_name(this.camelCase(this.mapper.properties.player.team[0][x].value))
+            }
+        },
+        get_player_move_pp(x) {
+            const state = this.g3stateVariable
+            if (state == "Battle") {
+                return this.mapper.properties.battle.yourPokemon[x + "pp"].value
+            }
+            else {
+                return this.mapper.properties.player.team[0][x + "pp"].value
+            }
+        },
         // ============ Style Settings Management Methods ============
         /**
          * Export current localStorage settings to the defaults file (dev mode only)

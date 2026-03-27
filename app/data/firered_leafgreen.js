@@ -7274,8 +7274,8 @@ const evolution_data_pokedex = {
         "egg_moves": [],
         "weight": 6.0,
         "evolution_family": [
-            {"species": "Magneton", "method": "level", "parameter": 30},
-            {"species": "Magnemite", "method": null, "parameter": null}
+            {"species": "Magnemite", "method": null, "parameter": null},
+            {"species": "Magneton", "method": "level", "parameter": 30}
         ]
     },
     "Magneton": {
@@ -8985,8 +8985,8 @@ const evolution_data_pokedex = {
         "egg_moves": [],
         "weight": 10.4,
         "evolution_family": [
-            {"species": "Electrode", "method": "level", "parameter": 30},
-            {"species": "Voltorb", "method": null, "parameter": null}
+            {"species": "Voltorb", "method": null, "parameter": null},
+            {"species": "Electrode", "method": "level", "parameter": 30}
         ]
     },
     "Electrode": {

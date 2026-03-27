@@ -693,11 +693,11 @@
                 <div v-else>
                     <div v-for="x in pkmnMoves">
                         <div v-if="mapper.properties.player.team[0].level.value > 0 && mapper.properties.player.team[0][x].value != null">
-                            <div :class="`movesetFontSize moveStyle ${x}`">{{ move_name(camelCase(mapper.properties.player.team[0][x].value)) }}</div>
-                            <div :class="`movesetSmallFontSize movePowerStyle movesetFontSize ${x}power`">{{ typeEffectiveness(mapper.properties.player.team[0][x].value) }}</div>
-                            <div :class="`movesetSmallFontSize moveAccuracyStyle movesetFontSize ${x}acc`">{{ moveAccuracyDynamic(mapper.properties.player.team[0][x].value) }}<span class="movesetPercentage">%</span></div>
-                            <div :class="`movesetSmallFontSize movePPStyle movesetFontSize ${x}pp`">{{ mapper.properties.player.team[0][x + "pp"] }}</div>
-                            <img :class="`movesetFontSize ${x}icon`" :src="moveTypeIcon(mapper.properties.player.team[0][x].value)" />
+                            <div :class="`movesetFontSize moveStyle ${x}`">{{ get_player_move(x) }}</div>
+                            <div :class="`movesetSmallFontSize movePowerStyle movesetFontSize ${x}power`">{{ typeEffectiveness(get_player_move(x)) }}</div>
+                            <div :class="`movesetSmallFontSize moveAccuracyStyle movesetFontSize ${x}acc`">{{ moveAccuracyDynamic(get_player_move(x)) }}<span class="movesetPercentage">%</span></div>
+                            <div :class="`movesetSmallFontSize movePPStyle movesetFontSize ${x}pp`">{{ get_player_move_pp(x) }}</div>
+                            <img :class="`movesetFontSize ${x}icon`" :src="moveTypeIcon(get_player_move(x))" />
                         </div>
                     </div>
                 </div>

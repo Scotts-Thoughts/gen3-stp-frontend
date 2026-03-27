@@ -7274,8 +7274,8 @@ const pokedex_frlg = {
         "egg_moves": [],
         "weight": 6.0,
         "evolution_family": [
-            {"species": "Magneton", "method": "level", "parameter": 30},
-            {"species": "Magnemite", "method": null, "parameter": null}
+            {"species": "Magnemite", "method": null, "parameter": null},
+            {"species": "Magneton", "method": "level", "parameter": 30}
         ]
     },
     "Magneton": {
