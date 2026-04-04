@@ -66,6 +66,34 @@ function typeEffectiveness(x) { //x = move1.value
     var itemBoost = this.determineItemBoost(x)
     var weatherBoost = this.weatherModifier(this.mapper.properties.battle.turnInfo.battleWeather.value, x, this.moveType(x))
     var burnModifier = this.burnModifier(x)
+    var multi_hit_modifier = 1;
+    const double_hit_moves = [
+        "bonemerang",
+        "Double Hit",
+        "Double Iron Bash",
+        "Double Kick",
+        "Dragon Darts",
+        "Dual Chop",
+        "Dual Wingbeat",
+        "Gear Grind",
+        "Tachyon Cutter",
+        "Triple Dive",
+        "Twin Beam",
+        "Twineedle",
+    ];
+    const triple_hit_moves = [
+        "Surging Strikes",
+        "Triple Dive",
+        "Water Shuriken",
+    ];
+    if (double_hit_moves.includes(x.toLowerCase())) {
+        multi_hit_modifier = 2;
+    }
+    if (triple_hit_moves.includes(x.toLowerCase())) {
+        multi_hit_modifier = 3;
+    }
+    // console.log(x, double_hit_moves.includes(x.toLowerCase()), multi_hit_modifier);
+
     const enemyAbility = this.mapper.properties.battle.enemyPokemon.ability.value;
     if (x == "FUTURE SIGHT") { return 80 }
     //IN BATTLE
@@ -81,14 +109,14 @@ function typeEffectiveness(x) { //x = move1.value
     //NOT IN BATTLE
     if(this.g3stateVariable != "Battle") {
         if (power == "-") { return power }
-        return Math.floor(power * stabModifier * itemBoost * ability * burnModifier);
+        return Math.floor(power * stabModifier * itemBoost * ability * burnModifier * multi_hit_modifier);
     }
     // console.log(multiplier1,multiplier2,attackingType,defendingType1,defendingType2)
 
     //Handle double battles
     if(this.g3stateVariable == "Battle" && this.batt.type?.double.value) {
         if (power == "-") { return power }
-        return Math.floor(power * stabModifier * itemBoost * ability * burnModifier);
+        return Math.floor(power * stabModifier * itemBoost * ability * burnModifier * multi_hit_modifier);
     }
     if (this.typeCalcs && this.g3stateVariable == "Battle") {
         let abilityImmunities = {
@@ -114,12 +142,12 @@ function typeEffectiveness(x) { //x = move1.value
         }
         //NO ENEMY DATA (HAVEN'T BATTLED SINCE RELOADING ROM OR SAVE)
         else if (defendingType1 == null) {
-            return Math.floor(power * stabModifier * itemBoost * ability * burnModifier)
+            return Math.floor(power * stabModifier * itemBoost * ability * burnModifier * multi_hit_modifier)
         }
         //ATTACKING A MONO-TYPE POKEMON
         else if (defendingType1 === defendingType2) {
             var multiplier1 = multipliers[defendingTypeMono]
-            return Math.floor(power * multiplier1 * stabModifier * itemBoost * weatherBoost * ability * burnModifier * defenseAbility)
+            return Math.floor(power * multiplier1 * stabModifier * itemBoost * weatherBoost * ability * burnModifier * defenseAbility * multi_hit_modifier)
         }
         //ATTACKING A DUAL-TYPE POKEMON
         else if (defendingType1 != defendingType2) {
@@ -127,11 +155,11 @@ function typeEffectiveness(x) { //x = move1.value
             var multiplier1 = multipliers[defendingType1]
             var multiplier2 = multipliers[defendingType2]
             // console.log(multiplier1,multiplier2,attackingType,defendingType1,defendingType2)
-            return Math.floor(power * multiplier1 * multiplier2 * stabModifier * itemBoost * weatherBoost * ability * burnModifier * defenseAbility)
+            return Math.floor(power * multiplier1 * multiplier2 * stabModifier * itemBoost * weatherBoost * ability * burnModifier * defenseAbility * multi_hit_modifier)
         }
         //RETURN THE MOVES POWER IF NOTHING ELSE WORKS
         else {
-            return Math.floor(power * stabModifier * burnModifier)
+            return Math.floor(power * stabModifier * burnModifier * multi_hit_modifier)
         }
     }
         

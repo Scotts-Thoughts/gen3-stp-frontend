@@ -4977,6 +4977,7 @@ const app = Vue.createApp({
                 return `-`;
             }
             var moveAccuracy = moveObject.Accuracy
+            var moveCategory = moveObject.Category
             if(move.toUpperCase() == "THUNDER") {
                 if(this.mapper.properties.battle.field.weather.value == "Sun" && !this.weatherDenial && this.g3stateVariable == "Battle") {
                     moveAccuracy = 50;
@@ -4998,7 +4999,7 @@ const app = Vue.createApp({
             if (this.pkmn_ability == "Compound Eyes") {
                 abilityMod *= 1.3
             }
-            if (this.pkmn_ability == "Hustle") {
+            if (this.pkmn_ability == "Hustle" && moveCategory == "Physical") {
                 abilityMod *= 0.8;
             }
             if (this.mapper.properties.battle.enemyPokemon.ability.value == "SAND VEIL" && this.mapper.properties.battle.field.weather.value == "Sandstorm" && !this.weatherDenial && this.g3stateVariable == "Battle") {
@@ -7334,6 +7335,47 @@ const app = Vue.createApp({
                         res.end(JSON.stringify({ ok: false, error: 'Missing panel parameter' }));
                     }
                 }
+                else if (pathname === '/set-hidden-power') {
+                    // Set the Hidden Power type
+                    // Usage: /set-hidden-power?type=Ice
+                    if (query.type) {
+                        this.hidden_power_type = query.type;
+                        res.end(JSON.stringify({ ok: true, hidden_power_type: this.hidden_power_type }));
+                    } else {
+                        res.statusCode = 400;
+                        res.end(JSON.stringify({ ok: false, error: 'Missing type parameter' }));
+                    }
+                }
+                else if (pathname === '/set-splits') {
+                    // Set the splits display mode
+                    // Usage: /set-splits?mode=First  or  /set-splits?mode=Followup
+                    if (query.mode) {
+                        this.splits_display = query.mode;
+                        res.end(JSON.stringify({ ok: true, splits: this.splits_display }));
+                    } else {
+                        res.statusCode = 400;
+                        res.end(JSON.stringify({ ok: false, error: 'Missing mode parameter' }));
+                    }
+                }
+                else if (pathname === '/load-split-file') {
+                    // Load a split comparison CSV file from disk
+                    // Usage: /load-split-file?file=C%3A%5Cpath%5Cto%5Csplits.csv
+                    if (query.file) {
+                        const fs = require('fs');
+                        const csvText = fs.readFileSync(query.file, 'utf-8');
+                        const rows = csvText.split("\n").slice(1).filter(x => x !== '');
+                        const results = [];
+                        for (const row of rows) {
+                            const columns = row.split(",");
+                            results.push({ trainer: columns[2], time: columns[3] });
+                        }
+                        this.previous_splits = results;
+                        res.end(JSON.stringify({ ok: true, splits_loaded: results.length }));
+                    } else {
+                        res.statusCode = 400;
+                        res.end(JSON.stringify({ ok: false, error: 'Missing file parameter' }));
+                    }
+                }
                 else if (pathname === '/reload') {
                     // Trigger a full page reload (like Ctrl+Shift+R)
                     // Usage: /reload
@@ -7354,6 +7396,8 @@ const app = Vue.createApp({
                         selected_evolution_species: this.selected_evolution_species,
                         gameSelection: this.gameSelection,
                         right_panel: this.right_panel,
+                        hidden_power_type: this.hidden_power_type,
+                        splits: this.splits_display,
                     }));
                 }
                 else {

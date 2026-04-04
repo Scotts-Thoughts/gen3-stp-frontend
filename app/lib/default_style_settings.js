@@ -1035,12 +1035,14 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundBlur": "0",
         "backgroundScale": "106",
         "backgroundContrast": "163",
-        "imageScale": "0.61",
-        "imageYOffset": "-58",
-        "imageXOffset": "-30",
+        "imageScale": "0.53",
+        "imageYOffset": "-65",
+        "imageXOffset": "-37",
         "ui_saturation": "1.2",
         "backgroundYOffset": "10",
-        "backgroundXOffset": "37"
+        "backgroundXOffset": "37",
+        "attempt_number": 5,
+        "finished_run_count": 1
     },
     "FireRed and LeafGreen_Alakazam": {
         "selected_evolution_species": "Alakazam",
@@ -1482,7 +1484,286 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundBrightness": "62",
         "backgroundContrast": "165",
         "backgroundSaturation": 100,
+        "attempt_number": 4
+    },
+    "FireRed and LeafGreen_Ponyta": {
+        "pkmn_ability": "Run Away",
+        "pkmnNature": "Hardy",
+        "backgroundTexture": "Fire",
+        "overlay_color": "#ec892c",
+        "imageFlip": true,
+        "imageScale": "0.69",
+        "imageYOffset": "6",
+        "imageXOffset": "41",
+        "ui_saturation": "1",
+        "backgroundScale": "187",
+        "backgroundContrast": "108",
+        "backgroundBrightness": "83",
+        "backgroundYOffset": "114",
+        "backgroundXOffset": "21",
+        "evolution": true,
+        "selected_evolution_species": "Ponyta"
+    },
+    "FireRed and LeafGreen_77": {
+        "selected_evolution_species": "Ponyta"
+    },
+    "FireRed and LeafGreen_Ponyta-line-Ponyta": {
+        "imageFlip": true,
+        "imageScale": "0.69",
+        "imageYOffset": "6",
+        "imageXOffset": "34",
+        "overlay_color": "#ed931d",
+        "ui_saturation": "1.2",
+        "backgroundFlip": true,
+        "backgroundScale": "131",
+        "backgroundBrightness": "53",
+        "backgroundContrast": "126",
+        "imageSat": 100,
+        "imageRotation": 0,
+        "backgroundTexture": "Fire",
+        "backgroundBlur": 0,
+        "backgroundHue": 0,
+        "backgroundUrl": "",
+        "use_custom_background": false,
+        "backgroundXOffset": 0,
+        "backgroundYOffset": 0,
+        "backgroundSaturation": 100,
         "attempt_number": 1
+    },
+    "FireRed and LeafGreen_Ponyta-line-Rapidash": {
+        "overlay_color": "#ed931d",
+        "ui_saturation": "1.2",
+        "imageXOffset": "13",
+        "imageYOffset": "69",
+        "imageScale": "1.02",
+        "imageFlip": true,
+        "imageSat": 100,
+        "imageRotation": 0,
+        "backgroundTexture": "Fire",
+        "backgroundBlur": 0,
+        "backgroundHue": 0,
+        "backgroundScale": "131",
+        "backgroundUrl": "",
+        "backgroundFlip": true,
+        "use_custom_background": false,
+        "backgroundXOffset": 0,
+        "backgroundYOffset": 0,
+        "backgroundBrightness": "53",
+        "backgroundContrast": "126",
+        "backgroundSaturation": 100,
+        "attempt_number": 2,
+        "finished_run_count": 2
+    },
+    "FireRed and LeafGreen_Ponyta-line": {
+        "pkmn_ability": "Flash Fire"
+    },
+    "FireRed and LeafGreen_Vulpix": {
+        "pkmn_ability": "Flash Fire",
+        "pkmnNature": "Hardy",
+        "backgroundTexture": "Fire",
+        "overlay_color": "#f08030",
+        "evolution": true
+    },
+    "FireRed and LeafGreen_37": {
+        "selected_evolution_species": "Vulpix"
+    },
+    "FireRed and LeafGreen_Vulpix-line-Vulpix": {
+        "imageFlip": true,
+        "imageScale": "0.59",
+        "imageYOffset": "-30",
+        "imageXOffset": "62",
+        "backgroundHue": "0",
+        "backgroundXFlip": false,
+        "backgroundFlip": true,
+        "backgroundScale": "128",
+        "backgroundContrast": "126",
+        "backgroundBrightness": "39",
+        "backgroundYOffset": "83",
+        "backgroundSaturation": "96",
+        "overlay_color": "#f6eaa4",
+        "ui_saturation": "1.9",
+        "imageSat": 100,
+        "imageRotation": 0,
+        "backgroundTexture": "Fire",
+        "backgroundBlur": 0,
+        "backgroundUrl": "",
+        "use_custom_background": false,
+        "backgroundXOffset": 0
+    },
+    "FireRed and LeafGreen_Ninetales-line-Ninetales": {
+        "overlay_color": "#f6eaa4",
+        "ui_saturation": "1.9",
+        "imageXOffset": "34",
+        "imageYOffset": "6",
+        "imageScale": "0.86",
+        "imageFlip": true,
+        "imageSat": 100,
+        "imageRotation": 0,
+        "backgroundTexture": "Fire",
+        "backgroundBlur": 0,
+        "backgroundHue": "0",
+        "backgroundScale": "128",
+        "backgroundUrl": "",
+        "backgroundFlip": true,
+        "use_custom_background": false,
+        "backgroundXOffset": 0,
+        "backgroundYOffset": "83",
+        "backgroundBrightness": "39",
+        "backgroundContrast": "126",
+        "backgroundSaturation": "96"
+    },
+    "FireRed and LeafGreen_Growlithe": {
+        "pkmn_ability": "Intimidate",
+        "pkmnNature": "Hardy",
+        "backgroundTexture": "Fire",
+        "overlay_color": "#d19565",
+        "imageFlip": true,
+        "imageScale": "0.61",
+        "imageYOffset": "-9",
+        "imageXOffset": "13",
+        "backgroundScale": "112",
+        "backgroundYOffset": "43",
+        "ui_saturation": "2",
+        "evolution": true,
+        "selected_evolution_species": "Growlithe",
+        "finished_run_count": 1,
+        "attempt_number": 3
+    },
+    "FireRed and LeafGreen_58": {
+        "selected_evolution_species": "Growlithe"
+    },
+    "FireRed and LeafGreen_Growlithe-line-Growlithe": {
+        "ui_saturation": "1.5",
+        "imageFlip": true,
+        "imageScale": "0.61",
+        "imageYOffset": "-2",
+        "imageXOffset": "6",
+        "backgroundScale": "112",
+        "overlay_color": "#f08030",
+        "imageSat": 100,
+        "imageRotation": 0,
+        "backgroundTexture": "Fire",
+        "backgroundBlur": "2",
+        "backgroundHue": 0,
+        "backgroundUrl": "",
+        "backgroundFlip": false,
+        "use_custom_background": false,
+        "backgroundXOffset": 0,
+        "backgroundYOffset": 0,
+        "backgroundBrightness": "65",
+        "backgroundContrast": "97",
+        "backgroundSaturation": 100,
+        "finished_run_count": 0,
+        "attempt_number": 4
+    },
+    "FireRed and LeafGreen_Arcanine-line-Arcanine": {
+        "overlay_color": "#f08030",
+        "ui_saturation": "1.5",
+        "imageXOffset": "34",
+        "imageYOffset": "48",
+        "imageScale": "1",
+        "imageFlip": true,
+        "imageSat": 100,
+        "imageRotation": 0,
+        "backgroundTexture": "Fire",
+        "backgroundBlur": "2",
+        "backgroundHue": 0,
+        "backgroundScale": "112",
+        "backgroundUrl": "",
+        "backgroundFlip": false,
+        "use_custom_background": false,
+        "backgroundXOffset": 0,
+        "backgroundYOffset": 0,
+        "backgroundBrightness": "65",
+        "backgroundContrast": "97",
+        "backgroundSaturation": 100,
+        "finished_run_count": 1,
+        "attempt_number": 0
+    },
+    "FireRed and LeafGreen_Cubone": {
+        "pkmn_ability": "Rock Head",
+        "pkmnNature": "Hardy",
+        "backgroundTexture": "Ground",
+        "overlay_color": "#e0c068",
+        "evolution": true,
+        "selected_evolution_species": "Cubone"
+    },
+    "FireRed and LeafGreen_104": {
+        "selected_evolution_species": "Cubone"
+    },
+    "FireRed and LeafGreen_Cubone-line-Cubone": {
+        "imageScale": "0.55",
+        "imageFlip": true,
+        "imageYOffset": "-23",
+        "imageXOffset": "20",
+        "overlay_color": "#d3b67d",
+        "ui_saturation": "1.6",
+        "backgroundScale": "106",
+        "backgroundFlip": true,
+        "backgroundXFlip": false,
+        "backgroundBrightness": "34",
+        "backgroundContrast": "136",
+        "backgroundBlur": "4",
+        "backgroundSaturation": "120",
+        "imageSat": 100,
+        "imageRotation": 0,
+        "backgroundTexture": "Ground",
+        "backgroundHue": 0,
+        "backgroundUrl": "",
+        "use_custom_background": false,
+        "backgroundXOffset": 0,
+        "backgroundYOffset": 0,
+        "attempt_number": 1
+    },
+    "FireRed and LeafGreen_Marowak-line-Marowak": {
+        "overlay_color": "#d3b67d",
+        "ui_saturation": "1.6",
+        "imageXOffset": "27",
+        "imageYOffset": "34",
+        "imageScale": "0.84",
+        "imageFlip": true,
+        "imageSat": 100,
+        "imageRotation": 0,
+        "backgroundTexture": "Ground",
+        "backgroundBlur": "4",
+        "backgroundHue": 0,
+        "backgroundScale": "106",
+        "backgroundUrl": "",
+        "backgroundFlip": true,
+        "use_custom_background": false,
+        "backgroundXOffset": 0,
+        "backgroundYOffset": 0,
+        "backgroundBrightness": "34",
+        "backgroundContrast": "136",
+        "backgroundSaturation": "120",
+        "finished_run_count": 2
+    },
+    "FireRed and LeafGreen_Growlithe-line": {
+        "pkmn_ability": "Flash Fire"
+    },
+    "FireRed and LeafGreen_Electrode": {
+        "selected_evolution_species": "Electrode"
+    },
+    "FireRed and LeafGreen_101": {
+        "selected_evolution_species": "Electrode"
+    },
+    "FireRed and LeafGreen_Arcanine": {
+        "selected_evolution_species": "Arcanine"
+    },
+    "FireRed and LeafGreen_59": {
+        "selected_evolution_species": "Arcanine"
+    },
+    "FireRed and LeafGreen_Rapidash": {
+        "selected_evolution_species": "Rapidash"
+    },
+    "FireRed and LeafGreen_78": {
+        "selected_evolution_species": "Rapidash"
+    },
+    "FireRed and LeafGreen_Marowak": {
+        "selected_evolution_species": "Marowak"
+    },
+    "FireRed and LeafGreen_105": {
+        "selected_evolution_species": "Marowak"
     }
 };
 
