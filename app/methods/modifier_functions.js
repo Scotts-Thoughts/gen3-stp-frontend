@@ -79,6 +79,7 @@ function stageMultiplier(y,x) {
 }
 function weatherModifier(weather, move, moveType) {
     let mod = 1;
+    console.log(weather, move, moveType);
     if(this.weatherDenial) {
         return mod;
     }
@@ -86,7 +87,7 @@ function weatherModifier(weather, move, moveType) {
         mod *= 2;
     }
     if (weather == "Sun" && moveType == "Water") {
-        return mod * .5;
+        return mod * 0.5;
     }
     else if (weather == "Sun" && moveType == "Fire") {
         return mod * 1.5
@@ -95,10 +96,10 @@ function weatherModifier(weather, move, moveType) {
         return mod * 1.5
     }
     else if (weather == "Rain" && moveType == "Fire") {
-        return mod * .5
+        return mod * 0.5
     }
-    else if (weather == "Rain" && move == "SOLARBEAM") {
-        return mod * .5
+    else if (weather == "Rain" && move == "SolarBeam") {
+        return mod * 0.5
     }
     else if (weather == "Sandstorm") {
         return mod * 1

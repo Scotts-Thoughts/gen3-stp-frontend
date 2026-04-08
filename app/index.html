@@ -384,10 +384,10 @@
                         <option disabled value="">Select a gender</option>
                         <option v-for="key in values_function(genders)" :value="`${key}`">{{key}}</option>
                     </select><br>
-                    <div>Abilities: ({{displayedPokemonSpecies}} has {{dexDataRubySapphireEmerald[displayedPokemonSpecies].abilities.length}})</div>
+                    <div>Abilities: ({{displayedPokemonSpecies}} has {{dexDataRubySapphireEmerald[displayedPokemonSpecies]?.abilities?.length}})</div>
                     <select v-model="pkmn_ability" class="dropdownMenu dropdown_menu_column3">
                         <option disabled value="">Select an ability</option>
-                        <option v-for="key in values_function(dexDataRubySapphireEmerald[displayedPokemonSpecies].abilities)" :value="`${key}`">{{key}}</option>
+                        <option v-for="key in values_function(dexDataRubySapphireEmerald[displayedPokemonSpecies]?.abilities ?? [])" :value="`${key}`">{{key}}</option>
                     </select><br>
                     <div>Nature:</div>
                     <select v-model="pkmnNature" class="dropdownMenu dropdown_menu_column3">

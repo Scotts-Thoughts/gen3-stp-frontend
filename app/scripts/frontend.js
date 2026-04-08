@@ -1674,7 +1674,7 @@ const app = Vue.createApp({
             const game = this.gameSelection
             const state = this.g3stateVariable
             //background texture settings
-            this.overlay_color =          MyStorage[`${newValue}`]?.overlay_color          ?? this.default_colors[dexDataRubySapphireEmerald[newValue].type_1]
+            this.overlay_color =          MyStorage[`${newValue}`]?.overlay_color          ?? this.default_colors[dexDataRubySapphireEmerald[newValue]?.type_1]
             this.evolution =              MyStorage[`${newValue}`]?.evolution              ?? false
             this.evolution_splits_label = MyStorage[`${newValue}`]?.evolution_splits_label ?? ""
  
@@ -3608,12 +3608,12 @@ const app = Vue.createApp({
                     return this.deoxys_form_base_stats[stat_name]
                 }
                 switch (stat_name) {
-                    case "Hp":              return this.game.dexData[starter].base_hp
-                    case "Attack":          return this.game.dexData[starter].base_atk
-                    case "Defense":         return this.game.dexData[starter].base_def
-                    case "Special Attack":  return this.game.dexData[starter].base_spc_atk
-                    case "Special Defense": return this.game.dexData[starter].base_spc_def
-                    case "Speed":           return this.game.dexData[starter].base_spd
+                    case "Hp":              return this.game?.dexData?.[starter]?.base_hp
+                    case "Attack":          return this.game?.dexData?.[starter]?.base_atk
+                    case "Defense":         return this.game?.dexData?.[starter]?.base_def
+                    case "Special Attack":  return this.game?.dexData?.[starter]?.base_spc_atk
+                    case "Special Defense": return this.game?.dexData?.[starter]?.base_spc_def
+                    case "Speed":           return this.game?.dexData?.[starter]?.base_spd
                 }
             }
             else if (state == `Overworld` && this.mapper.properties.player.team[0].level.value == 5 && level5_exp_points.includes(this.mapper.properties.player.team[0].expPoints.value)) {
@@ -3621,12 +3621,12 @@ const app = Vue.createApp({
                     return this.deoxys_form_base_stats[stat_name]
                 }
                 switch (stat_name) {
-                    case "Hp":              return this.game.dexData[starter].base_hp
-                    case "Attack":          return this.game.dexData[starter].base_atk
-                    case "Defense":         return this.game.dexData[starter].base_def
-                    case "Special Attack":  return this.game.dexData[starter].base_spc_atk
-                    case "Special Defense": return this.game.dexData[starter].base_spc_def
-                    case "Speed":           return this.game.dexData[starter].base_spd
+                    case "Hp":              return this.game?.dexData?.[starter]?.base_hp
+                    case "Attack":          return this.game?.dexData?.[starter]?.base_atk
+                    case "Defense":         return this.game?.dexData?.[starter]?.base_def
+                    case "Special Attack":  return this.game?.dexData?.[starter]?.base_spc_atk
+                    case "Special Defense": return this.game?.dexData?.[starter]?.base_spc_def
+                    case "Speed":           return this.game?.dexData?.[starter]?.base_spd
                 }
             }
             else if ((state == `Overworld` || state == `To Battle`) && this.mapper.properties.player.team[0].species.value != null) {
@@ -3655,12 +3655,12 @@ const app = Vue.createApp({
                 }
                 const new_starter = this.evolution ? this.selected_evolution_species : starter
                 switch (stat_name) {
-                    case "Hp":              return this.game.dexData[new_starter].base_hp
-                    case "Attack":          return this.game.dexData[new_starter].base_atk
-                    case "Defense":         return this.game.dexData[new_starter].base_def
-                    case "Special Attack":  return this.game.dexData[new_starter].base_spc_atk
-                    case "Special Defense": return this.game.dexData[new_starter].base_spc_def
-                    case "Speed":           return this.game.dexData[new_starter].base_spd
+                    case "Hp":              return this.game?.dexData?.[new_starter]?.base_hp
+                    case "Attack":          return this.game?.dexData?.[new_starter]?.base_atk
+                    case "Defense":         return this.game?.dexData?.[new_starter]?.base_def
+                    case "Special Attack":  return this.game?.dexData?.[new_starter]?.base_spc_atk
+                    case "Special Defense": return this.game?.dexData?.[new_starter]?.base_spc_def
+                    case "Speed":           return this.game?.dexData?.[new_starter]?.base_spd
                 }
             }
         },

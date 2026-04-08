@@ -9163,8 +9163,8 @@ const evolution_data_pokedex = {
         ],
         "weight": 2.5,
         "evolution_family": [
-            {"species": "Exeggutor", "method": "item", "parameter": "Leaf Stone"},
-            {"species": "Exeggcute", "method": null, "parameter": null}
+            {"species": "Exeggcute", "method": null, "parameter": null},
+            {"species": "Exeggutor", "method": "item", "parameter": "Leaf Stone"}
         ]
     },
     "Exeggutor": {
@@ -9244,8 +9244,8 @@ const evolution_data_pokedex = {
         "egg_moves": [],
         "weight": 120.0,
         "evolution_family": [
-            {"species": "Exeggutor", "method": null, "parameter": null},
-            {"species": "Exeggcute", "method": null, "parameter": null}
+            {"species": "Exeggcute", "method": null, "parameter": null},
+            {"species": "Exeggutor", "method": null, "parameter": null}
         ]
     },
     "Cubone": {
