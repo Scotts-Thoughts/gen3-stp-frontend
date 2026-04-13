@@ -11,11 +11,18 @@
       "target": "zip",
       "icon": "./icon.png"
     },
+    "linux": {
+      "target": ["AppImage", "pacman"],
+      "category": "Utility",
+      "icon": "./icon.png"
+    },
     "npmRebuild": false
   },
   "scripts": {
     "dev": "electron .",
-    "build": "electron-builder --win --config"
+    "build": "electron-builder --win --config",
+    "build:linux": "electron-builder --linux"
+
   },
   "devDependencies": {
     "electron": "^25.1.1",
