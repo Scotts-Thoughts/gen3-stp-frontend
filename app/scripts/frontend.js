@@ -7376,6 +7376,40 @@ const app = Vue.createApp({
                         res.end(JSON.stringify({ ok: false, error: 'Missing file parameter' }));
                     }
                 }
+                else if (pathname === '/set-shuckie-counters') {
+                    // Toggle the Shuckie Counters display
+                    // Usage: /set-shuckie-counters?enabled=true
+                    if (query.enabled !== undefined) {
+                        this.shuckie_counters = query.enabled === 'true';
+                        res.end(JSON.stringify({ ok: true, shuckie_counters: this.shuckie_counters }));
+                    } else {
+                        res.statusCode = 400;
+                        res.end(JSON.stringify({ ok: false, error: 'Missing enabled parameter' }));
+                    }
+                }
+                else if (pathname === '/set-show-tutor-moves') {
+                    // Toggle whether tutor moves are shown in the move display
+                    // Usage: /set-show-tutor-moves?enabled=true
+                    if (query.enabled !== undefined) {
+                        this.tutor_moves = query.enabled === 'true';
+                        res.end(JSON.stringify({ ok: true, tutor_moves: this.tutor_moves }));
+                    } else {
+                        res.statusCode = 400;
+                        res.end(JSON.stringify({ ok: false, error: 'Missing enabled parameter' }));
+                    }
+                }
+                else if (pathname === '/set-unobtainable-moves') {
+                    // Set the Unobtainable Moves cross-out mode
+                    // Usage: /set-unobtainable-moves?mode=Always%20Cross%20Out
+                    const validModes = ['Never Cross Out', 'Cross Out When Starter is Obtained', 'Cross Out After First Badge', 'Always Cross Out'];
+                    if (query.mode && validModes.includes(query.mode)) {
+                        this.unobtainable_moves_toggle = query.mode;
+                        res.end(JSON.stringify({ ok: true, unobtainable_moves_toggle: this.unobtainable_moves_toggle }));
+                    } else {
+                        res.statusCode = 400;
+                        res.end(JSON.stringify({ ok: false, error: 'Missing or invalid mode parameter' }));
+                    }
+                }
                 else if (pathname === '/reload') {
                     // Trigger a full page reload (like Ctrl+Shift+R)
                     // Usage: /reload
@@ -7398,6 +7432,9 @@ const app = Vue.createApp({
                         right_panel: this.right_panel,
                         hidden_power_type: this.hidden_power_type,
                         splits: this.splits_display,
+                        shuckie_counters: this.shuckie_counters,
+                        show_tutor_moves: this.tutor_moves,
+                        unobtainable_moves_toggle: this.unobtainable_moves_toggle,
                     }));
                 }
                 else {

@@ -1562,10 +1562,11 @@ const DEFAULT_STYLE_SETTINGS = {
         "pkmnNature": "Hardy",
         "backgroundTexture": "Fire",
         "overlay_color": "#f08030",
-        "evolution": true
+        "evolution": true,
+        "selected_evolution_species": "Vulpix"
     },
     "FireRed and LeafGreen_37": {
-        "selected_evolution_species": "Vulpix"
+        "selected_evolution_species": "Ninetales"
     },
     "FireRed and LeafGreen_Vulpix-line-Vulpix": {
         "imageFlip": true,
@@ -1588,7 +1589,8 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundBlur": 0,
         "backgroundUrl": "",
         "use_custom_background": false,
-        "backgroundXOffset": 0
+        "backgroundXOffset": 0,
+        "attempt_number": 1
     },
     "FireRed and LeafGreen_Ninetales-line-Ninetales": {
         "overlay_color": "#f6eaa4",
@@ -1610,7 +1612,8 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundYOffset": "83",
         "backgroundBrightness": "39",
         "backgroundContrast": "126",
-        "backgroundSaturation": "96"
+        "backgroundSaturation": "96",
+        "finished_run_count": 1
     },
     "FireRed and LeafGreen_Growlithe": {
         "pkmn_ability": "Intimidate",
@@ -1984,6 +1987,92 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundYOffset": "-25",
         "attempt_number": 1,
         "finished_run_count": 1
+    },
+    "Emerald_Aggron": {
+        "pkmn_ability": "Rock Head",
+        "pkmnNature": "Adamant",
+        "backgroundTexture": "Brushed Steel",
+        "overlay_color": "#62a8c4",
+        "imageFlip": true,
+        "imageYOffset": "41",
+        "imageXOffset": "20",
+        "backgroundContrast": "101",
+        "backgroundBrightness": "48",
+        "backgroundScale": "150",
+        "ui_saturation": "1.4",
+        "hidden_power_type": "Rock",
+        "hidden_power_index": "3",
+        "attempt_number": 4,
+        "finished_run_count": 2,
+        "splits_display": "Followup"
+    },
+    "FireRed and LeafGreen_Magnemite": {
+        "pkmn_ability": "Magnet Pull",
+        "pkmnNature": "Hardy",
+        "backgroundTexture": "Electric",
+        "overlay_color": "#f3d230",
+        "evolution": true,
+        "selected_evolution_species": "Magnemite"
+    },
+    "FireRed and LeafGreen_81": {
+        "selected_evolution_species": "Magnemite"
+    },
+    "FireRed and LeafGreen_Magneton-line-Magnemite": {
+        "imageScale": "0.45",
+        "imageYOffset": "197",
+        "imageXOffset": "-51",
+        "overlay_color": "#b79831",
+        "backgroundScale": "200",
+        "backgroundFlip": true,
+        "backgroundXFlip": false,
+        "backgroundYOffset": "85",
+        "backgroundXOffset": "125",
+        "backgroundHue": "320",
+        "backgroundContrast": "147",
+        "backgroundBrightness": "73",
+        "ui_saturation": "1.2",
+        "imageFlip": false,
+        "imageSat": 100,
+        "imageRotation": 0,
+        "backgroundTexture": "Electric",
+        "backgroundBlur": 0,
+        "backgroundUrl": "",
+        "use_custom_background": false,
+        "backgroundSaturation": 100,
+        "finished_run_count": 1,
+        "attempt_number": 3
+    },
+    "FireRed and LeafGreen_Magneton-line-Magneton": {
+        "overlay_color": "#b79831",
+        "ui_saturation": "1.2",
+        "imageXOffset": "-30",
+        "imageYOffset": "147",
+        "imageScale": "0.71",
+        "imageFlip": false,
+        "imageSat": 100,
+        "imageRotation": 0,
+        "backgroundTexture": "Electric",
+        "backgroundBlur": 0,
+        "backgroundHue": "320",
+        "backgroundScale": "200",
+        "backgroundUrl": "",
+        "backgroundFlip": true,
+        "use_custom_background": false,
+        "backgroundXOffset": "125",
+        "backgroundYOffset": "85",
+        "backgroundBrightness": "73",
+        "backgroundContrast": "147",
+        "backgroundSaturation": 100,
+        "finished_run_count": 3
+    },
+    "FireRed and LeafGreen_Magneton-line": {
+        "pkmn_ability": "Sturdy"
+    },
+    "FireRed and LeafGreen_Magneton": {
+        "selected_evolution_species": "Magneton"
+    },
+    "FireRed and LeafGreen_82": {
+        "selected_evolution_species": "Magneton"
     }
 };
 
