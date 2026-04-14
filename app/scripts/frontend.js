@@ -7410,6 +7410,17 @@ const app = Vue.createApp({
                         res.end(JSON.stringify({ ok: false, error: 'Missing or invalid mode parameter' }));
                     }
                 }
+                else if (pathname === '/set-automatic-post-battle-splits') {
+                    // Toggle automatic post-battle splits
+                    // Usage: /set-automatic-post-battle-splits?enabled=true
+                    if (query.enabled !== undefined) {
+                        this.automatic_post_battle_splits = query.enabled === 'true';
+                        res.end(JSON.stringify({ ok: true, automatic_post_battle_splits: this.automatic_post_battle_splits }));
+                    } else {
+                        res.statusCode = 400;
+                        res.end(JSON.stringify({ ok: false, error: 'Missing enabled parameter' }));
+                    }
+                }
                 else if (pathname === '/reload') {
                     // Trigger a full page reload (like Ctrl+Shift+R)
                     // Usage: /reload
@@ -7435,6 +7446,7 @@ const app = Vue.createApp({
                         shuckie_counters: this.shuckie_counters,
                         show_tutor_moves: this.tutor_moves,
                         unobtainable_moves_toggle: this.unobtainable_moves_toggle,
+                        automatic_post_battle_splits: this.automatic_post_battle_splits,
                     }));
                 }
                 else {
