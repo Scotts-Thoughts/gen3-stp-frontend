@@ -79,7 +79,7 @@ function stageMultiplier(y,x) {
 }
 function weatherModifier(weather, move, moveType) {
     let mod = 1;
-    console.log(weather, move, moveType);
+    // console.log(weather, move, moveType);
     if(this.weatherDenial) {
         return mod;
     }

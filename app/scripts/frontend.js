@@ -2771,45 +2771,95 @@ const app = Vue.createApp({
             const url = (typeof MyStorage !== 'undefined' && MyStorage.obs_websocket_url) ? MyStorage.obs_websocket_url : 'ws://localhost:4455';
             const password = (typeof MyStorage !== 'undefined' && MyStorage.obs_websocket_password) ? MyStorage.obs_websocket_password : null;
             const requestId = 'chapter-' + Date.now() + '-' + Math.random().toString(36).slice(2, 9);
+            console.log(`[OBS chapter marker] sendObsChapterMarker("${chapterName}") called, connecting to ${url}`);
             let ws;
             try {
                 ws = new WebSocket(url);
             } catch (e) {
+                console.error(`[OBS chapter marker] Failed to open WebSocket to ${url}:`, e);
                 return;
             }
-            ws.onerror = () => { try { ws.close(); } catch (_) {} };
-            ws.onclose = () => {};
+            ws.onerror = (event) => {
+                console.error(`[OBS chapter marker] WebSocket error connecting to ${url}. Is OBS running with obs-websocket enabled on this port?`, event);
+                try { ws.close(); } catch (_) {}
+            };
+            ws.onclose = (event) => {
+                if (event && !event.wasClean && event.code !== 1000) {
+                    console.warn(`[OBS chapter marker] WebSocket closed unexpectedly (code ${event.code}${event.reason ? ', ' + event.reason : ''}).`);
+                }
+            };
             ws.onmessage = (event) => {
+                let msg;
                 try {
-                    const msg = JSON.parse(event.data);
-                    const op = msg.op;
-                    const d = msg.d || {};
-                    if (op === 0) {
-                        // Hello - send Identify (with optional auth)
-                        let identifyPayload = { rpcVersion: 1 };
-                        const auth = d.authentication;
-                        if (auth && auth.challenge && auth.salt && password) {
-                            try {
-                                const crypto = require('crypto');
-                                const secret = crypto.createHash('sha256').update(password + auth.salt, 'utf8').digest('base64');
-                                identifyPayload.authentication = crypto.createHash('sha256').update(secret + auth.challenge, 'utf8').digest('base64');
-                            } catch (_) {}
+                    msg = JSON.parse(event.data);
+                } catch (e) {
+                    console.error('[OBS chapter marker] Failed to parse message from OBS:', e, event.data);
+                    return;
+                }
+                const op = msg.op;
+                const d = msg.d || {};
+                if (op === 0) {
+                    // Hello - send Identify (with optional auth)
+                    let identifyPayload = { rpcVersion: 1 };
+                    const auth = d.authentication;
+                    if (auth && auth.challenge && auth.salt) {
+                        if (!password) {
+                            console.error('[OBS chapter marker] OBS requires authentication but MyStorage.obs_websocket_password is not set.');
+                            try { ws.close(); } catch (_) {}
+                            return;
                         }
-                        ws.send(JSON.stringify({ op: 1, d: identifyPayload }));
-                    } else if (op === 2) {
-                        // Identified - send CreateRecordChapter
-                        ws.send(JSON.stringify({
-                            op: 6,
-                            d: {
-                                requestId: requestId,
-                                requestType: 'CreateRecordChapter',
-                                requestData: { chapterName: String(chapterName) }
-                            }
-                        }));
-                    } else if (op === 7 && d.requestId === requestId) {
-                        try { ws.close(); } catch (_) {}
+                        try {
+                            const crypto = require('crypto');
+                            const secret = crypto.createHash('sha256').update(password + auth.salt, 'utf8').digest('base64');
+                            identifyPayload.authentication = crypto.createHash('sha256').update(secret + auth.challenge, 'utf8').digest('base64');
+                        } catch (e) {
+                            console.error('[OBS chapter marker] Failed to build authentication payload:', e);
+                            try { ws.close(); } catch (_) {}
+                            return;
+                        }
                     }
-                } catch (_) {}
+                    ws.send(JSON.stringify({ op: 1, d: identifyPayload }));
+                } else if (op === 2) {
+                    // Identified - first probe recording state, then send CreateRecordChapter
+                    ws.send(JSON.stringify({
+                        op: 6,
+                        d: {
+                            requestId: 'status-' + requestId,
+                            requestType: 'GetRecordStatus',
+                            requestData: {}
+                        }
+                    }));
+                } else if (op === 7 && d.requestId === 'status-' + requestId) {
+                    const rd = d.responseData || {};
+                    console.log(`[OBS chapter marker] GetRecordStatus: active=${rd.outputActive}, paused=${rd.outputPaused}, timecode=${rd.outputTimecode}, bytes=${rd.outputBytes}`);
+                    ws.send(JSON.stringify({
+                        op: 6,
+                        d: {
+                            requestId: requestId,
+                            requestType: 'CreateRecordChapter',
+                            requestData: { chapterName: String(chapterName) }
+                        }
+                    }));
+                } else if (op === 7 && d.requestId === requestId) {
+                    const status = d.requestStatus || {};
+                    if (!status.result) {
+                        const codeHint = status.code === 702
+                            ? ' (702 OutputNotRunning — start recording first)'
+                            : status.code === 604
+                            ? ' (604 RequestProcessingFailed — recording format may not support chapters; use Hybrid MP4)'
+                            : status.code === 501
+                            ? ' (501 UnsupportedRequestType — OBS version too old, or recording format does not support chapter markers; use Hybrid MP4)'
+                            : '';
+                        console.error(`[OBS chapter marker] CreateRecordChapter failed: code ${status.code}${codeHint}${status.comment ? ' - ' + status.comment : ''}`);
+                    } else {
+                        console.log(`[OBS chapter marker] CreateRecordChapter accepted by OBS (code ${status.code}). If no marker appears in the file, the recording format does not support chapters — switch Settings → Output → Recording → Recording Format to "Hybrid MP4".`);
+                    }
+                    try { ws.close(); } catch (_) {}
+                } else if (op === 5) {
+                    // OpCode 5 = Identify failure (wrong password, etc.)
+                    console.error('[OBS chapter marker] OBS rejected Identify (likely wrong password or rpcVersion mismatch).');
+                    try { ws.close(); } catch (_) {}
+                }
             };
             ws.onopen = () => {};
         },
