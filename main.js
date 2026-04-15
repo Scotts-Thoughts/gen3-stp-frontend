@@ -1,11 +1,46 @@
 // Modules to control application life and create native browser window
-const { app, shell, BrowserWindow } = require('electron')
+const { app, shell, BrowserWindow, screen } = require('electron')
 const path = require('path')
+const fs = require('fs')
 const { electronApp, optimizer } = require('@electron-toolkit/utils')
 
+const isDev = !app.isPackaged
+const devStateFile = () => path.join(app.getPath('userData'), 'dev-window-state.json')
+
+function loadDevWindowState() {
+  try {
+    return JSON.parse(fs.readFileSync(devStateFile(), 'utf-8'))
+  } catch {
+    return null
+  }
+}
+
+function saveDevWindowState(state) {
+  try {
+    fs.writeFileSync(devStateFile(), JSON.stringify(state))
+  } catch (e) {
+    console.error('Failed to save dev window state', e)
+  }
+}
+
+function boundsOnScreen(bounds) {
+  if (!bounds) return false
+  return screen.getAllDisplays().some((d) => {
+    const b = d.bounds
+    return (
+      bounds.x < b.x + b.width &&
+      bounds.x + bounds.width > b.x &&
+      bounds.y < b.y + b.height &&
+      bounds.y + bounds.height > b.y
+    )
+  })
+}
+
 function createWindow() {
-  // Create the browser window.
-  const mainWindow = new BrowserWindow({
+  const savedState = isDev ? loadDevWindowState() : null
+  const useSaved = !!(savedState && boundsOnScreen(savedState.bounds))
+
+  const windowOptions = {
     width: 1920,
     height: 1080,
     show: false,
@@ -15,12 +50,34 @@ function createWindow() {
       contextIsolation: false,
       nodeIntegration: true
     },
-  })
-  const contentBounds = mainWindow.getContentBounds()
-  const titleBarHeight = 1080 - contentBounds.height
-  const borderWidth = (1920 - contentBounds.width) / 2
-  if(titleBarHeight > 0 && borderWidth > 0)
-  mainWindow.setSize(1920 + borderWidth * 2, 1080 + titleBarHeight)
+  }
+  if (useSaved) {
+    Object.assign(windowOptions, savedState.bounds)
+  }
+
+  // Create the browser window.
+  const mainWindow = new BrowserWindow(windowOptions)
+
+  if (useSaved && savedState.isFullScreen) {
+    mainWindow.setFullScreen(true)
+  }
+
+  if (isDev) {
+    mainWindow.on('close', () => {
+      saveDevWindowState({
+        bounds: mainWindow.getNormalBounds(),
+        isFullScreen: mainWindow.isFullScreen(),
+      })
+    })
+  }
+
+  if (!useSaved) {
+    const contentBounds = mainWindow.getContentBounds()
+    const titleBarHeight = 1080 - contentBounds.height
+    const borderWidth = (1920 - contentBounds.width) / 2
+    if(titleBarHeight > 0 && borderWidth > 0)
+    mainWindow.setSize(1920 + borderWidth * 2, 1080 + titleBarHeight)
+  }
 
   mainWindow.on('resize', () => {
     // Get the new size of the window
