@@ -324,12 +324,14 @@ class GameHookMapperClient {
         })
 
         function debouce() {
-            for (const value of that._debouceMap.values()) {
-                if (value.timeoutFrames > 0) {
-                    value.timeoutFrames--
-                } else if (value.timeoutFrames === 0) {
-                    updateProperty(value.newProperty)
-                    value.timeoutFrames = -1
+            if (that._debouceMap) {
+                for (const value of that._debouceMap.values()) {
+                    if (value.timeoutFrames > 0) {
+                        value.timeoutFrames--
+                    } else if (value.timeoutFrames === 0) {
+                        updateProperty(value.newProperty)
+                        value.timeoutFrames = -1
+                    }
                 }
             }
             if (that.connected === true)

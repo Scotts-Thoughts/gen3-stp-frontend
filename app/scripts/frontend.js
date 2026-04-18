@@ -922,12 +922,12 @@ const app = Vue.createApp({
             badgeBoosts: ["badge1", "badge3", "badge5", "badge7"],
             pkmnMoves: ["move1", "move2", "move3", "move4"],
             stat_object:     [
-                {abrv: "HP",  name: "Hp",              name_ev: "Hp",             label: "HP",   path: "maxHp",          base_stat_path: "base_hp",      object_identifier: "hp",      hp_spe_label_row: 1, hp_spd_label_row: 1, label_column: 1, hp_spe_value_row: 1, hp_spd_value_row: 1, value_column: 2,}, 
-                {abrv: "Atk", name: "Attack",          name_ev: "Attack",         label: "Atk.", path: "attack",         base_stat_path: "base_atk",     object_identifier: "atk",     hp_spe_label_row: 2, hp_spd_label_row: 2, label_column: 1, hp_spe_value_row: 2, hp_spd_value_row: 2, value_column: 2,}, 
-                {abrv: "Def", name: "Defense",         name_ev: "Defense",        label: "Def.", path: "defense",        base_stat_path: "base_def",     object_identifier: "def",     hp_spe_label_row: 3, hp_spd_label_row: 3, label_column: 1, hp_spe_value_row: 3, hp_spd_value_row: 3, value_column: 2,}, 
-                {abrv: "SpA", name: "Special Attack",  name_ev: "SpecialAttack",  label: "SpA.", path: "specialAttack",  base_stat_path: "base_spc_atk", object_identifier: "spc_atk", hp_spe_label_row: 1, hp_spd_label_row: 2, label_column: 3, hp_spe_value_row: 1, hp_spd_value_row: 2, value_column: 4,}, 
-                {abrv: "SpD", name: "Special Defense", name_ev: "SpecialDefense", label: "SpD.", path: "specialDefense", base_stat_path: "base_spc_def", object_identifier: "spc_def", hp_spe_label_row: 2, hp_spd_label_row: 3, label_column: 3, hp_spe_value_row: 2, hp_spd_value_row: 3, value_column: 4,}, 
-                {abrv: "Spe", name: "Speed",           name_ev: "Speed",          label: "Spe.", path: "speed",          base_stat_path: "base_spd",     object_identifier: "spd",     hp_spe_label_row: 3, hp_spd_label_row: 1, label_column: 3, hp_spe_value_row: 3, hp_spd_value_row: 1, value_column: 4,}, 
+                {abrv: "HP",  name: "Hp",              name_ev: "Hp",             label: "HP",   vitamin: "HP Up",   path: "maxHp",          base_stat_path: "base_hp",      object_identifier: "hp",      hp_spe_label_row: 1, hp_spd_label_row: 1, label_column: 1, hp_spe_value_row: 1, hp_spd_value_row: 1, value_column: 2,}, 
+                {abrv: "Atk", name: "Attack",          name_ev: "Attack",         label: "Atk.", vitamin: "Protein", path: "attack",         base_stat_path: "base_atk",     object_identifier: "atk",     hp_spe_label_row: 2, hp_spd_label_row: 2, label_column: 1, hp_spe_value_row: 2, hp_spd_value_row: 2, value_column: 2,}, 
+                {abrv: "Def", name: "Defense",         name_ev: "Defense",        label: "Def.", vitamin: "Iron",    path: "defense",        base_stat_path: "base_def",     object_identifier: "def",     hp_spe_label_row: 3, hp_spd_label_row: 3, label_column: 1, hp_spe_value_row: 3, hp_spd_value_row: 3, value_column: 2,}, 
+                {abrv: "SpA", name: "Special Attack",  name_ev: "SpecialAttack",  label: "SpA.", vitamin: "Calcium", path: "specialAttack",  base_stat_path: "base_spc_atk", object_identifier: "spc_atk", hp_spe_label_row: 1, hp_spd_label_row: 2, label_column: 3, hp_spe_value_row: 1, hp_spd_value_row: 2, value_column: 4,}, 
+                {abrv: "SpD", name: "Special Defense", name_ev: "SpecialDefense", label: "SpD.", vitamin: "Zinc",    path: "specialDefense", base_stat_path: "base_spc_def", object_identifier: "spc_def", hp_spe_label_row: 2, hp_spd_label_row: 3, label_column: 3, hp_spe_value_row: 2, hp_spd_value_row: 3, value_column: 4,}, 
+                {abrv: "Spe", name: "Speed",           name_ev: "Speed",          label: "Spe.", vitamin: "Carbos",  path: "speed",          base_stat_path: "base_spd",     object_identifier: "spd",     hp_spe_label_row: 3, hp_spd_label_row: 1, label_column: 3, hp_spe_value_row: 3, hp_spd_value_row: 1, value_column: 4,}, 
             ],
 
             //CSS styling values
@@ -957,6 +957,7 @@ const app = Vue.createApp({
             pokedex_emerald           : pokedex_emerald,
             pokedex_frlg              : pokedex_frlg,
             split_trainers            : split_trainers,
+            split_trainers_by_game    : split_trainers_by_game,
             hiddenpower_type_selector : hiddenpower_type_selector,
             pokedex_indexes           : pokedex_indexes,
             split_trainers_simple     : split_trainers_simple,
@@ -2172,30 +2173,60 @@ const app = Vue.createApp({
         },
         compare_splits() {
             if (this.collect_split_data == true) {
-                const result = []
-                let lastPushedTrainer = null; // Keep track of the last pushed trainer
-                const trainersToSkip = ["ELITE_FOUR_LORELEI_2", "ELITE_FOUR_BRUNO_2", "ELITE_FOUR_AGATHA_2", "ELITE_FOUR_LANCE_2", "CHAMPION_REMATCH_CHARMANDER", "CHAMPION_REMATCH_BULBASAUR", "CHAMPION_REMATCH_SQUIRTLE"]; // Trainers to skip
-                const firstOccurrenceOnly = ["ELITE_FOUR_SIDNEY", "ELITE_FOUR_PHOEBE", "ELITE_FOUR_GLACIA", "ELITE_FOUR_DRAKE", "CHAMPION_WALLACE"]; // Characters to only show first occurrence of
-                const processedFirstOccurrences = new Set(); // Track which characters have already been processed for first occurrence
-                
                 // Helper to normalize trainer ID to display name for matching rival variants
                 const getNormalizedName = (trainerId) => this.trainer_name_lookup[trainerId]?.trainer ?? trainerId;
-                
+                const trainersToSkip = ["ELITE_FOUR_LORELEI_2", "ELITE_FOUR_BRUNO_2", "ELITE_FOUR_AGATHA_2", "ELITE_FOUR_LANCE_2", "CHAMPION_REMATCH_CHARMANDER", "CHAMPION_REMATCH_BULBASAUR", "CHAMPION_REMATCH_SQUIRTLE"];
+
+                // First mode: use default order for the current game only, no CSV needed
+                if (this.splits_display === 'First') {
+                    const gameTrainers = this.split_trainers_by_game[this.gameSelection] ?? this.split_trainers
+                    const gameTrainerSet = new Set(gameTrainers)
+                    const result = []
+                    const completedTrainers = new Set()
+                    const completedNormalizedNames = new Set()
+                    // Add completed splits first, in the order they were completed
+                    for (const cur_split of this.current_splits) {
+                        if (gameTrainerSet.has(cur_split.trainer) && !completedTrainers.has(cur_split.trainer)) {
+                            result.push({trainer: cur_split.trainer, current_time: this.convertSecondsToDuration(this.convertDurationToSeconds(cur_split.time))})
+                            completedTrainers.add(cur_split.trainer)
+                            completedNormalizedNames.add(getNormalizedName(cur_split.trainer))
+                        }
+                    }
+                    // Add remaining uncompleted splits in default order
+                    for (const trainer of gameTrainers) {
+                        const normalizedName = getNormalizedName(trainer)
+                        if (!completedTrainers.has(trainer) && !completedNormalizedNames.has(normalizedName)) {
+                            if (this.league_rematches == false && this.gameSelection === "FireRed and LeafGreen" && trainersToSkip.includes(trainer)) {
+                                continue;
+                            }
+                            result.push({trainer: trainer, current_time: "-"})
+                            completedNormalizedNames.add(normalizedName)
+                        }
+                    }
+                    return result
+                }
+
+                // Followup mode: compare against loaded CSV splits
+                const result = []
+                let lastPushedTrainer = null;
+                const firstOccurrenceOnly = ["ELITE_FOUR_SIDNEY", "ELITE_FOUR_PHOEBE", "ELITE_FOUR_GLACIA", "ELITE_FOUR_DRAKE", "CHAMPION_WALLACE"];
+                const processedFirstOccurrences = new Set();
+
                 for (const x of this.previous_splits) {
                     if (this.split_trainers.includes(x.trainer)) {
                         // Skip if this is a character that should only show first occurrence and we've already processed it
                         if (firstOccurrenceOnly.includes(x.trainer) && processedFirstOccurrences.has(x.trainer)) {
                             continue;
                         }
-                        
+
                         const default_string = "-"
                         // Match by normalized display name so rival variants (e.g. different starters) are treated as the same split
                         const normalizedName = getNormalizedName(x.trainer);
                         const cur_split = this.current_splits.find(y => y.trainer === x.trainer || getNormalizedName(y.trainer) === normalizedName)
                         const prev = this.convertDurationToSeconds(x.time)
-                        if (cur_split == undefined) { 
+                        if (cur_split == undefined) {
                             if (x.trainer !== lastPushedTrainer && !(this.league_rematches == false && this.gameSelection === "FireRed and LeafGreen" && trainersToSkip.includes(x.trainer))) { // Check if the current trainer is the same as the last pushed one and if it should be skipped
-                                result.push({trainer: x.trainer, previous_time: this.convertSecondsToDuration(prev), current_time: default_string, difference: default_string}) 
+                                result.push({trainer: x.trainer, previous_time: this.convertSecondsToDuration(prev), current_time: default_string, difference: default_string})
                                 lastPushedTrainer = x.trainer; // Update the last pushed trainer
                                 // Mark this character as processed for first occurrence
                                 if (firstOccurrenceOnly.includes(x.trainer)) {
@@ -2246,6 +2277,7 @@ const app = Vue.createApp({
             switch (stat_type) {
                 case "Base Stats": return `Base Stats`
                 case "IVs":        return `IVs`
+                case "Vitamins":   return `Vitamins`
                 case "EVs": {
                     return `EVs (Lv:${level})`
                 }
@@ -2704,6 +2736,16 @@ const app = Vue.createApp({
     },
 
     methods: {
+        vitamins_remaining(evs, label) { //statExp = mapper.properties.player.team[0].statExpAttack.value
+            vitaminsUsed = (evs / 10)
+            usableVitamins = Math.ceil(10 - vitaminsUsed)
+            if (usableVitamins < 0) {
+                return 0
+            }
+            else {
+                return usableVitamins
+            }
+        },
         get_player_move(x) {
             const state = this.g3stateVariable
             if (state == "Battle") {
@@ -6147,7 +6189,22 @@ const app = Vue.createApp({
     mounted: async function () {
         const that = this
         this.mapper = new GameHookMapperClient()
-        this.mapper.onMapperLoaded = (x) => this.ready = true
+        this.mapper.onMapperLoaded = (x) => {
+            this.ready = true
+            this.$nextTick(() => {
+                if (this.$refs.expBar) {
+                    var species = this.mapper.properties.player.team[0].species.value ?? this.starterString;
+                    if (species == 'Backport') {
+                        species = this.starterString;
+                    }
+                    if (this.dexData[species] == null) { return; }
+                    var growthRate = this.dexData[species].growth_rate
+                    var expStats = this.calcExpStats(growthRate, this.mapper.properties.player.team[0].expPoints.value);
+                    this.$refs.expBar.style.width = (expStats.percent * 100) + "%";
+                    this.prevSpecies = species
+                }
+            })
+        }
         this.mapper.onMapperUnloaded = (x) => this.ready = false
         await this.mapper.connect()
 
@@ -6959,57 +7016,23 @@ const app = Vue.createApp({
                 }
             }
 
-            // Automatic EV display based on location has been disabled
-            // if (this.automatic_evs == true) { 
-            //     const locations = [
-            //         "VIRIDIAN_CITY - MART",
-            //         "CELADON_CITY - DEPARTMENT_STORE_1F",      
-            //         "CELADON_CITY - DEPARTMENT_STORE_2F",      
-            //         "CELADON_CITY - DEPARTMENT_STORE_3F",      
-            //         "CELADON_CITY - DEPARTMENT_STORE_4F",      
-            //         "CELADON_CITY - DEPARTMENT_STORE_5F",      
-            //         "CELADON_CITY - DEPARTMENT_STORE_ROOF",    
-            //         "CELADON_CITY - DEPARTMENT_STORE_ELEVATOR",
-            //         "SILPH_CO - 1F",       
-            //         "SILPH_CO - 2F",       
-            //         "SILPH_CO - 3F",       
-            //         "SILPH_CO - 4F",       
-            //         "SILPH_CO - 5F",       
-            //         "SILPH_CO - 6F",       
-            //         "SILPH_CO - 7F",       
-            //         "SILPH_CO - 8F",       
-            //         "SILPH_CO - 9F",       
-            //         "SILPH_CO - 10F",      
-            //         "SILPH_CO - 11F",      
-            //         "SILPH_CO - ELEVATOR", 
-            //         "POKEMON_MANSION - 1F",
-            //         "POKEMON_MANSION - 2F",
-            //         "POKEMON_MANSION - 3F",
-            //         "POKEMON_MANSION - B1F",
-            //         "SAFARI_ZONE - CENTER",
-            //         "SAFARI_ZONE - EAST",  
-            //         "SAFARI_ZONE - NORTH", 
-            //         "SAFARI_ZONE - WEST",  
-            //         "ROCKET_HIDEOUT - B1F",     
-            //         "ROCKET_HIDEOUT - B2F",     
-            //         "ROCKET_HIDEOUT - B3F",     
-            //         "ROCKET_HIDEOUT - B4F",     
-            //         "ROCKET_HIDEOUT - ELEVATOR",
-            //         "SAFARI_ZONE - CENTER_REST_HOUSE",
-            //         "SAFARI_ZONE - EAST_REST_HOUSE",  
-            //         "SAFARI_ZONE - NORTH_REST_HOUSE", 
-            //         "SAFARI_ZONE - WEST_REST_HOUSE",  
-            //         "SAFARI_ZONE - SECRET_HOUSE",     
-            //         "INDIGO_PLATEAU - POKEMON_CENTER_1F",
-            //         "INDIGO_PLATEAU - POKEMON_CENTER_2F",
-            //     ]
-            //     if (locations.includes(newProp.value)) {
-            //         this.stats = "EVs"
-            //     }
-            //     else {
-            //         this.stats = "Automatic"
-            //     }
-            // }
+            const vitamin_display_locations = [
+                "CELADON_CITY - DEPARTMENT_STORE_1F",
+                "CELADON_CITY - DEPARTMENT_STORE_2F",
+                "CELADON_CITY - DEPARTMENT_STORE_3F",
+                "CELADON_CITY - DEPARTMENT_STORE_4F",
+                "CELADON_CITY - DEPARTMENT_STORE_5F",
+                "CELADON_CITY - DEPARTMENT_STORE_ROOF",
+                "CELADON_CITY - DEPARTMENT_STORE_ELEVATOR",
+            ]
+            console.log("newProp.value: " + newProp.value)
+            console.log(vitamin_display_locations.includes(newProp.value))
+            if (vitamin_display_locations.includes(newProp.value)) {
+                this.stats = "Vitamins";
+            }
+            else {
+                this.stats = "Automatic";
+            }
         });
         this.mapper.properties.overworld.disabledEncounters.change(async (newProp) => {
             // console.log("disabled encounters: " + newProp.value)

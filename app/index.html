@@ -492,6 +492,7 @@
                         <option>Automatic</option>
                         <option>Badge Boosts</option>
                         <option>Base Stats</option>
+                        <option>Vitamins</option>
                         <option>IVs</option>
                         <option>EVs</option>
                         <option>Detailed EVs</option>
@@ -609,12 +610,14 @@
                         <div>
                             <div class="stats_header">{{stats_header}}</div>
                             <div v-for="stat in stat_object">
-                                <div v-if="stats != 'Comparison'" :style="{ opacity: stat_label_opacity()?.[stat.name]}" :class="`stat_label_style stat_row_${stat[`${ui_stat_arrangement_modifier}label_row`]} stat_column_${stat.label_column}`">{{stat.label}}</div>
+                                <div v-if="stats != 'Comparison' && stats != 'Vitamins'" :style="{ opacity: stat_label_opacity()?.[stat.name]}" :class="`stat_label_style stat_row_${stat[`${ui_stat_arrangement_modifier}label_row`]} stat_column_${stat.label_column}`">{{stat.label}}</div>
+                                <div v-else                                              :style="{ opacity: stat_label_opacity()?.[stat.name]}" :class="`stat_label_style stat_row_${stat[`${ui_stat_arrangement_modifier}label_row`]} stat_column_${stat.label_column}`">{{stat.vitamin}}</div>
                             </div>
                             <div v-for="stat in stat_object">
                                 <div v-if="stats == 'Base Stats'"   :class="`stat_value_style stat_row_${stat[`${ui_stat_arrangement_modifier}value_row`]} stat_column_${stat.value_column}`">{{statsDisplaySpecies == "Deoxys" ? deoxys_form_base_stats[stat.name] : game.dexData[statsDisplaySpecies][stat.base_stat_path]}}</div>
                                 <div v-if="stats == 'IVs'"          :class="`stat_value_style stat_row_${stat[`${ui_stat_arrangement_modifier}value_row`]} stat_column_${stat.value_column} dv`">{{get_iv(`${stat.name}`)}}/31</div>
                                 <div v-if="stats == 'EVs'"          :class="`stat_value_style stat_row_${stat[`${ui_stat_arrangement_modifier}value_row`]} stat_column_${stat.value_column} evs`">{{mapper.properties.player.team[0][`ev${stat.name_ev}`].value}}</div>
+                                <div v-if="stats == 'Vitamins'"     :class="`stat_value_style stat_row_${stat[`${ui_stat_arrangement_modifier}value_row`]} stat_column_${stat.value_column} evs`">{{vitamins_remaining(mapper.properties.player.team[0][`ev${stat.name_ev}`].value)}}</div>
                                 <div v-if="stats == 'Automatic'"    :class="`stat_value_style stat_row_${stat[`${ui_stat_arrangement_modifier}value_row`]} stat_column_${stat.value_column}`" :id="`${stat.abrv}`">{{get_stat(`${stat.name}`)}}</div>
                                 
                                 <div v-if="stats == 'Detailed EVs'" :class="`stat_value_style detailed_ev_stat_row_${stat[`${ui_stat_arrangement_modifier}value_row`]} stat_column_${stat.value_column} devs`">{{mapper.properties.player.team[0][`ev${stat.name_ev}`].value}}/255</div>

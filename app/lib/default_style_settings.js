@@ -1043,7 +1043,7 @@ const DEFAULT_STYLE_SETTINGS = {
         "ui_saturation": "1.2",
         "backgroundYOffset": "10",
         "backgroundXOffset": "37",
-        "attempt_number": 5,
+        "attempt_number": 6,
         "finished_run_count": 1
     },
     "FireRed and LeafGreen_Alakazam": {
@@ -1593,7 +1593,7 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundUrl": "",
         "use_custom_background": false,
         "backgroundXOffset": 0,
-        "attempt_number": 1
+        "attempt_number": 7
     },
     "FireRed and LeafGreen_Ninetales-line-Ninetales": {
         "overlay_color": "#f6eaa4",
@@ -1616,7 +1616,7 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundBrightness": "39",
         "backgroundContrast": "126",
         "backgroundSaturation": "96",
-        "finished_run_count": 1
+        "finished_run_count": 2
     },
     "FireRed and LeafGreen_Growlithe": {
         "pkmn_ability": "Intimidate",
@@ -1849,7 +1849,7 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundContrast": "142",
         "backgroundSaturation": 100,
         "backgroundXFlip": false,
-        "attempt_number": 1
+        "attempt_number": 4
     },
     "FireRed and LeafGreen_Exeggutor-line-Exeggutor": {
         "overlay_color": "#64ab78",
@@ -1988,7 +1988,7 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundScale": "109",
         "backgroundXOffset": "30",
         "backgroundYOffset": "-25",
-        "attempt_number": 1,
+        "attempt_number": 3,
         "finished_run_count": 1
     },
     "Emerald_Aggron": {
@@ -2043,7 +2043,7 @@ const DEFAULT_STYLE_SETTINGS = {
         "use_custom_background": false,
         "backgroundSaturation": 100,
         "finished_run_count": 1,
-        "attempt_number": 4
+        "attempt_number": 1
     },
     "FireRed and LeafGreen_Magneton-line-Magneton": {
         "overlay_color": "#b79831",
@@ -2121,7 +2121,7 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundFlip": false,
         "use_custom_background": false,
         "backgroundXOffset": 0,
-        "attempt_number": 1
+        "attempt_number": 4
     },
     "FireRed and LeafGreen_Dodrio-line-Dodrio": {
         "overlay_color": "#d39f70",
@@ -2171,6 +2171,12 @@ const DEFAULT_STYLE_SETTINGS = {
         "overlay_color": "#a8a878",
         "finished_run_count": 2,
         "attempt_number": 3
+    },
+    "FireRed and LeafGreen_Ninetales": {
+        "selected_evolution_species": "Ninetales"
+    },
+    "FireRed and LeafGreen_38": {
+        "selected_evolution_species": "Ninetales"
     }
 };
 
