@@ -502,6 +502,12 @@
                         <option>Evolution</option>
                     </select><br>
                     <br>
+                    <div>Stat Arrangement:</div>
+                    <select v-model="ui_stat_arrangement" class="dropdownMenu dropdown_menu_column3">
+                        <option>Speed: top right</option>
+                        <option>Speed: bottom right</option>
+                    </select><br>
+                    <br>
                     <div v-if="show_advanced_settings">
                         <div>Right Panel:</div>
                         <select v-model="right_panel" class="dropdownMenu dropdown_menu_column3">
