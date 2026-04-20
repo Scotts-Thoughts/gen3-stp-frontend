@@ -143,6 +143,9 @@ const application_settings = [
 
     [ "hm_1_pidgey",        true, ],
     [ "hm_1_rattata",       true, ],
+    [ "hm_24_25_abra",      true, ],
+    [ "hm_6_meowth",        true, ],
+    [ "hm_6_pidgey",        true, ],
 
     // UI
     [ "ui_saturation",          .6,                   ],

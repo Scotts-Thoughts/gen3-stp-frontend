@@ -1187,8 +1187,10 @@ const app = Vue.createApp({
             hm_cave_abra:       MyStorage['hm_cave_abra']       ?? false,
             hm_119_tropius:     MyStorage['hm_119_tropius']     ?? false,
 
-            hm_1_pidgey:      MyStorage['hm_101_pidgey']    ?? true,
-            hm_1_rattata:     MyStorage['hm_101_rattata']   ?? true,
+            hm_1_pidgey:   MyStorage['hm_101_pidgey']  ?? true,
+            hm_1_rattata:  MyStorage['hm_101_rattata'] ?? true,
+            hm_24_25_abra: MyStorage['hm_24_25_abra']  ?? true,
+            hm_6_meowth:   MyStorage['hm_6_meowth']    ?? true,
 
             // UI
             ui_saturation:                MyStorage['ui_saturation']                ?? .6,
@@ -1241,6 +1243,8 @@ const app = Vue.createApp({
                 "timer_startTimeOffset",
                 "hm_1_pidgey",
                 "hm_1_rattata",
+                "hm_24_25_abra",
+                "hm_6_meowth",
                 "ui_saturation",
                 "ui_type_colors",
                 "ui_type_color_modifier",
@@ -1920,21 +1924,39 @@ const app = Vue.createApp({
         },
         hm_1_pidgey(newValue) {
             if (newValue == false) {
-                this.mapper.properties.overworld.stp_pidgey_on_route_1?.set(false, false)
+                this.mapper.properties.patch.stp_flags.stp_pidgey_on_route_1?.set(false, false)
             }
             if (newValue == true) {
-                this.mapper.properties.overworld.stp_pidgey_on_route_1?.set(true, false)
+                this.mapper.properties.patch.stp_flags.stp_pidgey_on_route_1?.set(true, false)
             }
             MyStorage['hm_1_pidgey'] = newValue
         },
         hm_1_rattata(newValue) {
             if (newValue == false) {
-                this.mapper.properties.overworld.stp_rattata_on_route_1?.set(false, false)
+                this.mapper.properties.patch.stp_flags.stp_rattata_on_route_1?.set(false, false)
             }
             if (newValue == true) {
-                this.mapper.properties.overworld.stp_rattata_on_route_1?.set(true, false)
+                this.mapper.properties.patch.stp_flags.stp_rattata_on_route_1?.set(true, false)
             }
             MyStorage['hm_1_rattata'] = newValue
+        },
+        hm_24_25_abra(newValue) {
+            if (newValue == false) {
+                this.mapper.properties.patch.stp_flags.stp_abra_on_route_24_25?.set(false, false)
+            }
+            if (newValue == true) {
+                this.mapper.properties.patch.stp_flags.stp_abra_on_route_24_25?.set(true, false)
+            }
+            MyStorage['hm_24_25_abra'] = newValue
+        },
+        hm_6_meowth(newValue) {
+            if (newValue == false) {
+                this.mapper.properties.patch.stp_flags.stp_meowth_on_route_6?.set(false, false)
+            }
+            if (newValue == true) {
+                this.mapper.properties.patch.stp_flags.stp_meowth_on_route_6?.set(true, false)
+            }
+            MyStorage['hm_6_meowth'] = newValue
         },
         catch_rate(newValue) {
             let game = this.gameSelection
@@ -4423,6 +4445,8 @@ const app = Vue.createApp({
             this.hm_119_tropius =             MyStorage['hm_119_tropius']             ?? false,
             this.hm_1_pidgey =                MyStorage['hm_1_pidgey']                ?? true,
             this.hm_1_rattata =               MyStorage['hm_1_rattata']               ?? true,
+            this.hm_24_25_abra =              MyStorage['hm_24_25_abra']              ?? true,
+            this.hm_6_meowth =                MyStorage['hm_6_meowth']                ?? true,
             this.testRun =                    MyStorage['testRun']                    ?? false
             this.simple_data_str =            MyStorage['simple_data_str']            ?? ""
             this.full_data_str =              MyStorage['full_data_str']              ?? ""

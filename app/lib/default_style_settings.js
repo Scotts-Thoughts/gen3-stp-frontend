@@ -2091,7 +2091,9 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundYOffset": "-81",
         "backgroundSaturation": "163",
         "backgroundContrast": "87",
-        "backgroundBrightness": "96"
+        "backgroundBrightness": "96",
+        "attempt_number": 1,
+        "finished_run_count": 1
     },
     "FireRed and LeafGreen_Doduo": {
         "evolution": true,
@@ -2177,6 +2179,12 @@ const DEFAULT_STYLE_SETTINGS = {
     },
     "FireRed and LeafGreen_38": {
         "selected_evolution_species": "Ninetales"
+    },
+    "FireRed and LeafGreen_Rayquaza": {
+        "pkmn_ability": "Air Lock",
+        "pkmnNature": "Hardy",
+        "backgroundTexture": "Dragon",
+        "overlay_color": "#7038f8"
     }
 };
 
