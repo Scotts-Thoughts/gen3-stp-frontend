@@ -1197,7 +1197,7 @@ const app = Vue.createApp({
             ui_type_icons:                MyStorage['ui_type_icons']                ?? "2024",
             ui_type_icons_modifier:       MyStorage['ui_type_icons_modifier']       ?? "2024/",
             ui_stat_arrangement:          MyStorage['ui_stat_arrangement']          ?? "HP, Atk, Def, Spe, SpA, SpD",
-            ui_stat_arrangement_modifier: MyStorage['ui_stat_arrangement_modifier'] ?? "hp_spe_",
+            ui_stat_arrangement_modifier: MyStorage['ui_stat_arrangement_modifier'] ?? "hp_spd_",
             ui_stats_styling_modifier:    MyStorage['ui_stats_styling_modifier']    ?? "2024",
 
             auto_save: [
