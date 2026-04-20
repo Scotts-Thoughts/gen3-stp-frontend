@@ -1191,6 +1191,7 @@ const app = Vue.createApp({
             hm_1_rattata:  MyStorage['hm_101_rattata'] ?? true,
             hm_24_25_abra: MyStorage['hm_24_25_abra']  ?? true,
             hm_6_meowth:   MyStorage['hm_6_meowth']    ?? true,
+            hm_6_pidgey:   MyStorage['hm_6_pidgey']    ?? true,
 
             // UI
             ui_saturation:                MyStorage['ui_saturation']                ?? .6,
@@ -1245,6 +1246,7 @@ const app = Vue.createApp({
                 "hm_1_rattata",
                 "hm_24_25_abra",
                 "hm_6_meowth",
+                "hm_6_pidgey",
                 "ui_saturation",
                 "ui_type_colors",
                 "ui_type_color_modifier",
@@ -1957,6 +1959,15 @@ const app = Vue.createApp({
                 this.mapper.properties.patch.stp_flags.stp_meowth_on_route_6?.set(true, false)
             }
             MyStorage['hm_6_meowth'] = newValue
+        },
+        hm_6_pidgey(newValue) {
+            if (newValue == false) {
+                this.mapper.properties.patch.stp_flags.stp_pidgey_on_route_6?.set(false, false)
+            }
+            if (newValue == true) {
+                this.mapper.properties.patch.stp_flags.stp_pidgey_on_route_6?.set(true, false)
+            }
+            MyStorage['hm_6_pidgey'] = newValue
         },
         catch_rate(newValue) {
             let game = this.gameSelection
@@ -4447,6 +4458,7 @@ const app = Vue.createApp({
             this.hm_1_rattata =               MyStorage['hm_1_rattata']               ?? true,
             this.hm_24_25_abra =              MyStorage['hm_24_25_abra']              ?? true,
             this.hm_6_meowth =                MyStorage['hm_6_meowth']                ?? true,
+            this.hm_6_pidgey =                MyStorage['hm_6_pidgey']                ?? true,
             this.testRun =                    MyStorage['testRun']                    ?? false
             this.simple_data_str =            MyStorage['simple_data_str']            ?? ""
             this.full_data_str =              MyStorage['full_data_str']              ?? ""
