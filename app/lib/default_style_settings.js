@@ -176,10 +176,11 @@ const DEFAULT_STYLE_SETTINGS = {
         "imageScale": "0.88",
         "imageYOffset": "140",
         "imageXOffset": "-23",
-        "hidden_power_type": "Ground",
+        "hidden_power_type": "Dark",
         "hidden_power_index": "3",
-        "attempt_number": 6,
-        "finished_run_count": 2
+        "attempt_number": 11,
+        "finished_run_count": 5,
+        "splits_display": "Followup"
     },
     "Emerald_NidoranF": {},
     "Emerald_NidoranM": {
@@ -307,10 +308,10 @@ const DEFAULT_STYLE_SETTINGS = {
         "ui_saturation": "1.2",
         "pkmnNature": "Adamant",
         "pkmn_ability": "Keen Eye",
-        "hidden_power_type": "Ground",
+        "hidden_power_type": "Dark",
         "hidden_power_index": "3",
-        "attempt_number": 2,
-        "finished_run_count": 2
+        "attempt_number": 5,
+        "finished_run_count": 3
     },
     "Emerald_Jumpluff": {
         "pkmn_ability": "Chlorophyll",
@@ -416,7 +417,7 @@ const DEFAULT_STYLE_SETTINGS = {
         "imageFlip": true,
         "imageScale": "0.65",
         "imageYOffset": "6",
-        "imageXOffset": "25",
+        "imageXOffset": "34",
         "overlay_color": "#f9f0d2",
         "ui_saturation": "1.9",
         "backgroundTexture": "Dark Moon",
@@ -425,7 +426,13 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundYOffset": "8",
         "backgroundXOffset": "-34",
         "backgroundContrast": "119",
-        "backgroundHue": "38"
+        "backgroundHue": "38",
+        "pkmn_ability": "Pickup",
+        "pkmnNature": "Brave",
+        "hidden_power_type": "Dark",
+        "hidden_power_index": "3",
+        "attempt_number": 4,
+        "finished_run_count": 1
     },
     "Emerald_Sneasel": {
         "pkmn_ability": "Inner Focus",
@@ -580,16 +587,23 @@ const DEFAULT_STYLE_SETTINGS = {
     },
     "Emerald_Azumarill": {
         "imageFlip": true,
-        "imageScale": "0.8",
-        "imageYOffset": "34",
+        "imageScale": "0.71",
+        "imageYOffset": "27",
         "imageXOffset": "34",
-        "overlay_color": "#3d9dcc",
-        "ui_saturation": "1.6",
-        "backgroundTexture": "Water",
-        "backgroundContrast": "122",
-        "backgroundBrightness": "35",
-        "backgroundBlur": "2",
-        "backgroundScale": "104"
+        "overlay_color": "#3d9ccc",
+        "ui_saturation": "1.5",
+        "backgroundTexture": "Dark Water",
+        "backgroundContrast": "138",
+        "backgroundBrightness": "80",
+        "backgroundBlur": "0",
+        "backgroundScale": "156",
+        "pkmn_ability": "Huge Power",
+        "pkmnNature": "Naughty",
+        "backgroundYOffset": "37",
+        "hidden_power_type": "Ground",
+        "hidden_power_index": "3",
+        "attempt_number": 2,
+        "finished_run_count": 1
     },
     "Emerald_Clefable": {
         "imageScale": "0.78",
@@ -603,7 +617,9 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundContrast": "172",
         "backgroundBrightness": "88",
         "backgroundBlur": "0",
-        "backgroundYOffset": "19"
+        "backgroundYOffset": "19",
+        "pkmn_ability": "Cute Charm",
+        "pkmnNature": "Hardy"
     },
     "Emerald_Wigglytuff": {
         "imageScale": "0.82",
@@ -1043,7 +1059,7 @@ const DEFAULT_STYLE_SETTINGS = {
         "ui_saturation": "1.2",
         "backgroundYOffset": "10",
         "backgroundXOffset": "37",
-        "attempt_number": 6,
+        "attempt_number": 7,
         "finished_run_count": 1
     },
     "FireRed and LeafGreen_Alakazam": {
@@ -1849,7 +1865,7 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundContrast": "142",
         "backgroundSaturation": 100,
         "backgroundXFlip": false,
-        "attempt_number": 4
+        "attempt_number": 1
     },
     "FireRed and LeafGreen_Exeggutor-line-Exeggutor": {
         "overlay_color": "#64ab78",
@@ -2092,7 +2108,7 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundSaturation": "163",
         "backgroundContrast": "87",
         "backgroundBrightness": "96",
-        "attempt_number": 1,
+        "attempt_number": 2,
         "finished_run_count": 1
     },
     "FireRed and LeafGreen_Doduo": {
@@ -2161,7 +2177,13 @@ const DEFAULT_STYLE_SETTINGS = {
         "pkmn_ability": "Early Bird"
     },
     "FireRed and LeafGreen_Exeggutor": {
-        "selected_evolution_species": "Exeggutor"
+        "selected_evolution_species": "Exeggutor",
+        "evolution": false,
+        "finished_run_count": 1,
+        "pkmn_ability": "Chlorophyll",
+        "pkmnNature": "Hardy",
+        "backgroundTexture": "Grass",
+        "overlay_color": "#78c850"
     },
     "FireRed and LeafGreen_103": {
         "selected_evolution_species": "Exeggutor"
@@ -2185,6 +2207,134 @@ const DEFAULT_STYLE_SETTINGS = {
         "pkmnNature": "Hardy",
         "backgroundTexture": "Dragon",
         "overlay_color": "#7038f8"
+    },
+    "FireRed and LeafGreen_Blissey": {
+        "imageScale": "0.82",
+        "imageYOffset": "34",
+        "imageXOffset": "-23",
+        "overlay_color": "#f6a9bf",
+        "ui_saturation": "1.4",
+        "backgroundTexture": "Fairy",
+        "backgroundScale": "126",
+        "backgroundContrast": "135",
+        "backgroundBrightness": "92",
+        "backgroundSaturation": "74",
+        "backgroundHue": "16",
+        "backgroundXFlip": false,
+        "backgroundFlip": true,
+        "backgroundBlur": "1",
+        "backgroundYOffset": "-1",
+        "pkmn_ability": "Serene Grace",
+        "pkmnNature": "Hardy",
+        "finished_run_count": 1
+    },
+    "FireRed and LeafGreen_Meowth": {},
+    "Emerald_Koffing": {
+        "imageScale": "0.61",
+        "imageYOffset": "211",
+        "imageXOffset": "-23",
+        "overlay_color": "#ada6d0",
+        "ui_saturation": "1.9",
+        "pkmn_ability": "Levitate",
+        "backgroundScale": "117",
+        "backgroundContrast": "131",
+        "backgroundBrightness": "58",
+        "backgroundBlur": "2",
+        "backgroundYOffset": "-3",
+        "pkmnNature": "Mild",
+        "hidden_power_type": "Water",
+        "hidden_power_index": "3",
+        "attempt_number": 2,
+        "finished_run_count": 1,
+        "backgroundTexture": "Poison"
+    },
+    "FireRed and LeafGreen_Koffing": {
+        "pkmn_ability": "Levitate",
+        "pkmnNature": "Hardy",
+        "backgroundTexture": "Poison",
+        "overlay_color": "#a040a0"
+    },
+    "FireRed and LeafGreen_Bulbasaur": {
+        "evolution": true,
+        "selected_evolution_species": "Bulbasaur"
+    },
+    "FireRed and LeafGreen_1": {
+        "selected_evolution_species": "Bulbasaur"
+    },
+    "FireRed and LeafGreen_Bulbasaur-line-Bulbasaur": {
+        "splits_display": "First",
+        "backgroundTexture": "Dark Grass",
+        "backgroundSaturation": "165",
+        "backgroundHue": "25",
+        "backgroundContrast": "126",
+        "backgroundBrightness": "39",
+        "backgroundScale": "171",
+        "backgroundFlip": true,
+        "backgroundBlur": "1",
+        "imageFlip": true,
+        "imageScale": "0.57",
+        "imageYOffset": "-65",
+        "imageSat": "130",
+        "imageXOffset": "34",
+        "overlay_color": "#92cbac",
+        "ui_saturation": "2",
+        "imageRotation": 0,
+        "backgroundUrl": "",
+        "use_custom_background": false,
+        "backgroundXOffset": 0,
+        "backgroundYOffset": 0,
+        "attempt_number": 2
+    },
+    "FireRed and LeafGreen_Ivysaur-line-Ivysaur": {
+        "overlay_color": "#45a5bf",
+        "ui_saturation": "1.2",
+        "imageXOffset": "-37",
+        "imageYOffset": "-16",
+        "imageScale": "0.61",
+        "imageFlip": false,
+        "imageSat": "115",
+        "imageRotation": 0,
+        "backgroundTexture": "Dark Grass",
+        "backgroundBlur": "1",
+        "backgroundHue": "25",
+        "backgroundScale": "171",
+        "backgroundUrl": "",
+        "backgroundFlip": true,
+        "use_custom_background": false,
+        "backgroundXOffset": 0,
+        "backgroundYOffset": 0,
+        "backgroundBrightness": "39",
+        "backgroundContrast": "126",
+        "backgroundSaturation": "165"
+    },
+    "FireRed and LeafGreen_Ivysaur-line-Venusaur": {
+        "overlay_color": "#4db9b5",
+        "ui_saturation": "1.6",
+        "imageXOffset": "20",
+        "imageYOffset": "6",
+        "imageScale": "1",
+        "imageFlip": true,
+        "imageSat": "130",
+        "imageRotation": 0,
+        "backgroundTexture": "Dark Grass",
+        "backgroundBlur": "1",
+        "backgroundHue": "25",
+        "backgroundScale": "171",
+        "backgroundUrl": "",
+        "backgroundFlip": true,
+        "use_custom_background": false,
+        "backgroundXOffset": 0,
+        "backgroundYOffset": 0,
+        "backgroundBrightness": "39",
+        "backgroundContrast": "126",
+        "backgroundSaturation": "165",
+        "finished_run_count": 2
+    },
+    "FireRed and LeafGreen_Ivysaur": {
+        "selected_evolution_species": "Ivysaur"
+    },
+    "FireRed and LeafGreen_2": {
+        "selected_evolution_species": "Venusaur"
     }
 };
 

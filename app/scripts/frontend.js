@@ -5723,10 +5723,10 @@ const app = Vue.createApp({
                 return Math.floor(statValue * 1.5)
             }
             else if (ability == `Chlorophyll` && this.batt.turnInfo.battleWeather.value == `Sun` && statname == `speed`&& !this.weatherDenial) {
-                return Math.floor(statValue * 1.5)
+                return Math.floor(statValue * 2)
             }
             else if (ability == `Swift Swim` && this.batt.turnInfo.battleWeather.value == `Rain` && statname == `speed`&& !this.weatherDenial) {
-                return Math.floor(statValue * 1.5)
+                return Math.floor(statValue * 2)
             }
             else if (ability == `Guts` && statname == `attack` && (this.s1.statusCondition.value == "Paralyzed" || this.s1.statusCondition.value == "Poisoned" || this.s1.statusCondition.value == "Burned")) {
                 return Math.floor(statValue * 1.5)
@@ -7172,6 +7172,9 @@ const app = Vue.createApp({
                         && trainer != "RIVAL_MAY_ROUTE_103_TREECKO"
                         && trainer != "RIVAL_BRENDAN_ROUTE_103_TORCHIC"
                         && trainer != "RIVAL_MAY_ROUTE_103_TORCHIC"
+                        && trainer != "RIVAL_OAKS_LAB_BULBASAUR"
+                        && trainer != "RIVAL_OAKS_LAB_SQUIRTLE"
+                        && trainer != "RIVAL_OAKS_LAB_CHARMANDER"
                     ) {
                         // this.battle_summary_header = `${this.capitalization_format(trainer)} Summary`
                         this.right_panel = "Splits"
