@@ -2335,6 +2335,27 @@ const DEFAULT_STYLE_SETTINGS = {
     },
     "FireRed and LeafGreen_2": {
         "selected_evolution_species": "Venusaur"
+    },
+    "Emerald_Ekans": {
+        "hidden_power_type": "Water",
+        "hidden_power_index": "3",
+        "imageFlip": true,
+        "imageScale": "0.45",
+        "imageYOffset": "-87",
+        "imageXOffset": "55",
+        "overlay_color": "#936591",
+        "ui_saturation": "1.8",
+        "backgroundHue": "190",
+        "backgroundScale": "134",
+        "backgroundContrast": "140",
+        "backgroundBrightness": "83",
+        "backgroundBlur": "3",
+        "backgroundYOffset": "3",
+        "pkmnNature": "Brave",
+        "pkmn_ability": "Intimidate",
+        "backgroundTexture": "Poison",
+        "attempt_number": 2,
+        "finished_run_count": 1
     }
 };
 
