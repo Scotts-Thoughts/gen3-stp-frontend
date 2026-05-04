@@ -2251,8 +2251,18 @@ const DEFAULT_STYLE_SETTINGS = {
     "FireRed and LeafGreen_Koffing": {
         "pkmn_ability": "Levitate",
         "pkmnNature": "Hardy",
-        "backgroundTexture": "Poison",
-        "overlay_color": "#a040a0"
+        "backgroundTexture": "Ghost",
+        "overlay_color": "#a7a0cc",
+        "imageScale": "0.57",
+        "imageYOffset": "206",
+        "imageXOffset": "-26",
+        "ui_saturation": "1.9",
+        "backgroundContrast": "115",
+        "backgroundScale": "137",
+        "backgroundYOffset": "-76",
+        "backgroundXOffset": "96",
+        "evolution": true,
+        "selected_evolution_species": "Koffing"
     },
     "FireRed and LeafGreen_Bulbasaur": {
         "evolution": true,
@@ -2355,6 +2365,61 @@ const DEFAULT_STYLE_SETTINGS = {
         "pkmn_ability": "Intimidate",
         "backgroundTexture": "Poison",
         "attempt_number": 2,
+        "finished_run_count": 1
+    },
+    "FireRed and LeafGreen_Ekans": {
+        "pkmn_ability": "Intimidate",
+        "pkmnNature": "Hardy",
+        "backgroundTexture": "Poison",
+        "overlay_color": "#a040a0"
+    },
+    "FireRed and LeafGreen_109": {
+        "selected_evolution_species": "Koffing"
+    },
+    "FireRed and LeafGreen_Koffing-line-Koffing": {
+        "imageScale": "0.55",
+        "imageYOffset": "225",
+        "imageXOffset": "-30",
+        "overlay_color": "#ada6d0",
+        "ui_saturation": "2",
+        "backgroundTexture": "Ghost",
+        "backgroundScale": "126",
+        "backgroundYOffset": "-72",
+        "backgroundXOffset": "54",
+        "backgroundContrast": "110",
+        "imageFlip": false,
+        "imageSat": 100,
+        "imageRotation": 0,
+        "backgroundBlur": 0,
+        "backgroundHue": 0,
+        "backgroundUrl": "",
+        "backgroundFlip": false,
+        "use_custom_background": false,
+        "backgroundBrightness": 100,
+        "backgroundSaturation": 100,
+        "attempt_number": 1
+    },
+    "FireRed and LeafGreen_Koffing-line-Weezing": {
+        "overlay_color": "#ada6d0",
+        "ui_saturation": "2",
+        "imageXOffset": "-30",
+        "imageYOffset": "168",
+        "imageScale": "0.82",
+        "imageFlip": false,
+        "imageSat": 100,
+        "imageRotation": 0,
+        "backgroundTexture": "Ghost",
+        "backgroundBlur": 0,
+        "backgroundHue": 0,
+        "backgroundScale": "126",
+        "backgroundUrl": "",
+        "backgroundFlip": false,
+        "use_custom_background": false,
+        "backgroundXOffset": "54",
+        "backgroundYOffset": "-72",
+        "backgroundBrightness": 100,
+        "backgroundContrast": "110",
+        "backgroundSaturation": 100,
         "finished_run_count": 1
     }
 };
