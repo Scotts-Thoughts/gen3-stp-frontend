@@ -2421,6 +2421,71 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundContrast": "110",
         "backgroundSaturation": 100,
         "finished_run_count": 1
+    },
+    "FireRed and LeafGreen_98": {
+        "selected_evolution_species": "Krabby"
+    },
+    "FireRed and LeafGreen_Krabby-line-Krabby": {
+        "backgroundTexture": "Dark Water",
+        "backgroundContrast": "138",
+        "imageScale": "0.71",
+        "imageYOffset": "-44",
+        "imageXOffset": "-23",
+        "overlay_color": "#d78a55",
+        "backgroundScale": 100,
+        "ui_saturation": "1.4",
+        "imageFlip": false,
+        "imageSat": 100,
+        "imageRotation": 0,
+        "backgroundBlur": 0,
+        "backgroundHue": 0,
+        "backgroundUrl": false,
+        "backgroundFlip": false,
+        "use_custom_background": false,
+        "backgroundXOffset": 0,
+        "backgroundYOffset": 0,
+        "backgroundBrightness": 100,
+        "backgroundSaturation": 100,
+        "evolution": true,
+        "attempt_number": 1
+    },
+    "FireRed and LeafGreen_Krabby": {
+        "backgroundUrl": false,
+        "selected_evolution_species": "Krabby",
+        "evolution": false,
+        "pkmn_ability": "Hyper Cutter",
+        "pkmnNature": "Hardy",
+        "backgroundTexture": "Water",
+        "overlay_color": "#6890f0"
+    },
+    "FireRed and LeafGreen_Kingler": {
+        "selected_evolution_species": "Kingler"
+    },
+    "FireRed and LeafGreen_99": {
+        "selected_evolution_species": "Kingler"
+    },
+    "FireRed and LeafGreen_Kingler-line-Kingler": {
+        "overlay_color": "#d78a55",
+        "ui_saturation": "1.4",
+        "imageXOffset": "-16",
+        "imageYOffset": "6",
+        "imageScale": "1",
+        "imageFlip": false,
+        "imageSat": 100,
+        "imageRotation": 0,
+        "backgroundTexture": "Dark Water",
+        "backgroundBlur": 0,
+        "backgroundHue": 0,
+        "backgroundScale": "113",
+        "backgroundUrl": "",
+        "backgroundFlip": false,
+        "use_custom_background": false,
+        "backgroundXOffset": 0,
+        "backgroundYOffset": 0,
+        "backgroundBrightness": 100,
+        "backgroundContrast": "138",
+        "backgroundSaturation": 100,
+        "finished_run_count": 2
     }
 };
 
