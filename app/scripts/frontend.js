@@ -6361,6 +6361,238 @@ const app = Vue.createApp({
             }
         })
 
+        // ===== OBS chapter markers: New Move detection (port from gen2/4/5) =====
+        // When in battle, read the active battler's moves; otherwise read the lead's.
+        // A single-move multiset diff with unchanged species fires "New Move - <name>".
+        const readMoveContext = () => {
+            const source = (this.g3stateVariable == "Battle")
+                ? this.mapper?.properties?.battle?.yourPokemon
+                : this.mapper?.properties?.player?.team?.[0];
+            if (!source) return { species: null, moves: [null, null, null, null] };
+            return {
+                species: source.species?.value ?? null,
+                moves: [
+                    source.move1?.value ?? null,
+                    source.move2?.value ?? null,
+                    source.move3?.value ?? null,
+                    source.move4?.value ?? null,
+                ],
+            };
+        };
+
+        let lastMoveContext = readMoveContext();
+        let moveCheckTimer = null;
+
+        const checkForNewMove = () => {
+            const previous = lastMoveContext;
+            const current = readMoveContext();
+            lastMoveContext = current;
+
+            // Species changed (lead swap, evolution, fresh game): refresh, don't fire.
+            if (previous.species !== current.species) return;
+
+            const oldMoves = previous.moves.filter(m => m != null && m !== '');
+            const newMoves = current.moves.filter(m => m != null && m !== '');
+
+            const oldCounts = {};
+            oldMoves.forEach(m => oldCounts[m] = (oldCounts[m] || 0) + 1);
+            const newCounts = {};
+            newMoves.forEach(m => newCounts[m] = (newCounts[m] || 0) + 1);
+            const added = [];
+            for (const m of Object.keys(newCounts)) {
+                const diff = newCounts[m] - (oldCounts[m] || 0);
+                for (let i = 0; i < diff; i++) added.push(m);
+            }
+
+            if (oldMoves.length >= 1 && added.length === 1) {
+                const rawMove = added[0];
+                const display = (typeof this.move_name === 'function')
+                    ? this.move_name(this.camelCase(rawMove))
+                    : rawMove;
+                const chapterName = "New Move - " + display;
+                console.log("Chapter Detected: " + chapterName);
+                this.sendObsChapterMarker(chapterName);
+            }
+        };
+
+        // Debounce so 4 simultaneous slot changes collapse into a single diff.
+        const scheduleMoveCheck = () => {
+            if (moveCheckTimer) clearTimeout(moveCheckTimer);
+            moveCheckTimer = setTimeout(() => {
+                moveCheckTimer = null;
+                checkForNewMove();
+            }, 100);
+        };
+
+        for (const slot of ['move1', 'move2', 'move3', 'move4']) {
+            this.mapper.properties.player.team[0]?.[slot]?.change?.(() => scheduleMoveCheck());
+            this.mapper.properties.battle.yourPokemon?.[slot]?.change?.(() => scheduleMoveCheck());
+        }
+
+        // ===== OBS chapter markers: Critical Item detection (port from gen2/4/5) =====
+        // Item names in gen3 mapper come in UPPERCASE (e.g. 'LIGHT BALL', 'METAL POWDER');
+        // we normalize both sides for comparison and emit a capitalization_format'd display.
+        const vitaminItems = new Set([
+            'HP UP', 'PROTEIN', 'IRON', 'CARBOS', 'CALCIUM', 'ZINC',
+            'PP UP', 'PP MAX', 'RARE CANDY',
+        ]);
+        const typeBoostHeldItems = new Set([
+            'BLACK BELT', 'BLACKGLASSES', 'CHARCOAL', 'DRAGON FANG', 'HARD STONE',
+            'MAGNET', 'METAL COAT', 'MIRACLE SEED', 'MYSTIC WATER', 'NEVERMELTICE',
+            'POISON BARB', 'SHARP BEAK', 'SILK SCARF', 'SILVERPOWDER', 'SOFT SAND',
+            'SPELL TAG', 'TWISTEDSPOON', 'SEA INCENSE', 'LAX INCENSE',
+        ]);
+        const battleHeldItems = new Set([
+            'BRIGHTPOWDER', 'CHOICE BAND', 'FOCUS BAND', "KING'S ROCK", 'LEFTOVERS',
+            'LIGHT BALL', 'LUCKY EGG', 'LUCKY PUNCH', 'MACHO BRACE', 'METAL POWDER',
+            'QUICK CLAW', 'SCOPE LENS', 'SHELL BELL', 'SOUL DEW', 'STICK', 'THICK CLUB',
+            'WHITE HERB', 'MENTAL HERB',
+        ]);
+        const battleEffectBerries = new Set([
+            'CHERI BERRY', 'CHESTO BERRY', 'PECHA BERRY', 'RAWST BERRY', 'ASPEAR BERRY',
+            'LEPPA BERRY', 'ORAN BERRY', 'PERSIM BERRY', 'LUM BERRY', 'SITRUS BERRY',
+            'FIGY BERRY', 'WIKI BERRY', 'MAGO BERRY', 'AGUAV BERRY', 'IAPAPA BERRY',
+            'LIECHI BERRY', 'GANLON BERRY', 'SALAC BERRY', 'PETAYA BERRY', 'APICOT BERRY',
+            'LANSAT BERRY', 'STARF BERRY', 'ENIGMA BERRY',
+        ]);
+        const isCriticalBagItem = (rawName) => {
+            if (rawName == null || rawName === '') return false;
+            const u = String(rawName).toUpperCase();
+            return vitaminItems.has(u) || typeBoostHeldItems.has(u)
+                || battleHeldItems.has(u) || battleEffectBerries.has(u);
+        };
+
+        // Generous upper bounds covering RSE (20 items / 46 berries) and FRLG (42 items / 43 berries).
+        const POCKET_BOUNDS = { items: 42, berries: 46 };
+        const TMHM_BOUND = 60; // 50 TMs + 8 HMs, padded.
+
+        const readOwnedItemSet = () => {
+            const set = new Set();
+            const bag = this.mapper?.properties?.player?.bag;
+            if (bag) {
+                for (const pocket of ['items', 'berries']) {
+                    const arr = bag[pocket];
+                    if (!arr) continue;
+                    for (let i = 0; i < POCKET_BOUNDS[pocket]; i++) {
+                        const v = arr[i]?.item?.value;
+                        if (v != null && v !== '') set.add(String(v));
+                    }
+                }
+            }
+            const team = this.mapper?.properties?.player?.team;
+            if (team) {
+                for (let i = 0; i < 6; i++) {
+                    const v = team[i]?.itemHeld?.value;
+                    if (v != null && v !== '') set.add(String(v));
+                }
+            }
+            return set;
+        };
+
+        const OWNERSHIP_MEMORY_MS = 2000;
+        const lastSeenOwned = new Map();
+        {
+            const now = Date.now();
+            for (const name of readOwnedItemSet()) lastSeenOwned.set(name, now);
+        }
+
+        // Keep timestamps fresh for items the player is sitting on (handles bag↔held moves).
+        setInterval(() => {
+            const now = Date.now();
+            for (const name of readOwnedItemSet()) {
+                if (lastSeenOwned.has(name)) lastSeenOwned.set(name, now);
+            }
+        }, 500);
+
+        let ownedCheckTimer = null;
+        const checkForNewOwnedItems = () => {
+            const now = Date.now();
+            const current = readOwnedItemSet();
+            for (const name of current) {
+                if (!isCriticalBagItem(name)) continue;
+                const lastSeen = lastSeenOwned.get(name);
+                const isNewlyAcquired = (lastSeen == null) || ((now - lastSeen) > OWNERSHIP_MEMORY_MS);
+                if (isNewlyAcquired) {
+                    const display = (typeof this.capitalization_format === 'function')
+                        ? this.capitalization_format(name)
+                        : name;
+                    const chapterName = "Item - " + display;
+                    console.log("Chapter Detected: " + chapterName);
+                    this.sendObsChapterMarker(chapterName);
+                }
+                lastSeenOwned.set(name, now);
+            }
+        };
+
+        const scheduleOwnedCheck = () => {
+            const now = Date.now();
+            for (const name of readOwnedItemSet()) {
+                const lastSeen = lastSeenOwned.get(name);
+                if (lastSeen != null && (now - lastSeen) <= OWNERSHIP_MEMORY_MS) {
+                    lastSeenOwned.set(name, now);
+                }
+            }
+            if (ownedCheckTimer) clearTimeout(ownedCheckTimer);
+            ownedCheckTimer = setTimeout(() => {
+                ownedCheckTimer = null;
+                checkForNewOwnedItems();
+            }, 100);
+        };
+
+        const bagRoot = this.mapper?.properties?.player?.bag;
+        if (bagRoot) {
+            for (const pocket of ['items', 'berries']) {
+                const arr = bagRoot[pocket];
+                if (!arr) continue;
+                for (let i = 0; i < POCKET_BOUNDS[pocket]; i++) {
+                    arr[i]?.item?.change?.(() => scheduleOwnedCheck());
+                }
+            }
+        }
+        for (let i = 0; i < 6; i++) {
+            this.mapper.properties.player.team[i]?.itemHeld?.change?.(() => scheduleOwnedCheck());
+        }
+
+        // TMs/HMs: bag.tmhm[i].item.value is a string like "TM27" or "HM03"; the human-readable
+        // move name comes from g3tmhmMapping. Acquiring a new TM/HM adds a new tmhmIndex to the set.
+        const tmhmArr = bagRoot?.tmhm;
+        if (tmhmArr) {
+            const readTmhmSet = () => {
+                const s = new Set();
+                for (let i = 0; i < TMHM_BOUND; i++) {
+                    const v = tmhmArr[i]?.item?.value;
+                    if (v != null && v !== '') s.add(String(v));
+                }
+                return s;
+            };
+            let lastTmhmSet = readTmhmSet();
+            let tmhmCheckTimer = null;
+            const checkForNewTmhm = () => {
+                const current = readTmhmSet();
+                for (const idx of current) {
+                    if (lastTmhmSet.has(idx)) continue;
+                    const entry = (Array.isArray(this.g3tmhmMapping))
+                        ? this.g3tmhmMapping.find(x => x.tmhmIndex === idx)
+                        : null;
+                    const display = entry ? `${idx} ${entry.Move}` : idx;
+                    const chapterName = "Item - " + display;
+                    console.log("Chapter Detected: " + chapterName);
+                    this.sendObsChapterMarker(chapterName);
+                }
+                lastTmhmSet = current;
+            };
+            const scheduleTmhmCheck = () => {
+                if (tmhmCheckTimer) clearTimeout(tmhmCheckTimer);
+                tmhmCheckTimer = setTimeout(() => {
+                    tmhmCheckTimer = null;
+                    checkForNewTmhm();
+                }, 100);
+            };
+            for (let i = 0; i < TMHM_BOUND; i++) {
+                tmhmArr[i]?.item?.change?.(() => scheduleTmhmCheck());
+            }
+        }
+
         if (this.playerResets.toString().length == 1) {
             document.getElementById("reset_counter_single").style.fontSize = "68px"
         }
