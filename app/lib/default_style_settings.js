@@ -2742,7 +2742,7 @@ const DEFAULT_STYLE_SETTINGS = {
         "overlay_color": "#a040a0"
     },
     "FireRed and LeafGreen_88": {
-        "selected_evolution_species": "Grimer"
+        "selected_evolution_species": "Muk"
     },
     "FireRed and LeafGreen_Kingdra-line-Seadra": {
         "overlay_color": "#8fd1ef",
@@ -2786,7 +2786,8 @@ const DEFAULT_STYLE_SETTINGS = {
         "use_custom_background": false,
         "backgroundXOffset": 0,
         "backgroundYOffset": 0,
-        "backgroundSaturation": 100
+        "backgroundSaturation": 100,
+        "attempt_number": 1
     },
     "FireRed and LeafGreen_Muk-line-Muk": {
         "overlay_color": "#977f98",
@@ -2808,9 +2809,13 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundYOffset": 0,
         "backgroundBrightness": "51",
         "backgroundContrast": "126",
-        "backgroundSaturation": 100
+        "backgroundSaturation": 100,
+        "finished_run_count": 2
     },
-    "FireRed and LeafGreen_Victreebel": {}
+    "FireRed and LeafGreen_Victreebel": {},
+    "FireRed and LeafGreen_Muk-line": {
+        "pkmn_ability": "Sticky Hold"
+    }
 };
 
 module.exports = { DEFAULT_STYLE_SETTINGS };
