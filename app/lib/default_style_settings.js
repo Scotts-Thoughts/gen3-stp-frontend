@@ -2765,7 +2765,52 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundBrightness": "80",
         "backgroundContrast": "136",
         "backgroundSaturation": 100
-    }
+    },
+    "FireRed and LeafGreen_Muk-line-Grimer": {
+        "imageFlip": true,
+        "imageScale": "0.63",
+        "imageYOffset": "-65",
+        "imageXOffset": "20",
+        "overlay_color": "#977f98",
+        "backgroundScale": "107",
+        "backgroundContrast": "126",
+        "backgroundBrightness": "51",
+        "backgroundBlur": "1",
+        "ui_saturation": "2",
+        "imageSat": 100,
+        "imageRotation": 0,
+        "backgroundTexture": "Poison",
+        "backgroundHue": 0,
+        "backgroundUrl": "",
+        "backgroundFlip": false,
+        "use_custom_background": false,
+        "backgroundXOffset": 0,
+        "backgroundYOffset": 0,
+        "backgroundSaturation": 100
+    },
+    "FireRed and LeafGreen_Muk-line-Muk": {
+        "overlay_color": "#977f98",
+        "ui_saturation": "2",
+        "imageXOffset": "-2",
+        "imageYOffset": "-30",
+        "imageScale": "0.98",
+        "imageFlip": false,
+        "imageSat": 100,
+        "imageRotation": 0,
+        "backgroundTexture": "Poison",
+        "backgroundBlur": "1",
+        "backgroundHue": 0,
+        "backgroundScale": "107",
+        "backgroundUrl": "",
+        "backgroundFlip": false,
+        "use_custom_background": false,
+        "backgroundXOffset": 0,
+        "backgroundYOffset": 0,
+        "backgroundBrightness": "51",
+        "backgroundContrast": "126",
+        "backgroundSaturation": 100
+    },
+    "FireRed and LeafGreen_Victreebel": {}
 };
 
 module.exports = { DEFAULT_STYLE_SETTINGS };

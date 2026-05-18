@@ -6190,6 +6190,10 @@ const app = Vue.createApp({
                     this.$refs.expBar.style.width = (expStats.percent * 100) + "%";
                     this.prevSpecies = species
                 }
+                if (this._initialRomStarterPending) {
+                    this._initialRomStarterPending = false;
+                    this.update_rom_starter_and_intro_mon();
+                }
             })
         }
         this.mapper.onMapperUnloaded = (x) => this.ready = false
@@ -6206,6 +6210,12 @@ const app = Vue.createApp({
         // console.log("mapper set")
         this.timer.update();
         this.load_all_settings()
+
+        if (this.ready) {
+            this.update_rom_starter_and_intro_mon();
+        } else {
+            this._initialRomStarterPending = true;
+        }
 
         // Initialize evolution family list
         this.updateEvolutionFamilyList();
