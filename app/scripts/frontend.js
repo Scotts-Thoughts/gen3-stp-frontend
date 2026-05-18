@@ -99,8 +99,6 @@ const Storage = createStoredObject('./storage', 'Storage.json', {
 
 // Style Settings Manager for layered defaults + user overrides
 const styleSettingsManager = require('./lib/style_settings_manager.js');
-// Logged Runs Manager for tracking unique run identifiers
-const loggedRunsManager = require('./lib/logged_runs_manager.js');
 
 // Setup the MyStorage Object
 const MyStorage = new Proxy({}, {
@@ -527,13 +525,6 @@ for (folder of folders = ['storage', 'splits', 'splits/Emerald', 'splits/FireRed
 
 function logData(gameName, gameName_path, str, file_name, starter, log_type, testStatus, toggle, evolution, evolution_label, unique_run_identifier, is_new_run) {
         return new Promise((resolve, reject) => {
-        // If this is not a new run, don't write any data
-        if (!is_new_run) {
-            // console.log(`[logData] Skipping write - run already logged: ${unique_run_identifier}`);
-            resolve();
-            return;
-        }
-        
         const testStatusText = testStatus ? "test_run_" : "";
         // The starter parameter already contains the correct split file name (calculated by getSplitFileName())
         // Use unique_run_identifier instead of file_name (attempt_number) for attempts folder
@@ -696,12 +687,6 @@ function logData(gameName, gameName_path, str, file_name, starter, log_type, tes
 }
 
 function logCopy(gameName, gameName_path, unique_run_identifier, starter, evolution, evolution_label, is_new_run, testStatus, loggedRunsManager) {
-    // If this is not a new run, don't copy any files
-    if (!is_new_run) {
-        // console.log(`[logCopy] Skipping copy - run already logged: ${unique_run_identifier}`);
-        return;
-    }
-    
     if (evolution == true) {
         starter = evolution_label;
     }
@@ -741,44 +726,25 @@ function logCopy(gameName, gameName_path, unique_run_identifier, starter, evolut
         // Copy files using unique_run_identifier from attempts folder and nextFinishedRunCount for finishes folder
         // Note: test runs are not copied to finishes folder
         if (!testStatus) {
-            let copyCount = 0;
-            const totalFiles = 3; // simple, full, and deprecated
-            const markFinished = () => {
-                copyCount++;
-                if (copyCount === totalFiles && loggedRunsManager) {
-                    // All files copied successfully, mark run as finished
-                    loggedRunsManager.markRunAsFinished(unique_run_identifier);
-                }
-            };
-            
             fs.copyFile(
-                path.join(dirPathAttempts, `${gameName}-${testStatusText}${starter}-${unique_run_identifier}-simple.csv`), 
+                path.join(dirPathAttempts, `${gameName}-${testStatusText}${starter}-${unique_run_identifier}-simple.csv`),
                 path.join(dirPathFinishes, `${gameName}-${starter}-${nextFinishedRunCount}-simple.csv`), (err) => {
                 if (err) {
                     console.error('[logCopy] Error copying simple file:', err);
-                } else {
-                    // console.log(`[logCopy] Copied simple file: ${nextFinishedRunCount}`);
-                    markFinished();
                 }
             });
             fs.copyFile(
-                path.join(dirPathAttempts, `${gameName}-${testStatusText}${starter}-${unique_run_identifier}-full.csv`), 
+                path.join(dirPathAttempts, `${gameName}-${testStatusText}${starter}-${unique_run_identifier}-full.csv`),
                 path.join(dirPathFinishes, `${gameName}-${starter}-${nextFinishedRunCount}-full.csv`), (err) => {
                 if (err) {
                     console.error('[logCopy] Error copying full file:', err);
-                } else {
-                    // console.log(`[logCopy] Copied full file: ${nextFinishedRunCount}`);
-                    markFinished();
                 }
             });
             fs.copyFile(
-                path.join(dirPathAttempts, `${gameName}-${testStatusText}${starter}-${unique_run_identifier}.csv`), 
+                path.join(dirPathAttempts, `${gameName}-${testStatusText}${starter}-${unique_run_identifier}.csv`),
                 path.join(dirPathFinishes, `${gameName}-${starter}-${nextFinishedRunCount}.csv`), (err) => {
                 if (err) {
                     console.error('[logCopy] Error copying deprecated file:', err);
-                } else {
-                    // console.log(`[logCopy] Copied deprecated file: ${nextFinishedRunCount}`);
-                    markFinished();
                 }
             });
         }
@@ -965,6 +931,10 @@ const app = Vue.createApp({
             hiddenpowers              : hiddenpowers,
             unobtainable_moves_object : unobtainable_moves,
             evolution_data_pokedex    : evolution_data_pokedex,
+            evolution_family_data_by_game: {
+                "Emerald": evolution_family_data_emerald,
+                "FireRed and LeafGreen": evolution_family_data_firered_leafgreen,
+            },
 
             trainerLists: {
                 "emeraldTrainers" : emeraldTrainers,
@@ -1138,8 +1108,7 @@ const app = Vue.createApp({
             attempt_number:      0,
             finished_run_count:  0,
             unique_run_identifier: null,  // Unique identifier for current run
-            is_new_run:          false,   // Whether current run should be recorded
-            loggedRunsManager:   loggedRunsManager,  // Make logged runs manager available
+            is_new_run:          true,
             split_data:          MyStorage["split_data"]          ?? [],
             simple_data_str:     MyStorage["simple_data_str"]     ?? "",
             full_data_str:       MyStorage["full_data_str"]       ?? "",
@@ -1575,9 +1544,9 @@ const app = Vue.createApp({
             // Handle legacy split label functionality
             if (this.ready !== false) {
                 const starter = this.starterString || this.starter;
-                const evolution_family = this.evolution_data_pokedex?.[starter]?.evolution_family;
+                const evolution_family = this.getEvolutionFamilyForSpecies(starter);
                 const family_length = evolution_family?.length;
-                
+
                 if (family_length) {
                     const split_label = `${evolution_family[evolution_family.length - 1]?.species}-line`;
                     if (newValue == true) {
@@ -2063,7 +2032,7 @@ const app = Vue.createApp({
             // Main evolution watcher is at line 1375
             if (this.ready == false) { return }
             const starter = this.starterString || this.starter;
-            const evolution_family = this.evolution_data_pokedex?.[starter]?.evolution_family
+            const evolution_family = this.getEvolutionFamilyForSpecies(starter);
             const family_length = evolution_family?.length
             if (!family_length) { return; }
             
@@ -3117,38 +3086,28 @@ const app = Vue.createApp({
             }
         },
         // Evolution family helper functions
+        getEvolutionFamilyForSpecies(species) {
+            // Return the raw evolution_family array for the given species, looked up from the
+            // game-specific evolution_family_data file (these are ordered base -> mid -> final).
+            if (!species) return null;
+            const game_name = this.mapper?.properties?.meta?.game_name?.value || this.gameSelection;
+            const data = this.evolution_family_data_by_game?.[game_name];
+            return data?.[species]?.evolution_family ?? null;
+        },
         getFullyEvolvedSpecies(species) {
-            // Get the fully evolved species from the evolution family
-            // This is the species with method == null and parameter == null (or the last one)
-            if (!this.evolution_data_pokedex || !species) {
+            if (!species) return species;
+            const evolution_family = this.getEvolutionFamilyForSpecies(species);
+            if (!evolution_family || evolution_family.length === 0) {
                 return species;
             }
-            const evolution_family = this.evolution_data_pokedex[species]?.evolution_family;
-            if (!evolution_family || evolution_family.length === 0) {
-                return species; // If no evolution family, return the species itself
-            }
-            
-            // Find the fully evolved species (the one with no method/parameter, or the last one)
-            let fullyEvolved = species;
-            for (const member of evolution_family) {
-                if (member.method == null && member.parameter == null) {
-                    fullyEvolved = member.species;
-                }
-            }
-            // If we didn't find one with null method, get the last one
-            if (fullyEvolved === species && evolution_family.length > 0) {
-                fullyEvolved = evolution_family[evolution_family.length - 1].species;
-            }
-            return fullyEvolved;
+            // The data files are ordered base -> ... -> final, so the last entry is fully evolved.
+            return evolution_family[evolution_family.length - 1].species ?? species;
         },
         getEvolutionFamily(species) {
-            // Get the list of species in the evolution family
-            if (!this.evolution_data_pokedex || !species) {
-                return [species];
-            }
-            const evolution_family = this.evolution_data_pokedex[species]?.evolution_family;
+            if (!species) return [species];
+            const evolution_family = this.getEvolutionFamilyForSpecies(species);
             if (!evolution_family || evolution_family.length === 0) {
-                return [species]; // If no evolution family, return just the species
+                return [species];
             }
             return evolution_family.map(member => member.species).filter(s => s != null);
         },
@@ -4234,7 +4193,7 @@ const app = Vue.createApp({
         async newRun() {
             // Reset unique run identifier when starting a new run
             this.unique_run_identifier = null;
-            this.is_new_run = false;         
+            this.is_new_run = true;
             // this.current_splits = await this.load_temp_splits()
             this.compared_splits = []
             this.current_splits  = []
@@ -4468,7 +4427,7 @@ const app = Vue.createApp({
             this.battle_start =               MyStorage['battle_start']               ?? 0
             
             let starter = this.starterString
-            const evolution_family = (this.evolution_data_pokedex && this.starterString) ? (this.evolution_data_pokedex[this.starterString]?.evolution_family ?? [ {species: null, method: null,}, {species: null, method: null,}, {species: null, method: null,}, ]) : [ {species: null, method: null,}, {species: null, method: null,}, {species: null, method: null,}, ]
+            const evolution_family = this.getEvolutionFamilyForSpecies(this.starterString) ?? [ {species: null, method: null,}, {species: null, method: null,}, {species: null, method: null,}, ]
             // Check evolution from the correct storage key (with game name prefix)
             this.evolution = MyStorage[`${game_name}_${starter}`]?.evolution ?? MyStorage[starter]?.evolution ?? false
             this.evolution_splits_label =  MyStorage[`${game_name}_${this.starterString}`]?.evolution_splits_label ?? ""
@@ -4724,14 +4683,6 @@ const app = Vue.createApp({
             if (!starter) {
                 // console.log('No starter, clearing list');
                 this.evolution_family_list = [];
-                return;
-            }
-            
-            // Always try to get the evolution family, even if evolution_data_pokedex is not available yet
-            if (!this.evolution_data_pokedex) {
-                // If no evolution data yet, just use the starter as the only option
-                // console.log('No evolution_data_pokedex, using starter only');
-                this.evolution_family_list = [starter];
                 return;
             }
             
@@ -6303,9 +6254,8 @@ const app = Vue.createApp({
                 currentPersonalityValue === this.last_known_personality_value &&
                 this.last_known_personality_value != null) {
                     
-                    const evolution_family_raw = this.evolution_data_pokedex?.[this.starterString]?.evolution_family;
+                    const evolution_family_raw = this.getEvolutionFamilyForSpecies(this.starterString);
                     // console.log(evolution_family_raw)
-                    // console.log(this.evolution_data_pokedex)
 
                     if (evolution_family_raw && evolution_family_raw.length > 0) {
                         // console.log('Got here')
@@ -7428,8 +7378,7 @@ const app = Vue.createApp({
                     if (this.shuckie_timer == true) { 
                         this.sendEmulatorEnd(); 
                     }
-                    // Only increment finished_run_count if we're actually recording this run
-                    if (!this.testRun && !this.no_counters && this.is_new_run) {
+                    if (!this.testRun && !this.no_counters) {
                         this.finished_run_count++
                     };
                     if (this.automatic_post_battle_splits == true) {
