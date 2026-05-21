@@ -5119,15 +5119,25 @@ const app = Vue.createApp({
 
         // ENEMY TRAINER GRAPHIC
         g3trainerEnemySelector(trainerClass) {
+            let trainer_id = this.mapper.properties.battle.trainer.opponentId.value
             if (this.game.opponentImageMap[trainerClass]) {
-                    return 1
-                }
+                return 1
+            }
+            else if (trainer_id == 351) {
+                return 1
+            }
             else
                 return 0
         },
         specialTrainerGraphics() {
+            let trainer_id = this.mapper.properties.battle.trainer.opponentId.value
+            let opponent = this.opponent
+            console.log(trainer_id)
+            switch (trainer_id) {
+                case 351: opponent = 'ROCKET_BOSS'; break;
+            }
             if (this.showSpecialTrainerGraphics == true) {
-                return this.game.opponentImageMap[this.opponent];
+                return this.game.opponentImageMap[opponent];
                 if (this.opponent == "YOUNGSTER_CALVIN_1") return `images/trainers/${this.opponent}.png`
                 if (this.opponent == "LEADER_ROXANNE_1") return `images/trainers/${this.opponent}.png`
                 if (this.opponent == "LEADER_BRAWLY_1") return `images/trainers/${this.opponent}.png`
