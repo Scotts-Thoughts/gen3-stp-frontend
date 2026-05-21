@@ -1271,6 +1271,12 @@ const app = Vue.createApp({
         }
     },
     created() {
+        // Set the taskbar/window icon to match the initially selected game.
+        try {
+            require('electron').ipcRenderer.send('set-game-icon', this.gameSelection)
+        } catch (e) {
+            console.error('Failed to set initial game icon', e)
+        }
         import('../lib/gameVariables.js').then((gameVariables) => {
             this.gameVariables = gameVariables.default;
             // Bind the newGame function to the Vue component
@@ -1528,6 +1534,14 @@ const app = Vue.createApp({
     },
 
     watch: {
+        gameSelection(newValue) {
+            // Update the taskbar/window icon to match the selected game.
+            try {
+                require('electron').ipcRenderer.send('set-game-icon', newValue)
+            } catch (e) {
+                console.error('Failed to update game icon', e)
+            }
+        },
         post_kanto_evolutions(newValue) {
             if (newValue == true) {
                 this.mapper.properties.patch.stp_flags.stp_allow_evolution.set(true, false)

@@ -2542,9 +2542,12 @@ const DEFAULT_STYLE_SETTINGS = {
         "finished_run_count": 1,
         "attempt_number": 1
     },
-    "FireRed and LeafGreen_Goldeen": {},
+    "FireRed and LeafGreen_Goldeen": {
+        "selected_evolution_species": "Goldeen",
+        "evolution": false
+    },
     "FireRed and LeafGreen_118": {
-        "selected_evolution_species": "Seaking"
+        "selected_evolution_species": "Goldeen"
     },
     "FireRed and LeafGreen_Goldeen-line-Goldeen": {
         "imageScale": "0.61",
@@ -2569,27 +2572,28 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundYOffset": 0
     },
     "FireRed and LeafGreen_Seaking-line-Seaking": {
-        "overlay_color": "#c2583e",
-        "ui_saturation": "1.6",
-        "imageXOffset": "27",
-        "imageYOffset": "41",
-        "imageScale": "0.78",
+        "overlay_color": "#c7857b",
+        "ui_saturation": "1.5",
+        "imageXOffset": "34",
+        "imageYOffset": "83",
+        "imageScale": "0.76",
         "imageFlip": true,
         "imageSat": 100,
         "imageRotation": 0,
         "backgroundTexture": "Water",
-        "backgroundBlur": "3",
+        "backgroundBlur": "2",
         "backgroundHue": 0,
-        "backgroundScale": "146",
+        "backgroundScale": "123",
         "backgroundUrl": "",
         "backgroundFlip": false,
         "use_custom_background": false,
         "backgroundXOffset": 0,
         "backgroundYOffset": 0,
-        "backgroundBrightness": "28",
-        "backgroundContrast": "131",
-        "backgroundSaturation": "124",
-        "evolution": true
+        "backgroundBrightness": "27",
+        "backgroundContrast": "122",
+        "backgroundSaturation": "122",
+        "evolution": true,
+        "finished_run_count": 2
     },
     "FireRed and LeafGreen_Horsea": {
         "imageFlip": true,
@@ -2742,7 +2746,7 @@ const DEFAULT_STYLE_SETTINGS = {
         "overlay_color": "#a040a0"
     },
     "FireRed and LeafGreen_88": {
-        "selected_evolution_species": "Muk"
+        "selected_evolution_species": "Grimer"
     },
     "FireRed and LeafGreen_Kingdra-line-Seadra": {
         "overlay_color": "#8fd1ef",
@@ -2815,6 +2819,36 @@ const DEFAULT_STYLE_SETTINGS = {
     "FireRed and LeafGreen_Victreebel": {},
     "FireRed and LeafGreen_Muk-line": {
         "pkmn_ability": "Sticky Hold"
+    },
+    "FireRed and LeafGreen_Seaking-line-Goldeen": {
+        "evolution": true,
+        "overlay_color": "#c7857b",
+        "ui_saturation": "1.5",
+        "imageScale": "0.63",
+        "imageYOffset": "76",
+        "imageXOffset": "-30",
+        "imageFlip": false,
+        "backgroundScale": "123",
+        "backgroundBlur": "2",
+        "backgroundContrast": "122",
+        "backgroundBrightness": "27",
+        "backgroundSaturation": "122",
+        "imageSat": 100,
+        "imageRotation": 0,
+        "backgroundTexture": "Water",
+        "backgroundHue": 0,
+        "backgroundUrl": "",
+        "backgroundFlip": false,
+        "use_custom_background": false,
+        "backgroundXOffset": 0,
+        "backgroundYOffset": 0,
+        "attempt_number": 6
+    },
+    "FireRed and LeafGreen_Seaking": {
+        "selected_evolution_species": "Seaking"
+    },
+    "FireRed and LeafGreen_119": {
+        "selected_evolution_species": "Seaking"
     }
 };
 

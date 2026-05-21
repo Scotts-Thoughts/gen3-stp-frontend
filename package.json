@@ -9,7 +9,7 @@
     "win": {
       "executableName": "stp-generation3-overlay",
       "target": "zip",
-      "icon": "./icon.png"
+      "icon": "./icon.ico"
     },
     "linux": {
       "target": ["AppImage", "pacman"],

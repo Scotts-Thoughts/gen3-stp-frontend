@@ -1,5 +1,5 @@
 // Modules to control application life and create native browser window
-const { app, shell, BrowserWindow, screen } = require('electron')
+const { app, shell, BrowserWindow, screen, ipcMain, nativeImage } = require('electron')
 const path = require('path')
 const fs = require('fs')
 const { electronApp, optimizer } = require('@electron-toolkit/utils')
@@ -45,6 +45,7 @@ function createWindow() {
     height: 1080,
     show: false,
     autoHideMenuBar: true,
+    icon: path.join(__dirname, 'icon.png'),
     webPreferences: {
       sandbox: false,
       contextIsolation: false,
@@ -61,6 +62,24 @@ function createWindow() {
   if (useSaved && savedState.isFullScreen) {
     mainWindow.setFullScreen(true)
   }
+
+  // Swap the taskbar/window icon based on the selected game in the renderer.
+  const gameIconFile = (game) => {
+    switch (game) {
+      case 'Emerald':
+        return 'icon-emerald.ico'
+      case 'FireRed and LeafGreen':
+        return 'icon-firered.ico'
+      default:
+        return 'icon.ico'
+    }
+  }
+  ipcMain.on('set-game-icon', (_event, game) => {
+    const img = nativeImage.createFromPath(path.join(__dirname, gameIconFile(game)))
+    if (!img.isEmpty()) {
+      mainWindow.setIcon(img)
+    }
+  })
 
   if (isDev) {
     mainWindow.on('close', () => {
