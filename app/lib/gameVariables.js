@@ -38,7 +38,7 @@ const gameVariables =
             // "RIVAL_POKEMON_TOWER_SQUIRTLE" : "images/trainers/RIVAL1.png",//including fixed ones so an update won't break it
             // "RIVAL_POKEMON_TOWER_BULBASAUR" : "images/trainers/RIVAL1.png",
             // "RIVAL_POKEMON_TOWER_CHARMANDER" : "images/trainers/RIVAL1.png",
-            // "CAMPER_LIAM": "images/trainers/LIGHT_YEARS.png",
+            "CAMPER_LIAM": "images/trainers/LIGHTYEARS.png",
             "YOUNGSTER_BEN": "images/trainers/YOUNGSTER_BEN.png",
             "LASS_ROBIN": "images/trainers/JIGGLYPUFF_LASS.png",
             "SUPER_NERD_MIGUEL": "images/trainers/FOSSIL_NERD.png",
