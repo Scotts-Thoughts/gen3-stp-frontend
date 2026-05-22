@@ -365,10 +365,101 @@ body {
     filter: drop-shadow(0px 0px 2px #000000c5);
 }
 .dropdown_menu_short {
-    width: 170px; 
+    width: 170px;
+}
+.gameToggle {
+    pointer-events: auto;
+    position: relative;
+    width: 280px;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    filter: drop-shadow(0px 0px 2px #000000c5);
+}
+.gameToggleImg {
+    width: 130px;
+    height: auto;
+    cursor: pointer;
+    border-radius: 6px;
+    opacity: 0.45;
+    filter: grayscale(70%);
+    transition: opacity 0.15s, filter 0.15s, transform 0.15s, box-shadow 0.15s;
+    box-sizing: border-box;
+    border: 2px solid transparent;
+}
+.gameToggleImg:hover {
+    opacity: 0.85;
+    filter: grayscale(20%);
+    transform: scale(1.05);
+}
+.gameToggleImg.selected {
+    opacity: 1;
+    filter: none;
+    border-color: #11ce18;
+    box-shadow: 0 0 6px #11ce18;
+    transform: scale(1.05);
 }
 .dropdown_menu_column3 {
-    width: 210px; 
+    width: 210px;
+}
+.nature_grid {
+    pointer-events: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    width: 144px;
+}
+.nature_grid_row {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+.nature_grid_label {
+    width: 12px;
+    flex-shrink: 0;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 700;
+}
+.nature_grid_raise { color: #d83a3a; }
+.nature_grid_lower { color: #3a6fd8; }
+.nature_grid_btn {
+    pointer-events: auto;
+    position: relative;
+    flex: 1;
+    min-width: 0;
+    height: 20px;
+    padding: 0;
+    font-size: 11px;
+    background: #72fd4f;
+    border: none;
+    border-radius: 10px;
+    filter: drop-shadow(0px 0px 2px #000000c5);
+    cursor: pointer;
+}
+.nature_grid_btn:hover {
+    background: #14d61a;
+}
+.nature_grid_raise_on {
+    color: #fff;
+    background: #d83a3a;
+}
+.nature_grid_raise_on:hover {
+    background: #c43030;
+}
+.nature_grid_lower_on {
+    color: #fff;
+    background: #3a6fd8;
+}
+.nature_grid_lower_on:hover {
+    background: #3060c4;
+}
+.hidden_power_values {
+    font-size: 11px;
+}
+.hidden_power_values td {
+    padding-left: 4px;
+    white-space: nowrap;
 }
 .dropdownMenu:hover {
     background: #11ce18; 
@@ -391,7 +482,7 @@ body {
     margin-top: 8px;
     margin-bottom: 8px;
     font-size: 21px;
-    width: 210px; 
+    width: 280px;
     height: 28px;
 }
 .set_starter_button {
@@ -578,11 +669,48 @@ body {
     /* background:rgb(0, 217, 255); */
 }
 .inputContainer {
-    font-size: 18px; 
+    font-size: 18px;
     text-align: right;
-    background: #a3fc8b; 
+    background: #a3fc8b;
     font-family: Play;
     width: 130px;
+}
+.timerOffsetControls {
+    display: inline-flex;
+    width: 169px;
+    vertical-align: middle;
+    gap: 4px;
+    align-items: stretch;
+}
+.timerOffsetControls .inputContainer {
+    flex: 1;
+    min-width: 0;
+    width: auto;
+    font-size: 14px;
+}
+.timerOffsetClearButton {
+    pointer-events: auto;
+    position: relative;
+    flex-shrink: 0;
+    width: 54px;
+    min-width: 54px;
+    font-size: 13px;
+    background: #72fd4f;
+    font-family: Play;
+    border: none;
+    border-radius: 4px;
+    padding: 0 4px;
+    white-space: nowrap;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+.timerOffsetClearButton:hover {
+    background: #14d61a;
+}
+.ev_table td:nth-child(2) {
+    text-align: right;
+    width: 48px;
+    padding-left: 12px;
 }
 .timerTitle {
     position: absolute;
@@ -1880,9 +2008,9 @@ body {
     height: 780px;
 }
 .ui2 {
-    left: 752px;
+    left: 688px;
     top: 30px;
-    width: 220px;
+    width: 350px;
     height: 780px;
 }
 .ui3 {

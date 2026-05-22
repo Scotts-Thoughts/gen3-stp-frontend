@@ -12,11 +12,14 @@
         <div v-if="ready == false">
             Loading... (Connect GameHook)
             <div>Game:</div>
-            <select v-model="gameSelection" class="dropdownMenu">
-                <option disabled value="">Select a species</option>
-                <option>Emerald</option>
-                <option>FireRed and LeafGreen</option>
-            </select>
+            <div class="gameToggle">
+                <img v-for="game in available_games"
+                     :key="game"
+                     :src="`images/box_art/${game_box_art[game]}`"
+                     :title="game"
+                     :class="['gameToggleImg', { selected: gameSelection == game }]"
+                     @click="gameSelection = game"/>
+            </div>
         </div>
         <div v-else>
             <div>
@@ -194,11 +197,14 @@
             <div v-if="gamestate == true">
                 <div class="ui_style ui1 ui_border">
                     <div>Game:</div>
-                    <select v-model="gameSelection" class="dropdownMenu">
-                        <option disabled value="">Select a species</option>
-                        <option>Emerald</option>
-                        <option>FireRed and LeafGreen</option>
-                    </select><br>
+                    <div class="gameToggle">
+                        <img v-for="game in available_games"
+                             :key="game"
+                             :src="`images/box_art/${game_box_art[game]}`"
+                             :title="game"
+                             :class="['gameToggleImg', { selected: gameSelection == game }]"
+                             @click="gameSelection = game"/>
+                    </div><br>
                     <br>
                     <table>
                         <tr>
@@ -225,10 +231,10 @@
                             <td>Shuckie Counters:</td>
                             <td><input class="checkBoxStyle" type="checkbox" v-model="shuckie_counters" /></td>
                         </tr>
-                        <tr v-if="show_advanced_settings">
+                        <!-- <tr v-if="show_advanced_settings">
                             <td>No counters</td>
                             <td><input class="checkBoxStyle" type="checkbox" v-model="no_counters" /></td>
-                        </tr>
+                        </tr> -->
                         <!-- <tr v-if="show_advanced_settings">
                             <td>Legacy State (for old replays)</td>
                             <td><input class="checkBoxStyle" type="checkbox" v-model="legacy_state"/></td>
@@ -255,22 +261,25 @@
                     <button class="buttonStyle new_run_button" @click="newRun">New Run</button><br>
                     <button v-if="shuckie_timer == false" @click="this.timer.pauseUnpauseTime()"
                         class="buttonStyle">Play/Pause</button>
-                    <button v-if="shuckie_timer == true" @click="sendEmulatorStart()">Play/Pause</button>
+                    <button v-if="shuckie_timer == true" @click="sendEmulatorStart()"
+                        class="buttonStyle">Play/Pause</button><br>
                     <!-- <button class="buttonStyle set_button_style" @click="this.sendEmulatorStart()">Start Time</button><br> -->
                     <!-- <button class="buttonStyle set_button_style" @click="this.sendEmulatorEnd()">End Time</button><br> -->
                     <button v-if="shuckie_timer == false" class="buttonStyle"
                         @click="this.timer.setTimer(this.timer_startTimeOffset)">Set Timer</button><br>
                     <button v-if="shuckie_timer == true" class="buttonStyle" @click="sendEmulatorStart()">Set
                         Timer</button><br>
-                    Start Time Offset: <input class="inputContainer" type="text" v-model="timer_startTimeOffset"
-                        placeholder="00:00:00.00" /><br>
+                    Start Time Offset: <span class="timerOffsetControls">
+                        <input class="inputContainer" type="text" v-model="timer_startTimeOffset"
+                            placeholder="00:00:00.00" />
+                        <button type="button" class="timerOffsetClearButton"
+                            @click="timer_startTimeOffset = '00:00:00.00'">Clear</button>
+                    </span><br>
                     <br>
                     <div>Splits:</div>
-                    <button class="buttonStyle buttonStyle_column3"
+                    <button class="buttonStyle"
                         @click="openFolder(`splits`, gameSelection, getSplitFileName(), `finishes`)">Open Splits
                         Folder</button>
-                    <button class="buttonStyle buttonStyle_column3"
-                        @click="openFolder(`splits`, gameSelection, starterString, `finishes`)">Finished Splits</button>
                     <br><br>
 
                     <!-- Style Settings Management -->
@@ -292,11 +301,11 @@
                             Reset ALL to Defaults
                         </button>
                     </div> -->
-                    <button v-show="!battle_testing_ui" class="buttonStyle buttonStyle_column3"
+                    <button v-show="!battle_testing_ui" class="buttonStyle"
                         @click="battle_testing_ui_toggle">Show optimization UI</button>
                     <div v-show="!battle_testing_ui">
                         <div>EVs:</div>
-                        <table>
+                        <table class="ev_table">
                             <tr>
                                 <td>HP:</td>
                                 <td>{{mapper.properties.player.team[0].evHp.value}}</td>
@@ -310,10 +319,6 @@
                                 <td>{{mapper.properties.player.team[0].evDefense.value}}</td>
                             </tr>
                             <tr>
-                                <td>Spe:</td>
-                                <td>{{mapper.properties.player.team[0].evSpeed.value}}</td>
-                            </tr>
-                            <tr>
                                 <td>SpA:</td>
                                 <td>{{mapper.properties.player.team[0].evSpecialAttack.value}}</td>
                             </tr>
@@ -322,13 +327,17 @@
                                 <td>{{mapper.properties.player.team[0].evSpecialDefense.value}}</td>
                             </tr>
                             <tr>
+                                <td>Spe:</td>
+                                <td>{{mapper.properties.player.team[0].evSpeed.value}}</td>
+                            </tr>
+                            <tr>
                                 <td>Total:</td>
                                 <td>{{mapper.properties.player.team[0].evHp.value +
                                     mapper.properties.player.team[0].evAttack.value +
                                     mapper.properties.player.team[0].evDefense.value +
                                     mapper.properties.player.team[0].evSpeed.value +
                                     mapper.properties.player.team[0].evSpecialAttack.value +
-                                    mapper.properties.player.team[0].evSpecialDefense.value}}</td>
+                                    mapper.properties.player.team[0].evSpecialDefense.value}}/510</td>
                             </tr>
                         </table>
                     </div>
@@ -483,59 +492,77 @@
                         </table>
                     </div>
                     <br>
-                    <div>Gender:</div>
-                    <select v-model="pkmn_gender" class="dropdownMenu dropdown_menu_column3">
-                        <option disabled value="">Select a gender</option>
-                        <option v-for="key in values_function(genders)" :value="`${key}`">{{key}}</option>
-                    </select><br>
-                    <div>Abilities: ({{displayedPokemonSpecies}} has
-                        {{dexDataRubySapphireEmerald[displayedPokemonSpecies]?.abilities?.length}})</div>
-                    <select v-model="pkmn_ability" class="dropdownMenu dropdown_menu_column3">
-                        <option disabled value="">Select an ability</option>
-                        <option
-                            v-for="key in values_function(dexDataRubySapphireEmerald[displayedPokemonSpecies]?.abilities ?? [])"
-                            :value="`${key}`">{{key}}</option>
-                    </select><br>
-                    <div>Nature:</div>
-                    <select v-model="pkmnNature" class="dropdownMenu dropdown_menu_column3">
-                        <option disabled value="">Select a Nature</option>
-                        <option v-for="key in values_function(simple_natures)" :value="`${key}`">
-                            {{natureLabels(`${key}`)}}</option>
-                    </select><br>
+                    <div style="display: flex; gap: 12px; align-items: flex-start;">
+                        <div style="width: 185px;">
+                            <div style="white-space: nowrap;">Abilities: ({{displayedPokemonSpecies}} has
+                                {{dexDataRubySapphireEmerald[displayedPokemonSpecies]?.abilities?.length}})</div>
+                            <select v-model="pkmn_ability" class="dropdownMenu dropdown_menu_column3" style="width: 185px;">
+                                <option disabled value="">Select an ability</option>
+                                <option
+                                    v-for="key in values_function(dexDataRubySapphireEmerald[displayedPokemonSpecies]?.abilities ?? [])"
+                                    :value="`${key}`">{{key}}</option>
+                            </select>
+                        </div>
+                        <div>
+                            <div>Gender:</div>
+                            <select v-model="pkmn_gender" class="dropdownMenu" style="width: 99px;">
+                                <option disabled value="">Select a gender</option>
+                                <option v-for="key in values_function(genders)" :value="`${key}`">{{key}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <br>
+                    <div style="display: flex; gap: 8px; align-items: center;">
+                        <div>
+                            <div>Nature:</div>
+                            <select v-model="pkmnNature" class="dropdownMenu dropdown_menu_column3" style="width: 144px;">
+                                <option disabled value="">Select a Nature</option>
+                                <option v-for="key in values_function(simple_natures)" :value="`${key}`">
+                                    {{natureLabels(`${key}`)}}</option>
+                            </select>
+                        </div>
+                        <div class="nature_grid">
+                            <div class="nature_grid_row">
+                                <span class="nature_grid_label nature_grid_raise">+</span>
+                                <button v-for="stat in natureStats" :key="'raise-' + stat.key"
+                                    class="nature_grid_btn"
+                                    :class="{ 'nature_grid_raise_on': natureRaisedStat() === stat.key }"
+                                    @click="selectNatureRaise(stat.key)">{{stat.short}}</button>
+                            </div>
+                            <div class="nature_grid_row">
+                                <span class="nature_grid_label nature_grid_lower">&minus;</span>
+                                <button v-for="stat in natureStats" :key="'lower-' + stat.key"
+                                    class="nature_grid_btn"
+                                    :class="{ 'nature_grid_lower_on': natureLoweredStat() === stat.key }"
+                                    @click="selectNatureLower(stat.key)">{{stat.short}}</button>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
                     <div>Hidden Power:</div>
-                    <select v-model="hidden_power_type" class="dropdownMenu dropdown_menu_column3">
+                    <select v-model="hidden_power_type" class="dropdownMenu dropdown_menu_column3" style="width: 296px;">
                         <option disabled value="">Select a Hidden Power type</option>
                         <option v-for="key in values_function(hiddenPowerTypes)" :value="`${key}`">{{key}}</option>
                     </select><br>
-                    <select v-model="hidden_power_index" class="dropdownMenu dropdown_menu_column3">
+                    <select v-model="hidden_power_index" class="dropdownMenu dropdown_menu_column3" style="width: 296px;">
                         <option disabled value="">Select a Hidden Power index</option>
                         <option v-for="(key, index) in hiddenpowers[hidden_power_type]" :value="`${index}`">{{key}}
                         </option>
                     </select><br>
-                    <table>
+                    <table class="hidden_power_values">
                         <tr>
-                            <td>HP: </td>
-                            <td style="padding-left: 5px;">{{hiddenpowers[hidden_power_type][hidden_power_index]?.[0]}}
-                            </td>
-                            <td style="padding-left: 15px;">Spe:</td>
-                            <td style="padding-left: 5px;">{{hiddenpowers[hidden_power_type][hidden_power_index]?.[3]}}
-                            </td>
-                        </tr>
-                        <tr>
+                            <td>HP:</td>
+                            <td>{{hiddenpowers[hidden_power_type][hidden_power_index]?.[0]}}</td>
                             <td>Atk:</td>
-                            <td style="padding-left: 5px;">{{hiddenpowers[hidden_power_type][hidden_power_index]?.[1]}}
-                            </td>
-                            <td style="padding-left: 15px;">SpA:</td>
-                            <td style="padding-left: 5px;">{{hiddenpowers[hidden_power_type][hidden_power_index]?.[4]}}
-                            </td>
-                        </tr>
-                        <tr>
+                            <td>{{hiddenpowers[hidden_power_type][hidden_power_index]?.[1]}}</td>
                             <td>Def:</td>
-                            <td style="padding-left: 5px;">{{hiddenpowers[hidden_power_type][hidden_power_index]?.[2]}}
-                            </td>
-                            <td style="padding-left: 15px;">SpD:</td>
-                            <td style="padding-left: 5px;">{{hiddenpowers[hidden_power_type][hidden_power_index]?.[5]}}
-                            </td>
+                            <td>{{hiddenpowers[hidden_power_type][hidden_power_index]?.[2]}}</td>
+                            <td>SpA:</td>
+                            <td>{{hiddenpowers[hidden_power_type][hidden_power_index]?.[4]}}</td>
+                            <td>SpD:</td>
+                            <td>{{hiddenpowers[hidden_power_type][hidden_power_index]?.[5]}}</td>
+                            <td>Spe:</td>
+                            <td>{{hiddenpowers[hidden_power_type][hidden_power_index]?.[3]}}</td>
                         </tr>
                     </table>
                     <br>

@@ -2849,6 +2849,9 @@ const DEFAULT_STYLE_SETTINGS = {
     },
     "FireRed and LeafGreen_119": {
         "selected_evolution_species": "Seaking"
+    },
+    "FireRed and LeafGreen_Kingdra-line": {
+        "pkmnNature": "Hardy"
     }
 };
 

@@ -798,6 +798,12 @@ const app = Vue.createApp({
             hidden_power_index    : 0,
             pkmn_gender           : "Female",
             gameSelection         : MyStorage['gameSelection'] ?? "FireRed and LeafGreen",
+            // Visual game toggle (box-art buttons mirror the gameSelection dropdown).
+            available_games       : ["Emerald", "FireRed and LeafGreen"],
+            game_box_art          : {
+                "Emerald"             : "3-emerald.png",
+                "FireRed and LeafGreen": "3-firered.png",
+            },
             evolution             : MyStorage['evolution'] ?? false,
             evolution_splits_label: MyStorage['evolution_splits_label'] ?? "",
             selected_evolution_species   : null,  // Currently selected species in evolution family for styling
@@ -905,6 +911,29 @@ const app = Vue.createApp({
             gen3abilities             : gen3abilities,
             stageModifiersData        : stageModifiersData,
             natures                   : natures,
+            // Button-grid nature selector (mirrors the dropdown). Order/labels match the natures' "raises"/"lowers" strings.
+            natureStats: [
+                { key: "Attack",          short: "Atk" },
+                { key: "Defense",         short: "Def" },
+                { key: "Special Attack",  short: "SpA" },
+                { key: "Special Defense", short: "SpD" },
+                { key: "Speed",           short: "Spe" },
+            ],
+            // Neutral natures don't store a stat, so map them onto the diagonal both ways.
+            neutralNatureByStat: {
+                "Attack": "Hardy",
+                "Defense": "Docile",
+                "Speed": "Serious",
+                "Special Attack": "Bashful",
+                "Special Defense": "Quirky",
+            },
+            neutralStatByNature: {
+                "Hardy": "Attack",
+                "Docile": "Defense",
+                "Serious": "Speed",
+                "Bashful": "Special Attack",
+                "Quirky": "Special Defense",
+            },
             typeData                  : typeData,
             typeBoostingItems         : typeBoostingItems,
             dexDataRubySapphireEmerald: dexDataRubySapphireEmerald,
@@ -6159,6 +6188,35 @@ const app = Vue.createApp({
                     break;
             }
             return output;
+        },
+        // --- Button-grid nature selector (two-way synced with the pkmnNature dropdown) ---
+        // Stat currently raised by the selected nature (diagonal stat for neutral natures).
+        natureRaisedStat() {
+            const data = this.natures[this.pkmnNature];
+            if (!data) return null;
+            return data.raises === "Neutral" ? this.neutralStatByNature[this.pkmnNature] : data.raises;
+        },
+        // Stat currently lowered by the selected nature (diagonal stat for neutral natures).
+        natureLoweredStat() {
+            const data = this.natures[this.pkmnNature];
+            if (!data) return null;
+            return data.lowers === "Neutral" ? this.neutralStatByNature[this.pkmnNature] : data.lowers;
+        },
+        // Find the nature name matching a raised/lowered stat pair (same stat => neutral).
+        natureFromStats(raise, lower) {
+            if (raise === lower) return this.neutralNatureByStat[raise];
+            for (const [name, data] of Object.entries(this.natures)) {
+                if (data.raises === raise && data.lowers === lower) return name;
+            }
+            return this.pkmnNature;
+        },
+        // Clicking a "raises" button keeps the current lowered stat and updates the dropdown.
+        selectNatureRaise(stat) {
+            this.pkmnNature = this.natureFromStats(stat, this.natureLoweredStat());
+        },
+        // Clicking a "lowers" button keeps the current raised stat and updates the dropdown.
+        selectNatureLower(stat) {
+            this.pkmnNature = this.natureFromStats(this.natureRaisedStat(), stat);
         },
         trashCans() {
             if(this.game.gameName != "FireRed and LeafGreen") {
