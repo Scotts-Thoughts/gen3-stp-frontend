@@ -7825,6 +7825,7 @@ const app = Vue.createApp({
                         evolution_splits_label: this.evolution_splits_label,
                         selected_evolution_species: this.selected_evolution_species,
                         gameSelection: this.gameSelection,
+                        selected_game: this.gameSelection,
                         right_panel: this.right_panel,
                         hidden_power_type: this.hidden_power_type,
                         splits: this.splits_display,
