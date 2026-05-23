@@ -7825,6 +7825,15 @@ const app = Vue.createApp({
                         location.reload(true);
                     }, 200);
                 }
+                else if (pathname === '/quit') {
+                    // Gracefully close the overlay window. Electron's default
+                    // window-all-closed handler quits the app on Windows.
+                    // Usage: /quit
+                    res.end(JSON.stringify({ ok: true, message: 'Quitting overlay...' }));
+                    setTimeout(() => {
+                        window.close();
+                    }, 200);
+                }
                 else if (pathname === '/status') {
                     // Get current overlay state
                     // Usage: /status
