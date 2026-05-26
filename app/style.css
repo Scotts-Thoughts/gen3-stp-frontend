@@ -2765,7 +2765,24 @@ body {
     max-height: 112px;
     left: 6px;
     top: 22px;
+    transform-origin: 50% 50%;
     transition: opacity 500ms ease-in-out, filter 500ms ease-in-out;
+}
+.ePkmnSpriteResizing {
+    outline: 2px dashed #00ffff;
+    outline-offset: 2px;
+}
+.ePkmnSpriteResizeHandle {
+    position: fixed;
+    width: 16px;
+    height: 16px;
+    background: #00ffff;
+    border: 2px solid #000;
+    border-radius: 50%;
+    cursor: nwse-resize;
+    z-index: 2147483647;
+    pointer-events: auto;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
 }
 .ePkmnMoveStyle {
     position: absolute;
