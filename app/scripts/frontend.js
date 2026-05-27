@@ -5260,17 +5260,24 @@ const app = Vue.createApp({
                 return true
             }
         },
-        enemyPkmnFaint(pkmnData) {
-            if (this.g3stateVariable != `Battle` && this.g3stateVariable != `From Battle`) { return "filter: drop-shadow(2px 2px 2px #000) saturate(1.1) grayscale(0%);" }
+        enemyDropShadow(species) {
+            // CSS applies filter before transform, so a horizontal flip would mirror
+            // the shadow's X offset. Pre-invert it so the visible shadow stays at +2,+2.
+            const dx = this.getEnemySpriteFlipped(species) ? -2 : 2;
+            return `drop-shadow(${dx}px 2px 2px #000)`;
+        },
+        enemyPkmnFaint(pkmnData, species) {
+            const ds = this.enemyDropShadow(species);
+            if (this.g3stateVariable != `Battle` && this.g3stateVariable != `From Battle`) { return `filter: ${ds} saturate(1.1) grayscale(0%);` }
             if (pkmnData.hp == 0 || this.g3stateVariable == `From Battle`) {
-                return "filter: drop-shadow(2px 2px 2px #000) saturate(1.1) grayscale(100%); opacity: .3;"
+                return `filter: ${ds} saturate(1.1) grayscale(100%); opacity: .3;`
             }
             else {
-                return "filter: drop-shadow(2px 2px 2px #000) saturate(1.1) grayscale(0%);"
+                return `filter: ${ds} saturate(1.1) grayscale(0%);`
             }
         },
-        enemyPkmnFaintWild() {
-            return "filter: drop-shadow(2px 2px 2px #000) saturate(1.1) grayscale(100%); opacity: .3;"
+        enemyPkmnFaintWild(species) {
+            return `filter: ${this.enemyDropShadow(species)} saturate(1.1) grayscale(100%); opacity: .3;`
         },
         enemyPkmnText(pkmnData) {
             if (this.g3stateVariable != `Battle` && this.g3stateVariable != `From Battle`) { return "opacity: 1" }

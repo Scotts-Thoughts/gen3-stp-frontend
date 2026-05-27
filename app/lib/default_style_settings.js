@@ -2603,7 +2603,10 @@ const DEFAULT_STYLE_SETTINGS = {
         "overlay_color": "#8fd1ed",
         "ui_saturation": "2",
         "selected_evolution_species": "Horsea",
-        "evolution": false
+        "evolution": false,
+        "pkmn_ability": "Swift Swim",
+        "pkmnNature": "Hardy",
+        "backgroundTexture": "Water"
     },
     "FireRed and LeafGreen_116": {
         "selected_evolution_species": "Horsea"
@@ -2629,7 +2632,8 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundBrightness": "80",
         "backgroundContrast": "136",
         "backgroundSaturation": 100,
-        "attempt_number": 1
+        "attempt_number": 1,
+        "evolution": true
     },
     "FireRed and LeafGreen_Horsea-line-Seadra": {
         "overlay_color": "#8fd1ef",
@@ -2685,10 +2689,15 @@ const DEFAULT_STYLE_SETTINGS = {
         "selected_evolution_species": "Seadra"
     },
     "FireRed and LeafGreen_Muk": {
-        "selected_evolution_species": "Muk"
+        "selected_evolution_species": "Muk",
+        "evolution": false,
+        "pkmn_ability": "Stench",
+        "pkmnNature": "Hardy",
+        "backgroundTexture": "Poison",
+        "overlay_color": "#a040a0"
     },
     "FireRed and LeafGreen_89": {
-        "selected_evolution_species": "Grimer"
+        "selected_evolution_species": "Muk"
     },
     "FireRed and LeafGreen_Grimer-line-Grimer": {
         "imageFlip": true,
@@ -2852,6 +2861,89 @@ const DEFAULT_STYLE_SETTINGS = {
     },
     "FireRed and LeafGreen_Kingdra-line": {
         "pkmnNature": "Hardy"
+    },
+    "FireRed and LeafGreen_Bellsprout": {
+        "selected_evolution_species": "Bellsprout"
+    },
+    "FireRed and LeafGreen_69": {
+        "selected_evolution_species": "Bellsprout"
+    },
+    "FireRed and LeafGreen_Victreebel-line-Bellsprout": {
+        "imageScale": "0.45",
+        "imageFlip": true,
+        "imageYOffset": "-79",
+        "imageXOffset": "62",
+        "backgroundTexture": "Poison",
+        "backgroundScale": "112",
+        "backgroundContrast": "133",
+        "backgroundFlip": true,
+        "backgroundXFlip": true,
+        "backgroundBrightness": "62",
+        "backgroundBlur": "3",
+        "overlay_color": "#81b485",
+        "ui_saturation": "1.9",
+        "imageSat": 100,
+        "imageRotation": 0,
+        "backgroundHue": 0,
+        "backgroundUrl": "",
+        "use_custom_background": false,
+        "backgroundXOffset": 0,
+        "backgroundYOffset": 0,
+        "backgroundSaturation": 100,
+        "attempt_number": 1
+    },
+    "FireRed and LeafGreen_Victreebel-line-Weepinbell": {
+        "overlay_color": "#81b485",
+        "ui_saturation": "1.9",
+        "imageXOffset": "55",
+        "imageYOffset": "83",
+        "imageScale": "0.49",
+        "imageFlip": true,
+        "imageSat": 100,
+        "imageRotation": 0,
+        "backgroundTexture": "Poison",
+        "backgroundBlur": "3",
+        "backgroundHue": 0,
+        "backgroundScale": "112",
+        "backgroundUrl": "",
+        "backgroundFlip": true,
+        "use_custom_background": false,
+        "backgroundXOffset": 0,
+        "backgroundYOffset": 0,
+        "backgroundBrightness": "62",
+        "backgroundContrast": "133",
+        "backgroundSaturation": 100,
+        "backgroundXFlip": true
+    },
+    "FireRed and LeafGreen_Victreebel-line-Victreebel": {
+        "overlay_color": "#81b485",
+        "ui_saturation": "1.9",
+        "imageXOffset": "34",
+        "imageYOffset": "20",
+        "imageScale": "0.86",
+        "imageFlip": true,
+        "imageSat": 100,
+        "imageRotation": 0,
+        "backgroundTexture": "Poison",
+        "backgroundBlur": "3",
+        "backgroundHue": 0,
+        "backgroundScale": "112",
+        "backgroundUrl": "",
+        "backgroundFlip": true,
+        "use_custom_background": false,
+        "backgroundXOffset": 0,
+        "backgroundYOffset": 0,
+        "backgroundBrightness": "62",
+        "backgroundContrast": "133",
+        "backgroundSaturation": 100,
+        "backgroundXFlip": true,
+        "finished_run_count": 2
+    },
+    "FireRed and LeafGreen_Weepinbell": {
+        "selected_evolution_species": "Weepinbell"
+    },
+    "FireRed and LeafGreen_70": {
+        "selected_evolution_species": "Victreebel"
     }
 };
 

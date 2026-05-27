@@ -1283,7 +1283,7 @@
                                 :class="{ ePkmnSpriteResizing: enemyResize.slot === 0 }"
                                 :data-enemy-slot="0"
                                 :data-enemy-species="mapper.properties.battle.enemyPokemon.species?.value || mapper.properties.battle.enemyPokemon.species"
-                                :style="{ filter: 'drop-shadow(2px 2px 2px #000) saturate(1.1) grayscale(0%)', transform: enemyTransformFor(mapper.properties.battle.enemyPokemon.species?.value || mapper.properties.battle.enemyPokemon.species) }"
+                                :style="{ filter: `${enemyDropShadow(mapper.properties.battle.enemyPokemon.species?.value || mapper.properties.battle.enemyPokemon.species)} saturate(1.1) grayscale(0%)`, transform: enemyTransformFor(mapper.properties.battle.enemyPokemon.species?.value || mapper.properties.battle.enemyPokemon.species) }"
                                 :src="`images/pokemon/${mapper.properties.battle.enemyPokemon.species}.png`" />
                             <img class="ePkmnTypeIcons ePkmnType_1 ds opacityTransition"
                                 :src="`images/elements/type-icons/${mapper.properties.battle.enemyPokemon.type1.value}.png`" />
@@ -1417,7 +1417,7 @@
                                 :class="{ ePkmnSpriteResizing: enemyResize.slot === x }"
                                 :data-enemy-slot="x"
                                 :data-enemy-species="enemyTrainer.pokemon[x]?.species"
-                                :style="[enemyPkmnFaint(batt.trainer.team[x]), { transform: enemyTransformFor(enemyTrainer.pokemon[x]?.species) }]"
+                                :style="[enemyPkmnFaint(batt.trainer.team[x], enemyTrainer.pokemon[x]?.species), { transform: enemyTransformFor(enemyTrainer.pokemon[x]?.species) }]"
                                 :src="`images/pokemon/${enemyTrainer.pokemon[x]?.species}.png`" />
                             <img class="ePkmnTypeIcons ePkmnType_1 ds opacityTransition"
                                 :style="enemyPkmnFaintTypes(batt.trainer.team[x])"
