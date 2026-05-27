@@ -243,6 +243,20 @@
                             <td>Debugging:</td>
                             <td><input class="checkBoxStyle" type="checkbox" v-model="debugging" /></td>
                         </tr>
+                        <tr v-if="isInDevMode && show_advanced_settings && debugging" title="Dev only. Packaged builds always apply enemy sprite styles.">
+                            <td>Enemy Sprite Styles:</td>
+                            <td><input class="checkBoxStyle" type="checkbox" v-model="enemy_sprite_styles_enabled" /></td>
+                        </tr>
+                        <tr v-if="isInDevMode && show_advanced_settings && debugging">
+                            <td>Style Mode:</td>
+                            <td>
+                                <button v-if="!style_mode_active" class="buttonStyle" style="font-size: 11px;" @click="enterStyleMode()" title="Iterate every species: Enter saves + advances, Backspace discards + steps back, Escape exits.">Start</button>
+                                <button v-else class="buttonStyle" style="font-size: 11px; color: #f44;" @click="exitStyleMode()">Exit</button>
+                            </td>
+                        </tr>
+                        <tr v-if="isInDevMode && show_advanced_settings && debugging && style_mode_active">
+                            <td colspan="2" style="font-size: 11px;">{{ style_mode_index + 1 }} / {{ style_mode_species_list.length }} — <strong>{{ styleModeCurrentSpecies() }}</strong></td>
+                        </tr>
                         <!-- <tr v-if="show_advanced_settings">
                             <td>Set Starter Automatically:</td>
                             <td><input class="checkBoxStyle" type="checkbox" v-model="set_rom_starter_automatically"/></td>
@@ -1114,7 +1128,65 @@
 
             <!--------- MOVEPOOL ------------------------------------------------------------------------------------------------------------------------------------->
             <transition name="fadeBattle" style="position: absolute;">
-                <div v-if="right_panel == 'Movepool'" key=1>
+                <!-- Style Mode (dev only): replaces the right panel with a dummy
+                     slot-0 enemy graphic so every species can be styled. Layout
+                     mirrors the live "Battle Graphic" (trainer) block below
+                     (single slot) with dummy stats/moves so all surrounding
+                     graphics render. -->
+                <div v-if="isInDevMode && style_mode_active" key="style_mode">
+                    <div class="enemy_trainer_name">{{ styleModeCurrentSpecies() }} {{ style_mode_index + 1 }}/{{ style_mode_species_list.length }}</div>
+                    <div class="colored-image ds" :style="`height: 234px; filter: saturate(${ui_saturation}) drop-shadow(0px 0px 1px #000000)`" style="--url: url(images/ui/enemy.svg)"></div>
+                    <div class="enemyGraphic">
+                        <div>
+                            <div>
+                                <div class="enemyStatsArea colored-image"
+                                     :style="`--overlay-color: ${overlay_color}; --url: url(images/new_ui/enemy_ui/0.svg)`"></div>
+                            </div>
+                            <img class="enemyStatsArea red-svg" :src="`images/new_ui/comp/0.svg`" />
+                            <div>
+                                <img class="enemyStatsArea" :src="`images/new_ui/enemy_stats/0.svg`" />
+                            </div>
+                        </div>
+                        <div class="ePkmnStyle ePkmn1">
+                            <img class="ePkmnSprite ePkmnSpriteResizing"
+                                 :data-enemy-slot="0"
+                                 :data-enemy-species="styleModeCurrentSpecies()"
+                                 :style="{ transform: enemyTransformFor(styleModeCurrentSpecies()), filter: `${enemyDropShadow(styleModeCurrentSpecies())} saturate(1.1)` }"
+                                 :src="`images/pokemon/${styleModeCurrentSpecies()}.png`" />
+                            <img class="ePkmnTypeIcons ePkmnType_1 ds opacityTransition"
+                                 :src="`images/elements/type-icons/${dexData[styleModeCurrentSpecies()]?.type_1?.toLowerCase()}.png`" />
+                            <img v-if="dexData[styleModeCurrentSpecies()]?.type_1 != dexData[styleModeCurrentSpecies()]?.type_2"
+                                 class="ePkmnTypeIcons ePkmnType_2 ds opacityTransition"
+                                 :src="`images/elements/type-icons/${dexData[styleModeCurrentSpecies()]?.type_2?.toLowerCase()}.png`" />
+                            <div class="ePkmnSpecies opacityTransition">{{ styleModeCurrentSpecies() }}</div>
+
+                            <img v-for="(dummy, i) in style_mode_dummy_moves"
+                                 :class="`ds eMoveIconStyle moveIcon${i + 1} opacityTransition`"
+                                 :src="`images/elements/type-icons/${dummy.type}.png`" />
+                            <div v-for="(dummy, i) in style_mode_dummy_moves"
+                                 :class="`ePkmnMoveStyle ePkmnMove${i + 1} opacityTransition`">{{ dummy.name }}</div>
+
+                            <div class="ePkmnStatsLabelsStyle ePkmnStatsLabelColumn1 ePkmnHpLabel  enemy_stat_opacity_transition">Hp:</div>
+                            <div class="ePkmnStatsLabelsStyle ePkmnStatsLabelColumn1 ePkmnAtkLabel enemy_stat_opacity_transition">Atk:</div>
+                            <div class="ePkmnStatsLabelsStyle ePkmnStatsLabelColumn1 ePkmnDefLabel enemy_stat_opacity_transition">Def:</div>
+                            <div class="ePkmnStatsLabelsStyle ePkmnStatsLabelColumn2 ePkmnSpaLabel enemy_stat_opacity_transition">SpA:</div>
+                            <div class="ePkmnStatsLabelsStyle ePkmnStatsLabelColumn2 ePkmnSpdLabel enemy_stat_opacity_transition">SpD:</div>
+                            <div class="ePkmnStatsLabelsStyle ePkmnStatsLabelColumn2 ePkmnSpeLabel enemy_stat_opacity_transition">Spe:</div>
+
+                            <div class="ePkmnStatsStyle ePkmnStatsLabelColumn1 ePkmnHp  opacityTransition">{{ dexData[styleModeCurrentSpecies()]?.base_hp      ?? 100 }}</div>
+                            <div class="ePkmnStatsStyle ePkmnStatsLabelColumn1 ePkmnAtk opacityTransition">{{ dexData[styleModeCurrentSpecies()]?.base_atk     ?? 50 }}</div>
+                            <div class="ePkmnStatsStyle ePkmnStatsLabelColumn1 ePkmnDef opacityTransition">{{ dexData[styleModeCurrentSpecies()]?.base_def     ?? 50 }}</div>
+                            <div class="ePkmnStatsStyle ePkmnStatsLabelColumn2 ePkmnSpa opacityTransition">{{ dexData[styleModeCurrentSpecies()]?.base_spc_atk ?? 50 }}</div>
+                            <div class="ePkmnStatsStyle ePkmnStatsLabelColumn2 ePkmnSpd opacityTransition">{{ dexData[styleModeCurrentSpecies()]?.base_spc_def ?? 50 }}</div>
+                            <div class="ePkmnStatsStyle ePkmnStatsLabelColumn2 ePkmnSpe opacityTransition">{{ dexData[styleModeCurrentSpecies()]?.base_spd     ?? 50 }}</div>
+
+                            <div class="ePkmnStatsStyle ePkmnLevel   opacityTransition">Level: 50</div>
+                            <div class="ePkmnStatsStyle ePkmnAbility opacityTransition">{{ dexData[styleModeCurrentSpecies()]?.abilities?.[0] ?? '' }}</div>
+                            <div class="ePkmnSpeedComparison">Outsped</div>
+                        </div>
+                    </div>
+                </div>
+                <div v-else-if="right_panel == 'Movepool'" key=1>
                     <div class="movepoolTitle">Movepool</div>
                     <table class="movepoolDemo" cellspacing="0" :style="movepoolResize()">
                         <tr

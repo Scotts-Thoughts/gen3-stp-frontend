@@ -781,6 +781,22 @@ const app = Vue.createApp({
             // Enemy sprite resize tool (Ctrl+Click on an enemy sprite, dev-only)
             enemyResize       : { species: null, slot: null, baseSize: 108, spriteEl: null },
             enemyScaleVersion : 0,
+            // Dev-only opt-out so footage stays congruent with content filmed before the resize feature shipped.
+            // Packaged builds ignore this flag and always apply the styles.
+            enemy_sprite_styles_enabled: MyStorage['enemy_sprite_styles_enabled'] ?? true,
+
+            // Style Mode (dev only): iterate every species in the current game's
+            // dex showing each in slot 0 with the resize handle active.
+            // Enter commits + advances; Backspace discards + steps back.
+            style_mode_active         : false,
+            style_mode_index          : 0,
+            style_mode_species_list   : [],
+            style_mode_dummy_moves    : [
+                { name: 'Tackle',     type: 'normal' },
+                { name: 'Water Gun',  type: 'water'  },
+                { name: 'Ember',      type: 'fire'   },
+                { name: 'Vine Whip',  type: 'grass'  },
+            ],
             gameVariables: null,
             debugging    : false,
             run_complete : MyStorage['run_complete'] ?? false,
@@ -1286,6 +1302,7 @@ const app = Vue.createApp({
                 "shuckie_counters",
                 "banned_hidden_power",
                 "run_complete",
+                "enemy_sprite_styles_enabled",
             ],
 
             stats_toggle_settings: [
@@ -6274,6 +6291,13 @@ const app = Vue.createApp({
         getEnemySpriteYOffset(species) { this.enemyScaleVersion; return enemySpriteScaleManager.getYOffset(species); },
         getEnemySpriteFlipped(species) { this.enemyScaleVersion; return enemySpriteScaleManager.getFlipped(species); },
         enemyTransformFor(species) {
+            // Dev-mode escape hatch: when the styles toggle is off, render at native size/position
+            // so footage stays congruent with content filmed before the resize feature shipped.
+            // Packaged builds ignore the toggle and always apply styles. Style Mode also overrides
+            // the toggle so the user can see what they're editing.
+            if (this.isInDevMode && !this.enemy_sprite_styles_enabled && !this.style_mode_active) {
+                return 'none';
+            }
             const s = this.getEnemySpriteScale(species);
             const x = this.getEnemySpriteXOffset(species);
             const y = this.getEnemySpriteYOffset(species);
@@ -6360,6 +6384,74 @@ const app = Vue.createApp({
             }
             this.enemyResize = { species: null, slot: null, baseSize: 108, spriteEl: null };
             this.enemyScaleVersion++;
+        },
+
+        /* === Style Mode (dev only) ==========================================
+         * See gen5/app/frontend.js for the reference implementation. Gen 3
+         * differs in two ways:
+         *   - species source: `this.dexData` (computed: `this.game.dexData`,
+         *     i.e. swaps between Ruby/Sapphire/Emerald and FRLG by game).
+         *   - dummy slot uses class `ePkmn1` (1-indexed) instead of `ePkmn0`.
+         */
+        styleModeCurrentSpecies() {
+            if (!this.style_mode_active) return null;
+            return this.style_mode_species_list[this.style_mode_index] ?? null;
+        },
+        _styleModeBuildList() {
+            const all = Object.keys(this.dexData || {});
+            return all.filter((name) => name && name !== '—' && name !== 'Egg');
+        },
+        _styleModeFocusCurrent() {
+            const species = this.style_mode_species_list[this.style_mode_index];
+            if (!species) return;
+            this.enemyResize = { species, slot: 0, baseSize: 108, spriteEl: null };
+            this.enemyScaleVersion++;
+        },
+        enterStyleMode() {
+            if (!this.isInDevMode) return;
+            const list = this._styleModeBuildList();
+            if (list.length === 0) return;
+            this.style_mode_species_list = list;
+            this.style_mode_index = 0;
+            this.style_mode_active = true;
+            this.$nextTick(() => this._styleModeFocusCurrent());
+        },
+        exitStyleMode() {
+            const species = this.styleModeCurrentSpecies();
+            if (species && typeof localStorage !== 'undefined') {
+                localStorage.removeItem(`enemyScale_${species}`);
+            }
+            this.style_mode_active = false;
+            this.style_mode_species_list = [];
+            this.style_mode_index = 0;
+            this.enemyResize = { species: null, slot: null, baseSize: 108, spriteEl: null };
+            this.enemyScaleVersion++;
+        },
+        styleModeAdvance() {
+            if (!this.style_mode_active) return;
+            const species = this.styleModeCurrentSpecies();
+            if (species) {
+                enemySpriteScaleManager.commit(species);
+            }
+            if (this.style_mode_index + 1 >= this.style_mode_species_list.length) {
+                this.exitStyleMode();
+                return;
+            }
+            this.style_mode_index++;
+            this.$nextTick(() => this._styleModeFocusCurrent());
+        },
+        styleModeBack() {
+            if (!this.style_mode_active) return;
+            const species = this.styleModeCurrentSpecies();
+            if (species && typeof localStorage !== 'undefined') {
+                localStorage.removeItem(`enemyScale_${species}`);
+            }
+            if (this.style_mode_index === 0) {
+                this._styleModeFocusCurrent();
+                return;
+            }
+            this.style_mode_index--;
+            this.$nextTick(() => this._styleModeFocusCurrent());
         },
     },
 
@@ -7994,6 +8086,12 @@ const app = Vue.createApp({
         // Enemy sprite resize tool — dev mode only.
         if (this.isInDevMode) {
             window.addEventListener('keydown', (e) => {
+                // Style mode owns Enter/Backspace/Escape; arrows/F1 fall through to nudge/flip.
+                if (this.style_mode_active) {
+                    if (e.key === 'Enter')     { e.preventDefault(); this.styleModeAdvance(); return; }
+                    if (e.key === 'Backspace') { e.preventDefault(); this.styleModeBack();    return; }
+                    if (e.key === 'Escape')    { e.preventDefault(); this.exitStyleMode();   return; }
+                }
                 if (!this.enemyResize.species) return;
                 if (e.key === 'Enter')           { e.preventDefault(); this.commitEnemySpriteResize(); }
                 else if (e.key === 'Escape')     { e.preventDefault(); this.cancelEnemySpriteResize(); }
