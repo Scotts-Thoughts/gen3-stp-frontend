@@ -1,6 +1,6 @@
 {
   "name": "stp-generation3-overlay",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Scott's Thoughts Overlay.",
   "main": "./main.js",
   "build": {

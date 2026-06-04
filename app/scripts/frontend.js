@@ -6947,6 +6947,12 @@ const app = Vue.createApp({
                 this.sendObsChapterMarker(chapterName);
             }
         });
+
+        this.mapper.properties.patch.sStpTextBoxOpen.change((newProp, oldProp) => {
+            let boolean = newProp.value == 0 ? false : true
+            this.sendObsChapterMarker(`Text Box - ${boolean}`)
+        });
+
         //GAMESTATE MANAGEMENT
         // set initial gamestate value when the layout is loaded
         if (this.legacy_state == true) {

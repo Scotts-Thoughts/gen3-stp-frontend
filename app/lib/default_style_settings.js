@@ -2946,7 +2946,9 @@ const DEFAULT_STYLE_SETTINGS = {
     "FireRed and LeafGreen_70": {
         "selected_evolution_species": "Victreebel"
     },
-    "FireRed and LeafGreen_Oddish": {},
+    "FireRed and LeafGreen_Oddish": {
+        "selected_evolution_species": "Oddish"
+    },
     "FireRed and LeafGreen_43": {
         "selected_evolution_species": "Oddish"
     },
@@ -2971,7 +2973,8 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundHue": 0,
         "backgroundUrl": "",
         "use_custom_background": false,
-        "backgroundSaturation": 100
+        "backgroundSaturation": 100,
+        "attempt_number": 1
     },
     "FireRed and LeafGreen_Bellossom-line-Gloom": {
         "overlay_color": "#587f9a",
@@ -3015,7 +3018,8 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundYOffset": "-32",
         "backgroundBrightness": "71",
         "backgroundContrast": "181",
-        "backgroundSaturation": 100
+        "backgroundSaturation": 100,
+        "finished_run_count": 2
     },
     "FireRed and LeafGreen_Bellossom-line-Bellossom": {
         "overlay_color": "#587f9a",
@@ -3086,6 +3090,12 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundXOffset": "-70",
         "backgroundContrast": "112",
         "backgroundBrightness": "85"
+    },
+    "FireRed and LeafGreen_Gloom": {
+        "selected_evolution_species": "Gloom"
+    },
+    "FireRed and LeafGreen_44": {
+        "selected_evolution_species": "Vileplume"
     }
 };
 
