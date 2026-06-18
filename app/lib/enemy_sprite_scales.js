@@ -8,7 +8,7 @@
  * Key: Pokemon species name (e.g. "Lillipup")
  * Value: scale factor (1.0 = native sprite size)
  *
- * AUTO-GENERATED - last updated: 2026-05-27T15:53:50.174Z
+ * AUTO-GENERATED - last updated: 2026-06-18T16:43:47.412Z
  */
 
 const ENEMY_SPRITE_SCALES = {
@@ -1117,9 +1117,9 @@ const ENEMY_SPRITE_SCALES = {
         "flipped": false
     },
     "Xatu": {
-        "scale": 1.1157407407407407,
-        "xOffset": 7,
-        "yOffset": -1,
+        "scale": 1.0185185185185186,
+        "xOffset": 6,
+        "yOffset": 0,
         "flipped": false
     },
     "Mareep": {
@@ -1255,9 +1255,9 @@ const ENEMY_SPRITE_SCALES = {
         "flipped": false
     },
     "Wobbuffet": {
-        "scale": 1.1805555555555556,
+        "scale": 1.1064814814814814,
         "xOffset": 3,
-        "yOffset": 0,
+        "yOffset": 1,
         "flipped": false
     },
     "Girafarig": {
@@ -1345,9 +1345,9 @@ const ENEMY_SPRITE_SCALES = {
         "flipped": false
     },
     "Slugma": {
-        "scale": 0.8981481481481481,
+        "scale": 0.8657407407407407,
         "xOffset": 0,
-        "yOffset": 0,
+        "yOffset": 6,
         "flipped": false
     },
     "Magcargo": {
@@ -1580,14 +1580,14 @@ const ENEMY_SPRITE_SCALES = {
     },
     "Poochyena": {
         "scale": 0.8842592592592593,
-        "xOffset": 0,
-        "yOffset": 0,
+        "xOffset": 2,
+        "yOffset": 3,
         "flipped": false
     },
     "Mightyena": {
-        "scale": 1.0277777777777777,
-        "xOffset": 1,
-        "yOffset": 0,
+        "scale": 1.0046296296296295,
+        "xOffset": 3,
+        "yOffset": 4,
         "flipped": false
     },
     "Zigzagoon": {
@@ -1693,7 +1693,7 @@ const ENEMY_SPRITE_SCALES = {
         "flipped": false
     },
     "Swellow": {
-        "scale": 1.1435185185185186,
+        "scale": 1.115740740740741,
         "xOffset": 2,
         "yOffset": 3,
         "flipped": false
@@ -1711,9 +1711,9 @@ const ENEMY_SPRITE_SCALES = {
         "flipped": false
     },
     "Spinda": {
-        "scale": 1.0324074074074074,
+        "scale": 0.9629629629629629,
         "xOffset": 3,
-        "yOffset": 0,
+        "yOffset": 4,
         "flipped": false
     },
     "Wingull": {
@@ -1755,13 +1755,13 @@ const ENEMY_SPRITE_SCALES = {
     "Skitty": {
         "scale": 0.9444444444444444,
         "xOffset": 0,
-        "yOffset": 0,
+        "yOffset": 4,
         "flipped": false
     },
     "Delcatty": {
-        "scale": 1.1111111111111112,
+        "scale": 1.0185185185185186,
         "xOffset": 0,
-        "yOffset": 0,
+        "yOffset": 5,
         "flipped": false
     },
     "Kecleon": {
@@ -1785,7 +1785,7 @@ const ENEMY_SPRITE_SCALES = {
     "Nosepass": {
         "scale": 0.9305555555555556,
         "xOffset": -2,
-        "yOffset": 0,
+        "yOffset": 5,
         "flipped": true
     },
     "Torkoal": {
@@ -1844,13 +1844,13 @@ const ENEMY_SPRITE_SCALES = {
     },
     "Carvanha": {
         "scale": 0.9537037037037037,
-        "xOffset": 3,
+        "xOffset": 6,
         "yOffset": 0,
         "flipped": false
     },
     "Sharpedo": {
-        "scale": 1.212962962962963,
-        "xOffset": 1,
+        "scale": 1.1203703703703705,
+        "xOffset": 2,
         "yOffset": -1,
         "flipped": false
     },
@@ -1891,21 +1891,21 @@ const ENEMY_SPRITE_SCALES = {
         "flipped": false
     },
     "Manectric": {
-        "scale": 1.1527777777777777,
+        "scale": 1.1018518518518516,
         "xOffset": 1,
-        "yOffset": -3,
+        "yOffset": 0,
         "flipped": false
     },
     "Numel": {
-        "scale": 0.875,
+        "scale": 0.8518518518518519,
         "xOffset": 0,
-        "yOffset": 0,
+        "yOffset": 7,
         "flipped": false
     },
     "Camerupt": {
         "scale": 1.0462962962962963,
         "xOffset": 0,
-        "yOffset": 0,
+        "yOffset": 2,
         "flipped": false
     },
     "Spheal": {
@@ -1964,14 +1964,14 @@ const ENEMY_SPRITE_SCALES = {
     },
     "Azurill": {
         "scale": 0.8611111111111112,
-        "xOffset": 0,
-        "yOffset": 0,
+        "xOffset": 2,
+        "yOffset": 6,
         "flipped": false
     },
     "Spoink": {
         "scale": 0.9490740740740741,
-        "xOffset": 0,
-        "yOffset": 0,
+        "xOffset": -2,
+        "yOffset": 2,
         "flipped": false
     },
     "Grumpig": {
@@ -1983,13 +1983,13 @@ const ENEMY_SPRITE_SCALES = {
     "Plusle": {
         "scale": 0.9074074074074074,
         "xOffset": 0,
-        "yOffset": 0,
+        "yOffset": 3,
         "flipped": false
     },
     "Minun": {
         "scale": 0.9490740740740741,
-        "xOffset": 7,
-        "yOffset": 0,
+        "xOffset": 8,
+        "yOffset": 1,
         "flipped": false
     },
     "Mawile": {
@@ -2053,9 +2053,9 @@ const ENEMY_SPRITE_SCALES = {
         "flipped": false
     },
     "Vigoroth": {
-        "scale": 1.2592592592592593,
+        "scale": 1.162037037037037,
         "xOffset": 0,
-        "yOffset": -2,
+        "yOffset": 0,
         "flipped": false
     },
     "Slaking": {
@@ -2137,14 +2137,14 @@ const ENEMY_SPRITE_SCALES = {
         "flipped": false
     },
     "Seviper": {
-        "scale": 0.9861111111111112,
+        "scale": 0.9398148148148148,
         "xOffset": 0,
         "yOffset": 0,
         "flipped": false
     },
     "Zangoose": {
-        "scale": 1.1712962962962963,
-        "xOffset": 1,
+        "scale": 1.1111111111111112,
+        "xOffset": 3,
         "yOffset": 0,
         "flipped": false
     },
@@ -2217,7 +2217,7 @@ const ENEMY_SPRITE_SCALES = {
     "Ralts": {
         "scale": 0.9629629629629629,
         "xOffset": 0,
-        "yOffset": 0,
+        "yOffset": 3,
         "flipped": false
     },
     "Kirlia": {

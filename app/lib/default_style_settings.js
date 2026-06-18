@@ -436,13 +436,13 @@ const DEFAULT_STYLE_SETTINGS = {
     },
     "Emerald_Sneasel": {
         "pkmn_ability": "Inner Focus",
-        "pkmnNature": "Hardy",
+        "pkmnNature": "Brave",
         "backgroundTexture": "Dark",
         "overlay_color": "#598a98",
         "imageFlip": true,
         "imageScale": "0.61",
         "imageYOffset": "-2",
-        "imageXOffset": "34",
+        "imageXOffset": "48",
         "ui_saturation": "2",
         "backgroundFlip": true,
         "backgroundScale": "137",
@@ -450,7 +450,11 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundXOffset": "14",
         "backgroundContrast": "133",
         "backgroundHue": "54",
-        "backgroundSaturation": "42"
+        "backgroundSaturation": "42",
+        "hidden_power_type": "Ground",
+        "hidden_power_index": "3",
+        "attempt_number": 3,
+        "finished_run_count": 1
     },
     "Emerald_Houndoom": {
         "imageScale": "0.84",
@@ -606,20 +610,23 @@ const DEFAULT_STYLE_SETTINGS = {
         "finished_run_count": 1
     },
     "Emerald_Clefable": {
-        "imageScale": "0.78",
+        "imageScale": "0.71",
         "imageFlip": true,
-        "imageYOffset": "27",
+        "imageYOffset": "20",
         "imageXOffset": "27",
-        "overlay_color": "#cb9ca5",
-        "ui_saturation": "1.5",
+        "overlay_color": "#cb9ca6",
+        "ui_saturation": "1.9",
         "backgroundTexture": "Psychic",
-        "backgroundScale": "172",
+        "backgroundScale": "177",
         "backgroundContrast": "172",
-        "backgroundBrightness": "88",
-        "backgroundBlur": "0",
+        "backgroundBrightness": "64",
+        "backgroundBlur": "1",
         "backgroundYOffset": "19",
         "pkmn_ability": "Cute Charm",
-        "pkmnNature": "Hardy"
+        "pkmnNature": "Rash",
+        "backgroundHue": "244",
+        "attempt_number": 1,
+        "finished_run_count": 1
     },
     "Emerald_Wigglytuff": {
         "imageScale": "0.82",
@@ -3096,6 +3103,12 @@ const DEFAULT_STYLE_SETTINGS = {
     },
     "FireRed and LeafGreen_44": {
         "selected_evolution_species": "Vileplume"
+    },
+    "Emerald_44": {
+        "selected_evolution_species": "Gloom"
+    },
+    "Emerald_Gloom": {
+        "selected_evolution_species": "Gloom"
     }
 };
 
