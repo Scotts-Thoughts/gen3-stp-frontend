@@ -8,7 +8,7 @@
  * Key: Pokemon species name (e.g. "Lillipup")
  * Value: scale factor (1.0 = native sprite size)
  *
- * AUTO-GENERATED - last updated: 2026-06-18T16:43:47.412Z
+ * AUTO-GENERATED - last updated: 2026-06-30T19:18:12.948Z
  */
 
 const ENEMY_SPRITE_SCALES = {
@@ -81,7 +81,7 @@ const ENEMY_SPRITE_SCALES = {
     "Abra": {
         "scale": 0.8842592592592593,
         "xOffset": -2,
-        "yOffset": -3,
+        "yOffset": -1,
         "flipped": false
     },
     "Rattata": {
@@ -1640,8 +1640,8 @@ const ENEMY_SPRITE_SCALES = {
     },
     "Lombre": {
         "scale": 0.9583333333333334,
-        "xOffset": 0,
-        "yOffset": 1,
+        "xOffset": 4,
+        "yOffset": 5,
         "flipped": false
     },
     "Ludicolo": {
@@ -1689,7 +1689,7 @@ const ENEMY_SPRITE_SCALES = {
     "Taillow": {
         "scale": 0.8842592592592593,
         "xOffset": 0,
-        "yOffset": 1,
+        "yOffset": 4,
         "flipped": false
     },
     "Swellow": {
@@ -1705,9 +1705,9 @@ const ENEMY_SPRITE_SCALES = {
         "flipped": false
     },
     "Breloom": {
-        "scale": 1.1157407407407407,
-        "xOffset": 4,
-        "yOffset": 0,
+        "scale": 1.0740740740740742,
+        "xOffset": 6,
+        "yOffset": 2,
         "flipped": false
     },
     "Spinda": {
@@ -1719,12 +1719,12 @@ const ENEMY_SPRITE_SCALES = {
     "Wingull": {
         "scale": 0.9305555555555556,
         "xOffset": 0,
-        "yOffset": -2,
+        "yOffset": -4,
         "flipped": false
     },
     "Pelipper": {
-        "scale": 0.9953703703703703,
-        "xOffset": 0,
+        "scale": 0.9814814814814815,
+        "xOffset": 1,
         "yOffset": 0,
         "flipped": false
     },
@@ -1765,25 +1765,25 @@ const ENEMY_SPRITE_SCALES = {
         "flipped": false
     },
     "Kecleon": {
-        "scale": 1.0092592592592593,
+        "scale": 1,
         "xOffset": 0,
-        "yOffset": 0,
+        "yOffset": 2,
         "flipped": false
     },
     "Baltoy": {
-        "scale": 0.9166666666666666,
+        "scale": 0.8703703703703703,
         "xOffset": 0,
-        "yOffset": 0,
+        "yOffset": -1,
         "flipped": false
     },
     "Claydol": {
-        "scale": 1.0509259259259258,
+        "scale": 1.0277777777777777,
         "xOffset": 0,
         "yOffset": -3,
         "flipped": false
     },
     "Nosepass": {
-        "scale": 0.9305555555555556,
+        "scale": 0.9212962962962963,
         "xOffset": -2,
         "yOffset": 5,
         "flipped": true
@@ -1813,15 +1813,15 @@ const ENEMY_SPRITE_SCALES = {
         "flipped": false
     },
     "Luvdisc": {
-        "scale": 0.8657407407407407,
+        "scale": 0.8611111111111112,
         "xOffset": -1,
-        "yOffset": 0,
+        "yOffset": 1,
         "flipped": false
     },
     "Corphish": {
         "scale": 0.9074074074074074,
         "xOffset": 0,
-        "yOffset": 0,
+        "yOffset": 2,
         "flipped": false
     },
     "Crawdaunt": {
@@ -1855,7 +1855,7 @@ const ENEMY_SPRITE_SCALES = {
         "flipped": false
     },
     "Trapinch": {
-        "scale": 0.8703703703703703,
+        "scale": 0.8287037037037037,
         "xOffset": 0,
         "yOffset": 2,
         "flipped": false
@@ -1868,12 +1868,12 @@ const ENEMY_SPRITE_SCALES = {
     },
     "Flygon": {
         "scale": 1.1111111111111112,
-        "xOffset": 0,
+        "xOffset": 1,
         "yOffset": 0,
         "flipped": false
     },
     "Makuhita": {
-        "scale": 1,
+        "scale": 0.9907407407407407,
         "xOffset": 2,
         "yOffset": 0,
         "flipped": false
@@ -1885,7 +1885,7 @@ const ENEMY_SPRITE_SCALES = {
         "flipped": false
     },
     "Electrike": {
-        "scale": 0.9351851851851852,
+        "scale": 0.9120370370370371,
         "xOffset": 0,
         "yOffset": 1,
         "flipped": false
@@ -1909,9 +1909,9 @@ const ENEMY_SPRITE_SCALES = {
         "flipped": false
     },
     "Spheal": {
-        "scale": 0.875,
+        "scale": 0.8611111111111112,
         "xOffset": 0,
-        "yOffset": 0,
+        "yOffset": 2,
         "flipped": false
     },
     "Sealeo": {
@@ -1933,38 +1933,38 @@ const ENEMY_SPRITE_SCALES = {
         "flipped": false
     },
     "Cacturne": {
-        "scale": 1.1064814814814816,
+        "scale": 1.0972222222222223,
         "xOffset": 0,
-        "yOffset": -2,
+        "yOffset": -1,
         "flipped": false
     },
     "Snorunt": {
         "scale": 0.9351851851851852,
-        "xOffset": 0,
+        "xOffset": 1,
         "yOffset": 0,
         "flipped": false
     },
     "Glalie": {
-        "scale": 1.0092592592592593,
+        "scale": 0.9814814814814815,
         "xOffset": 1,
         "yOffset": -1,
         "flipped": false
     },
     "Lunatone": {
-        "scale": 0.9537037037037037,
+        "scale": 0.9027777777777778,
         "xOffset": 0,
         "yOffset": 0,
         "flipped": false
     },
     "Solrock": {
-        "scale": 1.0416666666666667,
+        "scale": 1.0601851851851853,
         "xOffset": 0,
         "yOffset": 0,
         "flipped": false
     },
     "Azurill": {
         "scale": 0.8611111111111112,
-        "xOffset": 2,
+        "xOffset": 3,
         "yOffset": 6,
         "flipped": false
     },
@@ -1999,15 +1999,15 @@ const ENEMY_SPRITE_SCALES = {
         "flipped": false
     },
     "Meditite": {
-        "scale": 0.875,
+        "scale": 0.8611111111111112,
         "xOffset": 0,
         "yOffset": 0,
         "flipped": false
     },
     "Medicham": {
-        "scale": 1.1759259259259258,
-        "xOffset": 0,
-        "yOffset": 0,
+        "scale": 1.1157407407407407,
+        "xOffset": -1,
+        "yOffset": 2,
         "flipped": false
     },
     "Swablu": {
@@ -2017,13 +2017,13 @@ const ENEMY_SPRITE_SCALES = {
         "flipped": false
     },
     "Altaria": {
-        "scale": 1.1388888888888888,
+        "scale": 1.0972222222222223,
         "xOffset": 3,
         "yOffset": -1,
         "flipped": false
     },
     "Wynaut": {
-        "scale": 0.9675925925925926,
+        "scale": 0.9583333333333334,
         "xOffset": 0,
         "yOffset": 0,
         "flipped": false
@@ -2053,9 +2053,9 @@ const ENEMY_SPRITE_SCALES = {
         "flipped": false
     },
     "Vigoroth": {
-        "scale": 1.162037037037037,
+        "scale": 1.1481481481481481,
         "xOffset": 0,
-        "yOffset": 0,
+        "yOffset": 1,
         "flipped": false
     },
     "Slaking": {
@@ -2101,7 +2101,7 @@ const ENEMY_SPRITE_SCALES = {
         "flipped": false
     },
     "Clamperl": {
-        "scale": 0.8425925925925926,
+        "scale": 0.8287037037037037,
         "xOffset": 0,
         "yOffset": 0,
         "flipped": false
@@ -2119,13 +2119,13 @@ const ENEMY_SPRITE_SCALES = {
         "flipped": false
     },
     "Absol": {
-        "scale": 1.2407407407407407,
+        "scale": 1.1666666666666667,
         "xOffset": -1,
-        "yOffset": 0,
+        "yOffset": 2,
         "flipped": false
     },
     "Shuppet": {
-        "scale": 1,
+        "scale": 0.9861111111111112,
         "xOffset": 0,
         "yOffset": 0,
         "flipped": false
@@ -2155,7 +2155,7 @@ const ENEMY_SPRITE_SCALES = {
         "flipped": false
     },
     "Aron": {
-        "scale": 0.8194444444444444,
+        "scale": 0.8055555555555556,
         "xOffset": 0,
         "yOffset": 1,
         "flipped": false
@@ -2179,8 +2179,8 @@ const ENEMY_SPRITE_SCALES = {
         "flipped": false
     },
     "Volbeat": {
-        "scale": 1.087962962962963,
-        "xOffset": 1,
+        "scale": 1.074074074074074,
+        "xOffset": 3,
         "yOffset": -4,
         "flipped": false
     },
@@ -2192,14 +2192,14 @@ const ENEMY_SPRITE_SCALES = {
     },
     "Lileep": {
         "scale": 0.9120370370370371,
-        "xOffset": 0,
+        "xOffset": 1,
         "yOffset": 0,
         "flipped": false
     },
     "Cradily": {
-        "scale": 1.212962962962963,
+        "scale": 1.1388888888888888,
         "xOffset": 0,
-        "yOffset": -2,
+        "yOffset": 0,
         "flipped": false
     },
     "Anorith": {
@@ -2223,7 +2223,7 @@ const ENEMY_SPRITE_SCALES = {
     "Kirlia": {
         "scale": 1.0092592592592593,
         "xOffset": 0,
-        "yOffset": 0,
+        "yOffset": 5,
         "flipped": false
     },
     "Gardevoir": {
@@ -2235,13 +2235,13 @@ const ENEMY_SPRITE_SCALES = {
     "Bagon": {
         "scale": 0.9351851851851852,
         "xOffset": 0,
-        "yOffset": 0,
+        "yOffset": 2,
         "flipped": false
     },
     "Shelgon": {
-        "scale": 0.9259259259259259,
+        "scale": 0.8796296296296297,
         "xOffset": 0,
-        "yOffset": 0,
+        "yOffset": 4,
         "flipped": false
     },
     "Salamence": {
@@ -2275,9 +2275,9 @@ const ENEMY_SPRITE_SCALES = {
         "flipped": false
     },
     "Regice": {
-        "scale": 1.0046296296296295,
+        "scale": 1.0138888888888888,
         "xOffset": 0,
-        "yOffset": 1,
+        "yOffset": 2,
         "flipped": true
     },
     "Registeel": {
@@ -2329,7 +2329,7 @@ const ENEMY_SPRITE_SCALES = {
         "flipped": false
     },
     "Chimecho": {
-        "scale": 1.0648148148148149,
+        "scale": 1.037037037037037,
         "xOffset": 0,
         "yOffset": 1,
         "flipped": false

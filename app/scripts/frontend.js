@@ -3785,7 +3785,7 @@ const app = Vue.createApp({
                     case "Defense":         return this.metal_powder("defense", this.badge_boost(this.mapper.properties.player.badges.badge5.value, this.mapper.properties.player.team[0].defense.value))
                     case "Special Attack":  return this.light_ball(this.badge_boost(this.mapper.properties.player.badges.badge7.value, this.mapper.properties.player.team[0].specialAttack.value))
                     case "Special Defense": return this.metal_powder("special_defense", this.badge_boost(this.mapper.properties.player.badges.badge7.value, this.mapper.properties.player.team[0].specialDefense.value))
-                    case "Speed":           return this.status_stat_change(this.mapper.properties.player.team[0].statusCondition.value, this.badge_boost(this.mapper.properties.player.badges.badge3.value, this.mapper.properties.player.team[0].speed.value))
+                    case "Speed":           return this.status_stat_change(this.mapper.properties.player.team[0].statusCondition.value, this.macho_brace(this.badge_boost(this.mapper.properties.player.badges.badge3.value, this.mapper.properties.player.team[0].speed.value)))
                 }
             }
             else if (state == `Battle` || state == `From Battle`) {
@@ -6948,7 +6948,7 @@ const app = Vue.createApp({
             }
         });
 
-        this.mapper.properties.patch.sStpTextBoxOpen.change((newProp, oldProp) => {
+        this.mapper.properties.patch?.sStpTextBoxOpen?.change((newProp, oldProp) => {
             let boolean = newProp.value == 0 ? false : true
             this.sendObsChapterMarker(`Text Box - ${boolean}`)
         });
@@ -7493,7 +7493,10 @@ const app = Vue.createApp({
             }
         });
         this.mapper.properties.overworld.mapName.change(async (newProp) => {
+            const map = newProp.value
             this.freezeEncounters();
+
+            this.sendObsChapterMarker(`Map Change - ${map}`)
 
             // Wally's Zigzagoon tutorial handling (Emerald only)
             if (this.gameSelection == 'Emerald' && newProp.value == 'PETALBURG_CITY - GYM') {
@@ -7543,10 +7546,16 @@ const app = Vue.createApp({
                 "CELADON_CITY - DEPARTMENT_STORE_ROOF",
                 "CELADON_CITY - DEPARTMENT_STORE_ELEVATOR",
             ]
+            const ev_locations = [
+                "ROUTE 113",
+            ]
             console.log("newProp.value: " + newProp.value)
             console.log(vitamin_display_locations.includes(newProp.value))
             if (vitamin_display_locations.includes(newProp.value)) {
                 this.stats = "Vitamins";
+            }
+            else if (ev_locations.includes(newProp.value)) {
+                this.stats = "EVs";
             }
             else {
                 this.stats = "Automatic";

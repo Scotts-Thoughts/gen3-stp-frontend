@@ -453,8 +453,8 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundSaturation": "42",
         "hidden_power_type": "Ground",
         "hidden_power_index": "3",
-        "attempt_number": 3,
-        "finished_run_count": 1
+        "attempt_number": 4,
+        "finished_run_count": 2
     },
     "Emerald_Houndoom": {
         "imageScale": "0.84",
@@ -466,7 +466,14 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundScale": "139",
         "backgroundYOffset": "21",
         "backgroundContrast": "140",
-        "backgroundHue": "333"
+        "backgroundHue": "333",
+        "pkmn_ability": "Early Bird",
+        "pkmnNature": "Rash",
+        "backgroundTexture": "Dark",
+        "hidden_power_type": "Water",
+        "hidden_power_index": "3",
+        "attempt_number": 2,
+        "finished_run_count": 2
     },
     "Emerald_Pichu": {
         "pkmn_ability": "Static",
@@ -485,7 +492,27 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundHue": "76"
     },
     "Emerald_Nidoking": {
-        "selected_evolution_species": "Nidoking"
+        "selected_evolution_species": "Nidoking",
+        "evolution": false,
+        "imageFlip": true,
+        "imageScale": "1.12",
+        "imageYOffset": "20",
+        "imageXOffset": "13",
+        "overlay_color": "#b884b1",
+        "ui_saturation": "1.9",
+        "backgroundScale": "126",
+        "backgroundTexture": "Ground",
+        "backgroundContrast": "142",
+        "backgroundBrightness": "37",
+        "backgroundHue": "0",
+        "backgroundSaturation": "136",
+        "backgroundBlur": "2",
+        "hidden_power_type": "Grass",
+        "hidden_power_index": "4",
+        "attempt_number": 4,
+        "pkmn_ability": "Poison Point",
+        "pkmnNature": "Hardy",
+        "finished_run_count": 3
     },
     "Emerald_34": {
         "selected_evolution_species": "Nidoking"
@@ -511,10 +538,15 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundContrast": "131",
         "backgroundBrightness": "55",
         "backgroundBlur": "2",
-        "imageScale": "0.94",
-        "imageYOffset": "62",
+        "imageScale": "0.82",
+        "imageYOffset": "41",
         "imageFlip": true,
-        "imageXOffset": "13"
+        "imageXOffset": "13",
+        "pkmnNature": "Quiet",
+        "pkmn_ability": "Poison Point",
+        "attempt_number": 2,
+        "finished_run_count": 2,
+        "backgroundTexture": "Poison"
     },
     "Emerald_Blastoise": {
         "imageYOffset": "55",
@@ -524,10 +556,18 @@ const DEFAULT_STYLE_SETTINGS = {
         "ui_saturation": "1.8",
         "backgroundScale": "200",
         "backgroundBrightness": "65",
-        "backgroundContrast": "113",
+        "backgroundContrast": "129",
         "backgroundBlur": "1",
         "backgroundTexture": "Dark Water",
-        "backgroundYOffset": "118"
+        "backgroundYOffset": "118",
+        "selected_evolution_species": "Blastoise",
+        "evolution": false,
+        "pkmn_ability": "Torrent",
+        "pkmnNature": "Rash",
+        "finished_run_count": 2,
+        "attempt_number": 2,
+        "hidden_power_type": "Electric",
+        "hidden_power_index": "3"
     },
     "Emerald_Venusaur": {
         "imageScale": "1.2",
@@ -548,7 +588,7 @@ const DEFAULT_STYLE_SETTINGS = {
     },
     "Emerald_Nosepass": {
         "pkmn_ability": "Sturdy",
-        "pkmnNature": "Hardy",
+        "pkmnNature": "Mild",
         "backgroundTexture": "Rock",
         "overlay_color": "#5d7cbc",
         "imageScale": "0.53",
@@ -560,7 +600,11 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundYOffset": "1",
         "backgroundXOffset": "28",
         "backgroundBrightness": "90",
-        "backgroundBlur": "2"
+        "backgroundBlur": "2",
+        "hidden_power_type": "Water",
+        "hidden_power_index": "3",
+        "attempt_number": 2,
+        "finished_run_count": 1
     },
     "Emerald_Geodude": {
         "imageScale": "0.82",
@@ -573,7 +617,14 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundFlip": true,
         "backgroundBrightness": "19",
         "backgroundSaturation": "127",
-        "backgroundBlur": "4"
+        "backgroundBlur": "4",
+        "selected_evolution_species": "Geodude",
+        "evolution": false,
+        "attempt_number": 9,
+        "finished_run_count": 7,
+        "pkmnNature": "Hardy",
+        "pkmn_ability": "Rock Head",
+        "hidden_power_type": "Rock"
     },
     "Emerald_Onix": {
         "imageFlip": true,
@@ -587,7 +638,14 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundYOffset": "90",
         "backgroundContrast": "112",
         "backgroundBrightness": "67",
-        "backgroundBlur": "2"
+        "backgroundBlur": "2",
+        "pkmn_ability": "Rock Head",
+        "pkmnNature": "Adamant",
+        "hidden_power_type": "Rock",
+        "hidden_power_index": "3",
+        "attempt_number": 2,
+        "finished_run_count": 2,
+        "backgroundTexture": "Rock"
     },
     "Emerald_Azumarill": {
         "imageFlip": true,
@@ -625,8 +683,8 @@ const DEFAULT_STYLE_SETTINGS = {
         "pkmn_ability": "Cute Charm",
         "pkmnNature": "Rash",
         "backgroundHue": "244",
-        "attempt_number": 1,
-        "finished_run_count": 1
+        "attempt_number": 2,
+        "finished_run_count": 2
     },
     "Emerald_Wigglytuff": {
         "imageScale": "0.82",
@@ -2249,11 +2307,14 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundBlur": "2",
         "backgroundYOffset": "-3",
         "pkmnNature": "Mild",
-        "hidden_power_type": "Water",
+        "hidden_power_type": "Ice",
         "hidden_power_index": "3",
-        "attempt_number": 2,
-        "finished_run_count": 1,
-        "backgroundTexture": "Poison"
+        "attempt_number": 7,
+        "finished_run_count": 5,
+        "backgroundTexture": "Poison",
+        "selected_evolution_species": "Koffing",
+        "evolution": false,
+        "splits_display": "Followup"
     },
     "FireRed and LeafGreen_Koffing": {
         "pkmn_ability": "Levitate",
@@ -2368,11 +2429,12 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundBrightness": "83",
         "backgroundBlur": "3",
         "backgroundYOffset": "3",
-        "pkmnNature": "Brave",
+        "pkmnNature": "Quiet",
         "pkmn_ability": "Intimidate",
         "backgroundTexture": "Poison",
-        "attempt_number": 2,
-        "finished_run_count": 1
+        "attempt_number": 5,
+        "finished_run_count": 4,
+        "splits_display": "Followup"
     },
     "FireRed and LeafGreen_Ekans": {
         "pkmn_ability": "Intimidate",
@@ -2600,7 +2662,7 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundContrast": "122",
         "backgroundSaturation": "122",
         "evolution": true,
-        "finished_run_count": 2
+        "finished_run_count": 1
     },
     "FireRed and LeafGreen_Horsea": {
         "imageFlip": true,
@@ -2639,7 +2701,7 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundBrightness": "80",
         "backgroundContrast": "136",
         "backgroundSaturation": 100,
-        "attempt_number": 1,
+        "attempt_number": 3,
         "evolution": true
     },
     "FireRed and LeafGreen_Horsea-line-Seadra": {
@@ -2784,7 +2846,8 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundYOffset": "-45",
         "backgroundBrightness": "80",
         "backgroundContrast": "136",
-        "backgroundSaturation": 100
+        "backgroundSaturation": 100,
+        "finished_run_count": 5
     },
     "FireRed and LeafGreen_Muk-line-Grimer": {
         "imageFlip": true,
@@ -2830,7 +2893,7 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundBrightness": "51",
         "backgroundContrast": "126",
         "backgroundSaturation": 100,
-        "finished_run_count": 2
+        "finished_run_count": 1
     },
     "FireRed and LeafGreen_Victreebel": {},
     "FireRed and LeafGreen_Muk-line": {
@@ -3109,6 +3172,72 @@ const DEFAULT_STYLE_SETTINGS = {
     },
     "Emerald_Gloom": {
         "selected_evolution_species": "Gloom"
+    },
+    "Emerald_74": {
+        "selected_evolution_species": "Geodude"
+    },
+    "Emerald_Golem-line": {
+        "pkmnNature": "Hasty",
+        "hidden_power_type": "Rock",
+        "hidden_power_index": "3"
+    },
+    "Emerald_Golem-line-Geodude": {
+        "overlay_color": "#c3c1b8",
+        "ui_saturation": "2",
+        "imageScale": "0.71",
+        "imageYOffset": "-87",
+        "imageXOffset": "-9",
+        "backgroundScale": "126",
+        "backgroundYOffset": "79",
+        "backgroundXOffset": "67",
+        "backgroundBlur": "3",
+        "backgroundBrightness": "57",
+        "backgroundContrast": "112",
+        "backgroundFlip": true,
+        "attempt_number": 7
+    },
+    "Emerald_undefined": {
+        "selected_evolution_species": "Geodude"
+    },
+    "FireRed and LeafGreen_Sneasel": {
+        "pkmn_ability": "Inner Focus",
+        "pkmnNature": "Hardy",
+        "backgroundTexture": "Dark",
+        "overlay_color": "#705848"
+    },
+    "FireRed and LeafGreen_Lickitung": {
+        "pkmn_ability": "Own Tempo",
+        "pkmnNature": "Hardy",
+        "backgroundTexture": "Poison",
+        "overlay_color": "#f5bac0",
+        "imageFlip": true,
+        "imageScale": "0.78",
+        "imageYOffset": "6",
+        "imageXOffset": "20",
+        "backgroundScale": "140",
+        "backgroundContrast": "113",
+        "backgroundHue": "117",
+        "backgroundBrightness": "48",
+        "backgroundBlur": "3",
+        "backgroundYOffset": "8",
+        "backgroundXOffset": "90",
+        "attempt_number": 2,
+        "finished_run_count": 4
+    },
+    "Emerald_9": {
+        "selected_evolution_species": "Blastoise"
+    },
+    "Emerald_Blastoise-line-Blastoise": {
+        "imageScale": "0.84",
+        "imageYOffset": "27",
+        "imageXOffset": "-9",
+        "overlay_color": "#6692c3",
+        "ui_saturation": "1.7",
+        "backgroundTexture": "Dark Water",
+        "backgroundContrast": "136",
+        "backgroundScale": "126",
+        "backgroundBrightness": "85",
+        "backgroundBlur": "0"
     }
 };
 
