@@ -6953,6 +6953,16 @@ const app = Vue.createApp({
             this.sendObsChapterMarker(`Text Box - ${boolean}`)
         });
 
+        // NEXT POKEMON CHAPTER MARKER (Battle only)
+        // Fires "Next Pokemon" whenever battle.trainer.party_position changes during Battle.
+        this.mapper.properties.battle.trainer.party_position?.change((newProp, oldProp) => {
+            console.log("Chapter Detected: Next Pokemon - part 1");
+            if (this.g3stateVariable !== 'Battle') return;
+            if (newProp?.value === oldProp?.value) return;
+            console.log("Chapter Detected: Next Pokemon - part 2");
+            this.sendObsChapterMarker("Next Pokemon");
+        });
+
         //GAMESTATE MANAGEMENT
         // set initial gamestate value when the layout is loaded
         if (this.legacy_state == true) {

@@ -3238,6 +3238,73 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundScale": "126",
         "backgroundBrightness": "85",
         "backgroundBlur": "0"
+    },
+    "FireRed and LeafGreen_Eevee": {
+        "evolution": true,
+        "selected_evolution_species": "Eevee"
+    },
+    "FireRed and LeafGreen_133": {
+        "selected_evolution_species": "Eevee"
+    },
+    "FireRed and LeafGreen_Sylveon-line-Eevee": {
+        "imageFlip": true,
+        "imageScale": "0.63",
+        "imageYOffset": "-2",
+        "imageXOffset": "48",
+        "overlay_color": "#be8b5b",
+        "ui_saturation": "1.6",
+        "backgroundTexture": "Bug",
+        "backgroundBrightness": "37",
+        "backgroundContrast": "120",
+        "attempt_number": 1
+    },
+    "FireRed and LeafGreen_Sylveon-line-Vaporeon": {
+        "backgroundContrast": "104",
+        "backgroundBlur": "1",
+        "backgroundScale": "124",
+        "backgroundBrightness": "23",
+        "backgroundHue": "34",
+        "imageScale": "0.85",
+        "imageYOffset": "32",
+        "overlay_color": "#78ccdf",
+        "backgroundYOffset": "75",
+        "imageXOffset": "18",
+        "finished_run_count": 1
+    },
+    "FireRed and LeafGreen_Sylveon-line": {
+        "pkmn_ability": "Run Away"
+    },
+    "FireRed and LeafGreen_Sylveon-line-Jolteon": {
+        "imageFlip": true,
+        "imageScale": "0.81",
+        "imageYOffset": "32",
+        "imageXOffset": "32",
+        "overlay_color": "#fad570",
+        "ui_saturation": "1.3",
+        "backgroundScale": "200",
+        "backgroundFlip": true,
+        "backgroundXFlip": true,
+        "backgroundYOffset": "35",
+        "backgroundXOffset": "119",
+        "backgroundHue": "41",
+        "backgroundBrightness": "86",
+        "backgroundContrast": "151",
+        "finished_run_count": 3
+    },
+    "FireRed and LeafGreen_Sylveon-line-Flareon": {
+        "imageFlip": true,
+        "imageScale": "0.83",
+        "imageYOffset": "11",
+        "imageXOffset": "46",
+        "overlay_color": "#f2a56f",
+        "ui_saturation": "1.4",
+        "backgroundScale": "161",
+        "backgroundYOffset": "-42",
+        "backgroundXOffset": "53",
+        "backgroundBrightness": "84",
+        "backgroundContrast": "113",
+        "backgroundBlur": "2",
+        "finished_run_count": 1
     }
 };
 
