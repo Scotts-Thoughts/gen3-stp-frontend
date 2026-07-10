@@ -3272,7 +3272,7 @@ const DEFAULT_STYLE_SETTINGS = {
         "finished_run_count": 1
     },
     "FireRed and LeafGreen_Sylveon-line": {
-        "pkmn_ability": "Run Away"
+        "pkmn_ability": "Water Absorb"
     },
     "FireRed and LeafGreen_Sylveon-line-Jolteon": {
         "imageFlip": true,
@@ -3289,7 +3289,7 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundHue": "41",
         "backgroundBrightness": "86",
         "backgroundContrast": "151",
-        "finished_run_count": 3
+        "finished_run_count": 1
     },
     "FireRed and LeafGreen_Sylveon-line-Flareon": {
         "imageFlip": true,
@@ -3304,7 +3304,26 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundBrightness": "84",
         "backgroundContrast": "113",
         "backgroundBlur": "2",
-        "finished_run_count": 1
+        "finished_run_count": 1,
+        "attempt_number": 1
+    },
+    "FireRed and LeafGreen_Flareon": {
+        "selected_evolution_species": "Flareon"
+    },
+    "FireRed and LeafGreen_136": {
+        "selected_evolution_species": "Flareon"
+    },
+    "FireRed and LeafGreen_Jolteon": {
+        "selected_evolution_species": "Jolteon"
+    },
+    "FireRed and LeafGreen_135": {
+        "selected_evolution_species": "Jolteon"
+    },
+    "FireRed and LeafGreen_Vaporeon": {
+        "selected_evolution_species": "Vaporeon"
+    },
+    "FireRed and LeafGreen_134": {
+        "selected_evolution_species": "Vaporeon"
     }
 };
 

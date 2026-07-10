@@ -1794,7 +1794,11 @@ const app = Vue.createApp({
                 
                 // Load from evolution family storage, fallback to individual storage, then defaults
                 this.pkmnNature = familyStored.pkmnNature ?? MyStorage[`${game}_${starter}`]?.pkmnNature ?? "Hardy";
-                this.pkmn_ability = familyStored.pkmn_ability ?? MyStorage[`${game}_${starter}`]?.pkmn_ability ?? (this.game?.dexData?.[starter]?.abilities?.[0]) ?? null;
+                const storedAbility = familyStored.pkmn_ability ?? MyStorage[`${game}_${starter}`]?.pkmn_ability ?? (this.game?.dexData?.[starter]?.abilities?.[0]) ?? null;
+                // Remap by ability slot onto the species selected in the evolution family style
+                // dropdown (e.g. Eevee's Run Away stored before evolving into Vaporeon)
+                const abilitySpecies = this.selected_evolution_species || starter;
+                this.pkmn_ability = this.mapAbilityToSpecies(storedAbility, abilitySpecies);
                 this.pkmn_gender = familyStored.pkmn_gender ?? MyStorage[`${game}_${starter}`]?.pkmn_gender ?? "Female";
                 this.hidden_power_type = familyStored.hidden_power_type ?? MyStorage[`${game}_${starter}`]?.hidden_power_type ?? "Dark";
                 this.hidden_power_index = familyStored.hidden_power_index ?? MyStorage[`${game}_${starter}`]?.hidden_power_index ?? 0;
@@ -2406,8 +2410,9 @@ const app = Vue.createApp({
                 return ability;
             }
             else {
-
-                return this.pkmn_ability;
+                // Remap the stored ability to the displayed species by ability slot, in case
+                // the stored name belongs to a pre-evolution (e.g. Eevee's Run Away -> Water Absorb)
+                return this.mapAbilityToSpecies(this.pkmn_ability, this.displayedPokemonSpecies);
             }
         },
         enemyTrainerName() {
@@ -3175,6 +3180,32 @@ const app = Vue.createApp({
                 return [species];
             }
             return evolution_family.map(member => member.species).filter(s => s != null);
+        },
+        mapAbilityToSpecies(ability, targetSpecies, sourceSpecies = null) {
+            // Map a stored ability name onto a (possibly different) species, preserving the
+            // Gen 3 ability slot. E.g. Eevee's "Run Away" (slot 0) becomes Vaporeon's
+            // "Water Absorb" (slot 0) on evolution.
+            const targetAbilities = this.game?.dexData?.[targetSpecies]?.abilities;
+            if (!ability || !targetAbilities || targetAbilities.length === 0) return ability;
+            if (targetAbilities.includes(ability)) return ability;
+            
+            // Find which slot the ability occupies on the source species,
+            // falling back to searching the target's evolution family
+            let slot = -1;
+            if (sourceSpecies) {
+                slot = this.game?.dexData?.[sourceSpecies]?.abilities?.indexOf(ability) ?? -1;
+            }
+            if (slot === -1) {
+                for (const member of this.getEvolutionFamily(targetSpecies)) {
+                    const index = this.game?.dexData?.[member]?.abilities?.indexOf(ability) ?? -1;
+                    if (index !== -1) {
+                        slot = index;
+                        break;
+                    }
+                }
+            }
+            if (slot === -1) slot = 0;
+            return targetAbilities[slot] ?? targetAbilities[0];
         },
         getStorageKey(species, useEvolutionLine = false) {
             // Get the storage key for a species
@@ -4608,7 +4639,11 @@ const app = Vue.createApp({
                 this.pkmn_ability = this.game.dexData[speciesForSettings].abilities[0]
             }
             else {
-                this.pkmn_ability = MyStorage[sharedStorageKey]?.pkmn_ability ?? MyStorage[settingsStorageKey]?.pkmn_ability ?? this.game.dexData?.[speciesForSettings]?.abilities?.[0] ?? null
+                const storedAbility = MyStorage[sharedStorageKey]?.pkmn_ability ?? MyStorage[settingsStorageKey]?.pkmn_ability ?? this.game.dexData?.[speciesForSettings]?.abilities?.[0] ?? null
+                // Remap by ability slot onto the species selected in the evolution family style
+                // dropdown (e.g. Eevee's Run Away stored before evolving into Vaporeon)
+                const abilitySpecies = (this.evolution && this.selected_evolution_species) ? this.selected_evolution_species : speciesForSettings
+                this.pkmn_ability = this.mapAbilityToSpecies(storedAbility, abilitySpecies)
             }
             if (this.set_starter_stats_object) {
                 this.set_starter_stats_object.gender = this.pkmn_gender;
@@ -4834,7 +4869,9 @@ const app = Vue.createApp({
                     this.pkmnNature = familyStored.pkmnNature;
                 }
                 if ('pkmn_ability' in familyStored) {
-                    this.pkmn_ability = familyStored.pkmn_ability;
+                    // Remap by ability slot onto the species selected in the evolution family style
+                    // dropdown (e.g. Eevee's Run Away stored before evolving into Vaporeon)
+                    this.pkmn_ability = this.mapAbilityToSpecies(familyStored.pkmn_ability, species);
                 } else if (this.pkmn_ability === null || this.pkmn_ability === undefined) {
                     // Only default to first ability if not set at all
                     this.pkmn_ability = this.game?.dexData?.[species]?.abilities?.[0] ?? null;
@@ -6566,6 +6603,20 @@ const app = Vue.createApp({
                             // Update starter
                             this.starter = newSpecies;
                             this.last_known_species = newSpecies;
+                            
+                            // Remap the ability to the evolved species, preserving the ability slot
+                            // (e.g. Eevee's Run Away -> Vaporeon's Water Absorb)
+                            const remappedAbility = this.mapAbilityToSpecies(this.pkmn_ability, newSpecies, oldProp.value);
+                            if (remappedAbility !== this.pkmn_ability) {
+                                this.pkmn_ability = remappedAbility;
+                                // Persist directly to family storage; the pkmn_ability watcher can be
+                                // suppressed by is_loading_evolution_style during the transition
+                                const familyStorageKey = this.getEvolutionFamilyStorageKey(newSpecies);
+                                MyStorage[familyStorageKey] = {
+                                    ...(MyStorage[familyStorageKey] || {}),
+                                    pkmn_ability: remappedAbility
+                                };
+                            }
                             
                             // Update the dropdown to the new evolved species
                             // This will trigger the watcher to load the new species' styles
