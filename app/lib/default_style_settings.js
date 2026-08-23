@@ -55,8 +55,10 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundSaturation": "120",
         "backgroundBlur": "2",
         "backgroundHue": "16",
-        "finished_run_count": 0,
-        "attempt_number": 1
+        "finished_run_count": 1,
+        "attempt_number": 1,
+        "hidden_power_type": "Fire",
+        "hidden_power_index": "3"
     },
     "Emerald_Feraligatr": {
         "pkmn_ability": "Torrent",
@@ -337,20 +339,20 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundTexture": "Flying",
         "overlay_color": "#d3d6df",
         "imageFlip": true,
-        "imageScale": "0.45",
-        "imageYOffset": "161",
-        "imageXOffset": "41",
+        "imageScale": "0.39",
+        "imageYOffset": "218",
+        "imageXOffset": "62",
         "ui_saturation": "1.6",
-        "backgroundContrast": "189",
+        "backgroundContrast": "195",
         "backgroundUrl": false,
         "backgroundSaturation": "69",
-        "backgroundBrightness": "92",
+        "backgroundBrightness": "87",
         "backgroundBlur": "2",
         "backgroundScale": "104",
-        "hidden_power_type": "Fighting",
-        "hidden_power_index": "4",
-        "attempt_number": 2,
-        "finished_run_count": 2
+        "hidden_power_type": "Dark",
+        "hidden_power_index": "0",
+        "attempt_number": 4,
+        "finished_run_count": 3
     },
     "Emerald_Wartortle": {
         "imageFlip": true,
@@ -1315,8 +1317,8 @@ const DEFAULT_STYLE_SETTINGS = {
         "imageYOffset": "48",
         "imageXOffset": "13",
         "ui_saturation": "1.9",
-        "attempt_number": 2,
-        "finished_run_count": 1
+        "attempt_number": 3,
+        "finished_run_count": 2
     },
     "Emerald_Crawdaunt": {
         "pkmn_ability": "Hyper Cutter",
@@ -2069,8 +2071,8 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundScale": "109",
         "backgroundXOffset": "30",
         "backgroundYOffset": "-25",
-        "attempt_number": 3,
-        "finished_run_count": 1
+        "attempt_number": 4,
+        "finished_run_count": 4
     },
     "Emerald_Aggron": {
         "pkmn_ability": "Rock Head",
@@ -2227,7 +2229,7 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundBrightness": "85",
         "backgroundContrast": "124",
         "backgroundSaturation": "131",
-        "finished_run_count": 2
+        "finished_run_count": 4
     },
     "FireRed and LeafGreen_Doduo-line": {
         "pkmn_ability": "Early Bird"
@@ -2895,7 +2897,9 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundSaturation": 100,
         "finished_run_count": 1
     },
-    "FireRed and LeafGreen_Victreebel": {},
+    "FireRed and LeafGreen_Victreebel": {
+        "selected_evolution_species": "Victreebel"
+    },
     "FireRed and LeafGreen_Muk-line": {
         "pkmn_ability": "Sticky Hold"
     },
@@ -3007,14 +3011,14 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundContrast": "133",
         "backgroundSaturation": 100,
         "backgroundXFlip": true,
-        "finished_run_count": 2,
+        "finished_run_count": 1,
         "evolution": true
     },
     "FireRed and LeafGreen_Weepinbell": {
         "selected_evolution_species": "Weepinbell"
     },
     "FireRed and LeafGreen_70": {
-        "selected_evolution_species": "Victreebel"
+        "selected_evolution_species": "Weepinbell"
     },
     "FireRed and LeafGreen_Oddish": {
         "selected_evolution_species": "Oddish"
@@ -3089,7 +3093,7 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundBrightness": "71",
         "backgroundContrast": "181",
         "backgroundSaturation": 100,
-        "finished_run_count": 2
+        "finished_run_count": 1
     },
     "FireRed and LeafGreen_Bellossom-line-Bellossom": {
         "overlay_color": "#587f9a",
@@ -3128,7 +3132,9 @@ const DEFAULT_STYLE_SETTINGS = {
         "imageXOffset": "48",
         "overlay_color": "#74b4df",
         "ui_saturation": "1.5",
-        "pkmnNature": "Hardy"
+        "pkmnNature": "Hardy",
+        "attempt_number": 1,
+        "finished_run_count": 2
     },
     "FireRed and LeafGreen_Zapdos": {
         "imageFlip": true,
@@ -3145,7 +3151,10 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundContrast": "159",
         "backgroundBrightness": "74",
         "backgroundHue": "314",
-        "pkmnNature": "Hardy"
+        "pkmnNature": "Hardy",
+        "attempt_number": 3,
+        "finished_run_count": 4,
+        "pkmn_ability": "Pressure"
     },
     "FireRed and LeafGreen_Moltres": {
         "pkmn_ability": "Pressure",
@@ -3159,13 +3168,16 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundYOffset": "-43",
         "backgroundXOffset": "-70",
         "backgroundContrast": "112",
-        "backgroundBrightness": "85"
+        "backgroundBrightness": "85",
+        "pkmnNature": "Hardy",
+        "attempt_number": 1,
+        "finished_run_count": 2
     },
     "FireRed and LeafGreen_Gloom": {
         "selected_evolution_species": "Gloom"
     },
     "FireRed and LeafGreen_44": {
-        "selected_evolution_species": "Vileplume"
+        "selected_evolution_species": "Gloom"
     },
     "Emerald_44": {
         "selected_evolution_species": "Gloom"
@@ -3269,7 +3281,8 @@ const DEFAULT_STYLE_SETTINGS = {
         "overlay_color": "#78ccdf",
         "backgroundYOffset": "75",
         "imageXOffset": "18",
-        "finished_run_count": 1
+        "finished_run_count": 1,
+        "evolution": true
     },
     "FireRed and LeafGreen_Sylveon-line": {
         "pkmn_ability": "Water Absorb"
@@ -3324,6 +3337,274 @@ const DEFAULT_STYLE_SETTINGS = {
     },
     "FireRed and LeafGreen_134": {
         "selected_evolution_species": "Vaporeon"
+    },
+    "FireRed and LeafGreen_Venonat": {
+        "selected_evolution_species": "Venonat"
+    },
+    "FireRed and LeafGreen_48": {
+        "selected_evolution_species": "Venonat"
+    },
+    "FireRed and LeafGreen_Venomoth-line": {
+        "pkmn_ability": "Shield Dust"
+    },
+    "FireRed and LeafGreen_Venomoth-line-Venonat": {
+        "imageScale": "0.55",
+        "imageYOffset": "-44",
+        "imageXOffset": "-65",
+        "overlay_color": "#7d73b2",
+        "ui_saturation": "1.2",
+        "backgroundTexture": "Poison",
+        "backgroundScale": "125",
+        "backgroundHue": "158",
+        "backgroundContrast": "133",
+        "backgroundBlur": "3",
+        "backgroundBrightness": "73",
+        "imageFlip": false,
+        "imageSat": 100,
+        "imageRotation": 0,
+        "backgroundUrl": "",
+        "backgroundFlip": false,
+        "use_custom_background": false,
+        "backgroundXOffset": 0,
+        "backgroundYOffset": 0,
+        "backgroundSaturation": 100
+    },
+    "FireRed and LeafGreen_Venomoth-line-Venomoth": {
+        "overlay_color": "#d9cbe2",
+        "ui_saturation": "1.2",
+        "imageXOffset": "20",
+        "imageYOffset": "140",
+        "imageScale": "0.94",
+        "imageFlip": true,
+        "imageSat": 100,
+        "imageRotation": 0,
+        "backgroundTexture": "Poison",
+        "backgroundBlur": "3",
+        "backgroundHue": "158",
+        "backgroundScale": "125",
+        "backgroundUrl": "",
+        "backgroundFlip": false,
+        "use_custom_background": false,
+        "backgroundXOffset": 0,
+        "backgroundYOffset": 0,
+        "backgroundBrightness": "73",
+        "backgroundContrast": "133",
+        "backgroundSaturation": 100,
+        "finished_run_count": 1
+    },
+    "FireRed and LeafGreen_Venomoth": {
+        "selected_evolution_species": "Venomoth"
+    },
+    "FireRed and LeafGreen_49": {
+        "selected_evolution_species": "Venomoth"
+    },
+    "FireRed and LeafGreen_71": {
+        "selected_evolution_species": "Victreebel"
+    },
+    "FireRed and LeafGreen_undefined": {
+        "selected_evolution_species": "Victreebel"
+    },
+    "FireRed and LeafGreen_Dodrio-line-Doduo": {
+        "attempt_number": 5,
+        "overlay_color": "#d39f70",
+        "ui_saturation": "1.4",
+        "imageXOffset": "-2",
+        "imageYOffset": "34",
+        "imageScale": "0.8",
+        "imageFlip": true,
+        "imageSat": 100,
+        "imageRotation": 0,
+        "backgroundTexture": "Dragon",
+        "backgroundBlur": "3",
+        "backgroundHue": "295",
+        "backgroundScale": "132",
+        "backgroundUrl": "",
+        "backgroundFlip": false,
+        "use_custom_background": false,
+        "backgroundXOffset": 0,
+        "backgroundYOffset": "-67",
+        "backgroundBrightness": "85",
+        "backgroundContrast": "124",
+        "backgroundSaturation": "131"
+    },
+    "FireRed and LeafGreen_Weezing-line-Koffing": {
+        "attempt_number": 1,
+        "imageScale": "0.63",
+        "imageYOffset": "161",
+        "imageXOffset": "-16",
+        "overlay_color": "#a8a1cc",
+        "ui_saturation": "2",
+        "backgroundBlur": "3",
+        "backgroundScale": "123",
+        "backgroundTexture": "Ghost",
+        "backgroundContrast": "122",
+        "imageFlip": false,
+        "imageSat": 100,
+        "imageRotation": 0,
+        "backgroundHue": 0,
+        "backgroundUrl": "",
+        "backgroundFlip": false,
+        "use_custom_background": false,
+        "backgroundXOffset": 0,
+        "backgroundYOffset": 0,
+        "backgroundBrightness": 100,
+        "backgroundSaturation": 100,
+        "evolution": true
+    },
+    "FireRed and LeafGreen_Weezing-line-Weezing": {
+        "finished_run_count": 5,
+        "overlay_color": "#a8a1cc",
+        "ui_saturation": "2",
+        "imageXOffset": "13",
+        "imageYOffset": "161",
+        "imageScale": "0.84",
+        "imageFlip": true,
+        "imageSat": 100,
+        "imageRotation": 0,
+        "backgroundTexture": "Ghost",
+        "backgroundBlur": "3",
+        "backgroundHue": 0,
+        "backgroundScale": "123",
+        "backgroundUrl": "",
+        "backgroundFlip": false,
+        "use_custom_background": false,
+        "backgroundXOffset": 0,
+        "backgroundYOffset": 0,
+        "backgroundBrightness": 100,
+        "backgroundContrast": "122",
+        "backgroundSaturation": 100
+    },
+    "FireRed and LeafGreen_Weezing": {
+        "selected_evolution_species": "Weezing"
+    },
+    "FireRed and LeafGreen_110": {
+        "selected_evolution_species": "Koffing"
+    },
+    "FireRed and LeafGreen_Paras": {
+        "selected_evolution_species": "Paras"
+    },
+    "FireRed and LeafGreen_46": {
+        "selected_evolution_species": "Paras"
+    },
+    "FireRed and LeafGreen_Parasect-line-Paras": {
+        "imageFlip": true,
+        "imageScale": "0.51",
+        "imageYOffset": "-101",
+        "imageXOffset": "34",
+        "overlay_color": "#eba355",
+        "ui_saturation": "1.4",
+        "backgroundScale": "100",
+        "backgroundBrightness": "44",
+        "backgroundContrast": "115",
+        "backgroundSaturation": "96",
+        "imageSat": 100,
+        "imageRotation": 0,
+        "backgroundTexture": "Bug",
+        "backgroundBlur": 0,
+        "backgroundHue": 0,
+        "backgroundUrl": "",
+        "backgroundFlip": false,
+        "use_custom_background": false,
+        "backgroundXOffset": 0,
+        "backgroundYOffset": 0,
+        "attempt_number": 1
+    },
+    "FireRed and LeafGreen_Parasect-line-Parasect": {
+        "overlay_color": "#eba355",
+        "ui_saturation": "1.4",
+        "imageXOffset": "20",
+        "imageYOffset": "-16",
+        "imageScale": "0.67",
+        "imageFlip": true,
+        "imageSat": 100,
+        "imageRotation": 0,
+        "backgroundTexture": "Bug",
+        "backgroundBlur": 0,
+        "backgroundHue": 0,
+        "backgroundScale": "100",
+        "backgroundUrl": "",
+        "backgroundFlip": false,
+        "use_custom_background": false,
+        "backgroundXOffset": 0,
+        "backgroundYOffset": 0,
+        "backgroundBrightness": "44",
+        "backgroundContrast": "115",
+        "backgroundSaturation": "96",
+        "finished_run_count": 1
+    },
+    "FireRed and LeafGreen_Vileplume": {
+        "selected_evolution_species": "Vileplume"
+    },
+    "FireRed and LeafGreen_45": {
+        "selected_evolution_species": "Vileplume"
+    },
+    "FireRed and LeafGreen_Parasect": {
+        "selected_evolution_species": "Parasect"
+    },
+    "FireRed and LeafGreen_47": {
+        "selected_evolution_species": "Parasect"
+    },
+    "FireRed and LeafGreen_Kangaskhan-postgame": {
+        "pkmn_ability": null,
+        "pkmnNature": "Hardy",
+        "backgroundTexture": "Normal",
+        "overlay_color": "#a8a878"
+    },
+    "FireRed and LeafGreen_Mewtwo": {
+        "pkmn_ability": "Pressure",
+        "imageScale": "1",
+        "imageYOffset": "48",
+        "imageXOffset": "-16",
+        "overlay_color": "#ab85aa",
+        "ui_saturation": "1.6",
+        "backgroundHue": "272",
+        "backgroundContrast": "138",
+        "backgroundSaturation": "142",
+        "backgroundBlur": "0",
+        "backgroundScale": "113",
+        "attempt_number": 1,
+        "finished_run_count": 3,
+        "pkmnNature": "Hardy",
+        "backgroundTexture": "Psychic"
+    },
+    "Emerald_Articuno": {
+        "pkmnNature": "Hardy",
+        "backgroundTexture": "Ice",
+        "overlay_color": "#98d8d8"
+    },
+    "Emerald_Castform-Snowy": {
+        "imageFlip": true,
+        "imageScale": "0.45",
+        "imageYOffset": "175",
+        "imageXOffset": "34",
+        "backgroundBrightness": "34",
+        "backgroundContrast": "170",
+        "backgroundBlur": "2",
+        "backgroundScale": "105"
+    },
+    "Emerald_Castform-Rainy": {
+        "imageScale": "0.51",
+        "imageYOffset": "168",
+        "imageXOffset": "-44",
+        "overlay_color": "#437db6",
+        "backgroundBrightness": "57",
+        "backgroundScale": "135",
+        "backgroundContrast": "142",
+        "backgroundBlur": "2",
+        "backgroundTexture": "Dragon",
+        "backgroundHue": "345",
+        "backgroundSaturation": "138"
+    },
+    "Emerald_Castform-Sunny": {
+        "imageScale": "0.39",
+        "imageYOffset": "204",
+        "imageXOffset": "-58",
+        "overlay_color": "#efae6b",
+        "backgroundTexture": "Flying",
+        "backgroundBrightness": "117",
+        "backgroundContrast": "140",
+        "backgroundScale": "160",
+        "backgroundYOffset": "65"
     }
 };
 

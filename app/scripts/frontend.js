@@ -843,6 +843,7 @@ const app = Vue.createApp({
             frame                        : false,
             catch_rate            : MyStorage['catch_rate'] ?? false,
             deoxys_form           : MyStorage['deoxys_form'] ?? "Speed",
+            castform_form         : MyStorage['castform_form'] ?? "Normal", // Form selected for pre-run styling; weather overrides it in battle
             speed_comparison_toggle: true,
             unobtainable_moves_toggle: MyStorage['unobtainable_moves_toggle'] ?? "Always Cross Out",
             banned_hidden_power      : MyStorage['banned_hidden_power']       ?? true,
@@ -1137,6 +1138,31 @@ const app = Vue.createApp({
                 "current_label",
                 "splits_display",
             ],
+            // The subset of pokemon_settings that is visual styling. For Castform these are
+            // stored per form (the weather forms swap them in battle); everything else in
+            // pokemon_settings stays on the base Castform storage key
+            castform_style_settings: [
+                "overlay_color",
+                "imageXOffset",
+                "imageYOffset",
+                "imageScale",
+                "imageFlip",
+                "imageSat",
+                "imageRotation",
+                "backgroundBlur",
+                "backgroundScale",
+                "backgroundUrl",
+                "use_custom_background",
+                "backgroundXOffset",
+                "backgroundYOffset",
+                "backgroundTexture",
+                "backgroundBrightness",
+                "backgroundContrast",
+                "backgroundSaturation",
+                "backgroundFlip",
+                "backgroundXFlip",
+                "backgroundHue",
+            ],
             //timer variables
             timer_startTimeOffset: MyStorage["timer_startTimeOffset"] ?? "00:00:00.00",
             time_split_start:      MyStorage['time_split_start']     ?? "00:00:00:00",
@@ -1296,6 +1322,7 @@ const app = Vue.createApp({
                 "set_rom_starter_automatically",
                 "catch_rate",
                 "deoxys_form",
+                "castform_form",
                 "post_kanto_evolutions",
                 "show_post_battle_splits",
                 "shuckie_timer",
@@ -1387,6 +1414,10 @@ const app = Vue.createApp({
                         // Otherwise, use individual species storage
                         // This ensures styles are saved to the correct location (e.g., "FireRed_Unfezant-line-Pidove" vs "FireRed_Pidove")
                         storageKey = this.getCurrentStorageKey();
+                        // Castform's visual styles are stored per form
+                        if (this.starterString == "Castform" && this.castform_style_settings.includes(propName)) {
+                            storageKey = this.getCastformStyleStorageKey();
+                        }
                     }
                     
                     // Ensure that MyStorage[storageKey] is an object
@@ -1422,7 +1453,9 @@ const app = Vue.createApp({
                 }
                 
                 // Save to per-species storage (same logic as pokemon_settings)
-                const storageKey = this.getCurrentStorageKey();
+                const storageKey = this.starterString == "Castform"
+                    ? this.getCastformStyleStorageKey()
+                    : this.getCurrentStorageKey();
                 if (!MyStorage[storageKey]) {
                     MyStorage[storageKey] = {};
                 }
@@ -1707,6 +1740,14 @@ const app = Vue.createApp({
                     ...MyStorage[`${game_name}_${this.starter}`],
                     selected_evolution_species: newValue
                 };
+            }
+        },
+        castform_active_form(newValue, oldValue) {
+            // Form changed (weather in battle, or the styling dropdown): load that form's stored styles.
+            // loadEvolutionStyle sets is_loading_evolution_style so the style watchers don't
+            // save the incoming values over another form's storage.
+            if (newValue && newValue !== oldValue && this.starterString == "Castform") {
+                this.loadEvolutionStyle("Castform", false);
             }
         },
         starterString(newValue, oldValue) {
@@ -2222,6 +2263,30 @@ const app = Vue.createApp({
                     case "Normal" : return "Deoxys-Normal"
                     case "Attack" : return "Deoxys-Attack"
                     case "Defense": return "Deoxys-Defense"
+                }
+            }
+        },
+        castform_active_form() {
+            // The Castform form to display: weather-driven during battle (Forecast),
+            // otherwise the form selected in the styling dropdown
+            if (this.starterString != "Castform") { return null }
+            if (this.g3stateVariable == "Battle" && !this.weatherDenial) {
+                switch (this.batt?.field?.weather?.value) {
+                    case "Sun" : return "Sunny"
+                    case "Rain": return "Rainy"
+                    case "Hail": return "Snowy"
+                }
+                return "Normal" // no weather (or Sandstorm) keeps Castform in its normal form
+            }
+            return this.castform_form
+        },
+        castform_image() {
+            if (this.starterString == "Castform") {
+                switch (this.castform_active_form) {
+                    case "Sunny": return "Castform-Sunny"
+                    case "Rainy": return "Castform-Rainy"
+                    case "Snowy": return "Castform-Snowy"
+                    default     : return "Castform"
                 }
             }
         },
@@ -2849,7 +2914,9 @@ const app = Vue.createApp({
          * Reset the current Pokemon's style settings to defaults
          */
         resetCurrentPokemonToDefaults() {
-            const storageKey = this.getCurrentStorageKey();
+            const storageKey = this.starterString == "Castform"
+                ? this.getCastformStyleStorageKey()
+                : this.getCurrentStorageKey();
             StyleSettingsUtils.resetToDefaults(storageKey);
             // Reload the styles
             if (this.evolution && this.selected_evolution_species) {
@@ -2982,11 +3049,10 @@ const app = Vue.createApp({
          * Get the current storage key for the active Pokemon
          */
         getCurrentStorageKey() {
-            const game_name = this.mapper?.properties?.meta?.game_name?.value || this.gameSelection;
             if (this.evolution && this.selected_evolution_species) {
                 return this.getStorageKey(this.selected_evolution_species, true);
             } else {
-                return `${game_name}_${this.starterString}`;
+                return this.getStorageKey(this.starterString, false);
             }
         },
         
@@ -3217,6 +3283,16 @@ const app = Vue.createApp({
             
             const fullyEvolved = this.getFullyEvolvedSpecies(species);
             return `${this.mapper?.properties?.meta?.game_name?.value || this.gameSelection}_${fullyEvolved}-line-${species}`;
+        },
+        getCastformStyleStorageKey() {
+            // Castform's visual styles are stored per form so each one can be styled ahead of a
+            // run; the normal form keeps the legacy un-suffixed key. Only style properties
+            // (castform_style_settings) use this key — counters, nature, splits, etc. stay on
+            // the base Castform key shared by all forms.
+            const game_name = this.mapper?.properties?.meta?.game_name?.value || this.gameSelection;
+            const form = this.castform_active_form ?? this.castform_form;
+            const suffix = form && form != "Normal" ? `-${form}` : "";
+            return `${game_name}_Castform${suffix}`;
         },
         getEvolutionFamilyStorageKey(species) {
             // Get the storage key for the entire evolution family (shared settings like ability, nature, gender)
@@ -4587,7 +4663,9 @@ const app = Vue.createApp({
                 // Evolution is disabled, load individual species styles
                 // Use starterString instead of starter to ensure we have the correct value
                 const speciesToLoad = this.starterString || this.starter;
-                const storageKey = this.getStorageKey(speciesToLoad, false);
+                const storageKey = speciesToLoad == "Castform"
+                    ? this.getCastformStyleStorageKey()
+                    : this.getStorageKey(speciesToLoad, false);
                 
                 //Pokemon settings for local storage
                 this.overlay_color = MyStorage[storageKey]?.overlay_color ?? this.default_colors[`${this.game.dexData?.[speciesToLoad]?.type_1}`] ?? this.default_colors.Normal
@@ -4701,8 +4779,11 @@ const app = Vue.createApp({
             // console.log(MyStorage.entries())
         },
         set_pokemon_prop(property_name, value) {
-            // Use the appropriate storage key based on evolution mode
-            const storageKey = this.getCurrentStorageKey();
+            // Use the appropriate storage key based on evolution mode (only ever called for
+            // style properties, so Castform routes to its per-form style key)
+            const storageKey = this.starterString == "Castform"
+                ? this.getCastformStyleStorageKey()
+                : this.getCurrentStorageKey();
             MyStorage[storageKey] = {
                 ...MyStorage[storageKey],
                 [property_name]: value,
@@ -4817,7 +4898,11 @@ const app = Vue.createApp({
             
             // Load styles for a species, either from evolution line storage or individual storage
             const game_name = this.mapper?.properties?.meta?.game_name?.value || this.gameSelection;
-            const storageKey = useEvolutionLine ? this.getStorageKey(species, true) : this.getStorageKey(species, false);
+            let storageKey = useEvolutionLine ? this.getStorageKey(species, true) : this.getStorageKey(species, false);
+            // Castform's styles are stored per form
+            if (species == "Castform") {
+                storageKey = this.getCastformStyleStorageKey();
+            }
             
             // Debug: Log what we're trying to load
             // console.log(`Loading styles for ${species} (useEvolutionLine: ${useEvolutionLine}, key: ${storageKey})`);
@@ -4825,10 +4910,18 @@ const app = Vue.createApp({
             
             // Load overlay and image settings
             // Get type_1 from evolution_data_pokedex or fallback to appropriate dex data based on game selection
-            const type_1 = this.evolution_data_pokedex?.[species]?.type_1 
+            let type_1 = this.evolution_data_pokedex?.[species]?.type_1
                 ?? (this.gameSelection == 'Emerald' ? dexDataRubySapphireEmerald?.[species]?.type_1 : dexDataFireRedLeafGreen?.[species]?.type_1)
-                ?? this.game?.dexData?.[species]?.type_1 
+                ?? this.game?.dexData?.[species]?.type_1
                 ?? 'Normal';
+            // Castform's alt forms default to their Forecast type's color/texture until styled
+            if (species == "Castform") {
+                switch (this.castform_active_form ?? this.castform_form) {
+                    case "Sunny": type_1 = "Fire";  break;
+                    case "Rainy": type_1 = "Water"; break;
+                    case "Snowy": type_1 = "Ice";   break;
+                }
+            }
             this.overlay_color = MyStorage[storageKey]?.overlay_color ?? this.default_colors[type_1] ?? this.default_colors.Normal;
             // Load ui_saturation from per-species storage, fall back to global storage, then default to 0.6
             this.ui_saturation = MyStorage[storageKey]?.ui_saturation ?? MyStorage['ui_saturation'] ?? 0.6;
@@ -6919,6 +7012,11 @@ const app = Vue.createApp({
         for (var species of Object.keys(dexDataRubySapphireEmerald)) {
             var image = new Image();
             image.src = `images/pokemon/${species}.png`;
+        }
+        // Preload form art so form swaps (weather in battle) cross-fade without a loading pop
+        for (var form_art of ["Castform-Sunny", "Castform-Rainy", "Castform-Snowy", "Deoxys-Speed", "Deoxys-Normal", "Deoxys-Attack", "Deoxys-Defense"]) {
+            var form_image = new Image();
+            form_image.src = `images/pokemon/${form_art}.png`;
         }
         this.pokemon_list = this.keys_function(this.dexDataRubySapphireEmerald)
 

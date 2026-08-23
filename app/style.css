@@ -279,6 +279,7 @@ body {
     position: absolute;
     inset: 0; /* sets top/left/bottom/right to 0 */
     background-color: var(--overlay-color);
+    transition: background-color 750ms ease-in-out; /* smooth overlay color changes (Castform forms, evolutions, color picker) */
     filter: saturate(.6);
     background-size: 1920px 1080px;
     -webkit-mask-size: 1920px 1080px;
@@ -2689,6 +2690,14 @@ body {
 .fadeBattle-leave-from { opacity: 1; }
 .fadeBattle-leave-to { opacity: 0; }
 .fadeBattle-leave-active { transition: opacity 200ms ease-in-out; }
+
+/* Castform form change: old and new art/background render together and cross-fade */
+.castformFade-enter-from { opacity: 0; }
+.castformFade-enter-to { opacity: 1; }
+.castformFade-enter-active { transition: opacity 750ms ease-in-out; }
+.castformFade-leave-from { opacity: 1; }
+.castformFade-leave-to { opacity: 0; }
+.castformFade-leave-active { transition: opacity 750ms ease-in-out; }
 
 
 .fadeBattleEnemy-enter-from { opacity: 0; }

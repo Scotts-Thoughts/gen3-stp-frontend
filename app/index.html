@@ -23,10 +23,13 @@
         </div>
         <div v-else>
             <div>
-                <img class="canvas" ref="background_texture" :src="textures[backgroundTexture]" :style="{ 
-                    'filter': `blur(${backgroundBlur}px) hue-rotate(${backgroundHue}deg) brightness(${backgroundBrightness}%) contrast(${backgroundContrast}%) saturate(${backgroundSaturation}%)` ,
-                    'transform': `scale(${backgroundScale}%) ${backgroundFlip ? 'rotateY(180deg)' : ''} ${backgroundXFlip ? 'rotateX(180deg)' : ''} translate(${backgroundXOffset}px, ${-backgroundYOffset}px)`
-                }" />
+                <!-- Keyed by Castform's active form so a form change cross-fades old/new textures; key is null for other species -->
+                <transition name="castformFade">
+                    <img class="canvas" ref="background_texture" :key="castform_active_form" :src="textures[backgroundTexture]" :style="{
+                        'filter': `blur(${backgroundBlur}px) hue-rotate(${backgroundHue}deg) brightness(${backgroundBrightness}%) contrast(${backgroundContrast}%) saturate(${backgroundSaturation}%)` ,
+                        'transform': `scale(${backgroundScale}%) ${backgroundFlip ? 'rotateY(180deg)' : ''} ${backgroundXFlip ? 'rotateX(180deg)' : ''} translate(${backgroundXOffset}px, ${-backgroundYOffset}px)`
+                    }" />
+                </transition>
                 <img class="canvas" style="top: 30px;" :src="`images/elements/overlay/gen1&2/pokeball.png`" />
                 <div v-if="starterString == 'Ditto'">
                     <img class="pokemon_art" ref="pokemon_art" :style="{
@@ -43,19 +46,22 @@
                     }" :src="`images/pokemon/ditto.png`" />
                 </div>
                 <div v-else>
-                    <img class="pokemon_art" ref="pokemon_art" :style="{
-                        'transform': `scale(${imageScale}) ${imageFlip ? 'rotateY(180deg)' : ''} translate(${imageXOffset}px, ${-imageYOffset}px) rotate(${imageRotation}deg)`,
-                        'filter': `saturate(${imageSat}%)
-                        drop-shadow(0 0 0.4px #000)
-                        drop-shadow(0 0 0.4px #000)
-                        drop-shadow(0 0 0.4px #000)
-                        drop-shadow(0 0 0.4px #000)
-                        drop-shadow(0 0 0.4px #000)
-                        drop-shadow(0 0 0.4px #000)
-                        drop-shadow(${imageFlip ? '-3px' : '3px'} 3px 3px #000)
-                        `
-                    }"
-                        :src="`images/pokemon/${displayedPokemonSpecies == 'Deoxys' ? deoxys_image : displayedPokemonSpecies}.png`" />
+                    <!-- Keyed by Castform's active form so a form change cross-fades old/new art; key is null for other species -->
+                    <transition name="castformFade">
+                        <img class="pokemon_art" ref="pokemon_art" :key="castform_active_form" :style="{
+                            'transform': `scale(${imageScale}) ${imageFlip ? 'rotateY(180deg)' : ''} translate(${imageXOffset}px, ${-imageYOffset}px) rotate(${imageRotation}deg)`,
+                            'filter': `saturate(${imageSat}%)
+                            drop-shadow(0 0 0.4px #000)
+                            drop-shadow(0 0 0.4px #000)
+                            drop-shadow(0 0 0.4px #000)
+                            drop-shadow(0 0 0.4px #000)
+                            drop-shadow(0 0 0.4px #000)
+                            drop-shadow(0 0 0.4px #000)
+                            drop-shadow(${imageFlip ? '-3px' : '3px'} 3px 3px #000)
+                            `
+                        }"
+                            :src="`images/pokemon/${displayedPokemonSpecies == 'Deoxys' ? deoxys_image : displayedPokemonSpecies == 'Castform' ? castform_image : displayedPokemonSpecies}.png`" />
+                    </transition>
                 </div>
                 <img class="canvas colored-image ds" src="images/ui/game_area.svg" />
 
@@ -506,6 +512,16 @@
                         </table>
                     </div>
                     <br>
+                    <div v-if="starterString == 'Castform'">
+                        <div>Castform Form: (each form styles separately)</div>
+                        <select v-model="castform_form" class="dropdownMenu dropdown_menu_column3" style="width: 296px;">
+                            <option value="Normal">Normal (Clear)</option>
+                            <option value="Sunny">Sunny (Harsh Sunlight)</option>
+                            <option value="Rainy">Rainy (Rain)</option>
+                            <option value="Snowy">Snowy (Hail)</option>
+                        </select><br>
+                        <br>
+                    </div>
                     <div style="display: flex; gap: 12px; align-items: flex-start;">
                         <div style="width: 185px;">
                             <div style="white-space: nowrap;">Abilities: ({{displayedPokemonSpecies}} has
