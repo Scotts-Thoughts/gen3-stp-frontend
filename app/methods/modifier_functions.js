@@ -80,10 +80,14 @@ function stageMultiplier(y,x) {
 function weatherModifier(weather, move, moveType) {
     let mod = 1;
     // console.log(weather, move, moveType);
+    // Move names reach this function in two spellings: the raw mapper value ("WEATHER BALL")
+    // and the display-formatted name from move_name/camelCase ("Weather Ball"). Normalize so
+    // the checks below match either one.
+    const move_key = move == null ? "" : move.toString().toUpperCase().replace(/[\s-]/g, "")
     if(this.weatherDenial) {
         return mod;
     }
-    if(move == "WEATHER BALL" && !(weather == null || weather =="" || weather == undefined)) {
+    if(move_key == "WEATHERBALL" && !(weather == null || weather =="" || weather == undefined)) {
         mod *= 2;
     }
     if (weather == "Sun" && moveType == "Water") {
@@ -98,7 +102,7 @@ function weatherModifier(weather, move, moveType) {
     else if (weather == "Rain" && moveType == "Fire") {
         return mod * 0.5
     }
-    else if (weather == "Rain" && move == "SolarBeam") {
+    else if (weather == "Rain" && move_key == "SOLARBEAM") {
         return mod * 0.5
     }
     else if (weather == "Sandstorm") {

@@ -351,8 +351,9 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundScale": "104",
         "hidden_power_type": "Dark",
         "hidden_power_index": "0",
-        "attempt_number": 4,
-        "finished_run_count": 3
+        "attempt_number": 8,
+        "finished_run_count": 5,
+        "splits_display": "Followup"
     },
     "Emerald_Wartortle": {
         "imageFlip": true,
@@ -3605,6 +3606,24 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundContrast": "140",
         "backgroundScale": "160",
         "backgroundYOffset": "65"
+    },
+    "Emerald_Torchic": {
+        "imageFlip": true,
+        "imageScale": "0.55",
+        "imageYOffset": "-30",
+        "imageXOffset": "41",
+        "overlay_color": "#f1a142",
+        "backgroundScale": "155",
+        "backgroundContrast": "122",
+        "backgroundBrightness": "71",
+        "backgroundYOffset": "-103",
+        "pkmn_ability": "Blaze",
+        "pkmnNature": "Rash",
+        "hidden_power_type": "Grass",
+        "hidden_power_index": "4",
+        "attempt_number": 2,
+        "finished_run_count": 1,
+        "backgroundTexture": "Fire"
     }
 };
 
