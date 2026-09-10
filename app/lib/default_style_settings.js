@@ -55,8 +55,8 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundSaturation": "120",
         "backgroundBlur": "2",
         "backgroundHue": "16",
-        "finished_run_count": 1,
-        "attempt_number": 1,
+        "finished_run_count": 2,
+        "attempt_number": 2,
         "hidden_power_type": "Fire",
         "hidden_power_index": "3"
     },
@@ -351,8 +351,8 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundScale": "104",
         "hidden_power_type": "Dark",
         "hidden_power_index": "0",
-        "attempt_number": 8,
-        "finished_run_count": 5,
+        "attempt_number": 12,
+        "finished_run_count": 9,
         "splits_display": "Followup"
     },
     "Emerald_Wartortle": {
@@ -667,8 +667,8 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundYOffset": "37",
         "hidden_power_type": "Ground",
         "hidden_power_index": "3",
-        "attempt_number": 2,
-        "finished_run_count": 1
+        "attempt_number": 3,
+        "finished_run_count": 2
     },
     "Emerald_Clefable": {
         "imageScale": "0.71",
@@ -3624,6 +3624,25 @@ const DEFAULT_STYLE_SETTINGS = {
         "attempt_number": 2,
         "finished_run_count": 1,
         "backgroundTexture": "Fire"
+    },
+    "Emerald_Mudkip": {
+        "imageFlip": true,
+        "imageScale": "0.55",
+        "imageYOffset": "-30",
+        "imageXOffset": "55",
+        "backgroundTexture": "Muddy Water",
+        "backgroundContrast": "170",
+        "backgroundBrightness": "42",
+        "backgroundBlur": "2",
+        "backgroundHue": "0",
+        "backgroundScale": "110",
+        "overlay_color": "#57b2de",
+        "pkmn_ability": "Torrent",
+        "pkmnNature": "Mild",
+        "hidden_power_type": "Electric",
+        "hidden_power_index": "3",
+        "attempt_number": 1,
+        "finished_run_count": 1
     }
 };
 
