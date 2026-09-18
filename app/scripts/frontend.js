@@ -2942,6 +2942,30 @@ const app = Vue.createApp({
         },
         
         /**
+         * The OBS chapter markers hook mapper properties by path at mount time. If the
+         * mapper PokeAByte has loaded is missing one of them, that marker silently never
+         * fires for the whole session (e.g. pokemon_emerald_ne.xml without
+         * battle.trainer.party_position => no "Next Pokemon" markers). Shout about it.
+         */
+        checkMapperForChapterMarkerProperties() {
+            const meta = this.mapper?.meta || {};
+            // PokeAByte reports the file path too - the two "deprecated" Emerald mappers share a name and id.
+            console.log(`[OBS chapter marker] Mapper loaded: ${meta.path ?? '?'} - ${meta.gameName ?? '?'} (${meta.id ?? 'no id'})`);
+            const required = {
+                'pointers.sStpCallback2':         'trainer IN / OUT, RESET and BLACKOUT markers',
+                'pointers.sStpCallback1':         'RESET marker',
+                'battle.trainer.party_position':  '"Next Pokemon" marker',
+                'patch.sStpTextBoxOpen':          '"Text Box" markers',
+                'overworld.mapName':              '"Map Change" markers',
+            };
+            for (const [path, purpose] of Object.entries(required)) {
+                if (!this.mapper._propertiesMap?.has(path)) {
+                    console.error(`[OBS chapter marker] Loaded mapper has no "${path}" property - ${purpose} will NOT be recorded this session. Load the current STP mapper (pokemon_emerald_ne.xml / pokemon_firered_leafgreen_ne.xml) in PokeAByte.`);
+                }
+            }
+        },
+
+        /**
          * Send an OBS WebSocket 5 "CreateRecordChapter" request (Add Chapter Marker).
          * Connects to ws://localhost:4455 (or MyStorage.obs_websocket_url), identifies,
          * sends the chapter name, then closes. Fails silently if OBS is not running.
@@ -6592,6 +6616,7 @@ const app = Vue.createApp({
         this.mapper = new GameHookMapperClient()
         this.mapper.onMapperLoaded = (x) => {
             this.ready = true
+            this.checkMapperForChapterMarkerProperties()
             this.$nextTick(() => {
                 if (this.$refs.expBar) {
                     var species = this.mapper.properties.player.team[0].species.value ?? this.starterString;
@@ -7104,6 +7129,9 @@ const app = Vue.createApp({
 
         // NEXT POKEMON CHAPTER MARKER (Battle only)
         // Fires "Next Pokemon" whenever battle.trainer.party_position changes during Battle.
+        if (!this.mapper.properties.battle.trainer.party_position) {
+            console.error('[OBS chapter marker] battle.trainer.party_position missing from mapper - "Next Pokemon" markers disabled for this session.');
+        }
         this.mapper.properties.battle.trainer.party_position?.change((newProp, oldProp) => {
             console.log("Chapter Detected: Next Pokemon - part 1");
             if (this.g3stateVariable !== 'Battle') return;
@@ -8107,6 +8135,17 @@ const app = Vue.createApp({
                         res.end(JSON.stringify({ ok: false, error: 'Missing type parameter' }));
                     }
                 }
+                else if (pathname === '/set-nature') {
+                    // Set the Pokémon's nature (the Nature dropdown)
+                    // Usage: /set-nature?nature=Adamant
+                    if (query.nature && Object.values(this.simple_natures).includes(query.nature)) {
+                        this.pkmnNature = query.nature;
+                        res.end(JSON.stringify({ ok: true, nature: this.pkmnNature }));
+                    } else {
+                        res.statusCode = 400;
+                        res.end(JSON.stringify({ ok: false, error: 'Missing or invalid nature parameter' }));
+                    }
+                }
                 else if (pathname === '/set-splits') {
                     // Set the splits display mode
                     // Usage: /set-splits?mode=First  or  /set-splits?mode=Followup
@@ -8224,6 +8263,7 @@ const app = Vue.createApp({
                         selected_game: this.gameSelection,
                         right_panel: this.right_panel,
                         hidden_power_type: this.hidden_power_type,
+                        nature: this.pkmnNature,
                         splits: this.splits_display,
                         shuckie_counters: this.shuckie_counters,
                         show_tutor_moves: this.tutor_moves,

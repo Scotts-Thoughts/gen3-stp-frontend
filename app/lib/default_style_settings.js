@@ -439,7 +439,7 @@ const DEFAULT_STYLE_SETTINGS = {
     },
     "Emerald_Sneasel": {
         "pkmn_ability": "Inner Focus",
-        "pkmnNature": "Brave",
+        "pkmnNature": "Quiet",
         "backgroundTexture": "Dark",
         "overlay_color": "#598a98",
         "imageFlip": true,
@@ -454,10 +454,11 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundContrast": "133",
         "backgroundHue": "54",
         "backgroundSaturation": "42",
-        "hidden_power_type": "Ground",
+        "hidden_power_type": "Electric",
         "hidden_power_index": "3",
-        "attempt_number": 4,
-        "finished_run_count": 2
+        "attempt_number": 8,
+        "finished_run_count": 4,
+        "splits_display": "Followup"
     },
     "Emerald_Houndoom": {
         "imageScale": "0.84",
@@ -475,7 +476,7 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundTexture": "Dark",
         "hidden_power_type": "Water",
         "hidden_power_index": "3",
-        "attempt_number": 2,
+        "attempt_number": 4,
         "finished_run_count": 2
     },
     "Emerald_Pichu": {
@@ -591,7 +592,7 @@ const DEFAULT_STYLE_SETTINGS = {
     },
     "Emerald_Nosepass": {
         "pkmn_ability": "Sturdy",
-        "pkmnNature": "Mild",
+        "pkmnNature": "Adamant",
         "backgroundTexture": "Rock",
         "overlay_color": "#5d7cbc",
         "imageScale": "0.53",
@@ -604,10 +605,11 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundXOffset": "28",
         "backgroundBrightness": "90",
         "backgroundBlur": "2",
-        "hidden_power_type": "Water",
-        "hidden_power_index": "3",
-        "attempt_number": 2,
-        "finished_run_count": 1
+        "hidden_power_type": "Bug",
+        "hidden_power_index": "4",
+        "attempt_number": 7,
+        "finished_run_count": 10,
+        "splits_display": "Followup"
     },
     "Emerald_Geodude": {
         "imageScale": "0.82",
@@ -623,11 +625,13 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundBlur": "4",
         "selected_evolution_species": "Geodude",
         "evolution": false,
-        "attempt_number": 9,
-        "finished_run_count": 7,
-        "pkmnNature": "Hardy",
+        "attempt_number": 15,
+        "finished_run_count": 14,
+        "pkmnNature": "Jolly",
         "pkmn_ability": "Rock Head",
-        "hidden_power_type": "Rock"
+        "hidden_power_type": "Rock",
+        "hidden_power_index": "3",
+        "splits_display": "Followup"
     },
     "Emerald_Onix": {
         "imageFlip": true,
@@ -646,9 +650,10 @@ const DEFAULT_STYLE_SETTINGS = {
         "pkmnNature": "Adamant",
         "hidden_power_type": "Rock",
         "hidden_power_index": "3",
-        "attempt_number": 2,
-        "finished_run_count": 2,
-        "backgroundTexture": "Rock"
+        "attempt_number": 7,
+        "finished_run_count": 5,
+        "backgroundTexture": "Rock",
+        "splits_display": "Followup"
     },
     "Emerald_Azumarill": {
         "imageFlip": true,
@@ -663,12 +668,13 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundBlur": "0",
         "backgroundScale": "156",
         "pkmn_ability": "Huge Power",
-        "pkmnNature": "Naughty",
+        "pkmnNature": "Rash",
         "backgroundYOffset": "37",
-        "hidden_power_type": "Ground",
+        "hidden_power_type": "Electric",
         "hidden_power_index": "3",
-        "attempt_number": 3,
-        "finished_run_count": 2
+        "attempt_number": 5,
+        "finished_run_count": 2,
+        "splits_display": "Followup"
     },
     "Emerald_Clefable": {
         "imageScale": "0.71",
@@ -3621,8 +3627,8 @@ const DEFAULT_STYLE_SETTINGS = {
         "pkmnNature": "Rash",
         "hidden_power_type": "Grass",
         "hidden_power_index": "4",
-        "attempt_number": 2,
-        "finished_run_count": 1,
+        "attempt_number": 3,
+        "finished_run_count": 2,
         "backgroundTexture": "Fire"
     },
     "Emerald_Mudkip": {
@@ -3641,8 +3647,8 @@ const DEFAULT_STYLE_SETTINGS = {
         "pkmnNature": "Mild",
         "hidden_power_type": "Electric",
         "hidden_power_index": "3",
-        "attempt_number": 1,
-        "finished_run_count": 1
+        "attempt_number": 2,
+        "finished_run_count": 2
     }
 };
 
