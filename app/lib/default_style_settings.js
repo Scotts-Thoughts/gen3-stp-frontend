@@ -456,8 +456,8 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundSaturation": "42",
         "hidden_power_type": "Electric",
         "hidden_power_index": "3",
-        "attempt_number": 8,
-        "finished_run_count": 4,
+        "attempt_number": 13,
+        "finished_run_count": 6,
         "splits_display": "Followup"
     },
     "Emerald_Houndoom": {
@@ -476,8 +476,8 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundTexture": "Dark",
         "hidden_power_type": "Water",
         "hidden_power_index": "3",
-        "attempt_number": 4,
-        "finished_run_count": 2
+        "attempt_number": 6,
+        "finished_run_count": 4
     },
     "Emerald_Pichu": {
         "pkmn_ability": "Static",

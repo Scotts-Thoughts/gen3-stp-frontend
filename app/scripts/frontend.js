@@ -5324,7 +5324,10 @@ const app = Vue.createApp({
 
         // ENEMY TRAINER GRAPHIC
         g3trainerEnemySelector(trainerClass) {
-            let trainer_id = this.mapper.properties.battle.trainer.opponentId.value
+            // Game-aware: Emerald exposes opponentAId, FireRed opponentId (see gameVariables.js).
+            // Reading battle.trainer.opponentId directly threw on Emerald in every Battle-state
+            // render, which aborted Vue's patch and made the timer stutter.
+            let trainer_id = this.opponentId
             if (this.game.opponentImageMap[trainerClass]) {
                 return 1
             }
@@ -5335,9 +5338,8 @@ const app = Vue.createApp({
                 return 0
         },
         specialTrainerGraphics() {
-            let trainer_id = this.mapper.properties.battle.trainer.opponentId.value
+            let trainer_id = this.opponentId
             let opponent = this.opponent
-            console.log(trainer_id)
             switch (trainer_id) {
                 case 351: opponent = 'ROCKET_BOSS'; break;
             }
@@ -6640,9 +6642,18 @@ const app = Vue.createApp({
 
         // In mounted hook (around line 6897)
         // Poll for emulator stats continuously
+        // One request in flight at a time: setInterval does not wait for the awaited fetch,
+        // so a slow /stats response let later polls overtake it and each late reply snapped
+        // timer_startTime backwards (visible as a stuttering timer).
+        this._emulatorStatsInFlight = false;
         this.emulatorStatsInterval = setInterval(async () => {
-            if (this.ready) { // Only poll when mapper is ready
-                await this.fetchEmulatorStats();
+            if (this.ready && !this._emulatorStatsInFlight) { // Only poll when mapper is ready
+                this._emulatorStatsInFlight = true;
+                try {
+                    await this.fetchEmulatorStats();
+                } finally {
+                    this._emulatorStatsInFlight = false;
+                }
             }
         }, 10); // 100ms = 10 times per second (adjust as needed)
 
