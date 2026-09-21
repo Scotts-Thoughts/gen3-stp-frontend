@@ -471,13 +471,14 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundYOffset": "21",
         "backgroundContrast": "140",
         "backgroundHue": "333",
-        "pkmn_ability": "Early Bird",
-        "pkmnNature": "Rash",
+        "pkmn_ability": "Flash Fire",
+        "pkmnNature": "Quiet",
         "backgroundTexture": "Dark",
-        "hidden_power_type": "Water",
-        "hidden_power_index": "3",
-        "attempt_number": 6,
-        "finished_run_count": 4
+        "hidden_power_type": "Grass",
+        "hidden_power_index": "4",
+        "attempt_number": 7,
+        "finished_run_count": 5,
+        "splits_display": "Followup"
     },
     "Emerald_Pichu": {
         "pkmn_ability": "Static",
