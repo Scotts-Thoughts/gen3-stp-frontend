@@ -456,8 +456,8 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundSaturation": "42",
         "hidden_power_type": "Electric",
         "hidden_power_index": "3",
-        "attempt_number": 13,
-        "finished_run_count": 6,
+        "attempt_number": 14,
+        "finished_run_count": 7,
         "splits_display": "Followup"
     },
     "Emerald_Houndoom": {
@@ -476,8 +476,8 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundTexture": "Dark",
         "hidden_power_type": "Grass",
         "hidden_power_index": "4",
-        "attempt_number": 7,
-        "finished_run_count": 5,
+        "attempt_number": 9,
+        "finished_run_count": 7,
         "splits_display": "Followup"
     },
     "Emerald_Pichu": {
@@ -626,9 +626,9 @@ const DEFAULT_STYLE_SETTINGS = {
         "backgroundBlur": "4",
         "selected_evolution_species": "Geodude",
         "evolution": false,
-        "attempt_number": 15,
-        "finished_run_count": 14,
-        "pkmnNature": "Jolly",
+        "attempt_number": 16,
+        "finished_run_count": 15,
+        "pkmnNature": "Adamant",
         "pkmn_ability": "Rock Head",
         "hidden_power_type": "Rock",
         "hidden_power_index": "3",
@@ -693,8 +693,8 @@ const DEFAULT_STYLE_SETTINGS = {
         "pkmn_ability": "Cute Charm",
         "pkmnNature": "Rash",
         "backgroundHue": "244",
-        "attempt_number": 2,
-        "finished_run_count": 2
+        "attempt_number": 3,
+        "finished_run_count": 3
     },
     "Emerald_Wigglytuff": {
         "imageScale": "0.82",
