@@ -1355,7 +1355,10 @@ const app = Vue.createApp({
         } catch (e) {
             console.error('Failed to set initial game icon', e)
         }
-        import('../lib/gameVariables.js').then((gameVariables) => {
+        // mounted() awaits this before connecting the mapper: if the mapper loaded first,
+        // the `game` computed read a null gameVariables and mounted() threw before the
+        // control server started, leaving port 30159 dead after a /reload.
+        this._gameVariablesReady = import('../lib/gameVariables.js').then((gameVariables) => {
             this.gameVariables = gameVariables.default;
             // Bind the newGame function to the Vue component
             // this.gameVariables.newGame = this.gameVariables.newGame.bind(this);
@@ -2957,6 +2960,12 @@ const app = Vue.createApp({
                 'battle.trainer.party_position':  '"Next Pokemon" marker',
                 'patch.sStpTextBoxOpen':          '"Text Box" markers',
                 'overworld.mapName':              '"Map Change" markers',
+                'player.bag.items.0.quantity':    '"Rare Candy Used" marker',
+                'player.team.0.level':            '"Rare Candy Used" marker',
+                'battle.type.trainer':           '"IN - Wild" marker',
+                'battle.enemyPokemon.hp':        '"Enemy Fainted" marker',
+                'battle.yourPokemon.level':      '"Level Up" and "Battle Level Up" markers',
+                'player.team.0.itemHeld':        '"Held Item" markers',
             };
             for (const [path, purpose] of Object.entries(required)) {
                 if (!this.mapper._propertiesMap?.has(path)) {
@@ -6615,6 +6624,7 @@ const app = Vue.createApp({
 //--------- PROGRAM MOUNTED ---------------------------------------------------------------------------------------------------------------//
     mounted: async function () {
         const that = this
+        await this._gameVariablesReady
         this.mapper = new GameHookMapperClient()
         this.mapper.onMapperLoaded = (x) => {
             this.ready = true
@@ -7017,6 +7027,158 @@ const app = Vue.createApp({
             }
         }
 
+        // ===== OBS chapter markers: Rare Candy Used (port from gen2) =====
+        // Fires "Rare Candy Used" when, outside battle, the total RARE CANDY count in
+        // bag.items drops and the lead's level goes up by 1. The count drops the moment
+        // the candy is used; the level may only tick up after the "grew to level N"
+        // animation, so each decrement is queued and a later level-up consumes the oldest
+        // one still inside the look-back window (gen2's pairing, which keeps it 1:1
+        // whatever the lag). A level-up reported just before its decrement is also paired.
+        const pendingCandyDecrements = [];
+        let recentLeadLevelUpAt = 0;
+        const CANDY_LOOKBACK_MS = 5000;
+        const CANDY_REVERSE_GRACE_MS = 750;
+        const outsideBattle = () => this.g3stateVariable !== 'Battle' && this.g3stateVariable !== 'To Battle';
+
+        const fireCandyUsed = () => {
+            console.log("Chapter Detected: Rare Candy Used");
+            this.sendObsChapterMarker("Rare Candy Used");
+        };
+        const onCandyDecrement = (amount) => {
+            const now = Date.now();
+            if (recentLeadLevelUpAt && now - recentLeadLevelUpAt <= CANDY_REVERSE_GRACE_MS && outsideBattle()) {
+                recentLeadLevelUpAt = 0;
+                amount -= 1;
+                fireCandyUsed();
+            }
+            for (let k = 0; k < amount; k++) pendingCandyDecrements.push(now);
+        };
+        const onLeadLevelUp = () => {
+            if (!outsideBattle()) return;
+            const now = Date.now();
+            while (pendingCandyDecrements.length && now - pendingCandyDecrements[0] > CANDY_LOOKBACK_MS) {
+                pendingCandyDecrements.shift();
+            }
+            if (pendingCandyDecrements.length) {
+                pendingCandyDecrements.shift();
+                fireCandyUsed();
+            } else {
+                recentLeadLevelUpAt = now;
+            }
+        };
+
+        // Summed over every slot, so the slot shift when the last candy is used still
+        // reads N -> N-1. Names are UPPERCASE in the gen3 mappers.
+        const readRareCandyCount = () => {
+            let total = 0;
+            const items = this.mapper?.properties?.player?.bag?.items;
+            if (items) {
+                for (let i = 0; i < POCKET_BOUNDS.items; i++) {
+                    if (String(items[i]?.item?.value ?? '').toUpperCase() === 'RARE CANDY') {
+                        total += (items[i]?.quantity?.value ?? 0);
+                    }
+                }
+            }
+            return total;
+        };
+        let lastRareCandyCount = readRareCandyCount();
+        let candyCheckTimer = null;
+        const checkCandyCount = () => {
+            const current = readRareCandyCount();
+            if (current < lastRareCandyCount) onCandyDecrement(lastRareCandyCount - current);
+            lastRareCandyCount = current;
+        };
+        const scheduleCandyCheck = () => {
+            if (candyCheckTimer) clearTimeout(candyCheckTimer);
+            candyCheckTimer = setTimeout(() => {
+                candyCheckTimer = null;
+                checkCandyCount();
+            }, 100);
+        };
+        for (let i = 0; i < POCKET_BOUNDS.items; i++) {
+            bagRoot?.items?.[i]?.item?.change?.(() => scheduleCandyCheck());
+            bagRoot?.items?.[i]?.quantity?.change?.(() => scheduleCandyCheck());
+        }
+        this.mapper.properties.player.team[0]?.level?.change?.((newProp, oldProp) => {
+            if ((newProp?.value ?? 0) === (oldProp?.value ?? 0) + 1) onLeadLevelUp();
+        });
+
+        // ===== OBS chapter markers: Level Up, Battle Level Up, Enemy Fainted, Held Item (port from gen2) =====
+        // Level Up / Battle Level Up come from battle.yourPokemon.level, as in gen2: only while
+        // the game is in Battle (Battle Level Up) or Battle / From Battle (Level Up - <n>, a +1
+        // step). An overworld level-up is a Rare Candy, which has its own marker above, so
+        // nothing here can fire on a candy.
+        this.mapper.properties.battle.yourPokemon.level?.change?.((newProp, oldProp) => {
+            const state = this.g3stateVariable;
+            if ((newProp?.value ?? 0) !== 0 && state == 'Battle') {
+                console.log("Chapter Detected: Battle Level Up");
+                this.sendObsChapterMarker("Battle Level Up");
+            }
+            if ((newProp?.value ?? 0) === (oldProp?.value ?? 0) + 1 && (state == 'Battle' || state == 'From Battle')) {
+                const chapterName = `Level Up - ${newProp.value}`;
+                console.log("Chapter Detected: " + chapterName);
+                this.sendObsChapterMarker(chapterName);
+            }
+        });
+
+        // ENEMY FAINTED CHAPTER MARKER (Battle only)
+        // Fires "Enemy Fainted" when battle.enemyPokemon.hp drops from above 0 to 0 during Battle.
+        this.mapper.properties.battle.enemyPokemon.hp?.change?.((newProp, oldProp) => {
+            if (this.g3stateVariable !== 'Battle') return;
+            if (newProp?.value !== 0) return;
+            if (!((oldProp?.value ?? 0) > 0)) return;
+            console.log("Chapter Detected: Enemy Fainted");
+            this.sendObsChapterMarker("Enemy Fainted");
+        });
+
+        // HELD ITEM CHAPTER MARKER
+        // Fires "Held Item - <name>" when the party is holding more copies of a critical item
+        // than a moment ago: an item given to any party member to hold. Counting copies across
+        // the whole party means reordering the party or swapping items between members (the
+        // count is unchanged) never fires. While the game is in Base Stats (a reset reloading
+        // the party) the baseline is re-read silently. Debounced 100 ms so the writes of one
+        // action collapse into one diff.
+        const readHeldItemCounts = () => {
+            const counts = new Map();
+            const team = this.mapper?.properties?.player?.team;
+            if (team) {
+                for (let i = 0; i < 6; i++) {
+                    const v = team[i]?.itemHeld?.value;
+                    if (v == null || v === '') continue;
+                    counts.set(String(v), (counts.get(String(v)) ?? 0) + 1);
+                }
+            }
+            return counts;
+        };
+        let lastHeldItemCounts = readHeldItemCounts();
+        let heldItemCheckTimer = null;
+        const checkHeldItems = () => {
+            const current = readHeldItemCounts();
+            const previous = lastHeldItemCounts;
+            lastHeldItemCounts = current;
+            if (this.g3stateVariable === 'Base Stats') return;
+            for (const [name, count] of current) {
+                if (count <= (previous.get(name) ?? 0)) continue;
+                if (!isCriticalBagItem(name)) continue;
+                const display = (typeof this.capitalization_format === 'function')
+                    ? this.capitalization_format(name)
+                    : name;
+                const chapterName = "Held Item - " + display;
+                console.log("Chapter Detected: " + chapterName);
+                this.sendObsChapterMarker(chapterName);
+            }
+        };
+        const scheduleHeldItemCheck = () => {
+            if (heldItemCheckTimer) clearTimeout(heldItemCheckTimer);
+            heldItemCheckTimer = setTimeout(() => {
+                heldItemCheckTimer = null;
+                checkHeldItems();
+            }, 100);
+        };
+        for (let i = 0; i < 6; i++) {
+            this.mapper.properties.player.team[i]?.itemHeld?.change?.(() => scheduleHeldItemCheck());
+        }
+
         if (this.playerResets.toString().length == 1) {
             document.getElementById("reset_counter_single").style.fontSize = "68px"
         }
@@ -7130,6 +7292,12 @@ const app = Vue.createApp({
                 //     return;
                 // }
                 this.sendObsChapterMarker(chapterName);
+                // A battle with no trainer flag is a wild one (gen2's "IN - Wild"). Like gen2, no
+                // OUT is sent for it: the wild encounter is closed by "Enemy Fainted".
+                if (stateName == "IN" && trainerFlag === false) {
+                    console.log("Chapter Detected: IN - Wild");
+                    this.sendObsChapterMarker("IN - Wild");
+                }
             }
         });
 
